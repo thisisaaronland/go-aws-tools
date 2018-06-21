@@ -1,8 +1,8 @@
 package utils
 
 import (
-       "fmt"
-       "strings"
+	"fmt"
+	"strings"
 )
 
 func Readline(prompt string) string {

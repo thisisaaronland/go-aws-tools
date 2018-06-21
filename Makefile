@@ -30,9 +30,13 @@ vendor-deps: rmdeps deps
 	rm -rf src
 
 fmt:
+	go fmt auth/*.go
 	go fmt cmd/*.go
+	go fmt config/*.go
+	go fmt utils/*.go
+
 
 bin: 	self
 	rm -rf bin/*
-	@GOPATH=$(GOPATH) go build -o bin/aws-mfa cmd/aws-mfa.go
+	@GOPATH=$(GOPATH) go build -o bin/aws-mfa-session cmd/aws-mfa-session.go
 

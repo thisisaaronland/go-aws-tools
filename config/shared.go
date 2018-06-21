@@ -7,6 +7,6 @@ import (
 
 func LoadSharedConfigWithProfile(profile string) (aws.Config, error) {
 
-     	cfg := external.WithSharedConfigProfile(profile)
+	cfg := external.WithSharedConfigProfile(profile)
 	return external.LoadDefaultAWSConfig(cfg)
 }

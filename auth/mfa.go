@@ -1,8 +1,9 @@
 package auth
 
+// https://docs.aws.amazon.com/cli/latest/reference/sts/get-session-token.html
+
 import (
 	"github.com/aws/aws-sdk-go-v2/aws"
-	// "github.com/aws/aws-sdk-go-v2/aws/external"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
 	"strings"
@@ -31,7 +32,7 @@ func GetCredentialsWithMFA(cfg aws.Config, token string, duration int64) (*sts.C
 
 func username(stsc *sts.STS) (string, error) {
 
-     req := stsc.GetCallerIdentityRequest(nil)
+	req := stsc.GetCallerIdentityRequest(nil)
 
 	callerIdResp, err := req.Send()
 

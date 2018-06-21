@@ -1,5 +1,5 @@
 package auth
 
 type Authentication interface {
-     // what...
-}     
+	// what...
+}

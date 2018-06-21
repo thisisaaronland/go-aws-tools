@@ -7,7 +7,9 @@ prep:
 self:   prep rmdeps
 	if test -d src; then rm -rf src; fi
 	mkdir -p src/github.com/aaronland/go-aws-tools
-	# cp *.go src/github.com/aaronland/go-aws-tools/
+	cp -r auth src/github.com/aaronland/go-aws-tools/
+	cp -r config src/github.com/aaronland/go-aws-tools/
+	cp -r utils src/github.com/aaronland/go-aws-tools/
 	cp -r vendor/* src/
 
 rmdeps:
@@ -32,5 +34,5 @@ fmt:
 
 bin: 	self
 	rm -rf bin/*
-	@GOPATH=$(GOPATH) go build -o bin/aws-2fa cmd/aws-2fa.go
+	@GOPATH=$(GOPATH) go build -o bin/aws-mfa cmd/aws-mfa.go
 

@@ -2,7 +2,7 @@ package main
 
 import (
 	"flag"
-	"fmt"
+	_ "fmt"
 	"github.com/aaronland/go-aws-tools/auth"
 	"github.com/aaronland/go-aws-tools/config"
 	"github.com/aaronland/go-aws-tools/utils"
@@ -12,14 +12,10 @@ import (
 func main() {
 
 	profile := flag.String("profile", "default", "...")
-	session_profile := flag.String("session-profile", "", "...")
+	session_profile := flag.String("session-profile", "session", "...")
 	duration := flag.Int64("duration", 3600, "...")
 
 	flag.Parse()
-
-	if *session_profile == "" {
-		*session_profile = fmt.Sprintf("%s-session", *profile)
-	}
 
 	cfg, err := config.NewConfig()
 
@@ -45,11 +41,11 @@ func main() {
 		log.Fatal(err)
 	}
 
-	err = cfg.SetSessionCredentialsWithProfile(*profile, creds)
+	err = cfg.SetSessionCredentialsWithProfile(*session_profile, creds)
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	log.Printf("Updated session credentials for %s (expires %s)\n", *session_profile, *creds.Expiration)
+	log.Printf("Updated session credentials for '%s' profile (expires %s)\n", *session_profile, *creds.Expiration)
 }

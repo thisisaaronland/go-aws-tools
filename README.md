@@ -1,5 +1,6 @@
 # go-aws-tools
 
+There are many AWS tools. These are ours. 
 
 ## Install
 
@@ -19,6 +20,11 @@ Wet paint. Move along...
 
 ### aws-mfa-session
 
+```
+> ./bin/aws-mfa-session -profile {PROFILE}
+Enter your MFA token code: 123456
+2018/06/21 12:00:49 Updated session credentials for 'session' profile (expires 2018-06-21 20:04:15 +0000 UTC)
+```
 
 ## See also:
 

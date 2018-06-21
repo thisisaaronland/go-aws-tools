@@ -1,5 +1,9 @@
 package auth
 
+// This is mostly code cribbed from here and refactored in to library code:
+// https://github.com/DEEP-IMPACT-AG/skuld
+
+// See also:
 // https://docs.aws.amazon.com/cli/latest/reference/sts/get-session-token.html
 
 import (

@@ -15,3 +15,12 @@ All of this package's dependencies are bundled with the code in the `vendor` dir
 
 Wet paint. Move along...
 
+## Tools
+
+### aws-mfa-session
+
+
+## See also:
+
+* https://github.com/DEEP-IMPACT-AG/skuld
+* https://docs.aws.amazon.com/cli/latest/reference/sts/get-session-token.html

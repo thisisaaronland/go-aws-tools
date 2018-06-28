@@ -38,5 +38,6 @@ fmt:
 
 bin: 	self
 	rm -rf bin/*
+	@GOPATH=$(GOPATH) go build -o bin/aws-cloudfront-invalidate cmd/aws-cloudfront-invalidate.go
 	@GOPATH=$(GOPATH) go build -o bin/aws-mfa-session cmd/aws-mfa-session.go
 

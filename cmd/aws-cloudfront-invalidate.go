@@ -25,10 +25,10 @@ func (e *Paths) Set(value string) error {
 func main() {
 
 	var paths Paths
-	flag.Var(&paths, "path", "One or paths to invalidate")
+	flag.Var(&paths, "path", "A path to invalidate (you can pass multiple -path flags for multiple paths)")
 
 	dist := flag.String("distribution-id", "", "A valid CloudFront distribution ID")
-	profile := flag.String("profile", "session", "...")
+	profile := flag.String("profile", "session", "A valid AWS credentials profile")
 
 	flag.Parse()
 

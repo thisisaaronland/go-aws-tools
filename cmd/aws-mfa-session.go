@@ -11,9 +11,9 @@ import (
 
 func main() {
 
-	profile := flag.String("profile", "default", "...")
-	session_profile := flag.String("session-profile", "session", "...")
-	duration := flag.Int64("duration", 3600, "...")
+	profile := flag.String("profile", "default", "A valid AWS credentials profile")
+	session_profile := flag.String("session-profile", "session", "The name of the AWS credentials profile to update with session credentials")
+	duration := flag.Int64("duration", 3600, "The time (in seconds) that your session should last")
 
 	flag.Parse()
 

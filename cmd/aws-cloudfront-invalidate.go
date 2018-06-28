@@ -1,6 +1,8 @@
 package main
 
 import (
+	"crypto/sha1"
+	"encoding/hex"
 	"flag"
 	"fmt"
 	"github.com/aaronland/go-aws-tools/config"
@@ -26,7 +28,7 @@ func main() {
 	flag.Var(&paths, "path", "One or paths to invalidate")
 
 	dist := flag.String("distribution-id", "", "A valid CloudFront distribution ID")
-	profile := flag.String("profile", "default", "...")
+	profile := flag.String("profile", "session", "...")
 
 	flag.Parse()
 
@@ -48,7 +50,11 @@ func main() {
 
 	cf := cloudfront.New(aws_cfg)
 
-	caller := "FIX ME"
+	
+	caller := fmt.Sprintf("%d#%s", *dist, paths.String())
+
+	hash := sha1.Sum([]byte(caller))
+	enc_caller := hex.EncodeToString(hash[:])
 
 	quantity := int64(len(paths))
 
@@ -58,7 +64,7 @@ func main() {
 	}
 
 	batch := cloudfront.InvalidationBatch{
-		CallerReference: &caller,
+		CallerReference: &enc_caller,
 		Paths:           &batch_paths,
 	}
 

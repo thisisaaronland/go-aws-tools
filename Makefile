@@ -20,6 +20,7 @@ build:	fmt bin
 deps:
 	@GOPATH=$(GOPATH) go get -u "github.com/go-ini/ini"
 	@GOPATH=$(GOPATH) go get -u "github.com/jmespath/go-jmespath"
+	@GOPATH=$(GOPATH) go get -u "github.com/whosonfirst/iso8601duration"
 	@GOPATH=$(GOPATH) go get -u "github.com/aws/aws-sdk-go-v2"
 
 vendor-deps: rmdeps deps

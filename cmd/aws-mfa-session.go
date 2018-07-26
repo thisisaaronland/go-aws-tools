@@ -6,16 +6,27 @@ import (
 	"github.com/aaronland/go-aws-tools/auth"
 	"github.com/aaronland/go-aws-tools/config"
 	"github.com/aaronland/go-aws-tools/utils"
+	"github.com/whosonfirst/iso8601duration"
 	"log"
+	"time"
 )
 
 func main() {
 
 	profile := flag.String("profile", "default", "A valid AWS credentials profile")
 	session_profile := flag.String("session-profile", "session", "The name of the AWS credentials profile to update with session credentials")
-	duration := flag.Int64("duration", 3600, "The time (in seconds) that your session should last")
+	session_duration := flag.String("duration", "PT1H", "A valid ISO8601 duration string indicating how long the session should last (months are currently not supported)")
 
 	flag.Parse()
+
+	d, err := duration.FromString(*session_duration)
+
+	if err != nil {
+	   log.Fatal(err)
+	}
+
+	ttl_fl := d.ToDuration().Seconds()
+	ttl := int64(ttl_fl)
 
 	cfg, err := config.NewConfig()
 
@@ -34,8 +45,8 @@ func main() {
 	if code == "" {
 		log.Fatal("Invalid token code")
 	}
-
-	creds, err := auth.GetCredentialsWithMFA(aws_cfg, code, *duration)
+	
+	creds, err := auth.GetCredentialsWithMFA(aws_cfg, code, ttl)
 
 	if err != nil {
 		log.Fatal(err)
@@ -47,5 +58,8 @@ func main() {
 		log.Fatal(err)
 	}
 
-	log.Printf("Updated session credentials for '%s' profile (expires %s)\n", *session_profile, *creds.Expiration)
+	now := time.Now()
+	then := now.Add(d.ToDuration())
+
+	log.Printf("Updated session credentials for '%s' profile, expires %s (%s)\n", *session_profile, then.Format(time.Stamp), *creds.Expiration)
 }

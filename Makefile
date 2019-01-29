@@ -41,4 +41,5 @@ bin: 	self
 	rm -rf bin/*
 	@GOPATH=$(GOPATH) go build -o bin/aws-cloudfront-invalidate cmd/aws-cloudfront-invalidate.go
 	@GOPATH=$(GOPATH) go build -o bin/aws-mfa-session cmd/aws-mfa-session.go
-
+	@GOPATH=$(GOPATH) go build -o bin/aws-set-env cmd/aws-set-env.go
+	@GOPATH=$(GOPATH) go build -o bin/aws-get-credential cmd/aws-get-credential.go

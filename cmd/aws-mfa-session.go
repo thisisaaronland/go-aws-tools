@@ -8,12 +8,14 @@ import (
 	"github.com/aaronland/go-aws-tools/utils"
 	"github.com/whosonfirst/iso8601duration"
 	"log"
+	"strings"
 	"time"
 )
 
 func main() {
 
 	profile := flag.String("profile", "default", "A valid AWS credentials profile")
+	code := flag.String("code", "", "A valid MFA code. If empty the application will block and prompt the user")
 	session_profile := flag.String("session-profile", "session", "The name of the AWS credentials profile to update with session credentials")
 	session_duration := flag.String("duration", "PT1H", "A valid ISO8601 duration string indicating how long the session should last (months are currently not supported)")
 
@@ -22,7 +24,7 @@ func main() {
 	d, err := duration.FromString(*session_duration)
 
 	if err != nil {
-	   log.Fatal(err)
+		log.Fatal(err)
 	}
 
 	ttl_fl := d.ToDuration().Seconds()
@@ -40,13 +42,18 @@ func main() {
 		log.Fatal(err)
 	}
 
-	code := utils.Readline("Enter your MFA token code:")
-
-	if code == "" {
-		log.Fatal("Invalid token code")
-	}
+	*code = strings.TrimSpace(*code)
 	
-	creds, err := auth.GetCredentialsWithMFA(aws_cfg, code, ttl)
+	if *code == "" {
+
+		*code = utils.Readline("Enter your MFA token code:")
+
+		if *code == "" {
+			log.Fatal("Invalid token code")
+		}
+	}
+
+	creds, err := auth.GetCredentialsWithMFA(aws_cfg, *code, ttl)
 
 	if err != nil {
 		log.Fatal(err)

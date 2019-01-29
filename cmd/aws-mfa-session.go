@@ -1,5 +1,15 @@
 package main
 
+/*
+
+for example, when used with https://github.com/Yubico/yubikey-manager/tree/master/ykman
+
+session: 
+	$(eval CODE := $(shell ykman oath code sfomuseum:aws | awk '{ print $$2 }'))
+	bin/$(OS)/aws-mfa-session -profile $(USER) -code $(CODE) -duration PT8H
+
+*/
+
 import (
 	"flag"
 	_ "fmt"

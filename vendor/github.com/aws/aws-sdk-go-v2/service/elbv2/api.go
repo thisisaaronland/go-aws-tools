@@ -39,6 +39,7 @@ func (r AddListenerCertificatesRequest) Send() (*AddListenerCertificatesOutput, 
 //
 // To list the certificates for your listener, use DescribeListenerCertificates.
 // To remove certificates from your listener, use RemoveListenerCertificates.
+// To specify the default SSL server certificate, use ModifyListener.
 //
 //    // Example sending a request using the AddListenerCertificatesRequest method.
 //    req := client.AddListenerCertificatesRequest(params)
@@ -1685,8 +1686,8 @@ func (r RegisterTargetsRequest) Send() (*RegisterTargetsOutput, error) {
 //
 // Registers the specified targets with the specified target group.
 //
-// You can register targets by instance ID or by IP address. If the target is
-// an EC2 instance, it must be in the running state when you register it.
+// If the target is an EC2 instance, it must be in the running state when you
+// register it.
 //
 // By default, the load balancer routes requests to registered targets using
 // the protocol and port for the target group. Alternatively, you can override
@@ -2135,7 +2136,8 @@ func (s *Action) Validate() error {
 type AddListenerCertificatesInput struct {
 	_ struct{} `type:"structure"`
 
-	// The certificate to add. You can specify one certificate per call.
+	// The certificate to add. You can specify one certificate per call. Set CertificateArn
+	// to the certificate ARN but do not set IsDefault.
 	//
 	// Certificates is a required field
 	Certificates []Certificate `type:"list" required:"true"`
@@ -2503,7 +2505,8 @@ type Certificate struct {
 	// The Amazon Resource Name (ARN) of the certificate.
 	CertificateArn *string `type:"string"`
 
-	// Indicates whether the certificate is the default certificate.
+	// Indicates whether the certificate is the default certificate. Do not set
+	// IsDefault when specifying a certificate as an input parameter.
 	IsDefault *bool `type:"boolean"`
 }
 
@@ -2544,28 +2547,30 @@ type CreateListenerInput struct {
 	_ struct{} `type:"structure"`
 
 	// [HTTPS listeners] The default SSL server certificate. You must provide exactly
-	// one default certificate. To create a certificate list, use AddListenerCertificates.
+	// one certificate. Set CertificateArn to the certificate ARN but do not set
+	// IsDefault.
+	//
+	// To create a certificate list, use AddListenerCertificates.
 	Certificates []Certificate `type:"list"`
 
 	// The actions for the default rule. The rule must include one forward action
 	// or one or more fixed-response actions.
 	//
-	// If the action type is forward, you can specify a single target group. The
-	// protocol of the target group must be HTTP or HTTPS for an Application Load
-	// Balancer or TCP for a Network Load Balancer.
+	// If the action type is forward, you specify a target group. The protocol of
+	// the target group must be HTTP or HTTPS for an Application Load Balancer or
+	// TCP for a Network Load Balancer.
 	//
-	// [HTTPS listener] If the action type is authenticate-oidc, you can use an
-	// identity provider that is OpenID Connect (OIDC) compliant to authenticate
-	// users as they access your application.
+	// [HTTPS listener] If the action type is authenticate-oidc, you authenticate
+	// users through an identity provider that is OpenID Connect (OIDC) compliant.
 	//
-	// [HTTPS listener] If the action type is authenticate-cognito, you can use
-	// Amazon Cognito to authenticate users as they access your application.
+	// [HTTPS listener] If the action type is authenticate-cognito, you authenticate
+	// users through the user pools supported by Amazon Cognito.
 	//
-	// [Application Load Balancer] If the action type is redirect, you can redirect
-	// HTTP and HTTPS requests.
+	// [Application Load Balancer] If the action type is redirect, you redirect
+	// specified client requests from one URL to another.
 	//
-	// [Application Load Balancer] If the action type is fixed-response, you can
-	// return a custom HTTP response.
+	// [Application Load Balancer] If the action type is fixed-response, you drop
+	// specified client requests and return a custom HTTP response.
 	//
 	// DefaultActions is a required field
 	DefaultActions []Action `type:"list" required:"true"`
@@ -2791,20 +2796,21 @@ type CreateRuleInput struct {
 	// The actions. Each rule must include exactly one of the following types of
 	// actions: forward, fixed-response, or redirect.
 	//
-	// If the action type is forward, you can specify a single target group.
+	// If the action type is forward, you specify a target group. The protocol of
+	// the target group must be HTTP or HTTPS for an Application Load Balancer or
+	// TCP for a Network Load Balancer.
 	//
-	// [HTTPS listener] If the action type is authenticate-oidc, you can use an
-	// identity provider that is OpenID Connect (OIDC) compliant to authenticate
-	// users as they access your application.
+	// [HTTPS listener] If the action type is authenticate-oidc, you authenticate
+	// users through an identity provider that is OpenID Connect (OIDC) compliant.
 	//
-	// [HTTPS listener] If the action type is authenticate-cognito, you can use
-	// Amazon Cognito to authenticate users as they access your application.
+	// [HTTPS listener] If the action type is authenticate-cognito, you authenticate
+	// users through the user pools supported by Amazon Cognito.
 	//
-	// [Application Load Balancer] If the action type is redirect, you can redirect
-	// HTTP and HTTPS requests.
+	// [Application Load Balancer] If the action type is redirect, you redirect
+	// specified client requests from one URL to another.
 	//
-	// [Application Load Balancer] If the action type is fixed-response, you can
-	// return a custom HTTP response.
+	// [Application Load Balancer] If the action type is fixed-response, you drop
+	// specified client requests and return a custom HTTP response.
 	//
 	// Actions is a required field
 	Actions []Action `type:"list" required:"true"`
@@ -2928,10 +2934,16 @@ func (s CreateRuleOutput) SDKResponseMetadata() aws.Response {
 type CreateTargetGroupInput struct {
 	_ struct{} `type:"structure"`
 
+	// Indicates whether health checks are enabled. If the target type is instance
+	// or ip, the default is true. If the target type is lambda, the default is
+	// false.
+	HealthCheckEnabled *bool `type:"boolean"`
+
 	// The approximate amount of time, in seconds, between health checks of an individual
 	// target. For Application Load Balancers, the range is 5–300 seconds. For Network
-	// Load Balancers, the supported values are 10 or 30 seconds. The default is
-	// 30 seconds.
+	// Load Balancers, the supported values are 10 or 30 seconds. If the target
+	// type is instance or ip, the default is 30 seconds. If the target type is
+	// lambda, the default is 35 seconds.
 	HealthCheckIntervalSeconds *int64 `min:"5" type:"integer"`
 
 	// [HTTP/HTTPS health checks] The ping path that is the destination on the targets
@@ -2950,10 +2962,11 @@ type CreateTargetGroupInput struct {
 	HealthCheckProtocol ProtocolEnum `type:"string" enum:"true"`
 
 	// The amount of time, in seconds, during which no response from a target means
-	// a failed health check. For Application Load Balancers, the range is 2–60
-	// seconds and the default is 5 seconds. For Network Load Balancers, this is
-	// 10 seconds for TCP and HTTPS health checks and 6 seconds for HTTP health
-	// checks.
+	// a failed health check. For Application Load Balancers, the range is 2–120
+	// seconds and the default is 5 seconds if the target type is instance or ip
+	// and 30 seconds if the target type is lambda. For Network Load Balancers,
+	// this is 10 seconds for TCP and HTTPS health checks and 6 seconds for HTTP
+	// health checks.
 	HealthCheckTimeoutSeconds *int64 `min:"2" type:"integer"`
 
 	// The number of consecutive health checks successes required before considering
@@ -2975,28 +2988,30 @@ type CreateTargetGroupInput struct {
 	Name *string `type:"string" required:"true"`
 
 	// The port on which the targets receive traffic. This port is used unless you
-	// specify a port override when registering the target.
-	//
-	// Port is a required field
-	Port *int64 `min:"1" type:"integer" required:"true"`
+	// specify a port override when registering the target. If the target is a Lambda
+	// function, this parameter does not apply.
+	Port *int64 `min:"1" type:"integer"`
 
 	// The protocol to use for routing traffic to the targets. For Application Load
 	// Balancers, the supported protocols are HTTP and HTTPS. For Network Load Balancers,
-	// the supported protocol is TCP.
-	//
-	// Protocol is a required field
-	Protocol ProtocolEnum `type:"string" required:"true" enum:"true"`
+	// the supported protocol is TCP. If the target is a Lambda function, this parameter
+	// does not apply.
+	Protocol ProtocolEnum `type:"string" enum:"true"`
 
 	// The type of target that you must specify when registering targets with this
-	// target group. The possible values are instance (targets are specified by
-	// instance ID) or ip (targets are specified by IP address). The default is
-	// instance. You can't specify targets for a target group using both instance
-	// IDs and IP addresses.
+	// target group. You can't specify targets for a target group using more than
+	// one target type.
 	//
-	// If the target type is ip, specify IP addresses from the subnets of the virtual
-	// private cloud (VPC) for the target group, the RFC 1918 range (10.0.0.0/8,
-	// 172.16.0.0/12, and 192.168.0.0/16), and the RFC 6598 range (100.64.0.0/10).
-	// You can't specify publicly routable IP addresses.
+	//    * instance - Targets are specified by instance ID. This is the default
+	//    value.
+	//
+	//    * ip - Targets are specified by IP address. You can specify IP addresses
+	//    from the subnets of the virtual private cloud (VPC) for the target group,
+	//    the RFC 1918 range (10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16), and
+	//    the RFC 6598 range (100.64.0.0/10). You can't specify publicly routable
+	//    IP addresses.
+	//
+	//    * lambda - The target groups contains a single Lambda function.
 	TargetType TargetTypeEnum `type:"string" enum:"true"`
 
 	// The number of consecutive health check failures required before considering
@@ -3005,10 +3020,9 @@ type CreateTargetGroupInput struct {
 	// count.
 	UnhealthyThresholdCount *int64 `min:"2" type:"integer"`
 
-	// The identifier of the virtual private cloud (VPC).
-	//
-	// VpcId is a required field
-	VpcId *string `type:"string" required:"true"`
+	// The identifier of the virtual private cloud (VPC). If the target is a Lambda
+	// function, this parameter does not apply.
+	VpcId *string `type:"string"`
 }
 
 // String returns the string representation
@@ -3040,22 +3054,11 @@ func (s *CreateTargetGroupInput) Validate() error {
 	if s.Name == nil {
 		invalidParams.Add(aws.NewErrParamRequired("Name"))
 	}
-
-	if s.Port == nil {
-		invalidParams.Add(aws.NewErrParamRequired("Port"))
-	}
 	if s.Port != nil && *s.Port < 1 {
 		invalidParams.Add(aws.NewErrParamMinValue("Port", 1))
 	}
-	if len(s.Protocol) == 0 {
-		invalidParams.Add(aws.NewErrParamRequired("Protocol"))
-	}
 	if s.UnhealthyThresholdCount != nil && *s.UnhealthyThresholdCount < 2 {
 		invalidParams.Add(aws.NewErrParamMinValue("UnhealthyThresholdCount", 2))
-	}
-
-	if s.VpcId == nil {
-		invalidParams.Add(aws.NewErrParamRequired("VpcId"))
 	}
 	if s.Matcher != nil {
 		if err := s.Matcher.Validate(); err != nil {
@@ -4454,28 +4457,30 @@ type ModifyListenerInput struct {
 	_ struct{} `type:"structure"`
 
 	// [HTTPS listeners] The default SSL server certificate. You must provide exactly
-	// one default certificate. To create a certificate list, use AddListenerCertificates.
+	// one certificate. Set CertificateArn to the certificate ARN but do not set
+	// IsDefault.
+	//
+	// To create a certificate list, use AddListenerCertificates.
 	Certificates []Certificate `type:"list"`
 
 	// The actions for the default rule. The rule must include one forward action
 	// or one or more fixed-response actions.
 	//
-	// If the action type is forward, you can specify a single target group. The
-	// protocol of the target group must be HTTP or HTTPS for an Application Load
-	// Balancer or TCP for a Network Load Balancer.
+	// If the action type is forward, you specify a target group. The protocol of
+	// the target group must be HTTP or HTTPS for an Application Load Balancer or
+	// TCP for a Network Load Balancer.
 	//
-	// [HTTPS listener] If the action type is authenticate-oidc, you can use an
-	// identity provider that is OpenID Connect (OIDC) compliant to authenticate
-	// users as they access your application.
+	// [HTTPS listener] If the action type is authenticate-oidc, you authenticate
+	// users through an identity provider that is OpenID Connect (OIDC) compliant.
 	//
-	// [HTTPS listener] If the action type is authenticate-cognito, you can use
-	// Amazon Cognito to authenticate users as they access your application.
+	// [HTTPS listener] If the action type is authenticate-cognito, you authenticate
+	// users through the user pools supported by Amazon Cognito.
 	//
-	// [Application Load Balancer] If the action type is redirect, you can redirect
-	// HTTP and HTTPS requests.
+	// [Application Load Balancer] If the action type is redirect, you redirect
+	// specified client requests from one URL to another.
 	//
-	// [Application Load Balancer] If the action type is fixed-response, you can
-	// return a custom HTTP response.
+	// [Application Load Balancer] If the action type is fixed-response, you drop
+	// specified client requests and return a custom HTTP response.
 	DefaultActions []Action `type:"list"`
 
 	// The Amazon Resource Name (ARN) of the listener.
@@ -4630,14 +4635,21 @@ type ModifyRuleInput struct {
 
 	// The actions.
 	//
-	// If the action type is forward, you can specify a single target group.
+	// If the action type is forward, you specify a target group. The protocol of
+	// the target group must be HTTP or HTTPS for an Application Load Balancer or
+	// TCP for a Network Load Balancer.
 	//
-	// If the action type is authenticate-oidc, you can use an identity provider
-	// that is OpenID Connect (OIDC) compliant to authenticate users as they access
-	// your application.
+	// [HTTPS listener] If the action type is authenticate-oidc, you authenticate
+	// users through an identity provider that is OpenID Connect (OIDC) compliant.
 	//
-	// If the action type is authenticate-cognito, you can use Amazon Cognito to
-	// authenticate users as they access your application.
+	// [HTTPS listener] If the action type is authenticate-cognito, you authenticate
+	// users through the user pools supported by Amazon Cognito.
+	//
+	// [Application Load Balancer] If the action type is redirect, you redirect
+	// specified client requests from one URL to another.
+	//
+	// [Application Load Balancer] If the action type is fixed-response, you drop
+	// specified client requests and return a custom HTTP response.
 	Actions []Action `type:"list"`
 
 	// The conditions. Each condition specifies a field name and a single value.
@@ -4805,9 +4817,14 @@ func (s ModifyTargetGroupAttributesOutput) SDKResponseMetadata() aws.Response {
 type ModifyTargetGroupInput struct {
 	_ struct{} `type:"structure"`
 
+	// Indicates whether health checks are enabled.
+	HealthCheckEnabled *bool `type:"boolean"`
+
 	// The approximate amount of time, in seconds, between health checks of an individual
 	// target. For Application Load Balancers, the range is 5–300 seconds. For Network
 	// Load Balancers, the supported values are 10 or 30 seconds.
+	//
+	// If the protocol of the target group is TCP, you can't modify this setting.
 	HealthCheckIntervalSeconds *int64 `min:"5" type:"integer"`
 
 	// [HTTP/HTTPS health checks] The ping path that is the destination for the
@@ -4820,10 +4837,14 @@ type ModifyTargetGroupInput struct {
 	// The protocol the load balancer uses when performing health checks on targets.
 	// The TCP protocol is supported only if the protocol of the target group is
 	// TCP.
+	//
+	// If the protocol of the target group is TCP, you can't modify this setting.
 	HealthCheckProtocol ProtocolEnum `type:"string" enum:"true"`
 
 	// [HTTP/HTTPS health checks] The amount of time, in seconds, during which no
 	// response means a failed health check.
+	//
+	// If the protocol of the target group is TCP, you can't modify this setting.
 	HealthCheckTimeoutSeconds *int64 `min:"2" type:"integer"`
 
 	// The number of consecutive health checks successes required before considering
@@ -4832,6 +4853,8 @@ type ModifyTargetGroupInput struct {
 
 	// [HTTP/HTTPS health checks] The HTTP codes to use when checking for a successful
 	// response from a target.
+	//
+	// If the protocol of the target group is TCP, you can't modify this setting.
 	Matcher *Matcher `type:"structure"`
 
 	// The Amazon Resource Name (ARN) of the target group.
@@ -5007,6 +5030,10 @@ type RegisterTargetsInput struct {
 
 	// The targets.
 	//
+	// To register a target by instance ID, specify the instance ID. To register
+	// a target by IP address, specify the IP address. To register a Lambda function,
+	// specify the ARN of the Lambda function.
+	//
 	// Targets is a required field
 	Targets []TargetDescription `type:"list" required:"true"`
 }
@@ -5072,7 +5099,8 @@ func (s RegisterTargetsOutput) SDKResponseMetadata() aws.Response {
 type RemoveListenerCertificatesInput struct {
 	_ struct{} `type:"structure"`
 
-	// The certificate to remove. You can specify one certificate per call.
+	// The certificate to remove. You can specify one certificate per call. Set
+	// CertificateArn to the certificate ARN but do not set IsDefault.
 	//
 	// Certificates is a required field
 	Certificates []Certificate `type:"list" required:"true"`
@@ -5708,16 +5736,23 @@ type TargetDescription struct {
 	// from all enabled Availability Zones for the load balancer.
 	//
 	// This parameter is not supported if the target type of the target group is
-	// instance. If the IP address is in a subnet of the VPC for the target group,
-	// the Availability Zone is automatically detected and this parameter is optional.
-	// If the IP address is outside the VPC, this parameter is required.
+	// instance.
 	//
-	// With an Application Load Balancer, if the IP address is outside the VPC for
-	// the target group, the only supported value is all.
+	// If the target type is ip and the IP address is in a subnet of the VPC for
+	// the target group, the Availability Zone is automatically detected and this
+	// parameter is optional. If the IP address is outside the VPC, this parameter
+	// is required.
+	//
+	// With an Application Load Balancer, if the target type is ip and the IP address
+	// is outside the VPC for the target group, the only supported value is all.
+	//
+	// If the target type is lambda, this parameter is optional and the only supported
+	// value is all.
 	AvailabilityZone *string `type:"string"`
 
 	// The ID of the target. If the target type of the target group is instance,
 	// specify an instance ID. If the target type is ip, specify an IP address.
+	// If the target type is lambda, specify the ARN of the Lambda function.
 	//
 	// Id is a required field
 	Id *string `type:"string" required:"true"`
@@ -5757,6 +5792,9 @@ func (s *TargetDescription) Validate() error {
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/elasticloadbalancingv2-2015-12-01/TargetGroup
 type TargetGroup struct {
 	_ struct{} `type:"structure"`
+
+	// Indicates whether health checks are enabled.
+	HealthCheckEnabled *bool `type:"boolean"`
 
 	// The approximate amount of time, in seconds, between health checks of an individual
 	// target.
@@ -5828,15 +5866,17 @@ type TargetGroupAttribute struct {
 
 	// The name of the attribute.
 	//
-	// The following attributes are supported by both Application Load Balancers
-	// and Network Load Balancers:
+	// The following attribute is supported by both Application Load Balancers and
+	// Network Load Balancers:
 	//
 	//    * deregistration_delay.timeout_seconds - The amount of time, in seconds,
 	//    for Elastic Load Balancing to wait before changing the state of a deregistering
 	//    target from draining to unused. The range is 0-3600 seconds. The default
-	//    value is 300 seconds.
+	//    value is 300 seconds. If the target is a Lambda function, this attribute
+	//    is not supported.
 	//
-	// The following attributes are supported by only Application Load Balancers:
+	// The following attributes are supported by Application Load Balancers if the
+	// target is not a Lambda function:
 	//
 	//    * slow_start.duration_seconds - The time period, in seconds, during which
 	//    a newly registered target receives a linearly increasing share of the
@@ -5856,7 +5896,16 @@ type TargetGroupAttribute struct {
 	//    considered stale. The range is 1 second to 1 week (604800 seconds). The
 	//    default value is 1 day (86400 seconds).
 	//
-	// The following attributes are supported by only Network Load Balancers:
+	// The following attribute is supported only if the target is a Lambda function.
+	//
+	//    * lambda.multi_value_headers.enabled - Indicates whether the request and
+	//    response headers exchanged between the load balancer and the Lambda function
+	//    include arrays of values or strings. The value is true or false. The default
+	//    is false. If the value is false and the request contains a duplicate header
+	//    field name or query parameter key, the load balancer uses the last value
+	//    sent by the client.
+	//
+	// The following attribute is supported only by Network Load Balancers:
 	//
 	//    * proxy_protocol_v2.enabled - Indicates whether Proxy Protocol version
 	//    2 is enabled. The value is true or false. The default is false.
@@ -5885,7 +5934,9 @@ type TargetHealth struct {
 	// state is healthy, a description is not provided.
 	Description *string `type:"string"`
 
-	// The reason code. If the target state is healthy, a reason code is not provided.
+	// The reason code.
+	//
+	// If the target state is healthy, a reason code is not provided.
 	//
 	// If the target state is initial, the reason code can be one of the following
 	// values:
@@ -5929,6 +5980,12 @@ type TargetHealth struct {
 	//
 	//    * Target.DeregistrationInProgress - The target is in the process of being
 	//    deregistered and the deregistration delay period has not expired.
+	//
+	// If the target state is unavailable, the reason code can be the following
+	// value:
+	//
+	//    * Target.HealthCheckDisabled - Health checks are disabled for the target
+	//    group.
 	Reason TargetHealthReasonEnum `type:"string" enum:"true"`
 
 	// The state of the target.
@@ -6145,6 +6202,7 @@ const (
 	TargetHealthReasonEnumTargetDeregistrationInProgress TargetHealthReasonEnum = "Target.DeregistrationInProgress"
 	TargetHealthReasonEnumTargetInvalidState             TargetHealthReasonEnum = "Target.InvalidState"
 	TargetHealthReasonEnumTargetIpUnusable               TargetHealthReasonEnum = "Target.IpUnusable"
+	TargetHealthReasonEnumTargetHealthCheckDisabled      TargetHealthReasonEnum = "Target.HealthCheckDisabled"
 	TargetHealthReasonEnumElbInternalError               TargetHealthReasonEnum = "Elb.InternalError"
 )
 
@@ -6184,6 +6242,7 @@ type TargetTypeEnum string
 const (
 	TargetTypeEnumInstance TargetTypeEnum = "instance"
 	TargetTypeEnumIp       TargetTypeEnum = "ip"
+	TargetTypeEnumLambda   TargetTypeEnum = "lambda"
 )
 
 func (enum TargetTypeEnum) MarshalValue() (string, error) {

@@ -3,11 +3,13 @@
 package medialive
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/internal/awsutil"
 	"github.com/aws/aws-sdk-go-v2/private/protocol"
+	"github.com/aws/aws-sdk-go-v2/private/protocol/restjson"
 )
 
 const opBatchUpdateSchedule = "BatchUpdateSchedule"
@@ -20,7 +22,8 @@ type BatchUpdateScheduleRequest struct {
 }
 
 // Send marshals and sends the BatchUpdateSchedule API request.
-func (r BatchUpdateScheduleRequest) Send() (*BatchUpdateScheduleOutput, error) {
+func (r BatchUpdateScheduleRequest) Send(ctx context.Context) (*BatchUpdateScheduleOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -36,7 +39,7 @@ func (r BatchUpdateScheduleRequest) Send() (*BatchUpdateScheduleOutput, error) {
 //
 //    // Example sending a request using the BatchUpdateScheduleRequest method.
 //    req := client.BatchUpdateScheduleRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -70,7 +73,8 @@ type CreateChannelRequest struct {
 }
 
 // Send marshals and sends the CreateChannel API request.
-func (r CreateChannelRequest) Send() (*CreateChannelOutput, error) {
+func (r CreateChannelRequest) Send(ctx context.Context) (*CreateChannelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -86,7 +90,7 @@ func (r CreateChannelRequest) Send() (*CreateChannelOutput, error) {
 //
 //    // Example sending a request using the CreateChannelRequest method.
 //    req := client.CreateChannelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -120,7 +124,8 @@ type CreateInputRequest struct {
 }
 
 // Send marshals and sends the CreateInput API request.
-func (r CreateInputRequest) Send() (*CreateInputOutput, error) {
+func (r CreateInputRequest) Send(ctx context.Context) (*CreateInputOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -136,7 +141,7 @@ func (r CreateInputRequest) Send() (*CreateInputOutput, error) {
 //
 //    // Example sending a request using the CreateInputRequest method.
 //    req := client.CreateInputRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -170,7 +175,8 @@ type CreateInputSecurityGroupRequest struct {
 }
 
 // Send marshals and sends the CreateInputSecurityGroup API request.
-func (r CreateInputSecurityGroupRequest) Send() (*CreateInputSecurityGroupOutput, error) {
+func (r CreateInputSecurityGroupRequest) Send(ctx context.Context) (*CreateInputSecurityGroupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -186,7 +192,7 @@ func (r CreateInputSecurityGroupRequest) Send() (*CreateInputSecurityGroupOutput
 //
 //    // Example sending a request using the CreateInputSecurityGroupRequest method.
 //    req := client.CreateInputSecurityGroupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -210,6 +216,59 @@ func (c *MediaLive) CreateInputSecurityGroupRequest(input *CreateInputSecurityGr
 	return CreateInputSecurityGroupRequest{Request: req, Input: input, Copy: c.CreateInputSecurityGroupRequest}
 }
 
+const opCreateTags = "CreateTags"
+
+// CreateTagsRequest is a API request type for the CreateTags API operation.
+type CreateTagsRequest struct {
+	*aws.Request
+	Input *CreateTagsInput
+	Copy  func(*CreateTagsInput) CreateTagsRequest
+}
+
+// Send marshals and sends the CreateTags API request.
+func (r CreateTagsRequest) Send(ctx context.Context) (*CreateTagsOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*CreateTagsOutput), nil
+}
+
+// CreateTagsRequest returns a request value for making API operation for
+// AWS Elemental MediaLive.
+//
+// Create tags for a resource
+//
+//    // Example sending a request using the CreateTagsRequest method.
+//    req := client.CreateTagsRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/CreateTags
+func (c *MediaLive) CreateTagsRequest(input *CreateTagsInput) CreateTagsRequest {
+	op := &aws.Operation{
+		Name:       opCreateTags,
+		HTTPMethod: "POST",
+		HTTPPath:   "/prod/tags/{resource-arn}",
+	}
+
+	if input == nil {
+		input = &CreateTagsInput{}
+	}
+
+	output := &CreateTagsOutput{}
+	req := c.newRequest(op, input, output)
+	req.Handlers.Unmarshal.Remove(restjson.UnmarshalHandler)
+	req.Handlers.Unmarshal.PushBackNamed(protocol.UnmarshalDiscardBodyHandler)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return CreateTagsRequest{Request: req, Input: input, Copy: c.CreateTagsRequest}
+}
+
 const opDeleteChannel = "DeleteChannel"
 
 // DeleteChannelRequest is a API request type for the DeleteChannel API operation.
@@ -220,7 +279,8 @@ type DeleteChannelRequest struct {
 }
 
 // Send marshals and sends the DeleteChannel API request.
-func (r DeleteChannelRequest) Send() (*DeleteChannelOutput, error) {
+func (r DeleteChannelRequest) Send(ctx context.Context) (*DeleteChannelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -236,7 +296,7 @@ func (r DeleteChannelRequest) Send() (*DeleteChannelOutput, error) {
 //
 //    // Example sending a request using the DeleteChannelRequest method.
 //    req := client.DeleteChannelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -270,7 +330,8 @@ type DeleteInputRequest struct {
 }
 
 // Send marshals and sends the DeleteInput API request.
-func (r DeleteInputRequest) Send() (*DeleteInputOutput, error) {
+func (r DeleteInputRequest) Send(ctx context.Context) (*DeleteInputOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -286,7 +347,7 @@ func (r DeleteInputRequest) Send() (*DeleteInputOutput, error) {
 //
 //    // Example sending a request using the DeleteInputRequest method.
 //    req := client.DeleteInputRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -320,7 +381,8 @@ type DeleteInputSecurityGroupRequest struct {
 }
 
 // Send marshals and sends the DeleteInputSecurityGroup API request.
-func (r DeleteInputSecurityGroupRequest) Send() (*DeleteInputSecurityGroupOutput, error) {
+func (r DeleteInputSecurityGroupRequest) Send(ctx context.Context) (*DeleteInputSecurityGroupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -336,7 +398,7 @@ func (r DeleteInputSecurityGroupRequest) Send() (*DeleteInputSecurityGroupOutput
 //
 //    // Example sending a request using the DeleteInputSecurityGroupRequest method.
 //    req := client.DeleteInputSecurityGroupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -370,7 +432,8 @@ type DeleteReservationRequest struct {
 }
 
 // Send marshals and sends the DeleteReservation API request.
-func (r DeleteReservationRequest) Send() (*DeleteReservationOutput, error) {
+func (r DeleteReservationRequest) Send(ctx context.Context) (*DeleteReservationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -386,7 +449,7 @@ func (r DeleteReservationRequest) Send() (*DeleteReservationOutput, error) {
 //
 //    // Example sending a request using the DeleteReservationRequest method.
 //    req := client.DeleteReservationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -410,6 +473,59 @@ func (c *MediaLive) DeleteReservationRequest(input *DeleteReservationInput) Dele
 	return DeleteReservationRequest{Request: req, Input: input, Copy: c.DeleteReservationRequest}
 }
 
+const opDeleteTags = "DeleteTags"
+
+// DeleteTagsRequest is a API request type for the DeleteTags API operation.
+type DeleteTagsRequest struct {
+	*aws.Request
+	Input *DeleteTagsInput
+	Copy  func(*DeleteTagsInput) DeleteTagsRequest
+}
+
+// Send marshals and sends the DeleteTags API request.
+func (r DeleteTagsRequest) Send(ctx context.Context) (*DeleteTagsOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*DeleteTagsOutput), nil
+}
+
+// DeleteTagsRequest returns a request value for making API operation for
+// AWS Elemental MediaLive.
+//
+// Removes tags for a resource
+//
+//    // Example sending a request using the DeleteTagsRequest method.
+//    req := client.DeleteTagsRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/DeleteTags
+func (c *MediaLive) DeleteTagsRequest(input *DeleteTagsInput) DeleteTagsRequest {
+	op := &aws.Operation{
+		Name:       opDeleteTags,
+		HTTPMethod: "DELETE",
+		HTTPPath:   "/prod/tags/{resource-arn}",
+	}
+
+	if input == nil {
+		input = &DeleteTagsInput{}
+	}
+
+	output := &DeleteTagsOutput{}
+	req := c.newRequest(op, input, output)
+	req.Handlers.Unmarshal.Remove(restjson.UnmarshalHandler)
+	req.Handlers.Unmarshal.PushBackNamed(protocol.UnmarshalDiscardBodyHandler)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return DeleteTagsRequest{Request: req, Input: input, Copy: c.DeleteTagsRequest}
+}
+
 const opDescribeChannel = "DescribeChannel"
 
 // DescribeChannelRequest is a API request type for the DescribeChannel API operation.
@@ -420,7 +536,8 @@ type DescribeChannelRequest struct {
 }
 
 // Send marshals and sends the DescribeChannel API request.
-func (r DescribeChannelRequest) Send() (*DescribeChannelOutput, error) {
+func (r DescribeChannelRequest) Send(ctx context.Context) (*DescribeChannelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -436,7 +553,7 @@ func (r DescribeChannelRequest) Send() (*DescribeChannelOutput, error) {
 //
 //    // Example sending a request using the DescribeChannelRequest method.
 //    req := client.DescribeChannelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -470,7 +587,8 @@ type DescribeInputRequest struct {
 }
 
 // Send marshals and sends the DescribeInput API request.
-func (r DescribeInputRequest) Send() (*DescribeInputOutput, error) {
+func (r DescribeInputRequest) Send(ctx context.Context) (*DescribeInputOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -486,7 +604,7 @@ func (r DescribeInputRequest) Send() (*DescribeInputOutput, error) {
 //
 //    // Example sending a request using the DescribeInputRequest method.
 //    req := client.DescribeInputRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -520,7 +638,8 @@ type DescribeInputSecurityGroupRequest struct {
 }
 
 // Send marshals and sends the DescribeInputSecurityGroup API request.
-func (r DescribeInputSecurityGroupRequest) Send() (*DescribeInputSecurityGroupOutput, error) {
+func (r DescribeInputSecurityGroupRequest) Send(ctx context.Context) (*DescribeInputSecurityGroupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -536,7 +655,7 @@ func (r DescribeInputSecurityGroupRequest) Send() (*DescribeInputSecurityGroupOu
 //
 //    // Example sending a request using the DescribeInputSecurityGroupRequest method.
 //    req := client.DescribeInputSecurityGroupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -570,7 +689,8 @@ type DescribeOfferingRequest struct {
 }
 
 // Send marshals and sends the DescribeOffering API request.
-func (r DescribeOfferingRequest) Send() (*DescribeOfferingOutput, error) {
+func (r DescribeOfferingRequest) Send(ctx context.Context) (*DescribeOfferingOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -586,7 +706,7 @@ func (r DescribeOfferingRequest) Send() (*DescribeOfferingOutput, error) {
 //
 //    // Example sending a request using the DescribeOfferingRequest method.
 //    req := client.DescribeOfferingRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -620,7 +740,8 @@ type DescribeReservationRequest struct {
 }
 
 // Send marshals and sends the DescribeReservation API request.
-func (r DescribeReservationRequest) Send() (*DescribeReservationOutput, error) {
+func (r DescribeReservationRequest) Send(ctx context.Context) (*DescribeReservationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -636,7 +757,7 @@ func (r DescribeReservationRequest) Send() (*DescribeReservationOutput, error) {
 //
 //    // Example sending a request using the DescribeReservationRequest method.
 //    req := client.DescribeReservationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -670,7 +791,8 @@ type DescribeScheduleRequest struct {
 }
 
 // Send marshals and sends the DescribeSchedule API request.
-func (r DescribeScheduleRequest) Send() (*DescribeScheduleOutput, error) {
+func (r DescribeScheduleRequest) Send(ctx context.Context) (*DescribeScheduleOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -686,7 +808,7 @@ func (r DescribeScheduleRequest) Send() (*DescribeScheduleOutput, error) {
 //
 //    // Example sending a request using the DescribeScheduleRequest method.
 //    req := client.DescribeScheduleRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -736,7 +858,7 @@ func (c *MediaLive) DescribeScheduleRequest(input *DescribeScheduleInput) Descri
 func (p *DescribeScheduleRequest) Paginate(opts ...aws.Option) DescribeSchedulePager {
 	return DescribeSchedulePager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *DescribeScheduleInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -745,6 +867,7 @@ func (p *DescribeScheduleRequest) Paginate(opts ...aws.Option) DescribeScheduleP
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -772,7 +895,8 @@ type ListChannelsRequest struct {
 }
 
 // Send marshals and sends the ListChannels API request.
-func (r ListChannelsRequest) Send() (*ListChannelsOutput, error) {
+func (r ListChannelsRequest) Send(ctx context.Context) (*ListChannelsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -788,7 +912,7 @@ func (r ListChannelsRequest) Send() (*ListChannelsOutput, error) {
 //
 //    // Example sending a request using the ListChannelsRequest method.
 //    req := client.ListChannelsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -838,7 +962,7 @@ func (c *MediaLive) ListChannelsRequest(input *ListChannelsInput) ListChannelsRe
 func (p *ListChannelsRequest) Paginate(opts ...aws.Option) ListChannelsPager {
 	return ListChannelsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListChannelsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -847,6 +971,7 @@ func (p *ListChannelsRequest) Paginate(opts ...aws.Option) ListChannelsPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -874,7 +999,8 @@ type ListInputSecurityGroupsRequest struct {
 }
 
 // Send marshals and sends the ListInputSecurityGroups API request.
-func (r ListInputSecurityGroupsRequest) Send() (*ListInputSecurityGroupsOutput, error) {
+func (r ListInputSecurityGroupsRequest) Send(ctx context.Context) (*ListInputSecurityGroupsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -890,7 +1016,7 @@ func (r ListInputSecurityGroupsRequest) Send() (*ListInputSecurityGroupsOutput, 
 //
 //    // Example sending a request using the ListInputSecurityGroupsRequest method.
 //    req := client.ListInputSecurityGroupsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -940,7 +1066,7 @@ func (c *MediaLive) ListInputSecurityGroupsRequest(input *ListInputSecurityGroup
 func (p *ListInputSecurityGroupsRequest) Paginate(opts ...aws.Option) ListInputSecurityGroupsPager {
 	return ListInputSecurityGroupsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListInputSecurityGroupsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -949,6 +1075,7 @@ func (p *ListInputSecurityGroupsRequest) Paginate(opts ...aws.Option) ListInputS
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -976,7 +1103,8 @@ type ListInputsRequest struct {
 }
 
 // Send marshals and sends the ListInputs API request.
-func (r ListInputsRequest) Send() (*ListInputsOutput, error) {
+func (r ListInputsRequest) Send(ctx context.Context) (*ListInputsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -992,7 +1120,7 @@ func (r ListInputsRequest) Send() (*ListInputsOutput, error) {
 //
 //    // Example sending a request using the ListInputsRequest method.
 //    req := client.ListInputsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1042,7 +1170,7 @@ func (c *MediaLive) ListInputsRequest(input *ListInputsInput) ListInputsRequest 
 func (p *ListInputsRequest) Paginate(opts ...aws.Option) ListInputsPager {
 	return ListInputsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListInputsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1051,6 +1179,7 @@ func (p *ListInputsRequest) Paginate(opts ...aws.Option) ListInputsPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1078,7 +1207,8 @@ type ListOfferingsRequest struct {
 }
 
 // Send marshals and sends the ListOfferings API request.
-func (r ListOfferingsRequest) Send() (*ListOfferingsOutput, error) {
+func (r ListOfferingsRequest) Send(ctx context.Context) (*ListOfferingsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1094,7 +1224,7 @@ func (r ListOfferingsRequest) Send() (*ListOfferingsOutput, error) {
 //
 //    // Example sending a request using the ListOfferingsRequest method.
 //    req := client.ListOfferingsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1144,7 +1274,7 @@ func (c *MediaLive) ListOfferingsRequest(input *ListOfferingsInput) ListOffering
 func (p *ListOfferingsRequest) Paginate(opts ...aws.Option) ListOfferingsPager {
 	return ListOfferingsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListOfferingsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1153,6 +1283,7 @@ func (p *ListOfferingsRequest) Paginate(opts ...aws.Option) ListOfferingsPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1180,7 +1311,8 @@ type ListReservationsRequest struct {
 }
 
 // Send marshals and sends the ListReservations API request.
-func (r ListReservationsRequest) Send() (*ListReservationsOutput, error) {
+func (r ListReservationsRequest) Send(ctx context.Context) (*ListReservationsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1196,7 +1328,7 @@ func (r ListReservationsRequest) Send() (*ListReservationsOutput, error) {
 //
 //    // Example sending a request using the ListReservationsRequest method.
 //    req := client.ListReservationsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1246,7 +1378,7 @@ func (c *MediaLive) ListReservationsRequest(input *ListReservationsInput) ListRe
 func (p *ListReservationsRequest) Paginate(opts ...aws.Option) ListReservationsPager {
 	return ListReservationsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListReservationsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1255,6 +1387,7 @@ func (p *ListReservationsRequest) Paginate(opts ...aws.Option) ListReservationsP
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1272,6 +1405,57 @@ func (p *ListReservationsPager) CurrentPage() *ListReservationsOutput {
 	return p.Pager.CurrentPage().(*ListReservationsOutput)
 }
 
+const opListTagsForResource = "ListTagsForResource"
+
+// ListTagsForResourceRequest is a API request type for the ListTagsForResource API operation.
+type ListTagsForResourceRequest struct {
+	*aws.Request
+	Input *ListTagsForResourceInput
+	Copy  func(*ListTagsForResourceInput) ListTagsForResourceRequest
+}
+
+// Send marshals and sends the ListTagsForResource API request.
+func (r ListTagsForResourceRequest) Send(ctx context.Context) (*ListTagsForResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*ListTagsForResourceOutput), nil
+}
+
+// ListTagsForResourceRequest returns a request value for making API operation for
+// AWS Elemental MediaLive.
+//
+// Produces list of tags that have been created for a resource
+//
+//    // Example sending a request using the ListTagsForResourceRequest method.
+//    req := client.ListTagsForResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/ListTagsForResource
+func (c *MediaLive) ListTagsForResourceRequest(input *ListTagsForResourceInput) ListTagsForResourceRequest {
+	op := &aws.Operation{
+		Name:       opListTagsForResource,
+		HTTPMethod: "GET",
+		HTTPPath:   "/prod/tags/{resource-arn}",
+	}
+
+	if input == nil {
+		input = &ListTagsForResourceInput{}
+	}
+
+	output := &ListTagsForResourceOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return ListTagsForResourceRequest{Request: req, Input: input, Copy: c.ListTagsForResourceRequest}
+}
+
 const opPurchaseOffering = "PurchaseOffering"
 
 // PurchaseOfferingRequest is a API request type for the PurchaseOffering API operation.
@@ -1282,7 +1466,8 @@ type PurchaseOfferingRequest struct {
 }
 
 // Send marshals and sends the PurchaseOffering API request.
-func (r PurchaseOfferingRequest) Send() (*PurchaseOfferingOutput, error) {
+func (r PurchaseOfferingRequest) Send(ctx context.Context) (*PurchaseOfferingOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1298,7 +1483,7 @@ func (r PurchaseOfferingRequest) Send() (*PurchaseOfferingOutput, error) {
 //
 //    // Example sending a request using the PurchaseOfferingRequest method.
 //    req := client.PurchaseOfferingRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1332,7 +1517,8 @@ type StartChannelRequest struct {
 }
 
 // Send marshals and sends the StartChannel API request.
-func (r StartChannelRequest) Send() (*StartChannelOutput, error) {
+func (r StartChannelRequest) Send(ctx context.Context) (*StartChannelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1348,7 +1534,7 @@ func (r StartChannelRequest) Send() (*StartChannelOutput, error) {
 //
 //    // Example sending a request using the StartChannelRequest method.
 //    req := client.StartChannelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1382,7 +1568,8 @@ type StopChannelRequest struct {
 }
 
 // Send marshals and sends the StopChannel API request.
-func (r StopChannelRequest) Send() (*StopChannelOutput, error) {
+func (r StopChannelRequest) Send(ctx context.Context) (*StopChannelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1398,7 +1585,7 @@ func (r StopChannelRequest) Send() (*StopChannelOutput, error) {
 //
 //    // Example sending a request using the StopChannelRequest method.
 //    req := client.StopChannelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1432,7 +1619,8 @@ type UpdateChannelRequest struct {
 }
 
 // Send marshals and sends the UpdateChannel API request.
-func (r UpdateChannelRequest) Send() (*UpdateChannelOutput, error) {
+func (r UpdateChannelRequest) Send(ctx context.Context) (*UpdateChannelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1448,7 +1636,7 @@ func (r UpdateChannelRequest) Send() (*UpdateChannelOutput, error) {
 //
 //    // Example sending a request using the UpdateChannelRequest method.
 //    req := client.UpdateChannelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1482,7 +1670,8 @@ type UpdateInputRequest struct {
 }
 
 // Send marshals and sends the UpdateInput API request.
-func (r UpdateInputRequest) Send() (*UpdateInputOutput, error) {
+func (r UpdateInputRequest) Send(ctx context.Context) (*UpdateInputOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1498,7 +1687,7 @@ func (r UpdateInputRequest) Send() (*UpdateInputOutput, error) {
 //
 //    // Example sending a request using the UpdateInputRequest method.
 //    req := client.UpdateInputRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1532,7 +1721,8 @@ type UpdateInputSecurityGroupRequest struct {
 }
 
 // Send marshals and sends the UpdateInputSecurityGroup API request.
-func (r UpdateInputSecurityGroupRequest) Send() (*UpdateInputSecurityGroupOutput, error) {
+func (r UpdateInputSecurityGroupRequest) Send(ctx context.Context) (*UpdateInputSecurityGroupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1548,7 +1738,7 @@ func (r UpdateInputSecurityGroupRequest) Send() (*UpdateInputSecurityGroupOutput
 //
 //    // Example sending a request using the UpdateInputSecurityGroupRequest method.
 //    req := client.UpdateInputSecurityGroupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1572,6 +1762,58 @@ func (c *MediaLive) UpdateInputSecurityGroupRequest(input *UpdateInputSecurityGr
 	return UpdateInputSecurityGroupRequest{Request: req, Input: input, Copy: c.UpdateInputSecurityGroupRequest}
 }
 
+const opUpdateReservation = "UpdateReservation"
+
+// UpdateReservationRequest is a API request type for the UpdateReservation API operation.
+type UpdateReservationRequest struct {
+	*aws.Request
+	Input *UpdateReservationInput
+	Copy  func(*UpdateReservationInput) UpdateReservationRequest
+}
+
+// Send marshals and sends the UpdateReservation API request.
+func (r UpdateReservationRequest) Send(ctx context.Context) (*UpdateReservationOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*UpdateReservationOutput), nil
+}
+
+// UpdateReservationRequest returns a request value for making API operation for
+// AWS Elemental MediaLive.
+//
+// Update reservation.
+//
+//    // Example sending a request using the UpdateReservationRequest method.
+//    req := client.UpdateReservationRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/UpdateReservation
+func (c *MediaLive) UpdateReservationRequest(input *UpdateReservationInput) UpdateReservationRequest {
+	op := &aws.Operation{
+		Name:       opUpdateReservation,
+		HTTPMethod: "PUT",
+		HTTPPath:   "/prod/reservations/{reservationId}",
+	}
+
+	if input == nil {
+		input = &UpdateReservationInput{}
+	}
+
+	output := &UpdateReservationOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return UpdateReservationRequest{Request: req, Input: input, Copy: c.UpdateReservationRequest}
+}
+
+// Aac Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/AacSettings
 type AacSettings struct {
 	_ struct{} `type:"structure"`
@@ -1685,6 +1927,7 @@ func (s AacSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Ac3 Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/Ac3Settings
 type Ac3Settings struct {
 	_ struct{} `type:"structure"`
@@ -1787,10 +2030,12 @@ func (s Ac3Settings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Archive Container Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/ArchiveContainerSettings
 type ArchiveContainerSettings struct {
 	_ struct{} `type:"structure"`
 
+	// M2ts Settings
 	M2tsSettings *M2tsSettings `locationName:"m2tsSettings" type:"structure"`
 }
 
@@ -1830,13 +2075,12 @@ func (s ArchiveContainerSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Archive Group Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/ArchiveGroupSettings
 type ArchiveGroupSettings struct {
 	_ struct{} `type:"structure"`
 
-	// A directory and base filename where archive files should be written. If the
-	// base filename portion of the URI is left blank, the base filename of the
-	// first input will be automatically inserted.
+	// A directory and base filename where archive files should be written.
 	//
 	// Destination is a required field
 	Destination *OutputLocationRef `locationName:"destination" type:"structure" required:"true"`
@@ -1890,6 +2134,7 @@ func (s ArchiveGroupSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Archive Output Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/ArchiveOutputSettings
 type ArchiveOutputSettings struct {
 	_ struct{} `type:"structure"`
@@ -1960,6 +2205,7 @@ func (s ArchiveOutputSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Arib Destination Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/AribDestinationSettings
 type AribDestinationSettings struct {
 	_ struct{} `type:"structure"`
@@ -1980,6 +2226,7 @@ func (s AribDestinationSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Arib Source Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/AribSourceSettings
 type AribSourceSettings struct {
 	_ struct{} `type:"structure"`
@@ -2000,6 +2247,7 @@ func (s AribSourceSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Audio Channel Mapping
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/AudioChannelMapping
 type AudioChannelMapping struct {
 	_ struct{} `type:"structure"`
@@ -2074,18 +2322,24 @@ func (s AudioChannelMapping) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Audio Codec Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/AudioCodecSettings
 type AudioCodecSettings struct {
 	_ struct{} `type:"structure"`
 
+	// Aac Settings
 	AacSettings *AacSettings `locationName:"aacSettings" type:"structure"`
 
+	// Ac3 Settings
 	Ac3Settings *Ac3Settings `locationName:"ac3Settings" type:"structure"`
 
+	// Eac3 Settings
 	Eac3Settings *Eac3Settings `locationName:"eac3Settings" type:"structure"`
 
+	// Mp2 Settings
 	Mp2Settings *Mp2Settings `locationName:"mp2Settings" type:"structure"`
 
+	// Pass Through Settings
 	PassThroughSettings *PassThroughSettings `locationName:"passThroughSettings" type:"structure"`
 }
 
@@ -2154,6 +2408,7 @@ func (s AudioCodecSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Audio Description
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/AudioDescription
 type AudioDescription struct {
 	_ struct{} `type:"structure"`
@@ -2313,6 +2568,7 @@ func (s AudioDescription) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Audio Language Selection
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/AudioLanguageSelection
 type AudioLanguageSelection struct {
 	_ struct{} `type:"structure"`
@@ -2372,6 +2628,7 @@ func (s AudioLanguageSelection) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Audio Normalization Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/AudioNormalizationSettings
 type AudioNormalizationSettings struct {
 	_ struct{} `type:"structure"`
@@ -2424,6 +2681,7 @@ func (s AudioNormalizationSettings) MarshalFields(e protocol.FieldEncoder) error
 	return nil
 }
 
+// Audio Only Hls Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/AudioOnlyHlsSettings
 type AudioOnlyHlsSettings struct {
 	_ struct{} `type:"structure"`
@@ -2502,6 +2760,7 @@ func (s AudioOnlyHlsSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Audio Pid Selection
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/AudioPidSelection
 type AudioPidSelection struct {
 	_ struct{} `type:"structure"`
@@ -2547,6 +2806,7 @@ func (s AudioPidSelection) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Audio Selector
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/AudioSelector
 type AudioSelector struct {
 	_ struct{} `type:"structure"`
@@ -2610,12 +2870,15 @@ func (s AudioSelector) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Audio Selector Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/AudioSelectorSettings
 type AudioSelectorSettings struct {
 	_ struct{} `type:"structure"`
 
+	// Audio Language Selection
 	AudioLanguageSelection *AudioLanguageSelection `locationName:"audioLanguageSelection" type:"structure"`
 
+	// Audio Pid Selection
 	AudioPidSelection *AudioPidSelection `locationName:"audioPidSelection" type:"structure"`
 }
 
@@ -2666,6 +2929,7 @@ func (s AudioSelectorSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Avail Blanking
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/AvailBlanking
 type AvailBlanking struct {
 	_ struct{} `type:"structure"`
@@ -2721,6 +2985,7 @@ func (s AvailBlanking) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Avail Configuration
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/AvailConfiguration
 type AvailConfiguration struct {
 	_ struct{} `type:"structure"`
@@ -2765,12 +3030,15 @@ func (s AvailConfiguration) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Avail Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/AvailSettings
 type AvailSettings struct {
 	_ struct{} `type:"structure"`
 
+	// Scte35 Splice Insert
 	Scte35SpliceInsert *Scte35SpliceInsert `locationName:"scte35SpliceInsert" type:"structure"`
 
+	// Scte35 Time Signal Apos
 	Scte35TimeSignalApos *Scte35TimeSignalApos `locationName:"scte35TimeSignalApos" type:"structure"`
 }
 
@@ -3129,6 +3397,7 @@ func (s BatchUpdateScheduleOutput) MarshalFields(e protocol.FieldEncoder) error 
 	return nil
 }
 
+// Blackout Slate
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/BlackoutSlate
 type BlackoutSlate struct {
 	_ struct{} `type:"structure"`
@@ -3225,6 +3494,7 @@ func (s BlackoutSlate) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Burn In Destination Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/BurnInDestinationSettings
 type BurnInDestinationSettings struct {
 	_ struct{} `type:"structure"`
@@ -3556,32 +3826,45 @@ func (s CaptionDescription) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Caption Destination Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/CaptionDestinationSettings
 type CaptionDestinationSettings struct {
 	_ struct{} `type:"structure"`
 
+	// Arib Destination Settings
 	AribDestinationSettings *AribDestinationSettings `locationName:"aribDestinationSettings" type:"structure"`
 
+	// Burn In Destination Settings
 	BurnInDestinationSettings *BurnInDestinationSettings `locationName:"burnInDestinationSettings" type:"structure"`
 
+	// Dvb Sub Destination Settings
 	DvbSubDestinationSettings *DvbSubDestinationSettings `locationName:"dvbSubDestinationSettings" type:"structure"`
 
+	// Embedded Destination Settings
 	EmbeddedDestinationSettings *EmbeddedDestinationSettings `locationName:"embeddedDestinationSettings" type:"structure"`
 
+	// Embedded Plus Scte20 Destination Settings
 	EmbeddedPlusScte20DestinationSettings *EmbeddedPlusScte20DestinationSettings `locationName:"embeddedPlusScte20DestinationSettings" type:"structure"`
 
+	// Rtmp Caption Info Destination Settings
 	RtmpCaptionInfoDestinationSettings *RtmpCaptionInfoDestinationSettings `locationName:"rtmpCaptionInfoDestinationSettings" type:"structure"`
 
+	// Scte20 Plus Embedded Destination Settings
 	Scte20PlusEmbeddedDestinationSettings *Scte20PlusEmbeddedDestinationSettings `locationName:"scte20PlusEmbeddedDestinationSettings" type:"structure"`
 
+	// Scte27 Destination Settings
 	Scte27DestinationSettings *Scte27DestinationSettings `locationName:"scte27DestinationSettings" type:"structure"`
 
+	// Smpte Tt Destination Settings
 	SmpteTtDestinationSettings *SmpteTtDestinationSettings `locationName:"smpteTtDestinationSettings" type:"structure"`
 
+	// Teletext Destination Settings
 	TeletextDestinationSettings *TeletextDestinationSettings `locationName:"teletextDestinationSettings" type:"structure"`
 
+	// Ttml Destination Settings
 	TtmlDestinationSettings *TtmlDestinationSettings `locationName:"ttmlDestinationSettings" type:"structure"`
 
+	// Webvtt Destination Settings
 	WebvttDestinationSettings *WebvttDestinationSettings `locationName:"webvttDestinationSettings" type:"structure"`
 }
 
@@ -3855,20 +4138,27 @@ func (s CaptionSelector) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Caption Selector Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/CaptionSelectorSettings
 type CaptionSelectorSettings struct {
 	_ struct{} `type:"structure"`
 
+	// Arib Source Settings
 	AribSourceSettings *AribSourceSettings `locationName:"aribSourceSettings" type:"structure"`
 
+	// Dvb Sub Source Settings
 	DvbSubSourceSettings *DvbSubSourceSettings `locationName:"dvbSubSourceSettings" type:"structure"`
 
+	// Embedded Source Settings
 	EmbeddedSourceSettings *EmbeddedSourceSettings `locationName:"embeddedSourceSettings" type:"structure"`
 
+	// Scte20 Source Settings
 	Scte20SourceSettings *Scte20SourceSettings `locationName:"scte20SourceSettings" type:"structure"`
 
+	// Scte27 Source Settings
 	Scte27SourceSettings *Scte27SourceSettings `locationName:"scte27SourceSettings" type:"structure"`
 
+	// Teletext Source Settings
 	TeletextSourceSettings *TeletextSourceSettings `locationName:"teletextSourceSettings" type:"structure"`
 }
 
@@ -3960,6 +4250,10 @@ type Channel struct {
 	// The unique arn of the channel.
 	Arn *string `locationName:"arn" type:"string"`
 
+	// The class for this channel. STANDARD for a channel with two pipelines or
+	// SINGLE_PIPELINE for a channel with one pipeline.
+	ChannelClass ChannelClass `locationName:"channelClass" type:"string" enum:"true"`
+
 	// A list of destinations of the channel. For UDP outputs, there is onedestination
 	// per output. For other types (HLS, for example), there isone destination per
 	// packager.
@@ -3968,6 +4262,7 @@ type Channel struct {
 	// The endpoints where outgoing connections initiate from
 	EgressEndpoints []ChannelEgressEndpoint `locationName:"egressEndpoints" type:"list"`
 
+	// Encoder Settings
 	EncoderSettings *EncoderSettings `locationName:"encoderSettings" type:"structure"`
 
 	// The unique id of the channel.
@@ -3991,6 +4286,9 @@ type Channel struct {
 	RoleArn *string `locationName:"roleArn" type:"string"`
 
 	State ChannelState `locationName:"state" type:"string" enum:"true"`
+
+	// A collection of key-value pairs.
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -4010,6 +4308,12 @@ func (s Channel) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "arn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.ChannelClass) > 0 {
+		v := s.ChannelClass
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "channelClass", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
 	if len(s.Destinations) > 0 {
 		v := s.Destinations
@@ -4095,6 +4399,18 @@ func (s Channel) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "state", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	return nil
 }
 
@@ -4134,6 +4450,10 @@ type ChannelSummary struct {
 	// The unique arn of the channel.
 	Arn *string `locationName:"arn" type:"string"`
 
+	// The class for this channel. STANDARD for a channel with two pipelines or
+	// SINGLE_PIPELINE for a channel with one pipeline.
+	ChannelClass ChannelClass `locationName:"channelClass" type:"string" enum:"true"`
+
 	// A list of destinations of the channel. For UDP outputs, there is onedestination
 	// per output. For other types (HLS, for example), there isone destination per
 	// packager.
@@ -4163,6 +4483,9 @@ type ChannelSummary struct {
 	RoleArn *string `locationName:"roleArn" type:"string"`
 
 	State ChannelState `locationName:"state" type:"string" enum:"true"`
+
+	// A collection of key-value pairs.
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -4182,6 +4505,12 @@ func (s ChannelSummary) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "arn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.ChannelClass) > 0 {
+		v := s.ChannelClass
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "channelClass", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
 	if len(s.Destinations) > 0 {
 		v := s.Destinations
@@ -4261,6 +4590,18 @@ func (s ChannelSummary) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "state", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	return nil
 }
 
@@ -4268,8 +4609,13 @@ func (s ChannelSummary) MarshalFields(e protocol.FieldEncoder) error {
 type CreateChannelInput struct {
 	_ struct{} `type:"structure"`
 
+	// A standard channel has two encoding pipelines and a single pipeline channel
+	// only has one.
+	ChannelClass ChannelClass `locationName:"channelClass" type:"string" enum:"true"`
+
 	Destinations []OutputDestination `locationName:"destinations" type:"list"`
 
+	// Encoder Settings
 	EncoderSettings *EncoderSettings `locationName:"encoderSettings" type:"structure"`
 
 	InputAttachments []InputAttachment `locationName:"inputAttachments" type:"list"`
@@ -4286,6 +4632,8 @@ type CreateChannelInput struct {
 	Reserved *string `locationName:"reserved" deprecated:"true" type:"string"`
 
 	RoleArn *string `locationName:"roleArn" type:"string"`
+
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -4301,6 +4649,13 @@ func (s CreateChannelInput) GoString() string {
 // Validate inspects the fields of the type to determine if they are valid.
 func (s *CreateChannelInput) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "CreateChannelInput"}
+	if s.Destinations != nil {
+		for i, v := range s.Destinations {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Destinations", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
 	if s.EncoderSettings != nil {
 		if err := s.EncoderSettings.Validate(); err != nil {
 			invalidParams.AddNested("EncoderSettings", err.(aws.ErrInvalidParams))
@@ -4324,6 +4679,12 @@ func (s *CreateChannelInput) Validate() error {
 func (s CreateChannelInput) MarshalFields(e protocol.FieldEncoder) error {
 	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
 
+	if len(s.ChannelClass) > 0 {
+		v := s.ChannelClass
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "channelClass", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
 	if len(s.Destinations) > 0 {
 		v := s.Destinations
 
@@ -4396,6 +4757,18 @@ func (s CreateChannelInput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "roleArn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	return nil
 }
 
@@ -4452,7 +4825,15 @@ type CreateInputInput struct {
 
 	Sources []InputSourceRequest `locationName:"sources" type:"list"`
 
+	Tags map[string]string `locationName:"tags" type:"map"`
+
 	Type InputType `locationName:"type" type:"string" enum:"true"`
+
+	// Settings for a private VPC Input.When this property is specified, the input
+	// destination addresses will be created in a VPC rather than with public Internet
+	// addresses.This property requires setting the roleArn property on Input creation.Not
+	// compatible with the inputSecurityGroups property.
+	Vpc *InputVpcRequest `locationName:"vpc" type:"structure"`
 }
 
 // String returns the string representation
@@ -4463,6 +4844,21 @@ func (s CreateInputInput) String() string {
 // GoString returns the string representation
 func (s CreateInputInput) GoString() string {
 	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateInputInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateInputInput"}
+	if s.Vpc != nil {
+		if err := s.Vpc.Validate(); err != nil {
+			invalidParams.AddNested("Vpc", err.(aws.ErrInvalidParams))
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
@@ -4541,11 +4937,29 @@ func (s CreateInputInput) MarshalFields(e protocol.FieldEncoder) error {
 		ls0.End()
 
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	if len(s.Type) > 0 {
 		v := s.Type
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "type", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	if s.Vpc != nil {
+		v := s.Vpc
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "vpc", v, metadata)
 	}
 	return nil
 }
@@ -4589,6 +5003,8 @@ func (s CreateInputOutput) MarshalFields(e protocol.FieldEncoder) error {
 type CreateInputSecurityGroupInput struct {
 	_ struct{} `type:"structure"`
 
+	Tags map[string]string `locationName:"tags" type:"map"`
+
 	WhitelistRules []InputWhitelistRuleCidr `locationName:"whitelistRules" type:"list"`
 }
 
@@ -4606,6 +5022,18 @@ func (s CreateInputSecurityGroupInput) GoString() string {
 func (s CreateInputSecurityGroupInput) MarshalFields(e protocol.FieldEncoder) error {
 	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
 
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	if len(s.WhitelistRules) > 0 {
 		v := s.WhitelistRules
 
@@ -4654,6 +5082,92 @@ func (s CreateInputSecurityGroupOutput) MarshalFields(e protocol.FieldEncoder) e
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "securityGroup", v, metadata)
 	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/CreateTagsRequest
+type CreateTagsInput struct {
+	_ struct{} `type:"structure"`
+
+	// ResourceArn is a required field
+	ResourceArn *string `location:"uri" locationName:"resource-arn" type:"string" required:"true"`
+
+	Tags map[string]string `locationName:"tags" type:"map"`
+}
+
+// String returns the string representation
+func (s CreateTagsInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s CreateTagsInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateTagsInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateTagsInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s CreateTagsInput) MarshalFields(e protocol.FieldEncoder) error {
+	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
+
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
+	if s.ResourceArn != nil {
+		v := *s.ResourceArn
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "resource-arn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/CreateTagsOutput
+type CreateTagsOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+}
+
+// String returns the string representation
+func (s CreateTagsOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s CreateTagsOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s CreateTagsOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s CreateTagsOutput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
@@ -4710,10 +5224,15 @@ type DeleteChannelOutput struct {
 
 	Arn *string `locationName:"arn" type:"string"`
 
+	// A standard channel has two encoding pipelines and a single pipeline channel
+	// only has one.
+	ChannelClass ChannelClass `locationName:"channelClass" type:"string" enum:"true"`
+
 	Destinations []OutputDestination `locationName:"destinations" type:"list"`
 
 	EgressEndpoints []ChannelEgressEndpoint `locationName:"egressEndpoints" type:"list"`
 
+	// Encoder Settings
 	EncoderSettings *EncoderSettings `locationName:"encoderSettings" type:"structure"`
 
 	Id *string `locationName:"id" type:"string"`
@@ -4732,6 +5251,8 @@ type DeleteChannelOutput struct {
 	RoleArn *string `locationName:"roleArn" type:"string"`
 
 	State ChannelState `locationName:"state" type:"string" enum:"true"`
+
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -4756,6 +5277,12 @@ func (s DeleteChannelOutput) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "arn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.ChannelClass) > 0 {
+		v := s.ChannelClass
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "channelClass", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
 	if len(s.Destinations) > 0 {
 		v := s.Destinations
@@ -4840,6 +5367,18 @@ func (s DeleteChannelOutput) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "state", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	return nil
 }
@@ -5075,6 +5614,8 @@ type DeleteReservationOutput struct {
 	// Current reservation state
 	State ReservationState `locationName:"state" type:"string" enum:"true"`
 
+	Tags map[string]string `locationName:"tags" type:"map"`
+
 	UsagePrice *float64 `locationName:"usagePrice" type:"double"`
 }
 
@@ -5191,12 +5732,115 @@ func (s DeleteReservationOutput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "state", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	if s.UsagePrice != nil {
 		v := *s.UsagePrice
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "usagePrice", protocol.Float64Value(v), metadata)
 	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/DeleteTagsRequest
+type DeleteTagsInput struct {
+	_ struct{} `type:"structure"`
+
+	// ResourceArn is a required field
+	ResourceArn *string `location:"uri" locationName:"resource-arn" type:"string" required:"true"`
+
+	// TagKeys is a required field
+	TagKeys []string `location:"querystring" locationName:"tagKeys" type:"list" required:"true"`
+}
+
+// String returns the string representation
+func (s DeleteTagsInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DeleteTagsInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteTagsInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteTagsInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+
+	if s.TagKeys == nil {
+		invalidParams.Add(aws.NewErrParamRequired("TagKeys"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s DeleteTagsInput) MarshalFields(e protocol.FieldEncoder) error {
+	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
+
+	if s.ResourceArn != nil {
+		v := *s.ResourceArn
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "resource-arn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.TagKeys) > 0 {
+		v := s.TagKeys
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.QueryTarget, "tagKeys", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ls0.End()
+
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/DeleteTagsOutput
+type DeleteTagsOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+}
+
+// String returns the string representation
+func (s DeleteTagsOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DeleteTagsOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s DeleteTagsOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s DeleteTagsOutput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
@@ -5253,10 +5897,15 @@ type DescribeChannelOutput struct {
 
 	Arn *string `locationName:"arn" type:"string"`
 
+	// A standard channel has two encoding pipelines and a single pipeline channel
+	// only has one.
+	ChannelClass ChannelClass `locationName:"channelClass" type:"string" enum:"true"`
+
 	Destinations []OutputDestination `locationName:"destinations" type:"list"`
 
 	EgressEndpoints []ChannelEgressEndpoint `locationName:"egressEndpoints" type:"list"`
 
+	// Encoder Settings
 	EncoderSettings *EncoderSettings `locationName:"encoderSettings" type:"structure"`
 
 	Id *string `locationName:"id" type:"string"`
@@ -5275,6 +5924,8 @@ type DescribeChannelOutput struct {
 	RoleArn *string `locationName:"roleArn" type:"string"`
 
 	State ChannelState `locationName:"state" type:"string" enum:"true"`
+
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -5299,6 +5950,12 @@ func (s DescribeChannelOutput) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "arn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.ChannelClass) > 0 {
+		v := s.ChannelClass
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "channelClass", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
 	if len(s.Destinations) > 0 {
 		v := s.Destinations
@@ -5384,6 +6041,18 @@ func (s DescribeChannelOutput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "state", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	return nil
 }
 
@@ -5446,6 +6115,9 @@ type DescribeInputOutput struct {
 
 	Id *string `locationName:"id" type:"string"`
 
+	// A standard input has two sources and a single pipeline input only has one.
+	InputClass InputClass `locationName:"inputClass" type:"string" enum:"true"`
+
 	MediaConnectFlows []MediaConnectFlow `locationName:"mediaConnectFlows" type:"list"`
 
 	Name *string `locationName:"name" type:"string"`
@@ -5457,6 +6129,8 @@ type DescribeInputOutput struct {
 	Sources []InputSource `locationName:"sources" type:"list"`
 
 	State InputState `locationName:"state" type:"string" enum:"true"`
+
+	Tags map[string]string `locationName:"tags" type:"map"`
 
 	Type InputType `locationName:"type" type:"string" enum:"true"`
 }
@@ -5514,6 +6188,12 @@ func (s DescribeInputOutput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "id", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
+	if len(s.InputClass) > 0 {
+		v := s.InputClass
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "inputClass", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
 	if len(s.MediaConnectFlows) > 0 {
 		v := s.MediaConnectFlows
 
@@ -5567,6 +6247,18 @@ func (s DescribeInputOutput) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "state", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	if len(s.Type) > 0 {
 		v := s.Type
@@ -5636,6 +6328,8 @@ type DescribeInputSecurityGroupOutput struct {
 
 	State InputSecurityGroupState `locationName:"state" type:"string" enum:"true"`
 
+	Tags map[string]string `locationName:"tags" type:"map"`
+
 	WhitelistRules []InputWhitelistRule `locationName:"whitelistRules" type:"list"`
 }
 
@@ -5685,6 +6379,18 @@ func (s DescribeInputSecurityGroupOutput) MarshalFields(e protocol.FieldEncoder)
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "state", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	if len(s.WhitelistRules) > 0 {
 		v := s.WhitelistRules
@@ -5951,6 +6657,8 @@ type DescribeReservationOutput struct {
 	// Current reservation state
 	State ReservationState `locationName:"state" type:"string" enum:"true"`
 
+	Tags map[string]string `locationName:"tags" type:"map"`
+
 	UsagePrice *float64 `locationName:"usagePrice" type:"double"`
 }
 
@@ -6066,6 +6774,18 @@ func (s DescribeReservationOutput) MarshalFields(e protocol.FieldEncoder) error 
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "state", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	if s.UsagePrice != nil {
 		v := *s.UsagePrice
@@ -6351,6 +7071,7 @@ func (s DvbSdtSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Dvb Sub Destination Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/DvbSubDestinationSettings
 type DvbSubDestinationSettings struct {
 	_ struct{} `type:"structure"`
@@ -6590,6 +7311,7 @@ func (s DvbSubDestinationSettings) MarshalFields(e protocol.FieldEncoder) error 
 	return nil
 }
 
+// Dvb Sub Source Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/DvbSubSourceSettings
 type DvbSubSourceSettings struct {
 	_ struct{} `type:"structure"`
@@ -6678,6 +7400,7 @@ func (s DvbTdtSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Eac3 Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/Eac3Settings
 type Eac3Settings struct {
 	_ struct{} `type:"structure"`
@@ -6904,6 +7627,7 @@ func (s Eac3Settings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Embedded Destination Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/EmbeddedDestinationSettings
 type EmbeddedDestinationSettings struct {
 	_ struct{} `type:"structure"`
@@ -6924,6 +7648,7 @@ func (s EmbeddedDestinationSettings) MarshalFields(e protocol.FieldEncoder) erro
 	return nil
 }
 
+// Embedded Plus Scte20 Destination Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/EmbeddedPlusScte20DestinationSettings
 type EmbeddedPlusScte20DestinationSettings struct {
 	_ struct{} `type:"structure"`
@@ -6944,6 +7669,7 @@ func (s EmbeddedPlusScte20DestinationSettings) MarshalFields(e protocol.FieldEnc
 	return nil
 }
 
+// Embedded Source Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/EmbeddedSourceSettings
 type EmbeddedSourceSettings struct {
 	_ struct{} `type:"structure"`
@@ -7020,6 +7746,7 @@ func (s EmbeddedSourceSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Encoder Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/EncoderSettings
 type EncoderSettings struct {
 	_ struct{} `type:"structure"`
@@ -7226,6 +7953,7 @@ func (s EncoderSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Fec Output Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/FecOutputSettings
 type FecOutputSettings struct {
 	_ struct{} `type:"structure"`
@@ -7407,6 +8135,140 @@ func (s FollowModeScheduleActionStartSettings) MarshalFields(e protocol.FieldEnc
 	return nil
 }
 
+// Frame Capture Group Settings
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/FrameCaptureGroupSettings
+type FrameCaptureGroupSettings struct {
+	_ struct{} `type:"structure"`
+
+	// The destination for the frame capture files. Either the URI for an Amazon
+	// S3 bucket and object, plus a file name prefix (for example, s3ssl://sportsDelivery/highlights/20180820/curling_)
+	// or the URI for a MediaStore container, plus a file name prefix (for example,
+	// mediastoressl://sportsDelivery/20180820/curling_). The final file names consist
+	// of the prefix from the destination field (for example, "curling_") + name
+	// modifier + the counter (5 digits, starting from 00001) + extension (which
+	// is always .jpg). For example, curlingLow.00001.jpg
+	//
+	// Destination is a required field
+	Destination *OutputLocationRef `locationName:"destination" type:"structure" required:"true"`
+}
+
+// String returns the string representation
+func (s FrameCaptureGroupSettings) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s FrameCaptureGroupSettings) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *FrameCaptureGroupSettings) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "FrameCaptureGroupSettings"}
+
+	if s.Destination == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Destination"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s FrameCaptureGroupSettings) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Destination != nil {
+		v := s.Destination
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "destination", v, metadata)
+	}
+	return nil
+}
+
+// Frame Capture Output Settings
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/FrameCaptureOutputSettings
+type FrameCaptureOutputSettings struct {
+	_ struct{} `type:"structure"`
+
+	// Required if the output group contains more than one output. This modifier
+	// forms part of the output file name.
+	NameModifier *string `locationName:"nameModifier" type:"string"`
+}
+
+// String returns the string representation
+func (s FrameCaptureOutputSettings) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s FrameCaptureOutputSettings) GoString() string {
+	return s.String()
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s FrameCaptureOutputSettings) MarshalFields(e protocol.FieldEncoder) error {
+	if s.NameModifier != nil {
+		v := *s.NameModifier
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "nameModifier", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+// Frame Capture Settings
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/FrameCaptureSettings
+type FrameCaptureSettings struct {
+	_ struct{} `type:"structure"`
+
+	// The frequency, in seconds, for capturing frames for inclusion in the output.
+	// For example, "10" means capture a frame every 10 seconds.
+	//
+	// CaptureInterval is a required field
+	CaptureInterval *int64 `locationName:"captureInterval" min:"1" type:"integer" required:"true"`
+}
+
+// String returns the string representation
+func (s FrameCaptureSettings) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s FrameCaptureSettings) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *FrameCaptureSettings) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "FrameCaptureSettings"}
+
+	if s.CaptureInterval == nil {
+		invalidParams.Add(aws.NewErrParamRequired("CaptureInterval"))
+	}
+	if s.CaptureInterval != nil && *s.CaptureInterval < 1 {
+		invalidParams.Add(aws.NewErrParamMinValue("CaptureInterval", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s FrameCaptureSettings) MarshalFields(e protocol.FieldEncoder) error {
+	if s.CaptureInterval != nil {
+		v := *s.CaptureInterval
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "captureInterval", protocol.Int64Value(v), metadata)
+	}
+	return nil
+}
+
+// Global Configuration
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/GlobalConfiguration
 type GlobalConfiguration struct {
 	_ struct{} `type:"structure"`
@@ -7424,6 +8286,12 @@ type GlobalConfiguration struct {
 
 	// Settings for system actions when input is lost.
 	InputLossBehavior *InputLossBehavior `locationName:"inputLossBehavior" type:"structure"`
+
+	// Indicates how MediaLive pipelines are synchronized.PIPELINELOCKING - MediaLive
+	// will attempt to synchronize the output of each pipeline to the other.EPOCHLOCKING
+	// - MediaLive will attempt to synchronize the output of each pipeline to the
+	// Unix epoch.
+	OutputLockingMode GlobalConfigurationOutputLockingMode `locationName:"outputLockingMode" type:"string" enum:"true"`
 
 	// Indicates whether the rate of frames emitted by the Live encoder should be
 	// paced by its system clock (which optionally may be locked to another source
@@ -7485,6 +8353,12 @@ func (s GlobalConfiguration) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "inputLossBehavior", v, metadata)
 	}
+	if len(s.OutputLockingMode) > 0 {
+		v := s.OutputLockingMode
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "outputLockingMode", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
 	if len(s.OutputTimingSource) > 0 {
 		v := s.OutputTimingSource
 
@@ -7500,6 +8374,7 @@ func (s GlobalConfiguration) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// H264 Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/H264Settings
 type H264Settings struct {
 	_ struct{} `type:"structure"`
@@ -7548,11 +8423,11 @@ type H264Settings struct {
 	FramerateControl H264FramerateControl `locationName:"framerateControl" type:"string" enum:"true"`
 
 	// Framerate denominator.
-	FramerateDenominator *int64 `locationName:"framerateDenominator" type:"integer"`
+	FramerateDenominator *int64 `locationName:"framerateDenominator" min:"1" type:"integer"`
 
 	// Framerate numerator - framerate is a fraction, e.g. 24000 / 1001 = 23.976
 	// fps.
-	FramerateNumerator *int64 `locationName:"framerateNumerator" type:"integer"`
+	FramerateNumerator *int64 `locationName:"framerateNumerator" min:"1" type:"integer"`
 
 	// If enabled, use reference B frames for GOP structures that have B frames
 	// > 1.
@@ -7685,6 +8560,12 @@ func (s *H264Settings) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "H264Settings"}
 	if s.Bitrate != nil && *s.Bitrate < 1000 {
 		invalidParams.Add(aws.NewErrParamMinValue("Bitrate", 1000))
+	}
+	if s.FramerateDenominator != nil && *s.FramerateDenominator < 1 {
+		invalidParams.Add(aws.NewErrParamMinValue("FramerateDenominator", 1))
+	}
+	if s.FramerateNumerator != nil && *s.FramerateNumerator < 1 {
+		invalidParams.Add(aws.NewErrParamMinValue("FramerateNumerator", 1))
 	}
 	if s.MaxBitrate != nil && *s.MaxBitrate < 1000 {
 		invalidParams.Add(aws.NewErrParamMinValue("MaxBitrate", 1000))
@@ -7935,6 +8816,7 @@ func (s H264Settings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Hls Akamai Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/HlsAkamaiSettings
 type HlsAkamaiSettings struct {
 	_ struct{} `type:"structure"`
@@ -8022,6 +8904,7 @@ func (s HlsAkamaiSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Hls Basic Put Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/HlsBasicPutSettings
 type HlsBasicPutSettings struct {
 	_ struct{} `type:"structure"`
@@ -8081,16 +8964,21 @@ func (s HlsBasicPutSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Hls Cdn Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/HlsCdnSettings
 type HlsCdnSettings struct {
 	_ struct{} `type:"structure"`
 
+	// Hls Akamai Settings
 	HlsAkamaiSettings *HlsAkamaiSettings `locationName:"hlsAkamaiSettings" type:"structure"`
 
+	// Hls Basic Put Settings
 	HlsBasicPutSettings *HlsBasicPutSettings `locationName:"hlsBasicPutSettings" type:"structure"`
 
+	// Hls Media Store Settings
 	HlsMediaStoreSettings *HlsMediaStoreSettings `locationName:"hlsMediaStoreSettings" type:"structure"`
 
+	// Hls Webdav Settings
 	HlsWebdavSettings *HlsWebdavSettings `locationName:"hlsWebdavSettings" type:"structure"`
 }
 
@@ -8133,6 +9021,7 @@ func (s HlsCdnSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Hls Group Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/HlsGroupSettings
 type HlsGroupSettings struct {
 	_ struct{} `type:"structure"`
@@ -8195,9 +9084,19 @@ type HlsGroupSettings struct {
 	// Parameters that control interactions with the CDN.
 	HlsCdnSettings *HlsCdnSettings `locationName:"hlsCdnSettings" type:"structure"`
 
-	// If mode is "live", the number of segments to retain in the manifest (.m3u8)
-	// file. This number must be less than or equal to keepSegments. If mode is
-	// "vod", this parameter has no effect.
+	// DISABLED: Do not create an I-frame-only manifest, but do create the master
+	// and media manifests (according to the Output Selection field).STANDARD: Create
+	// an I-frame-only manifest for each output that contains video, as well as
+	// the other manifests (according to the Output Selection field). The I-frame
+	// manifest contains a #EXT-X-I-FRAMES-ONLY tag to indicate it is I-frame only,
+	// and one or more #EXT-X-BYTERANGE entries identifying the I-frame position.
+	// For example, #EXT-X-BYTERANGE:160364@1461888"
+	IFrameOnlyPlaylists IFrameOnlyPlaylistType `locationName:"iFrameOnlyPlaylists" type:"string" enum:"true"`
+
+	// Applies only if Mode field is LIVE. Specifies the maximum number of segments
+	// in the media manifest file. After this maximum, older segments are removed
+	// from the media manifest. This number must be less than or equal to the Keep
+	// Segments field.
 	IndexNSegments *int64 `locationName:"indexNSegments" min:"3" type:"integer"`
 
 	// Parameter that control output group behavior on input loss.
@@ -8215,8 +9114,8 @@ type HlsGroupSettings struct {
 	// constantIv value.
 	IvSource HlsIvSource `locationName:"ivSource" type:"string" enum:"true"`
 
-	// If mode is "live", the number of TS segments to retain in the destination
-	// directory. If mode is "vod", this parameter has no effect.
+	// Applies only if Mode field is LIVE. Specifies the number of media segments
+	// (.ts files) to retain in the destination directory.
 	KeepSegments *int64 `locationName:"keepSegments" min:"1" type:"integer"`
 
 	// The value specifies how the key is represented in the resource identified
@@ -8251,8 +9150,9 @@ type HlsGroupSettings struct {
 	// converting it to a "VOD" type manifest on completion of the stream.
 	Mode HlsMode `locationName:"mode" type:"string" enum:"true"`
 
-	// Generates the .m3u8 playlist file for this HLS output group. The segmentsOnly
-	// option will output segments without the .m3u8 file.
+	// MANIFESTSANDSEGMENTS: Generates manifests (master manifest, if applicable,
+	// and media manifests) for this output group.SEGMENTSONLY: Does not generate
+	// any manifests for this output group.
 	OutputSelection HlsOutputSelection `locationName:"outputSelection" type:"string" enum:"true"`
 
 	// Includes or excludes EXT-X-PROGRAM-DATE-TIME tag in .m3u8 manifest files.
@@ -8264,8 +9164,17 @@ type HlsGroupSettings struct {
 	// Period of insertion of EXT-X-PROGRAM-DATE-TIME entry, in seconds.
 	ProgramDateTimePeriod *int64 `locationName:"programDateTimePeriod" type:"integer"`
 
-	// When set to "enabled", includes the media playlists from both pipelines in
-	// the master manifest (.m3u8) file.
+	// ENABLED: The master manifest (.m3u8 file) for each pipeline includes information
+	// about both pipelines: first its own media files, then the media files of
+	// the other pipeline. This feature allows playout device that support stale
+	// manifest detection to switch from one manifest to the other, when the current
+	// manifest seems to be stale. There are still two destinations and two master
+	// manifests, but both master manifests reference the media files from both
+	// pipelines.DISABLED: The master manifest (.m3u8 file) for each pipeline includes
+	// information about its own pipeline only.For an HLS output group with MediaPackage
+	// as the destination, the DISABLED behavior is always followed. MediaPackage
+	// regenerates the manifests it serves to players so a redundant manifest from
+	// MediaLive is irrelevant.
 	RedundantManifest HlsRedundantManifest `locationName:"redundantManifest" type:"string" enum:"true"`
 
 	// Length of MPEG-2 Transport Stream segments to create (in seconds). Note that
@@ -8295,9 +9204,12 @@ type HlsGroupSettings struct {
 	// Provides an extra millisecond delta offset to fine tune the timestamps.
 	TimestampDeltaMilliseconds *int64 `locationName:"timestampDeltaMilliseconds" type:"integer"`
 
-	// When set to "singleFile", emits the program as a single media resource (.ts)
-	// file, and uses #EXT-X-BYTERANGE tags to index segment for playback. Playback
-	// of VOD mode content during event is not guaranteed due to HTTP server caching.
+	// SEGMENTEDFILES: Emit the program as segments - multiple .ts media files.SINGLEFILE:
+	// Applies only if Mode field is VOD. Emit the program as a single .ts media
+	// file. The media manifest includes #EXT-X-BYTERANGE tags to index segments
+	// for playback. A typical use for this value is when sending the output to
+	// AWS Elemental MediaConvert, which can accept only a single media file. Playback
+	// while the channel is running is not guaranteed due to HTTP server caching.
 	TsFileMode HlsTsFileMode `locationName:"tsFileMode" type:"string" enum:"true"`
 }
 
@@ -8437,6 +9349,12 @@ func (s HlsGroupSettings) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "hlsCdnSettings", v, metadata)
+	}
+	if len(s.IFrameOnlyPlaylists) > 0 {
+		v := s.IFrameOnlyPlaylists
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "iFrameOnlyPlaylists", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
 	if s.IndexNSegments != nil {
 		v := *s.IndexNSegments
@@ -8585,6 +9503,7 @@ func (s HlsGroupSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Hls Input Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/HlsInputSettings
 type HlsInputSettings struct {
 	_ struct{} `type:"structure"`
@@ -8648,6 +9567,7 @@ func (s HlsInputSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Hls Media Store Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/HlsMediaStoreSettings
 type HlsMediaStoreSettings struct {
 	_ struct{} `type:"structure"`
@@ -8717,6 +9637,7 @@ func (s HlsMediaStoreSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Hls Output Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/HlsOutputSettings
 type HlsOutputSettings struct {
 	_ struct{} `type:"structure"`
@@ -8790,12 +9711,15 @@ func (s HlsOutputSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Hls Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/HlsSettings
 type HlsSettings struct {
 	_ struct{} `type:"structure"`
 
+	// Audio Only Hls Settings
 	AudioOnlyHlsSettings *AudioOnlyHlsSettings `locationName:"audioOnlyHlsSettings" type:"structure"`
 
+	// Standard Hls Settings
 	StandardHlsSettings *StandardHlsSettings `locationName:"standardHlsSettings" type:"structure"`
 }
 
@@ -8892,6 +9816,7 @@ func (s HlsTimedMetadataScheduleActionSettings) MarshalFields(e protocol.FieldEn
 	return nil
 }
 
+// Hls Webdav Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/HlsWebdavSettings
 type HlsWebdavSettings struct {
 	_ struct{} `type:"structure"`
@@ -8977,6 +9902,15 @@ type Input struct {
 	// The generated ID of the input (unique for user account, immutable).
 	Id *string `locationName:"id" type:"string"`
 
+	// STANDARD - MediaLive expects two sources to be connected to this input. If
+	// the channel is also STANDARD, both sources will be ingested. If the channel
+	// is SINGLE_PIPELINE, only the first source will be ingested; the second source
+	// will always be ignored, even if the first source fails.SINGLE_PIPELINE -
+	// You can connect only one source to this input. If the ChannelClass is also
+	// SINGLE_PIPELINE, this value is valid. If the ChannelClass is STANDARD, this
+	// value is not valid because the channel requires two sources in the input.
+	InputClass InputClass `locationName:"inputClass" type:"string" enum:"true"`
+
 	// A list of MediaConnect Flows for this input.
 	MediaConnectFlows []MediaConnectFlow `locationName:"mediaConnectFlows" type:"list"`
 
@@ -8987,13 +9921,16 @@ type Input struct {
 	// after creation.
 	RoleArn *string `locationName:"roleArn" type:"string"`
 
-	// A list of IDs for all the security groups attached to the input.
+	// A list of IDs for all the Input Security Groups attached to the input.
 	SecurityGroups []string `locationName:"securityGroups" type:"list"`
 
 	// A list of the sources of the input (PULL-type).
 	Sources []InputSource `locationName:"sources" type:"list"`
 
 	State InputState `locationName:"state" type:"string" enum:"true"`
+
+	// A collection of key-value pairs.
+	Tags map[string]string `locationName:"tags" type:"map"`
 
 	Type InputType `locationName:"type" type:"string" enum:"true"`
 }
@@ -9045,6 +9982,12 @@ func (s Input) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "id", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.InputClass) > 0 {
+		v := s.InputClass
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "inputClass", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
 	if len(s.MediaConnectFlows) > 0 {
 		v := s.MediaConnectFlows
@@ -9099,6 +10042,18 @@ func (s Input) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "state", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	if len(s.Type) > 0 {
 		v := s.Type
@@ -9172,6 +10127,7 @@ func (s InputAttachment) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Input Channel Level
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/InputChannelLevel
 type InputChannelLevel struct {
 	_ struct{} `type:"structure"`
@@ -9250,6 +10206,9 @@ type InputDestination struct {
 
 	// This represents the endpoint that the customer stream will bepushed to.
 	Url *string `locationName:"url" type:"string"`
+
+	// The properties for a VPC type input destination.
+	Vpc *InputDestinationVpc `locationName:"vpc" type:"structure"`
 }
 
 // String returns the string representation
@@ -9281,6 +10240,12 @@ func (s InputDestination) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "url", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Vpc != nil {
+		v := s.Vpc
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "vpc", v, metadata)
 	}
 	return nil
 }
@@ -9315,6 +10280,46 @@ func (s InputDestinationRequest) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// The properties for a VPC type input destination.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/InputDestinationVpc
+type InputDestinationVpc struct {
+	_ struct{} `type:"structure"`
+
+	// The availability zone of the Input destination.
+	AvailabilityZone *string `locationName:"availabilityZone" type:"string"`
+
+	// The network interface ID of the Input destination in the VPC.
+	NetworkInterfaceId *string `locationName:"networkInterfaceId" type:"string"`
+}
+
+// String returns the string representation
+func (s InputDestinationVpc) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s InputDestinationVpc) GoString() string {
+	return s.String()
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s InputDestinationVpc) MarshalFields(e protocol.FieldEncoder) error {
+	if s.AvailabilityZone != nil {
+		v := *s.AvailabilityZone
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "availabilityZone", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.NetworkInterfaceId != nil {
+		v := *s.NetworkInterfaceId
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "networkInterfaceId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+// Input Location
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/InputLocation
 type InputLocation struct {
 	_ struct{} `type:"structure"`
@@ -9383,6 +10388,7 @@ func (s InputLocation) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Input Loss Behavior
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/InputLossBehavior
 type InputLossBehavior struct {
 	_ struct{} `type:"structure"`
@@ -9491,6 +10497,9 @@ type InputSecurityGroup struct {
 	// The current state of the Input Security Group.
 	State InputSecurityGroupState `locationName:"state" type:"string" enum:"true"`
 
+	// A collection of key-value pairs.
+	Tags map[string]string `locationName:"tags" type:"map"`
+
 	// Whitelist rules and their sync status
 	WhitelistRules []InputWhitelistRule `locationName:"whitelistRules" type:"list"`
 }
@@ -9536,6 +10545,18 @@ func (s InputSecurityGroup) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "state", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	if len(s.WhitelistRules) > 0 {
 		v := s.WhitelistRules
@@ -9887,6 +10908,79 @@ func (s InputSwitchScheduleActionSettings) MarshalFields(e protocol.FieldEncoder
 	return nil
 }
 
+// Settings for a private VPC Input.When this property is specified, the input
+// destination addresses will be created in a VPC rather than with public Internet
+// addresses.This property requires setting the roleArn property on Input creation.Not
+// compatible with the inputSecurityGroups property.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/InputVpcRequest
+type InputVpcRequest struct {
+	_ struct{} `type:"structure"`
+
+	// A list of up to 5 EC2 VPC security group IDs to attach to the Input VPC network
+	// interfaces.Requires subnetIds. If none are specified then the VPC default
+	// security group will be used.
+	SecurityGroupIds []string `locationName:"securityGroupIds" type:"list"`
+
+	// A list of 2 VPC subnet IDs from the same VPC.Subnet IDs must be mapped to
+	// two unique availability zones (AZ).
+	//
+	// SubnetIds is a required field
+	SubnetIds []string `locationName:"subnetIds" type:"list" required:"true"`
+}
+
+// String returns the string representation
+func (s InputVpcRequest) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s InputVpcRequest) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *InputVpcRequest) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "InputVpcRequest"}
+
+	if s.SubnetIds == nil {
+		invalidParams.Add(aws.NewErrParamRequired("SubnetIds"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s InputVpcRequest) MarshalFields(e protocol.FieldEncoder) error {
+	if len(s.SecurityGroupIds) > 0 {
+		v := s.SecurityGroupIds
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "securityGroupIds", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ls0.End()
+
+	}
+	if len(s.SubnetIds) > 0 {
+		v := s.SubnetIds
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "subnetIds", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ls0.End()
+
+	}
+	return nil
+}
+
 // Whitelist rule
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/InputWhitelistRule
 type InputWhitelistRule struct {
@@ -9947,10 +11041,12 @@ func (s InputWhitelistRuleCidr) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Key Provider Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/KeyProviderSettings
 type KeyProviderSettings struct {
 	_ struct{} `type:"structure"`
 
+	// Static Key Settings
 	StaticKeySettings *StaticKeySettings `locationName:"staticKeySettings" type:"structure"`
 }
 
@@ -10294,6 +11390,8 @@ func (s ListInputsOutput) MarshalFields(e protocol.FieldEncoder) error {
 type ListOfferingsInput struct {
 	_ struct{} `type:"structure"`
 
+	ChannelClass *string `location:"querystring" locationName:"channelClass" type:"string"`
+
 	ChannelConfiguration *string `location:"querystring" locationName:"channelConfiguration" type:"string"`
 
 	Codec *string `location:"querystring" locationName:"codec" type:"string"`
@@ -10342,6 +11440,12 @@ func (s *ListOfferingsInput) Validate() error {
 func (s ListOfferingsInput) MarshalFields(e protocol.FieldEncoder) error {
 	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
 
+	if s.ChannelClass != nil {
+		v := *s.ChannelClass
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.QueryTarget, "channelClass", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
 	if s.ChannelConfiguration != nil {
 		v := *s.ChannelConfiguration
 
@@ -10458,6 +11562,8 @@ func (s ListOfferingsOutput) MarshalFields(e protocol.FieldEncoder) error {
 type ListReservationsInput struct {
 	_ struct{} `type:"structure"`
 
+	ChannelClass *string `location:"querystring" locationName:"channelClass" type:"string"`
+
 	Codec *string `location:"querystring" locationName:"codec" type:"string"`
 
 	MaxResults *int64 `location:"querystring" locationName:"maxResults" min:"1" type:"integer"`
@@ -10504,6 +11610,12 @@ func (s *ListReservationsInput) Validate() error {
 func (s ListReservationsInput) MarshalFields(e protocol.FieldEncoder) error {
 	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
 
+	if s.ChannelClass != nil {
+		v := *s.ChannelClass
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.QueryTarget, "channelClass", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
 	if s.Codec != nil {
 		v := *s.Codec
 
@@ -10610,6 +11722,93 @@ func (s ListReservationsOutput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/ListTagsForResourceRequest
+type ListTagsForResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// ResourceArn is a required field
+	ResourceArn *string `location:"uri" locationName:"resource-arn" type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s ListTagsForResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListTagsForResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ListTagsForResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ListTagsForResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ListTagsForResourceInput) MarshalFields(e protocol.FieldEncoder) error {
+	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
+
+	if s.ResourceArn != nil {
+		v := *s.ResourceArn
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "resource-arn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/ListTagsForResourceResponse
+type ListTagsForResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	Tags map[string]string `locationName:"tags" type:"map"`
+}
+
+// String returns the string representation
+func (s ListTagsForResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListTagsForResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s ListTagsForResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ListTagsForResourceOutput) MarshalFields(e protocol.FieldEncoder) error {
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
+	return nil
+}
+
+// M2ts Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/M2tsSettings
 type M2tsSettings struct {
 	_ struct{} `type:"structure"`
@@ -11392,6 +12591,121 @@ func (s MediaConnectFlowRequest) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Media Package Group Settings
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/MediaPackageGroupSettings
+type MediaPackageGroupSettings struct {
+	_ struct{} `type:"structure"`
+
+	// MediaPackage channel destination.
+	//
+	// Destination is a required field
+	Destination *OutputLocationRef `locationName:"destination" type:"structure" required:"true"`
+}
+
+// String returns the string representation
+func (s MediaPackageGroupSettings) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s MediaPackageGroupSettings) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *MediaPackageGroupSettings) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "MediaPackageGroupSettings"}
+
+	if s.Destination == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Destination"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s MediaPackageGroupSettings) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Destination != nil {
+		v := s.Destination
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "destination", v, metadata)
+	}
+	return nil
+}
+
+// Media Package Output Destination Settings
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/MediaPackageOutputDestinationSettings
+type MediaPackageOutputDestinationSettings struct {
+	_ struct{} `type:"structure"`
+
+	// ID of the channel in MediaPackage that is the destination for this output
+	// group. You do not need to specify the individual inputs in MediaPackage;
+	// MediaLive will handle the connection of the two MediaLive pipelines to the
+	// two MediaPackage inputs. The MediaPackage channel and MediaLive channel must
+	// be in the same region.
+	ChannelId *string `locationName:"channelId" min:"1" type:"string"`
+}
+
+// String returns the string representation
+func (s MediaPackageOutputDestinationSettings) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s MediaPackageOutputDestinationSettings) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *MediaPackageOutputDestinationSettings) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "MediaPackageOutputDestinationSettings"}
+	if s.ChannelId != nil && len(*s.ChannelId) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("ChannelId", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s MediaPackageOutputDestinationSettings) MarshalFields(e protocol.FieldEncoder) error {
+	if s.ChannelId != nil {
+		v := *s.ChannelId
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "channelId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+// Media Package Output Settings
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/MediaPackageOutputSettings
+type MediaPackageOutputSettings struct {
+	_ struct{} `type:"structure"`
+}
+
+// String returns the string representation
+func (s MediaPackageOutputSettings) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s MediaPackageOutputSettings) GoString() string {
+	return s.String()
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s MediaPackageOutputSettings) MarshalFields(e protocol.FieldEncoder) error {
+	return nil
+}
+
+// Mp2 Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/Mp2Settings
 type Mp2Settings struct {
 	_ struct{} `type:"structure"`
@@ -11440,6 +12754,7 @@ func (s Mp2Settings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Ms Smooth Group Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/MsSmoothGroupSettings
 type MsSmoothGroupSettings struct {
 	_ struct{} `type:"structure"`
@@ -11672,6 +12987,7 @@ func (s MsSmoothGroupSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Ms Smooth Output Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/MsSmoothOutputSettings
 type MsSmoothOutputSettings struct {
 	_ struct{} `type:"structure"`
@@ -11977,7 +13293,12 @@ type OutputDestination struct {
 	// User-specified id. This is used in an output group or an output.
 	Id *string `locationName:"id" type:"string"`
 
-	// Destination settings for output; one for each redundant encoder.
+	// Destination settings for a MediaPackage output; one destination for both
+	// encoders.
+	MediaPackageSettings []MediaPackageOutputDestinationSettings `locationName:"mediaPackageSettings" type:"list"`
+
+	// Destination settings for a standard output; one destination for each redundant
+	// encoder.
 	Settings []OutputDestinationSettings `locationName:"settings" type:"list"`
 }
 
@@ -11991,6 +13312,23 @@ func (s OutputDestination) GoString() string {
 	return s.String()
 }
 
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *OutputDestination) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "OutputDestination"}
+	if s.MediaPackageSettings != nil {
+		for i, v := range s.MediaPackageSettings {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "MediaPackageSettings", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s OutputDestination) MarshalFields(e protocol.FieldEncoder) error {
 	if s.Id != nil {
@@ -11998,6 +13336,18 @@ func (s OutputDestination) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "id", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.MediaPackageSettings) > 0 {
+		v := s.MediaPackageSettings
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "mediaPackageSettings", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
 	}
 	if len(s.Settings) > 0 {
 		v := s.Settings
@@ -12158,18 +13508,30 @@ func (s OutputGroup) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Output Group Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/OutputGroupSettings
 type OutputGroupSettings struct {
 	_ struct{} `type:"structure"`
 
+	// Archive Group Settings
 	ArchiveGroupSettings *ArchiveGroupSettings `locationName:"archiveGroupSettings" type:"structure"`
 
+	// Frame Capture Group Settings
+	FrameCaptureGroupSettings *FrameCaptureGroupSettings `locationName:"frameCaptureGroupSettings" type:"structure"`
+
+	// Hls Group Settings
 	HlsGroupSettings *HlsGroupSettings `locationName:"hlsGroupSettings" type:"structure"`
 
+	// Media Package Group Settings
+	MediaPackageGroupSettings *MediaPackageGroupSettings `locationName:"mediaPackageGroupSettings" type:"structure"`
+
+	// Ms Smooth Group Settings
 	MsSmoothGroupSettings *MsSmoothGroupSettings `locationName:"msSmoothGroupSettings" type:"structure"`
 
+	// Rtmp Group Settings
 	RtmpGroupSettings *RtmpGroupSettings `locationName:"rtmpGroupSettings" type:"structure"`
 
+	// Udp Group Settings
 	UdpGroupSettings *UdpGroupSettings `locationName:"udpGroupSettings" type:"structure"`
 }
 
@@ -12191,9 +13553,19 @@ func (s *OutputGroupSettings) Validate() error {
 			invalidParams.AddNested("ArchiveGroupSettings", err.(aws.ErrInvalidParams))
 		}
 	}
+	if s.FrameCaptureGroupSettings != nil {
+		if err := s.FrameCaptureGroupSettings.Validate(); err != nil {
+			invalidParams.AddNested("FrameCaptureGroupSettings", err.(aws.ErrInvalidParams))
+		}
+	}
 	if s.HlsGroupSettings != nil {
 		if err := s.HlsGroupSettings.Validate(); err != nil {
 			invalidParams.AddNested("HlsGroupSettings", err.(aws.ErrInvalidParams))
+		}
+	}
+	if s.MediaPackageGroupSettings != nil {
+		if err := s.MediaPackageGroupSettings.Validate(); err != nil {
+			invalidParams.AddNested("MediaPackageGroupSettings", err.(aws.ErrInvalidParams))
 		}
 	}
 	if s.MsSmoothGroupSettings != nil {
@@ -12221,11 +13593,23 @@ func (s OutputGroupSettings) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "archiveGroupSettings", v, metadata)
 	}
+	if s.FrameCaptureGroupSettings != nil {
+		v := s.FrameCaptureGroupSettings
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "frameCaptureGroupSettings", v, metadata)
+	}
 	if s.HlsGroupSettings != nil {
 		v := s.HlsGroupSettings
 
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "hlsGroupSettings", v, metadata)
+	}
+	if s.MediaPackageGroupSettings != nil {
+		v := s.MediaPackageGroupSettings
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "mediaPackageGroupSettings", v, metadata)
 	}
 	if s.MsSmoothGroupSettings != nil {
 		v := s.MsSmoothGroupSettings
@@ -12277,18 +13661,30 @@ func (s OutputLocationRef) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Output Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/OutputSettings
 type OutputSettings struct {
 	_ struct{} `type:"structure"`
 
+	// Archive Output Settings
 	ArchiveOutputSettings *ArchiveOutputSettings `locationName:"archiveOutputSettings" type:"structure"`
 
+	// Frame Capture Output Settings
+	FrameCaptureOutputSettings *FrameCaptureOutputSettings `locationName:"frameCaptureOutputSettings" type:"structure"`
+
+	// Hls Output Settings
 	HlsOutputSettings *HlsOutputSettings `locationName:"hlsOutputSettings" type:"structure"`
 
+	// Media Package Output Settings
+	MediaPackageOutputSettings *MediaPackageOutputSettings `locationName:"mediaPackageOutputSettings" type:"structure"`
+
+	// Ms Smooth Output Settings
 	MsSmoothOutputSettings *MsSmoothOutputSettings `locationName:"msSmoothOutputSettings" type:"structure"`
 
+	// Rtmp Output Settings
 	RtmpOutputSettings *RtmpOutputSettings `locationName:"rtmpOutputSettings" type:"structure"`
 
+	// Udp Output Settings
 	UdpOutputSettings *UdpOutputSettings `locationName:"udpOutputSettings" type:"structure"`
 }
 
@@ -12340,11 +13736,23 @@ func (s OutputSettings) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "archiveOutputSettings", v, metadata)
 	}
+	if s.FrameCaptureOutputSettings != nil {
+		v := s.FrameCaptureOutputSettings
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "frameCaptureOutputSettings", v, metadata)
+	}
 	if s.HlsOutputSettings != nil {
 		v := s.HlsOutputSettings
 
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "hlsOutputSettings", v, metadata)
+	}
+	if s.MediaPackageOutputSettings != nil {
+		v := s.MediaPackageOutputSettings
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "mediaPackageOutputSettings", v, metadata)
 	}
 	if s.MsSmoothOutputSettings != nil {
 		v := s.MsSmoothOutputSettings
@@ -12367,6 +13775,7 @@ func (s OutputSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Pass Through Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/PassThroughSettings
 type PassThroughSettings struct {
 	_ struct{} `type:"structure"`
@@ -12387,6 +13796,103 @@ func (s PassThroughSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Settings for the action to set pause state of a channel.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/PauseStateScheduleActionSettings
+type PauseStateScheduleActionSettings struct {
+	_ struct{} `type:"structure"`
+
+	Pipelines []PipelinePauseStateSettings `locationName:"pipelines" type:"list"`
+}
+
+// String returns the string representation
+func (s PauseStateScheduleActionSettings) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s PauseStateScheduleActionSettings) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *PauseStateScheduleActionSettings) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "PauseStateScheduleActionSettings"}
+	if s.Pipelines != nil {
+		for i, v := range s.Pipelines {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Pipelines", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s PauseStateScheduleActionSettings) MarshalFields(e protocol.FieldEncoder) error {
+	if len(s.Pipelines) > 0 {
+		v := s.Pipelines
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "pipelines", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
+	return nil
+}
+
+// Settings for pausing a pipeline.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/PipelinePauseStateSettings
+type PipelinePauseStateSettings struct {
+	_ struct{} `type:"structure"`
+
+	// Pipeline ID to pause ("PIPELINE_0" or "PIPELINE_1").
+	//
+	// PipelineId is a required field
+	PipelineId PipelineId `locationName:"pipelineId" type:"string" required:"true" enum:"true"`
+}
+
+// String returns the string representation
+func (s PipelinePauseStateSettings) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s PipelinePauseStateSettings) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *PipelinePauseStateSettings) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "PipelinePauseStateSettings"}
+	if len(s.PipelineId) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("PipelineId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s PipelinePauseStateSettings) MarshalFields(e protocol.FieldEncoder) error {
+	if len(s.PipelineId) > 0 {
+		v := s.PipelineId
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "pipelineId", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	return nil
+}
+
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/PurchaseOfferingRequest
 type PurchaseOfferingInput struct {
 	_ struct{} `type:"structure"`
@@ -12402,6 +13908,8 @@ type PurchaseOfferingInput struct {
 	RequestId *string `locationName:"requestId" type:"string" idempotencyToken:"true"`
 
 	Start *string `locationName:"start" type:"string"`
+
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -12469,6 +13977,18 @@ func (s PurchaseOfferingInput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "start", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	if s.OfferingId != nil {
 		v := *s.OfferingId
 
@@ -12514,6 +14034,7 @@ func (s PurchaseOfferingOutput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Remix Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/RemixSettings
 type RemixSettings struct {
 	_ struct{} `type:"structure"`
@@ -12650,6 +14171,9 @@ type Reservation struct {
 	// Current state of reservation, e.g. 'ACTIVE'
 	State ReservationState `locationName:"state" type:"string" enum:"true"`
 
+	// A collection of key-value pairs
+	Tags map[string]string `locationName:"tags" type:"map"`
+
 	// Recurring usage charge for each reserved resource, e.g. '157.0'
 	UsagePrice *float64 `locationName:"usagePrice" type:"double"`
 }
@@ -12762,6 +14286,18 @@ func (s Reservation) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "state", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	if s.UsagePrice != nil {
 		v := *s.UsagePrice
 
@@ -12775,6 +14311,9 @@ func (s Reservation) MarshalFields(e protocol.FieldEncoder) error {
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/ReservationResourceSpecification
 type ReservationResourceSpecification struct {
 	_ struct{} `type:"structure"`
+
+	// Channel class, e.g. 'STANDARD'
+	ChannelClass ChannelClass `locationName:"channelClass" type:"string" enum:"true"`
 
 	// Codec, e.g. 'AVC'
 	Codec ReservationCodec `locationName:"codec" type:"string" enum:"true"`
@@ -12810,6 +14349,12 @@ func (s ReservationResourceSpecification) GoString() string {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s ReservationResourceSpecification) MarshalFields(e protocol.FieldEncoder) error {
+	if len(s.ChannelClass) > 0 {
+		v := s.ChannelClass
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "channelClass", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
 	if len(s.Codec) > 0 {
 		v := s.Codec
 
@@ -12855,6 +14400,7 @@ func (s ReservationResourceSpecification) MarshalFields(e protocol.FieldEncoder)
 	return nil
 }
 
+// Rtmp Caption Info Destination Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/RtmpCaptionInfoDestinationSettings
 type RtmpCaptionInfoDestinationSettings struct {
 	_ struct{} `type:"structure"`
@@ -12875,6 +14421,7 @@ func (s RtmpCaptionInfoDestinationSettings) MarshalFields(e protocol.FieldEncode
 	return nil
 }
 
+// Rtmp Group Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/RtmpGroupSettings
 type RtmpGroupSettings struct {
 	_ struct{} `type:"structure"`
@@ -12975,6 +14522,7 @@ func (s RtmpGroupSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Rtmp Output Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/RtmpOutputSettings
 type RtmpOutputSettings struct {
 	_ struct{} `type:"structure"`
@@ -13150,25 +14698,28 @@ func (s ScheduleAction) MarshalFields(e protocol.FieldEncoder) error {
 type ScheduleActionSettings struct {
 	_ struct{} `type:"structure"`
 
-	// Settings to emit HLS metadata
+	// Action to insert HLS metadata
 	HlsTimedMetadataSettings *HlsTimedMetadataScheduleActionSettings `locationName:"hlsTimedMetadataSettings" type:"structure"`
 
-	// Settings to switch an input
+	// Action to switch the input
 	InputSwitchSettings *InputSwitchScheduleActionSettings `locationName:"inputSwitchSettings" type:"structure"`
 
-	// Settings for SCTE-35 return_to_network message
+	// Action to pause or unpause one or both channel pipelines
+	PauseStateSettings *PauseStateScheduleActionSettings `locationName:"pauseStateSettings" type:"structure"`
+
+	// Action to insert SCTE-35 return_to_network message
 	Scte35ReturnToNetworkSettings *Scte35ReturnToNetworkScheduleActionSettings `locationName:"scte35ReturnToNetworkSettings" type:"structure"`
 
-	// Settings for SCTE-35 splice_insert message
+	// Action to insert SCTE-35 splice_insert message
 	Scte35SpliceInsertSettings *Scte35SpliceInsertScheduleActionSettings `locationName:"scte35SpliceInsertSettings" type:"structure"`
 
-	// Settings for SCTE-35 time_signal message
+	// Action to insert SCTE-35 time_signal message
 	Scte35TimeSignalSettings *Scte35TimeSignalScheduleActionSettings `locationName:"scte35TimeSignalSettings" type:"structure"`
 
-	// Settings to activate a static image overlay
+	// Action to activate a static image overlay
 	StaticImageActivateSettings *StaticImageActivateScheduleActionSettings `locationName:"staticImageActivateSettings" type:"structure"`
 
-	// Settings to deactivate a static image overlay
+	// Action to deactivate a static image overlay
 	StaticImageDeactivateSettings *StaticImageDeactivateScheduleActionSettings `locationName:"staticImageDeactivateSettings" type:"structure"`
 }
 
@@ -13193,6 +14744,11 @@ func (s *ScheduleActionSettings) Validate() error {
 	if s.InputSwitchSettings != nil {
 		if err := s.InputSwitchSettings.Validate(); err != nil {
 			invalidParams.AddNested("InputSwitchSettings", err.(aws.ErrInvalidParams))
+		}
+	}
+	if s.PauseStateSettings != nil {
+		if err := s.PauseStateSettings.Validate(); err != nil {
+			invalidParams.AddNested("PauseStateSettings", err.(aws.ErrInvalidParams))
 		}
 	}
 	if s.Scte35ReturnToNetworkSettings != nil {
@@ -13235,6 +14791,12 @@ func (s ScheduleActionSettings) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "inputSwitchSettings", v, metadata)
+	}
+	if s.PauseStateSettings != nil {
+		v := s.PauseStateSettings
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "pauseStateSettings", v, metadata)
 	}
 	if s.Scte35ReturnToNetworkSettings != nil {
 		v := s.Scte35ReturnToNetworkSettings
@@ -13328,6 +14890,7 @@ func (s ScheduleActionStartSettings) MarshalFields(e protocol.FieldEncoder) erro
 	return nil
 }
 
+// Scte20 Plus Embedded Destination Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/Scte20PlusEmbeddedDestinationSettings
 type Scte20PlusEmbeddedDestinationSettings struct {
 	_ struct{} `type:"structure"`
@@ -13348,6 +14911,7 @@ func (s Scte20PlusEmbeddedDestinationSettings) MarshalFields(e protocol.FieldEnc
 	return nil
 }
 
+// Scte20 Source Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/Scte20SourceSettings
 type Scte20SourceSettings struct {
 	_ struct{} `type:"structure"`
@@ -13402,6 +14966,7 @@ func (s Scte20SourceSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Scte27 Destination Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/Scte27DestinationSettings
 type Scte27DestinationSettings struct {
 	_ struct{} `type:"structure"`
@@ -13422,6 +14987,7 @@ func (s Scte27DestinationSettings) MarshalFields(e protocol.FieldEncoder) error 
 	return nil
 }
 
+// Scte27 Source Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/Scte27SourceSettings
 type Scte27SourceSettings struct {
 	_ struct{} `type:"structure"`
@@ -13872,6 +15438,7 @@ func (s Scte35SegmentationDescriptor) MarshalFields(e protocol.FieldEncoder) err
 	return nil
 }
 
+// Scte35 Splice Insert
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/Scte35SpliceInsert
 type Scte35SpliceInsert struct {
 	_ struct{} `type:"structure"`
@@ -13996,6 +15563,7 @@ func (s Scte35SpliceInsertScheduleActionSettings) MarshalFields(e protocol.Field
 	return nil
 }
 
+// Scte35 Time Signal Apos
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/Scte35TimeSignalApos
 type Scte35TimeSignalApos struct {
 	_ struct{} `type:"structure"`
@@ -14119,6 +15687,7 @@ func (s Scte35TimeSignalScheduleActionSettings) MarshalFields(e protocol.FieldEn
 	return nil
 }
 
+// Smpte Tt Destination Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/SmpteTtDestinationSettings
 type SmpteTtDestinationSettings struct {
 	_ struct{} `type:"structure"`
@@ -14139,6 +15708,7 @@ func (s SmpteTtDestinationSettings) MarshalFields(e protocol.FieldEncoder) error
 	return nil
 }
 
+// Standard Hls Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/StandardHlsSettings
 type StandardHlsSettings struct {
 	_ struct{} `type:"structure"`
@@ -14247,10 +15817,15 @@ type StartChannelOutput struct {
 
 	Arn *string `locationName:"arn" type:"string"`
 
+	// A standard channel has two encoding pipelines and a single pipeline channel
+	// only has one.
+	ChannelClass ChannelClass `locationName:"channelClass" type:"string" enum:"true"`
+
 	Destinations []OutputDestination `locationName:"destinations" type:"list"`
 
 	EgressEndpoints []ChannelEgressEndpoint `locationName:"egressEndpoints" type:"list"`
 
+	// Encoder Settings
 	EncoderSettings *EncoderSettings `locationName:"encoderSettings" type:"structure"`
 
 	Id *string `locationName:"id" type:"string"`
@@ -14269,6 +15844,8 @@ type StartChannelOutput struct {
 	RoleArn *string `locationName:"roleArn" type:"string"`
 
 	State ChannelState `locationName:"state" type:"string" enum:"true"`
+
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -14293,6 +15870,12 @@ func (s StartChannelOutput) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "arn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.ChannelClass) > 0 {
+		v := s.ChannelClass
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "channelClass", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
 	if len(s.Destinations) > 0 {
 		v := s.Destinations
@@ -14377,6 +15960,18 @@ func (s StartChannelOutput) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "state", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	return nil
 }
@@ -14579,6 +16174,7 @@ func (s StaticImageDeactivateScheduleActionSettings) MarshalFields(e protocol.Fi
 	return nil
 }
 
+// Static Key Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/StaticKeySettings
 type StaticKeySettings struct {
 	_ struct{} `type:"structure"`
@@ -14694,10 +16290,15 @@ type StopChannelOutput struct {
 
 	Arn *string `locationName:"arn" type:"string"`
 
+	// A standard channel has two encoding pipelines and a single pipeline channel
+	// only has one.
+	ChannelClass ChannelClass `locationName:"channelClass" type:"string" enum:"true"`
+
 	Destinations []OutputDestination `locationName:"destinations" type:"list"`
 
 	EgressEndpoints []ChannelEgressEndpoint `locationName:"egressEndpoints" type:"list"`
 
+	// Encoder Settings
 	EncoderSettings *EncoderSettings `locationName:"encoderSettings" type:"structure"`
 
 	Id *string `locationName:"id" type:"string"`
@@ -14716,6 +16317,8 @@ type StopChannelOutput struct {
 	RoleArn *string `locationName:"roleArn" type:"string"`
 
 	State ChannelState `locationName:"state" type:"string" enum:"true"`
+
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -14740,6 +16343,12 @@ func (s StopChannelOutput) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "arn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.ChannelClass) > 0 {
+		v := s.ChannelClass
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "channelClass", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
 	if len(s.Destinations) > 0 {
 		v := s.Destinations
@@ -14825,9 +16434,22 @@ func (s StopChannelOutput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "state", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	return nil
 }
 
+// Teletext Destination Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/TeletextDestinationSettings
 type TeletextDestinationSettings struct {
 	_ struct{} `type:"structure"`
@@ -14848,6 +16470,7 @@ func (s TeletextDestinationSettings) MarshalFields(e protocol.FieldEncoder) erro
 	return nil
 }
 
+// Teletext Source Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/TeletextSourceSettings
 type TeletextSourceSettings struct {
 	_ struct{} `type:"structure"`
@@ -14879,6 +16502,7 @@ func (s TeletextSourceSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Timecode Config
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/TimecodeConfig
 type TimecodeConfig struct {
 	_ struct{} `type:"structure"`
@@ -14943,6 +16567,7 @@ func (s TimecodeConfig) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Ttml Destination Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/TtmlDestinationSettings
 type TtmlDestinationSettings struct {
 	_ struct{} `type:"structure"`
@@ -14974,10 +16599,12 @@ func (s TtmlDestinationSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Udp Container Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/UdpContainerSettings
 type UdpContainerSettings struct {
 	_ struct{} `type:"structure"`
 
+	// M2ts Settings
 	M2tsSettings *M2tsSettings `locationName:"m2tsSettings" type:"structure"`
 }
 
@@ -15017,6 +16644,7 @@ func (s UdpContainerSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Udp Group Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/UdpGroupSettings
 type UdpGroupSettings struct {
 	_ struct{} `type:"structure"`
@@ -15070,6 +16698,7 @@ func (s UdpGroupSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Udp Output Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/UdpOutputSettings
 type UdpOutputSettings struct {
 	_ struct{} `type:"structure"`
@@ -15080,6 +16709,8 @@ type UdpOutputSettings struct {
 	// switching, input disruptions, picture reordering, etc.
 	BufferMsec *int64 `locationName:"bufferMsec" type:"integer"`
 
+	// Udp Container Settings
+	//
 	// ContainerSettings is a required field
 	ContainerSettings *UdpContainerSettings `locationName:"containerSettings" type:"structure" required:"true"`
 
@@ -15169,6 +16800,7 @@ type UpdateChannelInput struct {
 
 	Destinations []OutputDestination `locationName:"destinations" type:"list"`
 
+	// Encoder Settings
 	EncoderSettings *EncoderSettings `locationName:"encoderSettings" type:"structure"`
 
 	InputAttachments []InputAttachment `locationName:"inputAttachments" type:"list"`
@@ -15199,6 +16831,13 @@ func (s *UpdateChannelInput) Validate() error {
 
 	if s.ChannelId == nil {
 		invalidParams.Add(aws.NewErrParamRequired("ChannelId"))
+	}
+	if s.Destinations != nil {
+		for i, v := range s.Destinations {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Destinations", i), err.(aws.ErrInvalidParams))
+			}
+		}
 	}
 	if s.EncoderSettings != nil {
 		if err := s.EncoderSettings.Validate(); err != nil {
@@ -15480,6 +17119,8 @@ type UpdateInputSecurityGroupInput struct {
 	// InputSecurityGroupId is a required field
 	InputSecurityGroupId *string `location:"uri" locationName:"inputSecurityGroupId" type:"string" required:"true"`
 
+	Tags map[string]string `locationName:"tags" type:"map"`
+
 	WhitelistRules []InputWhitelistRuleCidr `locationName:"whitelistRules" type:"list"`
 }
 
@@ -15511,6 +17152,18 @@ func (s *UpdateInputSecurityGroupInput) Validate() error {
 func (s UpdateInputSecurityGroupInput) MarshalFields(e protocol.FieldEncoder) error {
 	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
 
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	if len(s.WhitelistRules) > 0 {
 		v := s.WhitelistRules
 
@@ -15568,6 +17221,95 @@ func (s UpdateInputSecurityGroupOutput) MarshalFields(e protocol.FieldEncoder) e
 	return nil
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/UpdateReservationRequest
+type UpdateReservationInput struct {
+	_ struct{} `type:"structure"`
+
+	Name *string `locationName:"name" type:"string"`
+
+	// ReservationId is a required field
+	ReservationId *string `location:"uri" locationName:"reservationId" type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s UpdateReservationInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UpdateReservationInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *UpdateReservationInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "UpdateReservationInput"}
+
+	if s.ReservationId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ReservationId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s UpdateReservationInput) MarshalFields(e protocol.FieldEncoder) error {
+	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
+
+	if s.Name != nil {
+		v := *s.Name
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.ReservationId != nil {
+		v := *s.ReservationId
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "reservationId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/UpdateReservationResponse
+type UpdateReservationOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// Reserved resources available to use
+	Reservation *Reservation `locationName:"reservation" type:"structure"`
+}
+
+// String returns the string representation
+func (s UpdateReservationOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UpdateReservationOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s UpdateReservationOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s UpdateReservationOutput) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Reservation != nil {
+		v := s.Reservation
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "reservation", v, metadata)
+	}
+	return nil
+}
+
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/ValidationError
 type ValidationError struct {
 	_ struct{} `type:"structure"`
@@ -15604,10 +17346,15 @@ func (s ValidationError) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Video Codec Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/VideoCodecSettings
 type VideoCodecSettings struct {
 	_ struct{} `type:"structure"`
 
+	// Frame Capture Settings
+	FrameCaptureSettings *FrameCaptureSettings `locationName:"frameCaptureSettings" type:"structure"`
+
+	// H264 Settings
 	H264Settings *H264Settings `locationName:"h264Settings" type:"structure"`
 }
 
@@ -15624,6 +17371,11 @@ func (s VideoCodecSettings) GoString() string {
 // Validate inspects the fields of the type to determine if they are valid.
 func (s *VideoCodecSettings) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "VideoCodecSettings"}
+	if s.FrameCaptureSettings != nil {
+		if err := s.FrameCaptureSettings.Validate(); err != nil {
+			invalidParams.AddNested("FrameCaptureSettings", err.(aws.ErrInvalidParams))
+		}
+	}
 	if s.H264Settings != nil {
 		if err := s.H264Settings.Validate(); err != nil {
 			invalidParams.AddNested("H264Settings", err.(aws.ErrInvalidParams))
@@ -15638,6 +17390,12 @@ func (s *VideoCodecSettings) Validate() error {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s VideoCodecSettings) MarshalFields(e protocol.FieldEncoder) error {
+	if s.FrameCaptureSettings != nil {
+		v := s.FrameCaptureSettings
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "frameCaptureSettings", v, metadata)
+	}
 	if s.H264Settings != nil {
 		v := s.H264Settings
 
@@ -15655,8 +17413,10 @@ type VideoDescription struct {
 	// Video codec settings.
 	CodecSettings *VideoCodecSettings `locationName:"codecSettings" type:"structure"`
 
-	// Output video height (in pixels). Leave blank to use source video height.
-	// If left blank, width must also be unspecified.
+	// Output video height, in pixels. Must be an even number. For most codecs,
+	// you can leave this field and width blank in order to use the height and width
+	// (resolution) from the source. Note, however, that leaving blank is not recommended.
+	// For the Frame Capture codec, height and width are required.
 	Height *int64 `locationName:"height" type:"integer"`
 
 	// The name of this VideoDescription. Outputs will use this name to uniquely
@@ -15666,24 +17426,30 @@ type VideoDescription struct {
 	// Name is a required field
 	Name *string `locationName:"name" type:"string" required:"true"`
 
-	// Indicates how to respond to the AFD values in the input stream. Setting to
-	// "respond" causes input video to be clipped, depending on AFD value, input
-	// display aspect ratio and output display aspect ratio.
+	// Indicates how to respond to the AFD values in the input stream. RESPOND causes
+	// input video to be clipped, depending on the AFD value, input display aspect
+	// ratio, and output display aspect ratio, and (except for FRAMECAPTURE codec)
+	// includes the values in the output. PASSTHROUGH (does not apply to FRAMECAPTURE
+	// codec) ignores the AFD values and includes the values in the output, so input
+	// video is not clipped. NONE ignores the AFD values and does not include the
+	// values through to the output, so input video is not clipped.
 	RespondToAfd VideoDescriptionRespondToAfd `locationName:"respondToAfd" type:"string" enum:"true"`
 
-	// When set to "stretchToOutput", automatically configures the output position
-	// to stretch the video to the specified output resolution. This option will
-	// override any position value.
+	// STRETCHTOOUTPUT configures the output position to stretch the video to the
+	// specified output resolution (height and width). This option will override
+	// any position value. DEFAULT may insert black boxes (pillar boxes or letter
+	// boxes) around the video to provide the specified output resolution.
 	ScalingBehavior VideoDescriptionScalingBehavior `locationName:"scalingBehavior" type:"string" enum:"true"`
 
-	// Changes the width of the anti-alias filter kernel used for scaling. Only
-	// applies if scaling is being performed and antiAlias is set to true. 0 is
-	// the softest setting, 100 the sharpest, and 50 recommended for most content.
+	// Changes the strength of the anti-alias filter used for scaling. 0 is the
+	// softest setting, 100 is the sharpest. A setting of 50 is recommended for
+	// most content.
 	Sharpness *int64 `locationName:"sharpness" type:"integer"`
 
-	// Output video width (in pixels). Leave out to use source video width. If left
-	// out, height must also be left out. Display aspect ratio is always preserved
-	// by letterboxing or pillarboxing when necessary.
+	// Output video width, in pixels. Must be an even number. For most codecs, you
+	// can leave this field and height blank in order to use the height and width
+	// (resolution) from the source. Note, however, that leaving blank is not recommended.
+	// For the Frame Capture codec, height and width are required.
 	Width *int64 `locationName:"width" type:"integer"`
 }
 
@@ -15820,6 +17586,7 @@ func (s VideoSelector) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Video Selector Pid
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/VideoSelectorPid
 type VideoSelectorPid struct {
 	_ struct{} `type:"structure"`
@@ -15849,6 +17616,7 @@ func (s VideoSelectorPid) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Video Selector Program Id
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/VideoSelectorProgramId
 type VideoSelectorProgramId struct {
 	_ struct{} `type:"structure"`
@@ -15880,12 +17648,15 @@ func (s VideoSelectorProgramId) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Video Selector Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/VideoSelectorSettings
 type VideoSelectorSettings struct {
 	_ struct{} `type:"structure"`
 
+	// Video Selector Pid
 	VideoSelectorPid *VideoSelectorPid `locationName:"videoSelectorPid" type:"structure"`
 
+	// Video Selector Program Id
 	VideoSelectorProgramId *VideoSelectorProgramId `locationName:"videoSelectorProgramId" type:"structure"`
 }
 
@@ -15916,6 +17687,7 @@ func (s VideoSelectorSettings) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Webvtt Destination Settings
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/medialive-2017-10-14/WebvttDestinationSettings
 type WebvttDestinationSettings struct {
 	_ struct{} `type:"structure"`
@@ -15936,6 +17708,7 @@ func (s WebvttDestinationSettings) MarshalFields(e protocol.FieldEncoder) error 
 	return nil
 }
 
+// Aac Coding Mode
 type AacCodingMode string
 
 // Enum values for AacCodingMode
@@ -15956,6 +17729,7 @@ func (enum AacCodingMode) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Aac Input Type
 type AacInputType string
 
 // Enum values for AacInputType
@@ -15973,6 +17747,7 @@ func (enum AacInputType) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Aac Profile
 type AacProfile string
 
 // Enum values for AacProfile
@@ -15991,6 +17766,7 @@ func (enum AacProfile) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Aac Rate Control Mode
 type AacRateControlMode string
 
 // Enum values for AacRateControlMode
@@ -16008,6 +17784,7 @@ func (enum AacRateControlMode) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Aac Raw Format
 type AacRawFormat string
 
 // Enum values for AacRawFormat
@@ -16025,6 +17802,7 @@ func (enum AacRawFormat) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Aac Spec
 type AacSpec string
 
 // Enum values for AacSpec
@@ -16042,6 +17820,7 @@ func (enum AacSpec) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Aac Vbr Quality
 type AacVbrQuality string
 
 // Enum values for AacVbrQuality
@@ -16061,6 +17840,7 @@ func (enum AacVbrQuality) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Ac3 Bitstream Mode
 type Ac3BitstreamMode string
 
 // Enum values for Ac3BitstreamMode
@@ -16084,6 +17864,7 @@ func (enum Ac3BitstreamMode) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Ac3 Coding Mode
 type Ac3CodingMode string
 
 // Enum values for Ac3CodingMode
@@ -16103,6 +17884,7 @@ func (enum Ac3CodingMode) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Ac3 Drc Profile
 type Ac3DrcProfile string
 
 // Enum values for Ac3DrcProfile
@@ -16120,6 +17902,7 @@ func (enum Ac3DrcProfile) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Ac3 Lfe Filter
 type Ac3LfeFilter string
 
 // Enum values for Ac3LfeFilter
@@ -16137,6 +17920,7 @@ func (enum Ac3LfeFilter) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Ac3 Metadata Control
 type Ac3MetadataControl string
 
 // Enum values for Ac3MetadataControl
@@ -16154,6 +17938,7 @@ func (enum Ac3MetadataControl) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Afd Signaling
 type AfdSignaling string
 
 // Enum values for AfdSignaling
@@ -16172,6 +17957,7 @@ func (enum AfdSignaling) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Audio Description Audio Type Control
 type AudioDescriptionAudioTypeControl string
 
 // Enum values for AudioDescriptionAudioTypeControl
@@ -16189,6 +17975,7 @@ func (enum AudioDescriptionAudioTypeControl) MarshalValueBuf(b []byte) ([]byte, 
 	return append(b, enum...), nil
 }
 
+// Audio Description Language Code Control
 type AudioDescriptionLanguageCodeControl string
 
 // Enum values for AudioDescriptionLanguageCodeControl
@@ -16206,6 +17993,7 @@ func (enum AudioDescriptionLanguageCodeControl) MarshalValueBuf(b []byte) ([]byt
 	return append(b, enum...), nil
 }
 
+// Audio Language Selection Policy
 type AudioLanguageSelectionPolicy string
 
 // Enum values for AudioLanguageSelectionPolicy
@@ -16223,6 +18011,7 @@ func (enum AudioLanguageSelectionPolicy) MarshalValueBuf(b []byte) ([]byte, erro
 	return append(b, enum...), nil
 }
 
+// Audio Normalization Algorithm
 type AudioNormalizationAlgorithm string
 
 // Enum values for AudioNormalizationAlgorithm
@@ -16240,6 +18029,7 @@ func (enum AudioNormalizationAlgorithm) MarshalValueBuf(b []byte) ([]byte, error
 	return append(b, enum...), nil
 }
 
+// Audio Normalization Algorithm Control
 type AudioNormalizationAlgorithmControl string
 
 // Enum values for AudioNormalizationAlgorithmControl
@@ -16256,6 +18046,7 @@ func (enum AudioNormalizationAlgorithmControl) MarshalValueBuf(b []byte) ([]byte
 	return append(b, enum...), nil
 }
 
+// Audio Only Hls Track Type
 type AudioOnlyHlsTrackType string
 
 // Enum values for AudioOnlyHlsTrackType
@@ -16275,6 +18066,7 @@ func (enum AudioOnlyHlsTrackType) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Audio Type
 type AudioType string
 
 // Enum values for AudioType
@@ -16294,6 +18086,7 @@ func (enum AudioType) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Authentication Scheme
 type AuthenticationScheme string
 
 // Enum values for AuthenticationScheme
@@ -16311,6 +18104,7 @@ func (enum AuthenticationScheme) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Avail Blanking State
 type AvailBlankingState string
 
 // Enum values for AvailBlankingState
@@ -16328,6 +18122,7 @@ func (enum AvailBlankingState) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Blackout Slate Network End Blackout
 type BlackoutSlateNetworkEndBlackout string
 
 // Enum values for BlackoutSlateNetworkEndBlackout
@@ -16345,6 +18140,7 @@ func (enum BlackoutSlateNetworkEndBlackout) MarshalValueBuf(b []byte) ([]byte, e
 	return append(b, enum...), nil
 }
 
+// Blackout Slate State
 type BlackoutSlateState string
 
 // Enum values for BlackoutSlateState
@@ -16362,6 +18158,7 @@ func (enum BlackoutSlateState) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Burn In Alignment
 type BurnInAlignment string
 
 // Enum values for BurnInAlignment
@@ -16380,6 +18177,7 @@ func (enum BurnInAlignment) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Burn In Background Color
 type BurnInBackgroundColor string
 
 // Enum values for BurnInBackgroundColor
@@ -16398,6 +18196,7 @@ func (enum BurnInBackgroundColor) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Burn In Font Color
 type BurnInFontColor string
 
 // Enum values for BurnInFontColor
@@ -16419,6 +18218,7 @@ func (enum BurnInFontColor) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Burn In Outline Color
 type BurnInOutlineColor string
 
 // Enum values for BurnInOutlineColor
@@ -16440,6 +18240,7 @@ func (enum BurnInOutlineColor) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Burn In Shadow Color
 type BurnInShadowColor string
 
 // Enum values for BurnInShadowColor
@@ -16458,6 +18259,7 @@ func (enum BurnInShadowColor) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Burn In Teletext Grid Control
 type BurnInTeletextGridControl string
 
 // Enum values for BurnInTeletextGridControl
@@ -16471,6 +18273,25 @@ func (enum BurnInTeletextGridControl) MarshalValue() (string, error) {
 }
 
 func (enum BurnInTeletextGridControl) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
+// A standard channel has two encoding pipelines and a single pipeline channel
+// only has one.
+type ChannelClass string
+
+// Enum values for ChannelClass
+const (
+	ChannelClassStandard       ChannelClass = "STANDARD"
+	ChannelClassSinglePipeline ChannelClass = "SINGLE_PIPELINE"
+)
+
+func (enum ChannelClass) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum ChannelClass) MarshalValueBuf(b []byte) ([]byte, error) {
 	b = b[0:0]
 	return append(b, enum...), nil
 }
@@ -16499,6 +18320,7 @@ func (enum ChannelState) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Dvb Sdt Output Sdt
 type DvbSdtOutputSdt string
 
 // Enum values for DvbSdtOutputSdt
@@ -16518,6 +18340,7 @@ func (enum DvbSdtOutputSdt) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Dvb Sub Destination Alignment
 type DvbSubDestinationAlignment string
 
 // Enum values for DvbSubDestinationAlignment
@@ -16536,6 +18359,7 @@ func (enum DvbSubDestinationAlignment) MarshalValueBuf(b []byte) ([]byte, error)
 	return append(b, enum...), nil
 }
 
+// Dvb Sub Destination Background Color
 type DvbSubDestinationBackgroundColor string
 
 // Enum values for DvbSubDestinationBackgroundColor
@@ -16554,6 +18378,7 @@ func (enum DvbSubDestinationBackgroundColor) MarshalValueBuf(b []byte) ([]byte, 
 	return append(b, enum...), nil
 }
 
+// Dvb Sub Destination Font Color
 type DvbSubDestinationFontColor string
 
 // Enum values for DvbSubDestinationFontColor
@@ -16575,6 +18400,7 @@ func (enum DvbSubDestinationFontColor) MarshalValueBuf(b []byte) ([]byte, error)
 	return append(b, enum...), nil
 }
 
+// Dvb Sub Destination Outline Color
 type DvbSubDestinationOutlineColor string
 
 // Enum values for DvbSubDestinationOutlineColor
@@ -16596,6 +18422,7 @@ func (enum DvbSubDestinationOutlineColor) MarshalValueBuf(b []byte) ([]byte, err
 	return append(b, enum...), nil
 }
 
+// Dvb Sub Destination Shadow Color
 type DvbSubDestinationShadowColor string
 
 // Enum values for DvbSubDestinationShadowColor
@@ -16614,6 +18441,7 @@ func (enum DvbSubDestinationShadowColor) MarshalValueBuf(b []byte) ([]byte, erro
 	return append(b, enum...), nil
 }
 
+// Dvb Sub Destination Teletext Grid Control
 type DvbSubDestinationTeletextGridControl string
 
 // Enum values for DvbSubDestinationTeletextGridControl
@@ -16631,6 +18459,7 @@ func (enum DvbSubDestinationTeletextGridControl) MarshalValueBuf(b []byte) ([]by
 	return append(b, enum...), nil
 }
 
+// Eac3 Attenuation Control
 type Eac3AttenuationControl string
 
 // Enum values for Eac3AttenuationControl
@@ -16648,6 +18477,7 @@ func (enum Eac3AttenuationControl) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Eac3 Bitstream Mode
 type Eac3BitstreamMode string
 
 // Enum values for Eac3BitstreamMode
@@ -16668,6 +18498,7 @@ func (enum Eac3BitstreamMode) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Eac3 Coding Mode
 type Eac3CodingMode string
 
 // Enum values for Eac3CodingMode
@@ -16686,6 +18517,7 @@ func (enum Eac3CodingMode) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Eac3 Dc Filter
 type Eac3DcFilter string
 
 // Enum values for Eac3DcFilter
@@ -16703,6 +18535,7 @@ func (enum Eac3DcFilter) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Eac3 Drc Line
 type Eac3DrcLine string
 
 // Enum values for Eac3DrcLine
@@ -16724,6 +18557,7 @@ func (enum Eac3DrcLine) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Eac3 Drc Rf
 type Eac3DrcRf string
 
 // Enum values for Eac3DrcRf
@@ -16745,6 +18579,7 @@ func (enum Eac3DrcRf) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Eac3 Lfe Control
 type Eac3LfeControl string
 
 // Enum values for Eac3LfeControl
@@ -16762,6 +18597,7 @@ func (enum Eac3LfeControl) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Eac3 Lfe Filter
 type Eac3LfeFilter string
 
 // Enum values for Eac3LfeFilter
@@ -16779,6 +18615,7 @@ func (enum Eac3LfeFilter) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Eac3 Metadata Control
 type Eac3MetadataControl string
 
 // Enum values for Eac3MetadataControl
@@ -16796,6 +18633,7 @@ func (enum Eac3MetadataControl) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Eac3 Passthrough Control
 type Eac3PassthroughControl string
 
 // Enum values for Eac3PassthroughControl
@@ -16813,6 +18651,7 @@ func (enum Eac3PassthroughControl) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Eac3 Phase Control
 type Eac3PhaseControl string
 
 // Enum values for Eac3PhaseControl
@@ -16830,6 +18669,7 @@ func (enum Eac3PhaseControl) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Eac3 Stereo Downmix
 type Eac3StereoDownmix string
 
 // Enum values for Eac3StereoDownmix
@@ -16849,6 +18689,7 @@ func (enum Eac3StereoDownmix) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Eac3 Surround Ex Mode
 type Eac3SurroundExMode string
 
 // Enum values for Eac3SurroundExMode
@@ -16867,6 +18708,7 @@ func (enum Eac3SurroundExMode) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Eac3 Surround Mode
 type Eac3SurroundMode string
 
 // Enum values for Eac3SurroundMode
@@ -16885,6 +18727,7 @@ func (enum Eac3SurroundMode) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Embedded Convert608 To708
 type EmbeddedConvert608To708 string
 
 // Enum values for EmbeddedConvert608To708
@@ -16902,6 +18745,7 @@ func (enum EmbeddedConvert608To708) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Embedded Scte20 Detection
 type EmbeddedScte20Detection string
 
 // Enum values for EmbeddedScte20Detection
@@ -16919,6 +18763,7 @@ func (enum EmbeddedScte20Detection) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Fec Output Include Fec
 type FecOutputIncludeFec string
 
 // Enum values for FecOutputIncludeFec
@@ -16936,6 +18781,7 @@ func (enum FecOutputIncludeFec) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Fixed Afd
 type FixedAfd string
 
 // Enum values for FixedAfd
@@ -16980,6 +18826,7 @@ func (enum FollowPoint) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Global Configuration Input End Action
 type GlobalConfigurationInputEndAction string
 
 // Enum values for GlobalConfigurationInputEndAction
@@ -16997,6 +18844,7 @@ func (enum GlobalConfigurationInputEndAction) MarshalValueBuf(b []byte) ([]byte,
 	return append(b, enum...), nil
 }
 
+// Global Configuration Low Framerate Inputs
 type GlobalConfigurationLowFramerateInputs string
 
 // Enum values for GlobalConfigurationLowFramerateInputs
@@ -17014,6 +18862,25 @@ func (enum GlobalConfigurationLowFramerateInputs) MarshalValueBuf(b []byte) ([]b
 	return append(b, enum...), nil
 }
 
+// Global Configuration Output Locking Mode
+type GlobalConfigurationOutputLockingMode string
+
+// Enum values for GlobalConfigurationOutputLockingMode
+const (
+	GlobalConfigurationOutputLockingModeEpochLocking    GlobalConfigurationOutputLockingMode = "EPOCH_LOCKING"
+	GlobalConfigurationOutputLockingModePipelineLocking GlobalConfigurationOutputLockingMode = "PIPELINE_LOCKING"
+)
+
+func (enum GlobalConfigurationOutputLockingMode) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum GlobalConfigurationOutputLockingMode) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
+// Global Configuration Output Timing Source
 type GlobalConfigurationOutputTimingSource string
 
 // Enum values for GlobalConfigurationOutputTimingSource
@@ -17031,6 +18898,7 @@ func (enum GlobalConfigurationOutputTimingSource) MarshalValueBuf(b []byte) ([]b
 	return append(b, enum...), nil
 }
 
+// H264 Adaptive Quantization
 type H264AdaptiveQuantization string
 
 // Enum values for H264AdaptiveQuantization
@@ -17052,6 +18920,7 @@ func (enum H264AdaptiveQuantization) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// H264 Color Metadata
 type H264ColorMetadata string
 
 // Enum values for H264ColorMetadata
@@ -17069,6 +18938,7 @@ func (enum H264ColorMetadata) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// H264 Entropy Encoding
 type H264EntropyEncoding string
 
 // Enum values for H264EntropyEncoding
@@ -17086,6 +18956,7 @@ func (enum H264EntropyEncoding) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// H264 Flicker Aq
 type H264FlickerAq string
 
 // Enum values for H264FlickerAq
@@ -17103,6 +18974,7 @@ func (enum H264FlickerAq) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// H264 Framerate Control
 type H264FramerateControl string
 
 // Enum values for H264FramerateControl
@@ -17120,6 +18992,7 @@ func (enum H264FramerateControl) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// H264 Gop BReference
 type H264GopBReference string
 
 // Enum values for H264GopBReference
@@ -17137,6 +19010,7 @@ func (enum H264GopBReference) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// H264 Gop Size Units
 type H264GopSizeUnits string
 
 // Enum values for H264GopSizeUnits
@@ -17154,6 +19028,7 @@ func (enum H264GopSizeUnits) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// H264 Level
 type H264Level string
 
 // Enum values for H264Level
@@ -17186,6 +19061,7 @@ func (enum H264Level) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// H264 Look Ahead Rate Control
 type H264LookAheadRateControl string
 
 // Enum values for H264LookAheadRateControl
@@ -17204,6 +19080,7 @@ func (enum H264LookAheadRateControl) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// H264 Par Control
 type H264ParControl string
 
 // Enum values for H264ParControl
@@ -17221,6 +19098,7 @@ func (enum H264ParControl) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// H264 Profile
 type H264Profile string
 
 // Enum values for H264Profile
@@ -17242,6 +19120,7 @@ func (enum H264Profile) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// H264 Rate Control Mode
 type H264RateControlMode string
 
 // Enum values for H264RateControlMode
@@ -17260,6 +19139,7 @@ func (enum H264RateControlMode) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// H264 Scan Type
 type H264ScanType string
 
 // Enum values for H264ScanType
@@ -17277,6 +19157,7 @@ func (enum H264ScanType) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// H264 Scene Change Detect
 type H264SceneChangeDetect string
 
 // Enum values for H264SceneChangeDetect
@@ -17294,6 +19175,7 @@ func (enum H264SceneChangeDetect) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// H264 Spatial Aq
 type H264SpatialAq string
 
 // Enum values for H264SpatialAq
@@ -17311,6 +19193,7 @@ func (enum H264SpatialAq) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// H264 Sub Gop Length
 type H264SubGopLength string
 
 // Enum values for H264SubGopLength
@@ -17328,6 +19211,7 @@ func (enum H264SubGopLength) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// H264 Syntax
 type H264Syntax string
 
 // Enum values for H264Syntax
@@ -17345,6 +19229,7 @@ func (enum H264Syntax) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// H264 Temporal Aq
 type H264TemporalAq string
 
 // Enum values for H264TemporalAq
@@ -17362,6 +19247,7 @@ func (enum H264TemporalAq) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// H264 Timecode Insertion Behavior
 type H264TimecodeInsertionBehavior string
 
 // Enum values for H264TimecodeInsertionBehavior
@@ -17379,6 +19265,7 @@ func (enum H264TimecodeInsertionBehavior) MarshalValueBuf(b []byte) ([]byte, err
 	return append(b, enum...), nil
 }
 
+// Hls Ad Markers
 type HlsAdMarkers string
 
 // Enum values for HlsAdMarkers
@@ -17397,6 +19284,7 @@ func (enum HlsAdMarkers) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Hls Akamai Http Transfer Mode
 type HlsAkamaiHttpTransferMode string
 
 // Enum values for HlsAkamaiHttpTransferMode
@@ -17414,6 +19302,7 @@ func (enum HlsAkamaiHttpTransferMode) MarshalValueBuf(b []byte) ([]byte, error) 
 	return append(b, enum...), nil
 }
 
+// Hls Caption Language Setting
 type HlsCaptionLanguageSetting string
 
 // Enum values for HlsCaptionLanguageSetting
@@ -17432,6 +19321,7 @@ func (enum HlsCaptionLanguageSetting) MarshalValueBuf(b []byte) ([]byte, error) 
 	return append(b, enum...), nil
 }
 
+// Hls Client Cache
 type HlsClientCache string
 
 // Enum values for HlsClientCache
@@ -17449,6 +19339,7 @@ func (enum HlsClientCache) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Hls Codec Specification
 type HlsCodecSpecification string
 
 // Enum values for HlsCodecSpecification
@@ -17466,6 +19357,7 @@ func (enum HlsCodecSpecification) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Hls Directory Structure
 type HlsDirectoryStructure string
 
 // Enum values for HlsDirectoryStructure
@@ -17483,6 +19375,7 @@ func (enum HlsDirectoryStructure) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Hls Encryption Type
 type HlsEncryptionType string
 
 // Enum values for HlsEncryptionType
@@ -17500,6 +19393,7 @@ func (enum HlsEncryptionType) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Hls Iv In Manifest
 type HlsIvInManifest string
 
 // Enum values for HlsIvInManifest
@@ -17517,6 +19411,7 @@ func (enum HlsIvInManifest) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Hls Iv Source
 type HlsIvSource string
 
 // Enum values for HlsIvSource
@@ -17534,6 +19429,7 @@ func (enum HlsIvSource) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Hls Manifest Compression
 type HlsManifestCompression string
 
 // Enum values for HlsManifestCompression
@@ -17551,6 +19447,7 @@ func (enum HlsManifestCompression) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Hls Manifest Duration Format
 type HlsManifestDurationFormat string
 
 // Enum values for HlsManifestDurationFormat
@@ -17568,6 +19465,7 @@ func (enum HlsManifestDurationFormat) MarshalValueBuf(b []byte) ([]byte, error) 
 	return append(b, enum...), nil
 }
 
+// Hls Media Store Storage Class
 type HlsMediaStoreStorageClass string
 
 // Enum values for HlsMediaStoreStorageClass
@@ -17584,6 +19482,7 @@ func (enum HlsMediaStoreStorageClass) MarshalValueBuf(b []byte) ([]byte, error) 
 	return append(b, enum...), nil
 }
 
+// Hls Mode
 type HlsMode string
 
 // Enum values for HlsMode
@@ -17601,6 +19500,7 @@ func (enum HlsMode) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Hls Output Selection
 type HlsOutputSelection string
 
 // Enum values for HlsOutputSelection
@@ -17618,6 +19518,7 @@ func (enum HlsOutputSelection) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Hls Program Date Time
 type HlsProgramDateTime string
 
 // Enum values for HlsProgramDateTime
@@ -17635,6 +19536,7 @@ func (enum HlsProgramDateTime) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Hls Redundant Manifest
 type HlsRedundantManifest string
 
 // Enum values for HlsRedundantManifest
@@ -17652,6 +19554,7 @@ func (enum HlsRedundantManifest) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Hls Segmentation Mode
 type HlsSegmentationMode string
 
 // Enum values for HlsSegmentationMode
@@ -17669,6 +19572,7 @@ func (enum HlsSegmentationMode) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Hls Stream Inf Resolution
 type HlsStreamInfResolution string
 
 // Enum values for HlsStreamInfResolution
@@ -17686,6 +19590,7 @@ func (enum HlsStreamInfResolution) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Hls Timed Metadata Id3 Frame
 type HlsTimedMetadataId3Frame string
 
 // Enum values for HlsTimedMetadataId3Frame
@@ -17704,6 +19609,7 @@ func (enum HlsTimedMetadataId3Frame) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Hls Ts File Mode
 type HlsTsFileMode string
 
 // Enum values for HlsTsFileMode
@@ -17721,6 +19627,7 @@ func (enum HlsTsFileMode) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Hls Webdav Http Transfer Mode
 type HlsWebdavHttpTransferMode string
 
 // Enum values for HlsWebdavHttpTransferMode
@@ -17734,6 +19641,44 @@ func (enum HlsWebdavHttpTransferMode) MarshalValue() (string, error) {
 }
 
 func (enum HlsWebdavHttpTransferMode) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
+// When set to "standard", an I-Frame only playlist will be written out for
+// each video output in the output group. This I-Frame only playlist will contain
+// byte range offsets pointing to the I-frame(s) in each segment.
+type IFrameOnlyPlaylistType string
+
+// Enum values for IFrameOnlyPlaylistType
+const (
+	IFrameOnlyPlaylistTypeDisabled IFrameOnlyPlaylistType = "DISABLED"
+	IFrameOnlyPlaylistTypeStandard IFrameOnlyPlaylistType = "STANDARD"
+)
+
+func (enum IFrameOnlyPlaylistType) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum IFrameOnlyPlaylistType) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
+// A standard input has two sources and a single pipeline input only has one.
+type InputClass string
+
+// Enum values for InputClass
+const (
+	InputClassStandard       InputClass = "STANDARD"
+	InputClassSinglePipeline InputClass = "SINGLE_PIPELINE"
+)
+
+func (enum InputClass) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum InputClass) MarshalValueBuf(b []byte) ([]byte, error) {
 	b = b[0:0]
 	return append(b, enum...), nil
 }
@@ -17757,6 +19702,7 @@ func (enum InputCodec) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Input Deblock Filter
 type InputDeblockFilter string
 
 // Enum values for InputDeblockFilter
@@ -17774,6 +19720,7 @@ func (enum InputDeblockFilter) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Input Denoise Filter
 type InputDenoiseFilter string
 
 // Enum values for InputDenoiseFilter
@@ -17791,6 +19738,7 @@ func (enum InputDenoiseFilter) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Input Filter
 type InputFilter string
 
 // Enum values for InputFilter
@@ -17809,6 +19757,7 @@ func (enum InputFilter) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Input Loss Action For Hls Out
 type InputLossActionForHlsOut string
 
 // Enum values for InputLossActionForHlsOut
@@ -17826,6 +19775,7 @@ func (enum InputLossActionForHlsOut) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Input Loss Action For Ms Smooth Out
 type InputLossActionForMsSmoothOut string
 
 // Enum values for InputLossActionForMsSmoothOut
@@ -17843,6 +19793,7 @@ func (enum InputLossActionForMsSmoothOut) MarshalValueBuf(b []byte) ([]byte, err
 	return append(b, enum...), nil
 }
 
+// Input Loss Action For Rtmp Out
 type InputLossActionForRtmpOut string
 
 // Enum values for InputLossActionForRtmpOut
@@ -17860,6 +19811,7 @@ func (enum InputLossActionForRtmpOut) MarshalValueBuf(b []byte) ([]byte, error) 
 	return append(b, enum...), nil
 }
 
+// Input Loss Action For Udp Out
 type InputLossActionForUdpOut string
 
 // Enum values for InputLossActionForUdpOut
@@ -17878,6 +19830,7 @@ func (enum InputLossActionForUdpOut) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Input Loss Image Type
 type InputLossImageType string
 
 // Enum values for InputLossImageType
@@ -17954,6 +19907,7 @@ func (enum InputSecurityGroupState) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Input Source End Behavior
 type InputSourceEndBehavior string
 
 // Enum values for InputSourceEndBehavior
@@ -18034,6 +19988,7 @@ func (enum LogLevel) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// M2ts Absent Input Audio Behavior
 type M2tsAbsentInputAudioBehavior string
 
 // Enum values for M2tsAbsentInputAudioBehavior
@@ -18051,6 +20006,7 @@ func (enum M2tsAbsentInputAudioBehavior) MarshalValueBuf(b []byte) ([]byte, erro
 	return append(b, enum...), nil
 }
 
+// M2ts Arib
 type M2tsArib string
 
 // Enum values for M2tsArib
@@ -18068,6 +20024,7 @@ func (enum M2tsArib) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// M2ts Arib Captions Pid Control
 type M2tsAribCaptionsPidControl string
 
 // Enum values for M2tsAribCaptionsPidControl
@@ -18085,6 +20042,7 @@ func (enum M2tsAribCaptionsPidControl) MarshalValueBuf(b []byte) ([]byte, error)
 	return append(b, enum...), nil
 }
 
+// M2ts Audio Buffer Model
 type M2tsAudioBufferModel string
 
 // Enum values for M2tsAudioBufferModel
@@ -18102,6 +20060,7 @@ func (enum M2tsAudioBufferModel) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// M2ts Audio Interval
 type M2tsAudioInterval string
 
 // Enum values for M2tsAudioInterval
@@ -18119,6 +20078,7 @@ func (enum M2tsAudioInterval) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// M2ts Audio Stream Type
 type M2tsAudioStreamType string
 
 // Enum values for M2tsAudioStreamType
@@ -18136,6 +20096,7 @@ func (enum M2tsAudioStreamType) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// M2ts Buffer Model
 type M2tsBufferModel string
 
 // Enum values for M2tsBufferModel
@@ -18153,6 +20114,7 @@ func (enum M2tsBufferModel) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// M2ts Cc Descriptor
 type M2tsCcDescriptor string
 
 // Enum values for M2tsCcDescriptor
@@ -18170,6 +20132,7 @@ func (enum M2tsCcDescriptor) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// M2ts Ebif Control
 type M2tsEbifControl string
 
 // Enum values for M2tsEbifControl
@@ -18187,6 +20150,7 @@ func (enum M2tsEbifControl) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// M2ts Ebp Placement
 type M2tsEbpPlacement string
 
 // Enum values for M2tsEbpPlacement
@@ -18204,6 +20168,7 @@ func (enum M2tsEbpPlacement) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// M2ts Es Rate In Pes
 type M2tsEsRateInPes string
 
 // Enum values for M2tsEsRateInPes
@@ -18221,6 +20186,7 @@ func (enum M2tsEsRateInPes) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// M2ts Klv
 type M2tsKlv string
 
 // Enum values for M2tsKlv
@@ -18238,6 +20204,7 @@ func (enum M2tsKlv) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// M2ts Pcr Control
 type M2tsPcrControl string
 
 // Enum values for M2tsPcrControl
@@ -18255,6 +20222,7 @@ func (enum M2tsPcrControl) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// M2ts Rate Mode
 type M2tsRateMode string
 
 // Enum values for M2tsRateMode
@@ -18272,6 +20240,7 @@ func (enum M2tsRateMode) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// M2ts Scte35 Control
 type M2tsScte35Control string
 
 // Enum values for M2tsScte35Control
@@ -18289,6 +20258,7 @@ func (enum M2tsScte35Control) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// M2ts Segmentation Markers
 type M2tsSegmentationMarkers string
 
 // Enum values for M2tsSegmentationMarkers
@@ -18310,6 +20280,7 @@ func (enum M2tsSegmentationMarkers) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// M2ts Segmentation Style
 type M2tsSegmentationStyle string
 
 // Enum values for M2tsSegmentationStyle
@@ -18327,6 +20298,7 @@ func (enum M2tsSegmentationStyle) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// M2ts Timed Metadata Behavior
 type M2tsTimedMetadataBehavior string
 
 // Enum values for M2tsTimedMetadataBehavior
@@ -18344,6 +20316,7 @@ func (enum M2tsTimedMetadataBehavior) MarshalValueBuf(b []byte) ([]byte, error) 
 	return append(b, enum...), nil
 }
 
+// M3u8 Pcr Control
 type M3u8PcrControl string
 
 // Enum values for M3u8PcrControl
@@ -18361,6 +20334,7 @@ func (enum M3u8PcrControl) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// M3u8 Scte35 Behavior
 type M3u8Scte35Behavior string
 
 // Enum values for M3u8Scte35Behavior
@@ -18378,6 +20352,7 @@ func (enum M3u8Scte35Behavior) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// M3u8 Timed Metadata Behavior
 type M3u8TimedMetadataBehavior string
 
 // Enum values for M3u8TimedMetadataBehavior
@@ -18395,6 +20370,7 @@ func (enum M3u8TimedMetadataBehavior) MarshalValueBuf(b []byte) ([]byte, error) 
 	return append(b, enum...), nil
 }
 
+// Mp2 Coding Mode
 type Mp2CodingMode string
 
 // Enum values for Mp2CodingMode
@@ -18412,6 +20388,7 @@ func (enum Mp2CodingMode) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Network Input Server Validation
 type NetworkInputServerValidation string
 
 // Enum values for NetworkInputServerValidation
@@ -18459,6 +20436,24 @@ func (enum OfferingType) MarshalValue() (string, error) {
 }
 
 func (enum OfferingType) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
+// Pipeline ID
+type PipelineId string
+
+// Enum values for PipelineId
+const (
+	PipelineIdPipeline0 PipelineId = "PIPELINE_0"
+	PipelineIdPipeline1 PipelineId = "PIPELINE_1"
+)
+
+func (enum PipelineId) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum PipelineId) MarshalValueBuf(b []byte) ([]byte, error) {
 	b = b[0:0]
 	return append(b, enum...), nil
 }
@@ -18616,6 +20611,7 @@ func (enum ReservationVideoQuality) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Rtmp Cache Full Behavior
 type RtmpCacheFullBehavior string
 
 // Enum values for RtmpCacheFullBehavior
@@ -18633,6 +20629,7 @@ func (enum RtmpCacheFullBehavior) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Rtmp Caption Data
 type RtmpCaptionData string
 
 // Enum values for RtmpCaptionData
@@ -18651,6 +20648,7 @@ func (enum RtmpCaptionData) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Rtmp Output Certificate Mode
 type RtmpOutputCertificateMode string
 
 // Enum values for RtmpOutputCertificateMode
@@ -18668,6 +20666,7 @@ func (enum RtmpOutputCertificateMode) MarshalValueBuf(b []byte) ([]byte, error) 
 	return append(b, enum...), nil
 }
 
+// Scte20 Convert608 To708
 type Scte20Convert608To708 string
 
 // Enum values for Scte20Convert608To708
@@ -18685,6 +20684,7 @@ func (enum Scte20Convert608To708) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Scte35 Apos No Regional Blackout Behavior
 type Scte35AposNoRegionalBlackoutBehavior string
 
 // Enum values for Scte35AposNoRegionalBlackoutBehavior
@@ -18702,6 +20702,7 @@ func (enum Scte35AposNoRegionalBlackoutBehavior) MarshalValueBuf(b []byte) ([]by
 	return append(b, enum...), nil
 }
 
+// Scte35 Apos Web Delivery Allowed Behavior
 type Scte35AposWebDeliveryAllowedBehavior string
 
 // Enum values for Scte35AposWebDeliveryAllowedBehavior
@@ -18803,6 +20804,7 @@ func (enum Scte35SegmentationCancelIndicator) MarshalValueBuf(b []byte) ([]byte,
 	return append(b, enum...), nil
 }
 
+// Scte35 Splice Insert No Regional Blackout Behavior
 type Scte35SpliceInsertNoRegionalBlackoutBehavior string
 
 // Enum values for Scte35SpliceInsertNoRegionalBlackoutBehavior
@@ -18820,6 +20822,7 @@ func (enum Scte35SpliceInsertNoRegionalBlackoutBehavior) MarshalValueBuf(b []byt
 	return append(b, enum...), nil
 }
 
+// Scte35 Splice Insert Web Delivery Allowed Behavior
 type Scte35SpliceInsertWebDeliveryAllowedBehavior string
 
 // Enum values for Scte35SpliceInsertWebDeliveryAllowedBehavior
@@ -18857,6 +20860,7 @@ func (enum Scte35WebDeliveryAllowedFlag) MarshalValueBuf(b []byte) ([]byte, erro
 	return append(b, enum...), nil
 }
 
+// Smooth Group Audio Only Timecode Control
 type SmoothGroupAudioOnlyTimecodeControl string
 
 // Enum values for SmoothGroupAudioOnlyTimecodeControl
@@ -18874,6 +20878,7 @@ func (enum SmoothGroupAudioOnlyTimecodeControl) MarshalValueBuf(b []byte) ([]byt
 	return append(b, enum...), nil
 }
 
+// Smooth Group Certificate Mode
 type SmoothGroupCertificateMode string
 
 // Enum values for SmoothGroupCertificateMode
@@ -18891,6 +20896,7 @@ func (enum SmoothGroupCertificateMode) MarshalValueBuf(b []byte) ([]byte, error)
 	return append(b, enum...), nil
 }
 
+// Smooth Group Event Id Mode
 type SmoothGroupEventIdMode string
 
 // Enum values for SmoothGroupEventIdMode
@@ -18909,6 +20915,7 @@ func (enum SmoothGroupEventIdMode) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Smooth Group Event Stop Behavior
 type SmoothGroupEventStopBehavior string
 
 // Enum values for SmoothGroupEventStopBehavior
@@ -18926,6 +20933,7 @@ func (enum SmoothGroupEventStopBehavior) MarshalValueBuf(b []byte) ([]byte, erro
 	return append(b, enum...), nil
 }
 
+// Smooth Group Segmentation Mode
 type SmoothGroupSegmentationMode string
 
 // Enum values for SmoothGroupSegmentationMode
@@ -18943,6 +20951,7 @@ func (enum SmoothGroupSegmentationMode) MarshalValueBuf(b []byte) ([]byte, error
 	return append(b, enum...), nil
 }
 
+// Smooth Group Sparse Track Type
 type SmoothGroupSparseTrackType string
 
 // Enum values for SmoothGroupSparseTrackType
@@ -18960,6 +20969,7 @@ func (enum SmoothGroupSparseTrackType) MarshalValueBuf(b []byte) ([]byte, error)
 	return append(b, enum...), nil
 }
 
+// Smooth Group Stream Manifest Behavior
 type SmoothGroupStreamManifestBehavior string
 
 // Enum values for SmoothGroupStreamManifestBehavior
@@ -18977,6 +20987,7 @@ func (enum SmoothGroupStreamManifestBehavior) MarshalValueBuf(b []byte) ([]byte,
 	return append(b, enum...), nil
 }
 
+// Smooth Group Timestamp Offset Mode
 type SmoothGroupTimestampOffsetMode string
 
 // Enum values for SmoothGroupTimestampOffsetMode
@@ -18994,6 +21005,7 @@ func (enum SmoothGroupTimestampOffsetMode) MarshalValueBuf(b []byte) ([]byte, er
 	return append(b, enum...), nil
 }
 
+// Timecode Config Source
 type TimecodeConfigSource string
 
 // Enum values for TimecodeConfigSource
@@ -19012,6 +21024,7 @@ func (enum TimecodeConfigSource) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Ttml Destination Style Control
 type TtmlDestinationStyleControl string
 
 // Enum values for TtmlDestinationStyleControl
@@ -19029,6 +21042,7 @@ func (enum TtmlDestinationStyleControl) MarshalValueBuf(b []byte) ([]byte, error
 	return append(b, enum...), nil
 }
 
+// Udp Timed Metadata Id3 Frame
 type UdpTimedMetadataId3Frame string
 
 // Enum values for UdpTimedMetadataId3Frame
@@ -19047,6 +21061,7 @@ func (enum UdpTimedMetadataId3Frame) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Video Description Respond To Afd
 type VideoDescriptionRespondToAfd string
 
 // Enum values for VideoDescriptionRespondToAfd
@@ -19065,6 +21080,7 @@ func (enum VideoDescriptionRespondToAfd) MarshalValueBuf(b []byte) ([]byte, erro
 	return append(b, enum...), nil
 }
 
+// Video Description Scaling Behavior
 type VideoDescriptionScalingBehavior string
 
 // Enum values for VideoDescriptionScalingBehavior
@@ -19082,6 +21098,7 @@ func (enum VideoDescriptionScalingBehavior) MarshalValueBuf(b []byte) ([]byte, e
 	return append(b, enum...), nil
 }
 
+// Video Selector Color Space
 type VideoSelectorColorSpace string
 
 // Enum values for VideoSelectorColorSpace
@@ -19100,6 +21117,7 @@ func (enum VideoSelectorColorSpace) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+// Video Selector Color Space Usage
 type VideoSelectorColorSpaceUsage string
 
 // Enum values for VideoSelectorColorSpaceUsage

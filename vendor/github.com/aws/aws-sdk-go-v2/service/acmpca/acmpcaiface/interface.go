@@ -9,6 +9,8 @@
 package acmpcaiface
 
 import (
+	"context"
+
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/acmpca"
 )
@@ -67,7 +69,11 @@ type ACMPCAAPI interface {
 
 	CreateCertificateAuthorityAuditReportRequest(*acmpca.CreateCertificateAuthorityAuditReportInput) acmpca.CreateCertificateAuthorityAuditReportRequest
 
+	CreatePermissionRequest(*acmpca.CreatePermissionInput) acmpca.CreatePermissionRequest
+
 	DeleteCertificateAuthorityRequest(*acmpca.DeleteCertificateAuthorityInput) acmpca.DeleteCertificateAuthorityRequest
+
+	DeletePermissionRequest(*acmpca.DeletePermissionInput) acmpca.DeletePermissionRequest
 
 	DescribeCertificateAuthorityRequest(*acmpca.DescribeCertificateAuthorityInput) acmpca.DescribeCertificateAuthorityRequest
 
@@ -85,6 +91,8 @@ type ACMPCAAPI interface {
 
 	ListCertificateAuthoritiesRequest(*acmpca.ListCertificateAuthoritiesInput) acmpca.ListCertificateAuthoritiesRequest
 
+	ListPermissionsRequest(*acmpca.ListPermissionsInput) acmpca.ListPermissionsRequest
+
 	ListTagsRequest(*acmpca.ListTagsInput) acmpca.ListTagsRequest
 
 	RestoreCertificateAuthorityRequest(*acmpca.RestoreCertificateAuthorityInput) acmpca.RestoreCertificateAuthorityRequest
@@ -97,14 +105,11 @@ type ACMPCAAPI interface {
 
 	UpdateCertificateAuthorityRequest(*acmpca.UpdateCertificateAuthorityInput) acmpca.UpdateCertificateAuthorityRequest
 
-	WaitUntilAuditReportCreated(*acmpca.DescribeCertificateAuthorityAuditReportInput) error
-	WaitUntilAuditReportCreatedWithContext(aws.Context, *acmpca.DescribeCertificateAuthorityAuditReportInput, ...aws.WaiterOption) error
+	WaitUntilAuditReportCreated(context.Context, *acmpca.DescribeCertificateAuthorityAuditReportInput, ...aws.WaiterOption) error
 
-	WaitUntilCertificateAuthorityCSRCreated(*acmpca.GetCertificateAuthorityCsrInput) error
-	WaitUntilCertificateAuthorityCSRCreatedWithContext(aws.Context, *acmpca.GetCertificateAuthorityCsrInput, ...aws.WaiterOption) error
+	WaitUntilCertificateAuthorityCSRCreated(context.Context, *acmpca.GetCertificateAuthorityCsrInput, ...aws.WaiterOption) error
 
-	WaitUntilCertificateIssued(*acmpca.GetCertificateInput) error
-	WaitUntilCertificateIssuedWithContext(aws.Context, *acmpca.GetCertificateInput, ...aws.WaiterOption) error
+	WaitUntilCertificateIssued(context.Context, *acmpca.GetCertificateInput, ...aws.WaiterOption) error
 }
 
 var _ ACMPCAAPI = (*acmpca.ACMPCA)(nil)

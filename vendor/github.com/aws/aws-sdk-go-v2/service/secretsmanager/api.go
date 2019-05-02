@@ -3,6 +3,7 @@
 package secretsmanager
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -22,7 +23,8 @@ type CancelRotateSecretRequest struct {
 }
 
 // Send marshals and sends the CancelRotateSecret API request.
-func (r CancelRotateSecretRequest) Send() (*CancelRotateSecretOutput, error) {
+func (r CancelRotateSecretRequest) Send(ctx context.Context) (*CancelRotateSecretOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -79,7 +81,7 @@ func (r CancelRotateSecretRequest) Send() (*CancelRotateSecretOutput, error) {
 //
 //    // Example sending a request using the CancelRotateSecretRequest method.
 //    req := client.CancelRotateSecretRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -113,7 +115,8 @@ type CreateSecretRequest struct {
 }
 
 // Send marshals and sends the CreateSecret API request.
-func (r CreateSecretRequest) Send() (*CreateSecretOutput, error) {
+func (r CreateSecretRequest) Send(ctx context.Context) (*CreateSecretOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -201,7 +204,7 @@ func (r CreateSecretRequest) Send() (*CreateSecretOutput, error) {
 //
 //    // Example sending a request using the CreateSecretRequest method.
 //    req := client.CreateSecretRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -235,7 +238,8 @@ type DeleteResourcePolicyRequest struct {
 }
 
 // Send marshals and sends the DeleteResourcePolicy API request.
-func (r DeleteResourcePolicyRequest) Send() (*DeleteResourcePolicyOutput, error) {
+func (r DeleteResourcePolicyRequest) Send(ctx context.Context) (*DeleteResourcePolicyOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -266,7 +270,7 @@ func (r DeleteResourcePolicyRequest) Send() (*DeleteResourcePolicyOutput, error)
 //
 //    // Example sending a request using the DeleteResourcePolicyRequest method.
 //    req := client.DeleteResourcePolicyRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -300,7 +304,8 @@ type DeleteSecretRequest struct {
 }
 
 // Send marshals and sends the DeleteSecret API request.
-func (r DeleteSecretRequest) Send() (*DeleteSecretOutput, error) {
+func (r DeleteSecretRequest) Send(ctx context.Context) (*DeleteSecretOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -351,7 +356,7 @@ func (r DeleteSecretRequest) Send() (*DeleteSecretOutput, error) {
 //
 //    // Example sending a request using the DeleteSecretRequest method.
 //    req := client.DeleteSecretRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -385,7 +390,8 @@ type DescribeSecretRequest struct {
 }
 
 // Send marshals and sends the DescribeSecret API request.
-func (r DescribeSecretRequest) Send() (*DescribeSecretOutput, error) {
+func (r DescribeSecretRequest) Send(ctx context.Context) (*DescribeSecretOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -419,7 +425,7 @@ func (r DescribeSecretRequest) Send() (*DescribeSecretOutput, error) {
 //
 //    // Example sending a request using the DescribeSecretRequest method.
 //    req := client.DescribeSecretRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -453,7 +459,8 @@ type GetRandomPasswordRequest struct {
 }
 
 // Send marshals and sends the GetRandomPassword API request.
-func (r GetRandomPasswordRequest) Send() (*GetRandomPasswordOutput, error) {
+func (r GetRandomPasswordRequest) Send(ctx context.Context) (*GetRandomPasswordOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -478,7 +485,7 @@ func (r GetRandomPasswordRequest) Send() (*GetRandomPasswordOutput, error) {
 //
 //    // Example sending a request using the GetRandomPasswordRequest method.
 //    req := client.GetRandomPasswordRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -512,7 +519,8 @@ type GetResourcePolicyRequest struct {
 }
 
 // Send marshals and sends the GetResourcePolicy API request.
-func (r GetResourcePolicyRequest) Send() (*GetResourcePolicyOutput, error) {
+func (r GetResourcePolicyRequest) Send(ctx context.Context) (*GetResourcePolicyOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -546,7 +554,7 @@ func (r GetResourcePolicyRequest) Send() (*GetResourcePolicyOutput, error) {
 //
 //    // Example sending a request using the GetResourcePolicyRequest method.
 //    req := client.GetResourcePolicyRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -580,7 +588,8 @@ type GetSecretValueRequest struct {
 }
 
 // Send marshals and sends the GetSecretValue API request.
-func (r GetSecretValueRequest) Send() (*GetSecretValueOutput, error) {
+func (r GetSecretValueRequest) Send(ctx context.Context) (*GetSecretValueOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -614,7 +623,7 @@ func (r GetSecretValueRequest) Send() (*GetSecretValueOutput, error) {
 //
 //    // Example sending a request using the GetSecretValueRequest method.
 //    req := client.GetSecretValueRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -648,7 +657,8 @@ type ListSecretVersionIdsRequest struct {
 }
 
 // Send marshals and sends the ListSecretVersionIds API request.
-func (r ListSecretVersionIdsRequest) Send() (*ListSecretVersionIdsOutput, error) {
+func (r ListSecretVersionIdsRequest) Send(ctx context.Context) (*ListSecretVersionIdsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -683,7 +693,7 @@ func (r ListSecretVersionIdsRequest) Send() (*ListSecretVersionIdsOutput, error)
 //
 //    // Example sending a request using the ListSecretVersionIdsRequest method.
 //    req := client.ListSecretVersionIdsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -733,7 +743,7 @@ func (c *SecretsManager) ListSecretVersionIdsRequest(input *ListSecretVersionIds
 func (p *ListSecretVersionIdsRequest) Paginate(opts ...aws.Option) ListSecretVersionIdsPager {
 	return ListSecretVersionIdsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListSecretVersionIdsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -742,6 +752,7 @@ func (p *ListSecretVersionIdsRequest) Paginate(opts ...aws.Option) ListSecretVer
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -769,7 +780,8 @@ type ListSecretsRequest struct {
 }
 
 // Send marshals and sends the ListSecrets API request.
-func (r ListSecretsRequest) Send() (*ListSecretsOutput, error) {
+func (r ListSecretsRequest) Send(ctx context.Context) (*ListSecretsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -804,7 +816,7 @@ func (r ListSecretsRequest) Send() (*ListSecretsOutput, error) {
 //
 //    // Example sending a request using the ListSecretsRequest method.
 //    req := client.ListSecretsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -854,7 +866,7 @@ func (c *SecretsManager) ListSecretsRequest(input *ListSecretsInput) ListSecrets
 func (p *ListSecretsRequest) Paginate(opts ...aws.Option) ListSecretsPager {
 	return ListSecretsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListSecretsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -863,6 +875,7 @@ func (p *ListSecretsRequest) Paginate(opts ...aws.Option) ListSecretsPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -890,7 +903,8 @@ type PutResourcePolicyRequest struct {
 }
 
 // Send marshals and sends the PutResourcePolicy API request.
-func (r PutResourcePolicyRequest) Send() (*PutResourcePolicyOutput, error) {
+func (r PutResourcePolicyRequest) Send(ctx context.Context) (*PutResourcePolicyOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -911,7 +925,7 @@ func (r PutResourcePolicyRequest) Send() (*PutResourcePolicyOutput, error) {
 // For more information, see Using Resource-Based Policies for AWS Secrets Manager
 // (http://docs.aws.amazon.com/secretsmanager/latest/userguide/auth-and-access_resource-based-policies.html).
 // For the complete description of the AWS policy syntax and grammar, see IAM
-// JSON Policy Reference (http://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html)
+// JSON Policy Reference (https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies.html)
 // in the IAM User Guide.
 //
 // Minimum permissions
@@ -931,7 +945,7 @@ func (r PutResourcePolicyRequest) Send() (*PutResourcePolicyOutput, error) {
 //
 //    // Example sending a request using the PutResourcePolicyRequest method.
 //    req := client.PutResourcePolicyRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -965,7 +979,8 @@ type PutSecretValueRequest struct {
 }
 
 // Send marshals and sends the PutSecretValue API request.
-func (r PutSecretValueRequest) Send() (*PutSecretValueOutput, error) {
+func (r PutSecretValueRequest) Send(ctx context.Context) (*PutSecretValueOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1050,7 +1065,7 @@ func (r PutSecretValueRequest) Send() (*PutSecretValueOutput, error) {
 //
 //    // Example sending a request using the PutSecretValueRequest method.
 //    req := client.PutSecretValueRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1084,7 +1099,8 @@ type RestoreSecretRequest struct {
 }
 
 // Send marshals and sends the RestoreSecret API request.
-func (r RestoreSecretRequest) Send() (*RestoreSecretOutput, error) {
+func (r RestoreSecretRequest) Send(ctx context.Context) (*RestoreSecretOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1111,7 +1127,7 @@ func (r RestoreSecretRequest) Send() (*RestoreSecretOutput, error) {
 //
 //    // Example sending a request using the RestoreSecretRequest method.
 //    req := client.RestoreSecretRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1145,7 +1161,8 @@ type RotateSecretRequest struct {
 }
 
 // Send marshals and sends the RotateSecret API request.
-func (r RotateSecretRequest) Send() (*RotateSecretOutput, error) {
+func (r RotateSecretRequest) Send(ctx context.Context) (*RotateSecretOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1172,7 +1189,7 @@ func (r RotateSecretRequest) Send() (*RotateSecretOutput, error) {
 // clients all immediately begin to use the new version. For more information
 // about rotating secrets and how to configure a Lambda function to rotate the
 // secrets for your protected service, see Rotating Secrets in AWS Secrets Manager
-// (http://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html)
+// (https://docs.aws.amazon.com/secretsmanager/latest/userguide/rotating-secrets.html)
 // in the AWS Secrets Manager User Guide.
 //
 // Secrets Manager schedules the next rotation when the previous one is complete.
@@ -1216,7 +1233,7 @@ func (r RotateSecretRequest) Send() (*RotateSecretOutput, error) {
 //
 //    // Example sending a request using the RotateSecretRequest method.
 //    req := client.RotateSecretRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1250,7 +1267,8 @@ type TagResourceRequest struct {
 }
 
 // Send marshals and sends the TagResource API request.
-func (r TagResourceRequest) Send() (*TagResourceOutput, error) {
+func (r TagResourceRequest) Send(ctx context.Context) (*TagResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1308,7 +1326,7 @@ func (r TagResourceRequest) Send() (*TagResourceOutput, error) {
 //
 //    // Example sending a request using the TagResourceRequest method.
 //    req := client.TagResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1344,7 +1362,8 @@ type UntagResourceRequest struct {
 }
 
 // Send marshals and sends the UntagResource API request.
-func (r UntagResourceRequest) Send() (*UntagResourceOutput, error) {
+func (r UntagResourceRequest) Send(ctx context.Context) (*UntagResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1381,7 +1400,7 @@ func (r UntagResourceRequest) Send() (*UntagResourceOutput, error) {
 //
 //    // Example sending a request using the UntagResourceRequest method.
 //    req := client.UntagResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1417,7 +1436,8 @@ type UpdateSecretRequest struct {
 }
 
 // Send marshals and sends the UpdateSecret API request.
-func (r UpdateSecretRequest) Send() (*UpdateSecretOutput, error) {
+func (r UpdateSecretRequest) Send(ctx context.Context) (*UpdateSecretOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1496,7 +1516,7 @@ func (r UpdateSecretRequest) Send() (*UpdateSecretOutput, error) {
 //
 //    // Example sending a request using the UpdateSecretRequest method.
 //    req := client.UpdateSecretRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1530,7 +1550,8 @@ type UpdateSecretVersionStageRequest struct {
 }
 
 // Send marshals and sends the UpdateSecretVersionStage API request.
-func (r UpdateSecretVersionStageRequest) Send() (*UpdateSecretVersionStageOutput, error) {
+func (r UpdateSecretVersionStageRequest) Send(ctx context.Context) (*UpdateSecretVersionStageOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1548,7 +1569,7 @@ func (r UpdateSecretVersionStageRequest) Send() (*UpdateSecretVersionStageOutput
 // a time. If a staging label to be added is already attached to another version,
 // then it is moved--removed from the other version first and then attached
 // to this one. For more information about staging labels, see Staging Labels
-// (http://docs.aws.amazon.com/secretsmanager/latest/userguide/terms-concepts.html#term_staging-label)
+// (https://docs.aws.amazon.com/secretsmanager/latest/userguide/terms-concepts.html#term_staging-label)
 // in the AWS Secrets Manager User Guide.
 //
 // The staging labels that you specify in the VersionStage parameter are added
@@ -1578,7 +1599,7 @@ func (r UpdateSecretVersionStageRequest) Send() (*UpdateSecretVersionStageOutput
 //
 //    // Example sending a request using the UpdateSecretVersionStageRequest method.
 //    req := client.UpdateSecretVersionStageRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1787,7 +1808,7 @@ type CreateSecretInput struct {
 	// For storing multiple values, we recommend that you use a JSON text string
 	// argument and specify key/value pairs. For information on how to format a
 	// JSON parameter for the various command line tool environments, see Using
-	// JSON for Parameters (http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+	// JSON for Parameters (https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 	// in the AWS CLI User Guide. For example:
 	//
 	// [{"username":"bob"},{"password":"abc123xyz456"}]
@@ -1812,7 +1833,7 @@ type CreateSecretInput struct {
 	//
 	// This parameter requires a JSON text string argument. For information on how
 	// to format a JSON parameter for the various command line tool environments,
-	// see Using JSON for Parameters (http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+	// see Using JSON for Parameters (https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 	// in the AWS CLI User Guide. For example:
 	//
 	// [{"Key":"CostCenter","Value":"12345"},{"Key":"environment","Value":"production"}]
@@ -2951,7 +2972,7 @@ type PutSecretValueInput struct {
 	// For storing multiple values, we recommend that you use a JSON text string
 	// argument and specify key/value pairs. For information on how to format a
 	// JSON parameter for the various command line tool environments, see Using
-	// JSON for Parameters (http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+	// JSON for Parameters (https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 	// in the AWS CLI User Guide.
 	//
 	// For example:
@@ -3292,7 +3313,7 @@ type SecretListEntry struct {
 	// The Amazon Resource Name (ARN) of the secret.
 	//
 	// For more information about ARNs in Secrets Manager, see Policy Resources
-	// (http://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#iam-resources)
+	// (https://docs.aws.amazon.com/secretsmanager/latest/userguide/reference_iam-permissions.html#iam-resources)
 	// in the AWS Secrets Manager User Guide.
 	ARN *string `min:"20" type:"string"`
 
@@ -3454,7 +3475,7 @@ type TagResourceInput struct {
 	//
 	// This parameter to the API requires a JSON text string argument. For information
 	// on how to format a JSON parameter for the various command line tool environments,
-	// see Using JSON for Parameters (http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+	// see Using JSON for Parameters (https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 	// in the AWS CLI User Guide. For the AWS CLI, you can also use the syntax:
 	// --Tags Key="Key1",Value="Value1",Key="Key2",Value="Value2"[,…]
 	//
@@ -3550,7 +3571,7 @@ type UntagResourceInput struct {
 	//
 	// This parameter to the API requires a JSON text string argument. For information
 	// on how to format a JSON parameter for the various command line tool environments,
-	// see Using JSON for Parameters (http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+	// see Using JSON for Parameters (https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 	// in the AWS CLI User Guide.
 	//
 	// TagKeys is a required field
@@ -3705,7 +3726,7 @@ type UpdateSecretInput struct {
 	// For storing multiple values, we recommend that you use a JSON text string
 	// argument and specify key/value pairs. For information on how to format a
 	// JSON parameter for the various command line tool environments, see Using
-	// JSON for Parameters (http://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
+	// JSON for Parameters (https://docs.aws.amazon.com/cli/latest/userguide/cli-using-param.html#cli-using-param-json)
 	// in the AWS CLI User Guide. For example:
 	//
 	// [{"username":"bob"},{"password":"abc123xyz456"}]

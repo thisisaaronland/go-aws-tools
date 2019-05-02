@@ -3,6 +3,7 @@
 package route53
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -21,7 +22,8 @@ type AssociateVPCWithHostedZoneRequest struct {
 }
 
 // Send marshals and sends the AssociateVPCWithHostedZone API request.
-func (r AssociateVPCWithHostedZoneRequest) Send() (*AssociateVPCWithHostedZoneOutput, error) {
+func (r AssociateVPCWithHostedZoneRequest) Send(ctx context.Context) (*AssociateVPCWithHostedZoneOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -46,7 +48,7 @@ func (r AssociateVPCWithHostedZoneRequest) Send() (*AssociateVPCWithHostedZoneOu
 //
 //    // Example sending a request using the AssociateVPCWithHostedZoneRequest method.
 //    req := client.AssociateVPCWithHostedZoneRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -80,7 +82,8 @@ type ChangeResourceRecordSetsRequest struct {
 }
 
 // Send marshals and sends the ChangeResourceRecordSets API request.
-func (r ChangeResourceRecordSetsRequest) Send() (*ChangeResourceRecordSetsOutput, error) {
+func (r ChangeResourceRecordSetsRequest) Send(ctx context.Context) (*ChangeResourceRecordSetsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -164,17 +167,17 @@ func (r ChangeResourceRecordSetsRequest) Send() (*ChangeResourceRecordSetsOutput
 // are propagating, GetChange returns a status of PENDING. When propagation
 // is complete, GetChange returns a status of INSYNC. Changes generally propagate
 // to all Route 53 name servers within 60 seconds. For more information, see
-// GetChange.
+// GetChange (https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetChange.html).
 //
 // Limits on ChangeResourceRecordSets Requests
 //
 // For information about the limits on a ChangeResourceRecordSets request, see
-// Limits (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
+// Limits (https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
 // in the Amazon Route 53 Developer Guide.
 //
 //    // Example sending a request using the ChangeResourceRecordSetsRequest method.
 //    req := client.ChangeResourceRecordSetsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -208,7 +211,8 @@ type ChangeTagsForResourceRequest struct {
 }
 
 // Send marshals and sends the ChangeTagsForResource API request.
-func (r ChangeTagsForResourceRequest) Send() (*ChangeTagsForResourceOutput, error) {
+func (r ChangeTagsForResourceRequest) Send(ctx context.Context) (*ChangeTagsForResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -223,12 +227,12 @@ func (r ChangeTagsForResourceRequest) Send() (*ChangeTagsForResourceOutput, erro
 // Adds, edits, or deletes tags for a health check or a hosted zone.
 //
 // For information about using tags for cost allocation, see Using Cost Allocation
-// Tags (http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+// Tags (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
 // in the AWS Billing and Cost Management User Guide.
 //
 //    // Example sending a request using the ChangeTagsForResourceRequest method.
 //    req := client.ChangeTagsForResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -262,7 +266,8 @@ type CreateHealthCheckRequest struct {
 }
 
 // Send marshals and sends the CreateHealthCheck API request.
-func (r CreateHealthCheckRequest) Send() (*CreateHealthCheckOutput, error) {
+func (r CreateHealthCheckRequest) Send(ctx context.Context) (*CreateHealthCheckOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -276,8 +281,9 @@ func (r CreateHealthCheckRequest) Send() (*CreateHealthCheckOutput, error) {
 //
 // Creates a new health check.
 //
-// For information about adding health checks to resource record sets, see ResourceRecordSet$HealthCheckId
-// in ChangeResourceRecordSets.
+// For information about adding health checks to resource record sets, see HealthCheckId
+// (https://docs.aws.amazon.com/Route53/latest/APIReference/API_ResourceRecordSet.html#Route53-Type-ResourceRecordSet-HealthCheckId)
+// in ChangeResourceRecordSets (https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeResourceRecordSets.html).
 //
 // ELB Load Balancers
 //
@@ -309,7 +315,7 @@ func (r CreateHealthCheckRequest) Send() (*CreateHealthCheckOutput, error) {
 //
 //    // Example sending a request using the CreateHealthCheckRequest method.
 //    req := client.CreateHealthCheckRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -343,7 +349,8 @@ type CreateHostedZoneRequest struct {
 }
 
 // Send marshals and sends the CreateHostedZone API request.
-func (r CreateHostedZoneRequest) Send() (*CreateHostedZoneOutput, error) {
+func (r CreateHostedZoneRequest) Send(ctx context.Context) (*CreateHostedZoneOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -397,7 +404,7 @@ func (r CreateHostedZoneRequest) Send() (*CreateHostedZoneOutput, error) {
 //
 //    // Example sending a request using the CreateHostedZoneRequest method.
 //    req := client.CreateHostedZoneRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -431,7 +438,8 @@ type CreateQueryLoggingConfigRequest struct {
 }
 
 // Send marshals and sends the CreateQueryLoggingConfig API request.
-func (r CreateQueryLoggingConfigRequest) Send() (*CreateQueryLoggingConfigOutput, error) {
+func (r CreateQueryLoggingConfigRequest) Send(ctx context.Context) (*CreateQueryLoggingConfigOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -526,22 +534,23 @@ func (r CreateQueryLoggingConfigRequest) Send() (*CreateQueryLoggingConfigOutput
 // logs might contain information about only one query out of every several
 // thousand queries that are submitted to DNS. For more information about how
 // DNS works, see Routing Internet Traffic to Your Website or Web Application
-// (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html)
+// (https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/welcome-dns-service.html)
 // in the Amazon Route 53 Developer Guide.
 //
 // Log File FormatFor a list of the values in each query log and the format
-// of each value, see Logging DNS Queries (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html)
+// of each value, see Logging DNS Queries (https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html)
 // in the Amazon Route 53 Developer Guide.
 //
 // PricingFor information about charges for query logs, see Amazon CloudWatch
 // Pricing (http://aws.amazon.com/cloudwatch/pricing/).
 //
 // How to Stop LoggingIf you want Route 53 to stop sending query logs to CloudWatch
-// Logs, delete the query logging configuration. For more information, see DeleteQueryLoggingConfig.
+// Logs, delete the query logging configuration. For more information, see DeleteQueryLoggingConfig
+// (https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteQueryLoggingConfig.html).
 //
 //    // Example sending a request using the CreateQueryLoggingConfigRequest method.
 //    req := client.CreateQueryLoggingConfigRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -575,7 +584,8 @@ type CreateReusableDelegationSetRequest struct {
 }
 
 // Send marshals and sends the CreateReusableDelegationSet API request.
-func (r CreateReusableDelegationSetRequest) Send() (*CreateReusableDelegationSetOutput, error) {
+func (r CreateReusableDelegationSetRequest) Send(ctx context.Context) (*CreateReusableDelegationSetOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -634,7 +644,7 @@ func (r CreateReusableDelegationSetRequest) Send() (*CreateReusableDelegationSet
 //
 //    // Example sending a request using the CreateReusableDelegationSetRequest method.
 //    req := client.CreateReusableDelegationSetRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -668,7 +678,8 @@ type CreateTrafficPolicyRequest struct {
 }
 
 // Send marshals and sends the CreateTrafficPolicy API request.
-func (r CreateTrafficPolicyRequest) Send() (*CreateTrafficPolicyOutput, error) {
+func (r CreateTrafficPolicyRequest) Send(ctx context.Context) (*CreateTrafficPolicyOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -686,7 +697,7 @@ func (r CreateTrafficPolicyRequest) Send() (*CreateTrafficPolicyOutput, error) {
 //
 //    // Example sending a request using the CreateTrafficPolicyRequest method.
 //    req := client.CreateTrafficPolicyRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -720,7 +731,8 @@ type CreateTrafficPolicyInstanceRequest struct {
 }
 
 // Send marshals and sends the CreateTrafficPolicyInstance API request.
-func (r CreateTrafficPolicyInstanceRequest) Send() (*CreateTrafficPolicyInstanceOutput, error) {
+func (r CreateTrafficPolicyInstanceRequest) Send(ctx context.Context) (*CreateTrafficPolicyInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -741,7 +753,7 @@ func (r CreateTrafficPolicyInstanceRequest) Send() (*CreateTrafficPolicyInstance
 //
 //    // Example sending a request using the CreateTrafficPolicyInstanceRequest method.
 //    req := client.CreateTrafficPolicyInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -775,7 +787,8 @@ type CreateTrafficPolicyVersionRequest struct {
 }
 
 // Send marshals and sends the CreateTrafficPolicyVersion API request.
-func (r CreateTrafficPolicyVersionRequest) Send() (*CreateTrafficPolicyVersionOutput, error) {
+func (r CreateTrafficPolicyVersionRequest) Send(ctx context.Context) (*CreateTrafficPolicyVersionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -798,7 +811,7 @@ func (r CreateTrafficPolicyVersionRequest) Send() (*CreateTrafficPolicyVersionOu
 //
 //    // Example sending a request using the CreateTrafficPolicyVersionRequest method.
 //    req := client.CreateTrafficPolicyVersionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -832,7 +845,8 @@ type CreateVPCAssociationAuthorizationRequest struct {
 }
 
 // Send marshals and sends the CreateVPCAssociationAuthorization API request.
-func (r CreateVPCAssociationAuthorizationRequest) Send() (*CreateVPCAssociationAuthorizationOutput, error) {
+func (r CreateVPCAssociationAuthorizationRequest) Send(ctx context.Context) (*CreateVPCAssociationAuthorizationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -857,7 +871,7 @@ func (r CreateVPCAssociationAuthorizationRequest) Send() (*CreateVPCAssociationA
 //
 //    // Example sending a request using the CreateVPCAssociationAuthorizationRequest method.
 //    req := client.CreateVPCAssociationAuthorizationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -891,7 +905,8 @@ type DeleteHealthCheckRequest struct {
 }
 
 // Send marshals and sends the DeleteHealthCheck API request.
-func (r DeleteHealthCheckRequest) Send() (*DeleteHealthCheckOutput, error) {
+func (r DeleteHealthCheckRequest) Send(ctx context.Context) (*DeleteHealthCheckOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -915,7 +930,7 @@ func (r DeleteHealthCheckRequest) Send() (*DeleteHealthCheckOutput, error) {
 //
 //    // Example sending a request using the DeleteHealthCheckRequest method.
 //    req := client.DeleteHealthCheckRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -949,7 +964,8 @@ type DeleteHostedZoneRequest struct {
 }
 
 // Send marshals and sends the DeleteHostedZone API request.
-func (r DeleteHostedZoneRequest) Send() (*DeleteHostedZoneOutput, error) {
+func (r DeleteHostedZoneRequest) Send(ctx context.Context) (*DeleteHostedZoneOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -963,26 +979,42 @@ func (r DeleteHostedZoneRequest) Send() (*DeleteHostedZoneOutput, error) {
 //
 // Deletes a hosted zone.
 //
-// If the name servers for the hosted zone are associated with a domain and
-// if you want to make the domain unavailable on the Internet, we recommend
-// that you delete the name servers from the domain to prevent future DNS queries
-// from possibly being misrouted. If the domain is registered with Amazon Route
-// 53, see UpdateDomainNameservers. If the domain is registered with another
-// registrar, use the method provided by the registrar to delete name servers
-// for the domain.
+// If the hosted zone was created by another service, such as AWS Cloud Map,
+// see Deleting Public Hosted Zones That Were Created by Another Service (https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DeleteHostedZone.html#delete-public-hosted-zone-created-by-another-service)
+// in the Amazon Route 53 Developer Guide for information about how to delete
+// it. (The process is the same for public and private hosted zones that were
+// created by another service.)
 //
-// Some domain registries don't allow you to remove all of the name servers
-// for a domain. If the registry for your domain requires one or more name servers,
-// we recommend that you delete the hosted zone only if you transfer DNS service
-// to another service provider, and you replace the name servers for the domain
-// with name servers from the new provider.
+// If you want to keep your domain registration but you want to stop routing
+// internet traffic to your website or web application, we recommend that you
+// delete resource record sets in the hosted zone instead of deleting the hosted
+// zone.
+//
+// If you delete a hosted zone, you can't undelete it. You must create a new
+// hosted zone and update the name servers for your domain registration, which
+// can require up to 48 hours to take effect. (If you delegated responsibility
+// for a subdomain to a hosted zone and you delete the child hosted zone, you
+// must update the name servers in the parent hosted zone.) In addition, if
+// you delete a hosted zone, someone could hijack the domain and route traffic
+// to their own resources using your domain name.
+//
+// If you want to avoid the monthly charge for the hosted zone, you can transfer
+// DNS service for the domain to a free DNS service. When you transfer DNS service,
+// you have to update the name servers for the domain registration. If the domain
+// is registered with Route 53, see UpdateDomainNameservers (https://docs.aws.amazon.com/Route53/latest/APIReference/API_domains_UpdateDomainNameservers.html)
+// for information about how to replace Route 53 name servers with name servers
+// for the new DNS service. If the domain is registered with another registrar,
+// use the method provided by the registrar to update name servers for the domain
+// registration. For more information, perform an internet search on "free DNS
+// service."
 //
 // You can delete a hosted zone only if it contains only the default SOA record
 // and NS resource record sets. If the hosted zone contains other resource record
 // sets, you must delete them before you can delete the hosted zone. If you
 // try to delete a hosted zone that contains other resource record sets, the
 // request fails, and Route 53 returns a HostedZoneNotEmpty error. For information
-// about deleting records from your hosted zone, see ChangeResourceRecordSets.
+// about deleting records from your hosted zone, see ChangeResourceRecordSets
+// (https://docs.aws.amazon.com/Route53/latest/APIReference/API_ChangeResourceRecordSets.html).
 //
 // To verify that the hosted zone has been deleted, do one of the following:
 //
@@ -994,7 +1026,7 @@ func (r DeleteHostedZoneRequest) Send() (*DeleteHostedZoneOutput, error) {
 //
 //    // Example sending a request using the DeleteHostedZoneRequest method.
 //    req := client.DeleteHostedZoneRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1028,7 +1060,8 @@ type DeleteQueryLoggingConfigRequest struct {
 }
 
 // Send marshals and sends the DeleteQueryLoggingConfig API request.
-func (r DeleteQueryLoggingConfigRequest) Send() (*DeleteQueryLoggingConfigOutput, error) {
+func (r DeleteQueryLoggingConfigRequest) Send(ctx context.Context) (*DeleteQueryLoggingConfigOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1044,11 +1077,11 @@ func (r DeleteQueryLoggingConfigRequest) Send() (*DeleteQueryLoggingConfigOutput
 // Amazon Route 53 stops sending query logs to CloudWatch Logs. Route 53 doesn't
 // delete any logs that are already in CloudWatch Logs.
 //
-// For more information about DNS query logs, see CreateQueryLoggingConfig.
+// For more information about DNS query logs, see CreateQueryLoggingConfig (https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html).
 //
 //    // Example sending a request using the DeleteQueryLoggingConfigRequest method.
 //    req := client.DeleteQueryLoggingConfigRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1082,7 +1115,8 @@ type DeleteReusableDelegationSetRequest struct {
 }
 
 // Send marshals and sends the DeleteReusableDelegationSet API request.
-func (r DeleteReusableDelegationSetRequest) Send() (*DeleteReusableDelegationSetOutput, error) {
+func (r DeleteReusableDelegationSetRequest) Send(ctx context.Context) (*DeleteReusableDelegationSetOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1100,12 +1134,13 @@ func (r DeleteReusableDelegationSetRequest) Send() (*DeleteReusableDelegationSet
 // any hosted zones.
 //
 // To verify that the reusable delegation set is not associated with any hosted
-// zones, submit a GetReusableDelegationSet request and specify the ID of the
-// reusable delegation set that you want to delete.
+// zones, submit a GetReusableDelegationSet (https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetReusableDelegationSet.html)
+// request and specify the ID of the reusable delegation set that you want to
+// delete.
 //
 //    // Example sending a request using the DeleteReusableDelegationSetRequest method.
 //    req := client.DeleteReusableDelegationSetRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1139,7 +1174,8 @@ type DeleteTrafficPolicyRequest struct {
 }
 
 // Send marshals and sends the DeleteTrafficPolicy API request.
-func (r DeleteTrafficPolicyRequest) Send() (*DeleteTrafficPolicyOutput, error) {
+func (r DeleteTrafficPolicyRequest) Send(ctx context.Context) (*DeleteTrafficPolicyOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1155,7 +1191,7 @@ func (r DeleteTrafficPolicyRequest) Send() (*DeleteTrafficPolicyOutput, error) {
 //
 //    // Example sending a request using the DeleteTrafficPolicyRequest method.
 //    req := client.DeleteTrafficPolicyRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1189,7 +1225,8 @@ type DeleteTrafficPolicyInstanceRequest struct {
 }
 
 // Send marshals and sends the DeleteTrafficPolicyInstance API request.
-func (r DeleteTrafficPolicyInstanceRequest) Send() (*DeleteTrafficPolicyInstanceOutput, error) {
+func (r DeleteTrafficPolicyInstanceRequest) Send(ctx context.Context) (*DeleteTrafficPolicyInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1208,7 +1245,7 @@ func (r DeleteTrafficPolicyInstanceRequest) Send() (*DeleteTrafficPolicyInstance
 //
 //    // Example sending a request using the DeleteTrafficPolicyInstanceRequest method.
 //    req := client.DeleteTrafficPolicyInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1242,7 +1279,8 @@ type DeleteVPCAssociationAuthorizationRequest struct {
 }
 
 // Send marshals and sends the DeleteVPCAssociationAuthorization API request.
-func (r DeleteVPCAssociationAuthorizationRequest) Send() (*DeleteVPCAssociationAuthorizationOutput, error) {
+func (r DeleteVPCAssociationAuthorizationRequest) Send(ctx context.Context) (*DeleteVPCAssociationAuthorizationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1267,7 +1305,7 @@ func (r DeleteVPCAssociationAuthorizationRequest) Send() (*DeleteVPCAssociationA
 //
 //    // Example sending a request using the DeleteVPCAssociationAuthorizationRequest method.
 //    req := client.DeleteVPCAssociationAuthorizationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1301,7 +1339,8 @@ type DisassociateVPCFromHostedZoneRequest struct {
 }
 
 // Send marshals and sends the DisassociateVPCFromHostedZone API request.
-func (r DisassociateVPCFromHostedZoneRequest) Send() (*DisassociateVPCFromHostedZoneOutput, error) {
+func (r DisassociateVPCFromHostedZoneRequest) Send(ctx context.Context) (*DisassociateVPCFromHostedZoneOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1326,7 +1365,7 @@ func (r DisassociateVPCFromHostedZoneRequest) Send() (*DisassociateVPCFromHosted
 //
 //    // Example sending a request using the DisassociateVPCFromHostedZoneRequest method.
 //    req := client.DisassociateVPCFromHostedZoneRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1360,7 +1399,8 @@ type GetAccountLimitRequest struct {
 }
 
 // Send marshals and sends the GetAccountLimit API request.
-func (r GetAccountLimitRequest) Send() (*GetAccountLimitOutput, error) {
+func (r GetAccountLimitRequest) Send(ctx context.Context) (*GetAccountLimitOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1375,13 +1415,18 @@ func (r GetAccountLimitRequest) Send() (*GetAccountLimitOutput, error) {
 // Gets the specified limit for the current account, for example, the maximum
 // number of health checks that you can create using the account.
 //
-// For the default limit, see Limits (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
+// For the default limit, see Limits (https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
 // in the Amazon Route 53 Developer Guide. To request a higher limit, open a
 // case (https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
 //
+// You can also view account limits in AWS Trusted Advisor. Sign in to the AWS
+// Management Console and open the Trusted Advisor console at https://console.aws.amazon.com/trustedadvisor/
+// (https://console.aws.amazon.com/trustedadvisor). Then choose Service limits
+// in the navigation pane.
+//
 //    // Example sending a request using the GetAccountLimitRequest method.
 //    req := client.GetAccountLimitRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1415,7 +1460,8 @@ type GetChangeRequest struct {
 }
 
 // Send marshals and sends the GetChange API request.
-func (r GetChangeRequest) Send() (*GetChangeOutput, error) {
+func (r GetChangeRequest) Send(ctx context.Context) (*GetChangeOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1439,7 +1485,7 @@ func (r GetChangeRequest) Send() (*GetChangeOutput, error) {
 //
 //    // Example sending a request using the GetChangeRequest method.
 //    req := client.GetChangeRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1473,7 +1519,8 @@ type GetCheckerIpRangesRequest struct {
 }
 
 // Send marshals and sends the GetCheckerIpRanges API request.
-func (r GetCheckerIpRangesRequest) Send() (*GetCheckerIpRangesOutput, error) {
+func (r GetCheckerIpRangesRequest) Send(ctx context.Context) (*GetCheckerIpRangesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1492,7 +1539,7 @@ func (r GetCheckerIpRangesRequest) Send() (*GetCheckerIpRangesOutput, error) {
 //
 //    // Example sending a request using the GetCheckerIpRangesRequest method.
 //    req := client.GetCheckerIpRangesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1526,7 +1573,8 @@ type GetGeoLocationRequest struct {
 }
 
 // Send marshals and sends the GetGeoLocation API request.
-func (r GetGeoLocationRequest) Send() (*GetGeoLocationOutput, error) {
+func (r GetGeoLocationRequest) Send(ctx context.Context) (*GetGeoLocationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1559,7 +1607,7 @@ func (r GetGeoLocationRequest) Send() (*GetGeoLocationOutput, error) {
 //
 //    // Example sending a request using the GetGeoLocationRequest method.
 //    req := client.GetGeoLocationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1593,7 +1641,8 @@ type GetHealthCheckRequest struct {
 }
 
 // Send marshals and sends the GetHealthCheck API request.
-func (r GetHealthCheckRequest) Send() (*GetHealthCheckOutput, error) {
+func (r GetHealthCheckRequest) Send(ctx context.Context) (*GetHealthCheckOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1609,7 +1658,7 @@ func (r GetHealthCheckRequest) Send() (*GetHealthCheckOutput, error) {
 //
 //    // Example sending a request using the GetHealthCheckRequest method.
 //    req := client.GetHealthCheckRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1643,7 +1692,8 @@ type GetHealthCheckCountRequest struct {
 }
 
 // Send marshals and sends the GetHealthCheckCount API request.
-func (r GetHealthCheckCountRequest) Send() (*GetHealthCheckCountOutput, error) {
+func (r GetHealthCheckCountRequest) Send(ctx context.Context) (*GetHealthCheckCountOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1660,7 +1710,7 @@ func (r GetHealthCheckCountRequest) Send() (*GetHealthCheckCountOutput, error) {
 //
 //    // Example sending a request using the GetHealthCheckCountRequest method.
 //    req := client.GetHealthCheckCountRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1694,7 +1744,8 @@ type GetHealthCheckLastFailureReasonRequest struct {
 }
 
 // Send marshals and sends the GetHealthCheckLastFailureReason API request.
-func (r GetHealthCheckLastFailureReasonRequest) Send() (*GetHealthCheckLastFailureReasonOutput, error) {
+func (r GetHealthCheckLastFailureReasonRequest) Send(ctx context.Context) (*GetHealthCheckLastFailureReasonOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1710,7 +1761,7 @@ func (r GetHealthCheckLastFailureReasonRequest) Send() (*GetHealthCheckLastFailu
 //
 //    // Example sending a request using the GetHealthCheckLastFailureReasonRequest method.
 //    req := client.GetHealthCheckLastFailureReasonRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1744,7 +1795,8 @@ type GetHealthCheckStatusRequest struct {
 }
 
 // Send marshals and sends the GetHealthCheckStatus API request.
-func (r GetHealthCheckStatusRequest) Send() (*GetHealthCheckStatusOutput, error) {
+func (r GetHealthCheckStatusRequest) Send(ctx context.Context) (*GetHealthCheckStatusOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1760,7 +1812,7 @@ func (r GetHealthCheckStatusRequest) Send() (*GetHealthCheckStatusOutput, error)
 //
 //    // Example sending a request using the GetHealthCheckStatusRequest method.
 //    req := client.GetHealthCheckStatusRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1794,7 +1846,8 @@ type GetHostedZoneRequest struct {
 }
 
 // Send marshals and sends the GetHostedZone API request.
-func (r GetHostedZoneRequest) Send() (*GetHostedZoneOutput, error) {
+func (r GetHostedZoneRequest) Send(ctx context.Context) (*GetHostedZoneOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1811,7 +1864,7 @@ func (r GetHostedZoneRequest) Send() (*GetHostedZoneOutput, error) {
 //
 //    // Example sending a request using the GetHostedZoneRequest method.
 //    req := client.GetHostedZoneRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1845,7 +1898,8 @@ type GetHostedZoneCountRequest struct {
 }
 
 // Send marshals and sends the GetHostedZoneCount API request.
-func (r GetHostedZoneCountRequest) Send() (*GetHostedZoneCountOutput, error) {
+func (r GetHostedZoneCountRequest) Send(ctx context.Context) (*GetHostedZoneCountOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1862,7 +1916,7 @@ func (r GetHostedZoneCountRequest) Send() (*GetHostedZoneCountOutput, error) {
 //
 //    // Example sending a request using the GetHostedZoneCountRequest method.
 //    req := client.GetHostedZoneCountRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1896,7 +1950,8 @@ type GetHostedZoneLimitRequest struct {
 }
 
 // Send marshals and sends the GetHostedZoneLimit API request.
-func (r GetHostedZoneLimitRequest) Send() (*GetHostedZoneLimitOutput, error) {
+func (r GetHostedZoneLimitRequest) Send(ctx context.Context) (*GetHostedZoneLimitOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1911,13 +1966,13 @@ func (r GetHostedZoneLimitRequest) Send() (*GetHostedZoneLimitOutput, error) {
 // Gets the specified limit for a specified hosted zone, for example, the maximum
 // number of records that you can create in the hosted zone.
 //
-// For the default limit, see Limits (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
+// For the default limit, see Limits (https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
 // in the Amazon Route 53 Developer Guide. To request a higher limit, open a
 // case (https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
 //
 //    // Example sending a request using the GetHostedZoneLimitRequest method.
 //    req := client.GetHostedZoneLimitRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1951,7 +2006,8 @@ type GetQueryLoggingConfigRequest struct {
 }
 
 // Send marshals and sends the GetQueryLoggingConfig API request.
-func (r GetQueryLoggingConfigRequest) Send() (*GetQueryLoggingConfigOutput, error) {
+func (r GetQueryLoggingConfigRequest) Send(ctx context.Context) (*GetQueryLoggingConfigOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1965,12 +2021,12 @@ func (r GetQueryLoggingConfigRequest) Send() (*GetQueryLoggingConfigOutput, erro
 //
 // Gets information about a specified configuration for DNS query logging.
 //
-// For more information about DNS query logs, see CreateQueryLoggingConfig and
-// Logging DNS Queries (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html).
+// For more information about DNS query logs, see CreateQueryLoggingConfig (https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html)
+// and Logging DNS Queries (https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html).
 //
 //    // Example sending a request using the GetQueryLoggingConfigRequest method.
 //    req := client.GetQueryLoggingConfigRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2004,7 +2060,8 @@ type GetReusableDelegationSetRequest struct {
 }
 
 // Send marshals and sends the GetReusableDelegationSet API request.
-func (r GetReusableDelegationSetRequest) Send() (*GetReusableDelegationSetOutput, error) {
+func (r GetReusableDelegationSetRequest) Send(ctx context.Context) (*GetReusableDelegationSetOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2021,7 +2078,7 @@ func (r GetReusableDelegationSetRequest) Send() (*GetReusableDelegationSetOutput
 //
 //    // Example sending a request using the GetReusableDelegationSetRequest method.
 //    req := client.GetReusableDelegationSetRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2055,7 +2112,8 @@ type GetReusableDelegationSetLimitRequest struct {
 }
 
 // Send marshals and sends the GetReusableDelegationSetLimit API request.
-func (r GetReusableDelegationSetLimitRequest) Send() (*GetReusableDelegationSetLimitOutput, error) {
+func (r GetReusableDelegationSetLimitRequest) Send(ctx context.Context) (*GetReusableDelegationSetLimitOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2070,13 +2128,13 @@ func (r GetReusableDelegationSetLimitRequest) Send() (*GetReusableDelegationSetL
 // Gets the maximum number of hosted zones that you can associate with the specified
 // reusable delegation set.
 //
-// For the default limit, see Limits (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
+// For the default limit, see Limits (https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/DNSLimitations.html)
 // in the Amazon Route 53 Developer Guide. To request a higher limit, open a
 // case (https://console.aws.amazon.com/support/home#/case/create?issueType=service-limit-increase&limitType=service-code-route53).
 //
 //    // Example sending a request using the GetReusableDelegationSetLimitRequest method.
 //    req := client.GetReusableDelegationSetLimitRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2110,7 +2168,8 @@ type GetTrafficPolicyRequest struct {
 }
 
 // Send marshals and sends the GetTrafficPolicy API request.
-func (r GetTrafficPolicyRequest) Send() (*GetTrafficPolicyOutput, error) {
+func (r GetTrafficPolicyRequest) Send(ctx context.Context) (*GetTrafficPolicyOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2126,7 +2185,7 @@ func (r GetTrafficPolicyRequest) Send() (*GetTrafficPolicyOutput, error) {
 //
 //    // Example sending a request using the GetTrafficPolicyRequest method.
 //    req := client.GetTrafficPolicyRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2160,7 +2219,8 @@ type GetTrafficPolicyInstanceRequest struct {
 }
 
 // Send marshals and sends the GetTrafficPolicyInstance API request.
-func (r GetTrafficPolicyInstanceRequest) Send() (*GetTrafficPolicyInstanceOutput, error) {
+func (r GetTrafficPolicyInstanceRequest) Send(ctx context.Context) (*GetTrafficPolicyInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2183,7 +2243,7 @@ func (r GetTrafficPolicyInstanceRequest) Send() (*GetTrafficPolicyInstanceOutput
 //
 //    // Example sending a request using the GetTrafficPolicyInstanceRequest method.
 //    req := client.GetTrafficPolicyInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2217,7 +2277,8 @@ type GetTrafficPolicyInstanceCountRequest struct {
 }
 
 // Send marshals and sends the GetTrafficPolicyInstanceCount API request.
-func (r GetTrafficPolicyInstanceCountRequest) Send() (*GetTrafficPolicyInstanceCountOutput, error) {
+func (r GetTrafficPolicyInstanceCountRequest) Send(ctx context.Context) (*GetTrafficPolicyInstanceCountOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2234,7 +2295,7 @@ func (r GetTrafficPolicyInstanceCountRequest) Send() (*GetTrafficPolicyInstanceC
 //
 //    // Example sending a request using the GetTrafficPolicyInstanceCountRequest method.
 //    req := client.GetTrafficPolicyInstanceCountRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2268,7 +2329,8 @@ type ListGeoLocationsRequest struct {
 }
 
 // Send marshals and sends the ListGeoLocations API request.
-func (r ListGeoLocationsRequest) Send() (*ListGeoLocationsOutput, error) {
+func (r ListGeoLocationsRequest) Send(ctx context.Context) (*ListGeoLocationsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2289,7 +2351,7 @@ func (r ListGeoLocationsRequest) Send() (*ListGeoLocationsOutput, error) {
 //
 //    // Example sending a request using the ListGeoLocationsRequest method.
 //    req := client.ListGeoLocationsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2323,7 +2385,8 @@ type ListHealthChecksRequest struct {
 }
 
 // Send marshals and sends the ListHealthChecks API request.
-func (r ListHealthChecksRequest) Send() (*ListHealthChecksOutput, error) {
+func (r ListHealthChecksRequest) Send(ctx context.Context) (*ListHealthChecksOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2340,7 +2403,7 @@ func (r ListHealthChecksRequest) Send() (*ListHealthChecksOutput, error) {
 //
 //    // Example sending a request using the ListHealthChecksRequest method.
 //    req := client.ListHealthChecksRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2390,7 +2453,7 @@ func (c *Route53) ListHealthChecksRequest(input *ListHealthChecksInput) ListHeal
 func (p *ListHealthChecksRequest) Paginate(opts ...aws.Option) ListHealthChecksPager {
 	return ListHealthChecksPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListHealthChecksInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -2399,6 +2462,7 @@ func (p *ListHealthChecksRequest) Paginate(opts ...aws.Option) ListHealthChecksP
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2426,7 +2490,8 @@ type ListHostedZonesRequest struct {
 }
 
 // Send marshals and sends the ListHostedZones API request.
-func (r ListHostedZonesRequest) Send() (*ListHostedZonesOutput, error) {
+func (r ListHostedZonesRequest) Send(ctx context.Context) (*ListHostedZonesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2448,7 +2513,7 @@ func (r ListHostedZonesRequest) Send() (*ListHostedZonesOutput, error) {
 //
 //    // Example sending a request using the ListHostedZonesRequest method.
 //    req := client.ListHostedZonesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2498,7 +2563,7 @@ func (c *Route53) ListHostedZonesRequest(input *ListHostedZonesInput) ListHosted
 func (p *ListHostedZonesRequest) Paginate(opts ...aws.Option) ListHostedZonesPager {
 	return ListHostedZonesPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListHostedZonesInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -2507,6 +2572,7 @@ func (p *ListHostedZonesRequest) Paginate(opts ...aws.Option) ListHostedZonesPag
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2534,7 +2600,8 @@ type ListHostedZonesByNameRequest struct {
 }
 
 // Send marshals and sends the ListHostedZonesByName API request.
-func (r ListHostedZonesByNameRequest) Send() (*ListHostedZonesByNameOutput, error) {
+func (r ListHostedZonesByNameRequest) Send(ctx context.Context) (*ListHostedZonesByNameOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2599,7 +2666,7 @@ func (r ListHostedZonesByNameRequest) Send() (*ListHostedZonesByNameOutput, erro
 //
 //    // Example sending a request using the ListHostedZonesByNameRequest method.
 //    req := client.ListHostedZonesByNameRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2633,7 +2700,8 @@ type ListQueryLoggingConfigsRequest struct {
 }
 
 // Send marshals and sends the ListQueryLoggingConfigs API request.
-func (r ListQueryLoggingConfigsRequest) Send() (*ListQueryLoggingConfigsOutput, error) {
+func (r ListQueryLoggingConfigsRequest) Send(ctx context.Context) (*ListQueryLoggingConfigsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2649,14 +2717,14 @@ func (r ListQueryLoggingConfigsRequest) Send() (*ListQueryLoggingConfigsOutput, 
 // current AWS account or the configuration that is associated with a specified
 // hosted zone.
 //
-// For more information about DNS query logs, see CreateQueryLoggingConfig.
+// For more information about DNS query logs, see CreateQueryLoggingConfig (https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateQueryLoggingConfig.html).
 // Additional information, including the format of DNS query logs, appears in
-// Logging DNS Queries (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html)
+// Logging DNS Queries (https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/query-logs.html)
 // in the Amazon Route 53 Developer Guide.
 //
 //    // Example sending a request using the ListQueryLoggingConfigsRequest method.
 //    req := client.ListQueryLoggingConfigsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2690,7 +2758,8 @@ type ListResourceRecordSetsRequest struct {
 }
 
 // Send marshals and sends the ListResourceRecordSets API request.
-func (r ListResourceRecordSetsRequest) Send() (*ListResourceRecordSetsOutput, error) {
+func (r ListResourceRecordSetsRequest) Send(ctx context.Context) (*ListResourceRecordSetsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2763,7 +2832,7 @@ func (r ListResourceRecordSetsRequest) Send() (*ListResourceRecordSetsOutput, er
 //
 //    // Example sending a request using the ListResourceRecordSetsRequest method.
 //    req := client.ListResourceRecordSetsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2813,7 +2882,7 @@ func (c *Route53) ListResourceRecordSetsRequest(input *ListResourceRecordSetsInp
 func (p *ListResourceRecordSetsRequest) Paginate(opts ...aws.Option) ListResourceRecordSetsPager {
 	return ListResourceRecordSetsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListResourceRecordSetsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -2822,6 +2891,7 @@ func (p *ListResourceRecordSetsRequest) Paginate(opts ...aws.Option) ListResourc
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2849,7 +2919,8 @@ type ListReusableDelegationSetsRequest struct {
 }
 
 // Send marshals and sends the ListReusableDelegationSets API request.
-func (r ListReusableDelegationSetsRequest) Send() (*ListReusableDelegationSetsOutput, error) {
+func (r ListReusableDelegationSetsRequest) Send(ctx context.Context) (*ListReusableDelegationSetsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2866,7 +2937,7 @@ func (r ListReusableDelegationSetsRequest) Send() (*ListReusableDelegationSetsOu
 //
 //    // Example sending a request using the ListReusableDelegationSetsRequest method.
 //    req := client.ListReusableDelegationSetsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2900,7 +2971,8 @@ type ListTagsForResourceRequest struct {
 }
 
 // Send marshals and sends the ListTagsForResource API request.
-func (r ListTagsForResourceRequest) Send() (*ListTagsForResourceOutput, error) {
+func (r ListTagsForResourceRequest) Send(ctx context.Context) (*ListTagsForResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2915,12 +2987,12 @@ func (r ListTagsForResourceRequest) Send() (*ListTagsForResourceOutput, error) {
 // Lists tags for one health check or hosted zone.
 //
 // For information about using tags for cost allocation, see Using Cost Allocation
-// Tags (http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+// Tags (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
 // in the AWS Billing and Cost Management User Guide.
 //
 //    // Example sending a request using the ListTagsForResourceRequest method.
 //    req := client.ListTagsForResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2954,7 +3026,8 @@ type ListTagsForResourcesRequest struct {
 }
 
 // Send marshals and sends the ListTagsForResources API request.
-func (r ListTagsForResourcesRequest) Send() (*ListTagsForResourcesOutput, error) {
+func (r ListTagsForResourcesRequest) Send(ctx context.Context) (*ListTagsForResourcesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2969,12 +3042,12 @@ func (r ListTagsForResourcesRequest) Send() (*ListTagsForResourcesOutput, error)
 // Lists tags for up to 10 health checks or hosted zones.
 //
 // For information about using tags for cost allocation, see Using Cost Allocation
-// Tags (http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
+// Tags (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html)
 // in the AWS Billing and Cost Management User Guide.
 //
 //    // Example sending a request using the ListTagsForResourcesRequest method.
 //    req := client.ListTagsForResourcesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3008,7 +3081,8 @@ type ListTrafficPoliciesRequest struct {
 }
 
 // Send marshals and sends the ListTrafficPolicies API request.
-func (r ListTrafficPoliciesRequest) Send() (*ListTrafficPoliciesOutput, error) {
+func (r ListTrafficPoliciesRequest) Send(ctx context.Context) (*ListTrafficPoliciesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3026,7 +3100,7 @@ func (r ListTrafficPoliciesRequest) Send() (*ListTrafficPoliciesOutput, error) {
 //
 //    // Example sending a request using the ListTrafficPoliciesRequest method.
 //    req := client.ListTrafficPoliciesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3060,7 +3134,8 @@ type ListTrafficPolicyInstancesRequest struct {
 }
 
 // Send marshals and sends the ListTrafficPolicyInstances API request.
-func (r ListTrafficPolicyInstancesRequest) Send() (*ListTrafficPolicyInstancesOutput, error) {
+func (r ListTrafficPolicyInstancesRequest) Send(ctx context.Context) (*ListTrafficPolicyInstancesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3086,7 +3161,7 @@ func (r ListTrafficPolicyInstancesRequest) Send() (*ListTrafficPolicyInstancesOu
 //
 //    // Example sending a request using the ListTrafficPolicyInstancesRequest method.
 //    req := client.ListTrafficPolicyInstancesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3120,7 +3195,8 @@ type ListTrafficPolicyInstancesByHostedZoneRequest struct {
 }
 
 // Send marshals and sends the ListTrafficPolicyInstancesByHostedZone API request.
-func (r ListTrafficPolicyInstancesByHostedZoneRequest) Send() (*ListTrafficPolicyInstancesByHostedZoneOutput, error) {
+func (r ListTrafficPolicyInstancesByHostedZoneRequest) Send(ctx context.Context) (*ListTrafficPolicyInstancesByHostedZoneOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3146,7 +3222,7 @@ func (r ListTrafficPolicyInstancesByHostedZoneRequest) Send() (*ListTrafficPolic
 //
 //    // Example sending a request using the ListTrafficPolicyInstancesByHostedZoneRequest method.
 //    req := client.ListTrafficPolicyInstancesByHostedZoneRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3180,7 +3256,8 @@ type ListTrafficPolicyInstancesByPolicyRequest struct {
 }
 
 // Send marshals and sends the ListTrafficPolicyInstancesByPolicy API request.
-func (r ListTrafficPolicyInstancesByPolicyRequest) Send() (*ListTrafficPolicyInstancesByPolicyOutput, error) {
+func (r ListTrafficPolicyInstancesByPolicyRequest) Send(ctx context.Context) (*ListTrafficPolicyInstancesByPolicyOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3206,7 +3283,7 @@ func (r ListTrafficPolicyInstancesByPolicyRequest) Send() (*ListTrafficPolicyIns
 //
 //    // Example sending a request using the ListTrafficPolicyInstancesByPolicyRequest method.
 //    req := client.ListTrafficPolicyInstancesByPolicyRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3240,7 +3317,8 @@ type ListTrafficPolicyVersionsRequest struct {
 }
 
 // Send marshals and sends the ListTrafficPolicyVersions API request.
-func (r ListTrafficPolicyVersionsRequest) Send() (*ListTrafficPolicyVersionsOutput, error) {
+func (r ListTrafficPolicyVersionsRequest) Send(ctx context.Context) (*ListTrafficPolicyVersionsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3258,7 +3336,7 @@ func (r ListTrafficPolicyVersionsRequest) Send() (*ListTrafficPolicyVersionsOutp
 //
 //    // Example sending a request using the ListTrafficPolicyVersionsRequest method.
 //    req := client.ListTrafficPolicyVersionsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3292,7 +3370,8 @@ type ListVPCAssociationAuthorizationsRequest struct {
 }
 
 // Send marshals and sends the ListVPCAssociationAuthorizations API request.
-func (r ListVPCAssociationAuthorizationsRequest) Send() (*ListVPCAssociationAuthorizationsOutput, error) {
+func (r ListVPCAssociationAuthorizationsRequest) Send(ctx context.Context) (*ListVPCAssociationAuthorizationsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3313,7 +3392,7 @@ func (r ListVPCAssociationAuthorizationsRequest) Send() (*ListVPCAssociationAuth
 //
 //    // Example sending a request using the ListVPCAssociationAuthorizationsRequest method.
 //    req := client.ListVPCAssociationAuthorizationsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3347,7 +3426,8 @@ type TestDNSAnswerRequest struct {
 }
 
 // Send marshals and sends the TestDNSAnswer API request.
-func (r TestDNSAnswerRequest) Send() (*TestDNSAnswerOutput, error) {
+func (r TestDNSAnswerRequest) Send(ctx context.Context) (*TestDNSAnswerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3365,7 +3445,7 @@ func (r TestDNSAnswerRequest) Send() (*TestDNSAnswerOutput, error) {
 //
 //    // Example sending a request using the TestDNSAnswerRequest method.
 //    req := client.TestDNSAnswerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3399,7 +3479,8 @@ type UpdateHealthCheckRequest struct {
 }
 
 // Send marshals and sends the UpdateHealthCheck API request.
-func (r UpdateHealthCheckRequest) Send() (*UpdateHealthCheckOutput, error) {
+func (r UpdateHealthCheckRequest) Send(ctx context.Context) (*UpdateHealthCheckOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3419,7 +3500,7 @@ func (r UpdateHealthCheckRequest) Send() (*UpdateHealthCheckOutput, error) {
 //
 //    // Example sending a request using the UpdateHealthCheckRequest method.
 //    req := client.UpdateHealthCheckRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3453,7 +3534,8 @@ type UpdateHostedZoneCommentRequest struct {
 }
 
 // Send marshals and sends the UpdateHostedZoneComment API request.
-func (r UpdateHostedZoneCommentRequest) Send() (*UpdateHostedZoneCommentOutput, error) {
+func (r UpdateHostedZoneCommentRequest) Send(ctx context.Context) (*UpdateHostedZoneCommentOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3469,7 +3551,7 @@ func (r UpdateHostedZoneCommentRequest) Send() (*UpdateHostedZoneCommentOutput, 
 //
 //    // Example sending a request using the UpdateHostedZoneCommentRequest method.
 //    req := client.UpdateHostedZoneCommentRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3503,7 +3585,8 @@ type UpdateTrafficPolicyCommentRequest struct {
 }
 
 // Send marshals and sends the UpdateTrafficPolicyComment API request.
-func (r UpdateTrafficPolicyCommentRequest) Send() (*UpdateTrafficPolicyCommentOutput, error) {
+func (r UpdateTrafficPolicyCommentRequest) Send(ctx context.Context) (*UpdateTrafficPolicyCommentOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3519,7 +3602,7 @@ func (r UpdateTrafficPolicyCommentRequest) Send() (*UpdateTrafficPolicyCommentOu
 //
 //    // Example sending a request using the UpdateTrafficPolicyCommentRequest method.
 //    req := client.UpdateTrafficPolicyCommentRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3553,7 +3636,8 @@ type UpdateTrafficPolicyInstanceRequest struct {
 }
 
 // Send marshals and sends the UpdateTrafficPolicyInstance API request.
-func (r UpdateTrafficPolicyInstanceRequest) Send() (*UpdateTrafficPolicyInstanceOutput, error) {
+func (r UpdateTrafficPolicyInstanceRequest) Send(ctx context.Context) (*UpdateTrafficPolicyInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3587,7 +3671,7 @@ func (r UpdateTrafficPolicyInstanceRequest) Send() (*UpdateTrafficPolicyInstance
 //
 //    // Example sending a request using the UpdateTrafficPolicyInstanceRequest method.
 //    req := client.UpdateTrafficPolicyInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3639,7 +3723,7 @@ type AccountLimit struct {
 	// Type is a required field
 	Type AccountLimitType `type:"string" required:"true" enum:"true"`
 
-	// The current value for the limit that is specified by AccountLimit$Type.
+	// The current value for the limit that is specified by Type (https://docs.aws.amazon.com/Route53/latest/APIReference/API_AccountLimit.html#Route53-Type-AccountLimit-Type).
 	//
 	// Value is a required field
 	Value *int64 `min:"1" type:"long" required:"true"`
@@ -3753,15 +3837,11 @@ func (s AlarmIdentifier) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
-// Alias resource record sets only: Information about the CloudFront distribution,
-// Elastic Beanstalk environment, ELB load balancer, Amazon S3 bucket, or Amazon
-// Route 53 resource record set that you're redirecting queries to. An Elastic
-// Beanstalk environment must have a regionalized subdomain.
+// Alias resource record sets only: Information about the AWS resource, such
+// as a CloudFront distribution or an Amazon S3 bucket, that you want to route
+// traffic to.
 //
 // When creating resource record sets for a private hosted zone, note the following:
-//
-//    * Resource record sets can't be created for CloudFront distributions in
-//    a private hosted zone.
 //
 //    * Creating geolocation alias resource record sets or latency alias resource
 //    record sets in a private hosted zone is unsupported.
@@ -3775,6 +3855,24 @@ type AliasTarget struct {
 	// Alias resource record sets only: The value that you specify depends on where
 	// you want to route queries:
 	//
+	// Amazon API Gateway custom regional APIs and edge-optimized APIsSpecify the
+	// applicable domain name for your API. You can get the applicable value using
+	// the AWS CLI command get-domain-names (https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-domain-names.html):
+	//
+	// For regional APIs, specify the value of regionalDomainName.
+	//
+	// For edge-optimized APIs, specify the value of distributionDomainName. This
+	// is the name of the associated CloudFront distribution, such as da1b2c3d4e5.cloudfront.net.
+	//
+	// The name of the record that you're creating must match a custom domain name
+	// for your API, such as api.example.com.
+	//
+	// Amazon Virtual Private Cloud interface VPC endpointEnter the API endpoint
+	// for the interface endpoint, such as vpce-123456789abcdef01-example-us-east-1a.elasticloadbalancing.us-east-1.vpce.amazonaws.com.
+	// For edge-optimized APIs, this is the domain name for the corresponding CloudFront
+	// distribution. You can get the value of DnsName using the AWS CLI command
+	// describe-vpc-endpoints (https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-vpc-endpoints.html).
+	//
 	// CloudFront distributionSpecify the domain name that CloudFront assigned when
 	// you created your distribution.
 	//
@@ -3784,6 +3882,9 @@ type AliasTarget struct {
 	// acme.example.com as one of the alternate domain names. For more information,
 	// see Using Alternate Domain Names (CNAMEs) (http://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/CNAMEs.html)
 	// in the Amazon CloudFront Developer Guide.
+	//
+	// You can't create a resource record set in a private hosted zone to route
+	// traffic to a CloudFront distribution.
 	//
 	// For failover alias records, you can't specify a CloudFront distribution for
 	// both the primary and secondary records. A distribution must include an alternate
@@ -3910,7 +4011,7 @@ type AliasTarget struct {
 	// If any target group contains only unhealthy targets, the load balancer is
 	// considered unhealthy, and Route 53 routes queries to other resources.
 	//
-	// A target group that has no registered targets is considered healthy.
+	// A target group that has no registered targets is considered unhealthy.
 	//
 	// When you create a load balancer, you configure settings for Elastic Load
 	// Balancing health checks; they're not Route 53 health checks, but they perform
@@ -3937,6 +4038,18 @@ type AliasTarget struct {
 	// Alias resource records sets only: The value used depends on where you want
 	// to route traffic:
 	//
+	// Amazon API Gateway custom regional APIs and edge-optimized APIsSpecify the
+	// hosted zone ID for your API. You can get the applicable value using the AWS
+	// CLI command get-domain-names (https://docs.aws.amazon.com/cli/latest/reference/apigateway/get-domain-names.html):
+	//
+	// For regional APIs, specify the value of regionalHostedZoneId.
+	//
+	// For edge-optimized APIs, specify the value of distributionHostedZoneId.
+	//
+	// Amazon Virtual Private Cloud interface VPC endpointSpecify the hosted zone
+	// ID for your interface endpoint. You can get the value of HostedZoneId using
+	// the AWS CLI command describe-vpc-endpoints (https://docs.aws.amazon.com/cli/latest/reference/ec2/describe-vpc-endpoints.html).
+	//
 	// CloudFront distributionSpecify Z2FDTNDATAQYW2.
 	//
 	// Alias resource record sets for CloudFront can't be created in a private zone.
@@ -3951,7 +4064,7 @@ type AliasTarget struct {
 	// ELB load balancerSpecify the value of the hosted zone ID for the load balancer.
 	// Use the following methods to get the hosted zone ID:
 	//
-	// Elastic Load Balancing (http://docs.aws.amazon.com/general/latest/gr/rande.html#elb_region)
+	// Elastic Load Balancing (https://docs.aws.amazon.com/general/latest/gr/rande.html#elb_region)
 	// table in the "AWS Regions and Endpoints" chapter of the Amazon Web Services
 	// General Reference: Use the value that corresponds with the region that you
 	// created your load balancer in. Note that there are separate columns for Application
@@ -4185,11 +4298,12 @@ type Change struct {
 	//    * DELETE: Deletes a existing resource record set.
 	//
 	// To delete the resource record set that is associated with a traffic policy
-	//    instance, use DeleteTrafficPolicyInstance. Amazon Route 53 will delete
-	//    the resource record set automatically. If you delete the resource record
-	//    set by using ChangeResourceRecordSets, Route 53 doesn't automatically
-	//    delete the traffic policy instance, and you'll continue to be charged
-	//    for it even though it's no longer in use.
+	//    instance, use DeleteTrafficPolicyInstance (https://docs.aws.amazon.com/Route53/latest/APIReference/API_DeleteTrafficPolicyInstance.html).
+	//    Amazon Route 53 will delete the resource record set automatically. If
+	//    you delete the resource record set by using ChangeResourceRecordSets,
+	//    Route 53 doesn't automatically delete the traffic policy instance, and
+	//    you'll continue to be charged for it even though it's no longer in use.
+	//
 	//
 	//    * UPSERT: If a resource record set doesn't already exist, Route 53 creates
 	//    it. If a resource record set does exist, Route 53 updates it with the
@@ -4333,8 +4447,8 @@ type ChangeInfo struct {
 	// A complex type that describes change information about changes made to your
 	// hosted zone.
 	//
-	// This element contains an ID that you use when performing a GetChange action
-	// to get detailed information about the change.
+	// This element contains an ID that you use when performing a GetChange (https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetChange.html)
+	// action to get detailed information about the change.
 	Comment *string `type:"string"`
 
 	// The ID of the request.
@@ -4477,8 +4591,8 @@ type ChangeResourceRecordSetsOutput struct {
 	// A complex type that contains information about changes made to your hosted
 	// zone.
 	//
-	// This element contains an ID that you use when performing a GetChange action
-	// to get detailed information about the change.
+	// This element contains an ID that you use when performing a GetChange (https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetChange.html)
+	// action to get detailed information about the change.
 	//
 	// ChangeInfo is a required field
 	ChangeInfo *ChangeInfo `type:"structure" required:"true"`
@@ -4932,7 +5046,7 @@ type CreateHostedZoneInput struct {
 	// If you want to associate a reusable delegation set with this hosted zone,
 	// the ID that Amazon Route 53 assigned to the reusable delegation set when
 	// you created it. For more information about reusable delegation sets, see
-	// CreateReusableDelegationSet.
+	// CreateReusableDelegationSet (https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateReusableDelegationSet.html).
 	DelegationSetId *string `type:"string"`
 
 	// (Optional) A complex type that contains the following optional values:
@@ -4963,6 +5077,7 @@ type CreateHostedZoneInput struct {
 	//
 	// You can specify only one Amazon VPC when you create a private hosted zone.
 	// To associate additional Amazon VPCs with the hosted zone, use AssociateVPCWithHostedZone
+	// (https://docs.aws.amazon.com/Route53/latest/APIReference/API_AssociateVPCWithHostedZone.html)
 	// after you create a hosted zone.
 	VPC *VPC `type:"structure"`
 }
@@ -5134,8 +5249,8 @@ type CreateQueryLoggingConfigInput struct {
 	// arn:aws:logs:region:account-id:log-group:log_group_name
 	//
 	// To get the ARN for a log group, you can use the CloudWatch console, the DescribeLogGroups
-	// (http://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html)
-	// API action, the describe-log-groups (http://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html)
+	// (https://docs.aws.amazon.com/AmazonCloudWatchLogs/latest/APIReference/API_DescribeLogGroups.html)
+	// API action, the describe-log-groups (https://docs.aws.amazon.com/cli/latest/reference/logs/describe-log-groups.html)
 	// command, or the applicable command in one of the AWS SDKs.
 	//
 	// CloudWatchLogsLogGroupArn is a required field
@@ -5373,7 +5488,7 @@ type CreateTrafficPolicyInput struct {
 	Comment *string `type:"string"`
 
 	// The definition of this traffic policy in JSON format. For more information,
-	// see Traffic Policy Document Format (http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html).
+	// see Traffic Policy Document Format (https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html).
 	//
 	// Document is a required field
 	Document *string `type:"string" required:"true"`
@@ -5676,7 +5791,7 @@ type CreateTrafficPolicyVersionInput struct {
 
 	// The definition of this version of the traffic policy, in JSON format. You
 	// specified the JSON in the CreateTrafficPolicyVersion request. For more information
-	// about the JSON format, see CreateTrafficPolicy.
+	// about the JSON format, see CreateTrafficPolicy (https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateTrafficPolicy.html).
 	//
 	// Document is a required field
 	Document *string `type:"string" required:"true"`
@@ -7103,6 +7218,7 @@ func (s GetChangeOutput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Empty request.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetCheckerIpRangesRequest
 type GetCheckerIpRangesInput struct {
 	_ struct{} `type:"structure"`
@@ -7124,12 +7240,16 @@ func (s GetCheckerIpRangesInput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// A complex type that contains the CheckerIpRanges element.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/GetCheckerIpRangesResponse
 type GetCheckerIpRangesOutput struct {
 	_ struct{} `type:"structure"`
 
 	responseMetadata aws.Response
 
+	// A complex type that contains sorted list of IP ranges in CIDR format for
+	// Amazon Route 53 health checkers.
+	//
 	// CheckerIpRanges is a required field
 	CheckerIpRanges []string `type:"list" required:"true"`
 }
@@ -8002,7 +8122,8 @@ type GetQueryLoggingConfigOutput struct {
 	responseMetadata aws.Response
 
 	// A complex type that contains information about the query logging configuration
-	// that you specified in a GetQueryLoggingConfig request.
+	// that you specified in a GetQueryLoggingConfig (https://docs.aws.amazon.com/Route53/latest/APIReference/API_GetQueryLoggingConfig.html)
+	// request.
 	//
 	// QueryLoggingConfig is a required field
 	QueryLoggingConfig *QueryLoggingConfig `type:"structure" required:"true"`
@@ -8622,7 +8743,7 @@ type HealthCheckConfig struct {
 	// After you disable a health check, Route 53 considers the status of the health
 	// check to always be healthy. If you configured DNS failover, Route 53 continues
 	// to route traffic to the corresponding resources. If you want to stop routing
-	// traffic to a resource, change the value of UpdateHealthCheckRequest$Inverted.
+	// traffic to a resource, change the value of Inverted (https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-Inverted).
 	//
 	// Charges for a health check still apply when the health check is disabled.
 	// For more information, see Amazon Route 53 Pricing (http://aws.amazon.com/route53/pricing/).
@@ -8719,10 +8840,11 @@ type HealthCheckConfig struct {
 	FullyQualifiedDomainName *string `type:"string"`
 
 	// The number of child health checks that are associated with a CALCULATED health
-	// that Amazon Route 53 must consider healthy for the CALCULATED health check
-	// to be considered healthy. To specify the child health checks that you want
-	// to associate with a CALCULATED health check, use the HealthCheckConfig$ChildHealthChecks
-	// and HealthCheckConfig$ChildHealthChecks elements.
+	// check that Amazon Route 53 must consider healthy for the CALCULATED health
+	// check to be considered healthy. To specify the child health checks that you
+	// want to associate with a CALCULATED health check, use the ChildHealthChecks
+	// (https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-ChildHealthChecks)
+	// element.
 	//
 	// Note the following:
 	//
@@ -8755,7 +8877,7 @@ type HealthCheckConfig struct {
 	// IP address for IPAddress. This ensures that the IP address of your instance
 	// will never change.
 	//
-	// For more information, see HealthCheckConfig$FullyQualifiedDomainName.
+	// For more information, see FullyQualifiedDomainName (https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName).
 	//
 	// Constraints: Route 53 can't check the health of endpoints for which the IP
 	// address is in local, private, non-routable, or multicast ranges. For more
@@ -8878,7 +9000,7 @@ type HealthCheckConfig struct {
 	//    of HealthThreshold.
 	//
 	// For more information, see How Route 53 Determines Whether an Endpoint Is
-	// Healthy (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
+	// Healthy (https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
 	// in the Amazon Route 53 Developer Guide.
 	//
 	// Type is a required field
@@ -9127,7 +9249,8 @@ type HostedZone struct {
 	// have registered with your DNS registrar.
 	//
 	// For information about how to specify characters other than a-z, 0-9, and
-	// - (hyphen) and how to specify internationalized domain names, see CreateHostedZone.
+	// - (hyphen) and how to specify internationalized domain names, see CreateHostedZone
+	// (https://docs.aws.amazon.com/Route53/latest/APIReference/API_CreateHostedZone.html).
 	//
 	// Name is a required field
 	Name *string `type:"string" required:"true"`
@@ -10040,7 +10163,8 @@ type ListQueryLoggingConfigsInput struct {
 
 	// (Optional) The maximum number of query logging configurations that you want
 	// Amazon Route 53 to return in response to the current request. If the current
-	// AWS account has more than MaxResults configurations, use the value of ListQueryLoggingConfigsResponse$NextToken
+	// AWS account has more than MaxResults configurations, use the value of NextToken
+	// (https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListQueryLoggingConfigs.html#API_ListQueryLoggingConfigs_RequestSyntax)
 	// in the response to get the next page of results.
 	//
 	// If you don't specify a value for MaxResults, Route 53 returns up to 100 configurations.
@@ -10101,13 +10225,14 @@ type ListQueryLoggingConfigsOutput struct {
 	// the response.
 	//
 	// If a response doesn't include the last of the configurations, you can get
-	// more configurations by submitting another ListQueryLoggingConfigs request.
-	// Get the value of NextToken that Amazon Route 53 returned in the previous
-	// response and include it in NextToken in the next request.
+	// more configurations by submitting another ListQueryLoggingConfigs (https://docs.aws.amazon.com/Route53/latest/APIReference/API_ListQueryLoggingConfigs.html)
+	// request. Get the value of NextToken that Amazon Route 53 returned in the
+	// previous response and include it in NextToken in the next request.
 	NextToken *string `type:"string"`
 
-	// An array that contains one QueryLoggingConfig element for each configuration
-	// for DNS query logging that is associated with the current AWS account.
+	// An array that contains one QueryLoggingConfig (https://docs.aws.amazon.com/Route53/latest/APIReference/API_QueryLoggingConfig.html)
+	// element for each configuration for DNS query logging that is associated with
+	// the current AWS account.
 	//
 	// QueryLoggingConfigs is a required field
 	QueryLoggingConfigs []QueryLoggingConfig `locationNameList:"QueryLoggingConfig" type:"list" required:"true"`
@@ -10191,13 +10316,17 @@ type ListResourceRecordSetsInput struct {
 	//
 	// Values for alias resource record sets:
 	//
+	//    * API Gateway custom regional API or edge-optimized API: A
+	//
 	//    * CloudFront distribution: A or AAAA
 	//
 	//    * Elastic Beanstalk environment that has a regionalized subdomain: A
 	//
-	//    * ELB load balancer: A | AAAA
+	//    * Elastic Load Balancing load balancer: A | AAAA
 	//
 	//    * Amazon S3 bucket: A
+	//
+	//    * Amazon VPC interface VPC endpoint: A
 	//
 	//    * Another resource record set in this hosted zone: The type of the resource
 	//    record set that the alias references.
@@ -10293,7 +10422,7 @@ type ListResourceRecordSetsOutput struct {
 	// were truncated for a given DNS name and type, the value of SetIdentifier
 	// for the next resource record set that has the current DNS name and type.
 	//
-	// For information about routing policies, see Choosing a Routing Policy (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html)
+	// For information about routing policies, see Choosing a Routing Policy (https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html)
 	// in the Amazon Route 53 Developer Guide.
 	NextRecordIdentifier *string `min:"1" type:"string"`
 
@@ -11910,7 +12039,7 @@ type ResourceRecord struct {
 	// The current or new DNS record value, not to exceed 4,000 characters. In the
 	// case of a DELETE action, if the current value does not match the actual value,
 	// an error is returned. For descriptions about how to format Value for different
-	// record types, see Supported DNS Resource Record Types (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/ResourceRecordTypes.html)
+	// record types, see Supported DNS Resource Record Types (https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/ResourceRecordTypes.html)
 	// in the Amazon Route 53 Developer Guide.
 	//
 	// You can specify more than one value for all record types except CNAME and
@@ -11962,16 +12091,15 @@ func (s ResourceRecord) MarshalFields(e protocol.FieldEncoder) error {
 type ResourceRecordSet struct {
 	_ struct{} `type:"structure"`
 
-	// Alias resource record sets only: Information about the CloudFront distribution,
-	// AWS Elastic Beanstalk environment, ELB load balancer, Amazon S3 bucket, or
-	// Amazon Route 53 resource record set to which you're redirecting queries.
-	// The AWS Elastic Beanstalk environment must have a regionalized subdomain.
+	// Alias resource record sets only: Information about the AWS resource, such
+	// as a CloudFront distribution or an Amazon S3 bucket, that you want to route
+	// traffic to.
 	//
 	// If you're creating resource records sets for a private hosted zone, note
 	// the following:
 	//
-	//    * You can't create alias resource record sets for CloudFront distributions
-	//    in a private hosted zone.
+	//    * You can't create an alias resource record set in a private hosted zone
+	//    to route traffic to a CloudFront distribution.
 	//
 	//    * Creating geolocation alias resource record sets or latency alias resource
 	//    record sets in a private hosted zone is unsupported.
@@ -12083,7 +12211,7 @@ type ResourceRecordSet struct {
 	// For more information, see the following topics in the Amazon Route 53 Developer
 	// Guide:
 	//
-	//    * How Amazon Route 53 Determines Whether an Endpoint Is Healthy (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
+	//    * How Amazon Route 53 Determines Whether an Endpoint Is Healthy (https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover-determining-health-of-endpoints.html)
 	//
 	//    * Route 53 Health Checks and DNS Failover (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-failover.html)
 	//
@@ -12282,7 +12410,7 @@ type ResourceRecordSet struct {
 	// sets that have the same name and type, the value of SetIdentifier must be
 	// unique for each resource record set.
 	//
-	// For information about routing policies, see Choosing a Routing Policy (http://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html)
+	// For information about routing policies, see Choosing a Routing Policy (https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/routing-policy.html)
 	// in the Amazon Route 53 Developer Guide.
 	SetIdentifier *string `min:"1" type:"string"`
 
@@ -12345,6 +12473,8 @@ type ResourceRecordSet struct {
 	//
 	// Values for alias resource record sets:
 	//
+	//    * Amazon API Gateway custom regional APIs and edge-optimized APIs:A
+	//
 	//    * CloudFront distributions:A
 	//
 	// If IPv6 is enabled for the distribution, create two resource record sets
@@ -12357,6 +12487,8 @@ type ResourceRecordSet struct {
 	//    * ELB load balancers:A | AAAA
 	//
 	//    * Amazon S3 buckets:A
+	//
+	//    * Amazon Virtual Private Cloud interface VPC endpointsA
 	//
 	//    * Another resource record set in this hosted zone: Specify the type of
 	//    the resource record set that you're creating the alias for. All values
@@ -12993,7 +13125,7 @@ type TrafficPolicy struct {
 
 	// The definition of a traffic policy in JSON format. You specify the JSON document
 	// to use for a new traffic policy in the CreateTrafficPolicy request. For more
-	// information about the JSON format, see Traffic Policy Document Format (http://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html).
+	// information about the JSON format, see Traffic Policy Document Format (https://docs.aws.amazon.com/Route53/latest/APIReference/api-policies-traffic-policy-document-format.html).
 	//
 	// Document is a required field
 	Document *string `type:"string" required:"true"`
@@ -13320,7 +13452,7 @@ type UpdateHealthCheckInput struct {
 	// After you disable a health check, Route 53 considers the status of the health
 	// check to always be healthy. If you configured DNS failover, Route 53 continues
 	// to route traffic to the corresponding resources. If you want to stop routing
-	// traffic to a resource, change the value of UpdateHealthCheckRequest$Inverted.
+	// traffic to a resource, change the value of Inverted (https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-Inverted).
 	//
 	// Charges for a health check still apply when the health check is disabled.
 	// For more information, see Amazon Route 53 Pricing (http://aws.amazon.com/route53/pricing/).
@@ -13480,17 +13612,17 @@ type UpdateHealthCheckInput struct {
 	// IP address for IPAddress. This ensures that the IP address of your instance
 	// never changes. For more information, see the applicable documentation:
 	//
-	//    * Linux: Elastic IP Addresses (EIP) (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
+	//    * Linux: Elastic IP Addresses (EIP) (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/elastic-ip-addresses-eip.html)
 	//    in the Amazon EC2 User Guide for Linux Instances
 	//
-	//    * Windows: Elastic IP Addresses (EIP) (http://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html)
+	//    * Windows: Elastic IP Addresses (EIP) (https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/elastic-ip-addresses-eip.html)
 	//    in the Amazon EC2 User Guide for Windows Instances
 	//
 	// If a health check already has a value for IPAddress, you can change the value.
 	// However, you can't update an existing health check to add or remove the value
 	// of IPAddress.
 	//
-	// For more information, see UpdateHealthCheckRequest$FullyQualifiedDomainName.
+	// For more information, see FullyQualifiedDomainName (https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName).
 	//
 	// Constraints: Route 53 can't check the health of endpoints for which the IP
 	// address is in local, private, non-routable, or multicast ranges. For more
@@ -13534,16 +13666,17 @@ type UpdateHealthCheckInput struct {
 	// that you want to reset to the default value. Valid values for ResettableElementName
 	// include the following:
 	//
-	//    * ChildHealthChecks: Amazon Route 53 resets HealthCheckConfig$ChildHealthChecks
+	//    * ChildHealthChecks: Amazon Route 53 resets ChildHealthChecks (https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ChildHealthChecks)
 	//    to null.
 	//
-	//    * FullyQualifiedDomainName: Route 53 resets HealthCheckConfig$FullyQualifiedDomainName
+	//    * FullyQualifiedDomainName: Route 53 resets FullyQualifiedDomainName (https://docs.aws.amazon.com/Route53/latest/APIReference/API_UpdateHealthCheck.html#Route53-UpdateHealthCheck-request-FullyQualifiedDomainName).
 	//    to null.
 	//
-	//    * Regions: Route 53 resets the HealthCheckConfig$Regions list to the default
-	//    set of regions.
+	//    * Regions: Route 53 resets the Regions (https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-Regions)
+	//    list to the default set of regions.
 	//
-	//    * ResourcePath: Route 53 resets HealthCheckConfig$ResourcePath to null.
+	//    * ResourcePath: Route 53 resets ResourcePath (https://docs.aws.amazon.com/Route53/latest/APIReference/API_HealthCheckConfig.html#Route53-Type-HealthCheckConfig-ResourcePath)
+	//    to null.
 	ResetElements []ResettableElementName `locationNameList:"ResettableElementName" type:"list"`
 
 	// The path that you want Amazon Route 53 to request when performing health
@@ -13733,6 +13866,7 @@ func (s UpdateHealthCheckInput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// A complex type that contains the response to the UpdateHealthCheck request.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/route53-2013-04-01/UpdateHealthCheckResponse
 type UpdateHealthCheckOutput struct {
 	_ struct{} `type:"structure"`
@@ -14266,6 +14400,7 @@ const (
 	CloudWatchRegionEuWest1      CloudWatchRegion = "eu-west-1"
 	CloudWatchRegionEuWest2      CloudWatchRegion = "eu-west-2"
 	CloudWatchRegionEuWest3      CloudWatchRegion = "eu-west-3"
+	CloudWatchRegionApEast1      CloudWatchRegion = "ap-east-1"
 	CloudWatchRegionApSouth1     CloudWatchRegion = "ap-south-1"
 	CloudWatchRegionApSoutheast1 CloudWatchRegion = "ap-southeast-1"
 	CloudWatchRegionApSoutheast2 CloudWatchRegion = "ap-southeast-2"
@@ -14274,6 +14409,8 @@ const (
 	CloudWatchRegionApNortheast3 CloudWatchRegion = "ap-northeast-3"
 	CloudWatchRegionEuNorth1     CloudWatchRegion = "eu-north-1"
 	CloudWatchRegionSaEast1      CloudWatchRegion = "sa-east-1"
+	CloudWatchRegionCnNorthwest1 CloudWatchRegion = "cn-northwest-1"
+	CloudWatchRegionCnNorth1     CloudWatchRegion = "cn-north-1"
 )
 
 func (enum CloudWatchRegion) MarshalValue() (string, error) {
@@ -14469,6 +14606,7 @@ const (
 	ResourceRecordSetRegionSaEast1      ResourceRecordSetRegion = "sa-east-1"
 	ResourceRecordSetRegionCnNorth1     ResourceRecordSetRegion = "cn-north-1"
 	ResourceRecordSetRegionCnNorthwest1 ResourceRecordSetRegion = "cn-northwest-1"
+	ResourceRecordSetRegionApEast1      ResourceRecordSetRegion = "ap-east-1"
 	ResourceRecordSetRegionApSouth1     ResourceRecordSetRegion = "ap-south-1"
 )
 
@@ -14546,6 +14684,7 @@ const (
 	VPCRegionEuWest2      VPCRegion = "eu-west-2"
 	VPCRegionEuWest3      VPCRegion = "eu-west-3"
 	VPCRegionEuCentral1   VPCRegion = "eu-central-1"
+	VPCRegionApEast1      VPCRegion = "ap-east-1"
 	VPCRegionApSoutheast1 VPCRegion = "ap-southeast-1"
 	VPCRegionApSoutheast2 VPCRegion = "ap-southeast-2"
 	VPCRegionApSouth1     VPCRegion = "ap-south-1"

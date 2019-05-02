@@ -3,6 +3,7 @@
 package cloud9
 
 import (
+	"context"
 	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -19,7 +20,8 @@ type CreateEnvironmentEC2Request struct {
 }
 
 // Send marshals and sends the CreateEnvironmentEC2 API request.
-func (r CreateEnvironmentEC2Request) Send() (*CreateEnvironmentEC2Output, error) {
+func (r CreateEnvironmentEC2Request) Send(ctx context.Context) (*CreateEnvironmentEC2Output, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -37,7 +39,7 @@ func (r CreateEnvironmentEC2Request) Send() (*CreateEnvironmentEC2Output, error)
 //
 //    // Example sending a request using the CreateEnvironmentEC2Request method.
 //    req := client.CreateEnvironmentEC2Request(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -71,7 +73,8 @@ type CreateEnvironmentMembershipRequest struct {
 }
 
 // Send marshals and sends the CreateEnvironmentMembership API request.
-func (r CreateEnvironmentMembershipRequest) Send() (*CreateEnvironmentMembershipOutput, error) {
+func (r CreateEnvironmentMembershipRequest) Send(ctx context.Context) (*CreateEnvironmentMembershipOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -87,7 +90,7 @@ func (r CreateEnvironmentMembershipRequest) Send() (*CreateEnvironmentMembership
 //
 //    // Example sending a request using the CreateEnvironmentMembershipRequest method.
 //    req := client.CreateEnvironmentMembershipRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -121,7 +124,8 @@ type DeleteEnvironmentRequest struct {
 }
 
 // Send marshals and sends the DeleteEnvironment API request.
-func (r DeleteEnvironmentRequest) Send() (*DeleteEnvironmentOutput, error) {
+func (r DeleteEnvironmentRequest) Send(ctx context.Context) (*DeleteEnvironmentOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -138,7 +142,7 @@ func (r DeleteEnvironmentRequest) Send() (*DeleteEnvironmentOutput, error) {
 //
 //    // Example sending a request using the DeleteEnvironmentRequest method.
 //    req := client.DeleteEnvironmentRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -172,7 +176,8 @@ type DeleteEnvironmentMembershipRequest struct {
 }
 
 // Send marshals and sends the DeleteEnvironmentMembership API request.
-func (r DeleteEnvironmentMembershipRequest) Send() (*DeleteEnvironmentMembershipOutput, error) {
+func (r DeleteEnvironmentMembershipRequest) Send(ctx context.Context) (*DeleteEnvironmentMembershipOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -188,7 +193,7 @@ func (r DeleteEnvironmentMembershipRequest) Send() (*DeleteEnvironmentMembership
 //
 //    // Example sending a request using the DeleteEnvironmentMembershipRequest method.
 //    req := client.DeleteEnvironmentMembershipRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -222,7 +227,8 @@ type DescribeEnvironmentMembershipsRequest struct {
 }
 
 // Send marshals and sends the DescribeEnvironmentMemberships API request.
-func (r DescribeEnvironmentMembershipsRequest) Send() (*DescribeEnvironmentMembershipsOutput, error) {
+func (r DescribeEnvironmentMembershipsRequest) Send(ctx context.Context) (*DescribeEnvironmentMembershipsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -239,7 +245,7 @@ func (r DescribeEnvironmentMembershipsRequest) Send() (*DescribeEnvironmentMembe
 //
 //    // Example sending a request using the DescribeEnvironmentMembershipsRequest method.
 //    req := client.DescribeEnvironmentMembershipsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -289,7 +295,7 @@ func (c *Cloud9) DescribeEnvironmentMembershipsRequest(input *DescribeEnvironmen
 func (p *DescribeEnvironmentMembershipsRequest) Paginate(opts ...aws.Option) DescribeEnvironmentMembershipsPager {
 	return DescribeEnvironmentMembershipsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *DescribeEnvironmentMembershipsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -298,6 +304,7 @@ func (p *DescribeEnvironmentMembershipsRequest) Paginate(opts ...aws.Option) Des
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -325,7 +332,8 @@ type DescribeEnvironmentStatusRequest struct {
 }
 
 // Send marshals and sends the DescribeEnvironmentStatus API request.
-func (r DescribeEnvironmentStatusRequest) Send() (*DescribeEnvironmentStatusOutput, error) {
+func (r DescribeEnvironmentStatusRequest) Send(ctx context.Context) (*DescribeEnvironmentStatusOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -341,7 +349,7 @@ func (r DescribeEnvironmentStatusRequest) Send() (*DescribeEnvironmentStatusOutp
 //
 //    // Example sending a request using the DescribeEnvironmentStatusRequest method.
 //    req := client.DescribeEnvironmentStatusRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -375,7 +383,8 @@ type DescribeEnvironmentsRequest struct {
 }
 
 // Send marshals and sends the DescribeEnvironments API request.
-func (r DescribeEnvironmentsRequest) Send() (*DescribeEnvironmentsOutput, error) {
+func (r DescribeEnvironmentsRequest) Send(ctx context.Context) (*DescribeEnvironmentsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -391,7 +400,7 @@ func (r DescribeEnvironmentsRequest) Send() (*DescribeEnvironmentsOutput, error)
 //
 //    // Example sending a request using the DescribeEnvironmentsRequest method.
 //    req := client.DescribeEnvironmentsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -425,7 +434,8 @@ type ListEnvironmentsRequest struct {
 }
 
 // Send marshals and sends the ListEnvironments API request.
-func (r ListEnvironmentsRequest) Send() (*ListEnvironmentsOutput, error) {
+func (r ListEnvironmentsRequest) Send(ctx context.Context) (*ListEnvironmentsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -441,7 +451,7 @@ func (r ListEnvironmentsRequest) Send() (*ListEnvironmentsOutput, error) {
 //
 //    // Example sending a request using the ListEnvironmentsRequest method.
 //    req := client.ListEnvironmentsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -491,7 +501,7 @@ func (c *Cloud9) ListEnvironmentsRequest(input *ListEnvironmentsInput) ListEnvir
 func (p *ListEnvironmentsRequest) Paginate(opts ...aws.Option) ListEnvironmentsPager {
 	return ListEnvironmentsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListEnvironmentsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -500,6 +510,7 @@ func (p *ListEnvironmentsRequest) Paginate(opts ...aws.Option) ListEnvironmentsP
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -527,7 +538,8 @@ type UpdateEnvironmentRequest struct {
 }
 
 // Send marshals and sends the UpdateEnvironment API request.
-func (r UpdateEnvironmentRequest) Send() (*UpdateEnvironmentOutput, error) {
+func (r UpdateEnvironmentRequest) Send(ctx context.Context) (*UpdateEnvironmentOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -543,7 +555,7 @@ func (r UpdateEnvironmentRequest) Send() (*UpdateEnvironmentOutput, error) {
 //
 //    // Example sending a request using the UpdateEnvironmentRequest method.
 //    req := client.UpdateEnvironmentRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -577,7 +589,8 @@ type UpdateEnvironmentMembershipRequest struct {
 }
 
 // Send marshals and sends the UpdateEnvironmentMembership API request.
-func (r UpdateEnvironmentMembershipRequest) Send() (*UpdateEnvironmentMembershipOutput, error) {
+func (r UpdateEnvironmentMembershipRequest) Send(ctx context.Context) (*UpdateEnvironmentMembershipOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -594,7 +607,7 @@ func (r UpdateEnvironmentMembershipRequest) Send() (*UpdateEnvironmentMembership
 //
 //    // Example sending a request using the UpdateEnvironmentMembershipRequest method.
 //    req := client.UpdateEnvironmentMembershipRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1153,6 +1166,9 @@ type Environment struct {
 	// The ID of the environment.
 	Id *string `locationName:"id" type:"string"`
 
+	// The state of the environment in its creation or deletion lifecycle.
+	Lifecycle *EnvironmentLifecycle `locationName:"lifecycle" type:"structure"`
+
 	// The name of the environment.
 	Name *string `locationName:"name" min:"1" type:"string"`
 
@@ -1175,6 +1191,39 @@ func (s Environment) String() string {
 
 // GoString returns the string representation
 func (s Environment) GoString() string {
+	return s.String()
+}
+
+// Information about the current creation or deletion lifecycle state of an
+// AWS Cloud9 development environment.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/cloud9-2017-09-23/EnvironmentLifecycle
+type EnvironmentLifecycle struct {
+	_ struct{} `type:"structure"`
+
+	// If the environment failed to delete, the Amazon Resource Name (ARN) of the
+	// related AWS resource.
+	FailureResource *string `locationName:"failureResource" type:"string"`
+
+	// Any informational message about the lifecycle state of the environment.
+	Reason *string `locationName:"reason" type:"string"`
+
+	// The current creation or deletion lifecycle state of the environment.
+	//
+	//    * CREATED: The environment was successfully created.
+	//
+	//    * DELETE_FAILED: The environment failed to delete.
+	//
+	//    * DELETING: The environment is in the process of being deleted.
+	Status EnvironmentLifecycleStatus `locationName:"status" type:"string" enum:"true"`
+}
+
+// String returns the string representation
+func (s EnvironmentLifecycle) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s EnvironmentLifecycle) GoString() string {
 	return s.String()
 }
 
@@ -1421,6 +1470,24 @@ func (s UpdateEnvironmentOutput) GoString() string {
 // SDKResponseMetdata return sthe response metadata for the API.
 func (s UpdateEnvironmentOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
+}
+
+type EnvironmentLifecycleStatus string
+
+// Enum values for EnvironmentLifecycleStatus
+const (
+	EnvironmentLifecycleStatusCreated      EnvironmentLifecycleStatus = "CREATED"
+	EnvironmentLifecycleStatusDeleting     EnvironmentLifecycleStatus = "DELETING"
+	EnvironmentLifecycleStatusDeleteFailed EnvironmentLifecycleStatus = "DELETE_FAILED"
+)
+
+func (enum EnvironmentLifecycleStatus) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum EnvironmentLifecycleStatus) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
 }
 
 type EnvironmentStatus string

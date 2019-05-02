@@ -3,6 +3,7 @@
 package sagemaker
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -22,7 +23,8 @@ type AddTagsRequest struct {
 }
 
 // Send marshals and sends the AddTags API request.
-func (r AddTagsRequest) Send() (*AddTagsOutput, error) {
+func (r AddTagsRequest) Send(ctx context.Context) (*AddTagsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -52,7 +54,7 @@ func (r AddTagsRequest) Send() (*AddTagsOutput, error) {
 //
 //    // Example sending a request using the AddTagsRequest method.
 //    req := client.AddTagsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -86,7 +88,8 @@ type CreateAlgorithmRequest struct {
 }
 
 // Send marshals and sends the CreateAlgorithm API request.
-func (r CreateAlgorithmRequest) Send() (*CreateAlgorithmOutput, error) {
+func (r CreateAlgorithmRequest) Send(ctx context.Context) (*CreateAlgorithmOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -103,7 +106,7 @@ func (r CreateAlgorithmRequest) Send() (*CreateAlgorithmOutput, error) {
 //
 //    // Example sending a request using the CreateAlgorithmRequest method.
 //    req := client.CreateAlgorithmRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -137,7 +140,8 @@ type CreateCodeRepositoryRequest struct {
 }
 
 // Send marshals and sends the CreateCodeRepository API request.
-func (r CreateCodeRepositoryRequest) Send() (*CreateCodeRepositoryOutput, error) {
+func (r CreateCodeRepositoryRequest) Send(ctx context.Context) (*CreateCodeRepositoryOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -149,19 +153,19 @@ func (r CreateCodeRepositoryRequest) Send() (*CreateCodeRepositoryOutput, error)
 // CreateCodeRepositoryRequest returns a request value for making API operation for
 // Amazon SageMaker Service.
 //
-// Create a git repository as a resource in your Amazon SageMaker account. You
-// can associate the repository with notebook instances so that you can use
-// git source control for the notebooks you create. The git repository is a
-// resource in your Amazon SageMaker account, so it can be associated with more
-// than one notebook instance, and it persists independently from the lifecycle
+// Creates a Git repository as a resource in your Amazon SageMaker account.
+// You can associate the repository with notebook instances so that you can
+// use Git source control for the notebooks you create. The Git repository is
+// a resource in your Amazon SageMaker account, so it can be associated with
+// more than one notebook instance, and it persists independently from the lifecycle
 // of any notebook instances it is associated with.
 //
 // The repository can be hosted either in AWS CodeCommit (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
-// or in any other git repository.
+// or in any other Git repository.
 //
 //    // Example sending a request using the CreateCodeRepositoryRequest method.
 //    req := client.CreateCodeRepositoryRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -195,7 +199,8 @@ type CreateCompilationJobRequest struct {
 }
 
 // Send marshals and sends the CreateCompilationJob API request.
-func (r CreateCompilationJobRequest) Send() (*CreateCompilationJobOutput, error) {
+func (r CreateCompilationJobRequest) Send(ctx context.Context) (*CreateCompilationJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -238,7 +243,7 @@ func (r CreateCompilationJobRequest) Send() (*CreateCompilationJobOutput, error)
 //
 //    // Example sending a request using the CreateCompilationJobRequest method.
 //    req := client.CreateCompilationJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -272,7 +277,8 @@ type CreateEndpointRequest struct {
 }
 
 // Send marshals and sends the CreateEndpoint API request.
-func (r CreateEndpointRequest) Send() (*CreateEndpointOutput, error) {
+func (r CreateEndpointRequest) Send(ctx context.Context) (*CreateEndpointOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -286,7 +292,7 @@ func (r CreateEndpointRequest) Send() (*CreateEndpointOutput, error) {
 //
 // Creates an endpoint using the endpoint configuration specified in the request.
 // Amazon SageMaker uses the endpoint to provision resources and deploy models.
-// You create the endpoint configuration with the CreateEndpointConfig (http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html)
+// You create the endpoint configuration with the CreateEndpointConfig (https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html)
 // API.
 //
 // Use this API only for hosting models using Amazon SageMaker hosting services.
@@ -299,11 +305,11 @@ func (r CreateEndpointRequest) Send() (*CreateEndpointOutput, error) {
 // When Amazon SageMaker receives the request, it sets the endpoint status to
 // Creating. After it creates the endpoint, it sets the status to InService.
 // Amazon SageMaker can then process incoming requests for inferences. To check
-// the status of an endpoint, use the DescribeEndpoint (http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
+// the status of an endpoint, use the DescribeEndpoint (https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
 // API.
 //
 // For an example, see Exercise 1: Using the K-Means Algorithm Provided by Amazon
-// SageMaker (http://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html).
+// SageMaker (https://docs.aws.amazon.com/sagemaker/latest/dg/ex1.html).
 //
 // If any of the models hosted at this endpoint get model data from an Amazon
 // S3 location, Amazon SageMaker uses AWS Security Token Service to download
@@ -315,7 +321,7 @@ func (r CreateEndpointRequest) Send() (*CreateEndpointOutput, error) {
 //
 //    // Example sending a request using the CreateEndpointRequest method.
 //    req := client.CreateEndpointRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -349,7 +355,8 @@ type CreateEndpointConfigRequest struct {
 }
 
 // Send marshals and sends the CreateEndpointConfig API request.
-func (r CreateEndpointConfigRequest) Send() (*CreateEndpointConfigOutput, error) {
+func (r CreateEndpointConfigRequest) Send(ctx context.Context) (*CreateEndpointConfigOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -364,7 +371,7 @@ func (r CreateEndpointConfigRequest) Send() (*CreateEndpointConfigOutput, error)
 // Creates an endpoint configuration that Amazon SageMaker hosting services
 // uses to deploy models. In the configuration, you identify one or more models,
 // created using the CreateModel API, to deploy and the resources that you want
-// Amazon SageMaker to provision. Then you call the CreateEndpoint (http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
+// Amazon SageMaker to provision. Then you call the CreateEndpoint (https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
 // API.
 //
 // Use this API only if you want to use Amazon SageMaker hosting services to
@@ -383,7 +390,7 @@ func (r CreateEndpointConfigRequest) Send() (*CreateEndpointConfigOutput, error)
 //
 //    // Example sending a request using the CreateEndpointConfigRequest method.
 //    req := client.CreateEndpointConfigRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -417,7 +424,8 @@ type CreateHyperParameterTuningJobRequest struct {
 }
 
 // Send marshals and sends the CreateHyperParameterTuningJob API request.
-func (r CreateHyperParameterTuningJobRequest) Send() (*CreateHyperParameterTuningJobOutput, error) {
+func (r CreateHyperParameterTuningJobRequest) Send(ctx context.Context) (*CreateHyperParameterTuningJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -437,7 +445,7 @@ func (r CreateHyperParameterTuningJobRequest) Send() (*CreateHyperParameterTunin
 //
 //    // Example sending a request using the CreateHyperParameterTuningJobRequest method.
 //    req := client.CreateHyperParameterTuningJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -471,7 +479,8 @@ type CreateLabelingJobRequest struct {
 }
 
 // Send marshals and sends the CreateLabelingJob API request.
-func (r CreateLabelingJobRequest) Send() (*CreateLabelingJobOutput, error) {
+func (r CreateLabelingJobRequest) Send(ctx context.Context) (*CreateLabelingJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -514,7 +523,7 @@ func (r CreateLabelingJobRequest) Send() (*CreateLabelingJobOutput, error) {
 //
 //    // Example sending a request using the CreateLabelingJobRequest method.
 //    req := client.CreateLabelingJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -548,7 +557,8 @@ type CreateModelRequest struct {
 }
 
 // Send marshals and sends the CreateModel API request.
-func (r CreateModelRequest) Send() (*CreateModelOutput, error) {
+func (r CreateModelRequest) Send(ctx context.Context) (*CreateModelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -590,7 +600,7 @@ func (r CreateModelRequest) Send() (*CreateModelOutput, error) {
 //
 //    // Example sending a request using the CreateModelRequest method.
 //    req := client.CreateModelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -624,7 +634,8 @@ type CreateModelPackageRequest struct {
 }
 
 // Send marshals and sends the CreateModelPackage API request.
-func (r CreateModelPackageRequest) Send() (*CreateModelPackageOutput, error) {
+func (r CreateModelPackageRequest) Send(ctx context.Context) (*CreateModelPackageOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -648,7 +659,7 @@ func (r CreateModelPackageRequest) Send() (*CreateModelPackageOutput, error) {
 //
 //    // Example sending a request using the CreateModelPackageRequest method.
 //    req := client.CreateModelPackageRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -682,7 +693,8 @@ type CreateNotebookInstanceRequest struct {
 }
 
 // Send marshals and sends the CreateNotebookInstance API request.
-func (r CreateNotebookInstanceRequest) Send() (*CreateNotebookInstanceOutput, error) {
+func (r CreateNotebookInstanceRequest) Send(ctx context.Context) (*CreateNotebookInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -730,11 +742,11 @@ func (r CreateNotebookInstanceRequest) Send() (*CreateNotebookInstanceOutput, er
 // code to explore a dataset that you can use for model training, train a model,
 // host models by creating Amazon SageMaker endpoints, and validate hosted models.
 //
-// For more information, see How It Works (http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
+// For more information, see How It Works (https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html).
 //
 //    // Example sending a request using the CreateNotebookInstanceRequest method.
 //    req := client.CreateNotebookInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -768,7 +780,8 @@ type CreateNotebookInstanceLifecycleConfigRequest struct {
 }
 
 // Send marshals and sends the CreateNotebookInstanceLifecycleConfig API request.
-func (r CreateNotebookInstanceLifecycleConfigRequest) Send() (*CreateNotebookInstanceLifecycleConfigOutput, error) {
+func (r CreateNotebookInstanceLifecycleConfigRequest) Send(ctx context.Context) (*CreateNotebookInstanceLifecycleConfigOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -797,11 +810,11 @@ func (r CreateNotebookInstanceLifecycleConfigRequest) Send() (*CreateNotebookIns
 // is not created or started.
 //
 // For information about notebook instance lifestyle configurations, see Step
-// 2.1: (Optional) Customize a Notebook Instance (http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
+// 2.1: (Optional) Customize a Notebook Instance (https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 //
 //    // Example sending a request using the CreateNotebookInstanceLifecycleConfigRequest method.
 //    req := client.CreateNotebookInstanceLifecycleConfigRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -835,7 +848,8 @@ type CreatePresignedNotebookInstanceUrlRequest struct {
 }
 
 // Send marshals and sends the CreatePresignedNotebookInstanceUrl API request.
-func (r CreatePresignedNotebookInstanceUrlRequest) Send() (*CreatePresignedNotebookInstanceUrlOutput, error) {
+func (r CreatePresignedNotebookInstanceUrlRequest) Send(ctx context.Context) (*CreatePresignedNotebookInstanceUrlOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -860,11 +874,11 @@ func (r CreatePresignedNotebookInstanceUrlRequest) Send() (*CreatePresignedNoteb
 // or role used to access the notebook instance. Use the NotIpAddress condition
 // operator and the aws:SourceIP condition context key to specify the list of
 // IP addresses that you want to have access to the notebook instance. For more
-// information, see Limit Access to a Notebook Instance by IP Address (http://docs.aws.amazon.com/sagemaker/latest/dg/howitworks-access-ws.html#nbi-ip-filter).
+// information, see Limit Access to a Notebook Instance by IP Address (https://docs.aws.amazon.com/sagemaker/latest/dg/nbi-ip-filter.html).
 //
 //    // Example sending a request using the CreatePresignedNotebookInstanceUrlRequest method.
 //    req := client.CreatePresignedNotebookInstanceUrlRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -898,7 +912,8 @@ type CreateTrainingJobRequest struct {
 }
 
 // Send marshals and sends the CreateTrainingJob API request.
-func (r CreateTrainingJobRequest) Send() (*CreateTrainingJobOutput, error) {
+func (r CreateTrainingJobRequest) Send(ctx context.Context) (*CreateTrainingJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -915,7 +930,7 @@ func (r CreateTrainingJobRequest) Send() (*CreateTrainingJobOutput, error) {
 //
 // If you choose to host your model using Amazon SageMaker hosting services,
 // you can use the resulting model artifacts as part of the model. You can also
-// use the artifacts in a deep learning service other than Amazon SageMaker,
+// use the artifacts in a machine learning service other than Amazon SageMaker,
 // provided that you know how to use them for inferences.
 //
 // In the request body, you provide the following:
@@ -924,7 +939,7 @@ func (r CreateTrainingJobRequest) Send() (*CreateTrainingJobOutput, error) {
 //
 //    * HyperParameters - Specify these algorithm-specific parameters to influence
 //    the quality of the final model. For a list of hyperparameters for each
-//    training algorithm provided by Amazon SageMaker, see Algorithms (http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
+//    training algorithm provided by Amazon SageMaker, see Algorithms (https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 //
 //
 //    * InputDataConfig - Describes the training dataset and the Amazon S3 location
@@ -945,11 +960,11 @@ func (r CreateTrainingJobRequest) Send() (*CreateTrainingJobOutput, error) {
 //    * StoppingCondition - Sets a duration for training. Use this parameter
 //    to cap model training costs.
 //
-//  For more information about Amazon SageMaker, see How It Works (http://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html)
+//  For more information about Amazon SageMaker, see How It Works (https://docs.aws.amazon.com/sagemaker/latest/dg/how-it-works.html)
 //
 //    // Example sending a request using the CreateTrainingJobRequest method.
 //    req := client.CreateTrainingJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -983,7 +998,8 @@ type CreateTransformJobRequest struct {
 }
 
 // Send marshals and sends the CreateTransformJob API request.
-func (r CreateTransformJobRequest) Send() (*CreateTransformJobOutput, error) {
+func (r CreateTransformJobRequest) Send(ctx context.Context) (*CreateTransformJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1020,11 +1036,11 @@ func (r CreateTransformJobRequest) Send() (*CreateTransformJobOutput, error) {
 //    job.
 //
 // For more information about how batch transformation works Amazon SageMaker,
-// see How It Works (http://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html).
+// see How It Works (https://docs.aws.amazon.com/sagemaker/latest/dg/batch-transform.html).
 //
 //    // Example sending a request using the CreateTransformJobRequest method.
 //    req := client.CreateTransformJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1058,7 +1074,8 @@ type CreateWorkteamRequest struct {
 }
 
 // Send marshals and sends the CreateWorkteam API request.
-func (r CreateWorkteamRequest) Send() (*CreateWorkteamOutput, error) {
+func (r CreateWorkteamRequest) Send(ctx context.Context) (*CreateWorkteamOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1078,7 +1095,7 @@ func (r CreateWorkteamRequest) Send() (*CreateWorkteamOutput, error) {
 //
 //    // Example sending a request using the CreateWorkteamRequest method.
 //    req := client.CreateWorkteamRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1112,7 +1129,8 @@ type DeleteAlgorithmRequest struct {
 }
 
 // Send marshals and sends the DeleteAlgorithm API request.
-func (r DeleteAlgorithmRequest) Send() (*DeleteAlgorithmOutput, error) {
+func (r DeleteAlgorithmRequest) Send(ctx context.Context) (*DeleteAlgorithmOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1128,7 +1146,7 @@ func (r DeleteAlgorithmRequest) Send() (*DeleteAlgorithmOutput, error) {
 //
 //    // Example sending a request using the DeleteAlgorithmRequest method.
 //    req := client.DeleteAlgorithmRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1164,7 +1182,8 @@ type DeleteCodeRepositoryRequest struct {
 }
 
 // Send marshals and sends the DeleteCodeRepository API request.
-func (r DeleteCodeRepositoryRequest) Send() (*DeleteCodeRepositoryOutput, error) {
+func (r DeleteCodeRepositoryRequest) Send(ctx context.Context) (*DeleteCodeRepositoryOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1176,11 +1195,11 @@ func (r DeleteCodeRepositoryRequest) Send() (*DeleteCodeRepositoryOutput, error)
 // DeleteCodeRepositoryRequest returns a request value for making API operation for
 // Amazon SageMaker Service.
 //
-// Deletes the specified git repository from your account.
+// Deletes the specified Git repository from your account.
 //
 //    // Example sending a request using the DeleteCodeRepositoryRequest method.
 //    req := client.DeleteCodeRepositoryRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1216,7 +1235,8 @@ type DeleteEndpointRequest struct {
 }
 
 // Send marshals and sends the DeleteEndpoint API request.
-func (r DeleteEndpointRequest) Send() (*DeleteEndpointOutput, error) {
+func (r DeleteEndpointRequest) Send(ctx context.Context) (*DeleteEndpointOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1237,7 +1257,7 @@ func (r DeleteEndpointRequest) Send() (*DeleteEndpointOutput, error) {
 //
 //    // Example sending a request using the DeleteEndpointRequest method.
 //    req := client.DeleteEndpointRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1273,7 +1293,8 @@ type DeleteEndpointConfigRequest struct {
 }
 
 // Send marshals and sends the DeleteEndpointConfig API request.
-func (r DeleteEndpointConfigRequest) Send() (*DeleteEndpointConfigOutput, error) {
+func (r DeleteEndpointConfigRequest) Send(ctx context.Context) (*DeleteEndpointConfigOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1291,7 +1312,7 @@ func (r DeleteEndpointConfigRequest) Send() (*DeleteEndpointConfigOutput, error)
 //
 //    // Example sending a request using the DeleteEndpointConfigRequest method.
 //    req := client.DeleteEndpointConfigRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1327,7 +1348,8 @@ type DeleteModelRequest struct {
 }
 
 // Send marshals and sends the DeleteModel API request.
-func (r DeleteModelRequest) Send() (*DeleteModelOutput, error) {
+func (r DeleteModelRequest) Send(ctx context.Context) (*DeleteModelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1340,13 +1362,13 @@ func (r DeleteModelRequest) Send() (*DeleteModelOutput, error) {
 // Amazon SageMaker Service.
 //
 // Deletes a model. The DeleteModel API deletes only the model entry that was
-// created in Amazon SageMaker when you called the CreateModel (http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html)
+// created in Amazon SageMaker when you called the CreateModel (https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html)
 // API. It does not delete model artifacts, inference code, or the IAM role
 // that you specified when creating the model.
 //
 //    // Example sending a request using the DeleteModelRequest method.
 //    req := client.DeleteModelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1382,7 +1404,8 @@ type DeleteModelPackageRequest struct {
 }
 
 // Send marshals and sends the DeleteModelPackage API request.
-func (r DeleteModelPackageRequest) Send() (*DeleteModelPackageOutput, error) {
+func (r DeleteModelPackageRequest) Send(ctx context.Context) (*DeleteModelPackageOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1402,7 +1425,7 @@ func (r DeleteModelPackageRequest) Send() (*DeleteModelPackageOutput, error) {
 //
 //    // Example sending a request using the DeleteModelPackageRequest method.
 //    req := client.DeleteModelPackageRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1438,7 +1461,8 @@ type DeleteNotebookInstanceRequest struct {
 }
 
 // Send marshals and sends the DeleteNotebookInstance API request.
-func (r DeleteNotebookInstanceRequest) Send() (*DeleteNotebookInstanceOutput, error) {
+func (r DeleteNotebookInstanceRequest) Send(ctx context.Context) (*DeleteNotebookInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1459,7 +1483,7 @@ func (r DeleteNotebookInstanceRequest) Send() (*DeleteNotebookInstanceOutput, er
 //
 //    // Example sending a request using the DeleteNotebookInstanceRequest method.
 //    req := client.DeleteNotebookInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1495,7 +1519,8 @@ type DeleteNotebookInstanceLifecycleConfigRequest struct {
 }
 
 // Send marshals and sends the DeleteNotebookInstanceLifecycleConfig API request.
-func (r DeleteNotebookInstanceLifecycleConfigRequest) Send() (*DeleteNotebookInstanceLifecycleConfigOutput, error) {
+func (r DeleteNotebookInstanceLifecycleConfigRequest) Send(ctx context.Context) (*DeleteNotebookInstanceLifecycleConfigOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1511,7 +1536,7 @@ func (r DeleteNotebookInstanceLifecycleConfigRequest) Send() (*DeleteNotebookIns
 //
 //    // Example sending a request using the DeleteNotebookInstanceLifecycleConfigRequest method.
 //    req := client.DeleteNotebookInstanceLifecycleConfigRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1547,7 +1572,8 @@ type DeleteTagsRequest struct {
 }
 
 // Send marshals and sends the DeleteTags API request.
-func (r DeleteTagsRequest) Send() (*DeleteTagsOutput, error) {
+func (r DeleteTagsRequest) Send(ctx context.Context) (*DeleteTagsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1569,7 +1595,7 @@ func (r DeleteTagsRequest) Send() (*DeleteTagsOutput, error) {
 //
 //    // Example sending a request using the DeleteTagsRequest method.
 //    req := client.DeleteTagsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1603,7 +1629,8 @@ type DeleteWorkteamRequest struct {
 }
 
 // Send marshals and sends the DeleteWorkteam API request.
-func (r DeleteWorkteamRequest) Send() (*DeleteWorkteamOutput, error) {
+func (r DeleteWorkteamRequest) Send(ctx context.Context) (*DeleteWorkteamOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1619,7 +1646,7 @@ func (r DeleteWorkteamRequest) Send() (*DeleteWorkteamOutput, error) {
 //
 //    // Example sending a request using the DeleteWorkteamRequest method.
 //    req := client.DeleteWorkteamRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1653,7 +1680,8 @@ type DescribeAlgorithmRequest struct {
 }
 
 // Send marshals and sends the DescribeAlgorithm API request.
-func (r DescribeAlgorithmRequest) Send() (*DescribeAlgorithmOutput, error) {
+func (r DescribeAlgorithmRequest) Send(ctx context.Context) (*DescribeAlgorithmOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1669,7 +1697,7 @@ func (r DescribeAlgorithmRequest) Send() (*DescribeAlgorithmOutput, error) {
 //
 //    // Example sending a request using the DescribeAlgorithmRequest method.
 //    req := client.DescribeAlgorithmRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1703,7 +1731,8 @@ type DescribeCodeRepositoryRequest struct {
 }
 
 // Send marshals and sends the DescribeCodeRepository API request.
-func (r DescribeCodeRepositoryRequest) Send() (*DescribeCodeRepositoryOutput, error) {
+func (r DescribeCodeRepositoryRequest) Send(ctx context.Context) (*DescribeCodeRepositoryOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1715,11 +1744,11 @@ func (r DescribeCodeRepositoryRequest) Send() (*DescribeCodeRepositoryOutput, er
 // DescribeCodeRepositoryRequest returns a request value for making API operation for
 // Amazon SageMaker Service.
 //
-// Gets details about the specified git repository.
+// Gets details about the specified Git repository.
 //
 //    // Example sending a request using the DescribeCodeRepositoryRequest method.
 //    req := client.DescribeCodeRepositoryRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1753,7 +1782,8 @@ type DescribeCompilationJobRequest struct {
 }
 
 // Send marshals and sends the DescribeCompilationJob API request.
-func (r DescribeCompilationJobRequest) Send() (*DescribeCompilationJobOutput, error) {
+func (r DescribeCompilationJobRequest) Send(ctx context.Context) (*DescribeCompilationJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1772,7 +1802,7 @@ func (r DescribeCompilationJobRequest) Send() (*DescribeCompilationJobOutput, er
 //
 //    // Example sending a request using the DescribeCompilationJobRequest method.
 //    req := client.DescribeCompilationJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1806,7 +1836,8 @@ type DescribeEndpointRequest struct {
 }
 
 // Send marshals and sends the DescribeEndpoint API request.
-func (r DescribeEndpointRequest) Send() (*DescribeEndpointOutput, error) {
+func (r DescribeEndpointRequest) Send(ctx context.Context) (*DescribeEndpointOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1822,7 +1853,7 @@ func (r DescribeEndpointRequest) Send() (*DescribeEndpointOutput, error) {
 //
 //    // Example sending a request using the DescribeEndpointRequest method.
 //    req := client.DescribeEndpointRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1856,7 +1887,8 @@ type DescribeEndpointConfigRequest struct {
 }
 
 // Send marshals and sends the DescribeEndpointConfig API request.
-func (r DescribeEndpointConfigRequest) Send() (*DescribeEndpointConfigOutput, error) {
+func (r DescribeEndpointConfigRequest) Send(ctx context.Context) (*DescribeEndpointConfigOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1873,7 +1905,7 @@ func (r DescribeEndpointConfigRequest) Send() (*DescribeEndpointConfigOutput, er
 //
 //    // Example sending a request using the DescribeEndpointConfigRequest method.
 //    req := client.DescribeEndpointConfigRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1907,7 +1939,8 @@ type DescribeHyperParameterTuningJobRequest struct {
 }
 
 // Send marshals and sends the DescribeHyperParameterTuningJob API request.
-func (r DescribeHyperParameterTuningJobRequest) Send() (*DescribeHyperParameterTuningJobOutput, error) {
+func (r DescribeHyperParameterTuningJobRequest) Send(ctx context.Context) (*DescribeHyperParameterTuningJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1923,7 +1956,7 @@ func (r DescribeHyperParameterTuningJobRequest) Send() (*DescribeHyperParameterT
 //
 //    // Example sending a request using the DescribeHyperParameterTuningJobRequest method.
 //    req := client.DescribeHyperParameterTuningJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1957,7 +1990,8 @@ type DescribeLabelingJobRequest struct {
 }
 
 // Send marshals and sends the DescribeLabelingJob API request.
-func (r DescribeLabelingJobRequest) Send() (*DescribeLabelingJobOutput, error) {
+func (r DescribeLabelingJobRequest) Send(ctx context.Context) (*DescribeLabelingJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1973,7 +2007,7 @@ func (r DescribeLabelingJobRequest) Send() (*DescribeLabelingJobOutput, error) {
 //
 //    // Example sending a request using the DescribeLabelingJobRequest method.
 //    req := client.DescribeLabelingJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2007,7 +2041,8 @@ type DescribeModelRequest struct {
 }
 
 // Send marshals and sends the DescribeModel API request.
-func (r DescribeModelRequest) Send() (*DescribeModelOutput, error) {
+func (r DescribeModelRequest) Send(ctx context.Context) (*DescribeModelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2023,7 +2058,7 @@ func (r DescribeModelRequest) Send() (*DescribeModelOutput, error) {
 //
 //    // Example sending a request using the DescribeModelRequest method.
 //    req := client.DescribeModelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2057,7 +2092,8 @@ type DescribeModelPackageRequest struct {
 }
 
 // Send marshals and sends the DescribeModelPackage API request.
-func (r DescribeModelPackageRequest) Send() (*DescribeModelPackageOutput, error) {
+func (r DescribeModelPackageRequest) Send(ctx context.Context) (*DescribeModelPackageOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2077,7 +2113,7 @@ func (r DescribeModelPackageRequest) Send() (*DescribeModelPackageOutput, error)
 //
 //    // Example sending a request using the DescribeModelPackageRequest method.
 //    req := client.DescribeModelPackageRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2111,7 +2147,8 @@ type DescribeNotebookInstanceRequest struct {
 }
 
 // Send marshals and sends the DescribeNotebookInstance API request.
-func (r DescribeNotebookInstanceRequest) Send() (*DescribeNotebookInstanceOutput, error) {
+func (r DescribeNotebookInstanceRequest) Send(ctx context.Context) (*DescribeNotebookInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2127,7 +2164,7 @@ func (r DescribeNotebookInstanceRequest) Send() (*DescribeNotebookInstanceOutput
 //
 //    // Example sending a request using the DescribeNotebookInstanceRequest method.
 //    req := client.DescribeNotebookInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2161,7 +2198,8 @@ type DescribeNotebookInstanceLifecycleConfigRequest struct {
 }
 
 // Send marshals and sends the DescribeNotebookInstanceLifecycleConfig API request.
-func (r DescribeNotebookInstanceLifecycleConfigRequest) Send() (*DescribeNotebookInstanceLifecycleConfigOutput, error) {
+func (r DescribeNotebookInstanceLifecycleConfigRequest) Send(ctx context.Context) (*DescribeNotebookInstanceLifecycleConfigOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2176,11 +2214,11 @@ func (r DescribeNotebookInstanceLifecycleConfigRequest) Send() (*DescribeNoteboo
 // Returns a description of a notebook instance lifecycle configuration.
 //
 // For information about notebook instance lifestyle configurations, see Step
-// 2.1: (Optional) Customize a Notebook Instance (http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
+// 2.1: (Optional) Customize a Notebook Instance (https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 //
 //    // Example sending a request using the DescribeNotebookInstanceLifecycleConfigRequest method.
 //    req := client.DescribeNotebookInstanceLifecycleConfigRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2214,7 +2252,8 @@ type DescribeSubscribedWorkteamRequest struct {
 }
 
 // Send marshals and sends the DescribeSubscribedWorkteam API request.
-func (r DescribeSubscribedWorkteamRequest) Send() (*DescribeSubscribedWorkteamOutput, error) {
+func (r DescribeSubscribedWorkteamRequest) Send(ctx context.Context) (*DescribeSubscribedWorkteamOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2231,7 +2270,7 @@ func (r DescribeSubscribedWorkteamRequest) Send() (*DescribeSubscribedWorkteamOu
 //
 //    // Example sending a request using the DescribeSubscribedWorkteamRequest method.
 //    req := client.DescribeSubscribedWorkteamRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2265,7 +2304,8 @@ type DescribeTrainingJobRequest struct {
 }
 
 // Send marshals and sends the DescribeTrainingJob API request.
-func (r DescribeTrainingJobRequest) Send() (*DescribeTrainingJobOutput, error) {
+func (r DescribeTrainingJobRequest) Send(ctx context.Context) (*DescribeTrainingJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2281,7 +2321,7 @@ func (r DescribeTrainingJobRequest) Send() (*DescribeTrainingJobOutput, error) {
 //
 //    // Example sending a request using the DescribeTrainingJobRequest method.
 //    req := client.DescribeTrainingJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2315,7 +2355,8 @@ type DescribeTransformJobRequest struct {
 }
 
 // Send marshals and sends the DescribeTransformJob API request.
-func (r DescribeTransformJobRequest) Send() (*DescribeTransformJobOutput, error) {
+func (r DescribeTransformJobRequest) Send(ctx context.Context) (*DescribeTransformJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2331,7 +2372,7 @@ func (r DescribeTransformJobRequest) Send() (*DescribeTransformJobOutput, error)
 //
 //    // Example sending a request using the DescribeTransformJobRequest method.
 //    req := client.DescribeTransformJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2365,7 +2406,8 @@ type DescribeWorkteamRequest struct {
 }
 
 // Send marshals and sends the DescribeWorkteam API request.
-func (r DescribeWorkteamRequest) Send() (*DescribeWorkteamOutput, error) {
+func (r DescribeWorkteamRequest) Send(ctx context.Context) (*DescribeWorkteamOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2383,7 +2425,7 @@ func (r DescribeWorkteamRequest) Send() (*DescribeWorkteamOutput, error) {
 //
 //    // Example sending a request using the DescribeWorkteamRequest method.
 //    req := client.DescribeWorkteamRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2417,7 +2459,8 @@ type GetSearchSuggestionsRequest struct {
 }
 
 // Send marshals and sends the GetSearchSuggestions API request.
-func (r GetSearchSuggestionsRequest) Send() (*GetSearchSuggestionsOutput, error) {
+func (r GetSearchSuggestionsRequest) Send(ctx context.Context) (*GetSearchSuggestionsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2436,7 +2479,7 @@ func (r GetSearchSuggestionsRequest) Send() (*GetSearchSuggestionsOutput, error)
 //
 //    // Example sending a request using the GetSearchSuggestionsRequest method.
 //    req := client.GetSearchSuggestionsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2470,7 +2513,8 @@ type ListAlgorithmsRequest struct {
 }
 
 // Send marshals and sends the ListAlgorithms API request.
-func (r ListAlgorithmsRequest) Send() (*ListAlgorithmsOutput, error) {
+func (r ListAlgorithmsRequest) Send(ctx context.Context) (*ListAlgorithmsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2486,7 +2530,7 @@ func (r ListAlgorithmsRequest) Send() (*ListAlgorithmsOutput, error) {
 //
 //    // Example sending a request using the ListAlgorithmsRequest method.
 //    req := client.ListAlgorithmsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2520,7 +2564,8 @@ type ListCodeRepositoriesRequest struct {
 }
 
 // Send marshals and sends the ListCodeRepositories API request.
-func (r ListCodeRepositoriesRequest) Send() (*ListCodeRepositoriesOutput, error) {
+func (r ListCodeRepositoriesRequest) Send(ctx context.Context) (*ListCodeRepositoriesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2532,11 +2577,11 @@ func (r ListCodeRepositoriesRequest) Send() (*ListCodeRepositoriesOutput, error)
 // ListCodeRepositoriesRequest returns a request value for making API operation for
 // Amazon SageMaker Service.
 //
-// Gets a list of the git repositories in your account.
+// Gets a list of the Git repositories in your account.
 //
 //    // Example sending a request using the ListCodeRepositoriesRequest method.
 //    req := client.ListCodeRepositoriesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2570,7 +2615,8 @@ type ListCompilationJobsRequest struct {
 }
 
 // Send marshals and sends the ListCompilationJobs API request.
-func (r ListCompilationJobsRequest) Send() (*ListCompilationJobsOutput, error) {
+func (r ListCompilationJobsRequest) Send(ctx context.Context) (*ListCompilationJobsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2589,7 +2635,7 @@ func (r ListCompilationJobsRequest) Send() (*ListCompilationJobsOutput, error) {
 //
 //    // Example sending a request using the ListCompilationJobsRequest method.
 //    req := client.ListCompilationJobsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2639,7 +2685,7 @@ func (c *SageMaker) ListCompilationJobsRequest(input *ListCompilationJobsInput) 
 func (p *ListCompilationJobsRequest) Paginate(opts ...aws.Option) ListCompilationJobsPager {
 	return ListCompilationJobsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListCompilationJobsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -2648,6 +2694,7 @@ func (p *ListCompilationJobsRequest) Paginate(opts ...aws.Option) ListCompilatio
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2675,7 +2722,8 @@ type ListEndpointConfigsRequest struct {
 }
 
 // Send marshals and sends the ListEndpointConfigs API request.
-func (r ListEndpointConfigsRequest) Send() (*ListEndpointConfigsOutput, error) {
+func (r ListEndpointConfigsRequest) Send(ctx context.Context) (*ListEndpointConfigsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2691,7 +2739,7 @@ func (r ListEndpointConfigsRequest) Send() (*ListEndpointConfigsOutput, error) {
 //
 //    // Example sending a request using the ListEndpointConfigsRequest method.
 //    req := client.ListEndpointConfigsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2741,7 +2789,7 @@ func (c *SageMaker) ListEndpointConfigsRequest(input *ListEndpointConfigsInput) 
 func (p *ListEndpointConfigsRequest) Paginate(opts ...aws.Option) ListEndpointConfigsPager {
 	return ListEndpointConfigsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListEndpointConfigsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -2750,6 +2798,7 @@ func (p *ListEndpointConfigsRequest) Paginate(opts ...aws.Option) ListEndpointCo
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2777,7 +2826,8 @@ type ListEndpointsRequest struct {
 }
 
 // Send marshals and sends the ListEndpoints API request.
-func (r ListEndpointsRequest) Send() (*ListEndpointsOutput, error) {
+func (r ListEndpointsRequest) Send(ctx context.Context) (*ListEndpointsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2793,7 +2843,7 @@ func (r ListEndpointsRequest) Send() (*ListEndpointsOutput, error) {
 //
 //    // Example sending a request using the ListEndpointsRequest method.
 //    req := client.ListEndpointsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2843,7 +2893,7 @@ func (c *SageMaker) ListEndpointsRequest(input *ListEndpointsInput) ListEndpoint
 func (p *ListEndpointsRequest) Paginate(opts ...aws.Option) ListEndpointsPager {
 	return ListEndpointsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListEndpointsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -2852,6 +2902,7 @@ func (p *ListEndpointsRequest) Paginate(opts ...aws.Option) ListEndpointsPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2879,7 +2930,8 @@ type ListHyperParameterTuningJobsRequest struct {
 }
 
 // Send marshals and sends the ListHyperParameterTuningJobs API request.
-func (r ListHyperParameterTuningJobsRequest) Send() (*ListHyperParameterTuningJobsOutput, error) {
+func (r ListHyperParameterTuningJobsRequest) Send(ctx context.Context) (*ListHyperParameterTuningJobsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2896,7 +2948,7 @@ func (r ListHyperParameterTuningJobsRequest) Send() (*ListHyperParameterTuningJo
 //
 //    // Example sending a request using the ListHyperParameterTuningJobsRequest method.
 //    req := client.ListHyperParameterTuningJobsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2946,7 +2998,7 @@ func (c *SageMaker) ListHyperParameterTuningJobsRequest(input *ListHyperParamete
 func (p *ListHyperParameterTuningJobsRequest) Paginate(opts ...aws.Option) ListHyperParameterTuningJobsPager {
 	return ListHyperParameterTuningJobsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListHyperParameterTuningJobsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -2955,6 +3007,7 @@ func (p *ListHyperParameterTuningJobsRequest) Paginate(opts ...aws.Option) ListH
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2982,7 +3035,8 @@ type ListLabelingJobsRequest struct {
 }
 
 // Send marshals and sends the ListLabelingJobs API request.
-func (r ListLabelingJobsRequest) Send() (*ListLabelingJobsOutput, error) {
+func (r ListLabelingJobsRequest) Send(ctx context.Context) (*ListLabelingJobsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2998,7 +3052,7 @@ func (r ListLabelingJobsRequest) Send() (*ListLabelingJobsOutput, error) {
 //
 //    // Example sending a request using the ListLabelingJobsRequest method.
 //    req := client.ListLabelingJobsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3048,7 +3102,7 @@ func (c *SageMaker) ListLabelingJobsRequest(input *ListLabelingJobsInput) ListLa
 func (p *ListLabelingJobsRequest) Paginate(opts ...aws.Option) ListLabelingJobsPager {
 	return ListLabelingJobsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListLabelingJobsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -3057,6 +3111,7 @@ func (p *ListLabelingJobsRequest) Paginate(opts ...aws.Option) ListLabelingJobsP
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -3084,7 +3139,8 @@ type ListLabelingJobsForWorkteamRequest struct {
 }
 
 // Send marshals and sends the ListLabelingJobsForWorkteam API request.
-func (r ListLabelingJobsForWorkteamRequest) Send() (*ListLabelingJobsForWorkteamOutput, error) {
+func (r ListLabelingJobsForWorkteamRequest) Send(ctx context.Context) (*ListLabelingJobsForWorkteamOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3100,7 +3156,7 @@ func (r ListLabelingJobsForWorkteamRequest) Send() (*ListLabelingJobsForWorkteam
 //
 //    // Example sending a request using the ListLabelingJobsForWorkteamRequest method.
 //    req := client.ListLabelingJobsForWorkteamRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3150,7 +3206,7 @@ func (c *SageMaker) ListLabelingJobsForWorkteamRequest(input *ListLabelingJobsFo
 func (p *ListLabelingJobsForWorkteamRequest) Paginate(opts ...aws.Option) ListLabelingJobsForWorkteamPager {
 	return ListLabelingJobsForWorkteamPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListLabelingJobsForWorkteamInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -3159,6 +3215,7 @@ func (p *ListLabelingJobsForWorkteamRequest) Paginate(opts ...aws.Option) ListLa
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -3186,7 +3243,8 @@ type ListModelPackagesRequest struct {
 }
 
 // Send marshals and sends the ListModelPackages API request.
-func (r ListModelPackagesRequest) Send() (*ListModelPackagesOutput, error) {
+func (r ListModelPackagesRequest) Send(ctx context.Context) (*ListModelPackagesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3202,7 +3260,7 @@ func (r ListModelPackagesRequest) Send() (*ListModelPackagesOutput, error) {
 //
 //    // Example sending a request using the ListModelPackagesRequest method.
 //    req := client.ListModelPackagesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3236,7 +3294,8 @@ type ListModelsRequest struct {
 }
 
 // Send marshals and sends the ListModels API request.
-func (r ListModelsRequest) Send() (*ListModelsOutput, error) {
+func (r ListModelsRequest) Send(ctx context.Context) (*ListModelsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3248,12 +3307,12 @@ func (r ListModelsRequest) Send() (*ListModelsOutput, error) {
 // ListModelsRequest returns a request value for making API operation for
 // Amazon SageMaker Service.
 //
-// Lists models created with the CreateModel (http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html)
+// Lists models created with the CreateModel (https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateModel.html)
 // API.
 //
 //    // Example sending a request using the ListModelsRequest method.
 //    req := client.ListModelsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3303,7 +3362,7 @@ func (c *SageMaker) ListModelsRequest(input *ListModelsInput) ListModelsRequest 
 func (p *ListModelsRequest) Paginate(opts ...aws.Option) ListModelsPager {
 	return ListModelsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListModelsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -3312,6 +3371,7 @@ func (p *ListModelsRequest) Paginate(opts ...aws.Option) ListModelsPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -3339,7 +3399,8 @@ type ListNotebookInstanceLifecycleConfigsRequest struct {
 }
 
 // Send marshals and sends the ListNotebookInstanceLifecycleConfigs API request.
-func (r ListNotebookInstanceLifecycleConfigsRequest) Send() (*ListNotebookInstanceLifecycleConfigsOutput, error) {
+func (r ListNotebookInstanceLifecycleConfigsRequest) Send(ctx context.Context) (*ListNotebookInstanceLifecycleConfigsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3356,7 +3417,7 @@ func (r ListNotebookInstanceLifecycleConfigsRequest) Send() (*ListNotebookInstan
 //
 //    // Example sending a request using the ListNotebookInstanceLifecycleConfigsRequest method.
 //    req := client.ListNotebookInstanceLifecycleConfigsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3406,7 +3467,7 @@ func (c *SageMaker) ListNotebookInstanceLifecycleConfigsRequest(input *ListNoteb
 func (p *ListNotebookInstanceLifecycleConfigsRequest) Paginate(opts ...aws.Option) ListNotebookInstanceLifecycleConfigsPager {
 	return ListNotebookInstanceLifecycleConfigsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListNotebookInstanceLifecycleConfigsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -3415,6 +3476,7 @@ func (p *ListNotebookInstanceLifecycleConfigsRequest) Paginate(opts ...aws.Optio
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -3442,7 +3504,8 @@ type ListNotebookInstancesRequest struct {
 }
 
 // Send marshals and sends the ListNotebookInstances API request.
-func (r ListNotebookInstancesRequest) Send() (*ListNotebookInstancesOutput, error) {
+func (r ListNotebookInstancesRequest) Send(ctx context.Context) (*ListNotebookInstancesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3459,7 +3522,7 @@ func (r ListNotebookInstancesRequest) Send() (*ListNotebookInstancesOutput, erro
 //
 //    // Example sending a request using the ListNotebookInstancesRequest method.
 //    req := client.ListNotebookInstancesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3509,7 +3572,7 @@ func (c *SageMaker) ListNotebookInstancesRequest(input *ListNotebookInstancesInp
 func (p *ListNotebookInstancesRequest) Paginate(opts ...aws.Option) ListNotebookInstancesPager {
 	return ListNotebookInstancesPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListNotebookInstancesInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -3518,6 +3581,7 @@ func (p *ListNotebookInstancesRequest) Paginate(opts ...aws.Option) ListNotebook
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -3545,7 +3609,8 @@ type ListSubscribedWorkteamsRequest struct {
 }
 
 // Send marshals and sends the ListSubscribedWorkteams API request.
-func (r ListSubscribedWorkteamsRequest) Send() (*ListSubscribedWorkteamsOutput, error) {
+func (r ListSubscribedWorkteamsRequest) Send(ctx context.Context) (*ListSubscribedWorkteamsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3563,7 +3628,7 @@ func (r ListSubscribedWorkteamsRequest) Send() (*ListSubscribedWorkteamsOutput, 
 //
 //    // Example sending a request using the ListSubscribedWorkteamsRequest method.
 //    req := client.ListSubscribedWorkteamsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3613,7 +3678,7 @@ func (c *SageMaker) ListSubscribedWorkteamsRequest(input *ListSubscribedWorkteam
 func (p *ListSubscribedWorkteamsRequest) Paginate(opts ...aws.Option) ListSubscribedWorkteamsPager {
 	return ListSubscribedWorkteamsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListSubscribedWorkteamsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -3622,6 +3687,7 @@ func (p *ListSubscribedWorkteamsRequest) Paginate(opts ...aws.Option) ListSubscr
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -3649,7 +3715,8 @@ type ListTagsRequest struct {
 }
 
 // Send marshals and sends the ListTags API request.
-func (r ListTagsRequest) Send() (*ListTagsOutput, error) {
+func (r ListTagsRequest) Send(ctx context.Context) (*ListTagsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3665,7 +3732,7 @@ func (r ListTagsRequest) Send() (*ListTagsOutput, error) {
 //
 //    // Example sending a request using the ListTagsRequest method.
 //    req := client.ListTagsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3715,7 +3782,7 @@ func (c *SageMaker) ListTagsRequest(input *ListTagsInput) ListTagsRequest {
 func (p *ListTagsRequest) Paginate(opts ...aws.Option) ListTagsPager {
 	return ListTagsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListTagsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -3724,6 +3791,7 @@ func (p *ListTagsRequest) Paginate(opts ...aws.Option) ListTagsPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -3751,7 +3819,8 @@ type ListTrainingJobsRequest struct {
 }
 
 // Send marshals and sends the ListTrainingJobs API request.
-func (r ListTrainingJobsRequest) Send() (*ListTrainingJobsOutput, error) {
+func (r ListTrainingJobsRequest) Send(ctx context.Context) (*ListTrainingJobsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3767,7 +3836,7 @@ func (r ListTrainingJobsRequest) Send() (*ListTrainingJobsOutput, error) {
 //
 //    // Example sending a request using the ListTrainingJobsRequest method.
 //    req := client.ListTrainingJobsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3817,7 +3886,7 @@ func (c *SageMaker) ListTrainingJobsRequest(input *ListTrainingJobsInput) ListTr
 func (p *ListTrainingJobsRequest) Paginate(opts ...aws.Option) ListTrainingJobsPager {
 	return ListTrainingJobsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListTrainingJobsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -3826,6 +3895,7 @@ func (p *ListTrainingJobsRequest) Paginate(opts ...aws.Option) ListTrainingJobsP
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -3853,7 +3923,8 @@ type ListTrainingJobsForHyperParameterTuningJobRequest struct {
 }
 
 // Send marshals and sends the ListTrainingJobsForHyperParameterTuningJob API request.
-func (r ListTrainingJobsForHyperParameterTuningJobRequest) Send() (*ListTrainingJobsForHyperParameterTuningJobOutput, error) {
+func (r ListTrainingJobsForHyperParameterTuningJobRequest) Send(ctx context.Context) (*ListTrainingJobsForHyperParameterTuningJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3870,7 +3941,7 @@ func (r ListTrainingJobsForHyperParameterTuningJobRequest) Send() (*ListTraining
 //
 //    // Example sending a request using the ListTrainingJobsForHyperParameterTuningJobRequest method.
 //    req := client.ListTrainingJobsForHyperParameterTuningJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3920,7 +3991,7 @@ func (c *SageMaker) ListTrainingJobsForHyperParameterTuningJobRequest(input *Lis
 func (p *ListTrainingJobsForHyperParameterTuningJobRequest) Paginate(opts ...aws.Option) ListTrainingJobsForHyperParameterTuningJobPager {
 	return ListTrainingJobsForHyperParameterTuningJobPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListTrainingJobsForHyperParameterTuningJobInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -3929,6 +4000,7 @@ func (p *ListTrainingJobsForHyperParameterTuningJobRequest) Paginate(opts ...aws
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -3956,7 +4028,8 @@ type ListTransformJobsRequest struct {
 }
 
 // Send marshals and sends the ListTransformJobs API request.
-func (r ListTransformJobsRequest) Send() (*ListTransformJobsOutput, error) {
+func (r ListTransformJobsRequest) Send(ctx context.Context) (*ListTransformJobsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3972,7 +4045,7 @@ func (r ListTransformJobsRequest) Send() (*ListTransformJobsOutput, error) {
 //
 //    // Example sending a request using the ListTransformJobsRequest method.
 //    req := client.ListTransformJobsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4022,7 +4095,7 @@ func (c *SageMaker) ListTransformJobsRequest(input *ListTransformJobsInput) List
 func (p *ListTransformJobsRequest) Paginate(opts ...aws.Option) ListTransformJobsPager {
 	return ListTransformJobsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListTransformJobsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -4031,6 +4104,7 @@ func (p *ListTransformJobsRequest) Paginate(opts ...aws.Option) ListTransformJob
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -4058,7 +4132,8 @@ type ListWorkteamsRequest struct {
 }
 
 // Send marshals and sends the ListWorkteams API request.
-func (r ListWorkteamsRequest) Send() (*ListWorkteamsOutput, error) {
+func (r ListWorkteamsRequest) Send(ctx context.Context) (*ListWorkteamsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4076,7 +4151,7 @@ func (r ListWorkteamsRequest) Send() (*ListWorkteamsOutput, error) {
 //
 //    // Example sending a request using the ListWorkteamsRequest method.
 //    req := client.ListWorkteamsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4126,7 +4201,7 @@ func (c *SageMaker) ListWorkteamsRequest(input *ListWorkteamsInput) ListWorkteam
 func (p *ListWorkteamsRequest) Paginate(opts ...aws.Option) ListWorkteamsPager {
 	return ListWorkteamsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListWorkteamsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -4135,6 +4210,7 @@ func (p *ListWorkteamsRequest) Paginate(opts ...aws.Option) ListWorkteamsPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -4162,7 +4238,8 @@ type RenderUiTemplateRequest struct {
 }
 
 // Send marshals and sends the RenderUiTemplate API request.
-func (r RenderUiTemplateRequest) Send() (*RenderUiTemplateOutput, error) {
+func (r RenderUiTemplateRequest) Send(ctx context.Context) (*RenderUiTemplateOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4178,7 +4255,7 @@ func (r RenderUiTemplateRequest) Send() (*RenderUiTemplateOutput, error) {
 //
 //    // Example sending a request using the RenderUiTemplateRequest method.
 //    req := client.RenderUiTemplateRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4212,7 +4289,8 @@ type SearchRequest struct {
 }
 
 // Send marshals and sends the Search API request.
-func (r SearchRequest) Send() (*SearchOutput, error) {
+func (r SearchRequest) Send(ctx context.Context) (*SearchOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4234,7 +4312,7 @@ func (r SearchRequest) Send() (*SearchOutput, error) {
 //
 //    // Example sending a request using the SearchRequest method.
 //    req := client.SearchRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4284,7 +4362,7 @@ func (c *SageMaker) SearchRequest(input *SearchInput) SearchRequest {
 func (p *SearchRequest) Paginate(opts ...aws.Option) SearchPager {
 	return SearchPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *SearchInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -4293,6 +4371,7 @@ func (p *SearchRequest) Paginate(opts ...aws.Option) SearchPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -4320,7 +4399,8 @@ type StartNotebookInstanceRequest struct {
 }
 
 // Send marshals and sends the StartNotebookInstance API request.
-func (r StartNotebookInstanceRequest) Send() (*StartNotebookInstanceOutput, error) {
+func (r StartNotebookInstanceRequest) Send(ctx context.Context) (*StartNotebookInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4340,7 +4420,7 @@ func (r StartNotebookInstanceRequest) Send() (*StartNotebookInstanceOutput, erro
 //
 //    // Example sending a request using the StartNotebookInstanceRequest method.
 //    req := client.StartNotebookInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4376,7 +4456,8 @@ type StopCompilationJobRequest struct {
 }
 
 // Send marshals and sends the StopCompilationJob API request.
-func (r StopCompilationJobRequest) Send() (*StopCompilationJobOutput, error) {
+func (r StopCompilationJobRequest) Send(ctx context.Context) (*StopCompilationJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4401,7 +4482,7 @@ func (r StopCompilationJobRequest) Send() (*StopCompilationJobOutput, error) {
 //
 //    // Example sending a request using the StopCompilationJobRequest method.
 //    req := client.StopCompilationJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4437,7 +4518,8 @@ type StopHyperParameterTuningJobRequest struct {
 }
 
 // Send marshals and sends the StopHyperParameterTuningJob API request.
-func (r StopHyperParameterTuningJobRequest) Send() (*StopHyperParameterTuningJobOutput, error) {
+func (r StopHyperParameterTuningJobRequest) Send(ctx context.Context) (*StopHyperParameterTuningJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4459,7 +4541,7 @@ func (r StopHyperParameterTuningJobRequest) Send() (*StopHyperParameterTuningJob
 //
 //    // Example sending a request using the StopHyperParameterTuningJobRequest method.
 //    req := client.StopHyperParameterTuningJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4495,7 +4577,8 @@ type StopLabelingJobRequest struct {
 }
 
 // Send marshals and sends the StopLabelingJob API request.
-func (r StopLabelingJobRequest) Send() (*StopLabelingJobOutput, error) {
+func (r StopLabelingJobRequest) Send(ctx context.Context) (*StopLabelingJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4513,7 +4596,7 @@ func (r StopLabelingJobRequest) Send() (*StopLabelingJobOutput, error) {
 //
 //    // Example sending a request using the StopLabelingJobRequest method.
 //    req := client.StopLabelingJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4549,7 +4632,8 @@ type StopNotebookInstanceRequest struct {
 }
 
 // Send marshals and sends the StopNotebookInstance API request.
-func (r StopNotebookInstanceRequest) Send() (*StopNotebookInstanceOutput, error) {
+func (r StopNotebookInstanceRequest) Send(ctx context.Context) (*StopNotebookInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4572,7 +4656,7 @@ func (r StopNotebookInstanceRequest) Send() (*StopNotebookInstanceOutput, error)
 //
 //    // Example sending a request using the StopNotebookInstanceRequest method.
 //    req := client.StopNotebookInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4608,7 +4692,8 @@ type StopTrainingJobRequest struct {
 }
 
 // Send marshals and sends the StopTrainingJob API request.
-func (r StopTrainingJobRequest) Send() (*StopTrainingJobOutput, error) {
+func (r StopTrainingJobRequest) Send(ctx context.Context) (*StopTrainingJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4625,18 +4710,13 @@ func (r StopTrainingJobRequest) Send() (*StopTrainingJobOutput, error) {
 // might use this 120-second window to save the model artifacts, so the results
 // of the training is not lost.
 //
-// Training algorithms provided by Amazon SageMaker save the intermediate results
-// of a model training job. This intermediate data is a valid model artifact.
-// You can use the model artifacts that are saved when Amazon SageMaker stops
-// a training job to create a model.
-//
 // When it receives a StopTrainingJob request, Amazon SageMaker changes the
 // status of the job to Stopping. After Amazon SageMaker stops the job, it sets
 // the status to Stopped.
 //
 //    // Example sending a request using the StopTrainingJobRequest method.
 //    req := client.StopTrainingJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4672,7 +4752,8 @@ type StopTransformJobRequest struct {
 }
 
 // Send marshals and sends the StopTransformJob API request.
-func (r StopTransformJobRequest) Send() (*StopTransformJobOutput, error) {
+func (r StopTransformJobRequest) Send(ctx context.Context) (*StopTransformJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4693,7 +4774,7 @@ func (r StopTransformJobRequest) Send() (*StopTransformJobOutput, error) {
 //
 //    // Example sending a request using the StopTransformJobRequest method.
 //    req := client.StopTransformJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4729,7 +4810,8 @@ type UpdateCodeRepositoryRequest struct {
 }
 
 // Send marshals and sends the UpdateCodeRepository API request.
-func (r UpdateCodeRepositoryRequest) Send() (*UpdateCodeRepositoryOutput, error) {
+func (r UpdateCodeRepositoryRequest) Send(ctx context.Context) (*UpdateCodeRepositoryOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4741,11 +4823,11 @@ func (r UpdateCodeRepositoryRequest) Send() (*UpdateCodeRepositoryOutput, error)
 // UpdateCodeRepositoryRequest returns a request value for making API operation for
 // Amazon SageMaker Service.
 //
-// Updates the specified git repository with the specified values.
+// Updates the specified Git repository with the specified values.
 //
 //    // Example sending a request using the UpdateCodeRepositoryRequest method.
 //    req := client.UpdateCodeRepositoryRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4779,7 +4861,8 @@ type UpdateEndpointRequest struct {
 }
 
 // Send marshals and sends the UpdateEndpoint API request.
-func (r UpdateEndpointRequest) Send() (*UpdateEndpointOutput, error) {
+func (r UpdateEndpointRequest) Send(ctx context.Context) (*UpdateEndpointOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4797,7 +4880,7 @@ func (r UpdateEndpointRequest) Send() (*UpdateEndpointOutput, error) {
 //
 // When Amazon SageMaker receives the request, it sets the endpoint status to
 // Updating. After updating the endpoint, it sets the status to InService. To
-// check the status of an endpoint, use the DescribeEndpoint (http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
+// check the status of an endpoint, use the DescribeEndpoint (https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
 // API.
 //
 // You cannot update an endpoint with the current EndpointConfig. To update
@@ -4805,7 +4888,7 @@ func (r UpdateEndpointRequest) Send() (*UpdateEndpointOutput, error) {
 //
 //    // Example sending a request using the UpdateEndpointRequest method.
 //    req := client.UpdateEndpointRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4839,7 +4922,8 @@ type UpdateEndpointWeightsAndCapacitiesRequest struct {
 }
 
 // Send marshals and sends the UpdateEndpointWeightsAndCapacities API request.
-func (r UpdateEndpointWeightsAndCapacitiesRequest) Send() (*UpdateEndpointWeightsAndCapacitiesOutput, error) {
+func (r UpdateEndpointWeightsAndCapacitiesRequest) Send(ctx context.Context) (*UpdateEndpointWeightsAndCapacitiesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4855,12 +4939,12 @@ func (r UpdateEndpointWeightsAndCapacitiesRequest) Send() (*UpdateEndpointWeight
 // endpoint, or capacity of one variant associated with an existing endpoint.
 // When it receives the request, Amazon SageMaker sets the endpoint status to
 // Updating. After updating the endpoint, it sets the status to InService. To
-// check the status of an endpoint, use the DescribeEndpoint (http://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
+// check the status of an endpoint, use the DescribeEndpoint (https://docs.aws.amazon.com/sagemaker/latest/dg/API_DescribeEndpoint.html)
 // API.
 //
 //    // Example sending a request using the UpdateEndpointWeightsAndCapacitiesRequest method.
 //    req := client.UpdateEndpointWeightsAndCapacitiesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4894,7 +4978,8 @@ type UpdateNotebookInstanceRequest struct {
 }
 
 // Send marshals and sends the UpdateNotebookInstance API request.
-func (r UpdateNotebookInstanceRequest) Send() (*UpdateNotebookInstanceOutput, error) {
+func (r UpdateNotebookInstanceRequest) Send(ctx context.Context) (*UpdateNotebookInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4913,7 +4998,7 @@ func (r UpdateNotebookInstanceRequest) Send() (*UpdateNotebookInstanceOutput, er
 //
 //    // Example sending a request using the UpdateNotebookInstanceRequest method.
 //    req := client.UpdateNotebookInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4947,7 +5032,8 @@ type UpdateNotebookInstanceLifecycleConfigRequest struct {
 }
 
 // Send marshals and sends the UpdateNotebookInstanceLifecycleConfig API request.
-func (r UpdateNotebookInstanceLifecycleConfigRequest) Send() (*UpdateNotebookInstanceLifecycleConfigOutput, error) {
+func (r UpdateNotebookInstanceLifecycleConfigRequest) Send(ctx context.Context) (*UpdateNotebookInstanceLifecycleConfigOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4964,7 +5050,7 @@ func (r UpdateNotebookInstanceLifecycleConfigRequest) Send() (*UpdateNotebookIns
 //
 //    // Example sending a request using the UpdateNotebookInstanceLifecycleConfigRequest method.
 //    req := client.UpdateNotebookInstanceLifecycleConfigRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4998,7 +5084,8 @@ type UpdateWorkteamRequest struct {
 }
 
 // Send marshals and sends the UpdateWorkteam API request.
-func (r UpdateWorkteamRequest) Send() (*UpdateWorkteamOutput, error) {
+func (r UpdateWorkteamRequest) Send(ctx context.Context) (*UpdateWorkteamOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -5014,7 +5101,7 @@ func (r UpdateWorkteamRequest) Send() (*UpdateWorkteamOutput, error) {
 //
 //    // Example sending a request using the UpdateWorkteamRequest method.
 //    req := client.UpdateWorkteamRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -5115,13 +5202,13 @@ func (s AddTagsOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
-// Specifies the training algorithm to use in a CreateTrainingJob (http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateTrainingJob.html)
+// Specifies the training algorithm to use in a CreateTrainingJob (https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateTrainingJob.html)
 // request.
 //
 // For more information about algorithms provided by Amazon SageMaker, see Algorithms
-// (http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html). For information
+// (https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html). For information
 // about using your own algorithms, see Using Your Own Algorithms with Amazon
-// SageMaker (http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
+// SageMaker (https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/AlgorithmSpecification
 type AlgorithmSpecification struct {
 	_ struct{} `type:"structure"`
@@ -5139,11 +5226,14 @@ type AlgorithmSpecification struct {
 
 	// The registry path of the Docker image that contains the training algorithm.
 	// For information about docker registry paths for built-in algorithms, see
-	// Algorithms Provided by Amazon SageMaker: Common Parameters (http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html).
+	// Algorithms Provided by Amazon SageMaker: Common Parameters (https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html).
+	// Amazon SageMaker supports both registry/repository[:tag] and registry/repository[@digest]
+	// image path formats. For more information, see Using Your Own Algorithms with
+	// Amazon SageMaker (https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
 	TrainingImage *string `type:"string"`
 
 	// The input mode that the algorithm supports. For the input modes that Amazon
-	// SageMaker algorithms support, see Algorithms (http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
+	// SageMaker algorithms support, see Algorithms (https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 	// If an algorithm supports the File input mode, Amazon SageMaker downloads
 	// the training data from S3 to the provisioned ML storage Volume, and mounts
 	// the directory to docker volume for training container. If an algorithm supports
@@ -5774,32 +5864,32 @@ func (s *ChannelSpecification) Validate() error {
 	return nil
 }
 
-// Specifies summary information about a git repository.
+// Specifies summary information about a Git repository.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/CodeRepositorySummary
 type CodeRepositorySummary struct {
 	_ struct{} `type:"structure"`
 
-	// The Amazon Resource Name (ARN) of the git repository.
+	// The Amazon Resource Name (ARN) of the Git repository.
 	//
 	// CodeRepositoryArn is a required field
 	CodeRepositoryArn *string `min:"1" type:"string" required:"true"`
 
-	// The name of the git repository.
+	// The name of the Git repository.
 	//
 	// CodeRepositoryName is a required field
 	CodeRepositoryName *string `min:"1" type:"string" required:"true"`
 
-	// The date and time that the git repository was created.
+	// The date and time that the Git repository was created.
 	//
 	// CreationTime is a required field
 	CreationTime *time.Time `type:"timestamp" timestampFormat:"unix" required:"true"`
 
-	// Configuration details for the git repository, including the URL where it
+	// Configuration details for the Git repository, including the URL where it
 	// is located and the ARN of the AWS Secrets Manager secret that contains the
 	// credentials used to access the repository.
 	GitConfig *GitConfig `type:"structure"`
 
-	// The date and time that the git repository was last modified.
+	// The date and time that the Git repository was last modified.
 	//
 	// LastModifiedTime is a required field
 	LastModifiedTime *time.Time `type:"timestamp" timestampFormat:"unix" required:"true"`
@@ -5935,7 +6025,7 @@ func (s CompilationJobSummary) GoString() string {
 type ContainerDefinition struct {
 	_ struct{} `type:"structure"`
 
-	// The DNS host name for the container after Amazon SageMaker deploys it.
+	// This parameter is ignored.
 	ContainerHostname *string `type:"string"`
 
 	// The environment variables to set in the Docker container. Each key and value
@@ -5948,7 +6038,7 @@ type ContainerDefinition struct {
 	// provided by Amazon SageMaker, the inference code must meet Amazon SageMaker
 	// requirements. Amazon SageMaker supports both registry/repository[:tag] and
 	// registry/repository[@digest] image path formats. For more information, see
-	// Using Your Own Algorithms with Amazon SageMaker (http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html)
+	// Using Your Own Algorithms with Amazon SageMaker (https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html)
 	Image *string `type:"string"`
 
 	// The S3 path where the model artifacts, which result from model training,
@@ -6012,6 +6102,30 @@ type ContinuousParameterRange struct {
 	//
 	// Name is a required field
 	Name *string `type:"string" required:"true"`
+
+	// The scale that hyperparameter tuning uses to search the hyperparameter range.
+	// For information about choosing a hyperparameter scale, see Hyperparameter
+	// Range Scaling (http://docs.aws.amazon.com//sagemaker/latest/dg/automatic-model-tuning-define-ranges.html#scaling-type).
+	// One of the following values:
+	//
+	// AutoAmazon SageMaker hyperparameter tuning chooses the best scale for the
+	// hyperparameter.
+	//
+	// LinearHyperparameter tuning searches the values in the hyperparameter range
+	// by using a linear scale.
+	//
+	// LogarithmicHyperparemeter tuning searches the values in the hyperparameter
+	// range by using a logarithmic scale.
+	//
+	// Logarithmic scaling works only for ranges that have only values greater than
+	// 0.
+	//
+	// ReverseLogarithmicHyperparemeter tuning searches the values in the hyperparameter
+	// range by using a reverse logarithmic scale.
+	//
+	// Reverse logarithmic scaling works only for ranges that are entirely within
+	// the range 0<=x<1.0.
+	ScalingType HyperParameterScalingType `type:"string" enum:"true"`
 }
 
 // String returns the string representation
@@ -6102,7 +6216,7 @@ type CreateAlgorithmInput struct {
 	// AlgorithmName is a required field
 	AlgorithmName *string `min:"1" type:"string" required:"true"`
 
-	// Whether to certify the algorithm so that it can be listed in AWS Marektplace.
+	// Whether to certify the algorithm so that it can be listed in AWS Marketplace.
 	CertifyForMarketplace *bool `type:"boolean"`
 
 	// Specifies details about inference jobs that the algorithm runs, including
@@ -6224,7 +6338,7 @@ func (s CreateAlgorithmOutput) SDKResponseMetadata() aws.Response {
 type CreateCodeRepositoryInput struct {
 	_ struct{} `type:"structure"`
 
-	// The name of the git repository. The name must have 1 to 63 characters. Valid
+	// The name of the Git repository. The name must have 1 to 63 characters. Valid
 	// characters are a-z, A-Z, 0-9, and - (hyphen).
 	//
 	// CodeRepositoryName is a required field
@@ -6445,7 +6559,7 @@ type CreateEndpointConfigInput struct {
 	_ struct{} `type:"structure"`
 
 	// The name of the endpoint configuration. You specify this name in a CreateEndpoint
-	// (http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
+	// (https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpoint.html)
 	// request.
 	//
 	// EndpointConfigName is a required field
@@ -6463,7 +6577,7 @@ type CreateEndpointConfigInput struct {
 	ProductionVariants []ProductionVariant `min:"1" type:"list" required:"true"`
 
 	// An array of key-value pairs. For more information, see Using Cost Allocation
-	// Tags (http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+	// Tags (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 	// in the AWS Billing and Cost Management User Guide.
 	Tags []Tag `type:"list"`
 }
@@ -6545,7 +6659,7 @@ type CreateEndpointInput struct {
 	_ struct{} `type:"structure"`
 
 	// The name of an endpoint configuration. For more information, see CreateEndpointConfig
-	// (http://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html).
+	// (https://docs.aws.amazon.com/sagemaker/latest/dg/API_CreateEndpointConfig.html).
 	//
 	// EndpointConfigName is a required field
 	EndpointConfigName *string `type:"string" required:"true"`
@@ -6557,7 +6671,7 @@ type CreateEndpointInput struct {
 	EndpointName *string `type:"string" required:"true"`
 
 	// An array of key-value pairs. For more information, see Using Cost Allocation
-	// Tags (http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)in
+	// Tags (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)in
 	// the AWS Billing and Cost Management User Guide.
 	Tags []Tag `type:"list"`
 }
@@ -6661,18 +6775,18 @@ type CreateHyperParameterTuningJobInput struct {
 	// TrainingJobDefinition is a required field
 	TrainingJobDefinition *HyperParameterTrainingJobDefinition `type:"structure" required:"true"`
 
-	// Specifies configuration for starting the hyperparameter tuning job using
+	// Specifies the configuration for starting the hyperparameter tuning job using
 	// one or more previous tuning jobs as a starting point. The results of previous
 	// tuning jobs are used to inform which combinations of hyperparameters to search
 	// over in the new tuning job.
 	//
 	// All training jobs launched by the new hyperparameter tuning job are evaluated
 	// by using the objective metric. If you specify IDENTICAL_DATA_AND_ALGORITHM
-	// as the WarmStartType for the warm start configuration, the training job that
-	// performs the best in the new tuning job is compared to the best training
-	// jobs from the parent tuning jobs. From these, the training job that performs
-	// the best as measured by the objective metric is returned as the overall best
-	// training job.
+	// as the WarmStartType value for the warm start configuration, the training
+	// job that performs the best in the new tuning job is compared to the best
+	// training jobs from the parent tuning jobs. From these, the training job that
+	// performs the best as measured by the objective metric is returned as the
+	// overall best training job.
 	//
 	// All training jobs launched by parent hyperparameter tuning jobs and the new
 	// hyperparameter tuning jobs count against the limit of training jobs for the
@@ -6990,7 +7104,7 @@ type CreateModelInput struct {
 	// assume to access model artifacts and docker image for deployment on ML compute
 	// instances or for batch transform jobs. Deploying on ML compute instances
 	// is part of model hosting. For more information, see Amazon SageMaker Roles
-	// (http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
+	// (https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 	//
 	// To be able to pass this role to Amazon SageMaker, the caller of this API
 	// must have the iam:PassRole permission.
@@ -7009,16 +7123,16 @@ type CreateModelInput struct {
 	PrimaryContainer *ContainerDefinition `type:"structure"`
 
 	// An array of key-value pairs. For more information, see Using Cost Allocation
-	// Tags (http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+	// Tags (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 	// in the AWS Billing and Cost Management User Guide.
 	Tags []Tag `type:"list"`
 
 	// A VpcConfig object that specifies the VPC that you want your model to connect
 	// to. Control access to and from your model container by configuring the VPC.
 	// VpcConfig is used in hosting services and in batch transform. For more information,
-	// see Protect Endpoints by Using an Amazon Virtual Private Cloud (http://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html)
+	// see Protect Endpoints by Using an Amazon Virtual Private Cloud (https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html)
 	// and Protect Data in Batch Transform Jobs by Using an Amazon Virtual Private
-	// Cloud (http://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html).
+	// Cloud (https://docs.aws.amazon.com/sagemaker/latest/dg/batch-vpc.html).
 	VpcConfig *VpcConfig `type:"structure"`
 }
 
@@ -7216,23 +7330,23 @@ type CreateNotebookInstanceInput struct {
 
 	// A list of Elastic Inference (EI) instance types to associate with this notebook
 	// instance. Currently, only one instance type can be associated with a notebook
-	// intance. For more information, see Using Elastic Inference in Amazon SageMaker
+	// instance. For more information, see Using Elastic Inference in Amazon SageMaker
 	// (http://docs.aws.amazon.com/sagemaker/latest/dg/ei.html).
 	AcceleratorTypes []NotebookInstanceAcceleratorType `type:"list"`
 
-	// An array of up to 3 git repositories to associate with the notebook instance.
-	// These can be either the names of git repositories stored as resources in
-	// your account, or the URL of git repositories in AWS CodeCommit (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
-	// or in any other git repository. These repositories are cloned at the same
+	// An array of up to three Git repositories to associate with the notebook instance.
+	// These can be either the names of Git repositories stored as resources in
+	// your account, or the URL of Git repositories in AWS CodeCommit (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+	// or in any other Git repository. These repositories are cloned at the same
 	// level as the default repository of your notebook instance. For more information,
 	// see Associating Git Repositories with Amazon SageMaker Notebook Instances
 	// (http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
 	AdditionalCodeRepositories []string `type:"list"`
 
-	// A git repository to associate with the notebook instance as its default code
-	// repository. This can be either the name of a git repository stored as a resource
-	// in your account, or the URL of a git repository in AWS CodeCommit (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
-	// or in any other git repository. When you open a notebook instance, it opens
+	// A Git repository to associate with the notebook instance as its default code
+	// repository. This can be either the name of a Git repository stored as a resource
+	// in your account, or the URL of a Git repository in AWS CodeCommit (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+	// or in any other Git repository. When you open a notebook instance, it opens
 	// in the directory that contains this repository. For more information, see
 	// Associating Git Repositories with Amazon SageMaker Notebook Instances (http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
 	DefaultCodeRepository *string `min:"1" type:"string"`
@@ -7244,7 +7358,7 @@ type CreateNotebookInstanceInput struct {
 	// VPC.
 	//
 	// For more information, see Notebook Instances Are Internet-Enabled by Default
-	// (http://docs.aws.amazon.com/sagemaker/latest/dg/appendix-additional-considerations.html#appendix-notebook-and-internet-access).
+	// (https://docs.aws.amazon.com/sagemaker/latest/dg/appendix-additional-considerations.html#appendix-notebook-and-internet-access).
 	// You can set the value of this parameter to Disabled only if you set a value
 	// for the SubnetId parameter.
 	DirectInternetAccess DirectInternetAccess `type:"string" enum:"true"`
@@ -7263,7 +7377,7 @@ type CreateNotebookInstanceInput struct {
 
 	// The name of a lifecycle configuration to associate with the notebook instance.
 	// For information about lifestyle configurations, see Step 2.1: (Optional)
-	// Customize a Notebook Instance (http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
+	// Customize a Notebook Instance (https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 	LifecycleConfigName *string `type:"string"`
 
 	// The name of the new notebook instance.
@@ -7276,13 +7390,22 @@ type CreateNotebookInstanceInput struct {
 	// this role necessary permissions so Amazon SageMaker can perform these tasks.
 	// The policy must allow the Amazon SageMaker service principal (sagemaker.amazonaws.com)
 	// permissions to assume this role. For more information, see Amazon SageMaker
-	// Roles (http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
+	// Roles (https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 	//
 	// To be able to pass this role to Amazon SageMaker, the caller of this API
 	// must have the iam:PassRole permission.
 	//
 	// RoleArn is a required field
 	RoleArn *string `min:"20" type:"string" required:"true"`
+
+	// Whether root access is enabled or disabled for users of the notebook instance.
+	// The default value is Enabled.
+	//
+	// Lifecycle configurations need root access to be able to set up a notebook
+	// instance. Because of this, lifecycle configurations associated with a notebook
+	// instance always run with root access even if you disable root access for
+	// users.
+	RootAccess RootAccess `type:"string" enum:"true"`
 
 	// The VPC security group IDs, in the form sg-xxxxxxxx. The security groups
 	// must be for the same VPC as specified in the subnet.
@@ -7526,19 +7649,28 @@ type CreateTrainingJobInput struct {
 
 	// The registry path of the Docker image that contains the training algorithm
 	// and algorithm-specific metadata, including the input mode. For more information
-	// about algorithms provided by Amazon SageMaker, see Algorithms (http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
+	// about algorithms provided by Amazon SageMaker, see Algorithms (https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 	// For information about providing your own algorithms, see Using Your Own Algorithms
-	// with Amazon SageMaker (http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
+	// with Amazon SageMaker (https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
 	//
 	// AlgorithmSpecification is a required field
 	AlgorithmSpecification *AlgorithmSpecification `type:"structure" required:"true"`
 
+	// To encrypt all communications between ML compute instances in distributed
+	// training, choose True. Encryption provides greater security for distributed
+	// training, but training might take longer. How long it takes depends on the
+	// amount of communication between compute instances, especially if you use
+	// a deep learning algorithm in distributed training. For more information,
+	// see Protect Communications Between ML Compute Instances in a Distributed
+	// Training Job (https://docs.aws.amazon.com/sagemaker/latest/dg/train-encrypt.html).
+	EnableInterContainerTrafficEncryption *bool `type:"boolean"`
+
 	// Isolates the training container. No inbound or outbound network calls can
 	// be made, except for calls between peers within a training cluster for distributed
-	// training. If network isolation is used for training jobs that are configured
+	// training. If you enable network isolation for training jobs that are configured
 	// to use a VPC, Amazon SageMaker downloads and uploads customer data and model
-	// artifacts through the specifed VPC, but the training container does not have
-	// network access.
+	// artifacts through the specified VPC, but the training container does not
+	// have network access.
 	//
 	// The Semantic Segmentation built-in algorithm does not support network isolation.
 	EnableNetworkIsolation *bool `type:"boolean"`
@@ -7546,7 +7678,7 @@ type CreateTrainingJobInput struct {
 	// Algorithm-specific parameters that influence the quality of the model. You
 	// set hyperparameters before you start the learning process. For a list of
 	// hyperparameters for each training algorithm provided by Amazon SageMaker,
-	// see Algorithms (http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
+	// see Algorithms (https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 	//
 	// You can specify a maximum of 100 hyperparameters. Each hyperparameter is
 	// a key-value pair. Each key and value is limited to 256 characters, as specified
@@ -7593,7 +7725,7 @@ type CreateTrainingJobInput struct {
 	// write model artifacts to an S3 bucket, write logs to Amazon CloudWatch Logs,
 	// and publish metrics to Amazon CloudWatch. You grant permissions for all of
 	// these tasks to an IAM role. For more information, see Amazon SageMaker Roles
-	// (http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
+	// (https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 	//
 	// To be able to pass this role to Amazon SageMaker, the caller of this API
 	// must have the iam:PassRole permission.
@@ -7615,7 +7747,7 @@ type CreateTrainingJobInput struct {
 	StoppingCondition *StoppingCondition `type:"structure" required:"true"`
 
 	// An array of key-value pairs. For more information, see Using Cost Allocation
-	// Tags (http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+	// Tags (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 	// in the AWS Billing and Cost Management User Guide.
 	Tags []Tag `type:"list"`
 
@@ -7628,7 +7760,7 @@ type CreateTrainingJobInput struct {
 	// A VpcConfig object that specifies the VPC that you want your training job
 	// to connect to. Control access to and from your training container by configuring
 	// the VPC. For more information, see Protect Training Jobs by Using an Amazon
-	// Virtual Private Cloud (http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
+	// Virtual Private Cloud (https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
 	VpcConfig *VpcConfig `type:"structure"`
 }
 
@@ -7755,15 +7887,16 @@ func (s CreateTrainingJobOutput) SDKResponseMetadata() aws.Response {
 type CreateTransformJobInput struct {
 	_ struct{} `type:"structure"`
 
-	// Determines the number of records included in a single mini-batch. SingleRecord
-	// means only one record is used per mini-batch. MultiRecord means a mini-batch
-	// is set to contain as many records that can fit within the MaxPayloadInMB
-	// limit.
+	// Specifies the number of records to include in a mini-batch for an HTTP inference
+	// request. A recordis a single unit of input data that inference can be made on. For example,
+	// a single line in a CSV file is a record.
 	//
-	// Batch transform will automatically split your input data into whatever payload
-	// size is specified if you set SplitType to Line and BatchStrategy to MultiRecord.
-	// There's no need to split the dataset into smaller files or to use larger
-	// payload sizes unless the records in your dataset are very large.
+	// To enable the batch strategy, you must set SplitTypeto Line, RecordIO, or TFRecord.
+	//
+	// To use only one record when making an HTTP invocation request to a container,
+	// set BatchStrategyto SingleRecordand SplitTypeto Line.
+	//
+	// To fit as many records in a mini-batch as can fit within the MaxPayloadInMBlimit, set BatchStrategyto MultiRecordand SplitTypeto Line
 	BatchStrategy BatchStrategy `type:"string" enum:"true"`
 
 	// The environment variables to set in the Docker container. We support up to
@@ -7771,24 +7904,22 @@ type CreateTransformJobInput struct {
 	Environment map[string]string `type:"map"`
 
 	// The maximum number of parallel requests that can be sent to each instance
-	// in a transform job. This is good for algorithms that implement multiple workers
-	// on larger instances . The default value is 1. To allow Amazon SageMaker to
+	// in a transform job. The default value is 1. To allow Amazon SageMaker to
 	// determine the appropriate number for MaxConcurrentTransforms, set the value
 	// to 0.
 	MaxConcurrentTransforms *int64 `type:"integer"`
 
-	// The maximum payload size allowed, in MB. A payload is the data portion of
-	// a record (without metadata). The value in MaxPayloadInMB must be greater
-	// or equal to the size of a single record. You can approximate the size of
-	// a record by dividing the size of your dataset by the number of records. Then
-	// multiply this value by the number of records you want in a mini-batch. We
-	// recommend to enter a slightly larger value than this to ensure the records
-	// fit within the maximum payload size. The default value is 6 MB.
+	// The maximum allowed size of the payload, in MB. A payload is the data portion
+	// of a record (without metadata). The value in MaxPayloadInMB must be greater
+	// than, or equal to, the size of a single record. To estimate the size of a
+	// record in MB, divide the size of your dataset by the number of records. To
+	// ensure that the records fit within the maximum payload size, we recommend
+	// using a slightly larger value. The default value is 6 MB.
 	//
 	// For cases where the payload might be arbitrarily large and is transmitted
-	// using HTTP chunked encoding, set the value to 0. This feature only works
+	// using HTTP chunked encoding, set the value to 0. This feature works only
 	// in supported algorithms. Currently, Amazon SageMaker built-in algorithms
-	// do not support this feature.
+	// do not support HTTP chunked encoding.
 	MaxPayloadInMB *int64 `type:"integer"`
 
 	// The name of the model that you want to use for the transform job. ModelName
@@ -7798,8 +7929,8 @@ type CreateTransformJobInput struct {
 	// ModelName is a required field
 	ModelName *string `type:"string" required:"true"`
 
-	// An array of key-value pairs. Adding tags is optional. For more information,
-	// see Using Cost Allocation Tags (http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+	// (Optional) An array of key-value pairs. For more information, see Using Cost
+	// Allocation Tags (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 	// in the AWS Billing and Cost Management User Guide.
 	Tags []Tag `type:"list"`
 
@@ -8129,7 +8260,7 @@ func (s DeleteAlgorithmOutput) SDKResponseMetadata() aws.Response {
 type DeleteCodeRepositoryInput struct {
 	_ struct{} `type:"structure"`
 
-	// The name of the git repository to delete.
+	// The name of the Git repository to delete.
 	//
 	// CodeRepositoryName is a required field
 	CodeRepositoryName *string `min:"1" type:"string" required:"true"`
@@ -8756,7 +8887,7 @@ type DescribeAlgorithmOutput struct {
 	// AlgorithmStatusDetails is a required field
 	AlgorithmStatusDetails *AlgorithmStatusDetails `type:"structure" required:"true"`
 
-	// Whether the algorithm is certified to be listed in AWS Marektplace.
+	// Whether the algorithm is certified to be listed in AWS Marketplace.
 	CertifyForMarketplace *bool `type:"boolean"`
 
 	// A timestamp specifying when the algorithm was created.
@@ -8799,7 +8930,7 @@ func (s DescribeAlgorithmOutput) SDKResponseMetadata() aws.Response {
 type DescribeCodeRepositoryInput struct {
 	_ struct{} `type:"structure"`
 
-	// The name of the git repository to describe.
+	// The name of the Git repository to describe.
 	//
 	// CodeRepositoryName is a required field
 	CodeRepositoryName *string `min:"1" type:"string" required:"true"`
@@ -8838,12 +8969,12 @@ type DescribeCodeRepositoryOutput struct {
 
 	responseMetadata aws.Response
 
-	// The Amazon Resource Name (ARN) of the git repository.
+	// The Amazon Resource Name (ARN) of the Git repository.
 	//
 	// CodeRepositoryArn is a required field
 	CodeRepositoryArn *string `min:"1" type:"string" required:"true"`
 
-	// The name of the git repository.
+	// The name of the Git repository.
 	//
 	// CodeRepositoryName is a required field
 	CodeRepositoryName *string `min:"1" type:"string" required:"true"`
@@ -9599,7 +9730,7 @@ type DescribeModelOutput struct {
 
 	// A VpcConfig object that specifies the VPC that this model has access to.
 	// For more information, see Protect Endpoints by Using an Amazon Virtual Private
-	// Cloud (http://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html)
+	// Cloud (https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html)
 	VpcConfig *VpcConfig `type:"structure"`
 }
 
@@ -9840,10 +9971,10 @@ type DescribeNotebookInstanceOutput struct {
 	// in Amazon SageMaker (http://docs.aws.amazon.com/sagemaker/latest/dg/ei.html).
 	AcceleratorTypes []NotebookInstanceAcceleratorType `type:"list"`
 
-	// An array of up to 3 git repositories associated with the notebook instance.
-	// These can be either the names of git repositories stored as resources in
-	// your account, or the URL of git repositories in AWS CodeCommit (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
-	// or in any other git repository. These repositories are cloned at the same
+	// An array of up to three Git repositories associated with the notebook instance.
+	// These can be either the names of Git repositories stored as resources in
+	// your account, or the URL of Git repositories in AWS CodeCommit (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+	// or in any other Git repository. These repositories are cloned at the same
 	// level as the default repository of your notebook instance. For more information,
 	// see Associating Git Repositories with Amazon SageMaker Notebook Instances
 	// (http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
@@ -9853,38 +9984,38 @@ type DescribeNotebookInstanceOutput struct {
 	// was created
 	CreationTime *time.Time `type:"timestamp" timestampFormat:"unix"`
 
-	// The git repository associated with the notebook instance as its default code
-	// repository. This can be either the name of a git repository stored as a resource
-	// in your account, or the URL of a git repository in AWS CodeCommit (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
-	// or in any other git repository. When you open a notebook instance, it opens
+	// The Git repository associated with the notebook instance as its default code
+	// repository. This can be either the name of a Git repository stored as a resource
+	// in your account, or the URL of a Git repository in AWS CodeCommit (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+	// or in any other Git repository. When you open a notebook instance, it opens
 	// in the directory that contains this repository. For more information, see
 	// Associating Git Repositories with Amazon SageMaker Notebook Instances (http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
 	DefaultCodeRepository *string `min:"1" type:"string"`
 
 	// Describes whether Amazon SageMaker provides internet access to the notebook
-	// instance. If this value is set to Disabled, he notebook instance does not
+	// instance. If this value is set to Disabled, the notebook instance does not
 	// have internet access, and cannot connect to Amazon SageMaker training and
 	// endpoint services.
 	//
 	// For more information, see Notebook Instances Are Internet-Enabled by Default
-	// (http://docs.aws.amazon.com/sagemaker/latest/dg/appendix-additional-considerations.html#appendix-notebook-and-internet-access).
+	// (https://docs.aws.amazon.com/sagemaker/latest/dg/appendix-additional-considerations.html#appendix-notebook-and-internet-access).
 	DirectInternetAccess DirectInternetAccess `type:"string" enum:"true"`
 
-	// If status is failed, the reason it failed.
+	// If status is Failed, the reason it failed.
 	FailureReason *string `type:"string"`
 
 	// The type of ML compute instance running on the notebook instance.
 	InstanceType InstanceType `type:"string" enum:"true"`
 
-	// AWS KMS key ID Amazon SageMaker uses to encrypt data when storing it on the
-	// ML storage volume attached to the instance.
+	// The AWS KMS key ID Amazon SageMaker uses to encrypt data when storing it
+	// on the ML storage volume attached to the instance.
 	KmsKeyId *string `type:"string"`
 
 	// A timestamp. Use this parameter to retrieve the time when the notebook instance
 	// was last modified.
 	LastModifiedTime *time.Time `type:"timestamp" timestampFormat:"unix"`
 
-	// Network interface IDs that Amazon SageMaker created at the time of creating
+	// The network interface IDs that Amazon SageMaker created at the time of creating
 	// the instance.
 	NetworkInterfaceId *string `type:"string"`
 
@@ -9894,17 +10025,25 @@ type DescribeNotebookInstanceOutput struct {
 	// Returns the name of a notebook instance lifecycle configuration.
 	//
 	// For information about notebook instance lifestyle configurations, see Step
-	// 2.1: (Optional) Customize a Notebook Instance (http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html)
+	// 2.1: (Optional) Customize a Notebook Instance (https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html)
 	NotebookInstanceLifecycleConfigName *string `type:"string"`
 
-	// Name of the Amazon SageMaker notebook instance.
+	// The name of the Amazon SageMaker notebook instance.
 	NotebookInstanceName *string `type:"string"`
 
 	// The status of the notebook instance.
 	NotebookInstanceStatus NotebookInstanceStatus `type:"string" enum:"true"`
 
-	// Amazon Resource Name (ARN) of the IAM role associated with the instance.
+	// The Amazon Resource Name (ARN) of the IAM role associated with the instance.
 	RoleArn *string `min:"20" type:"string"`
+
+	// Whether root access is enabled or disabled for users of the notebook instance.
+	//
+	// Lifecycle configurations need root access to be able to set up a notebook
+	// instance. Because of this, lifecycle configurations associated with a notebook
+	// instance always run with root access even if you disable root access for
+	// users.
+	RootAccess RootAccess `type:"string" enum:"true"`
 
 	// The IDs of the VPC security groups.
 	SecurityGroups []string `type:"list"`
@@ -10049,11 +10188,19 @@ type DescribeTrainingJobOutput struct {
 	// CreationTime is a required field
 	CreationTime *time.Time `type:"timestamp" timestampFormat:"unix" required:"true"`
 
-	// If True, inbound or outbound network calls can be made, except for calls
-	// between peers within a training cluster for distributed training. If network
-	// isolation is used for training jobs that are configured to use a VPC, Amazon
-	// SageMaker downloads and uploads customer data and model artifacts through
-	// the specifed VPC, but the training container does not have network access.
+	// To encrypt all communications between ML compute instances in distributed
+	// training, choose True. Encryption provides greater security for distributed
+	// training, but training might take longer. How long it takes depends on the
+	// amount of communication between compute instances, especially if you use
+	// a deep learning algorithm in distributed training.
+	EnableInterContainerTrafficEncryption *bool `type:"boolean"`
+
+	// If you want to allow inbound or outbound network calls, except for calls
+	// between peers within a training cluster for distributed training, choose
+	// True. If you enable network isolation for training jobs that are configured
+	// to use a VPC, Amazon SageMaker downloads and uploads customer data and model
+	// artifacts through the specified VPC, but the training container does not
+	// have network access.
 	//
 	// The Semantic Segmentation built-in algorithm does not support network isolation.
 	EnableNetworkIsolation *bool `type:"boolean"`
@@ -10201,7 +10348,7 @@ type DescribeTrainingJobOutput struct {
 
 	// A VpcConfig object that specifies the VPC that this training job has access
 	// to. For more information, see Protect Training Jobs by Using an Amazon Virtual
-	// Private Cloud (http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
+	// Private Cloud (https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
 	VpcConfig *VpcConfig `type:"structure"`
 }
 
@@ -10263,9 +10410,11 @@ type DescribeTransformJobOutput struct {
 
 	responseMetadata aws.Response
 
-	// SingleRecord means only one record was used per a batch. MultiRecord means
-	// batches contained as many records that could possibly fit within the MaxPayloadInMB
-	// limit.
+	// Specifies the number of records to include in a mini-batch for an HTTP inference
+	// request. A recordis a single unit of input data that inference can be made on. For example,
+	// a single line in a CSV file is a record.
+	//
+	// To enable the batch strategy, you must set SplitTypeto Line, RecordIO, or TFRecord
 	BatchStrategy BatchStrategy `type:"string" enum:"true"`
 
 	// A timestamp that shows when the transform Job was created.
@@ -10273,9 +10422,14 @@ type DescribeTransformJobOutput struct {
 	// CreationTime is a required field
 	CreationTime *time.Time `type:"timestamp" timestampFormat:"unix" required:"true"`
 
+	// The environment variables to set in the Docker container. We support up to
+	// 16 key and values entries in the map.
 	Environment map[string]string `type:"map"`
 
-	// If the transform job failed, the reason that it failed.
+	// If the transform job failed, FailureReason describes why it failed. A transform
+	// job creates a log file, which includes error messages, and stores it as an
+	// Amazon S3 object. For more information, see Log Amazon SageMaker Events with
+	// Amazon CloudWatch (http://docs.aws.amazon.com/sagemaker/latest/dg/logging-cloudwatch.html).
 	FailureReason *string `type:"string"`
 
 	// The Amazon Resource Name (ARN) of the Amazon SageMaker Ground Truth labeling
@@ -10286,7 +10440,7 @@ type DescribeTransformJobOutput struct {
 	// launched in a transform job. The default value is 1.
 	MaxConcurrentTransforms *int64 `type:"integer"`
 
-	// The maximum payload size , in MB used in the transform job.
+	// The maximum payload size, in MB, used in the transform job.
 	MaxPayloadInMB *int64 `type:"integer"`
 
 	// The name of the model used in the transform job.
@@ -10294,8 +10448,8 @@ type DescribeTransformJobOutput struct {
 	// ModelName is a required field
 	ModelName *string `type:"string" required:"true"`
 
-	// Indicates when the transform job is Completed, Stopped, or Failed. You are
-	// billed for the time interval between this time and the value of TransformStartTime.
+	// Indicates when the transform job has been completed, or has stopped or failed.
+	// You are billed for the time interval between this time and the value of TransformStartTime.
 	TransformEndTime *time.Time `type:"timestamp" timestampFormat:"unix"`
 
 	// Describes the dataset to be transformed and the Amazon S3 location where
@@ -10518,7 +10672,7 @@ type EndpointSummary struct {
 	//    * Updating: UpdateEndpoint or UpdateEndpointWeightsAndCapacities is executing.
 	//
 	//    * SystemUpdating: Endpoint is undergoing maintenance and cannot be updated
-	//    or deleted or re-scaled until it has completed. This mainenance operation
+	//    or deleted or re-scaled until it has completed. This maintenance operation
 	//    does not change any customer-specified values such as VPC config, KMS
 	//    encryption, model, instance type, or instance count.
 	//
@@ -10777,15 +10931,15 @@ func (s GetSearchSuggestionsOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
-// Specifies configuration details for a git repository in your AWS account.
+// Specifies configuration details for a Git repository in your AWS account.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/GitConfig
 type GitConfig struct {
 	_ struct{} `type:"structure"`
 
-	// The default beach for the git repository.
+	// The default branch for the Git repository.
 	Branch *string `min:"1" type:"string"`
 
-	// The URL where the git repository is located.
+	// The URL where the Git repository is located.
 	//
 	// RepositoryUrl is a required field
 	RepositoryUrl *string `type:"string" required:"true"`
@@ -10828,7 +10982,7 @@ func (s *GitConfig) Validate() error {
 	return nil
 }
 
-// Specifies configuration details for a git repository when the repository
+// Specifies configuration details for a Git repository when the repository
 // is updated.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/GitConfigForUpdate
 type GitConfigForUpdate struct {
@@ -11082,7 +11236,10 @@ type HyperParameterAlgorithmSpecification struct {
 
 	// The registry path of the Docker image that contains the training algorithm.
 	// For information about Docker registry paths for built-in algorithms, see
-	// Algorithms Provided by Amazon SageMaker: Common Parameters (http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html).
+	// Algorithms Provided by Amazon SageMaker: Common Parameters (https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-algo-docker-registry-paths.html).
+	// Amazon SageMaker supports both registry/repository[:tag] and registry/repository[@digest]
+	// image path formats. For more information, see Using Your Own Algorithms with
+	// Amazon SageMaker (https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
 	TrainingImage *string `type:"string"`
 
 	// The input mode that the algorithm supports: File or Pipe. In File input mode,
@@ -11096,7 +11253,7 @@ type HyperParameterAlgorithmSpecification struct {
 	// the training data downloaded from Amazon S3, the model artifacts, and intermediate
 	// information.
 	//
-	// For more information about input modes, see Algorithms (http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)
+	// For more information about input modes, see Algorithms (https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html)
 	//
 	// TrainingInputMode is a required field
 	TrainingInputMode TrainingInputMode `type:"string" required:"true" enum:"true"`
@@ -11212,6 +11369,13 @@ type HyperParameterTrainingJobDefinition struct {
 	// AlgorithmSpecification is a required field
 	AlgorithmSpecification *HyperParameterAlgorithmSpecification `type:"structure" required:"true"`
 
+	// To encrypt all communications between ML compute instances in distributed
+	// training, choose True. Encryption provides greater security for distributed
+	// training, but training might take longer. How long it takes depends on the
+	// amount of communication between compute instances, especially if you use
+	// a deep learning algorithm in distributed training.
+	EnableInterContainerTrafficEncryption *bool `type:"boolean"`
+
 	// Isolates the training container. No inbound or outbound network calls can
 	// be made, except for calls between peers within a training cluster for distributed
 	// training. If network isolation is used for training jobs that are configured
@@ -11271,7 +11435,7 @@ type HyperParameterTrainingJobDefinition struct {
 	// The VpcConfig object that specifies the VPC that you want the training jobs
 	// that this hyperparameter tuning job launches to connect to. Control access
 	// to and from your training container by configuring the VPC. For more information,
-	// see Protect Training Jobs by Using an Amazon Virtual Private Cloud (http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
+	// see Protect Training Jobs by Using an Amazon Virtual Private Cloud (https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
 	VpcConfig *VpcConfig `type:"structure"`
 }
 
@@ -11385,7 +11549,11 @@ type HyperParameterTrainingJobSummary struct {
 	//    occurs when the training job failed or did not emit an objective metric.
 	ObjectiveStatus ObjectiveStatus `type:"string" enum:"true"`
 
-	// The date and time that the training job ended.
+	// Specifies the time when the training job ends on training instances. You
+	// are billed for the time interval between the value of TrainingStartTime and
+	// this time. For successful jobs and stopped jobs, this is the time after model
+	// artifacts are uploaded. For failed jobs, this is the time when Amazon SageMaker
+	// detects a job failure.
 	TrainingEndTime *time.Time `type:"timestamp" timestampFormat:"unix"`
 
 	// The Amazon Resource Name (ARN) of the training job.
@@ -11448,8 +11616,11 @@ type HyperParameterTuningJobConfig struct {
 	// ResourceLimits is a required field
 	ResourceLimits *ResourceLimits `type:"structure" required:"true"`
 
-	// Specifies the search strategy for hyperparameters. Currently, the only valid
-	// value is Bayesian.
+	// Specifies how hyperparameter tuning chooses the combinations of hyperparameter
+	// values to use for the training job it launches. To use the Bayesian search
+	// stategy, set this to Bayesian. To randomly search, set it to Random. For
+	// information about search strategies, see How Hyperparameter Tuning Works
+	// (http://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-how-it-works.html).
 	//
 	// Strategy is a required field
 	Strategy HyperParameterTuningJobStrategyType `type:"string" required:"true" enum:"true"`
@@ -11652,7 +11823,7 @@ type HyperParameterTuningJobWarmStartConfig struct {
 	// An array of hyperparameter tuning jobs that are used as the starting point
 	// for the new hyperparameter tuning job. For more information about warm starting
 	// a hyperparameter tuning job, see Using a Previous Hyperparameter Tuning Job
-	// as a Starting Point (http://docs.aws.amazon.com/automatic-model-tuning-incremental).
+	// as a Starting Point (http://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-warm-start.html).
 	//
 	// Hyperparameter tuning jobs created before October 1, 2018 cannot be used
 	// as parent jobs for warm start tuning jobs.
@@ -11948,6 +12119,24 @@ type IntegerParameterRange struct {
 	//
 	// Name is a required field
 	Name *string `type:"string" required:"true"`
+
+	// The scale that hyperparameter tuning uses to search the hyperparameter range.
+	// For information about choosing a hyperparameter scale, see Hyperparameter
+	// Range Scaling (http://docs.aws.amazon.com//sagemaker/latest/dg/automatic-model-tuning-define-ranges.html#scaling-type).
+	// One of the following values:
+	//
+	// AutoAmazon SageMaker hyperparameter tuning chooses the best scale for the
+	// hyperparameter.
+	//
+	// LinearHyperparameter tuning searches the values in the hyperparameter range
+	// by using a linear scale.
+	//
+	// LogarithmicHyperparemeter tuning searches the values in the hyperparameter
+	// range by using a logarithmic scale.
+	//
+	// Logarithmic scaling works only for ranges that have only values greater than
+	// 0.
+	ScalingType HyperParameterScalingType `type:"string" enum:"true"`
 }
 
 // String returns the string representation
@@ -12603,31 +12792,31 @@ func (s ListAlgorithmsOutput) SDKResponseMetadata() aws.Response {
 type ListCodeRepositoriesInput struct {
 	_ struct{} `type:"structure"`
 
-	// A filter that returns only git repositories that were created after the specified
+	// A filter that returns only Git repositories that were created after the specified
 	// time.
 	CreationTimeAfter *time.Time `type:"timestamp" timestampFormat:"unix"`
 
-	// A filter that returns only git repositories that were created before the
+	// A filter that returns only Git repositories that were created before the
 	// specified time.
 	CreationTimeBefore *time.Time `type:"timestamp" timestampFormat:"unix"`
 
-	// A filter that returns only git repositories that were last modified after
+	// A filter that returns only Git repositories that were last modified after
 	// the specified time.
 	LastModifiedTimeAfter *time.Time `type:"timestamp" timestampFormat:"unix"`
 
-	// A filter that returns only git repositories that were last modified before
+	// A filter that returns only Git repositories that were last modified before
 	// the specified time.
 	LastModifiedTimeBefore *time.Time `type:"timestamp" timestampFormat:"unix"`
 
-	// The maximum number of git repositories to return in the response.
+	// The maximum number of Git repositories to return in the response.
 	MaxResults *int64 `min:"1" type:"integer"`
 
-	// A string in the git repositories name. This filter returns only repositories
+	// A string in the Git repositories name. This filter returns only repositories
 	// whose name contains the specified string.
 	NameContains *string `type:"string"`
 
 	// If the result of a ListCodeRepositoriesOutput request was truncated, the
-	// response includes a NextToken. To get the next set of git repositories, use
+	// response includes a NextToken. To get the next set of Git repositories, use
 	// the token in the next request.
 	NextToken *string `type:"string"`
 
@@ -12667,7 +12856,7 @@ type ListCodeRepositoriesOutput struct {
 
 	responseMetadata aws.Response
 
-	// Gets a list of summaries of the git repositories. Each summary specifies
+	// Gets a list of summaries of the Git repositories. Each summary specifies
 	// the following values for the repository:
 	//
 	//    * Name
@@ -12682,13 +12871,11 @@ type ListCodeRepositoriesOutput struct {
 	//    and the ARN of the AWS Secrets Manager secret that contains the credentials
 	//    used to access the repository.
 	//
-	//    *
-	//
 	// CodeRepositorySummaryList is a required field
 	CodeRepositorySummaryList []CodeRepositorySummary `type:"list" required:"true"`
 
 	// If the result of a ListCodeRepositoriesOutput request was truncated, the
-	// response includes a NextToken. To get the next set of git repositories, use
+	// response includes a NextToken. To get the next set of Git repositories, use
 	// the token in the next request.
 	NextToken *string `type:"string"`
 }
@@ -12834,7 +13021,7 @@ type ListEndpointConfigsInput struct {
 	// The field to sort results by. The default is CreationTime.
 	SortBy EndpointConfigSortKey `type:"string" enum:"true"`
 
-	// The sort order for results. The default is Ascending.
+	// The sort order for results. The default is Descending.
 	SortOrder OrderKey `type:"string" enum:"true"`
 }
 
@@ -12927,7 +13114,7 @@ type ListEndpointsInput struct {
 	// Sorts the list of results. The default is CreationTime.
 	SortBy EndpointSortKey `type:"string" enum:"true"`
 
-	// The sort order for results. The default is Ascending.
+	// The sort order for results. The default is Descending.
 	SortOrder OrderKey `type:"string" enum:"true"`
 
 	// A filter that returns only endpoints with the specified status.
@@ -13388,7 +13575,7 @@ type ListModelsInput struct {
 	// Sorts the list of results. The default is CreationTime.
 	SortBy ModelSortKey `type:"string" enum:"true"`
 
-	// The sort order for results. The default is Ascending.
+	// The sort order for results. The default is Descending.
 	SortOrder OrderKey `type:"string" enum:"true"`
 }
 
@@ -13543,7 +13730,7 @@ type ListNotebookInstancesInput struct {
 	_ struct{} `type:"structure"`
 
 	// A filter that returns only notebook instances with associated with the specified
-	// git respository.
+	// git repository.
 	AdditionalCodeRepositoryEquals *string `min:"1" type:"string"`
 
 	// A filter that returns only notebook instances that were created after the
@@ -13554,7 +13741,7 @@ type ListNotebookInstancesInput struct {
 	// specified time (timestamp).
 	CreationTimeBefore *time.Time `type:"timestamp" timestampFormat:"unix"`
 
-	// A string in the name or URL of a git repository associated with this notebook
+	// A string in the name or URL of a Git repository associated with this notebook
 	// instance. This filter returns only notebook instances associated with a git
 	// repository with a name that contains the specified string.
 	DefaultCodeRepositoryContains *string `type:"string"`
@@ -14240,7 +14427,7 @@ type MetricDefinition struct {
 
 	// A regular expression that searches the output of a training job and gets
 	// the value of the metric. For more information about using regular expressions
-	// to define metrics, see Defining Objective Metrics (http://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-define-metrics.html).
+	// to define metrics, see Defining Objective Metrics (https://docs.aws.amazon.com/sagemaker/latest/dg/automatic-model-tuning-define-metrics.html).
 	//
 	// Regex is a required field
 	Regex *string `min:"1" type:"string" required:"true"`
@@ -14318,7 +14505,7 @@ type ModelPackageContainerDefinition struct {
 	// by Amazon SageMaker, the inference code must meet Amazon SageMaker requirements.
 	// Amazon SageMaker supports both registry/repository[:tag] and registry/repository[@digest]
 	// image path formats. For more information, see Using Your Own Algorithms with
-	// Amazon SageMaker (http://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
+	// Amazon SageMaker (https://docs.aws.amazon.com/sagemaker/latest/dg/your-algorithms.html).
 	//
 	// Image is a required field
 	Image *string `type:"string" required:"true"`
@@ -14599,12 +14786,12 @@ func (s ModelSummary) GoString() string {
 	return s.String()
 }
 
-// Defines a list of NestedFilter objects. To satisfy the conditions specified
+// Defines a list of NestedFilters objects. To satisfy the conditions specified
 // in the NestedFilters call, a resource must satisfy the conditions of all
 // of the filters.
 //
-// For example, a NestedFilters could be defined using the training job's InputDataConfig
-// property, this would be defined as a list of Channel objects.
+// For example, you could define a NestedFilters using the training job's InputDataConfig
+// property to filter on Channel objects.
 //
 // A NestedFilters object contains multiple filters. For example, to find all
 // training jobs whose name contains train and that have cat/data in their S3Uri
@@ -14721,7 +14908,7 @@ func (s NotebookInstanceLifecycleConfigSummary) GoString() string {
 // is not created or started.
 //
 // For information about notebook instance lifestyle configurations, see Step
-// 2.1: (Optional) Customize a Notebook Instance (http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
+// 2.1: (Optional) Customize a Notebook Instance (https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/NotebookInstanceLifecycleHook
 type NotebookInstanceLifecycleHook struct {
 	_ struct{} `type:"structure"`
@@ -14759,10 +14946,10 @@ func (s *NotebookInstanceLifecycleHook) Validate() error {
 type NotebookInstanceSummary struct {
 	_ struct{} `type:"structure"`
 
-	// An array of up to 3 git repositories associated with the notebook instance.
-	// These can be either the names of git repositories stored as resources in
-	// your account, or the URL of git repositories in AWS CodeCommit (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
-	// or in any other git repository. These repositories are cloned at the same
+	// An array of up to three Git repositories associated with the notebook instance.
+	// These can be either the names of Git repositories stored as resources in
+	// your account, or the URL of Git repositories in AWS CodeCommit (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+	// or in any other Git repository. These repositories are cloned at the same
 	// level as the default repository of your notebook instance. For more information,
 	// see Associating Git Repositories with Amazon SageMaker Notebook Instances
 	// (http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
@@ -14771,10 +14958,10 @@ type NotebookInstanceSummary struct {
 	// A timestamp that shows when the notebook instance was created.
 	CreationTime *time.Time `type:"timestamp" timestampFormat:"unix"`
 
-	// The git repository associated with the notebook instance as its default code
-	// repository. This can be either the name of a git repository stored as a resource
-	// in your account, or the URL of a git repository in AWS CodeCommit (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
-	// or in any other git repository. When you open a notebook instance, it opens
+	// The Git repository associated with the notebook instance as its default code
+	// repository. This can be either the name of a Git repository stored as a resource
+	// in your account, or the URL of a Git repository in AWS CodeCommit (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+	// or in any other Git repository. When you open a notebook instance, it opens
 	// in the directory that contains this repository. For more information, see
 	// Associating Git Repositories with Amazon SageMaker Notebook Instances (http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
 	DefaultCodeRepository *string `min:"1" type:"string"`
@@ -14794,7 +14981,7 @@ type NotebookInstanceSummary struct {
 	// notebook instance.
 	//
 	// For information about notebook instance lifestyle configurations, see Step
-	// 2.1: (Optional) Customize a Notebook Instance (http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
+	// 2.1: (Optional) Customize a Notebook Instance (https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 	NotebookInstanceLifecycleConfigName *string `type:"string"`
 
 	// The name of the notebook instance that you want a summary for.
@@ -15413,7 +15600,7 @@ type RenderUiTemplateInput struct {
 	// Task is a required field
 	Task *RenderableTask `type:"structure" required:"true"`
 
-	// A Templateobject containing the worker UI template to render.
+	// A Template object containing the worker UI template to render.
 	//
 	// UiTemplate is a required field
 	UiTemplate *UiTemplate `type:"structure" required:"true"`
@@ -16690,7 +16877,7 @@ type StoppingCondition struct {
 	// The maximum length of time, in seconds, that the training job can run. If
 	// model training does not complete during this time, Amazon SageMaker ends
 	// the job. If value is not specified, default value is 1 day. Maximum value
-	// is 5 days.
+	// is 28 days.
 	MaxRuntimeInSeconds *int64 `min:"1" type:"integer"`
 }
 
@@ -16842,6 +17029,13 @@ type TrainingJob struct {
 	// A timestamp that indicates when the training job was created.
 	CreationTime *time.Time `type:"timestamp" timestampFormat:"unix"`
 
+	// To encrypt all communications between ML compute instances in distributed
+	// training, choose True. Encryption provides greater security for distributed
+	// training, but training might take longer. How long it takes depends on the
+	// amount of communication between compute instances, especially if you use
+	// a deep learning algorithm in distributed training.
+	EnableInterContainerTrafficEncryption *bool `type:"boolean"`
+
 	// If the TrainingJob was created with network isolation, the value is set to
 	// true. If network isolation is enabled, nodes can't communicate beyond the
 	// VPC they run in.
@@ -16931,7 +17125,7 @@ type TrainingJob struct {
 	StoppingCondition *StoppingCondition `type:"structure"`
 
 	// An array of key-value pairs. For more information, see Using Cost Allocation
-	// Tags (http://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
+	// Tags (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/cost-alloc-tags.html#allocation-what)
 	// in the AWS Billing and Cost Management User Guide.
 	Tags []Tag `type:"list"`
 
@@ -16980,7 +17174,7 @@ type TrainingJob struct {
 
 	// A VpcConfig object that specifies the VPC that this training job has access
 	// to. For more information, see Protect Training Jobs by Using an Amazon Virtual
-	// Private Cloud (http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
+	// Private Cloud (https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
 	VpcConfig *VpcConfig `type:"structure"`
 }
 
@@ -17029,7 +17223,7 @@ type TrainingJobDefinition struct {
 	StoppingCondition *StoppingCondition `type:"structure" required:"true"`
 
 	// The input mode used by the algorithm for the training job. For the input
-	// modes that Amazon SageMaker algorithms support, see Algorithms (http://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
+	// modes that Amazon SageMaker algorithms support, see Algorithms (https://docs.aws.amazon.com/sagemaker/latest/dg/algos.html).
 	//
 	// If an algorithm supports the File input mode, Amazon SageMaker downloads
 	// the training data from S3 to the provisioned ML storage Volume, and mounts
@@ -17219,8 +17413,8 @@ type TrainingSpecification struct {
 	// TrainingChannels is a required field
 	TrainingChannels []ChannelSpecification `min:"1" type:"list" required:"true"`
 
-	// The Amazon Amazon ECR registry path of the Docker image that contains the
-	// training algorithm.
+	// The Amazon ECR registry path of the Docker image that contains the training
+	// algorithm.
 	//
 	// TrainingImage is a required field
 	TrainingImage *string `type:"string" required:"true"`
@@ -17339,9 +17533,9 @@ func (s *TransformDataSource) Validate() error {
 type TransformInput struct {
 	_ struct{} `type:"structure"`
 
-	// Compressing data helps save on storage space. If your transform data is compressed,
-	// specify the compression type. Amazon SageMaker automatically decompresses
-	// the data for the transform job accordingly. The default value is None.
+	// If your transform data is compressed, specify the compression type. Amazon
+	// SageMaker automatically decompresses the data for the transform job accordingly.
+	// The default value is None.
 	CompressionType CompressionType `type:"string" enum:"true"`
 
 	// The multipurpose internet mail extension (MIME) type of the data. Amazon
@@ -17349,8 +17543,8 @@ type TransformInput struct {
 	// transform job.
 	ContentType *string `type:"string"`
 
-	// Describes the location of the channel data, meaning the S3 location of the
-	// input data that the model can consume.
+	// Describes the location of the channel data, which is, the S3 location of
+	// the input data that the model can consume.
 	//
 	// DataSource is a required field
 	DataSource *TransformDataSource `type:"structure" required:"true"`
@@ -17375,9 +17569,9 @@ type TransformInput struct {
 	// is removed if the value of BatchStrategy is set to SingleRecord. Padding
 	// is not removed if the value of BatchStrategy is set to MultiRecord.
 	//
-	// For more information about the RecordIO data format, see Data Format (http://mxnet.io/architecture/note_data_loading.html#data-format)
-	// in the MXNet documentation. For more information about the TFRecord fofmat,
-	// see Consuming TFRecord data (https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data)
+	// For more information about the RecordIO, see Data Format (http://mxnet.io/architecture/note_data_loading.html#data-format)
+	// in the MXNet documentation. For more information about the TFRecord, see
+	// Consuming TFRecord data (https://www.tensorflow.org/guide/datasets#consuming_tfrecord_data)
 	// in the TensorFlow documentation.
 	SplitType SplitType `type:"string" enum:"true"`
 }
@@ -17502,7 +17696,7 @@ func (s *TransformJobDefinition) Validate() error {
 }
 
 // Provides a summary of a transform job. Multiple TransformJobSummary objects
-// are returned as a list after calling ListTransformJobs.
+// are returned as a list after in response to a ListTransformJobs call.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/TransformJobSummary
 type TransformJobSummary struct {
 	_ struct{} `type:"structure"`
@@ -17550,7 +17744,7 @@ func (s TransformJobSummary) GoString() string {
 	return s.String()
 }
 
-// Describes the results of a transform job output.
+// Describes the results of a transform job.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/TransformOutput
 type TransformOutput struct {
 	_ struct{} `type:"structure"`
@@ -17560,9 +17754,9 @@ type TransformOutput struct {
 	Accept *string `type:"string"`
 
 	// Defines how to assemble the results of the transform job as a single S3 object.
-	// You should select a format that is most convenient to you. To concatenate
-	// the results in binary format, specify None. To add a newline character at
-	// the end of every transformed record, specify Line.
+	// Choose a format that is most convenient to you. To concatenate the results
+	// in binary format, specify None. To add a newline character at the end of
+	// every transformed record, specify Line.
 	AssembleWith AssemblyType `type:"string" enum:"true"`
 
 	// The AWS Key Management Service (AWS KMS) key that Amazon SageMaker uses to
@@ -17599,12 +17793,17 @@ type TransformOutput struct {
 	// The Amazon S3 path where you want Amazon SageMaker to store the results of
 	// the transform job. For example, s3://bucket-name/key-name-prefix.
 	//
-	// For every S3 object used as input for the transform job, the transformed
-	// data is stored in a corresponding subfolder in the location under the output
-	// prefix. For example, the input data s3://bucket-name/input-name-prefix/dataset01/data.csv
-	// will have the transformed data stored at s3://bucket-name/key-name-prefix/dataset01/,
-	// based on the original name, as a series of .part files (.part0001, part0002,
-	// etc).
+	// For every S3 object used as input for the transform job, batch transform
+	// stores the transformed data with an .out suffix in a corresponding subfolder
+	// in the location in the output prefix. For example, for the input data stored
+	// at s3://bucket-name/input-name-prefix/dataset01/data.csv, batch transform
+	// stores the transformed data at s3://bucket-name/output-name-prefix/input-name-prefix/data.csv.out.
+	// Batch transform doesn't upload partially processed objects. For an input
+	// S3 object that contains multiple records, it creates an .out file only if
+	// the transform job succeeds on the entire file. When the input contains multiple
+	// S3 objects, the batch transform job processes the listed S3 objects and uploads
+	// only the output for successfully processed objects. If any object fails in
+	// the transform job batch transform marks the job as failed to prompt investigation.
 	//
 	// S3OutputPath is a required field
 	S3OutputPath *string `type:"string" required:"true"`
@@ -17884,7 +18083,7 @@ func (s *UiTemplate) Validate() error {
 type UpdateCodeRepositoryInput struct {
 	_ struct{} `type:"structure"`
 
-	// The name of the git repository to update.
+	// The name of the Git repository to update.
 	//
 	// CodeRepositoryName is a required field
 	CodeRepositoryName *string `min:"1" type:"string" required:"true"`
@@ -17936,7 +18135,7 @@ type UpdateCodeRepositoryOutput struct {
 
 	responseMetadata aws.Response
 
-	// The ARN of the git repository.
+	// The ARN of the Git repository.
 	//
 	// CodeRepositoryArn is a required field
 	CodeRepositoryArn *string `min:"1" type:"string" required:"true"`
@@ -18117,20 +18316,20 @@ type UpdateNotebookInstanceInput struct {
 	// in Amazon SageMaker (http://docs.aws.amazon.com/sagemaker/latest/dg/ei.html).
 	AcceleratorTypes []NotebookInstanceAcceleratorType `type:"list"`
 
-	// An array of up to 3 git repositories to associate with the notebook instance.
-	// These can be either the names of git repositories stored as resources in
-	// your account, or the URL of git repositories in AWS CodeCommit (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
-	// or in any other git repository.. These repositories are cloned at the same
+	// An array of up to three Git repositories to associate with the notebook instance.
+	// These can be either the names of Git repositories stored as resources in
+	// your account, or the URL of Git repositories in AWS CodeCommit (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html)
+	// or in any other Git repository. These repositories are cloned at the same
 	// level as the default repository of your notebook instance. For more information,
 	// see Associating Git Repositories with Amazon SageMaker Notebook Instances
 	// (http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
 	AdditionalCodeRepositories []string `type:"list"`
 
-	// The git repository to associate with the notebook instance as its default
-	// code repository. This can be either the name of a git repository stored as
-	// a resource in your account, or the URL of a git repository in AWS CodeCommit
+	// The Git repository to associate with the notebook instance as its default
+	// code repository. This can be either the name of a Git repository stored as
+	// a resource in your account, or the URL of a Git repository in AWS CodeCommit
 	// (http://docs.aws.amazon.com/codecommit/latest/userguide/welcome.html) or
-	// in any other git repository. When you open a notebook instance, it opens
+	// in any other Git repository. When you open a notebook instance, it opens
 	// in the directory that contains this repository. For more information, see
 	// Associating Git Repositories with Amazon SageMaker Notebook Instances (http://docs.aws.amazon.com/sagemaker/latest/dg/nbi-git-repo.html).
 	DefaultCodeRepository *string `min:"1" type:"string"`
@@ -18139,11 +18338,11 @@ type UpdateNotebookInstanceInput struct {
 	// instance.
 	DisassociateAcceleratorTypes *bool `type:"boolean"`
 
-	// A list of names or URLs of the default git repositories to remove from this
+	// A list of names or URLs of the default Git repositories to remove from this
 	// notebook instance.
 	DisassociateAdditionalCodeRepositories *bool `type:"boolean"`
 
-	// The name or URL of the default git repository to remove from this notebook
+	// The name or URL of the default Git repository to remove from this notebook
 	// instance.
 	DisassociateDefaultCodeRepository *bool `type:"boolean"`
 
@@ -18156,7 +18355,7 @@ type UpdateNotebookInstanceInput struct {
 
 	// The name of a lifecycle configuration to associate with the notebook instance.
 	// For information about lifestyle configurations, see Step 2.1: (Optional)
-	// Customize a Notebook Instance (http://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
+	// Customize a Notebook Instance (https://docs.aws.amazon.com/sagemaker/latest/dg/notebook-lifecycle-config.html).
 	LifecycleConfigName *string `type:"string"`
 
 	// The name of the notebook instance to update.
@@ -18166,11 +18365,18 @@ type UpdateNotebookInstanceInput struct {
 
 	// The Amazon Resource Name (ARN) of the IAM role that Amazon SageMaker can
 	// assume to access the notebook instance. For more information, see Amazon
-	// SageMaker Roles (http://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
+	// SageMaker Roles (https://docs.aws.amazon.com/sagemaker/latest/dg/sagemaker-roles.html).
 	//
 	// To be able to pass this role to Amazon SageMaker, the caller of this API
 	// must have the iam:PassRole permission.
 	RoleArn *string `min:"20" type:"string"`
+
+	// Whether root access is enabled or disabled for users of the notebook instance.
+	// The default value is Enabled.
+	//
+	// If you set this to Disabled, users don't have root access on the notebook
+	// instance, but lifecycle configuration scripts still run with root permissions.
+	RootAccess RootAccess `type:"string" enum:"true"`
 
 	// The size, in GB, of the ML storage volume to attach to the notebook instance.
 	// The default value is 5 GB.
@@ -18395,8 +18601,8 @@ func (s UpdateWorkteamOutput) SDKResponseMetadata() aws.Response {
 // Specifies a VPC that your training jobs and hosted models have access to.
 // Control access to and from your training and model containers by configuring
 // the VPC. For more information, see Protect Endpoints by Using an Amazon Virtual
-// Private Cloud (http://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html)
-// and Protect Training Jobs by Using an Amazon Virtual Private Cloud (http://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
+// Private Cloud (https://docs.aws.amazon.com/sagemaker/latest/dg/host-vpc.html)
+// and Protect Training Jobs by Using an Amazon Virtual Private Cloud (https://docs.aws.amazon.com/sagemaker/latest/dg/train-vpc.html).
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/VpcConfig
 type VpcConfig struct {
 	_ struct{} `type:"structure"`
@@ -18808,6 +19014,25 @@ func (enum Framework) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+type HyperParameterScalingType string
+
+// Enum values for HyperParameterScalingType
+const (
+	HyperParameterScalingTypeAuto               HyperParameterScalingType = "Auto"
+	HyperParameterScalingTypeLinear             HyperParameterScalingType = "Linear"
+	HyperParameterScalingTypeLogarithmic        HyperParameterScalingType = "Logarithmic"
+	HyperParameterScalingTypeReverseLogarithmic HyperParameterScalingType = "ReverseLogarithmic"
+)
+
+func (enum HyperParameterScalingType) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum HyperParameterScalingType) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
 type HyperParameterTuningJobObjectiveType string
 
 // Enum values for HyperParameterTuningJobObjectiveType
@@ -18870,6 +19095,7 @@ type HyperParameterTuningJobStrategyType string
 // Enum values for HyperParameterTuningJobStrategyType
 const (
 	HyperParameterTuningJobStrategyTypeBayesian HyperParameterTuningJobStrategyType = "Bayesian"
+	HyperParameterTuningJobStrategyTypeRandom   HyperParameterTuningJobStrategyType = "Random"
 )
 
 func (enum HyperParameterTuningJobStrategyType) MarshalValue() (string, error) {
@@ -19360,6 +19586,23 @@ func (enum ResourceType) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+type RootAccess string
+
+// Enum values for RootAccess
+const (
+	RootAccessEnabled  RootAccess = "Enabled"
+	RootAccessDisabled RootAccess = "Disabled"
+)
+
+func (enum RootAccess) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum RootAccess) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
 type S3DataDistribution string
 
 // Enum values for S3DataDistribution
@@ -19507,6 +19750,8 @@ const (
 	TargetDeviceJetsonTx2 TargetDevice = "jetson_tx2"
 	TargetDeviceRasp3b    TargetDevice = "rasp3b"
 	TargetDeviceDeeplens  TargetDevice = "deeplens"
+	TargetDeviceRk3399    TargetDevice = "rk3399"
+	TargetDeviceRk3288    TargetDevice = "rk3288"
 )
 
 func (enum TargetDevice) MarshalValue() (string, error) {

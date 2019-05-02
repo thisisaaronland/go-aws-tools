@@ -3,6 +3,7 @@
 package fsx_test
 
 import (
+	"context"
 	"fmt"
 	"strings"
 	"time"
@@ -46,7 +47,7 @@ func ExampleFSx_CreateBackupRequest_shared00() {
 	}
 
 	req := svc.CreateBackupRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -113,7 +114,7 @@ func ExampleFSx_CreateFileSystemRequest_shared00() {
 	}
 
 	req := svc.CreateFileSystemRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -125,6 +126,8 @@ func ExampleFSx_CreateFileSystemRequest_shared00() {
 				fmt.Println(fsx.ErrCodeIncompatibleParameterError, aerr.Error())
 			case fsx.ErrCodeInvalidImportPath:
 				fmt.Println(fsx.ErrCodeInvalidImportPath, aerr.Error())
+			case fsx.ErrCodeInvalidExportPath:
+				fmt.Println(fsx.ErrCodeInvalidExportPath, aerr.Error())
 			case fsx.ErrCodeInvalidNetworkSettings:
 				fmt.Println(fsx.ErrCodeInvalidNetworkSettings, aerr.Error())
 			case fsx.ErrCodeServiceLimitExceeded:
@@ -178,7 +181,7 @@ func ExampleFSx_CreateFileSystemFromBackupRequest_shared00() {
 	}
 
 	req := svc.CreateFileSystemFromBackupRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -227,12 +230,14 @@ func ExampleFSx_DeleteBackupRequest_shared00() {
 	}
 
 	req := svc.DeleteBackupRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
 			case fsx.ErrCodeBadRequest:
 				fmt.Println(fsx.ErrCodeBadRequest, aerr.Error())
+			case fsx.ErrCodeBackupInProgress:
+				fmt.Println(fsx.ErrCodeBackupInProgress, aerr.Error())
 			case fsx.ErrCodeBackupNotFound:
 				fmt.Println(fsx.ErrCodeBackupNotFound, aerr.Error())
 			case fsx.ErrCodeBackupRestoring:
@@ -270,7 +275,7 @@ func ExampleFSx_DeleteFileSystemRequest_shared00() {
 	}
 
 	req := svc.DeleteFileSystemRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -311,7 +316,7 @@ func ExampleFSx_DescribeBackupsRequest_shared00() {
 	input := &fsx.DescribeBackupsInput{}
 
 	req := svc.DescribeBackupsRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -350,7 +355,7 @@ func ExampleFSx_DescribeFileSystemsRequest_shared00() {
 	input := &fsx.DescribeFileSystemsInput{}
 
 	req := svc.DescribeFileSystemsRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -389,7 +394,7 @@ func ExampleFSx_ListTagsForResourceRequest_shared00() {
 	}
 
 	req := svc.ListTagsForResourceRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -438,7 +443,7 @@ func ExampleFSx_TagResourceRequest_shared00() {
 	}
 
 	req := svc.TagResourceRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -484,7 +489,7 @@ func ExampleFSx_UntagResourceRequest_shared00() {
 	}
 
 	req := svc.UntagResourceRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -532,7 +537,7 @@ func ExampleFSx_UpdateFileSystemRequest_shared00() {
 	}
 
 	req := svc.UpdateFileSystemRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {

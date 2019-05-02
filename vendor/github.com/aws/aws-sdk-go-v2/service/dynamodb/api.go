@@ -3,6 +3,7 @@
 package dynamodb
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -22,7 +23,8 @@ type BatchGetItemRequest struct {
 }
 
 // Send marshals and sends the BatchGetItem API request.
-func (r BatchGetItemRequest) Send() (*BatchGetItemOutput, error) {
+func (r BatchGetItemRequest) Send(ctx context.Context) (*BatchGetItemOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -65,7 +67,7 @@ func (r BatchGetItemRequest) Send() (*BatchGetItemOutput, error) {
 // tables. If you delay the batch operation using exponential backoff, the individual
 // requests in the batch are much more likely to succeed.
 //
-// For more information, see Batch Operations and Error Handling (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations)
+// For more information, see Batch Operations and Error Handling (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations)
 // in the Amazon DynamoDB Developer Guide.
 //
 // By default, BatchGetItem performs eventually consistent reads on every table
@@ -81,12 +83,12 @@ func (r BatchGetItemRequest) Send() (*BatchGetItemOutput, error) {
 //
 // If a requested item does not exist, it is not returned in the result. Requests
 // for nonexistent items consume the minimum read capacity units according to
-// the type of read. For more information, see Capacity Units Calculations (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations)
+// the type of read. For more information, see Capacity Units Calculations (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#CapacityUnitCalculations)
 // in the Amazon DynamoDB Developer Guide.
 //
 //    // Example sending a request using the BatchGetItemRequest method.
 //    req := client.BatchGetItemRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -136,7 +138,7 @@ func (c *DynamoDB) BatchGetItemRequest(input *BatchGetItemInput) BatchGetItemReq
 func (p *BatchGetItemRequest) Paginate(opts ...aws.Option) BatchGetItemPager {
 	return BatchGetItemPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *BatchGetItemInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -145,6 +147,7 @@ func (p *BatchGetItemRequest) Paginate(opts ...aws.Option) BatchGetItemPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -172,7 +175,8 @@ type BatchWriteItemRequest struct {
 }
 
 // Send marshals and sends the BatchWriteItem API request.
-func (r BatchWriteItemRequest) Send() (*BatchWriteItemOutput, error) {
+func (r BatchWriteItemRequest) Send(ctx context.Context) (*BatchWriteItemOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -211,7 +215,7 @@ func (r BatchWriteItemRequest) Send() (*BatchWriteItemOutput, error) {
 // tables. If you delay the batch operation using exponential backoff, the individual
 // requests in the batch are much more likely to succeed.
 //
-// For more information, see Batch Operations and Error Handling (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations)
+// For more information, see Batch Operations and Error Handling (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ErrorHandling.html#BatchOperations)
 // in the Amazon DynamoDB Developer Guide.
 //
 // With BatchWriteItem, you can efficiently write or delete large amounts of
@@ -259,7 +263,7 @@ func (r BatchWriteItemRequest) Send() (*BatchWriteItemOutput, error) {
 //
 //    // Example sending a request using the BatchWriteItemRequest method.
 //    req := client.BatchWriteItemRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -293,7 +297,8 @@ type CreateBackupRequest struct {
 }
 
 // Send marshals and sends the CreateBackup API request.
-func (r CreateBackupRequest) Send() (*CreateBackupOutput, error) {
+func (r CreateBackupRequest) Send(ctx context.Context) (*CreateBackupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -338,7 +343,7 @@ func (r CreateBackupRequest) Send() (*CreateBackupOutput, error) {
 //
 //    // Example sending a request using the CreateBackupRequest method.
 //    req := client.CreateBackupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -372,7 +377,8 @@ type CreateGlobalTableRequest struct {
 }
 
 // Send marshals and sends the CreateGlobalTable API request.
-func (r CreateGlobalTableRequest) Send() (*CreateGlobalTableOutput, error) {
+func (r CreateGlobalTableRequest) Send(ctx context.Context) (*CreateGlobalTableOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -420,7 +426,7 @@ func (r CreateGlobalTableRequest) Send() (*CreateGlobalTableOutput, error) {
 //
 //    // Example sending a request using the CreateGlobalTableRequest method.
 //    req := client.CreateGlobalTableRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -454,7 +460,8 @@ type CreateTableRequest struct {
 }
 
 // Send marshals and sends the CreateTable API request.
-func (r CreateTableRequest) Send() (*CreateTableOutput, error) {
+func (r CreateTableRequest) Send(ctx context.Context) (*CreateTableOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -484,7 +491,7 @@ func (r CreateTableRequest) Send() (*CreateTableOutput, error) {
 //
 //    // Example sending a request using the CreateTableRequest method.
 //    req := client.CreateTableRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -518,7 +525,8 @@ type DeleteBackupRequest struct {
 }
 
 // Send marshals and sends the DeleteBackup API request.
-func (r DeleteBackupRequest) Send() (*DeleteBackupOutput, error) {
+func (r DeleteBackupRequest) Send(ctx context.Context) (*DeleteBackupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -536,7 +544,7 @@ func (r DeleteBackupRequest) Send() (*DeleteBackupOutput, error) {
 //
 //    // Example sending a request using the DeleteBackupRequest method.
 //    req := client.DeleteBackupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -570,7 +578,8 @@ type DeleteItemRequest struct {
 }
 
 // Send marshals and sends the DeleteItem API request.
-func (r DeleteItemRequest) Send() (*DeleteItemOutput, error) {
+func (r DeleteItemRequest) Send(ctx context.Context) (*DeleteItemOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -599,7 +608,7 @@ func (r DeleteItemRequest) Send() (*DeleteItemOutput, error) {
 //
 //    // Example sending a request using the DeleteItemRequest method.
 //    req := client.DeleteItemRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -633,7 +642,8 @@ type DeleteTableRequest struct {
 }
 
 // Send marshals and sends the DeleteTable API request.
-func (r DeleteTableRequest) Send() (*DeleteTableOutput, error) {
+func (r DeleteTableRequest) Send(ctx context.Context) (*DeleteTableOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -666,7 +676,7 @@ func (r DeleteTableRequest) Send() (*DeleteTableOutput, error) {
 //
 //    // Example sending a request using the DeleteTableRequest method.
 //    req := client.DeleteTableRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -700,7 +710,8 @@ type DescribeBackupRequest struct {
 }
 
 // Send marshals and sends the DescribeBackup API request.
-func (r DescribeBackupRequest) Send() (*DescribeBackupOutput, error) {
+func (r DescribeBackupRequest) Send(ctx context.Context) (*DescribeBackupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -718,7 +729,7 @@ func (r DescribeBackupRequest) Send() (*DescribeBackupOutput, error) {
 //
 //    // Example sending a request using the DescribeBackupRequest method.
 //    req := client.DescribeBackupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -752,7 +763,8 @@ type DescribeContinuousBackupsRequest struct {
 }
 
 // Send marshals and sends the DescribeContinuousBackups API request.
-func (r DescribeContinuousBackupsRequest) Send() (*DescribeContinuousBackupsOutput, error) {
+func (r DescribeContinuousBackupsRequest) Send(ctx context.Context) (*DescribeContinuousBackupsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -780,7 +792,7 @@ func (r DescribeContinuousBackupsRequest) Send() (*DescribeContinuousBackupsOutp
 //
 //    // Example sending a request using the DescribeContinuousBackupsRequest method.
 //    req := client.DescribeContinuousBackupsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -814,7 +826,8 @@ type DescribeEndpointsRequest struct {
 }
 
 // Send marshals and sends the DescribeEndpoints API request.
-func (r DescribeEndpointsRequest) Send() (*DescribeEndpointsOutput, error) {
+func (r DescribeEndpointsRequest) Send(ctx context.Context) (*DescribeEndpointsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -826,9 +839,11 @@ func (r DescribeEndpointsRequest) Send() (*DescribeEndpointsOutput, error) {
 // DescribeEndpointsRequest returns a request value for making API operation for
 // Amazon DynamoDB.
 //
+// Returns the regional endpoint information.
+//
 //    // Example sending a request using the DescribeEndpointsRequest method.
 //    req := client.DescribeEndpointsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -862,7 +877,8 @@ type DescribeGlobalTableRequest struct {
 }
 
 // Send marshals and sends the DescribeGlobalTable API request.
-func (r DescribeGlobalTableRequest) Send() (*DescribeGlobalTableOutput, error) {
+func (r DescribeGlobalTableRequest) Send(ctx context.Context) (*DescribeGlobalTableOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -878,7 +894,7 @@ func (r DescribeGlobalTableRequest) Send() (*DescribeGlobalTableOutput, error) {
 //
 //    // Example sending a request using the DescribeGlobalTableRequest method.
 //    req := client.DescribeGlobalTableRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -912,7 +928,8 @@ type DescribeGlobalTableSettingsRequest struct {
 }
 
 // Send marshals and sends the DescribeGlobalTableSettings API request.
-func (r DescribeGlobalTableSettingsRequest) Send() (*DescribeGlobalTableSettingsOutput, error) {
+func (r DescribeGlobalTableSettingsRequest) Send(ctx context.Context) (*DescribeGlobalTableSettingsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -928,7 +945,7 @@ func (r DescribeGlobalTableSettingsRequest) Send() (*DescribeGlobalTableSettings
 //
 //    // Example sending a request using the DescribeGlobalTableSettingsRequest method.
 //    req := client.DescribeGlobalTableSettingsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -962,7 +979,8 @@ type DescribeLimitsRequest struct {
 }
 
 // Send marshals and sends the DescribeLimits API request.
-func (r DescribeLimitsRequest) Send() (*DescribeLimitsOutput, error) {
+func (r DescribeLimitsRequest) Send(ctx context.Context) (*DescribeLimitsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -982,7 +1000,7 @@ func (r DescribeLimitsRequest) Send() (*DescribeLimitsOutput, error) {
 // maximum read capacity units and write capacity units that you can provision
 // across all of your DynamoDB tables in a given region. Also, there are per-table
 // limits that apply when you create a table there. For more information, see
-// Limits (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+// Limits (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 // page in the Amazon DynamoDB Developer Guide.
 //
 // Although you can increase these limits by filing a case at AWS Support Center
@@ -1034,7 +1052,7 @@ func (r DescribeLimitsRequest) Send() (*DescribeLimitsOutput, error) {
 //
 //    // Example sending a request using the DescribeLimitsRequest method.
 //    req := client.DescribeLimitsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1068,7 +1086,8 @@ type DescribeTableRequest struct {
 }
 
 // Send marshals and sends the DescribeTable API request.
-func (r DescribeTableRequest) Send() (*DescribeTableOutput, error) {
+func (r DescribeTableRequest) Send(ctx context.Context) (*DescribeTableOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1092,7 +1111,7 @@ func (r DescribeTableRequest) Send() (*DescribeTableOutput, error) {
 //
 //    // Example sending a request using the DescribeTableRequest method.
 //    req := client.DescribeTableRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1126,7 +1145,8 @@ type DescribeTimeToLiveRequest struct {
 }
 
 // Send marshals and sends the DescribeTimeToLive API request.
-func (r DescribeTimeToLiveRequest) Send() (*DescribeTimeToLiveOutput, error) {
+func (r DescribeTimeToLiveRequest) Send(ctx context.Context) (*DescribeTimeToLiveOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1142,7 +1162,7 @@ func (r DescribeTimeToLiveRequest) Send() (*DescribeTimeToLiveOutput, error) {
 //
 //    // Example sending a request using the DescribeTimeToLiveRequest method.
 //    req := client.DescribeTimeToLiveRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1176,7 +1196,8 @@ type GetItemRequest struct {
 }
 
 // Send marshals and sends the GetItem API request.
-func (r GetItemRequest) Send() (*GetItemOutput, error) {
+func (r GetItemRequest) Send(ctx context.Context) (*GetItemOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1199,7 +1220,7 @@ func (r GetItemRequest) Send() (*GetItemOutput, error) {
 //
 //    // Example sending a request using the GetItemRequest method.
 //    req := client.GetItemRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1233,7 +1254,8 @@ type ListBackupsRequest struct {
 }
 
 // Send marshals and sends the ListBackups API request.
-func (r ListBackupsRequest) Send() (*ListBackupsOutput, error) {
+func (r ListBackupsRequest) Send(ctx context.Context) (*ListBackupsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1257,7 +1279,7 @@ func (r ListBackupsRequest) Send() (*ListBackupsOutput, error) {
 //
 //    // Example sending a request using the ListBackupsRequest method.
 //    req := client.ListBackupsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1291,7 +1313,8 @@ type ListGlobalTablesRequest struct {
 }
 
 // Send marshals and sends the ListGlobalTables API request.
-func (r ListGlobalTablesRequest) Send() (*ListGlobalTablesOutput, error) {
+func (r ListGlobalTablesRequest) Send(ctx context.Context) (*ListGlobalTablesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1307,7 +1330,7 @@ func (r ListGlobalTablesRequest) Send() (*ListGlobalTablesOutput, error) {
 //
 //    // Example sending a request using the ListGlobalTablesRequest method.
 //    req := client.ListGlobalTablesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1341,7 +1364,8 @@ type ListTablesRequest struct {
 }
 
 // Send marshals and sends the ListTables API request.
-func (r ListTablesRequest) Send() (*ListTablesOutput, error) {
+func (r ListTablesRequest) Send(ctx context.Context) (*ListTablesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1359,7 +1383,7 @@ func (r ListTablesRequest) Send() (*ListTablesOutput, error) {
 //
 //    // Example sending a request using the ListTablesRequest method.
 //    req := client.ListTablesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1409,7 +1433,7 @@ func (c *DynamoDB) ListTablesRequest(input *ListTablesInput) ListTablesRequest {
 func (p *ListTablesRequest) Paginate(opts ...aws.Option) ListTablesPager {
 	return ListTablesPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListTablesInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1418,6 +1442,7 @@ func (p *ListTablesRequest) Paginate(opts ...aws.Option) ListTablesPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1445,7 +1470,8 @@ type ListTagsOfResourceRequest struct {
 }
 
 // Send marshals and sends the ListTagsOfResource API request.
-func (r ListTagsOfResourceRequest) Send() (*ListTagsOfResourceOutput, error) {
+func (r ListTagsOfResourceRequest) Send(ctx context.Context) (*ListTagsOfResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1460,12 +1486,12 @@ func (r ListTagsOfResourceRequest) Send() (*ListTagsOfResourceOutput, error) {
 // List all tags on an Amazon DynamoDB resource. You can call ListTagsOfResource
 // up to 10 times per second, per account.
 //
-// For an overview on tagging DynamoDB resources, see Tagging for DynamoDB (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
+// For an overview on tagging DynamoDB resources, see Tagging for DynamoDB (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
 // in the Amazon DynamoDB Developer Guide.
 //
 //    // Example sending a request using the ListTagsOfResourceRequest method.
 //    req := client.ListTagsOfResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1499,7 +1525,8 @@ type PutItemRequest struct {
 }
 
 // Send marshals and sends the PutItem API request.
-func (r PutItemRequest) Send() (*PutItemOutput, error) {
+func (r PutItemRequest) Send(ctx context.Context) (*PutItemOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1553,12 +1580,12 @@ func (r PutItemRequest) Send() (*PutItemOutput, error) {
 // record must contain that attribute, the attribute_not_exists function will
 // only succeed if no matching item exists.
 //
-// For more information about PutItem, see Working with Items (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html)
+// For more information about PutItem, see Working with Items (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithItems.html)
 // in the Amazon DynamoDB Developer Guide.
 //
 //    // Example sending a request using the PutItemRequest method.
 //    req := client.PutItemRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1592,7 +1619,8 @@ type QueryRequest struct {
 }
 
 // Send marshals and sends the Query API request.
-func (r QueryRequest) Send() (*QueryOutput, error) {
+func (r QueryRequest) Send(ctx context.Context) (*QueryOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1637,7 +1665,7 @@ func (r QueryRequest) Send() (*QueryOutput, error) {
 // (if using the Limit parameter) or a maximum of 1 MB of data and then apply
 // any filtering to the results using FilterExpression. If LastEvaluatedKey
 // is present in the response, you will need to paginate the result set. For
-// more information, see Paginating the Results (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Pagination)
+// more information, see Paginating the Results (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Query.html#Query.Pagination)
 // in the Amazon DynamoDB Developer Guide.
 //
 // FilterExpression is applied after a Query finishes, but before the results
@@ -1655,7 +1683,7 @@ func (r QueryRequest) Send() (*QueryOutput, error) {
 //
 //    // Example sending a request using the QueryRequest method.
 //    req := client.QueryRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1705,7 +1733,7 @@ func (c *DynamoDB) QueryRequest(input *QueryInput) QueryRequest {
 func (p *QueryRequest) Paginate(opts ...aws.Option) QueryPager {
 	return QueryPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *QueryInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1714,6 +1742,7 @@ func (p *QueryRequest) Paginate(opts ...aws.Option) QueryPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1741,7 +1770,8 @@ type RestoreTableFromBackupRequest struct {
 }
 
 // Send marshals and sends the RestoreTableFromBackup API request.
-func (r RestoreTableFromBackupRequest) Send() (*RestoreTableFromBackupOutput, error) {
+func (r RestoreTableFromBackupRequest) Send(ctx context.Context) (*RestoreTableFromBackupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1774,7 +1804,7 @@ func (r RestoreTableFromBackupRequest) Send() (*RestoreTableFromBackupOutput, er
 //
 //    // Example sending a request using the RestoreTableFromBackupRequest method.
 //    req := client.RestoreTableFromBackupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1808,7 +1838,8 @@ type RestoreTableToPointInTimeRequest struct {
 }
 
 // Send marshals and sends the RestoreTableToPointInTime API request.
-func (r RestoreTableToPointInTimeRequest) Send() (*RestoreTableToPointInTimeOutput, error) {
+func (r RestoreTableToPointInTimeRequest) Send(ctx context.Context) (*RestoreTableToPointInTimeOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1861,7 +1892,7 @@ func (r RestoreTableToPointInTimeRequest) Send() (*RestoreTableToPointInTimeOutp
 //
 //    // Example sending a request using the RestoreTableToPointInTimeRequest method.
 //    req := client.RestoreTableToPointInTimeRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1895,7 +1926,8 @@ type ScanRequest struct {
 }
 
 // Send marshals and sends the Scan API request.
-func (r ScanRequest) Send() (*ScanOutput, error) {
+func (r ScanRequest) Send(ctx context.Context) (*ScanOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1921,13 +1953,13 @@ func (r ScanRequest) Send() (*ScanOutput, error) {
 // using the Limit parameter) or a maximum of 1 MB of data and then apply any
 // filtering to the results using FilterExpression. If LastEvaluatedKey is present
 // in the response, you will need to paginate the result set. For more information,
-// see Paginating the Results (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination)
+// see Paginating the Results (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.Pagination)
 // in the Amazon DynamoDB Developer Guide.
 //
 // Scan operations proceed sequentially; however, for faster performance on
 // a large table or secondary index, applications can request a parallel Scan
 // operation by providing the Segment and TotalSegments parameters. For more
-// information, see Parallel Scan (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.ParallelScan)
+// information, see Parallel Scan (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Scan.html#Scan.ParallelScan)
 // in the Amazon DynamoDB Developer Guide.
 //
 // Scan uses eventually consistent reads when accessing the data in a table;
@@ -1938,7 +1970,7 @@ func (r ScanRequest) Send() (*ScanOutput, error) {
 //
 //    // Example sending a request using the ScanRequest method.
 //    req := client.ScanRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1988,7 +2020,7 @@ func (c *DynamoDB) ScanRequest(input *ScanInput) ScanRequest {
 func (p *ScanRequest) Paginate(opts ...aws.Option) ScanPager {
 	return ScanPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ScanInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1997,6 +2029,7 @@ func (p *ScanRequest) Paginate(opts ...aws.Option) ScanPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2024,7 +2057,8 @@ type TagResourceRequest struct {
 }
 
 // Send marshals and sends the TagResource API request.
-func (r TagResourceRequest) Send() (*TagResourceOutput, error) {
+func (r TagResourceRequest) Send(ctx context.Context) (*TagResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2041,12 +2075,12 @@ func (r TagResourceRequest) Send() (*TagResourceOutput, error) {
 // console for cost allocation tracking. You can call TagResource up to 5 times
 // per second, per account.
 //
-// For an overview on tagging DynamoDB resources, see Tagging for DynamoDB (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
+// For an overview on tagging DynamoDB resources, see Tagging for DynamoDB (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
 // in the Amazon DynamoDB Developer Guide.
 //
 //    // Example sending a request using the TagResourceRequest method.
 //    req := client.TagResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2082,7 +2116,8 @@ type TransactGetItemsRequest struct {
 }
 
 // Send marshals and sends the TransactGetItems API request.
-func (r TransactGetItemsRequest) Send() (*TransactGetItemsOutput, error) {
+func (r TransactGetItemsRequest) Send(ctx context.Context) (*TransactGetItemsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2114,7 +2149,7 @@ func (r TransactGetItemsRequest) Send() (*TransactGetItemsOutput, error) {
 //
 //    // Example sending a request using the TransactGetItemsRequest method.
 //    req := client.TransactGetItemsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2148,7 +2183,8 @@ type TransactWriteItemsRequest struct {
 }
 
 // Send marshals and sends the TransactWriteItems API request.
-func (r TransactWriteItemsRequest) Send() (*TransactWriteItemsOutput, error) {
+func (r TransactWriteItemsRequest) Send(ctx context.Context) (*TransactWriteItemsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2215,7 +2251,7 @@ func (r TransactWriteItemsRequest) Send() (*TransactWriteItemsOutput, error) {
 //
 //    // Example sending a request using the TransactWriteItemsRequest method.
 //    req := client.TransactWriteItemsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2249,7 +2285,8 @@ type UntagResourceRequest struct {
 }
 
 // Send marshals and sends the UntagResource API request.
-func (r UntagResourceRequest) Send() (*UntagResourceOutput, error) {
+func (r UntagResourceRequest) Send(ctx context.Context) (*UntagResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2264,12 +2301,12 @@ func (r UntagResourceRequest) Send() (*UntagResourceOutput, error) {
 // Removes the association of tags from an Amazon DynamoDB resource. You can
 // call UntagResource up to 5 times per second, per account.
 //
-// For an overview on tagging DynamoDB resources, see Tagging for DynamoDB (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
+// For an overview on tagging DynamoDB resources, see Tagging for DynamoDB (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
 // in the Amazon DynamoDB Developer Guide.
 //
 //    // Example sending a request using the UntagResourceRequest method.
 //    req := client.UntagResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2305,7 +2342,8 @@ type UpdateContinuousBackupsRequest struct {
 }
 
 // Send marshals and sends the UpdateContinuousBackups API request.
-func (r UpdateContinuousBackupsRequest) Send() (*UpdateContinuousBackupsOutput, error) {
+func (r UpdateContinuousBackupsRequest) Send(ctx context.Context) (*UpdateContinuousBackupsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2331,7 +2369,7 @@ func (r UpdateContinuousBackupsRequest) Send() (*UpdateContinuousBackupsOutput, 
 //
 //    // Example sending a request using the UpdateContinuousBackupsRequest method.
 //    req := client.UpdateContinuousBackupsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2365,7 +2403,8 @@ type UpdateGlobalTableRequest struct {
 }
 
 // Send marshals and sends the UpdateGlobalTable API request.
-func (r UpdateGlobalTableRequest) Send() (*UpdateGlobalTableOutput, error) {
+func (r UpdateGlobalTableRequest) Send(ctx context.Context) (*UpdateGlobalTableOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2400,7 +2439,7 @@ func (r UpdateGlobalTableRequest) Send() (*UpdateGlobalTableOutput, error) {
 //
 //    // Example sending a request using the UpdateGlobalTableRequest method.
 //    req := client.UpdateGlobalTableRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2434,7 +2473,8 @@ type UpdateGlobalTableSettingsRequest struct {
 }
 
 // Send marshals and sends the UpdateGlobalTableSettings API request.
-func (r UpdateGlobalTableSettingsRequest) Send() (*UpdateGlobalTableSettingsOutput, error) {
+func (r UpdateGlobalTableSettingsRequest) Send(ctx context.Context) (*UpdateGlobalTableSettingsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2450,7 +2490,7 @@ func (r UpdateGlobalTableSettingsRequest) Send() (*UpdateGlobalTableSettingsOutp
 //
 //    // Example sending a request using the UpdateGlobalTableSettingsRequest method.
 //    req := client.UpdateGlobalTableSettingsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2484,7 +2524,8 @@ type UpdateItemRequest struct {
 }
 
 // Send marshals and sends the UpdateItem API request.
-func (r UpdateItemRequest) Send() (*UpdateItemOutput, error) {
+func (r UpdateItemRequest) Send(ctx context.Context) (*UpdateItemOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2507,7 +2548,7 @@ func (r UpdateItemRequest) Send() (*UpdateItemOutput, error) {
 //
 //    // Example sending a request using the UpdateItemRequest method.
 //    req := client.UpdateItemRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2541,7 +2582,8 @@ type UpdateTableRequest struct {
 }
 
 // Send marshals and sends the UpdateTable API request.
-func (r UpdateTableRequest) Send() (*UpdateTableOutput, error) {
+func (r UpdateTableRequest) Send(ctx context.Context) (*UpdateTableOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2574,7 +2616,7 @@ func (r UpdateTableRequest) Send() (*UpdateTableOutput, error) {
 //
 //    // Example sending a request using the UpdateTableRequest method.
 //    req := client.UpdateTableRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2608,7 +2650,8 @@ type UpdateTimeToLiveRequest struct {
 }
 
 // Send marshals and sends the UpdateTimeToLive API request.
-func (r UpdateTimeToLiveRequest) Send() (*UpdateTimeToLiveOutput, error) {
+func (r UpdateTimeToLiveRequest) Send(ctx context.Context) (*UpdateTimeToLiveOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2646,12 +2689,12 @@ func (r UpdateTimeToLiveRequest) Send() (*UpdateTimeToLiveOutput, error) {
 // Global Secondary Index immediately in the same eventually consistent way
 // as a standard delete operation.
 //
-// For more information, see Time To Live (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html)
+// For more information, see Time To Live (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/TTL.html)
 // in the Amazon DynamoDB Developer Guide.
 //
 //    // Example sending a request using the UpdateTimeToLiveRequest method.
 //    req := client.UpdateTimeToLiveRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2732,7 +2775,7 @@ func (s *AttributeDefinition) Validate() error {
 // Each attribute value is described as a name-value pair. The name is the data
 // type, and the value is the data itself.
 //
-// For more information, see Data Types (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes)
+// For more information, see Data Types (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes)
 // in the Amazon DynamoDB Developer Guide.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/AttributeValue
 type AttributeValue struct {
@@ -2757,7 +2800,7 @@ type AttributeValue struct {
 
 	// An attribute of type List. For example:
 	//
-	// "L": ["Cookies", "Coffee", 3.14159]
+	// "L": [ {"S": "Cookies"} , {"S": "Coffee"}, {"N", "3.14159"}]
 	L []AttributeValue `type:"list"`
 
 	// An attribute of type Map. For example:
@@ -2893,7 +2936,7 @@ type AttributeValueUpdate struct {
 	// Each attribute value is described as a name-value pair. The name is the data
 	// type, and the value is the data itself.
 	//
-	// For more information, see Data Types (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes)
+	// For more information, see Data Types (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes)
 	// in the Amazon DynamoDB Developer Guide.
 	Value *AttributeValue `type:"structure"`
 }
@@ -3239,6 +3282,8 @@ type BackupDetails struct {
 	//    no additional cost). System backups allow you to restore the deleted table
 	//    to the state it was in just before the point of deletion.
 	//
+	//    * AWS_BACKUP - On-demand backup created by you from AWS Backup service.
+	//
 	// BackupType is a required field
 	BackupType BackupType `type:"string" required:"true" enum:"true"`
 }
@@ -3285,6 +3330,8 @@ type BackupSummary struct {
 	//    a SYSTEM backup is automatically created and is retained for 35 days (at
 	//    no additional cost). System backups allow you to restore the deleted table
 	//    to the state it was in just before the point of deletion.
+	//
+	//    * AWS_BACKUP - On-demand backup created by you from AWS Backup service.
 	BackupType BackupType `type:"string" enum:"true"`
 
 	// ARN associated with the table.
@@ -3340,7 +3387,7 @@ type BatchGetItemInput struct {
 	//
 	// The name of this attribute conflicts with a reserved word, so it cannot be
 	//    used directly in an expression. (For the complete list of reserved words,
-	//    see Reserved Words (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+	//    see Reserved Words (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 	//    in the Amazon DynamoDB Developer Guide). To work around this, you could
 	//    specify the following for ExpressionAttributeNames:
 	//
@@ -3354,7 +3401,7 @@ type BatchGetItemInput struct {
 	//    are placeholders for the actual value at runtime.
 	//
 	// For more information on expression attribute names, see Accessing Item Attributes
-	//    (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+	//    (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 	//    in the Amazon DynamoDB Developer Guide.
 	//
 	//    * Keys - An array of primary key attribute values that define specific
@@ -3372,11 +3419,11 @@ type BatchGetItemInput struct {
 	//    If any of the requested attributes are not found, they will not appear
 	//    in the result.
 	//
-	// For more information, see Accessing Item Attributes (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+	// For more information, see Accessing Item Attributes (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 	//    in the Amazon DynamoDB Developer Guide.
 	//
 	//    * AttributesToGet - This is a legacy parameter. Use ProjectionExpression
-	//    instead. For more information, see AttributesToGet (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
+	//    instead. For more information, see AttributesToGet (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
 	//    in the Amazon DynamoDB Developer Guide.
 	//
 	// RequestItems is a required field
@@ -3920,7 +3967,7 @@ func (s *ConditionCheck) Validate() error {
 // total provisioned throughput consumed, along with statistics for the table
 // and any indexes involved in the operation. ConsumedCapacity is only returned
 // if the request asked for it. For more information, see Provisioned Throughput
-// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
+// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
 // in the Amazon DynamoDB Developer Guide.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/ConsumedCapacity
 type ConsumedCapacity struct {
@@ -4083,7 +4130,7 @@ type CreateGlobalSecondaryIndexAction struct {
 	// index.
 	//
 	// For current minimum and maximum provisioned throughput values, see Limits
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ProvisionedThroughput *ProvisionedThroughput `type:"structure"`
 }
@@ -4269,8 +4316,8 @@ type CreateTableInput struct {
 	//    using PAY_PER_REQUEST for unpredictable workloads.
 	BillingMode BillingMode `type:"string" enum:"true"`
 
-	// One or more global secondary indexes (the maximum is five) to be created
-	// on the table. Each global secondary index in the array includes the following:
+	// One or more global secondary indexes (the maximum is 20) to be created on
+	// the table. Each global secondary index in the array includes the following:
 	//
 	//    * IndexName - The name of the global secondary index. Must be unique only
 	//    for this table.
@@ -4294,7 +4341,7 @@ type CreateTableInput struct {
 	// NonKeyAttributes - A list of one or more non-key attribute names that are
 	//    projected into the secondary index. The total count of attributes provided
 	//    in NonKeyAttributes, summed across all of the secondary indexes, must
-	//    not exceed 20. If you project the same attribute into two different indexes,
+	//    not exceed 100. If you project the same attribute into two different indexes,
 	//    this counts as two distinct attributes when determining the total.
 	//
 	//    * ProvisionedThroughput - The provisioned throughput settings for the
@@ -4303,7 +4350,7 @@ type CreateTableInput struct {
 
 	// Specifies the attributes that make up the primary key for a table or an index.
 	// The attributes in KeySchema must also be defined in the AttributeDefinitions
-	// array. For more information, see Data Model (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html)
+	// array. For more information, see Data Model (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html)
 	// in the Amazon DynamoDB Developer Guide.
 	//
 	// Each KeySchemaElement in the array is composed of:
@@ -4332,16 +4379,16 @@ type CreateTableInput struct {
 	// exactly two elements, in this order: The first element must have a KeyType
 	// of HASH, and the second element must have a KeyType of RANGE.
 	//
-	// For more information, see Specifying the Primary Key (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key)
+	// For more information, see Specifying the Primary Key (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#WorkingWithTables.primary.key)
 	// in the Amazon DynamoDB Developer Guide.
 	//
 	// KeySchema is a required field
 	KeySchema []KeySchemaElement `min:"1" type:"list" required:"true"`
 
-	// One or more local secondary indexes (the maximum is five) to be created on
-	// the table. Each index is scoped to a given partition key value. There is
-	// a 10 GB size limit per partition key value; otherwise, the size of a local
-	// secondary index is unconstrained.
+	// One or more local secondary indexes (the maximum is 5) to be created on the
+	// table. Each index is scoped to a given partition key value. There is a 10
+	// GB size limit per partition key value; otherwise, the size of a local secondary
+	// index is unconstrained.
 	//
 	// Each local secondary index in the array includes the following:
 	//
@@ -4368,7 +4415,7 @@ type CreateTableInput struct {
 	// NonKeyAttributes - A list of one or more non-key attribute names that are
 	//    projected into the secondary index. The total count of attributes provided
 	//    in NonKeyAttributes, summed across all of the secondary indexes, must
-	//    not exceed 20. If you project the same attribute into two different indexes,
+	//    not exceed 100. If you project the same attribute into two different indexes,
 	//    this counts as two distinct attributes when determining the total.
 	LocalSecondaryIndexes []LocalSecondaryIndex `type:"list"`
 
@@ -4379,7 +4426,7 @@ type CreateTableInput struct {
 	// you set BillingMode as PAY_PER_REQUEST, you cannot specify this property.
 	//
 	// For current minimum and maximum provisioned throughput values, see Limits
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ProvisionedThroughput *ProvisionedThroughput `type:"structure"`
 
@@ -4412,6 +4459,10 @@ type CreateTableInput struct {
 	//
 	// TableName is a required field
 	TableName *string `min:"3" type:"string" required:"true"`
+
+	// A list of key-value pairs to label the table. For more information, see Tagging
+	// for DynamoDB (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html).
+	Tags []Tag `type:"list"`
 }
 
 // String returns the string representation
@@ -4476,6 +4527,13 @@ func (s *CreateTableInput) Validate() error {
 	if s.ProvisionedThroughput != nil {
 		if err := s.ProvisionedThroughput.Validate(); err != nil {
 			invalidParams.AddNested("ProvisionedThroughput", err.(aws.ErrInvalidParams))
+		}
+	}
+	if s.Tags != nil {
+		for i, v := range s.Tags {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Tags", i), err.(aws.ErrInvalidParams))
+			}
 		}
 	}
 
@@ -4693,17 +4751,17 @@ type DeleteItemInput struct {
 	//    *  Logical operators: AND | OR | NOT
 	//
 	// For more information on condition expressions, see Specifying Conditions
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ConditionExpression *string `type:"string"`
 
 	// This is a legacy parameter. Use ConditionExpression instead. For more information,
-	// see ConditionalOperator (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
+	// see ConditionalOperator (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ConditionalOperator ConditionalOperator `type:"string" enum:"true"`
 
 	// This is a legacy parameter. Use ConditionExpression instead. For more information,
-	// see Expected (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html)
+	// see Expected (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html)
 	// in the Amazon DynamoDB Developer Guide.
 	Expected map[string]ExpectedAttributeValue `type:"map"`
 
@@ -4726,7 +4784,7 @@ type DeleteItemInput struct {
 	//
 	// The name of this attribute conflicts with a reserved word, so it cannot be
 	// used directly in an expression. (For the complete list of reserved words,
-	// see Reserved Words (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+	// see Reserved Words (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 	// in the Amazon DynamoDB Developer Guide). To work around this, you could specify
 	// the following for ExpressionAttributeNames:
 	//
@@ -4740,7 +4798,7 @@ type DeleteItemInput struct {
 	// are placeholders for the actual value at runtime.
 	//
 	// For more information on expression attribute names, see Accessing Item Attributes
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ExpressionAttributeNames map[string]string `type:"map"`
 
@@ -4762,7 +4820,7 @@ type DeleteItemInput struct {
 	// ProductStatus IN (:avail, :back, :disc)
 	//
 	// For more information on expression attribute values, see Specifying Conditions
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ExpressionAttributeValues map[string]AttributeValue `type:"map"`
 
@@ -4865,7 +4923,7 @@ type DeleteItemOutput struct {
 	// includes the total provisioned throughput consumed, along with statistics
 	// for the table and any indexes involved in the operation. ConsumedCapacity
 	// is only returned if the ReturnConsumedCapacity parameter was specified. For
-	// more information, see Provisioned Throughput (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
+	// more information, see Provisioned Throughput (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ConsumedCapacity *ConsumedCapacity `type:"structure"`
 
@@ -5175,6 +5233,8 @@ type DescribeEndpointsOutput struct {
 
 	responseMetadata aws.Response
 
+	// List of endpoints.
+	//
 	// Endpoints is a required field
 	Endpoints []Endpoint `type:"list" required:"true"`
 }
@@ -5504,13 +5564,18 @@ func (s DescribeTimeToLiveOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
+// An endpoint information details.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/Endpoint
 type Endpoint struct {
 	_ struct{} `type:"structure"`
 
+	// IP address of the endpoint.
+	//
 	// Address is a required field
 	Address *string `type:"string" required:"true"`
 
+	// Endpoint cache time to live (TTL) value.
+	//
 	// CachePeriodInMinutes is a required field
 	CachePeriodInMinutes *int64 `type:"long" required:"true"`
 }
@@ -5562,7 +5627,7 @@ type ExpectedAttributeValue struct {
 	// For Binary, DynamoDB treats each byte of the binary data as unsigned when
 	// it compares binary values.
 	//
-	// For information on specifying data types in JSON, see JSON Data Format (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html)
+	// For information on specifying data types in JSON, see JSON Data Format (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataFormat.html)
 	// in the Amazon DynamoDB Developer Guide.
 	AttributeValueList []AttributeValue `type:"list"`
 
@@ -5638,7 +5703,7 @@ type ExpectedAttributeValue struct {
 	// Each attribute value is described as a name-value pair. The name is the data
 	// type, and the value is the data itself.
 	//
-	// For more information, see Data Types (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes)
+	// For more information, see Data Types (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/HowItWorks.NamingRulesDataTypes.html#HowItWorks.DataTypes)
 	// in the Amazon DynamoDB Developer Guide.
 	Value *AttributeValue `type:"structure"`
 }
@@ -5719,7 +5784,7 @@ type GetItemInput struct {
 	_ struct{} `type:"structure"`
 
 	// This is a legacy parameter. Use ProjectionExpression instead. For more information,
-	// see AttributesToGet (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
+	// see AttributesToGet (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
 	// in the Amazon DynamoDB Developer Guide.
 	AttributesToGet []string `min:"1" type:"list"`
 
@@ -5747,7 +5812,7 @@ type GetItemInput struct {
 	//
 	// The name of this attribute conflicts with a reserved word, so it cannot be
 	// used directly in an expression. (For the complete list of reserved words,
-	// see Reserved Words (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+	// see Reserved Words (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 	// in the Amazon DynamoDB Developer Guide). To work around this, you could specify
 	// the following for ExpressionAttributeNames:
 	//
@@ -5761,7 +5826,7 @@ type GetItemInput struct {
 	// are placeholders for the actual value at runtime.
 	//
 	// For more information on expression attribute names, see Accessing Item Attributes
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ExpressionAttributeNames map[string]string `type:"map"`
 
@@ -5784,7 +5849,7 @@ type GetItemInput struct {
 	// If any of the requested attributes are not found, they will not appear in
 	// the result.
 	//
-	// For more information, see Accessing Item Attributes (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+	// For more information, see Accessing Item Attributes (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ProjectionExpression *string `type:"string"`
 
@@ -5856,7 +5921,7 @@ type GetItemOutput struct {
 	// the total provisioned throughput consumed, along with statistics for the
 	// table and any indexes involved in the operation. ConsumedCapacity is only
 	// returned if the ReturnConsumedCapacity parameter was specified. For more
-	// information, see Provisioned Throughput (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
+	// information, see Provisioned Throughput (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ConsumedCapacity *ConsumedCapacity `type:"structure"`
 
@@ -5920,7 +5985,7 @@ type GlobalSecondaryIndex struct {
 	// index.
 	//
 	// For current minimum and maximum provisioned throughput values, see Limits
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ProvisionedThroughput *ProvisionedThroughput `type:"structure"`
 }
@@ -6048,7 +6113,7 @@ type GlobalSecondaryIndexDescription struct {
 	// index.
 	//
 	// For current minimum and maximum provisioned throughput values, see Limits
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ProvisionedThroughput *ProvisionedThroughputDescription `type:"structure"`
 }
@@ -6429,7 +6494,7 @@ type KeysAndAttributes struct {
 	_ struct{} `type:"structure"`
 
 	// This is a legacy parameter. Use ProjectionExpression instead. For more information,
-	// see Legacy Conditional Parameters (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.html)
+	// see Legacy Conditional Parameters (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.html)
 	// in the Amazon DynamoDB Developer Guide.
 	AttributesToGet []string `min:"1" type:"list"`
 
@@ -6456,7 +6521,7 @@ type KeysAndAttributes struct {
 	//
 	// The name of this attribute conflicts with a reserved word, so it cannot be
 	// used directly in an expression. (For the complete list of reserved words,
-	// see Reserved Words (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+	// see Reserved Words (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 	// in the Amazon DynamoDB Developer Guide). To work around this, you could specify
 	// the following for ExpressionAttributeNames:
 	//
@@ -6470,7 +6535,7 @@ type KeysAndAttributes struct {
 	// are placeholders for the actual value at runtime.
 	//
 	// For more information on expression attribute names, see Accessing Item Attributes
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ExpressionAttributeNames map[string]string `type:"map"`
 
@@ -6488,7 +6553,7 @@ type KeysAndAttributes struct {
 	// If any of the requested attributes are not found, they will not appear in
 	// the result.
 	//
-	// For more information, see Accessing Item Attributes (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+	// For more information, see Accessing Item Attributes (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ProjectionExpression *string `type:"string"`
 }
@@ -7150,7 +7215,7 @@ func (s *Projection) Validate() error {
 // The settings can be modified using the UpdateTable operation.
 //
 // For current minimum and maximum provisioned throughput values, see Limits
-// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 // in the Amazon DynamoDB Developer Guide.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/ProvisionedThroughput
 type ProvisionedThroughput struct {
@@ -7158,7 +7223,7 @@ type ProvisionedThroughput struct {
 
 	// The maximum number of strongly consistent reads consumed per second before
 	// DynamoDB returns a ThrottlingException. For more information, see Specifying
-	// Read and Write Requirements (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
+	// Read and Write Requirements (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
 	// in the Amazon DynamoDB Developer Guide.
 	//
 	// If read/write capacity mode is PAY_PER_REQUEST the value is set to 0.
@@ -7168,7 +7233,7 @@ type ProvisionedThroughput struct {
 
 	// The maximum number of writes consumed per second before DynamoDB returns
 	// a ThrottlingException. For more information, see Specifying Read and Write
-	// Requirements (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
+	// Requirements (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
 	// in the Amazon DynamoDB Developer Guide.
 	//
 	// If read/write capacity mode is PAY_PER_REQUEST the value is set to 0.
@@ -7225,7 +7290,7 @@ type ProvisionedThroughputDescription struct {
 
 	// The number of provisioned throughput decreases for this table during this
 	// UTC calendar day. For current maximums on provisioned throughput decreases,
-	// see Limits (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+	// see Limits (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 	// in the Amazon DynamoDB Developer Guide.
 	NumberOfDecreasesToday *int64 `min:"1" type:"long"`
 
@@ -7335,17 +7400,17 @@ type PutItemInput struct {
 	//    *  Logical operators: AND | OR | NOT
 	//
 	// For more information on condition expressions, see Specifying Conditions
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ConditionExpression *string `type:"string"`
 
 	// This is a legacy parameter. Use ConditionExpression instead. For more information,
-	// see ConditionalOperator (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
+	// see ConditionalOperator (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ConditionalOperator ConditionalOperator `type:"string" enum:"true"`
 
 	// This is a legacy parameter. Use ConditionExpression instead. For more information,
-	// see Expected (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html)
+	// see Expected (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html)
 	// in the Amazon DynamoDB Developer Guide.
 	Expected map[string]ExpectedAttributeValue `type:"map"`
 
@@ -7368,7 +7433,7 @@ type PutItemInput struct {
 	//
 	// The name of this attribute conflicts with a reserved word, so it cannot be
 	// used directly in an expression. (For the complete list of reserved words,
-	// see Reserved Words (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+	// see Reserved Words (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 	// in the Amazon DynamoDB Developer Guide). To work around this, you could specify
 	// the following for ExpressionAttributeNames:
 	//
@@ -7382,7 +7447,7 @@ type PutItemInput struct {
 	// are placeholders for the actual value at runtime.
 	//
 	// For more information on expression attribute names, see Accessing Item Attributes
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ExpressionAttributeNames map[string]string `type:"map"`
 
@@ -7404,7 +7469,7 @@ type PutItemInput struct {
 	// ProductStatus IN (:avail, :back, :disc)
 	//
 	// For more information on expression attribute values, see Specifying Conditions
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ExpressionAttributeValues map[string]AttributeValue `type:"map"`
 
@@ -7421,7 +7486,7 @@ type PutItemInput struct {
 	// types for those attributes must match those of the schema in the table's
 	// attribute definition.
 	//
-	// For more information about primary keys, see Primary Key (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey)
+	// For more information about primary keys, see Primary Key (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey)
 	// in the Amazon DynamoDB Developer Guide.
 	//
 	// Each element in the Item map is an AttributeValue object.
@@ -7519,7 +7584,7 @@ type PutItemOutput struct {
 	// the total provisioned throughput consumed, along with statistics for the
 	// table and any indexes involved in the operation. ConsumedCapacity is only
 	// returned if the ReturnConsumedCapacity parameter was specified. For more
-	// information, see Provisioned Throughput (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
+	// information, see Provisioned Throughput (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ConsumedCapacity *ConsumedCapacity `type:"structure"`
 
@@ -7591,12 +7656,12 @@ type QueryInput struct {
 	_ struct{} `type:"structure"`
 
 	// This is a legacy parameter. Use ProjectionExpression instead. For more information,
-	// see AttributesToGet (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
+	// see AttributesToGet (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
 	// in the Amazon DynamoDB Developer Guide.
 	AttributesToGet []string `min:"1" type:"list"`
 
 	// This is a legacy parameter. Use FilterExpression instead. For more information,
-	// see ConditionalOperator (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
+	// see ConditionalOperator (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ConditionalOperator ConditionalOperator `type:"string" enum:"true"`
 
@@ -7635,7 +7700,7 @@ type QueryInput struct {
 	//
 	// The name of this attribute conflicts with a reserved word, so it cannot be
 	// used directly in an expression. (For the complete list of reserved words,
-	// see Reserved Words (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+	// see Reserved Words (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 	// in the Amazon DynamoDB Developer Guide). To work around this, you could specify
 	// the following for ExpressionAttributeNames:
 	//
@@ -7649,7 +7714,7 @@ type QueryInput struct {
 	// are placeholders for the actual value at runtime.
 	//
 	// For more information on expression attribute names, see Accessing Item Attributes
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ExpressionAttributeNames map[string]string `type:"map"`
 
@@ -7671,7 +7736,7 @@ type QueryInput struct {
 	// ProductStatus IN (:avail, :back, :disc)
 	//
 	// For more information on expression attribute values, see Specifying Conditions
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ExpressionAttributeValues map[string]AttributeValue `type:"map"`
 
@@ -7685,7 +7750,7 @@ type QueryInput struct {
 	// A FilterExpression is applied after the items have already been read; the
 	// process of filtering does not consume any additional read capacity units.
 	//
-	// For more information, see Filter Expressions (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults)
+	// For more information, see Filter Expressions (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults)
 	// in the Amazon DynamoDB Developer Guide.
 	FilterExpression *string `type:"string"`
 
@@ -7755,16 +7820,16 @@ type QueryInput struct {
 	//
 	//    * #S = :myval
 	//
-	// For a list of reserved words, see Reserved Words (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+	// For a list of reserved words, see Reserved Words (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 	// in the Amazon DynamoDB Developer Guide.
 	//
 	// For more information on ExpressionAttributeNames and ExpressionAttributeValues,
-	// see Using Placeholders for Attribute Names and Values (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ExpressionPlaceholders.html)
+	// see Using Placeholders for Attribute Names and Values (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ExpressionPlaceholders.html)
 	// in the Amazon DynamoDB Developer Guide.
 	KeyConditionExpression *string `type:"string"`
 
 	// This is a legacy parameter. Use KeyConditionExpression instead. For more
-	// information, see KeyConditions (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.KeyConditions.html)
+	// information, see KeyConditions (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.KeyConditions.html)
 	// in the Amazon DynamoDB Developer Guide.
 	KeyConditions map[string]Condition `type:"map"`
 
@@ -7776,7 +7841,7 @@ type QueryInput struct {
 	// size exceeds 1 MB before DynamoDB reaches this limit, it stops the operation
 	// and returns the matching values up to the limit, and a key in LastEvaluatedKey
 	// to apply in a subsequent operation to continue the operation. For more information,
-	// see Query and Scan (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html)
+	// see Query and Scan (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html)
 	// in the Amazon DynamoDB Developer Guide.
 	Limit *int64 `min:"1" type:"integer"`
 
@@ -7788,12 +7853,12 @@ type QueryInput struct {
 	// If any of the requested attributes are not found, they will not appear in
 	// the result.
 	//
-	// For more information, see Accessing Item Attributes (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+	// For more information, see Accessing Item Attributes (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ProjectionExpression *string `type:"string"`
 
 	// This is a legacy parameter. Use FilterExpression instead. For more information,
-	// see QueryFilter (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.QueryFilter.html)
+	// see QueryFilter (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.QueryFilter.html)
 	// in the Amazon DynamoDB Developer Guide.
 	QueryFilter map[string]Condition `type:"map"`
 
@@ -7942,7 +8007,7 @@ type QueryOutput struct {
 	// the total provisioned throughput consumed, along with statistics for the
 	// table and any indexes involved in the operation. ConsumedCapacity is only
 	// returned if the ReturnConsumedCapacity parameter was specified For more information,
-	// see Provisioned Throughput (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
+	// see Provisioned Throughput (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ConsumedCapacity *ConsumedCapacity `type:"structure"`
 
@@ -7974,7 +8039,7 @@ type QueryOutput struct {
 
 	// The number of items evaluated, before any QueryFilter is applied. A high
 	// ScannedCount value with few, or no, Count results indicates an inefficient
-	// Query operation. For more information, see Count and ScannedCount (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#Count)
+	// Query operation. For more information, see Count and ScannedCount (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#Count)
 	// in the Amazon DynamoDB Developer Guide.
 	//
 	// If you did not use a filter in the request, then ScannedCount is the same
@@ -8161,7 +8226,7 @@ type ReplicaSettingsDescription struct {
 
 	// The maximum number of strongly consistent reads consumed per second before
 	// DynamoDB returns a ThrottlingException. For more information, see Specifying
-	// Read and Write Requirements (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
+	// Read and Write Requirements (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
 	// in the Amazon DynamoDB Developer Guide.
 	ReplicaProvisionedReadCapacityUnits *int64 `type:"long"`
 
@@ -8170,7 +8235,7 @@ type ReplicaSettingsDescription struct {
 
 	// The maximum number of writes consumed per second before DynamoDB returns
 	// a ThrottlingException. For more information, see Specifying Read and Write
-	// Requirements (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
+	// Requirements (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
 	// in the Amazon DynamoDB Developer Guide.
 	ReplicaProvisionedWriteCapacityUnits *int64 `type:"long"`
 
@@ -8216,7 +8281,7 @@ type ReplicaSettingsUpdate struct {
 
 	// The maximum number of strongly consistent reads consumed per second before
 	// DynamoDB returns a ThrottlingException. For more information, see Specifying
-	// Read and Write Requirements (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
+	// Read and Write Requirements (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/WorkingWithTables.html#ProvisionedThroughput)
 	// in the Amazon DynamoDB Developer Guide.
 	ReplicaProvisionedReadCapacityUnits *int64 `min:"1" type:"long"`
 }
@@ -8582,12 +8647,12 @@ type ScanInput struct {
 	_ struct{} `type:"structure"`
 
 	// This is a legacy parameter. Use ProjectionExpression instead. For more information,
-	// see AttributesToGet (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
+	// see AttributesToGet (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributesToGet.html)
 	// in the Amazon DynamoDB Developer Guide.
 	AttributesToGet []string `min:"1" type:"list"`
 
 	// This is a legacy parameter. Use FilterExpression instead. For more information,
-	// see ConditionalOperator (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
+	// see ConditionalOperator (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ConditionalOperator ConditionalOperator `type:"string" enum:"true"`
 
@@ -8637,7 +8702,7 @@ type ScanInput struct {
 	//
 	// The name of this attribute conflicts with a reserved word, so it cannot be
 	// used directly in an expression. (For the complete list of reserved words,
-	// see Reserved Words (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+	// see Reserved Words (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 	// in the Amazon DynamoDB Developer Guide). To work around this, you could specify
 	// the following for ExpressionAttributeNames:
 	//
@@ -8651,7 +8716,7 @@ type ScanInput struct {
 	// are placeholders for the actual value at runtime.
 	//
 	// For more information on expression attribute names, see Accessing Item Attributes
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ExpressionAttributeNames map[string]string `type:"map"`
 
@@ -8673,7 +8738,7 @@ type ScanInput struct {
 	// ProductStatus IN (:avail, :back, :disc)
 	//
 	// For more information on expression attribute values, see Specifying Conditions
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ExpressionAttributeValues map[string]AttributeValue `type:"map"`
 
@@ -8684,7 +8749,7 @@ type ScanInput struct {
 	// A FilterExpression is applied after the items have already been read; the
 	// process of filtering does not consume any additional read capacity units.
 	//
-	// For more information, see Filter Expressions (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults)
+	// For more information, see Filter Expressions (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#FilteringResults)
 	// in the Amazon DynamoDB Developer Guide.
 	FilterExpression *string `type:"string"`
 
@@ -8701,7 +8766,7 @@ type ScanInput struct {
 	// size exceeds 1 MB before DynamoDB reaches this limit, it stops the operation
 	// and returns the matching values up to the limit, and a key in LastEvaluatedKey
 	// to apply in a subsequent operation to continue the operation. For more information,
-	// see Query and Scan (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html)
+	// see Query and Scan (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html)
 	// in the Amazon DynamoDB Developer Guide.
 	Limit *int64 `min:"1" type:"integer"`
 
@@ -8713,7 +8778,7 @@ type ScanInput struct {
 	// If any of the requested attributes are not found, they will not appear in
 	// the result.
 	//
-	// For more information, see Accessing Item Attributes (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+	// For more information, see Accessing Item Attributes (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ProjectionExpression *string `type:"string"`
 
@@ -8735,7 +8800,7 @@ type ScanInput struct {
 	ReturnConsumedCapacity ReturnConsumedCapacity `type:"string" enum:"true"`
 
 	// This is a legacy parameter. Use FilterExpression instead. For more information,
-	// see ScanFilter (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ScanFilter.html)
+	// see ScanFilter (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ScanFilter.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ScanFilter map[string]Condition `type:"map"`
 
@@ -8880,7 +8945,7 @@ type ScanOutput struct {
 	// the total provisioned throughput consumed, along with statistics for the
 	// table and any indexes involved in the operation. ConsumedCapacity is only
 	// returned if the ReturnConsumedCapacity parameter was specified. For more
-	// information, see Provisioned Throughput (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
+	// information, see Provisioned Throughput (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ConsumedCapacity *ConsumedCapacity `type:"structure"`
 
@@ -8911,7 +8976,7 @@ type ScanOutput struct {
 
 	// The number of items evaluated, before any ScanFilter is applied. A high ScannedCount
 	// value with few, or no, Count results indicates an inefficient Scan operation.
-	// For more information, see Count and ScannedCount (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#Count)
+	// For more information, see Count and ScannedCount (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/QueryAndScan.html#Count)
 	// in the Amazon DynamoDB Developer Guide.
 	//
 	// If you did not use a filter in the request, then ScannedCount is the same
@@ -9174,7 +9239,7 @@ type TableDescription struct {
 	//    attribute" derives from the way DynamoDB stores items with the same partition
 	//    key physically close together, in sorted order by the sort key value.
 	//
-	// For more information about primary keys, see Primary Key (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey)
+	// For more information about primary keys, see Primary Key (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/DataModel.html#DataModelPrimaryKey)
 	// in the Amazon DynamoDB Developer Guide.
 	KeySchema []KeySchemaElement `min:"1" type:"list"`
 
@@ -9297,7 +9362,7 @@ func (s TableDescription) GoString() string {
 // the tag limit of 50. User-assigned tag names have the prefix user: in the
 // Cost Allocation Report. You cannot backdate the application of a tag.
 //
-// For an overview on tagging DynamoDB resources, see Tagging for DynamoDB (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
+// For an overview on tagging DynamoDB resources, see Tagging for DynamoDB (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Tagging.html)
 // in the Amazon DynamoDB Developer Guide.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/dynamodb-2012-08-10/Tag
 type Tag struct {
@@ -10045,7 +10110,7 @@ type UpdateGlobalSecondaryIndexAction struct {
 	// index.
 	//
 	// For current minimum and maximum provisioned throughput values, see Limits
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Limits.html)
 	// in the Amazon DynamoDB Developer Guide.
 	//
 	// ProvisionedThroughput is a required field
@@ -10284,7 +10349,7 @@ type UpdateItemInput struct {
 	_ struct{} `type:"structure"`
 
 	// This is a legacy parameter. Use UpdateExpression instead. For more information,
-	// see AttributeUpdates (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributeUpdates.html)
+	// see AttributeUpdates (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.AttributeUpdates.html)
 	// in the Amazon DynamoDB Developer Guide.
 	AttributeUpdates map[string]AttributeValueUpdate `type:"map"`
 
@@ -10302,17 +10367,17 @@ type UpdateItemInput struct {
 	//    *  Logical operators: AND | OR | NOT
 	//
 	// For more information on condition expressions, see Specifying Conditions
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ConditionExpression *string `type:"string"`
 
 	// This is a legacy parameter. Use ConditionExpression instead. For more information,
-	// see ConditionalOperator (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
+	// see ConditionalOperator (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.ConditionalOperator.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ConditionalOperator ConditionalOperator `type:"string" enum:"true"`
 
 	// This is a legacy parameter. Use ConditionExpression instead. For more information,
-	// see Expected (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html)
+	// see Expected (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/LegacyConditionalParameters.Expected.html)
 	// in the Amazon DynamoDB Developer Guide.
 	Expected map[string]ExpectedAttributeValue `type:"map"`
 
@@ -10335,7 +10400,7 @@ type UpdateItemInput struct {
 	//
 	// The name of this attribute conflicts with a reserved word, so it cannot be
 	// used directly in an expression. (For the complete list of reserved words,
-	// see Reserved Words (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
+	// see Reserved Words (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ReservedWords.html)
 	// in the Amazon DynamoDB Developer Guide). To work around this, you could specify
 	// the following for ExpressionAttributeNames:
 	//
@@ -10349,7 +10414,7 @@ type UpdateItemInput struct {
 	// are placeholders for the actual value at runtime.
 	//
 	// For more information on expression attribute names, see Accessing Item Attributes
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.AccessingItemAttributes.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ExpressionAttributeNames map[string]string `type:"map"`
 
@@ -10371,7 +10436,7 @@ type UpdateItemInput struct {
 	// ProductStatus IN (:avail, :back, :disc)
 	//
 	// For more information on expression attribute values, see Specifying Conditions
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.SpecifyingConditions.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ExpressionAttributeValues map[string]AttributeValue `type:"map"`
 
@@ -10510,7 +10575,7 @@ type UpdateItemInput struct {
 	// SET a=:value1, b=:value2 DELETE :value3, :value4, :value5
 	//
 	// For more information on update expressions, see Modifying Items and Attributes
-	// (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Modifying.html)
+	// (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/Expressions.Modifying.html)
 	// in the Amazon DynamoDB Developer Guide.
 	UpdateExpression *string `type:"string"`
 }
@@ -10564,7 +10629,7 @@ type UpdateItemOutput struct {
 	// includes the total provisioned throughput consumed, along with statistics
 	// for the table and any indexes involved in the operation. ConsumedCapacity
 	// is only returned if the ReturnConsumedCapacity parameter was specified. For
-	// more information, see Provisioned Throughput (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
+	// more information, see Provisioned Throughput (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/ProvisionedThroughputIntro.html)
 	// in the Amazon DynamoDB Developer Guide.
 	ConsumedCapacity *ConsumedCapacity `type:"structure"`
 
@@ -10638,7 +10703,7 @@ type UpdateTableInput struct {
 	//
 	//    * Delete - remove a global secondary index from the table.
 	//
-	// For more information, see Managing Global Secondary Indexes (http://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html)
+	// For more information, see Managing Global Secondary Indexes (https://docs.aws.amazon.com/amazondynamodb/latest/developerguide/GSI.OnlineOps.html)
 	// in the Amazon DynamoDB Developer Guide.
 	GlobalSecondaryIndexUpdates []GlobalSecondaryIndexUpdate `type:"list"`
 
@@ -10876,8 +10941,9 @@ type BackupType string
 
 // Enum values for BackupType
 const (
-	BackupTypeUser   BackupType = "USER"
-	BackupTypeSystem BackupType = "SYSTEM"
+	BackupTypeUser      BackupType = "USER"
+	BackupTypeSystem    BackupType = "SYSTEM"
+	BackupTypeAwsBackup BackupType = "AWS_BACKUP"
 )
 
 func (enum BackupType) MarshalValue() (string, error) {
@@ -10893,9 +10959,10 @@ type BackupTypeFilter string
 
 // Enum values for BackupTypeFilter
 const (
-	BackupTypeFilterUser   BackupTypeFilter = "USER"
-	BackupTypeFilterSystem BackupTypeFilter = "SYSTEM"
-	BackupTypeFilterAll    BackupTypeFilter = "ALL"
+	BackupTypeFilterUser      BackupTypeFilter = "USER"
+	BackupTypeFilterSystem    BackupTypeFilter = "SYSTEM"
+	BackupTypeFilterAwsBackup BackupTypeFilter = "AWS_BACKUP"
+	BackupTypeFilterAll       BackupTypeFilter = "ALL"
 )
 
 func (enum BackupTypeFilter) MarshalValue() (string, error) {

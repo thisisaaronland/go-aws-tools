@@ -3,6 +3,8 @@
 package quicksight
 
 import (
+	"context"
+
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/internal/awsutil"
 	"github.com/aws/aws-sdk-go-v2/private/protocol"
@@ -18,7 +20,8 @@ type CreateGroupRequest struct {
 }
 
 // Send marshals and sends the CreateGroup API request.
-func (r CreateGroupRequest) Send() (*CreateGroupOutput, error) {
+func (r CreateGroupRequest) Send(ctx context.Context) (*CreateGroupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -43,7 +46,7 @@ func (r CreateGroupRequest) Send() (*CreateGroupOutput, error) {
 //
 //    // Example sending a request using the CreateGroupRequest method.
 //    req := client.CreateGroupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -77,7 +80,8 @@ type CreateGroupMembershipRequest struct {
 }
 
 // Send marshals and sends the CreateGroupMembership API request.
-func (r CreateGroupMembershipRequest) Send() (*CreateGroupMembershipOutput, error) {
+func (r CreateGroupMembershipRequest) Send(ctx context.Context) (*CreateGroupMembershipOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -106,7 +110,7 @@ func (r CreateGroupMembershipRequest) Send() (*CreateGroupMembershipOutput, erro
 //
 //    // Example sending a request using the CreateGroupMembershipRequest method.
 //    req := client.CreateGroupMembershipRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -140,7 +144,8 @@ type DeleteGroupRequest struct {
 }
 
 // Send marshals and sends the DeleteGroup API request.
-func (r DeleteGroupRequest) Send() (*DeleteGroupOutput, error) {
+func (r DeleteGroupRequest) Send(ctx context.Context) (*DeleteGroupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -163,7 +168,7 @@ func (r DeleteGroupRequest) Send() (*DeleteGroupOutput, error) {
 //
 //    // Example sending a request using the DeleteGroupRequest method.
 //    req := client.DeleteGroupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -197,7 +202,8 @@ type DeleteGroupMembershipRequest struct {
 }
 
 // Send marshals and sends the DeleteGroupMembership API request.
-func (r DeleteGroupMembershipRequest) Send() (*DeleteGroupMembershipOutput, error) {
+func (r DeleteGroupMembershipRequest) Send(ctx context.Context) (*DeleteGroupMembershipOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -225,7 +231,7 @@ func (r DeleteGroupMembershipRequest) Send() (*DeleteGroupMembershipOutput, erro
 //
 //    // Example sending a request using the DeleteGroupMembershipRequest method.
 //    req := client.DeleteGroupMembershipRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -259,7 +265,8 @@ type DeleteUserRequest struct {
 }
 
 // Send marshals and sends the DeleteUser API request.
-func (r DeleteUserRequest) Send() (*DeleteUserOutput, error) {
+func (r DeleteUserRequest) Send(ctx context.Context) (*DeleteUserOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -285,7 +292,7 @@ func (r DeleteUserRequest) Send() (*DeleteUserOutput, error) {
 //
 //    // Example sending a request using the DeleteUserRequest method.
 //    req := client.DeleteUserRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -309,6 +316,57 @@ func (c *QuickSight) DeleteUserRequest(input *DeleteUserInput) DeleteUserRequest
 	return DeleteUserRequest{Request: req, Input: input, Copy: c.DeleteUserRequest}
 }
 
+const opDeleteUserByPrincipalId = "DeleteUserByPrincipalId"
+
+// DeleteUserByPrincipalIdRequest is a API request type for the DeleteUserByPrincipalId API operation.
+type DeleteUserByPrincipalIdRequest struct {
+	*aws.Request
+	Input *DeleteUserByPrincipalIdInput
+	Copy  func(*DeleteUserByPrincipalIdInput) DeleteUserByPrincipalIdRequest
+}
+
+// Send marshals and sends the DeleteUserByPrincipalId API request.
+func (r DeleteUserByPrincipalIdRequest) Send(ctx context.Context) (*DeleteUserByPrincipalIdOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*DeleteUserByPrincipalIdOutput), nil
+}
+
+// DeleteUserByPrincipalIdRequest returns a request value for making API operation for
+// Amazon QuickSight.
+//
+// Deletes a user after locating the user by its principal ID.
+//
+//    // Example sending a request using the DeleteUserByPrincipalIdRequest method.
+//    req := client.DeleteUserByPrincipalIdRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/quicksight-2018-04-01/DeleteUserByPrincipalId
+func (c *QuickSight) DeleteUserByPrincipalIdRequest(input *DeleteUserByPrincipalIdInput) DeleteUserByPrincipalIdRequest {
+	op := &aws.Operation{
+		Name:       opDeleteUserByPrincipalId,
+		HTTPMethod: "DELETE",
+		HTTPPath:   "/accounts/{AwsAccountId}/namespaces/{Namespace}/user-principals/{PrincipalId}",
+	}
+
+	if input == nil {
+		input = &DeleteUserByPrincipalIdInput{}
+	}
+
+	output := &DeleteUserByPrincipalIdOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return DeleteUserByPrincipalIdRequest{Request: req, Input: input, Copy: c.DeleteUserByPrincipalIdRequest}
+}
+
 const opDescribeGroup = "DescribeGroup"
 
 // DescribeGroupRequest is a API request type for the DescribeGroup API operation.
@@ -319,7 +377,8 @@ type DescribeGroupRequest struct {
 }
 
 // Send marshals and sends the DescribeGroup API request.
-func (r DescribeGroupRequest) Send() (*DescribeGroupOutput, error) {
+func (r DescribeGroupRequest) Send(ctx context.Context) (*DescribeGroupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -345,7 +404,7 @@ func (r DescribeGroupRequest) Send() (*DescribeGroupOutput, error) {
 //
 //    // Example sending a request using the DescribeGroupRequest method.
 //    req := client.DescribeGroupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -379,7 +438,8 @@ type DescribeUserRequest struct {
 }
 
 // Send marshals and sends the DescribeUser API request.
-func (r DescribeUserRequest) Send() (*DescribeUserOutput, error) {
+func (r DescribeUserRequest) Send(ctx context.Context) (*DescribeUserOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -405,7 +465,7 @@ func (r DescribeUserRequest) Send() (*DescribeUserOutput, error) {
 //
 //    // Example sending a request using the DescribeUserRequest method.
 //    req := client.DescribeUserRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -439,7 +499,8 @@ type GetDashboardEmbedUrlRequest struct {
 }
 
 // Send marshals and sends the GetDashboardEmbedUrl API request.
-func (r GetDashboardEmbedUrlRequest) Send() (*GetDashboardEmbedUrlOutput, error) {
+func (r GetDashboardEmbedUrlRequest) Send(ctx context.Context) (*GetDashboardEmbedUrlOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -481,7 +542,7 @@ func (r GetDashboardEmbedUrlRequest) Send() (*GetDashboardEmbedUrlOutput, error)
 //
 //    // Example sending a request using the GetDashboardEmbedUrlRequest method.
 //    req := client.GetDashboardEmbedUrlRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -515,7 +576,8 @@ type ListGroupMembershipsRequest struct {
 }
 
 // Send marshals and sends the ListGroupMemberships API request.
-func (r ListGroupMembershipsRequest) Send() (*ListGroupMembershipsOutput, error) {
+func (r ListGroupMembershipsRequest) Send(ctx context.Context) (*ListGroupMembershipsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -539,7 +601,7 @@ func (r ListGroupMembershipsRequest) Send() (*ListGroupMembershipsOutput, error)
 //
 //    // Example sending a request using the ListGroupMembershipsRequest method.
 //    req := client.ListGroupMembershipsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -573,7 +635,8 @@ type ListGroupsRequest struct {
 }
 
 // Send marshals and sends the ListGroups API request.
-func (r ListGroupsRequest) Send() (*ListGroupsOutput, error) {
+func (r ListGroupsRequest) Send(ctx context.Context) (*ListGroupsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -597,7 +660,7 @@ func (r ListGroupsRequest) Send() (*ListGroupsOutput, error) {
 //
 //    // Example sending a request using the ListGroupsRequest method.
 //    req := client.ListGroupsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -631,7 +694,8 @@ type ListUserGroupsRequest struct {
 }
 
 // Send marshals and sends the ListUserGroups API request.
-func (r ListUserGroupsRequest) Send() (*ListUserGroupsOutput, error) {
+func (r ListUserGroupsRequest) Send(ctx context.Context) (*ListUserGroupsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -657,7 +721,7 @@ func (r ListUserGroupsRequest) Send() (*ListUserGroupsOutput, error) {
 //
 //    // Example sending a request using the ListUserGroupsRequest method.
 //    req := client.ListUserGroupsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -691,7 +755,8 @@ type ListUsersRequest struct {
 }
 
 // Send marshals and sends the ListUsers API request.
-func (r ListUsersRequest) Send() (*ListUsersOutput, error) {
+func (r ListUsersRequest) Send(ctx context.Context) (*ListUsersOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -716,7 +781,7 @@ func (r ListUsersRequest) Send() (*ListUsersOutput, error) {
 //
 //    // Example sending a request using the ListUsersRequest method.
 //    req := client.ListUsersRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -750,7 +815,8 @@ type RegisterUserRequest struct {
 }
 
 // Send marshals and sends the RegisterUser API request.
-func (r RegisterUserRequest) Send() (*RegisterUserOutput, error) {
+func (r RegisterUserRequest) Send(ctx context.Context) (*RegisterUserOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -780,7 +846,7 @@ func (r RegisterUserRequest) Send() (*RegisterUserOutput, error) {
 //
 //    // Example sending a request using the RegisterUserRequest method.
 //    req := client.RegisterUserRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -814,7 +880,8 @@ type UpdateGroupRequest struct {
 }
 
 // Send marshals and sends the UpdateGroup API request.
-func (r UpdateGroupRequest) Send() (*UpdateGroupOutput, error) {
+func (r UpdateGroupRequest) Send(ctx context.Context) (*UpdateGroupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -839,7 +906,7 @@ func (r UpdateGroupRequest) Send() (*UpdateGroupOutput, error) {
 //
 //    // Example sending a request using the UpdateGroupRequest method.
 //    req := client.UpdateGroupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -873,7 +940,8 @@ type UpdateUserRequest struct {
 }
 
 // Send marshals and sends the UpdateUser API request.
-func (r UpdateUserRequest) Send() (*UpdateUserOutput, error) {
+func (r UpdateUserRequest) Send(ctx context.Context) (*UpdateUserOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -900,7 +968,7 @@ func (r UpdateUserRequest) Send() (*UpdateUserOutput, error) {
 //
 //    // Example sending a request using the UpdateUserRequest method.
 //    req := client.UpdateUserRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1488,6 +1556,127 @@ func (s DeleteGroupOutput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/quicksight-2018-04-01/DeleteUserByPrincipalIdRequest
+type DeleteUserByPrincipalIdInput struct {
+	_ struct{} `type:"structure"`
+
+	// The ID for the AWS account that the user is in. Currently, you use the ID
+	// for the AWS account that contains your Amazon QuickSight account.
+	//
+	// AwsAccountId is a required field
+	AwsAccountId *string `location:"uri" locationName:"AwsAccountId" min:"12" type:"string" required:"true"`
+
+	// The namespace. Currently, you should set this to default.
+	//
+	// Namespace is a required field
+	Namespace *string `location:"uri" locationName:"Namespace" type:"string" required:"true"`
+
+	// The principal ID of the user.
+	//
+	// PrincipalId is a required field
+	PrincipalId *string `location:"uri" locationName:"PrincipalId" type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s DeleteUserByPrincipalIdInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DeleteUserByPrincipalIdInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteUserByPrincipalIdInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteUserByPrincipalIdInput"}
+
+	if s.AwsAccountId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("AwsAccountId"))
+	}
+	if s.AwsAccountId != nil && len(*s.AwsAccountId) < 12 {
+		invalidParams.Add(aws.NewErrParamMinLen("AwsAccountId", 12))
+	}
+
+	if s.Namespace == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Namespace"))
+	}
+
+	if s.PrincipalId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("PrincipalId"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s DeleteUserByPrincipalIdInput) MarshalFields(e protocol.FieldEncoder) error {
+	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.0"), protocol.Metadata{})
+
+	if s.AwsAccountId != nil {
+		v := *s.AwsAccountId
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "AwsAccountId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Namespace != nil {
+		v := *s.Namespace
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "Namespace", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.PrincipalId != nil {
+		v := *s.PrincipalId
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "PrincipalId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/quicksight-2018-04-01/DeleteUserByPrincipalIdResponse
+type DeleteUserByPrincipalIdOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// The AWS request ID for this operation.
+	RequestId *string `type:"string"`
+
+	// The http status of the request.
+	Status *int64 `location:"statusCode" type:"integer"`
+}
+
+// String returns the string representation
+func (s DeleteUserByPrincipalIdOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DeleteUserByPrincipalIdOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s DeleteUserByPrincipalIdOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s DeleteUserByPrincipalIdOutput) MarshalFields(e protocol.FieldEncoder) error {
+	if s.RequestId != nil {
+		v := *s.RequestId
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "RequestId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	// ignoring invalid encode state, StatusCode. Status
+	return nil
+}
+
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/quicksight-2018-04-01/DeleteUserRequest
 type DeleteUserInput struct {
 	_ struct{} `type:"structure"`
@@ -2057,6 +2246,9 @@ type Group struct {
 
 	// The name of the group.
 	GroupName *string `min:"1" type:"string"`
+
+	// The principal ID of the group.
+	PrincipalId *string `type:"string"`
 }
 
 // String returns the string representation
@@ -2088,6 +2280,12 @@ func (s Group) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "GroupName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.PrincipalId != nil {
+		v := *s.PrincipalId
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "PrincipalId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -2811,7 +3009,7 @@ type RegisterUserInput struct {
 	// has a different session name. For more information on assuming IAM roles,
 	// see assume-role (https://docs.aws.amazon.com/cli/latest/reference/sts/assume-role.html)
 	// in the AWS CLI Reference.
-	SessionName *string `type:"string"`
+	SessionName *string `min:"2" type:"string"`
 
 	// The Amazon QuickSight user name that you want to create for the user you
 	// are registering.
@@ -2861,6 +3059,9 @@ func (s *RegisterUserInput) Validate() error {
 
 	if s.Namespace == nil {
 		invalidParams.Add(aws.NewErrParamRequired("Namespace"))
+	}
+	if s.SessionName != nil && len(*s.SessionName) < 2 {
+		invalidParams.Add(aws.NewErrParamMinLen("SessionName", 2))
 	}
 	if s.UserName != nil && len(*s.UserName) < 1 {
 		invalidParams.Add(aws.NewErrParamMinLen("UserName", 1))
@@ -3324,6 +3525,9 @@ type User struct {
 	// The type of identity authentication used by the user.
 	IdentityType IdentityType `type:"string" enum:"true"`
 
+	// The principal ID of the user.
+	PrincipalId *string `type:"string"`
+
 	// The Amazon QuickSight role for the user.
 	Role UserRole `type:"string" enum:"true"`
 
@@ -3366,6 +3570,12 @@ func (s User) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "IdentityType", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	if s.PrincipalId != nil {
+		v := *s.PrincipalId
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "PrincipalId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if len(s.Role) > 0 {
 		v := s.Role

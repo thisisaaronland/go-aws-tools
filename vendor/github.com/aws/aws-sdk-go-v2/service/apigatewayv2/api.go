@@ -3,6 +3,7 @@
 package apigatewayv2
 
 import (
+	"context"
 	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -21,7 +22,8 @@ type CreateApiRequest struct {
 }
 
 // Send marshals and sends the CreateApi API request.
-func (r CreateApiRequest) Send() (*CreateApiOutput, error) {
+func (r CreateApiRequest) Send(ctx context.Context) (*CreateApiOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -37,7 +39,7 @@ func (r CreateApiRequest) Send() (*CreateApiOutput, error) {
 //
 //    // Example sending a request using the CreateApiRequest method.
 //    req := client.CreateApiRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -71,7 +73,8 @@ type CreateApiMappingRequest struct {
 }
 
 // Send marshals and sends the CreateApiMapping API request.
-func (r CreateApiMappingRequest) Send() (*CreateApiMappingOutput, error) {
+func (r CreateApiMappingRequest) Send(ctx context.Context) (*CreateApiMappingOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -87,7 +90,7 @@ func (r CreateApiMappingRequest) Send() (*CreateApiMappingOutput, error) {
 //
 //    // Example sending a request using the CreateApiMappingRequest method.
 //    req := client.CreateApiMappingRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -121,7 +124,8 @@ type CreateAuthorizerRequest struct {
 }
 
 // Send marshals and sends the CreateAuthorizer API request.
-func (r CreateAuthorizerRequest) Send() (*CreateAuthorizerOutput, error) {
+func (r CreateAuthorizerRequest) Send(ctx context.Context) (*CreateAuthorizerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -137,7 +141,7 @@ func (r CreateAuthorizerRequest) Send() (*CreateAuthorizerOutput, error) {
 //
 //    // Example sending a request using the CreateAuthorizerRequest method.
 //    req := client.CreateAuthorizerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -171,7 +175,8 @@ type CreateDeploymentRequest struct {
 }
 
 // Send marshals and sends the CreateDeployment API request.
-func (r CreateDeploymentRequest) Send() (*CreateDeploymentOutput, error) {
+func (r CreateDeploymentRequest) Send(ctx context.Context) (*CreateDeploymentOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -187,7 +192,7 @@ func (r CreateDeploymentRequest) Send() (*CreateDeploymentOutput, error) {
 //
 //    // Example sending a request using the CreateDeploymentRequest method.
 //    req := client.CreateDeploymentRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -221,7 +226,8 @@ type CreateDomainNameRequest struct {
 }
 
 // Send marshals and sends the CreateDomainName API request.
-func (r CreateDomainNameRequest) Send() (*CreateDomainNameOutput, error) {
+func (r CreateDomainNameRequest) Send(ctx context.Context) (*CreateDomainNameOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -237,7 +243,7 @@ func (r CreateDomainNameRequest) Send() (*CreateDomainNameOutput, error) {
 //
 //    // Example sending a request using the CreateDomainNameRequest method.
 //    req := client.CreateDomainNameRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -271,7 +277,8 @@ type CreateIntegrationRequest struct {
 }
 
 // Send marshals and sends the CreateIntegration API request.
-func (r CreateIntegrationRequest) Send() (*CreateIntegrationOutput, error) {
+func (r CreateIntegrationRequest) Send(ctx context.Context) (*CreateIntegrationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -287,7 +294,7 @@ func (r CreateIntegrationRequest) Send() (*CreateIntegrationOutput, error) {
 //
 //    // Example sending a request using the CreateIntegrationRequest method.
 //    req := client.CreateIntegrationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -321,7 +328,8 @@ type CreateIntegrationResponseRequest struct {
 }
 
 // Send marshals and sends the CreateIntegrationResponse API request.
-func (r CreateIntegrationResponseRequest) Send() (*CreateIntegrationResponseOutput, error) {
+func (r CreateIntegrationResponseRequest) Send(ctx context.Context) (*CreateIntegrationResponseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -337,7 +345,7 @@ func (r CreateIntegrationResponseRequest) Send() (*CreateIntegrationResponseOutp
 //
 //    // Example sending a request using the CreateIntegrationResponseRequest method.
 //    req := client.CreateIntegrationResponseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -371,7 +379,8 @@ type CreateModelRequest struct {
 }
 
 // Send marshals and sends the CreateModel API request.
-func (r CreateModelRequest) Send() (*CreateModelOutput, error) {
+func (r CreateModelRequest) Send(ctx context.Context) (*CreateModelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -387,7 +396,7 @@ func (r CreateModelRequest) Send() (*CreateModelOutput, error) {
 //
 //    // Example sending a request using the CreateModelRequest method.
 //    req := client.CreateModelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -421,7 +430,8 @@ type CreateRouteRequest struct {
 }
 
 // Send marshals and sends the CreateRoute API request.
-func (r CreateRouteRequest) Send() (*CreateRouteOutput, error) {
+func (r CreateRouteRequest) Send(ctx context.Context) (*CreateRouteOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -437,7 +447,7 @@ func (r CreateRouteRequest) Send() (*CreateRouteOutput, error) {
 //
 //    // Example sending a request using the CreateRouteRequest method.
 //    req := client.CreateRouteRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -471,7 +481,8 @@ type CreateRouteResponseRequest struct {
 }
 
 // Send marshals and sends the CreateRouteResponse API request.
-func (r CreateRouteResponseRequest) Send() (*CreateRouteResponseOutput, error) {
+func (r CreateRouteResponseRequest) Send(ctx context.Context) (*CreateRouteResponseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -487,7 +498,7 @@ func (r CreateRouteResponseRequest) Send() (*CreateRouteResponseOutput, error) {
 //
 //    // Example sending a request using the CreateRouteResponseRequest method.
 //    req := client.CreateRouteResponseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -521,7 +532,8 @@ type CreateStageRequest struct {
 }
 
 // Send marshals and sends the CreateStage API request.
-func (r CreateStageRequest) Send() (*CreateStageOutput, error) {
+func (r CreateStageRequest) Send(ctx context.Context) (*CreateStageOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -537,7 +549,7 @@ func (r CreateStageRequest) Send() (*CreateStageOutput, error) {
 //
 //    // Example sending a request using the CreateStageRequest method.
 //    req := client.CreateStageRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -571,7 +583,8 @@ type DeleteApiRequest struct {
 }
 
 // Send marshals and sends the DeleteApi API request.
-func (r DeleteApiRequest) Send() (*DeleteApiOutput, error) {
+func (r DeleteApiRequest) Send(ctx context.Context) (*DeleteApiOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -587,7 +600,7 @@ func (r DeleteApiRequest) Send() (*DeleteApiOutput, error) {
 //
 //    // Example sending a request using the DeleteApiRequest method.
 //    req := client.DeleteApiRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -623,7 +636,8 @@ type DeleteApiMappingRequest struct {
 }
 
 // Send marshals and sends the DeleteApiMapping API request.
-func (r DeleteApiMappingRequest) Send() (*DeleteApiMappingOutput, error) {
+func (r DeleteApiMappingRequest) Send(ctx context.Context) (*DeleteApiMappingOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -639,7 +653,7 @@ func (r DeleteApiMappingRequest) Send() (*DeleteApiMappingOutput, error) {
 //
 //    // Example sending a request using the DeleteApiMappingRequest method.
 //    req := client.DeleteApiMappingRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -675,7 +689,8 @@ type DeleteAuthorizerRequest struct {
 }
 
 // Send marshals and sends the DeleteAuthorizer API request.
-func (r DeleteAuthorizerRequest) Send() (*DeleteAuthorizerOutput, error) {
+func (r DeleteAuthorizerRequest) Send(ctx context.Context) (*DeleteAuthorizerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -691,7 +706,7 @@ func (r DeleteAuthorizerRequest) Send() (*DeleteAuthorizerOutput, error) {
 //
 //    // Example sending a request using the DeleteAuthorizerRequest method.
 //    req := client.DeleteAuthorizerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -727,7 +742,8 @@ type DeleteDeploymentRequest struct {
 }
 
 // Send marshals and sends the DeleteDeployment API request.
-func (r DeleteDeploymentRequest) Send() (*DeleteDeploymentOutput, error) {
+func (r DeleteDeploymentRequest) Send(ctx context.Context) (*DeleteDeploymentOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -743,7 +759,7 @@ func (r DeleteDeploymentRequest) Send() (*DeleteDeploymentOutput, error) {
 //
 //    // Example sending a request using the DeleteDeploymentRequest method.
 //    req := client.DeleteDeploymentRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -779,7 +795,8 @@ type DeleteDomainNameRequest struct {
 }
 
 // Send marshals and sends the DeleteDomainName API request.
-func (r DeleteDomainNameRequest) Send() (*DeleteDomainNameOutput, error) {
+func (r DeleteDomainNameRequest) Send(ctx context.Context) (*DeleteDomainNameOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -795,7 +812,7 @@ func (r DeleteDomainNameRequest) Send() (*DeleteDomainNameOutput, error) {
 //
 //    // Example sending a request using the DeleteDomainNameRequest method.
 //    req := client.DeleteDomainNameRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -831,7 +848,8 @@ type DeleteIntegrationRequest struct {
 }
 
 // Send marshals and sends the DeleteIntegration API request.
-func (r DeleteIntegrationRequest) Send() (*DeleteIntegrationOutput, error) {
+func (r DeleteIntegrationRequest) Send(ctx context.Context) (*DeleteIntegrationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -847,7 +865,7 @@ func (r DeleteIntegrationRequest) Send() (*DeleteIntegrationOutput, error) {
 //
 //    // Example sending a request using the DeleteIntegrationRequest method.
 //    req := client.DeleteIntegrationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -883,7 +901,8 @@ type DeleteIntegrationResponseRequest struct {
 }
 
 // Send marshals and sends the DeleteIntegrationResponse API request.
-func (r DeleteIntegrationResponseRequest) Send() (*DeleteIntegrationResponseOutput, error) {
+func (r DeleteIntegrationResponseRequest) Send(ctx context.Context) (*DeleteIntegrationResponseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -899,7 +918,7 @@ func (r DeleteIntegrationResponseRequest) Send() (*DeleteIntegrationResponseOutp
 //
 //    // Example sending a request using the DeleteIntegrationResponseRequest method.
 //    req := client.DeleteIntegrationResponseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -935,7 +954,8 @@ type DeleteModelRequest struct {
 }
 
 // Send marshals and sends the DeleteModel API request.
-func (r DeleteModelRequest) Send() (*DeleteModelOutput, error) {
+func (r DeleteModelRequest) Send(ctx context.Context) (*DeleteModelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -951,7 +971,7 @@ func (r DeleteModelRequest) Send() (*DeleteModelOutput, error) {
 //
 //    // Example sending a request using the DeleteModelRequest method.
 //    req := client.DeleteModelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -987,7 +1007,8 @@ type DeleteRouteRequest struct {
 }
 
 // Send marshals and sends the DeleteRoute API request.
-func (r DeleteRouteRequest) Send() (*DeleteRouteOutput, error) {
+func (r DeleteRouteRequest) Send(ctx context.Context) (*DeleteRouteOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1003,7 +1024,7 @@ func (r DeleteRouteRequest) Send() (*DeleteRouteOutput, error) {
 //
 //    // Example sending a request using the DeleteRouteRequest method.
 //    req := client.DeleteRouteRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1039,7 +1060,8 @@ type DeleteRouteResponseRequest struct {
 }
 
 // Send marshals and sends the DeleteRouteResponse API request.
-func (r DeleteRouteResponseRequest) Send() (*DeleteRouteResponseOutput, error) {
+func (r DeleteRouteResponseRequest) Send(ctx context.Context) (*DeleteRouteResponseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1055,7 +1077,7 @@ func (r DeleteRouteResponseRequest) Send() (*DeleteRouteResponseOutput, error) {
 //
 //    // Example sending a request using the DeleteRouteResponseRequest method.
 //    req := client.DeleteRouteResponseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1091,7 +1113,8 @@ type DeleteStageRequest struct {
 }
 
 // Send marshals and sends the DeleteStage API request.
-func (r DeleteStageRequest) Send() (*DeleteStageOutput, error) {
+func (r DeleteStageRequest) Send(ctx context.Context) (*DeleteStageOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1107,7 +1130,7 @@ func (r DeleteStageRequest) Send() (*DeleteStageOutput, error) {
 //
 //    // Example sending a request using the DeleteStageRequest method.
 //    req := client.DeleteStageRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1143,7 +1166,8 @@ type GetApiRequest struct {
 }
 
 // Send marshals and sends the GetApi API request.
-func (r GetApiRequest) Send() (*GetApiOutput, error) {
+func (r GetApiRequest) Send(ctx context.Context) (*GetApiOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1159,7 +1183,7 @@ func (r GetApiRequest) Send() (*GetApiOutput, error) {
 //
 //    // Example sending a request using the GetApiRequest method.
 //    req := client.GetApiRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1193,7 +1217,8 @@ type GetApiMappingRequest struct {
 }
 
 // Send marshals and sends the GetApiMapping API request.
-func (r GetApiMappingRequest) Send() (*GetApiMappingOutput, error) {
+func (r GetApiMappingRequest) Send(ctx context.Context) (*GetApiMappingOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1209,7 +1234,7 @@ func (r GetApiMappingRequest) Send() (*GetApiMappingOutput, error) {
 //
 //    // Example sending a request using the GetApiMappingRequest method.
 //    req := client.GetApiMappingRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1243,7 +1268,8 @@ type GetApiMappingsRequest struct {
 }
 
 // Send marshals and sends the GetApiMappings API request.
-func (r GetApiMappingsRequest) Send() (*GetApiMappingsOutput, error) {
+func (r GetApiMappingsRequest) Send(ctx context.Context) (*GetApiMappingsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1259,7 +1285,7 @@ func (r GetApiMappingsRequest) Send() (*GetApiMappingsOutput, error) {
 //
 //    // Example sending a request using the GetApiMappingsRequest method.
 //    req := client.GetApiMappingsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1293,7 +1319,8 @@ type GetApisRequest struct {
 }
 
 // Send marshals and sends the GetApis API request.
-func (r GetApisRequest) Send() (*GetApisOutput, error) {
+func (r GetApisRequest) Send(ctx context.Context) (*GetApisOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1309,7 +1336,7 @@ func (r GetApisRequest) Send() (*GetApisOutput, error) {
 //
 //    // Example sending a request using the GetApisRequest method.
 //    req := client.GetApisRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1343,7 +1370,8 @@ type GetAuthorizerRequest struct {
 }
 
 // Send marshals and sends the GetAuthorizer API request.
-func (r GetAuthorizerRequest) Send() (*GetAuthorizerOutput, error) {
+func (r GetAuthorizerRequest) Send(ctx context.Context) (*GetAuthorizerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1359,7 +1387,7 @@ func (r GetAuthorizerRequest) Send() (*GetAuthorizerOutput, error) {
 //
 //    // Example sending a request using the GetAuthorizerRequest method.
 //    req := client.GetAuthorizerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1393,7 +1421,8 @@ type GetAuthorizersRequest struct {
 }
 
 // Send marshals and sends the GetAuthorizers API request.
-func (r GetAuthorizersRequest) Send() (*GetAuthorizersOutput, error) {
+func (r GetAuthorizersRequest) Send(ctx context.Context) (*GetAuthorizersOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1409,7 +1438,7 @@ func (r GetAuthorizersRequest) Send() (*GetAuthorizersOutput, error) {
 //
 //    // Example sending a request using the GetAuthorizersRequest method.
 //    req := client.GetAuthorizersRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1443,7 +1472,8 @@ type GetDeploymentRequest struct {
 }
 
 // Send marshals and sends the GetDeployment API request.
-func (r GetDeploymentRequest) Send() (*GetDeploymentOutput, error) {
+func (r GetDeploymentRequest) Send(ctx context.Context) (*GetDeploymentOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1459,7 +1489,7 @@ func (r GetDeploymentRequest) Send() (*GetDeploymentOutput, error) {
 //
 //    // Example sending a request using the GetDeploymentRequest method.
 //    req := client.GetDeploymentRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1493,7 +1523,8 @@ type GetDeploymentsRequest struct {
 }
 
 // Send marshals and sends the GetDeployments API request.
-func (r GetDeploymentsRequest) Send() (*GetDeploymentsOutput, error) {
+func (r GetDeploymentsRequest) Send(ctx context.Context) (*GetDeploymentsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1509,7 +1540,7 @@ func (r GetDeploymentsRequest) Send() (*GetDeploymentsOutput, error) {
 //
 //    // Example sending a request using the GetDeploymentsRequest method.
 //    req := client.GetDeploymentsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1543,7 +1574,8 @@ type GetDomainNameRequest struct {
 }
 
 // Send marshals and sends the GetDomainName API request.
-func (r GetDomainNameRequest) Send() (*GetDomainNameOutput, error) {
+func (r GetDomainNameRequest) Send(ctx context.Context) (*GetDomainNameOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1559,7 +1591,7 @@ func (r GetDomainNameRequest) Send() (*GetDomainNameOutput, error) {
 //
 //    // Example sending a request using the GetDomainNameRequest method.
 //    req := client.GetDomainNameRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1593,7 +1625,8 @@ type GetDomainNamesRequest struct {
 }
 
 // Send marshals and sends the GetDomainNames API request.
-func (r GetDomainNamesRequest) Send() (*GetDomainNamesOutput, error) {
+func (r GetDomainNamesRequest) Send(ctx context.Context) (*GetDomainNamesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1609,7 +1642,7 @@ func (r GetDomainNamesRequest) Send() (*GetDomainNamesOutput, error) {
 //
 //    // Example sending a request using the GetDomainNamesRequest method.
 //    req := client.GetDomainNamesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1643,7 +1676,8 @@ type GetIntegrationRequest struct {
 }
 
 // Send marshals and sends the GetIntegration API request.
-func (r GetIntegrationRequest) Send() (*GetIntegrationOutput, error) {
+func (r GetIntegrationRequest) Send(ctx context.Context) (*GetIntegrationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1659,7 +1693,7 @@ func (r GetIntegrationRequest) Send() (*GetIntegrationOutput, error) {
 //
 //    // Example sending a request using the GetIntegrationRequest method.
 //    req := client.GetIntegrationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1693,7 +1727,8 @@ type GetIntegrationResponseRequest struct {
 }
 
 // Send marshals and sends the GetIntegrationResponse API request.
-func (r GetIntegrationResponseRequest) Send() (*GetIntegrationResponseOutput, error) {
+func (r GetIntegrationResponseRequest) Send(ctx context.Context) (*GetIntegrationResponseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1709,7 +1744,7 @@ func (r GetIntegrationResponseRequest) Send() (*GetIntegrationResponseOutput, er
 //
 //    // Example sending a request using the GetIntegrationResponseRequest method.
 //    req := client.GetIntegrationResponseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1743,7 +1778,8 @@ type GetIntegrationResponsesRequest struct {
 }
 
 // Send marshals and sends the GetIntegrationResponses API request.
-func (r GetIntegrationResponsesRequest) Send() (*GetIntegrationResponsesOutput, error) {
+func (r GetIntegrationResponsesRequest) Send(ctx context.Context) (*GetIntegrationResponsesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1759,7 +1795,7 @@ func (r GetIntegrationResponsesRequest) Send() (*GetIntegrationResponsesOutput, 
 //
 //    // Example sending a request using the GetIntegrationResponsesRequest method.
 //    req := client.GetIntegrationResponsesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1793,7 +1829,8 @@ type GetIntegrationsRequest struct {
 }
 
 // Send marshals and sends the GetIntegrations API request.
-func (r GetIntegrationsRequest) Send() (*GetIntegrationsOutput, error) {
+func (r GetIntegrationsRequest) Send(ctx context.Context) (*GetIntegrationsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1809,7 +1846,7 @@ func (r GetIntegrationsRequest) Send() (*GetIntegrationsOutput, error) {
 //
 //    // Example sending a request using the GetIntegrationsRequest method.
 //    req := client.GetIntegrationsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1843,7 +1880,8 @@ type GetModelRequest struct {
 }
 
 // Send marshals and sends the GetModel API request.
-func (r GetModelRequest) Send() (*GetModelOutput, error) {
+func (r GetModelRequest) Send(ctx context.Context) (*GetModelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1859,7 +1897,7 @@ func (r GetModelRequest) Send() (*GetModelOutput, error) {
 //
 //    // Example sending a request using the GetModelRequest method.
 //    req := client.GetModelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1893,7 +1931,8 @@ type GetModelTemplateRequest struct {
 }
 
 // Send marshals and sends the GetModelTemplate API request.
-func (r GetModelTemplateRequest) Send() (*GetModelTemplateOutput, error) {
+func (r GetModelTemplateRequest) Send(ctx context.Context) (*GetModelTemplateOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1909,7 +1948,7 @@ func (r GetModelTemplateRequest) Send() (*GetModelTemplateOutput, error) {
 //
 //    // Example sending a request using the GetModelTemplateRequest method.
 //    req := client.GetModelTemplateRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1943,7 +1982,8 @@ type GetModelsRequest struct {
 }
 
 // Send marshals and sends the GetModels API request.
-func (r GetModelsRequest) Send() (*GetModelsOutput, error) {
+func (r GetModelsRequest) Send(ctx context.Context) (*GetModelsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1959,7 +1999,7 @@ func (r GetModelsRequest) Send() (*GetModelsOutput, error) {
 //
 //    // Example sending a request using the GetModelsRequest method.
 //    req := client.GetModelsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1993,7 +2033,8 @@ type GetRouteRequest struct {
 }
 
 // Send marshals and sends the GetRoute API request.
-func (r GetRouteRequest) Send() (*GetRouteOutput, error) {
+func (r GetRouteRequest) Send(ctx context.Context) (*GetRouteOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2009,7 +2050,7 @@ func (r GetRouteRequest) Send() (*GetRouteOutput, error) {
 //
 //    // Example sending a request using the GetRouteRequest method.
 //    req := client.GetRouteRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2043,7 +2084,8 @@ type GetRouteResponseRequest struct {
 }
 
 // Send marshals and sends the GetRouteResponse API request.
-func (r GetRouteResponseRequest) Send() (*GetRouteResponseOutput, error) {
+func (r GetRouteResponseRequest) Send(ctx context.Context) (*GetRouteResponseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2059,7 +2101,7 @@ func (r GetRouteResponseRequest) Send() (*GetRouteResponseOutput, error) {
 //
 //    // Example sending a request using the GetRouteResponseRequest method.
 //    req := client.GetRouteResponseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2093,7 +2135,8 @@ type GetRouteResponsesRequest struct {
 }
 
 // Send marshals and sends the GetRouteResponses API request.
-func (r GetRouteResponsesRequest) Send() (*GetRouteResponsesOutput, error) {
+func (r GetRouteResponsesRequest) Send(ctx context.Context) (*GetRouteResponsesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2109,7 +2152,7 @@ func (r GetRouteResponsesRequest) Send() (*GetRouteResponsesOutput, error) {
 //
 //    // Example sending a request using the GetRouteResponsesRequest method.
 //    req := client.GetRouteResponsesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2143,7 +2186,8 @@ type GetRoutesRequest struct {
 }
 
 // Send marshals and sends the GetRoutes API request.
-func (r GetRoutesRequest) Send() (*GetRoutesOutput, error) {
+func (r GetRoutesRequest) Send(ctx context.Context) (*GetRoutesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2159,7 +2203,7 @@ func (r GetRoutesRequest) Send() (*GetRoutesOutput, error) {
 //
 //    // Example sending a request using the GetRoutesRequest method.
 //    req := client.GetRoutesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2193,7 +2237,8 @@ type GetStageRequest struct {
 }
 
 // Send marshals and sends the GetStage API request.
-func (r GetStageRequest) Send() (*GetStageOutput, error) {
+func (r GetStageRequest) Send(ctx context.Context) (*GetStageOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2209,7 +2254,7 @@ func (r GetStageRequest) Send() (*GetStageOutput, error) {
 //
 //    // Example sending a request using the GetStageRequest method.
 //    req := client.GetStageRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2243,7 +2288,8 @@ type GetStagesRequest struct {
 }
 
 // Send marshals and sends the GetStages API request.
-func (r GetStagesRequest) Send() (*GetStagesOutput, error) {
+func (r GetStagesRequest) Send(ctx context.Context) (*GetStagesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2259,7 +2305,7 @@ func (r GetStagesRequest) Send() (*GetStagesOutput, error) {
 //
 //    // Example sending a request using the GetStagesRequest method.
 //    req := client.GetStagesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2293,7 +2339,8 @@ type UpdateApiRequest struct {
 }
 
 // Send marshals and sends the UpdateApi API request.
-func (r UpdateApiRequest) Send() (*UpdateApiOutput, error) {
+func (r UpdateApiRequest) Send(ctx context.Context) (*UpdateApiOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2309,7 +2356,7 @@ func (r UpdateApiRequest) Send() (*UpdateApiOutput, error) {
 //
 //    // Example sending a request using the UpdateApiRequest method.
 //    req := client.UpdateApiRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2343,7 +2390,8 @@ type UpdateApiMappingRequest struct {
 }
 
 // Send marshals and sends the UpdateApiMapping API request.
-func (r UpdateApiMappingRequest) Send() (*UpdateApiMappingOutput, error) {
+func (r UpdateApiMappingRequest) Send(ctx context.Context) (*UpdateApiMappingOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2359,7 +2407,7 @@ func (r UpdateApiMappingRequest) Send() (*UpdateApiMappingOutput, error) {
 //
 //    // Example sending a request using the UpdateApiMappingRequest method.
 //    req := client.UpdateApiMappingRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2393,7 +2441,8 @@ type UpdateAuthorizerRequest struct {
 }
 
 // Send marshals and sends the UpdateAuthorizer API request.
-func (r UpdateAuthorizerRequest) Send() (*UpdateAuthorizerOutput, error) {
+func (r UpdateAuthorizerRequest) Send(ctx context.Context) (*UpdateAuthorizerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2409,7 +2458,7 @@ func (r UpdateAuthorizerRequest) Send() (*UpdateAuthorizerOutput, error) {
 //
 //    // Example sending a request using the UpdateAuthorizerRequest method.
 //    req := client.UpdateAuthorizerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2443,7 +2492,8 @@ type UpdateDeploymentRequest struct {
 }
 
 // Send marshals and sends the UpdateDeployment API request.
-func (r UpdateDeploymentRequest) Send() (*UpdateDeploymentOutput, error) {
+func (r UpdateDeploymentRequest) Send(ctx context.Context) (*UpdateDeploymentOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2459,7 +2509,7 @@ func (r UpdateDeploymentRequest) Send() (*UpdateDeploymentOutput, error) {
 //
 //    // Example sending a request using the UpdateDeploymentRequest method.
 //    req := client.UpdateDeploymentRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2493,7 +2543,8 @@ type UpdateDomainNameRequest struct {
 }
 
 // Send marshals and sends the UpdateDomainName API request.
-func (r UpdateDomainNameRequest) Send() (*UpdateDomainNameOutput, error) {
+func (r UpdateDomainNameRequest) Send(ctx context.Context) (*UpdateDomainNameOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2509,7 +2560,7 @@ func (r UpdateDomainNameRequest) Send() (*UpdateDomainNameOutput, error) {
 //
 //    // Example sending a request using the UpdateDomainNameRequest method.
 //    req := client.UpdateDomainNameRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2543,7 +2594,8 @@ type UpdateIntegrationRequest struct {
 }
 
 // Send marshals and sends the UpdateIntegration API request.
-func (r UpdateIntegrationRequest) Send() (*UpdateIntegrationOutput, error) {
+func (r UpdateIntegrationRequest) Send(ctx context.Context) (*UpdateIntegrationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2559,7 +2611,7 @@ func (r UpdateIntegrationRequest) Send() (*UpdateIntegrationOutput, error) {
 //
 //    // Example sending a request using the UpdateIntegrationRequest method.
 //    req := client.UpdateIntegrationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2593,7 +2645,8 @@ type UpdateIntegrationResponseRequest struct {
 }
 
 // Send marshals and sends the UpdateIntegrationResponse API request.
-func (r UpdateIntegrationResponseRequest) Send() (*UpdateIntegrationResponseOutput, error) {
+func (r UpdateIntegrationResponseRequest) Send(ctx context.Context) (*UpdateIntegrationResponseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2609,7 +2662,7 @@ func (r UpdateIntegrationResponseRequest) Send() (*UpdateIntegrationResponseOutp
 //
 //    // Example sending a request using the UpdateIntegrationResponseRequest method.
 //    req := client.UpdateIntegrationResponseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2643,7 +2696,8 @@ type UpdateModelRequest struct {
 }
 
 // Send marshals and sends the UpdateModel API request.
-func (r UpdateModelRequest) Send() (*UpdateModelOutput, error) {
+func (r UpdateModelRequest) Send(ctx context.Context) (*UpdateModelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2659,7 +2713,7 @@ func (r UpdateModelRequest) Send() (*UpdateModelOutput, error) {
 //
 //    // Example sending a request using the UpdateModelRequest method.
 //    req := client.UpdateModelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2693,7 +2747,8 @@ type UpdateRouteRequest struct {
 }
 
 // Send marshals and sends the UpdateRoute API request.
-func (r UpdateRouteRequest) Send() (*UpdateRouteOutput, error) {
+func (r UpdateRouteRequest) Send(ctx context.Context) (*UpdateRouteOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2709,7 +2764,7 @@ func (r UpdateRouteRequest) Send() (*UpdateRouteOutput, error) {
 //
 //    // Example sending a request using the UpdateRouteRequest method.
 //    req := client.UpdateRouteRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2743,7 +2798,8 @@ type UpdateRouteResponseRequest struct {
 }
 
 // Send marshals and sends the UpdateRouteResponse API request.
-func (r UpdateRouteResponseRequest) Send() (*UpdateRouteResponseOutput, error) {
+func (r UpdateRouteResponseRequest) Send(ctx context.Context) (*UpdateRouteResponseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2759,7 +2815,7 @@ func (r UpdateRouteResponseRequest) Send() (*UpdateRouteResponseOutput, error) {
 //
 //    // Example sending a request using the UpdateRouteResponseRequest method.
 //    req := client.UpdateRouteResponseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2793,7 +2849,8 @@ type UpdateStageRequest struct {
 }
 
 // Send marshals and sends the UpdateStage API request.
-func (r UpdateStageRequest) Send() (*UpdateStageOutput, error) {
+func (r UpdateStageRequest) Send(ctx context.Context) (*UpdateStageOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2809,7 +2866,7 @@ func (r UpdateStageRequest) Send() (*UpdateStageOutput, error) {
 //
 //    // Example sending a request using the UpdateStageRequest method.
 //    req := client.UpdateStageRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2903,7 +2960,7 @@ type Api struct {
 	// Name is a required field
 	Name *string `locationName:"name" type:"string" required:"true"`
 
-	// The API protocol: HTTP or WEBSOCKET.
+	// The API protocol: Currently only WEBSOCKET is supported.
 	//
 	// ProtocolType is a required field
 	ProtocolType ProtocolType `locationName:"protocolType" type:"string" required:"true" enum:"true"`
@@ -3004,6 +3061,67 @@ func (s Api) MarshalFields(e protocol.FieldEncoder) error {
 		}
 		ls0.End()
 
+	}
+	return nil
+}
+
+// Represents an API mapping.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/apigatewayv2-2018-11-29/ApiMapping
+type ApiMapping struct {
+	_ struct{} `type:"structure"`
+
+	// The API identifier.
+	//
+	// ApiId is a required field
+	ApiId *string `locationName:"apiId" type:"string" required:"true"`
+
+	// The API mapping identifier.
+	ApiMappingId *string `locationName:"apiMappingId" type:"string"`
+
+	// The API mapping key.
+	ApiMappingKey *string `locationName:"apiMappingKey" type:"string"`
+
+	// The API stage.
+	//
+	// Stage is a required field
+	Stage *string `locationName:"stage" type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s ApiMapping) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ApiMapping) GoString() string {
+	return s.String()
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ApiMapping) MarshalFields(e protocol.FieldEncoder) error {
+	if s.ApiId != nil {
+		v := *s.ApiId
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "apiId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.ApiMappingId != nil {
+		v := *s.ApiMappingId
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "apiMappingId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.ApiMappingKey != nil {
+		v := *s.ApiMappingKey
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "apiMappingKey", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.Stage != nil {
+		v := *s.Stage
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "stage", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -3156,7 +3274,7 @@ type CreateApiInput struct {
 	_ struct{} `type:"structure"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	ApiKeySelectionExpression *string `locationName:"apiKeySelectionExpression" type:"string"`
 
@@ -3174,7 +3292,7 @@ type CreateApiInput struct {
 	ProtocolType ProtocolType `locationName:"protocolType" type:"string" required:"true" enum:"true"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	//
 	// RouteSelectionExpression is a required field
@@ -3268,14 +3386,14 @@ func (s CreateApiInput) MarshalFields(e protocol.FieldEncoder) error {
 type CreateApiMappingInput struct {
 	_ struct{} `type:"structure"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	//
 	// ApiId is a required field
 	ApiId *string `locationName:"apiId" type:"string" required:"true"`
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	ApiMappingKey *string `locationName:"apiMappingKey" type:"string"`
@@ -3358,15 +3476,15 @@ type CreateApiMappingOutput struct {
 
 	responseMetadata aws.Response
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	ApiId *string `locationName:"apiId" type:"string"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	ApiMappingId *string `locationName:"apiMappingId" type:"string"`
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	ApiMappingKey *string `locationName:"apiMappingKey" type:"string"`
@@ -3427,11 +3545,11 @@ type CreateApiOutput struct {
 
 	ApiEndpoint *string `locationName:"apiEndpoint" type:"string"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	ApiId *string `locationName:"apiId" type:"string"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	ApiKeySelectionExpression *string `locationName:"apiKeySelectionExpression" type:"string"`
 
@@ -3448,7 +3566,7 @@ type CreateApiOutput struct {
 	ProtocolType ProtocolType `locationName:"protocolType" type:"string" enum:"true"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	RouteSelectionExpression *string `locationName:"routeSelectionExpression" type:"string"`
 
@@ -3574,12 +3692,11 @@ type CreateAuthorizerInput struct {
 	// AuthorizerUri is a required field
 	AuthorizerUri *string `locationName:"authorizerUri" type:"string" required:"true"`
 
-	// The identity source for which authorization is requested.
-	//
-	// For the REQUEST authorizer, this is required when authorization caching is
-	// enabled. The value is a comma-separated string of one or more mapping expressions
-	// of the specified request parameters. For example, if an Auth header, a Name
-	// query string parameter are defined as identity sources, this value is $method.request.header.Auth,
+	// The identity source for which authorization is requested. For the REQUEST
+	// authorizer, this is required when authorization caching is enabled. The value
+	// is a comma-separated string of one or more mapping expressions of the specified
+	// request parameters. For example, if an Auth header, a Name query string parameter
+	// are defined as identity sources, this value is $method.request.header.Auth,
 	// $method.request.querystring.Name. These parameters will be used to derive
 	// the authorization caching key and to perform runtime validation of the REQUEST
 	// authorizer by verifying all of the identity-related request parameters are
@@ -3725,7 +3842,7 @@ type CreateAuthorizerOutput struct {
 	// Represents an Amazon Resource Name (ARN).
 	AuthorizerCredentialsArn *string `locationName:"authorizerCredentialsArn" type:"string"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	AuthorizerId *string `locationName:"authorizerId" type:"string"`
 
 	// An integer with a value between [0-3600].
@@ -3738,12 +3855,11 @@ type CreateAuthorizerOutput struct {
 	// A string representation of a URI with a length between [1-2048].
 	AuthorizerUri *string `locationName:"authorizerUri" type:"string"`
 
-	// The identity source for which authorization is requested.
-	//
-	// For the REQUEST authorizer, this is required when authorization caching is
-	// enabled. The value is a comma-separated string of one or more mapping expressions
-	// of the specified request parameters. For example, if an Auth header, a Name
-	// query string parameter are defined as identity sources, this value is $method.request.header.Auth,
+	// The identity source for which authorization is requested. For the REQUEST
+	// authorizer, this is required when authorization caching is enabled. The value
+	// is a comma-separated string of one or more mapping expressions of the specified
+	// request parameters. For example, if an Auth header, a Name query string parameter
+	// are defined as identity sources, this value is $method.request.header.Auth,
 	// $method.request.querystring.Name. These parameters will be used to derive
 	// the authorization caching key and to perform runtime validation of the REQUEST
 	// authorizer by verifying all of the identity-related request parameters are
@@ -3921,7 +4037,7 @@ type CreateDeploymentOutput struct {
 
 	CreatedDate *time.Time `locationName:"createdDate" type:"timestamp" timestampFormat:"unix"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	DeploymentId *string `locationName:"deploymentId" type:"string"`
 
 	// Represents a deployment status.
@@ -4052,7 +4168,7 @@ type CreateDomainNameOutput struct {
 	responseMetadata aws.Response
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	ApiMappingSelectionExpression *string `locationName:"apiMappingSelectionExpression" type:"string"`
 
@@ -4133,7 +4249,9 @@ type CreateIntegrationInput struct {
 	IntegrationMethod *string `locationName:"integrationMethod" type:"string"`
 
 	// Represents an API method integration type.
-	IntegrationType IntegrationType `locationName:"integrationType" type:"string" enum:"true"`
+	//
+	// IntegrationType is a required field
+	IntegrationType IntegrationType `locationName:"integrationType" type:"string" required:"true" enum:"true"`
 
 	// A string representation of a URI with a length between [1-2048].
 	IntegrationUri *string `locationName:"integrationUri" type:"string"`
@@ -4159,7 +4277,7 @@ type CreateIntegrationInput struct {
 	RequestTemplates map[string]string `locationName:"requestTemplates" type:"map"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	TemplateSelectionExpression *string `locationName:"templateSelectionExpression" type:"string"`
 
@@ -4183,6 +4301,9 @@ func (s *CreateIntegrationInput) Validate() error {
 
 	if s.ApiId == nil {
 		invalidParams.Add(aws.NewErrParamRequired("ApiId"))
+	}
+	if len(s.IntegrationType) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("IntegrationType"))
 	}
 	if s.TimeoutInMillis != nil && *s.TimeoutInMillis < 50 {
 		invalidParams.Add(aws.NewErrParamMinValue("TimeoutInMillis", 50))
@@ -4318,14 +4439,14 @@ type CreateIntegrationOutput struct {
 	// A string with a length between [0-1024].
 	Description *string `locationName:"description" type:"string"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	IntegrationId *string `locationName:"integrationId" type:"string"`
 
 	// A string with a length between [1-64].
 	IntegrationMethod *string `locationName:"integrationMethod" type:"string"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	IntegrationResponseSelectionExpression *string `locationName:"integrationResponseSelectionExpression" type:"string"`
 
@@ -4356,7 +4477,7 @@ type CreateIntegrationOutput struct {
 	RequestTemplates map[string]string `locationName:"requestTemplates" type:"map"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	TemplateSelectionExpression *string `locationName:"templateSelectionExpression" type:"string"`
 
@@ -4501,7 +4622,7 @@ type CreateIntegrationResponseInput struct {
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	//
@@ -4526,7 +4647,7 @@ type CreateIntegrationResponseInput struct {
 	ResponseTemplates map[string]string `locationName:"responseTemplates" type:"map"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	TemplateSelectionExpression *string `locationName:"templateSelectionExpression" type:"string"`
 }
@@ -4633,12 +4754,12 @@ type CreateIntegrationResponseOutput struct {
 	// Specifies how to handle response payload content type conversions.
 	ContentHandlingStrategy ContentHandlingStrategy `locationName:"contentHandlingStrategy" type:"string" enum:"true"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	IntegrationResponseId *string `locationName:"integrationResponseId" type:"string"`
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	IntegrationResponseKey *string `locationName:"integrationResponseKey" type:"string"`
@@ -4661,7 +4782,7 @@ type CreateIntegrationResponseOutput struct {
 	ResponseTemplates map[string]string `locationName:"responseTemplates" type:"map"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	TemplateSelectionExpression *string `locationName:"templateSelectionExpression" type:"string"`
 }
@@ -4753,7 +4874,9 @@ type CreateModelInput struct {
 	Name *string `locationName:"name" type:"string" required:"true"`
 
 	// A string with a length between [0-32768].
-	Schema *string `locationName:"schema" type:"string"`
+	//
+	// Schema is a required field
+	Schema *string `locationName:"schema" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -4776,6 +4899,10 @@ func (s *CreateModelInput) Validate() error {
 
 	if s.Name == nil {
 		invalidParams.Add(aws.NewErrParamRequired("Name"))
+	}
+
+	if s.Schema == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Schema"))
 	}
 
 	if invalidParams.Len() > 0 {
@@ -4833,7 +4960,7 @@ type CreateModelOutput struct {
 	// A string with a length between [0-1024].
 	Description *string `locationName:"description" type:"string"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	ModelId *string `locationName:"modelId" type:"string"`
 
 	// A string with a length between [1-128].
@@ -4916,11 +5043,11 @@ type CreateRouteInput struct {
 	// using AWS IAM permissions, and CUSTOM for using a Lambda authorizer.
 	AuthorizationType AuthorizationType `locationName:"authorizationType" type:"string" enum:"true"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	AuthorizerId *string `locationName:"authorizerId" type:"string"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	ModelSelectionExpression *string `locationName:"modelSelectionExpression" type:"string"`
 
@@ -4935,7 +5062,7 @@ type CreateRouteInput struct {
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	//
@@ -4943,7 +5070,7 @@ type CreateRouteInput struct {
 	RouteKey *string `locationName:"routeKey" type:"string" required:"true"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	RouteResponseSelectionExpression *string `locationName:"routeResponseSelectionExpression" type:"string"`
 
@@ -5098,11 +5225,11 @@ type CreateRouteOutput struct {
 	// using AWS IAM permissions, and CUSTOM for using a Lambda authorizer.
 	AuthorizationType AuthorizationType `locationName:"authorizationType" type:"string" enum:"true"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	AuthorizerId *string `locationName:"authorizerId" type:"string"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	ModelSelectionExpression *string `locationName:"modelSelectionExpression" type:"string"`
 
@@ -5115,18 +5242,18 @@ type CreateRouteOutput struct {
 	// The route parameters.
 	RequestParameters map[string]ParameterConstraints `locationName:"requestParameters" type:"map"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	RouteId *string `locationName:"routeId" type:"string"`
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	RouteKey *string `locationName:"routeKey" type:"string"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	RouteResponseSelectionExpression *string `locationName:"routeResponseSelectionExpression" type:"string"`
 
@@ -5252,7 +5379,7 @@ type CreateRouteResponseInput struct {
 	ApiId *string `location:"uri" locationName:"apiId" type:"string" required:"true"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	ModelSelectionExpression *string `locationName:"modelSelectionExpression" type:"string"`
 
@@ -5267,7 +5394,7 @@ type CreateRouteResponseInput struct {
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	//
@@ -5369,7 +5496,7 @@ type CreateRouteResponseOutput struct {
 	responseMetadata aws.Response
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	ModelSelectionExpression *string `locationName:"modelSelectionExpression" type:"string"`
 
@@ -5379,12 +5506,12 @@ type CreateRouteResponseOutput struct {
 	// The route parameters.
 	ResponseParameters map[string]ParameterConstraints `locationName:"responseParameters" type:"map"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	RouteResponseId *string `locationName:"routeResponseId" type:"string"`
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	RouteResponseKey *string `locationName:"routeResponseKey" type:"string"`
@@ -5462,13 +5589,13 @@ type CreateStageInput struct {
 	// ApiId is a required field
 	ApiId *string `location:"uri" locationName:"apiId" type:"string" required:"true"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	ClientCertificateId *string `locationName:"clientCertificateId" type:"string"`
 
 	// Represents a collection of route settings.
 	DefaultRouteSettings *RouteSettings `locationName:"defaultRouteSettings" type:"structure"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	DeploymentId *string `locationName:"deploymentId" type:"string"`
 
 	// A string with a length between [0-1024].
@@ -5596,7 +5723,7 @@ type CreateStageOutput struct {
 	// Settings for logging access in a stage.
 	AccessLogSettings *AccessLogSettings `locationName:"accessLogSettings" type:"structure"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	ClientCertificateId *string `locationName:"clientCertificateId" type:"string"`
 
 	CreatedDate *time.Time `locationName:"createdDate" type:"timestamp" timestampFormat:"unix"`
@@ -5604,7 +5731,7 @@ type CreateStageOutput struct {
 	// Represents a collection of route settings.
 	DefaultRouteSettings *RouteSettings `locationName:"defaultRouteSettings" type:"structure"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	DeploymentId *string `locationName:"deploymentId" type:"string"`
 
 	// A string with a length between [0-1024].
@@ -5763,9 +5890,6 @@ func (s DeleteApiInput) MarshalFields(e protocol.FieldEncoder) error {
 type DeleteApiMappingInput struct {
 	_ struct{} `type:"structure"`
 
-	// ApiId is a required field
-	ApiId *string `location:"querystring" locationName:"apiId" type:"string" required:"true"`
-
 	// ApiMappingId is a required field
 	ApiMappingId *string `location:"uri" locationName:"apiMappingId" type:"string" required:"true"`
 
@@ -5786,10 +5910,6 @@ func (s DeleteApiMappingInput) GoString() string {
 // Validate inspects the fields of the type to determine if they are valid.
 func (s *DeleteApiMappingInput) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "DeleteApiMappingInput"}
-
-	if s.ApiId == nil {
-		invalidParams.Add(aws.NewErrParamRequired("ApiId"))
-	}
 
 	if s.ApiMappingId == nil {
 		invalidParams.Add(aws.NewErrParamRequired("ApiMappingId"))
@@ -5820,12 +5940,6 @@ func (s DeleteApiMappingInput) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.PathTarget, "domainName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.ApiId != nil {
-		v := *s.ApiId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.QueryTarget, "apiId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -6808,8 +6922,7 @@ type DomainNameConfiguration struct {
 	// The endpoint type.
 	EndpointType EndpointType `locationName:"endpointType" type:"string" enum:"true"`
 
-	// The Amazon Route 53 Hosted Zone ID of the endpoint. See AWS Regions and Endpoints
-	// for API Gateway (docs.aws.amazon.com/general/latest/gr/rande.html#apigateway_region).
+	// The Amazon Route 53 Hosted Zone ID of the endpoint.
 	HostedZoneId *string `locationName:"hostedZoneId" type:"string"`
 }
 
@@ -6913,9 +7026,6 @@ func (s GetApiInput) MarshalFields(e protocol.FieldEncoder) error {
 type GetApiMappingInput struct {
 	_ struct{} `type:"structure"`
 
-	// ApiId is a required field
-	ApiId *string `location:"querystring" locationName:"apiId" type:"string" required:"true"`
-
 	// ApiMappingId is a required field
 	ApiMappingId *string `location:"uri" locationName:"apiMappingId" type:"string" required:"true"`
 
@@ -6936,10 +7046,6 @@ func (s GetApiMappingInput) GoString() string {
 // Validate inspects the fields of the type to determine if they are valid.
 func (s *GetApiMappingInput) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "GetApiMappingInput"}
-
-	if s.ApiId == nil {
-		invalidParams.Add(aws.NewErrParamRequired("ApiId"))
-	}
 
 	if s.ApiMappingId == nil {
 		invalidParams.Add(aws.NewErrParamRequired("ApiMappingId"))
@@ -6971,12 +7077,6 @@ func (s GetApiMappingInput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.PathTarget, "domainName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
-	if s.ApiId != nil {
-		v := *s.ApiId
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.QueryTarget, "apiId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
 	return nil
 }
 
@@ -6986,15 +7086,15 @@ type GetApiMappingOutput struct {
 
 	responseMetadata aws.Response
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	ApiId *string `locationName:"apiId" type:"string"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	ApiMappingId *string `locationName:"apiMappingId" type:"string"`
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	ApiMappingKey *string `locationName:"apiMappingKey" type:"string"`
@@ -7114,21 +7214,11 @@ type GetApiMappingsOutput struct {
 
 	responseMetadata aws.Response
 
-	// An API Gateway-generated, unique identifier.
-	ApiId *string `locationName:"apiId" type:"string"`
+	Items []ApiMapping `locationName:"items" type:"list"`
 
-	// An API Gateway-generated, unique identifier.
-	ApiMappingId *string `locationName:"apiMappingId" type:"string"`
-
-	// After evaulating a selection expression, the result is compared against one
-	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
-	// for a list of expressions and each expression's associated selection key
-	// type.
-	ApiMappingKey *string `locationName:"apiMappingKey" type:"string"`
-
-	// A string with a length between [1-128].
-	Stage *string `locationName:"stage" type:"string"`
+	// The next page of elements from this collection. Not valid for the last element
+	// of the collection.
+	NextToken *string `locationName:"nextToken" type:"string"`
 }
 
 // String returns the string representation
@@ -7148,29 +7238,23 @@ func (s GetApiMappingsOutput) SDKResponseMetadata() aws.Response {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s GetApiMappingsOutput) MarshalFields(e protocol.FieldEncoder) error {
-	if s.ApiId != nil {
-		v := *s.ApiId
+	if len(s.Items) > 0 {
+		v := s.Items
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "apiId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		ls0 := e.List(protocol.BodyTarget, "items", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
 	}
-	if s.ApiMappingId != nil {
-		v := *s.ApiMappingId
+	if s.NextToken != nil {
+		v := *s.NextToken
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "apiMappingId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.ApiMappingKey != nil {
-		v := *s.ApiMappingKey
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "apiMappingKey", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
-	}
-	if s.Stage != nil {
-		v := *s.Stage
-
-		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "stage", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.BodyTarget, "nextToken", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }
@@ -7183,11 +7267,11 @@ type GetApiOutput struct {
 
 	ApiEndpoint *string `locationName:"apiEndpoint" type:"string"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	ApiId *string `locationName:"apiId" type:"string"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	ApiKeySelectionExpression *string `locationName:"apiKeySelectionExpression" type:"string"`
 
@@ -7204,7 +7288,7 @@ type GetApiOutput struct {
 	ProtocolType ProtocolType `locationName:"protocolType" type:"string" enum:"true"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	RouteSelectionExpression *string `locationName:"routeSelectionExpression" type:"string"`
 
@@ -7462,7 +7546,7 @@ type GetAuthorizerOutput struct {
 	// Represents an Amazon Resource Name (ARN).
 	AuthorizerCredentialsArn *string `locationName:"authorizerCredentialsArn" type:"string"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	AuthorizerId *string `locationName:"authorizerId" type:"string"`
 
 	// An integer with a value between [0-3600].
@@ -7475,12 +7559,11 @@ type GetAuthorizerOutput struct {
 	// A string representation of a URI with a length between [1-2048].
 	AuthorizerUri *string `locationName:"authorizerUri" type:"string"`
 
-	// The identity source for which authorization is requested.
-	//
-	// For the REQUEST authorizer, this is required when authorization caching is
-	// enabled. The value is a comma-separated string of one or more mapping expressions
-	// of the specified request parameters. For example, if an Auth header, a Name
-	// query string parameter are defined as identity sources, this value is $method.request.header.Auth,
+	// The identity source for which authorization is requested. For the REQUEST
+	// authorizer, this is required when authorization caching is enabled. The value
+	// is a comma-separated string of one or more mapping expressions of the specified
+	// request parameters. For example, if an Auth header, a Name query string parameter
+	// are defined as identity sources, this value is $method.request.header.Auth,
 	// $method.request.querystring.Name. These parameters will be used to derive
 	// the authorization caching key and to perform runtime validation of the REQUEST
 	// authorizer by verifying all of the identity-related request parameters are
@@ -7765,7 +7848,7 @@ type GetDeploymentOutput struct {
 
 	CreatedDate *time.Time `locationName:"createdDate" type:"timestamp" timestampFormat:"unix"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	DeploymentId *string `locationName:"deploymentId" type:"string"`
 
 	// Represents a deployment status.
@@ -7991,7 +8074,7 @@ type GetDomainNameOutput struct {
 	responseMetadata aws.Response
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	ApiMappingSelectionExpression *string `locationName:"apiMappingSelectionExpression" type:"string"`
 
@@ -8214,14 +8297,14 @@ type GetIntegrationOutput struct {
 	// A string with a length between [0-1024].
 	Description *string `locationName:"description" type:"string"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	IntegrationId *string `locationName:"integrationId" type:"string"`
 
 	// A string with a length between [1-64].
 	IntegrationMethod *string `locationName:"integrationMethod" type:"string"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	IntegrationResponseSelectionExpression *string `locationName:"integrationResponseSelectionExpression" type:"string"`
 
@@ -8252,7 +8335,7 @@ type GetIntegrationOutput struct {
 	RequestTemplates map[string]string `locationName:"requestTemplates" type:"map"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	TemplateSelectionExpression *string `locationName:"templateSelectionExpression" type:"string"`
 
@@ -8462,12 +8545,12 @@ type GetIntegrationResponseOutput struct {
 	// Specifies how to handle response payload content type conversions.
 	ContentHandlingStrategy ContentHandlingStrategy `locationName:"contentHandlingStrategy" type:"string" enum:"true"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	IntegrationResponseId *string `locationName:"integrationResponseId" type:"string"`
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	IntegrationResponseKey *string `locationName:"integrationResponseKey" type:"string"`
@@ -8490,7 +8573,7 @@ type GetIntegrationResponseOutput struct {
 	ResponseTemplates map[string]string `locationName:"responseTemplates" type:"map"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	TemplateSelectionExpression *string `locationName:"templateSelectionExpression" type:"string"`
 }
@@ -8870,7 +8953,7 @@ type GetModelOutput struct {
 	// A string with a length between [0-1024].
 	Description *string `locationName:"description" type:"string"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	ModelId *string `locationName:"modelId" type:"string"`
 
 	// A string with a length between [1-128].
@@ -9215,11 +9298,11 @@ type GetRouteOutput struct {
 	// using AWS IAM permissions, and CUSTOM for using a Lambda authorizer.
 	AuthorizationType AuthorizationType `locationName:"authorizationType" type:"string" enum:"true"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	AuthorizerId *string `locationName:"authorizerId" type:"string"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	ModelSelectionExpression *string `locationName:"modelSelectionExpression" type:"string"`
 
@@ -9232,18 +9315,18 @@ type GetRouteOutput struct {
 	// The route parameters.
 	RequestParameters map[string]ParameterConstraints `locationName:"requestParameters" type:"map"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	RouteId *string `locationName:"routeId" type:"string"`
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	RouteKey *string `locationName:"routeKey" type:"string"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	RouteResponseSelectionExpression *string `locationName:"routeResponseSelectionExpression" type:"string"`
 
@@ -9439,7 +9522,7 @@ type GetRouteResponseOutput struct {
 	responseMetadata aws.Response
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	ModelSelectionExpression *string `locationName:"modelSelectionExpression" type:"string"`
 
@@ -9449,12 +9532,12 @@ type GetRouteResponseOutput struct {
 	// The route parameters.
 	ResponseParameters map[string]ParameterConstraints `locationName:"responseParameters" type:"map"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	RouteResponseId *string `locationName:"routeResponseId" type:"string"`
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	RouteResponseKey *string `locationName:"routeResponseKey" type:"string"`
@@ -9826,7 +9909,7 @@ type GetStageOutput struct {
 	// Settings for logging access in a stage.
 	AccessLogSettings *AccessLogSettings `locationName:"accessLogSettings" type:"structure"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	ClientCertificateId *string `locationName:"clientCertificateId" type:"string"`
 
 	CreatedDate *time.Time `locationName:"createdDate" type:"timestamp" timestampFormat:"unix"`
@@ -9834,7 +9917,7 @@ type GetStageOutput struct {
 	// Represents a collection of route settings.
 	DefaultRouteSettings *RouteSettings `locationName:"defaultRouteSettings" type:"structure"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	DeploymentId *string `locationName:"deploymentId" type:"string"`
 
 	// A string with a length between [0-1024].
@@ -10061,14 +10144,12 @@ func (s GetStagesOutput) MarshalFields(e protocol.FieldEncoder) error {
 type Integration struct {
 	_ struct{} `type:"structure"`
 
-	// The identifier of the VpcLink used for the integration when the connectionType
-	// is VPC_LINK; otherwise undefined.
+	// The connection ID.
 	ConnectionId *string `locationName:"connectionId" type:"string"`
 
-	// The type of the network connection to the integration endpoint. The valid
-	// value is INTERNET for connections through the public routable internet or
-	// VPC_LINK for private connections between API Gateway and a network load balancer
-	// in a VPC. The default value is INTERNET.
+	// The type of the network connection to the integration endpoint. Currently
+	// the only valid value is INTERNET, for connections through the public routable
+	// internet.
 	ConnectionType ConnectionType `locationName:"connectionType" type:"string" enum:"true"`
 
 	// Specifies how to handle response payload content type conversions. Supported
@@ -10101,9 +10182,8 @@ type Integration struct {
 	// Specifies the integration's HTTP method type.
 	IntegrationMethod *string `locationName:"integrationMethod" type:"string"`
 
-	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
-	// for more information.
+	// The integration response selection expression for the integration. See Integration
+	// Response Selection Expressions (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-integration-response-selection-expressions).
 	IntegrationResponseSelectionExpression *string `locationName:"integrationResponseSelectionExpression" type:"string"`
 
 	// The integration type of an integration. One of the following:
@@ -10117,38 +10197,18 @@ type Integration struct {
 	// action with the client request passed through as-is. This integration is
 	// also referred to as Lambda proxy integration.
 	//
-	// HTTP: for integrating the route or method request with an HTTP endpoint,
-	// including a private HTTP endpoint within a VPC. This integration is also
-	// referred to as the HTTP custom integration.
+	// HTTP: for integrating the route or method request with an HTTP endpoint.
+	// This integration is also referred to as the HTTP custom integration.
 	//
 	// HTTP_PROXY: for integrating route or method request with an HTTP endpoint,
-	// including a private HTTP endpoint within a VPC, with the client request passed
-	// through as-is. This is also referred to as HTTP proxy integration.
+	// with the client request passed through as-is. This is also referred to as
+	// HTTP proxy integration.
 	//
 	// MOCK: for integrating the route or method request with API Gateway as a "loopback"
 	// endpoint without invoking any backend.
 	IntegrationType IntegrationType `locationName:"integrationType" type:"string" enum:"true"`
 
-	// Specifies the Uniform Resource Identifier (URI) of the integration endpoint.
-	//
-	// For HTTP or HTTP_PROXY integrations, the URI must be a fully formed, encoded
-	// HTTP(S) URL according to the RFC-3986 specification (https://en.wikipedia.org/wiki/Uniform_Resource_Identifier),
-	// for either standard integration, where connectionType is not VPC_LINK, or
-	// private integration, where connectionType is VPC_LINK. For a private HTTP
-	// integration, the URI is not used for routing.
-	//
-	// For AWS or AWS_PROXY integrations, the URI is of the form arn:aws:apigateway:{region}:{subdomain.service|service}:path|action/{service_api}.
-	// Here, {Region} is the API Gateway region (e.g., us-east-1); {service} is
-	// the name of the integrated AWS service (e.g., s3); and {subdomain} is a designated
-	// subdomain supported by certain AWS service for fast host-name lookup. action
-	// can be used for an AWS service action-based API, using an Action={name}&{p1}={v1}&p2={v2}...
-	// query string. The ensuing {service_api} refers to a supported action {name}
-	// plus any required input parameters. Alternatively, path can be used for an
-	// AWS service path-based API. The ensuing service_api refers to the path to
-	// an AWS service resource, including the region of the integrated AWS service,
-	// if applicable. For example, for integration with the S3 API of GetObject,
-	// the URI can be either arn:aws:apigateway:us-west-2:s3:action/GetObject&Bucket={bucket}&Key={key}
-	// or arn:aws:apigateway:us-west-2:s3:path/{bucket}/{key}
+	// For a Lambda proxy integration, this is the URI of the Lambda function.
 	IntegrationUri *string `locationName:"integrationUri" type:"string"`
 
 	// Specifies the pass-through behavior for incoming requests based on the Content-Type
@@ -10529,14 +10589,23 @@ type Route struct {
 	// Specifies whether an API key is required for this route.
 	ApiKeyRequired *bool `locationName:"apiKeyRequired" type:"boolean"`
 
-	// The authorization scopes supported by this route.
+	// A list of authorization scopes configured on a route. The scopes are used
+	// with a COGNITO_USER_POOLS authorizer to authorize the method invocation.
+	// The authorization works by matching the route scopes against the scopes parsed
+	// from the access token in the incoming request. The method invocation is authorized
+	// if any route scope matches a claimed scope in the access token. Otherwise,
+	// the invocation is not authorized. When the route scope is configured, the
+	// client must provide an access token instead of an identity token for authorization
+	// purposes.
 	AuthorizationScopes []string `locationName:"authorizationScopes" type:"list"`
 
 	// The authorization type for the route. Valid values are NONE for open access,
-	// AWS_IAM for using AWS IAM permissions.
+	// AWS_IAM for using AWS IAM permissions, and CUSTOM for using a Lambda authorizer
 	AuthorizationType AuthorizationType `locationName:"authorizationType" type:"string" enum:"true"`
 
-	// The identifier of the Authorizer resource to be associated with this route.
+	// The identifier of the Authorizer resource to be associated with this route,
+	// if the authorizationType is CUSTOM . The authorizer identifier is generated
+	// by API Gateway when you created the authorizer.
 	AuthorizerId *string `locationName:"authorizerId" type:"string"`
 
 	// The model selection expression for the route.
@@ -10955,7 +11024,7 @@ type UpdateApiInput struct {
 	ApiId *string `location:"uri" locationName:"apiId" type:"string" required:"true"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	ApiKeySelectionExpression *string `locationName:"apiKeySelectionExpression" type:"string"`
 
@@ -10968,7 +11037,7 @@ type UpdateApiInput struct {
 	Name *string `locationName:"name" type:"string"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	RouteSelectionExpression *string `locationName:"routeSelectionExpression" type:"string"`
 
@@ -11053,7 +11122,7 @@ func (s UpdateApiInput) MarshalFields(e protocol.FieldEncoder) error {
 type UpdateApiMappingInput struct {
 	_ struct{} `type:"structure"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	//
 	// ApiId is a required field
 	ApiId *string `locationName:"apiId" type:"string" required:"true"`
@@ -11063,7 +11132,7 @@ type UpdateApiMappingInput struct {
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	ApiMappingKey *string `locationName:"apiMappingKey" type:"string"`
@@ -11150,15 +11219,15 @@ type UpdateApiMappingOutput struct {
 
 	responseMetadata aws.Response
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	ApiId *string `locationName:"apiId" type:"string"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	ApiMappingId *string `locationName:"apiMappingId" type:"string"`
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	ApiMappingKey *string `locationName:"apiMappingKey" type:"string"`
@@ -11219,11 +11288,11 @@ type UpdateApiOutput struct {
 
 	ApiEndpoint *string `locationName:"apiEndpoint" type:"string"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	ApiId *string `locationName:"apiId" type:"string"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	ApiKeySelectionExpression *string `locationName:"apiKeySelectionExpression" type:"string"`
 
@@ -11240,7 +11309,7 @@ type UpdateApiOutput struct {
 	ProtocolType ProtocolType `locationName:"protocolType" type:"string" enum:"true"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	RouteSelectionExpression *string `locationName:"routeSelectionExpression" type:"string"`
 
@@ -11365,12 +11434,11 @@ type UpdateAuthorizerInput struct {
 	// A string representation of a URI with a length between [1-2048].
 	AuthorizerUri *string `locationName:"authorizerUri" type:"string"`
 
-	// The identity source for which authorization is requested.
-	//
-	// For the REQUEST authorizer, this is required when authorization caching is
-	// enabled. The value is a comma-separated string of one or more mapping expressions
-	// of the specified request parameters. For example, if an Auth header, a Name
-	// query string parameter are defined as identity sources, this value is $method.request.header.Auth,
+	// The identity source for which authorization is requested. For the REQUEST
+	// authorizer, this is required when authorization caching is enabled. The value
+	// is a comma-separated string of one or more mapping expressions of the specified
+	// request parameters. For example, if an Auth header, a Name query string parameter
+	// are defined as identity sources, this value is $method.request.header.Auth,
 	// $method.request.querystring.Name. These parameters will be used to derive
 	// the authorization caching key and to perform runtime validation of the REQUEST
 	// authorizer by verifying all of the identity-related request parameters are
@@ -11507,7 +11575,7 @@ type UpdateAuthorizerOutput struct {
 	// Represents an Amazon Resource Name (ARN).
 	AuthorizerCredentialsArn *string `locationName:"authorizerCredentialsArn" type:"string"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	AuthorizerId *string `locationName:"authorizerId" type:"string"`
 
 	// An integer with a value between [0-3600].
@@ -11520,12 +11588,11 @@ type UpdateAuthorizerOutput struct {
 	// A string representation of a URI with a length between [1-2048].
 	AuthorizerUri *string `locationName:"authorizerUri" type:"string"`
 
-	// The identity source for which authorization is requested.
-	//
-	// For the REQUEST authorizer, this is required when authorization caching is
-	// enabled. The value is a comma-separated string of one or more mapping expressions
-	// of the specified request parameters. For example, if an Auth header, a Name
-	// query string parameter are defined as identity sources, this value is $method.request.header.Auth,
+	// The identity source for which authorization is requested. For the REQUEST
+	// authorizer, this is required when authorization caching is enabled. The value
+	// is a comma-separated string of one or more mapping expressions of the specified
+	// request parameters. For example, if an Auth header, a Name query string parameter
+	// are defined as identity sources, this value is $method.request.header.Auth,
 	// $method.request.querystring.Name. These parameters will be used to derive
 	// the authorization caching key and to perform runtime validation of the REQUEST
 	// authorizer by verifying all of the identity-related request parameters are
@@ -11707,7 +11774,7 @@ type UpdateDeploymentOutput struct {
 
 	CreatedDate *time.Time `locationName:"createdDate" type:"timestamp" timestampFormat:"unix"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	DeploymentId *string `locationName:"deploymentId" type:"string"`
 
 	// Represents a deployment status.
@@ -11836,7 +11903,7 @@ type UpdateDomainNameOutput struct {
 	responseMetadata aws.Response
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	ApiMappingSelectionExpression *string `locationName:"apiMappingSelectionExpression" type:"string"`
 
@@ -11946,7 +12013,7 @@ type UpdateIntegrationInput struct {
 	RequestTemplates map[string]string `locationName:"requestTemplates" type:"map"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	TemplateSelectionExpression *string `locationName:"templateSelectionExpression" type:"string"`
 
@@ -12115,14 +12182,14 @@ type UpdateIntegrationOutput struct {
 	// A string with a length between [0-1024].
 	Description *string `locationName:"description" type:"string"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	IntegrationId *string `locationName:"integrationId" type:"string"`
 
 	// A string with a length between [1-64].
 	IntegrationMethod *string `locationName:"integrationMethod" type:"string"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	IntegrationResponseSelectionExpression *string `locationName:"integrationResponseSelectionExpression" type:"string"`
 
@@ -12153,7 +12220,7 @@ type UpdateIntegrationOutput struct {
 	RequestTemplates map[string]string `locationName:"requestTemplates" type:"map"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	TemplateSelectionExpression *string `locationName:"templateSelectionExpression" type:"string"`
 
@@ -12301,7 +12368,7 @@ type UpdateIntegrationResponseInput struct {
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	IntegrationResponseKey *string `locationName:"integrationResponseKey" type:"string"`
@@ -12324,7 +12391,7 @@ type UpdateIntegrationResponseInput struct {
 	ResponseTemplates map[string]string `locationName:"responseTemplates" type:"map"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	TemplateSelectionExpression *string `locationName:"templateSelectionExpression" type:"string"`
 }
@@ -12437,12 +12504,12 @@ type UpdateIntegrationResponseOutput struct {
 	// Specifies how to handle response payload content type conversions.
 	ContentHandlingStrategy ContentHandlingStrategy `locationName:"contentHandlingStrategy" type:"string" enum:"true"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	IntegrationResponseId *string `locationName:"integrationResponseId" type:"string"`
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	IntegrationResponseKey *string `locationName:"integrationResponseKey" type:"string"`
@@ -12465,7 +12532,7 @@ type UpdateIntegrationResponseOutput struct {
 	ResponseTemplates map[string]string `locationName:"responseTemplates" type:"map"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	TemplateSelectionExpression *string `locationName:"templateSelectionExpression" type:"string"`
 }
@@ -12644,7 +12711,7 @@ type UpdateModelOutput struct {
 	// A string with a length between [0-1024].
 	Description *string `locationName:"description" type:"string"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	ModelId *string `locationName:"modelId" type:"string"`
 
 	// A string with a length between [1-128].
@@ -12727,11 +12794,11 @@ type UpdateRouteInput struct {
 	// using AWS IAM permissions, and CUSTOM for using a Lambda authorizer.
 	AuthorizationType AuthorizationType `locationName:"authorizationType" type:"string" enum:"true"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	AuthorizerId *string `locationName:"authorizerId" type:"string"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	ModelSelectionExpression *string `locationName:"modelSelectionExpression" type:"string"`
 
@@ -12749,13 +12816,13 @@ type UpdateRouteInput struct {
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	RouteKey *string `locationName:"routeKey" type:"string"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	RouteResponseSelectionExpression *string `locationName:"routeResponseSelectionExpression" type:"string"`
 
@@ -12916,11 +12983,11 @@ type UpdateRouteOutput struct {
 	// using AWS IAM permissions, and CUSTOM for using a Lambda authorizer.
 	AuthorizationType AuthorizationType `locationName:"authorizationType" type:"string" enum:"true"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	AuthorizerId *string `locationName:"authorizerId" type:"string"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	ModelSelectionExpression *string `locationName:"modelSelectionExpression" type:"string"`
 
@@ -12933,18 +13000,18 @@ type UpdateRouteOutput struct {
 	// The route parameters.
 	RequestParameters map[string]ParameterConstraints `locationName:"requestParameters" type:"map"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	RouteId *string `locationName:"routeId" type:"string"`
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	RouteKey *string `locationName:"routeKey" type:"string"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	RouteResponseSelectionExpression *string `locationName:"routeResponseSelectionExpression" type:"string"`
 
@@ -13070,7 +13137,7 @@ type UpdateRouteResponseInput struct {
 	ApiId *string `location:"uri" locationName:"apiId" type:"string" required:"true"`
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	ModelSelectionExpression *string `locationName:"modelSelectionExpression" type:"string"`
 
@@ -13088,7 +13155,7 @@ type UpdateRouteResponseInput struct {
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	RouteResponseKey *string `locationName:"routeResponseKey" type:"string"`
@@ -13194,7 +13261,7 @@ type UpdateRouteResponseOutput struct {
 	responseMetadata aws.Response
 
 	// An expression used to extract information at runtime. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for more information.
 	ModelSelectionExpression *string `locationName:"modelSelectionExpression" type:"string"`
 
@@ -13204,12 +13271,12 @@ type UpdateRouteResponseOutput struct {
 	// The route parameters.
 	ResponseParameters map[string]ParameterConstraints `locationName:"responseParameters" type:"map"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	RouteResponseId *string `locationName:"routeResponseId" type:"string"`
 
 	// After evaulating a selection expression, the result is compared against one
 	// or more selection keys to find a matching key. See Selection Expressions
-	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html)
+	// (https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-websocket-api-selection-expressions.html#apigateway-websocket-api-apikey-selection-expressions)
 	// for a list of expressions and each expression's associated selection key
 	// type.
 	RouteResponseKey *string `locationName:"routeResponseKey" type:"string"`
@@ -13287,13 +13354,13 @@ type UpdateStageInput struct {
 	// ApiId is a required field
 	ApiId *string `location:"uri" locationName:"apiId" type:"string" required:"true"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	ClientCertificateId *string `locationName:"clientCertificateId" type:"string"`
 
 	// Represents a collection of route settings.
 	DefaultRouteSettings *RouteSettings `locationName:"defaultRouteSettings" type:"structure"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	DeploymentId *string `locationName:"deploymentId" type:"string"`
 
 	// A string with a length between [0-1024].
@@ -13419,7 +13486,7 @@ type UpdateStageOutput struct {
 	// Settings for logging access in a stage.
 	AccessLogSettings *AccessLogSettings `locationName:"accessLogSettings" type:"structure"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	ClientCertificateId *string `locationName:"clientCertificateId" type:"string"`
 
 	CreatedDate *time.Time `locationName:"createdDate" type:"timestamp" timestampFormat:"unix"`
@@ -13427,7 +13494,7 @@ type UpdateStageOutput struct {
 	// Represents a collection of route settings.
 	DefaultRouteSettings *RouteSettings `locationName:"defaultRouteSettings" type:"structure"`
 
-	// An API Gateway-generated, unique identifier.
+	// The identifier.
 	DeploymentId *string `locationName:"deploymentId" type:"string"`
 
 	// A string with a length between [0-1024].

@@ -3,6 +3,8 @@
 package costexplorer
 
 import (
+	"context"
+
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/internal/awsutil"
 )
@@ -17,7 +19,8 @@ type GetCostAndUsageRequest struct {
 }
 
 // Send marshals and sends the GetCostAndUsage API request.
-func (r GetCostAndUsageRequest) Send() (*GetCostAndUsageOutput, error) {
+func (r GetCostAndUsageRequest) Send(ctx context.Context) (*GetCostAndUsageOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -39,7 +42,7 @@ func (r GetCostAndUsageRequest) Send() (*GetCostAndUsageOutput, error) {
 //
 //    // Example sending a request using the GetCostAndUsageRequest method.
 //    req := client.GetCostAndUsageRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -73,7 +76,8 @@ type GetCostForecastRequest struct {
 }
 
 // Send marshals and sends the GetCostForecast API request.
-func (r GetCostForecastRequest) Send() (*GetCostForecastOutput, error) {
+func (r GetCostForecastRequest) Send(ctx context.Context) (*GetCostForecastOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -90,7 +94,7 @@ func (r GetCostForecastRequest) Send() (*GetCostForecastOutput, error) {
 //
 //    // Example sending a request using the GetCostForecastRequest method.
 //    req := client.GetCostForecastRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -124,7 +128,8 @@ type GetDimensionValuesRequest struct {
 }
 
 // Send marshals and sends the GetDimensionValues API request.
-func (r GetDimensionValuesRequest) Send() (*GetDimensionValuesOutput, error) {
+func (r GetDimensionValuesRequest) Send(ctx context.Context) (*GetDimensionValuesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -141,7 +146,7 @@ func (r GetDimensionValuesRequest) Send() (*GetDimensionValuesOutput, error) {
 //
 //    // Example sending a request using the GetDimensionValuesRequest method.
 //    req := client.GetDimensionValuesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -175,7 +180,8 @@ type GetReservationCoverageRequest struct {
 }
 
 // Send marshals and sends the GetReservationCoverage API request.
-func (r GetReservationCoverageRequest) Send() (*GetReservationCoverageOutput, error) {
+func (r GetReservationCoverageRequest) Send(ctx context.Context) (*GetReservationCoverageOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -222,7 +228,7 @@ func (r GetReservationCoverageRequest) Send() (*GetReservationCoverageOutput, er
 //
 //    // Example sending a request using the GetReservationCoverageRequest method.
 //    req := client.GetReservationCoverageRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -256,7 +262,8 @@ type GetReservationPurchaseRecommendationRequest struct {
 }
 
 // Send marshals and sends the GetReservationPurchaseRecommendation API request.
-func (r GetReservationPurchaseRecommendationRequest) Send() (*GetReservationPurchaseRecommendationOutput, error) {
+func (r GetReservationPurchaseRecommendationRequest) Send(ctx context.Context) (*GetReservationPurchaseRecommendationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -289,7 +296,7 @@ func (r GetReservationPurchaseRecommendationRequest) Send() (*GetReservationPurc
 //
 //    // Example sending a request using the GetReservationPurchaseRecommendationRequest method.
 //    req := client.GetReservationPurchaseRecommendationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -323,7 +330,8 @@ type GetReservationUtilizationRequest struct {
 }
 
 // Send marshals and sends the GetReservationUtilization API request.
-func (r GetReservationUtilizationRequest) Send() (*GetReservationUtilizationOutput, error) {
+func (r GetReservationUtilizationRequest) Send(ctx context.Context) (*GetReservationUtilizationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -342,7 +350,7 @@ func (r GetReservationUtilizationRequest) Send() (*GetReservationUtilizationOutp
 //
 //    // Example sending a request using the GetReservationUtilizationRequest method.
 //    req := client.GetReservationUtilizationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -376,7 +384,8 @@ type GetTagsRequest struct {
 }
 
 // Send marshals and sends the GetTags API request.
-func (r GetTagsRequest) Send() (*GetTagsOutput, error) {
+func (r GetTagsRequest) Send(ctx context.Context) (*GetTagsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -393,7 +402,7 @@ func (r GetTagsRequest) Send() (*GetTagsOutput, error) {
 //
 //    // Example sending a request using the GetTagsRequest method.
 //    req := client.GetTagsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -923,7 +932,9 @@ type GetCostAndUsageInput struct {
 	// inclusive, but the end date is exclusive. For example, if start is 2017-01-01
 	// and end is 2017-05-01, then the cost and usage data is retrieved from 2017-01-01
 	// up to and including 2017-04-30 but not including 2017-05-01.
-	TimePeriod *DateInterval `type:"structure"`
+	//
+	// TimePeriod is a required field
+	TimePeriod *DateInterval `type:"structure" required:"true"`
 }
 
 // String returns the string representation
@@ -939,6 +950,10 @@ func (s GetCostAndUsageInput) GoString() string {
 // Validate inspects the fields of the type to determine if they are valid.
 func (s *GetCostAndUsageInput) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "GetCostAndUsageInput"}
+
+	if s.TimePeriod == nil {
+		invalidParams.Add(aws.NewErrParamRequired("TimePeriod"))
+	}
 	if s.TimePeriod != nil {
 		if err := s.TimePeriod.Validate(); err != nil {
 			invalidParams.AddNested("TimePeriod", err.(aws.ErrInvalidParams))
@@ -1420,11 +1435,12 @@ type GetReservationCoverageInput struct {
 	//
 	//    * REGION
 	//
-	//    * TAG
-	//
 	//    * TENANCY
 	GroupBy []GroupDefinition `type:"list"`
 
+	// The measurement that you want your reservation coverage reported in.
+	//
+	// Valid values are Hour, Unit, and Cost. You can use multiple values in a request.
 	Metrics []string `type:"list"`
 
 	// The token to retrieve the next set of results. AWS provides the token when
@@ -2133,6 +2149,7 @@ func (s ReservationPurchaseRecommendation) GoString() string {
 type ReservationPurchaseRecommendationDetail struct {
 	_ struct{} `type:"structure"`
 
+	// The account that this RI recommendation is for.
 	AccountId *string `type:"string"`
 
 	// The average number of normalized units that you used in an hour during the

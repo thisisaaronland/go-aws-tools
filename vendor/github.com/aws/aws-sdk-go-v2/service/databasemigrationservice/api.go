@@ -3,6 +3,7 @@
 package databasemigrationservice
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -20,7 +21,8 @@ type AddTagsToResourceRequest struct {
 }
 
 // Send marshals and sends the AddTagsToResource API request.
-func (r AddTagsToResourceRequest) Send() (*AddTagsToResourceOutput, error) {
+func (r AddTagsToResourceRequest) Send(ctx context.Context) (*AddTagsToResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -39,7 +41,7 @@ func (r AddTagsToResourceRequest) Send() (*AddTagsToResourceOutput, error) {
 //
 //    // Example sending a request using the AddTagsToResourceRequest method.
 //    req := client.AddTagsToResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -63,6 +65,58 @@ func (c *DatabaseMigrationService) AddTagsToResourceRequest(input *AddTagsToReso
 	return AddTagsToResourceRequest{Request: req, Input: input, Copy: c.AddTagsToResourceRequest}
 }
 
+const opApplyPendingMaintenanceAction = "ApplyPendingMaintenanceAction"
+
+// ApplyPendingMaintenanceActionRequest is a API request type for the ApplyPendingMaintenanceAction API operation.
+type ApplyPendingMaintenanceActionRequest struct {
+	*aws.Request
+	Input *ApplyPendingMaintenanceActionInput
+	Copy  func(*ApplyPendingMaintenanceActionInput) ApplyPendingMaintenanceActionRequest
+}
+
+// Send marshals and sends the ApplyPendingMaintenanceAction API request.
+func (r ApplyPendingMaintenanceActionRequest) Send(ctx context.Context) (*ApplyPendingMaintenanceActionOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*ApplyPendingMaintenanceActionOutput), nil
+}
+
+// ApplyPendingMaintenanceActionRequest returns a request value for making API operation for
+// AWS Database Migration Service.
+//
+// Applies a pending maintenance action to a resource (for example, to a replication
+// instance).
+//
+//    // Example sending a request using the ApplyPendingMaintenanceActionRequest method.
+//    req := client.ApplyPendingMaintenanceActionRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ApplyPendingMaintenanceAction
+func (c *DatabaseMigrationService) ApplyPendingMaintenanceActionRequest(input *ApplyPendingMaintenanceActionInput) ApplyPendingMaintenanceActionRequest {
+	op := &aws.Operation{
+		Name:       opApplyPendingMaintenanceAction,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &ApplyPendingMaintenanceActionInput{}
+	}
+
+	output := &ApplyPendingMaintenanceActionOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return ApplyPendingMaintenanceActionRequest{Request: req, Input: input, Copy: c.ApplyPendingMaintenanceActionRequest}
+}
+
 const opCreateEndpoint = "CreateEndpoint"
 
 // CreateEndpointRequest is a API request type for the CreateEndpoint API operation.
@@ -73,7 +127,8 @@ type CreateEndpointRequest struct {
 }
 
 // Send marshals and sends the CreateEndpoint API request.
-func (r CreateEndpointRequest) Send() (*CreateEndpointOutput, error) {
+func (r CreateEndpointRequest) Send(ctx context.Context) (*CreateEndpointOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -89,7 +144,7 @@ func (r CreateEndpointRequest) Send() (*CreateEndpointOutput, error) {
 //
 //    // Example sending a request using the CreateEndpointRequest method.
 //    req := client.CreateEndpointRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -123,7 +178,8 @@ type CreateEventSubscriptionRequest struct {
 }
 
 // Send marshals and sends the CreateEventSubscription API request.
-func (r CreateEventSubscriptionRequest) Send() (*CreateEventSubscriptionOutput, error) {
+func (r CreateEventSubscriptionRequest) Send(ctx context.Context) (*CreateEventSubscriptionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -150,12 +206,12 @@ func (r CreateEventSubscriptionRequest) Send() (*CreateEventSubscriptionOutput, 
 // your customer account.
 //
 // For more information about AWS DMS events, see Working with Events and Notifications
-// (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in the
+// (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in the
 // AWS Database Migration Service User Guide.
 //
 //    // Example sending a request using the CreateEventSubscriptionRequest method.
 //    req := client.CreateEventSubscriptionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -189,7 +245,8 @@ type CreateReplicationInstanceRequest struct {
 }
 
 // Send marshals and sends the CreateReplicationInstance API request.
-func (r CreateReplicationInstanceRequest) Send() (*CreateReplicationInstanceOutput, error) {
+func (r CreateReplicationInstanceRequest) Send(ctx context.Context) (*CreateReplicationInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -205,7 +262,7 @@ func (r CreateReplicationInstanceRequest) Send() (*CreateReplicationInstanceOutp
 //
 //    // Example sending a request using the CreateReplicationInstanceRequest method.
 //    req := client.CreateReplicationInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -239,7 +296,8 @@ type CreateReplicationSubnetGroupRequest struct {
 }
 
 // Send marshals and sends the CreateReplicationSubnetGroup API request.
-func (r CreateReplicationSubnetGroupRequest) Send() (*CreateReplicationSubnetGroupOutput, error) {
+func (r CreateReplicationSubnetGroupRequest) Send(ctx context.Context) (*CreateReplicationSubnetGroupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -255,7 +313,7 @@ func (r CreateReplicationSubnetGroupRequest) Send() (*CreateReplicationSubnetGro
 //
 //    // Example sending a request using the CreateReplicationSubnetGroupRequest method.
 //    req := client.CreateReplicationSubnetGroupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -289,7 +347,8 @@ type CreateReplicationTaskRequest struct {
 }
 
 // Send marshals and sends the CreateReplicationTask API request.
-func (r CreateReplicationTaskRequest) Send() (*CreateReplicationTaskOutput, error) {
+func (r CreateReplicationTaskRequest) Send(ctx context.Context) (*CreateReplicationTaskOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -305,7 +364,7 @@ func (r CreateReplicationTaskRequest) Send() (*CreateReplicationTaskOutput, erro
 //
 //    // Example sending a request using the CreateReplicationTaskRequest method.
 //    req := client.CreateReplicationTaskRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -339,7 +398,8 @@ type DeleteCertificateRequest struct {
 }
 
 // Send marshals and sends the DeleteCertificate API request.
-func (r DeleteCertificateRequest) Send() (*DeleteCertificateOutput, error) {
+func (r DeleteCertificateRequest) Send(ctx context.Context) (*DeleteCertificateOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -355,7 +415,7 @@ func (r DeleteCertificateRequest) Send() (*DeleteCertificateOutput, error) {
 //
 //    // Example sending a request using the DeleteCertificateRequest method.
 //    req := client.DeleteCertificateRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -389,7 +449,8 @@ type DeleteEndpointRequest struct {
 }
 
 // Send marshals and sends the DeleteEndpoint API request.
-func (r DeleteEndpointRequest) Send() (*DeleteEndpointOutput, error) {
+func (r DeleteEndpointRequest) Send(ctx context.Context) (*DeleteEndpointOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -408,7 +469,7 @@ func (r DeleteEndpointRequest) Send() (*DeleteEndpointOutput, error) {
 //
 //    // Example sending a request using the DeleteEndpointRequest method.
 //    req := client.DeleteEndpointRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -442,7 +503,8 @@ type DeleteEventSubscriptionRequest struct {
 }
 
 // Send marshals and sends the DeleteEventSubscription API request.
-func (r DeleteEventSubscriptionRequest) Send() (*DeleteEventSubscriptionOutput, error) {
+func (r DeleteEventSubscriptionRequest) Send(ctx context.Context) (*DeleteEventSubscriptionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -458,7 +520,7 @@ func (r DeleteEventSubscriptionRequest) Send() (*DeleteEventSubscriptionOutput, 
 //
 //    // Example sending a request using the DeleteEventSubscriptionRequest method.
 //    req := client.DeleteEventSubscriptionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -492,7 +554,8 @@ type DeleteReplicationInstanceRequest struct {
 }
 
 // Send marshals and sends the DeleteReplicationInstance API request.
-func (r DeleteReplicationInstanceRequest) Send() (*DeleteReplicationInstanceOutput, error) {
+func (r DeleteReplicationInstanceRequest) Send(ctx context.Context) (*DeleteReplicationInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -511,7 +574,7 @@ func (r DeleteReplicationInstanceRequest) Send() (*DeleteReplicationInstanceOutp
 //
 //    // Example sending a request using the DeleteReplicationInstanceRequest method.
 //    req := client.DeleteReplicationInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -545,7 +608,8 @@ type DeleteReplicationSubnetGroupRequest struct {
 }
 
 // Send marshals and sends the DeleteReplicationSubnetGroup API request.
-func (r DeleteReplicationSubnetGroupRequest) Send() (*DeleteReplicationSubnetGroupOutput, error) {
+func (r DeleteReplicationSubnetGroupRequest) Send(ctx context.Context) (*DeleteReplicationSubnetGroupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -561,7 +625,7 @@ func (r DeleteReplicationSubnetGroupRequest) Send() (*DeleteReplicationSubnetGro
 //
 //    // Example sending a request using the DeleteReplicationSubnetGroupRequest method.
 //    req := client.DeleteReplicationSubnetGroupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -595,7 +659,8 @@ type DeleteReplicationTaskRequest struct {
 }
 
 // Send marshals and sends the DeleteReplicationTask API request.
-func (r DeleteReplicationTaskRequest) Send() (*DeleteReplicationTaskOutput, error) {
+func (r DeleteReplicationTaskRequest) Send(ctx context.Context) (*DeleteReplicationTaskOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -611,7 +676,7 @@ func (r DeleteReplicationTaskRequest) Send() (*DeleteReplicationTaskOutput, erro
 //
 //    // Example sending a request using the DeleteReplicationTaskRequest method.
 //    req := client.DeleteReplicationTaskRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -645,7 +710,8 @@ type DescribeAccountAttributesRequest struct {
 }
 
 // Send marshals and sends the DescribeAccountAttributes API request.
-func (r DescribeAccountAttributesRequest) Send() (*DescribeAccountAttributesOutput, error) {
+func (r DescribeAccountAttributesRequest) Send(ctx context.Context) (*DescribeAccountAttributesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -666,7 +732,7 @@ func (r DescribeAccountAttributesRequest) Send() (*DescribeAccountAttributesOutp
 //
 //    // Example sending a request using the DescribeAccountAttributesRequest method.
 //    req := client.DescribeAccountAttributesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -700,7 +766,8 @@ type DescribeCertificatesRequest struct {
 }
 
 // Send marshals and sends the DescribeCertificates API request.
-func (r DescribeCertificatesRequest) Send() (*DescribeCertificatesOutput, error) {
+func (r DescribeCertificatesRequest) Send(ctx context.Context) (*DescribeCertificatesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -716,7 +783,7 @@ func (r DescribeCertificatesRequest) Send() (*DescribeCertificatesOutput, error)
 //
 //    // Example sending a request using the DescribeCertificatesRequest method.
 //    req := client.DescribeCertificatesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -766,7 +833,7 @@ func (c *DatabaseMigrationService) DescribeCertificatesRequest(input *DescribeCe
 func (p *DescribeCertificatesRequest) Paginate(opts ...aws.Option) DescribeCertificatesPager {
 	return DescribeCertificatesPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *DescribeCertificatesInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -775,6 +842,7 @@ func (p *DescribeCertificatesRequest) Paginate(opts ...aws.Option) DescribeCerti
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -802,7 +870,8 @@ type DescribeConnectionsRequest struct {
 }
 
 // Send marshals and sends the DescribeConnections API request.
-func (r DescribeConnectionsRequest) Send() (*DescribeConnectionsOutput, error) {
+func (r DescribeConnectionsRequest) Send(ctx context.Context) (*DescribeConnectionsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -819,7 +888,7 @@ func (r DescribeConnectionsRequest) Send() (*DescribeConnectionsOutput, error) {
 //
 //    // Example sending a request using the DescribeConnectionsRequest method.
 //    req := client.DescribeConnectionsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -869,7 +938,7 @@ func (c *DatabaseMigrationService) DescribeConnectionsRequest(input *DescribeCon
 func (p *DescribeConnectionsRequest) Paginate(opts ...aws.Option) DescribeConnectionsPager {
 	return DescribeConnectionsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *DescribeConnectionsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -878,6 +947,7 @@ func (p *DescribeConnectionsRequest) Paginate(opts ...aws.Option) DescribeConnec
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -905,7 +975,8 @@ type DescribeEndpointTypesRequest struct {
 }
 
 // Send marshals and sends the DescribeEndpointTypes API request.
-func (r DescribeEndpointTypesRequest) Send() (*DescribeEndpointTypesOutput, error) {
+func (r DescribeEndpointTypesRequest) Send(ctx context.Context) (*DescribeEndpointTypesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -921,7 +992,7 @@ func (r DescribeEndpointTypesRequest) Send() (*DescribeEndpointTypesOutput, erro
 //
 //    // Example sending a request using the DescribeEndpointTypesRequest method.
 //    req := client.DescribeEndpointTypesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -971,7 +1042,7 @@ func (c *DatabaseMigrationService) DescribeEndpointTypesRequest(input *DescribeE
 func (p *DescribeEndpointTypesRequest) Paginate(opts ...aws.Option) DescribeEndpointTypesPager {
 	return DescribeEndpointTypesPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *DescribeEndpointTypesInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -980,6 +1051,7 @@ func (p *DescribeEndpointTypesRequest) Paginate(opts ...aws.Option) DescribeEndp
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1007,7 +1079,8 @@ type DescribeEndpointsRequest struct {
 }
 
 // Send marshals and sends the DescribeEndpoints API request.
-func (r DescribeEndpointsRequest) Send() (*DescribeEndpointsOutput, error) {
+func (r DescribeEndpointsRequest) Send(ctx context.Context) (*DescribeEndpointsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1023,7 +1096,7 @@ func (r DescribeEndpointsRequest) Send() (*DescribeEndpointsOutput, error) {
 //
 //    // Example sending a request using the DescribeEndpointsRequest method.
 //    req := client.DescribeEndpointsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1073,7 +1146,7 @@ func (c *DatabaseMigrationService) DescribeEndpointsRequest(input *DescribeEndpo
 func (p *DescribeEndpointsRequest) Paginate(opts ...aws.Option) DescribeEndpointsPager {
 	return DescribeEndpointsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *DescribeEndpointsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1082,6 +1155,7 @@ func (p *DescribeEndpointsRequest) Paginate(opts ...aws.Option) DescribeEndpoint
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1109,7 +1183,8 @@ type DescribeEventCategoriesRequest struct {
 }
 
 // Send marshals and sends the DescribeEventCategories API request.
-func (r DescribeEventCategoriesRequest) Send() (*DescribeEventCategoriesOutput, error) {
+func (r DescribeEventCategoriesRequest) Send(ctx context.Context) (*DescribeEventCategoriesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1123,12 +1198,12 @@ func (r DescribeEventCategoriesRequest) Send() (*DescribeEventCategoriesOutput, 
 //
 // Lists categories for all event source types, or, if specified, for a specified
 // source type. You can see a list of the event categories and source types
-// in Working with Events and Notifications (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html)
+// in Working with Events and Notifications (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html)
 // in the AWS Database Migration Service User Guide.
 //
 //    // Example sending a request using the DescribeEventCategoriesRequest method.
 //    req := client.DescribeEventCategoriesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1162,7 +1237,8 @@ type DescribeEventSubscriptionsRequest struct {
 }
 
 // Send marshals and sends the DescribeEventSubscriptions API request.
-func (r DescribeEventSubscriptionsRequest) Send() (*DescribeEventSubscriptionsOutput, error) {
+func (r DescribeEventSubscriptionsRequest) Send(ctx context.Context) (*DescribeEventSubscriptionsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1183,7 +1259,7 @@ func (r DescribeEventSubscriptionsRequest) Send() (*DescribeEventSubscriptionsOu
 //
 //    // Example sending a request using the DescribeEventSubscriptionsRequest method.
 //    req := client.DescribeEventSubscriptionsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1233,7 +1309,7 @@ func (c *DatabaseMigrationService) DescribeEventSubscriptionsRequest(input *Desc
 func (p *DescribeEventSubscriptionsRequest) Paginate(opts ...aws.Option) DescribeEventSubscriptionsPager {
 	return DescribeEventSubscriptionsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *DescribeEventSubscriptionsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1242,6 +1318,7 @@ func (p *DescribeEventSubscriptionsRequest) Paginate(opts ...aws.Option) Describ
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1269,7 +1346,8 @@ type DescribeEventsRequest struct {
 }
 
 // Send marshals and sends the DescribeEvents API request.
-func (r DescribeEventsRequest) Send() (*DescribeEventsOutput, error) {
+func (r DescribeEventsRequest) Send(ctx context.Context) (*DescribeEventsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1283,12 +1361,12 @@ func (r DescribeEventsRequest) Send() (*DescribeEventsOutput, error) {
 //
 // Lists events for a given source identifier and source type. You can also
 // specify a start and end time. For more information on AWS DMS events, see
-// Working with Events and Notifications (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html)
+// Working with Events and Notifications (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html)
 // in the AWS Database Migration User Guide.
 //
 //    // Example sending a request using the DescribeEventsRequest method.
 //    req := client.DescribeEventsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1338,7 +1416,7 @@ func (c *DatabaseMigrationService) DescribeEventsRequest(input *DescribeEventsIn
 func (p *DescribeEventsRequest) Paginate(opts ...aws.Option) DescribeEventsPager {
 	return DescribeEventsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *DescribeEventsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1347,6 +1425,7 @@ func (p *DescribeEventsRequest) Paginate(opts ...aws.Option) DescribeEventsPager
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1374,7 +1453,8 @@ type DescribeOrderableReplicationInstancesRequest struct {
 }
 
 // Send marshals and sends the DescribeOrderableReplicationInstances API request.
-func (r DescribeOrderableReplicationInstancesRequest) Send() (*DescribeOrderableReplicationInstancesOutput, error) {
+func (r DescribeOrderableReplicationInstancesRequest) Send(ctx context.Context) (*DescribeOrderableReplicationInstancesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1391,7 +1471,7 @@ func (r DescribeOrderableReplicationInstancesRequest) Send() (*DescribeOrderable
 //
 //    // Example sending a request using the DescribeOrderableReplicationInstancesRequest method.
 //    req := client.DescribeOrderableReplicationInstancesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1441,7 +1521,7 @@ func (c *DatabaseMigrationService) DescribeOrderableReplicationInstancesRequest(
 func (p *DescribeOrderableReplicationInstancesRequest) Paginate(opts ...aws.Option) DescribeOrderableReplicationInstancesPager {
 	return DescribeOrderableReplicationInstancesPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *DescribeOrderableReplicationInstancesInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1450,6 +1530,7 @@ func (p *DescribeOrderableReplicationInstancesRequest) Paginate(opts ...aws.Opti
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1467,6 +1548,110 @@ func (p *DescribeOrderableReplicationInstancesPager) CurrentPage() *DescribeOrde
 	return p.Pager.CurrentPage().(*DescribeOrderableReplicationInstancesOutput)
 }
 
+const opDescribePendingMaintenanceActions = "DescribePendingMaintenanceActions"
+
+// DescribePendingMaintenanceActionsRequest is a API request type for the DescribePendingMaintenanceActions API operation.
+type DescribePendingMaintenanceActionsRequest struct {
+	*aws.Request
+	Input *DescribePendingMaintenanceActionsInput
+	Copy  func(*DescribePendingMaintenanceActionsInput) DescribePendingMaintenanceActionsRequest
+}
+
+// Send marshals and sends the DescribePendingMaintenanceActions API request.
+func (r DescribePendingMaintenanceActionsRequest) Send(ctx context.Context) (*DescribePendingMaintenanceActionsOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*DescribePendingMaintenanceActionsOutput), nil
+}
+
+// DescribePendingMaintenanceActionsRequest returns a request value for making API operation for
+// AWS Database Migration Service.
+//
+// For internal use only
+//
+//    // Example sending a request using the DescribePendingMaintenanceActionsRequest method.
+//    req := client.DescribePendingMaintenanceActionsRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribePendingMaintenanceActions
+func (c *DatabaseMigrationService) DescribePendingMaintenanceActionsRequest(input *DescribePendingMaintenanceActionsInput) DescribePendingMaintenanceActionsRequest {
+	op := &aws.Operation{
+		Name:       opDescribePendingMaintenanceActions,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+		Paginator: &aws.Paginator{
+			InputTokens:     []string{"Marker"},
+			OutputTokens:    []string{"Marker"},
+			LimitToken:      "MaxRecords",
+			TruncationToken: "",
+		},
+	}
+
+	if input == nil {
+		input = &DescribePendingMaintenanceActionsInput{}
+	}
+
+	output := &DescribePendingMaintenanceActionsOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return DescribePendingMaintenanceActionsRequest{Request: req, Input: input, Copy: c.DescribePendingMaintenanceActionsRequest}
+}
+
+// Paginate pages iterates over the pages of a DescribePendingMaintenanceActionsRequest operation,
+// calling the Next method for each page. Using the paginators Next
+// method will depict whether or not there are more pages.
+//
+// Note: This operation can generate multiple requests to a service.
+//
+//    // Example iterating over at most 3 pages of a DescribePendingMaintenanceActions operation.
+//		req := client.DescribePendingMaintenanceActionsRequest(input)
+//		p := req.Paginate()
+//		for p.Next() {
+//			page := p.CurrentPage()
+//		}
+//
+//		if err := p.Err(); err != nil {
+//			return err
+//		}
+//
+func (p *DescribePendingMaintenanceActionsRequest) Paginate(opts ...aws.Option) DescribePendingMaintenanceActionsPager {
+	return DescribePendingMaintenanceActionsPager{
+		Pager: aws.Pager{
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
+				var inCpy *DescribePendingMaintenanceActionsInput
+				if p.Input != nil {
+					tmp := *p.Input
+					inCpy = &tmp
+				}
+
+				req := p.Copy(inCpy)
+				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
+
+				return req.Request, nil
+			},
+		},
+	}
+}
+
+// DescribePendingMaintenanceActionsPager is used to paginate the request. This can be done by
+// calling Next and CurrentPage.
+type DescribePendingMaintenanceActionsPager struct {
+	aws.Pager
+}
+
+func (p *DescribePendingMaintenanceActionsPager) CurrentPage() *DescribePendingMaintenanceActionsOutput {
+	return p.Pager.CurrentPage().(*DescribePendingMaintenanceActionsOutput)
+}
+
 const opDescribeRefreshSchemasStatus = "DescribeRefreshSchemasStatus"
 
 // DescribeRefreshSchemasStatusRequest is a API request type for the DescribeRefreshSchemasStatus API operation.
@@ -1477,7 +1662,8 @@ type DescribeRefreshSchemasStatusRequest struct {
 }
 
 // Send marshals and sends the DescribeRefreshSchemasStatus API request.
-func (r DescribeRefreshSchemasStatusRequest) Send() (*DescribeRefreshSchemasStatusOutput, error) {
+func (r DescribeRefreshSchemasStatusRequest) Send(ctx context.Context) (*DescribeRefreshSchemasStatusOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1493,7 +1679,7 @@ func (r DescribeRefreshSchemasStatusRequest) Send() (*DescribeRefreshSchemasStat
 //
 //    // Example sending a request using the DescribeRefreshSchemasStatusRequest method.
 //    req := client.DescribeRefreshSchemasStatusRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1527,7 +1713,8 @@ type DescribeReplicationInstanceTaskLogsRequest struct {
 }
 
 // Send marshals and sends the DescribeReplicationInstanceTaskLogs API request.
-func (r DescribeReplicationInstanceTaskLogsRequest) Send() (*DescribeReplicationInstanceTaskLogsOutput, error) {
+func (r DescribeReplicationInstanceTaskLogsRequest) Send(ctx context.Context) (*DescribeReplicationInstanceTaskLogsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1543,7 +1730,7 @@ func (r DescribeReplicationInstanceTaskLogsRequest) Send() (*DescribeReplication
 //
 //    // Example sending a request using the DescribeReplicationInstanceTaskLogsRequest method.
 //    req := client.DescribeReplicationInstanceTaskLogsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1593,7 +1780,7 @@ func (c *DatabaseMigrationService) DescribeReplicationInstanceTaskLogsRequest(in
 func (p *DescribeReplicationInstanceTaskLogsRequest) Paginate(opts ...aws.Option) DescribeReplicationInstanceTaskLogsPager {
 	return DescribeReplicationInstanceTaskLogsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *DescribeReplicationInstanceTaskLogsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1602,6 +1789,7 @@ func (p *DescribeReplicationInstanceTaskLogsRequest) Paginate(opts ...aws.Option
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1629,7 +1817,8 @@ type DescribeReplicationInstancesRequest struct {
 }
 
 // Send marshals and sends the DescribeReplicationInstances API request.
-func (r DescribeReplicationInstancesRequest) Send() (*DescribeReplicationInstancesOutput, error) {
+func (r DescribeReplicationInstancesRequest) Send(ctx context.Context) (*DescribeReplicationInstancesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1646,7 +1835,7 @@ func (r DescribeReplicationInstancesRequest) Send() (*DescribeReplicationInstanc
 //
 //    // Example sending a request using the DescribeReplicationInstancesRequest method.
 //    req := client.DescribeReplicationInstancesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1696,7 +1885,7 @@ func (c *DatabaseMigrationService) DescribeReplicationInstancesRequest(input *De
 func (p *DescribeReplicationInstancesRequest) Paginate(opts ...aws.Option) DescribeReplicationInstancesPager {
 	return DescribeReplicationInstancesPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *DescribeReplicationInstancesInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1705,6 +1894,7 @@ func (p *DescribeReplicationInstancesRequest) Paginate(opts ...aws.Option) Descr
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1732,7 +1922,8 @@ type DescribeReplicationSubnetGroupsRequest struct {
 }
 
 // Send marshals and sends the DescribeReplicationSubnetGroups API request.
-func (r DescribeReplicationSubnetGroupsRequest) Send() (*DescribeReplicationSubnetGroupsOutput, error) {
+func (r DescribeReplicationSubnetGroupsRequest) Send(ctx context.Context) (*DescribeReplicationSubnetGroupsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1748,7 +1939,7 @@ func (r DescribeReplicationSubnetGroupsRequest) Send() (*DescribeReplicationSubn
 //
 //    // Example sending a request using the DescribeReplicationSubnetGroupsRequest method.
 //    req := client.DescribeReplicationSubnetGroupsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1798,7 +1989,7 @@ func (c *DatabaseMigrationService) DescribeReplicationSubnetGroupsRequest(input 
 func (p *DescribeReplicationSubnetGroupsRequest) Paginate(opts ...aws.Option) DescribeReplicationSubnetGroupsPager {
 	return DescribeReplicationSubnetGroupsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *DescribeReplicationSubnetGroupsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1807,6 +1998,7 @@ func (p *DescribeReplicationSubnetGroupsRequest) Paginate(opts ...aws.Option) De
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1834,7 +2026,8 @@ type DescribeReplicationTaskAssessmentResultsRequest struct {
 }
 
 // Send marshals and sends the DescribeReplicationTaskAssessmentResults API request.
-func (r DescribeReplicationTaskAssessmentResultsRequest) Send() (*DescribeReplicationTaskAssessmentResultsOutput, error) {
+func (r DescribeReplicationTaskAssessmentResultsRequest) Send(ctx context.Context) (*DescribeReplicationTaskAssessmentResultsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1851,7 +2044,7 @@ func (r DescribeReplicationTaskAssessmentResultsRequest) Send() (*DescribeReplic
 //
 //    // Example sending a request using the DescribeReplicationTaskAssessmentResultsRequest method.
 //    req := client.DescribeReplicationTaskAssessmentResultsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1901,7 +2094,7 @@ func (c *DatabaseMigrationService) DescribeReplicationTaskAssessmentResultsReque
 func (p *DescribeReplicationTaskAssessmentResultsRequest) Paginate(opts ...aws.Option) DescribeReplicationTaskAssessmentResultsPager {
 	return DescribeReplicationTaskAssessmentResultsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *DescribeReplicationTaskAssessmentResultsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1910,6 +2103,7 @@ func (p *DescribeReplicationTaskAssessmentResultsRequest) Paginate(opts ...aws.O
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1937,7 +2131,8 @@ type DescribeReplicationTasksRequest struct {
 }
 
 // Send marshals and sends the DescribeReplicationTasks API request.
-func (r DescribeReplicationTasksRequest) Send() (*DescribeReplicationTasksOutput, error) {
+func (r DescribeReplicationTasksRequest) Send(ctx context.Context) (*DescribeReplicationTasksOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1954,7 +2149,7 @@ func (r DescribeReplicationTasksRequest) Send() (*DescribeReplicationTasksOutput
 //
 //    // Example sending a request using the DescribeReplicationTasksRequest method.
 //    req := client.DescribeReplicationTasksRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2004,7 +2199,7 @@ func (c *DatabaseMigrationService) DescribeReplicationTasksRequest(input *Descri
 func (p *DescribeReplicationTasksRequest) Paginate(opts ...aws.Option) DescribeReplicationTasksPager {
 	return DescribeReplicationTasksPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *DescribeReplicationTasksInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -2013,6 +2208,7 @@ func (p *DescribeReplicationTasksRequest) Paginate(opts ...aws.Option) DescribeR
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2040,7 +2236,8 @@ type DescribeSchemasRequest struct {
 }
 
 // Send marshals and sends the DescribeSchemas API request.
-func (r DescribeSchemasRequest) Send() (*DescribeSchemasOutput, error) {
+func (r DescribeSchemasRequest) Send(ctx context.Context) (*DescribeSchemasOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2056,7 +2253,7 @@ func (r DescribeSchemasRequest) Send() (*DescribeSchemasOutput, error) {
 //
 //    // Example sending a request using the DescribeSchemasRequest method.
 //    req := client.DescribeSchemasRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2106,7 +2303,7 @@ func (c *DatabaseMigrationService) DescribeSchemasRequest(input *DescribeSchemas
 func (p *DescribeSchemasRequest) Paginate(opts ...aws.Option) DescribeSchemasPager {
 	return DescribeSchemasPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *DescribeSchemasInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -2115,6 +2312,7 @@ func (p *DescribeSchemasRequest) Paginate(opts ...aws.Option) DescribeSchemasPag
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2142,7 +2340,8 @@ type DescribeTableStatisticsRequest struct {
 }
 
 // Send marshals and sends the DescribeTableStatistics API request.
-func (r DescribeTableStatisticsRequest) Send() (*DescribeTableStatisticsOutput, error) {
+func (r DescribeTableStatisticsRequest) Send(ctx context.Context) (*DescribeTableStatisticsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2163,7 +2362,7 @@ func (r DescribeTableStatisticsRequest) Send() (*DescribeTableStatisticsOutput, 
 //
 //    // Example sending a request using the DescribeTableStatisticsRequest method.
 //    req := client.DescribeTableStatisticsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2213,7 +2412,7 @@ func (c *DatabaseMigrationService) DescribeTableStatisticsRequest(input *Describ
 func (p *DescribeTableStatisticsRequest) Paginate(opts ...aws.Option) DescribeTableStatisticsPager {
 	return DescribeTableStatisticsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *DescribeTableStatisticsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -2222,6 +2421,7 @@ func (p *DescribeTableStatisticsRequest) Paginate(opts ...aws.Option) DescribeTa
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2249,7 +2449,8 @@ type ImportCertificateRequest struct {
 }
 
 // Send marshals and sends the ImportCertificate API request.
-func (r ImportCertificateRequest) Send() (*ImportCertificateOutput, error) {
+func (r ImportCertificateRequest) Send(ctx context.Context) (*ImportCertificateOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2265,7 +2466,7 @@ func (r ImportCertificateRequest) Send() (*ImportCertificateOutput, error) {
 //
 //    // Example sending a request using the ImportCertificateRequest method.
 //    req := client.ImportCertificateRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2299,7 +2500,8 @@ type ListTagsForResourceRequest struct {
 }
 
 // Send marshals and sends the ListTagsForResource API request.
-func (r ListTagsForResourceRequest) Send() (*ListTagsForResourceOutput, error) {
+func (r ListTagsForResourceRequest) Send(ctx context.Context) (*ListTagsForResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2315,7 +2517,7 @@ func (r ListTagsForResourceRequest) Send() (*ListTagsForResourceOutput, error) {
 //
 //    // Example sending a request using the ListTagsForResourceRequest method.
 //    req := client.ListTagsForResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2349,7 +2551,8 @@ type ModifyEndpointRequest struct {
 }
 
 // Send marshals and sends the ModifyEndpoint API request.
-func (r ModifyEndpointRequest) Send() (*ModifyEndpointOutput, error) {
+func (r ModifyEndpointRequest) Send(ctx context.Context) (*ModifyEndpointOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2365,7 +2568,7 @@ func (r ModifyEndpointRequest) Send() (*ModifyEndpointOutput, error) {
 //
 //    // Example sending a request using the ModifyEndpointRequest method.
 //    req := client.ModifyEndpointRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2399,7 +2602,8 @@ type ModifyEventSubscriptionRequest struct {
 }
 
 // Send marshals and sends the ModifyEventSubscription API request.
-func (r ModifyEventSubscriptionRequest) Send() (*ModifyEventSubscriptionOutput, error) {
+func (r ModifyEventSubscriptionRequest) Send(ctx context.Context) (*ModifyEventSubscriptionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2415,7 +2619,7 @@ func (r ModifyEventSubscriptionRequest) Send() (*ModifyEventSubscriptionOutput, 
 //
 //    // Example sending a request using the ModifyEventSubscriptionRequest method.
 //    req := client.ModifyEventSubscriptionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2449,7 +2653,8 @@ type ModifyReplicationInstanceRequest struct {
 }
 
 // Send marshals and sends the ModifyReplicationInstance API request.
-func (r ModifyReplicationInstanceRequest) Send() (*ModifyReplicationInstanceOutput, error) {
+func (r ModifyReplicationInstanceRequest) Send(ctx context.Context) (*ModifyReplicationInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2469,7 +2674,7 @@ func (r ModifyReplicationInstanceRequest) Send() (*ModifyReplicationInstanceOutp
 //
 //    // Example sending a request using the ModifyReplicationInstanceRequest method.
 //    req := client.ModifyReplicationInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2503,7 +2708,8 @@ type ModifyReplicationSubnetGroupRequest struct {
 }
 
 // Send marshals and sends the ModifyReplicationSubnetGroup API request.
-func (r ModifyReplicationSubnetGroupRequest) Send() (*ModifyReplicationSubnetGroupOutput, error) {
+func (r ModifyReplicationSubnetGroupRequest) Send(ctx context.Context) (*ModifyReplicationSubnetGroupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2519,7 +2725,7 @@ func (r ModifyReplicationSubnetGroupRequest) Send() (*ModifyReplicationSubnetGro
 //
 //    // Example sending a request using the ModifyReplicationSubnetGroupRequest method.
 //    req := client.ModifyReplicationSubnetGroupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2553,7 +2759,8 @@ type ModifyReplicationTaskRequest struct {
 }
 
 // Send marshals and sends the ModifyReplicationTask API request.
-func (r ModifyReplicationTaskRequest) Send() (*ModifyReplicationTaskOutput, error) {
+func (r ModifyReplicationTaskRequest) Send(ctx context.Context) (*ModifyReplicationTaskOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2571,12 +2778,12 @@ func (r ModifyReplicationTaskRequest) Send() (*ModifyReplicationTaskOutput, erro
 // can modify it.
 //
 // For more information about AWS DMS tasks, see Working with Migration Tasks
-// (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html) in the
+// (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html) in the
 // AWS Database Migration Service User Guide.
 //
 //    // Example sending a request using the ModifyReplicationTaskRequest method.
 //    req := client.ModifyReplicationTaskRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2610,7 +2817,8 @@ type RebootReplicationInstanceRequest struct {
 }
 
 // Send marshals and sends the RebootReplicationInstance API request.
-func (r RebootReplicationInstanceRequest) Send() (*RebootReplicationInstanceOutput, error) {
+func (r RebootReplicationInstanceRequest) Send(ctx context.Context) (*RebootReplicationInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2627,7 +2835,7 @@ func (r RebootReplicationInstanceRequest) Send() (*RebootReplicationInstanceOutp
 //
 //    // Example sending a request using the RebootReplicationInstanceRequest method.
 //    req := client.RebootReplicationInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2661,7 +2869,8 @@ type RefreshSchemasRequest struct {
 }
 
 // Send marshals and sends the RefreshSchemas API request.
-func (r RefreshSchemasRequest) Send() (*RefreshSchemasOutput, error) {
+func (r RefreshSchemasRequest) Send(ctx context.Context) (*RefreshSchemasOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2679,7 +2888,7 @@ func (r RefreshSchemasRequest) Send() (*RefreshSchemasOutput, error) {
 //
 //    // Example sending a request using the RefreshSchemasRequest method.
 //    req := client.RefreshSchemasRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2713,7 +2922,8 @@ type ReloadTablesRequest struct {
 }
 
 // Send marshals and sends the ReloadTables API request.
-func (r ReloadTablesRequest) Send() (*ReloadTablesOutput, error) {
+func (r ReloadTablesRequest) Send(ctx context.Context) (*ReloadTablesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2729,7 +2939,7 @@ func (r ReloadTablesRequest) Send() (*ReloadTablesOutput, error) {
 //
 //    // Example sending a request using the ReloadTablesRequest method.
 //    req := client.ReloadTablesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2763,7 +2973,8 @@ type RemoveTagsFromResourceRequest struct {
 }
 
 // Send marshals and sends the RemoveTagsFromResource API request.
-func (r RemoveTagsFromResourceRequest) Send() (*RemoveTagsFromResourceOutput, error) {
+func (r RemoveTagsFromResourceRequest) Send(ctx context.Context) (*RemoveTagsFromResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2779,7 +2990,7 @@ func (r RemoveTagsFromResourceRequest) Send() (*RemoveTagsFromResourceOutput, er
 //
 //    // Example sending a request using the RemoveTagsFromResourceRequest method.
 //    req := client.RemoveTagsFromResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2813,7 +3024,8 @@ type StartReplicationTaskRequest struct {
 }
 
 // Send marshals and sends the StartReplicationTask API request.
-func (r StartReplicationTaskRequest) Send() (*StartReplicationTaskOutput, error) {
+func (r StartReplicationTaskRequest) Send(ctx context.Context) (*StartReplicationTaskOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2828,12 +3040,12 @@ func (r StartReplicationTaskRequest) Send() (*StartReplicationTaskOutput, error)
 // Starts the replication task.
 //
 // For more information about AWS DMS tasks, see Working with Migration Tasks
-//  (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html) in the
+//  (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.html) in the
 // AWS Database Migration Service User Guide.
 //
 //    // Example sending a request using the StartReplicationTaskRequest method.
 //    req := client.StartReplicationTaskRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2867,7 +3079,8 @@ type StartReplicationTaskAssessmentRequest struct {
 }
 
 // Send marshals and sends the StartReplicationTaskAssessment API request.
-func (r StartReplicationTaskAssessmentRequest) Send() (*StartReplicationTaskAssessmentOutput, error) {
+func (r StartReplicationTaskAssessmentRequest) Send(ctx context.Context) (*StartReplicationTaskAssessmentOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2884,7 +3097,7 @@ func (r StartReplicationTaskAssessmentRequest) Send() (*StartReplicationTaskAsse
 //
 //    // Example sending a request using the StartReplicationTaskAssessmentRequest method.
 //    req := client.StartReplicationTaskAssessmentRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2918,7 +3131,8 @@ type StopReplicationTaskRequest struct {
 }
 
 // Send marshals and sends the StopReplicationTask API request.
-func (r StopReplicationTaskRequest) Send() (*StopReplicationTaskOutput, error) {
+func (r StopReplicationTaskRequest) Send(ctx context.Context) (*StopReplicationTaskOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2934,7 +3148,7 @@ func (r StopReplicationTaskRequest) Send() (*StopReplicationTaskOutput, error) {
 //
 //    // Example sending a request using the StopReplicationTaskRequest method.
 //    req := client.StopReplicationTaskRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2968,7 +3182,8 @@ type TestConnectionRequest struct {
 }
 
 // Send marshals and sends the TestConnection API request.
-func (r TestConnectionRequest) Send() (*TestConnectionOutput, error) {
+func (r TestConnectionRequest) Send(ctx context.Context) (*TestConnectionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2984,7 +3199,7 @@ func (r TestConnectionRequest) Send() (*TestConnectionOutput, error) {
 //
 //    // Example sending a request using the TestConnectionRequest method.
 //    req := client.TestConnectionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3098,6 +3313,95 @@ func (s AddTagsToResourceOutput) GoString() string {
 
 // SDKResponseMetdata return sthe response metadata for the API.
 func (s AddTagsToResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ApplyPendingMaintenanceActionMessage
+type ApplyPendingMaintenanceActionInput struct {
+	_ struct{} `type:"structure"`
+
+	// The pending maintenance action to apply to this resource.
+	//
+	// ApplyAction is a required field
+	ApplyAction *string `type:"string" required:"true"`
+
+	// A value that specifies the type of opt-in request, or undoes an opt-in request.
+	// An opt-in request of type immediate cannot be undone.
+	//
+	// Valid values:
+	//
+	//    * immediate - Apply the maintenance action immediately.
+	//
+	//    * next-maintenance - Apply the maintenance action during the next maintenance
+	//    window for the resource.
+	//
+	//    * undo-opt-in - Cancel any existing next-maintenance opt-in requests.
+	//
+	// OptInType is a required field
+	OptInType *string `type:"string" required:"true"`
+
+	// The Amazon Resource Name (ARN) of the AWS DMS resource that the pending maintenance
+	// action applies to.
+	//
+	// ReplicationInstanceArn is a required field
+	ReplicationInstanceArn *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s ApplyPendingMaintenanceActionInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ApplyPendingMaintenanceActionInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ApplyPendingMaintenanceActionInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ApplyPendingMaintenanceActionInput"}
+
+	if s.ApplyAction == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ApplyAction"))
+	}
+
+	if s.OptInType == nil {
+		invalidParams.Add(aws.NewErrParamRequired("OptInType"))
+	}
+
+	if s.ReplicationInstanceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ReplicationInstanceArn"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ApplyPendingMaintenanceActionResponse
+type ApplyPendingMaintenanceActionOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// The AWS DMS resource that the pending maintenance action will be applied
+	// to.
+	ResourcePendingMaintenanceActions *ResourcePendingMaintenanceActions `type:"structure"`
+}
+
+// String returns the string representation
+func (s ApplyPendingMaintenanceActionOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ApplyPendingMaintenanceActionOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s ApplyPendingMaintenanceActionOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
@@ -3236,13 +3540,13 @@ type CreateEndpointInput struct {
 
 	// Settings in JSON format for the target Amazon DynamoDB endpoint. For more
 	// information about the available settings, see Using Object Mapping to Migrate
-	// Data to DynamoDB (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html)
+	// Data to DynamoDB (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html)
 	// in the AWS Database Migration Service User Guide.
 	DynamoDbSettings *DynamoDbSettings `type:"structure"`
 
 	// Settings in JSON format for the target Elasticsearch endpoint. For more information
 	// about the available settings, see Extra Connection Attributes When Using
-	// Elasticsearch as a Target for AWS DMS (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration)
+	// Elasticsearch as a Target for AWS DMS (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration)
 	// in the AWS Database Migration User Guide.
 	ElasticsearchSettings *ElasticsearchSettings `type:"structure"`
 
@@ -3273,7 +3577,7 @@ type CreateEndpointInput struct {
 
 	// Settings in JSON format for the target Amazon Kinesis Data Streams endpoint.
 	// For more information about the available settings, see Using Object Mapping
-	// to Migrate Data to a Kinesis Data Stream (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping
+	// to Migrate Data to a Kinesis Data Stream (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping
 	// ) in the AWS Database Migration User Guide.
 	KinesisSettings *KinesisSettings `type:"structure"`
 
@@ -3286,7 +3590,7 @@ type CreateEndpointInput struct {
 
 	// Settings in JSON format for the source MongoDB endpoint. For more information
 	// about the available settings, see the configuration properties section in
-	//  Using MongoDB as a Target for AWS Database Migration Service (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html)
+	//  Using MongoDB as a Target for AWS Database Migration Service (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html)
 	// in the AWS Database Migration Service User Guide.
 	MongoDbSettings *MongoDbSettings `type:"structure"`
 
@@ -3296,9 +3600,11 @@ type CreateEndpointInput struct {
 	// The port used by the endpoint database.
 	Port *int64 `type:"integer"`
 
+	RedshiftSettings *RedshiftSettings `type:"structure"`
+
 	// Settings in JSON format for the target Amazon S3 endpoint. For more information
 	// about the available settings, see Extra Connection Attributes When Using
-	// Amazon S3 as a Target for AWS DMS (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring)
+	// Amazon S3 as a Target for AWS DMS (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring)
 	// in the AWS Database Migration Service User Guide.
 	S3Settings *S3Settings `type:"structure"`
 
@@ -3398,7 +3704,7 @@ type CreateEventSubscriptionInput struct {
 	// A list of event categories for a source type that you want to subscribe to.
 	// You can see a list of the categories for a given source type by calling the
 	// DescribeEventCategories action or in the topic Working with Events and Notifications
-	// (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in the
+	// (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Events.html) in the
 	// AWS Database Migration Service User Guide.
 	EventCategories []string `type:"list"`
 
@@ -3777,7 +4083,7 @@ type CreateReplicationTaskInput struct {
 
 	// Settings for the task, such as target metadata settings. For a complete list
 	// of task settings, see Task Settings for AWS Database Migration Service Tasks
-	// (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html)
+	// (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Tasks.CustomizingTasks.TaskSettings.html)
 	// in the AWS Database Migration User Guide.
 	ReplicationTaskSettings *string `type:"string"`
 
@@ -4889,6 +5195,87 @@ func (s DescribeOrderableReplicationInstancesOutput) SDKResponseMetadata() aws.R
 	return s.responseMetadata
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribePendingMaintenanceActionsMessage
+type DescribePendingMaintenanceActionsInput struct {
+	_ struct{} `type:"structure"`
+
+	Filters []Filter `type:"list"`
+
+	// An optional pagination token provided by a previous request. If this parameter
+	// is specified, the response includes only records beyond the marker, up to
+	// the value specified by MaxRecords.
+	Marker *string `type:"string"`
+
+	// The maximum number of records to include in the response. If more records
+	// exist than the specified MaxRecords value, a pagination token called a marker
+	// is included in the response so that the remaining results can be retrieved.
+	//
+	// Default: 100
+	//
+	// Constraints: Minimum 20, maximum 100.
+	MaxRecords *int64 `type:"integer"`
+
+	// The ARN of the replication instance.
+	ReplicationInstanceArn *string `type:"string"`
+}
+
+// String returns the string representation
+func (s DescribePendingMaintenanceActionsInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DescribePendingMaintenanceActionsInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DescribePendingMaintenanceActionsInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DescribePendingMaintenanceActionsInput"}
+	if s.Filters != nil {
+		for i, v := range s.Filters {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Filters", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribePendingMaintenanceActionsResponse
+type DescribePendingMaintenanceActionsOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// An optional pagination token provided by a previous request. If this parameter
+	// is specified, the response includes only records beyond the marker, up to
+	// the value specified by MaxRecords.
+	Marker *string `type:"string"`
+
+	// The pending maintenance action.
+	PendingMaintenanceActions []ResourcePendingMaintenanceActions `type:"list"`
+}
+
+// String returns the string representation
+func (s DescribePendingMaintenanceActionsOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DescribePendingMaintenanceActionsOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s DescribePendingMaintenanceActionsOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/DescribeRefreshSchemasStatusMessage
 type DescribeRefreshSchemasStatusInput struct {
 	_ struct{} `type:"structure"`
@@ -5281,6 +5668,11 @@ type DescribeReplicationTasksInput struct {
 	//
 	// Constraints: Minimum 20, maximum 100.
 	MaxRecords *int64 `type:"integer"`
+
+	// Set this flag to avoid returning setting information. Use this to reduce
+	// overhead when settings are too large. Choose TRUE to use this flag, otherwise
+	// choose FALSE (default).
+	WithoutSettings *bool `type:"boolean"`
 }
 
 // String returns the string representation
@@ -5707,6 +6099,9 @@ type Endpoint struct {
 	// The port value used to access the endpoint.
 	Port *int64 `type:"integer"`
 
+	// Settings for the Amazon Redshift endpoint
+	RedshiftSettings *RedshiftSettings `type:"structure"`
+
 	// The settings for the S3 target endpoint. For more information, see the S3Settings
 	// structure.
 	S3Settings *S3Settings `type:"structure"`
@@ -6088,13 +6483,13 @@ type ModifyEndpointInput struct {
 
 	// Settings in JSON format for the target Amazon DynamoDB endpoint. For more
 	// information about the available settings, see Using Object Mapping to Migrate
-	// Data to DynamoDB (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html)
+	// Data to DynamoDB (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.DynamoDB.html)
 	// in the AWS Database Migration Service User Guide.
 	DynamoDbSettings *DynamoDbSettings `type:"structure"`
 
 	// Settings in JSON format for the target Elasticsearch endpoint. For more information
 	// about the available settings, see Extra Connection Attributes When Using
-	// Elasticsearch as a Target for AWS DMS (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration)
+	// Elasticsearch as a Target for AWS DMS (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Elasticsearch.html#CHAP_Target.Elasticsearch.Configuration)
 	// in the AWS Database Migration User Guide.
 	ElasticsearchSettings *ElasticsearchSettings `type:"structure"`
 
@@ -6125,13 +6520,13 @@ type ModifyEndpointInput struct {
 
 	// Settings in JSON format for the target Amazon Kinesis Data Streams endpoint.
 	// For more information about the available settings, see Using Object Mapping
-	// to Migrate Data to a Kinesis Data Stream (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping
+	// to Migrate Data to a Kinesis Data Stream (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.Kinesis.html#CHAP_Target.Kinesis.ObjectMapping
 	// ) in the AWS Database Migration User Guide.
 	KinesisSettings *KinesisSettings `type:"structure"`
 
 	// Settings in JSON format for the source MongoDB endpoint. For more information
 	// about the available settings, see the configuration properties section in
-	//  Using MongoDB as a Target for AWS Database Migration Service (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html)
+	//  Using MongoDB as a Target for AWS Database Migration Service (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Source.MongoDB.html)
 	// in the AWS Database Migration Service User Guide.
 	MongoDbSettings *MongoDbSettings `type:"structure"`
 
@@ -6141,9 +6536,11 @@ type ModifyEndpointInput struct {
 	// The port used by the endpoint database.
 	Port *int64 `type:"integer"`
 
+	RedshiftSettings *RedshiftSettings `type:"structure"`
+
 	// Settings in JSON format for the target Amazon S3 endpoint. For more information
 	// about the available settings, see Extra Connection Attributes When Using
-	// Amazon S3 as a Target for AWS DMS (http://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring)
+	// Amazon S3 as a Target for AWS DMS (https://docs.aws.amazon.com/dms/latest/userguide/CHAP_Target.S3.html#CHAP_Target.S3.Configuring)
 	// in the AWS Database Migration Service User Guide.
 	S3Settings *S3Settings `type:"structure"`
 
@@ -6691,6 +7088,9 @@ func (s MongoDbSettings) GoString() string {
 type OrderableReplicationInstance struct {
 	_ struct{} `type:"structure"`
 
+	// List of availability zones for this replication instance.
+	AvailabilityZones []string `type:"list"`
+
 	// The default amount of storage (in gigabytes) that is allocated for the replication
 	// instance.
 	DefaultAllocatedStorage *int64 `type:"integer"`
@@ -6727,6 +7127,49 @@ func (s OrderableReplicationInstance) String() string {
 
 // GoString returns the string representation
 func (s OrderableReplicationInstance) GoString() string {
+	return s.String()
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/PendingMaintenanceAction
+type PendingMaintenanceAction struct {
+	_ struct{} `type:"structure"`
+
+	// The type of pending maintenance action that is available for the resource.
+	Action *string `type:"string"`
+
+	// The date of the maintenance window when the action will be applied. The maintenance
+	// action will be applied to the resource during its first maintenance window
+	// after this date. If this date is specified, any next-maintenance opt-in requests
+	// are ignored.
+	AutoAppliedAfterDate *time.Time `type:"timestamp" timestampFormat:"unix"`
+
+	// The effective date when the pending maintenance action will be applied to
+	// the resource. This date takes into account opt-in requests received from
+	// the ApplyPendingMaintenanceAction API, the AutoAppliedAfterDate, and the
+	// ForcedApplyDate. This value is blank if an opt-in request has not been received
+	// and nothing has been specified as AutoAppliedAfterDate or ForcedApplyDate.
+	CurrentApplyDate *time.Time `type:"timestamp" timestampFormat:"unix"`
+
+	// A description providing more detail about the maintenance action.
+	Description *string `type:"string"`
+
+	// The date when the maintenance action will be automatically applied. The maintenance
+	// action will be applied to the resource on this date regardless of the maintenance
+	// window for the resource. If this date is specified, any immediate opt-in
+	// requests are ignored.
+	ForcedApplyDate *time.Time `type:"timestamp" timestampFormat:"unix"`
+
+	// Indicates the type of opt-in request that has been received for the resource.
+	OptInStatus *string `type:"string"`
+}
+
+// String returns the string representation
+func (s PendingMaintenanceAction) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s PendingMaintenanceAction) GoString() string {
 	return s.String()
 }
 
@@ -6791,6 +7234,138 @@ func (s RebootReplicationInstanceOutput) GoString() string {
 // SDKResponseMetdata return sthe response metadata for the API.
 func (s RebootReplicationInstanceOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/RedshiftSettings
+type RedshiftSettings struct {
+	_ struct{} `type:"structure"`
+
+	// Allows any date format, including invalid formats such as 00/00/00 00:00:00,
+	// to be loaded without generating an error. You can choose TRUE or FALSE (default).
+	//
+	// This parameter applies only to TIMESTAMP and DATE columns. Always use ACCEPTANYDATE
+	// with the DATEFORMAT parameter. If the date format for the data does not match
+	// the DATEFORMAT specification, Amazon Redshift inserts a NULL value into that
+	// field.
+	AcceptAnyDate *bool `type:"boolean"`
+
+	// Code to run after connecting. This should be the code, not a filename.
+	AfterConnectScript *string `type:"string"`
+
+	// The location where the CSV files are stored before being uploaded to the
+	// S3 bucket.
+	BucketFolder *string `type:"string"`
+
+	// The name of the S3 bucket you want to use
+	BucketName *string `type:"string"`
+
+	// Sets the amount of time to wait (in milliseconds) before timing out, beginning
+	// from when you initially establish a connection.
+	ConnectionTimeout *int64 `type:"integer"`
+
+	// The name of the Amazon Redshift data warehouse (service) you are working
+	// with.
+	DatabaseName *string `type:"string"`
+
+	// The date format you are using. Valid values are auto (case-sensitive), your
+	// date format string enclosed in quotes, or NULL. If this is left unset (NULL),
+	// it defaults to a format of 'YYYY-MM-DD'. Using auto recognizes most strings,
+	// even some that are not supported when you use a date format string.
+	//
+	// If your date and time values use formats different from each other, set this
+	// to auto.
+	DateFormat *string `type:"string"`
+
+	// Specifies whether AWS DMS should migrate empty CHAR and VARCHAR fields as
+	// NULL. A value of TRUE sets empty CHAR and VARCHAR fields to null. The default
+	// is FALSE.
+	EmptyAsNull *bool `type:"boolean"`
+
+	// The type of server side encryption you want to use for your data. This is
+	// part of the endpoint settings or the extra connections attributes for Amazon
+	// S3. You can choose either SSE_S3 (default) or SSE_KMS. To use SSE_S3, create
+	// an IAM role with a policy that allows "arn:aws:s3:::*" to use the following
+	// actions: "s3:PutObject", "s3:ListBucket".
+	EncryptionMode EncryptionModeValue `type:"string" enum:"true"`
+
+	// Specifies the number of threads used to upload a single file. This accepts
+	// a value between 1 and 64. It defaults to 10.
+	FileTransferUploadStreams *int64 `type:"integer"`
+
+	// Sets the amount of time to wait (in milliseconds) before timing out, beginning
+	// from when you begin loading.
+	LoadTimeout *int64 `type:"integer"`
+
+	// Specifies the maximum size (in KB) of any CSV file used to transfer data
+	// to Amazon Redshift. This accepts a value between 1 and 1048576. It defaults
+	// to 32768 KB (32 MB).
+	MaxFileSize *int64 `type:"integer"`
+
+	// The password for the user named in the username property.
+	Password *string `type:"string"`
+
+	// The port number for Amazon Redshift. The default value is 5439.
+	Port *int64 `type:"integer"`
+
+	// Removes surrounding quotation marks from strings in the incoming data. All
+	// characters within the quotation marks, including delimiters, are retained.
+	// Choose TRUE to remove quotation marks. The default is FALSE.
+	RemoveQuotes *bool `type:"boolean"`
+
+	// Replaces invalid characters specified in ReplaceInvalidChars, substituting
+	// the specified value instead. The default is "?".
+	ReplaceChars *string `type:"string"`
+
+	// A list of chars you want to replace. Use with ReplaceChars.
+	ReplaceInvalidChars *string `type:"string"`
+
+	// The name of the Amazon Redshift cluster you are using.
+	ServerName *string `type:"string"`
+
+	// If you are using SSE_KMS for the EncryptionMode, provide the KMS Key ID.
+	// The key you use needs an attached policy that enables IAM user permissions
+	// and allows use of the key.
+	ServerSideEncryptionKmsKeyId *string `type:"string"`
+
+	// The ARN of the role that has access to the Redshift service.
+	ServiceAccessRoleArn *string `type:"string"`
+
+	// The time format you want to use. Valid values are auto (case-sensitive),
+	// 'timeformat_string', 'epochsecs', or 'epochmillisecs'. It defaults to 10.
+	// Using auto recognizes most strings, even some that are not supported when
+	// you use a time format string.
+	//
+	// If your date and time values use formats different from each other, set this
+	// to auto.
+	TimeFormat *string `type:"string"`
+
+	// Removes the trailing white space characters from a VARCHAR string. This parameter
+	// applies only to columns with a VARCHAR data type. Choose TRUE to remove unneeded
+	// white space. The default is FALSE.
+	TrimBlanks *bool `type:"boolean"`
+
+	// Truncates data in columns to the appropriate number of characters, so that
+	// it fits in the column. Applies only to columns with a VARCHAR or CHAR data
+	// type, and rows with a size of 4 MB or less. Choose TRUE to truncate data.
+	// The default is FALSE.
+	TruncateColumns *bool `type:"boolean"`
+
+	// An Amazon Redshift user name for a registered user.
+	Username *string `type:"string"`
+
+	// The size of the write buffer to use in rows. Valid values range from 1 to
+	// 2048. Defaults to 1024. Use this setting to tune performance.
+	WriteBufferSize *int64 `type:"integer"`
+}
+
+// String returns the string representation
+func (s RedshiftSettings) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s RedshiftSettings) GoString() string {
+	return s.String()
 }
 
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/RefreshSchemasMessage
@@ -7393,6 +7968,31 @@ func (s ReplicationTaskStats) GoString() string {
 	return s.String()
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/ResourcePendingMaintenanceActions
+type ResourcePendingMaintenanceActions struct {
+	_ struct{} `type:"structure"`
+
+	// Detailed information about the pending maintenance action.
+	PendingMaintenanceActionDetails []PendingMaintenanceAction `type:"list"`
+
+	// The Amazon Resource Name (ARN) of the DMS resource that the pending maintenance
+	// action applies to. For information about creating an ARN, see  Constructing
+	// an Amazon Resource Name (ARN) (https://docs.aws.amazon.com/dms/latest/UserGuide/USER_Tagging.html#USER_Tagging.ARN)
+	// in the DMS documentation.
+	ResourceIdentifier *string `type:"string"`
+}
+
+// String returns the string representation
+func (s ResourcePendingMaintenanceActions) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ResourcePendingMaintenanceActions) GoString() string {
+	return s.String()
+}
+
+// Settings for exporting data to Amazon S3.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/dms-2016-01-01/S3Settings
 type S3Settings struct {
 	_ struct{} `type:"structure"`
@@ -7405,9 +8005,17 @@ type S3Settings struct {
 	// The name of the S3 bucket.
 	BucketName *string `type:"string"`
 
+	// Option to write only INSERT operations to the comma-separated value (CSV)
+	// output files. By default, the first field in a CSV record contains the letter
+	// I (insert), U (update) or D (delete) to indicate whether the row was inserted,
+	// updated, or deleted at the source database. If cdcInsertsOnly is set to true,
+	// then only INSERTs are recorded in the CSV file, without the I annotation
+	// on each line. Valid values are TRUE and FALSE.
+	CdcInsertsOnly *bool `type:"boolean"`
+
 	// An optional parameter to use GZIP to compress the target files. Set to GZIP
 	// to compress the target files. Set to NONE (the default) or do not use to
-	// leave the files uncompressed.
+	// leave the files uncompressed. Applies to both CSV and PARQUET data formats.
 	CompressionType CompressionTypeValue `type:"string" enum:"true"`
 
 	// The delimiter used to separate columns in the source files. The default is
@@ -7418,8 +8026,93 @@ type S3Settings struct {
 	// carriage return (\n).
 	CsvRowDelimiter *string `type:"string"`
 
+	// The format of the data which you want to use for output. You can choose one
+	// of the following:
+	//
+	//    * CSV : This is a row-based format with comma-separated values.
+	//
+	//    * PARQUET : Apache Parquet is a columnar storage format that features
+	//    efficient compression and provides faster query response.
+	DataFormat DataFormatValue `type:"string" enum:"true"`
+
+	// The size of one data page in bytes. Defaults to 1024 * 1024 bytes (1MiB).
+	// For PARQUET format only.
+	DataPageSize *int64 `type:"integer"`
+
+	// The maximum size of an encoded dictionary page of a column. If the dictionary
+	// page exceeds this, this column is stored using an encoding type of PLAIN.
+	// Defaults to 1024 * 1024 bytes (1MiB), the maximum size of a dictionary page
+	// before it reverts to PLAIN encoding. For PARQUET format only.
+	DictPageSizeLimit *int64 `type:"integer"`
+
+	// Enables statistics for Parquet pages and rowGroups. Choose TRUE to enable
+	// statistics, choose FALSE to disable. Statistics include NULL, DISTINCT, MAX,
+	// and MIN values. Defaults to TRUE. For PARQUET format only.
+	EnableStatistics *bool `type:"boolean"`
+
+	// The type of encoding you are using: RLE_DICTIONARY (default), PLAIN, or PLAIN_DICTIONARY.
+	//
+	//    * RLE_DICTIONARY uses a combination of bit-packing and run-length encoding
+	//    to store repeated values more efficiently.
+	//
+	//    * PLAIN does not use encoding at all. Values are stored as they are.
+	//
+	//    * PLAIN_DICTIONARY builds a dictionary of the values encountered in a
+	//    given column. The dictionary is stored in a dictionary page for each column
+	//    chunk.
+	EncodingType EncodingTypeValue `type:"string" enum:"true"`
+
+	// The type of server side encryption you want to use for your data. This is
+	// part of the endpoint settings or the extra connections attributes for Amazon
+	// S3. You can choose either SSE_S3 (default) or SSE_KMS. To use SSE_S3, you
+	// need an IAM role with permission to allow "arn:aws:s3:::dms-*" to use the
+	// following actions:
+	//
+	//    * s3:CreateBucket
+	//
+	//    * s3:ListBucket
+	//
+	//    * s3:DeleteBucket
+	//
+	//    * s3:GetBucketLocation
+	//
+	//    * s3:GetObject
+	//
+	//    * s3:PutObject
+	//
+	//    * s3:DeleteObject
+	//
+	//    * s3:GetObjectVersion
+	//
+	//    * s3:GetBucketPolicy
+	//
+	//    * s3:PutBucketPolicy
+	//
+	//    * s3:DeleteBucketPolicy
+	EncryptionMode EncryptionModeValue `type:"string" enum:"true"`
+
 	// The external table definition.
 	ExternalTableDefinition *string `type:"string"`
+
+	// The version of Apache Parquet format you want to use: PARQUET_1_0 (default)
+	// or PARQUET_2_0.
+	ParquetVersion ParquetVersionValue `type:"string" enum:"true"`
+
+	// The number of rows in a row group. A smaller row group size provides faster
+	// reads. But as the number of row groups grows, the slower writes become. Defaults
+	// to 10,000 (ten thousand) rows. For PARQUET format only.
+	//
+	// If you choose a value larger than the maximum, RowGroupLength is set to the
+	// max row group length in bytes (64 * 1024 * 1024).
+	RowGroupLength *int64 `type:"integer"`
+
+	// If you are using SSE_KMS for the EncryptionMode, provide the KMS Key ID.
+	// The key you use needs an attached policy that enables IAM user permissions
+	// and allows use of the key.
+	//
+	// Here is a CLI example: aws dms create-endpoint --endpoint-identifier <value>
+	// --endpoint-type target --engine-name s3 --s3-settings ServiceAccessRoleArn=<value>,BucketFolder=<value>,BucketName=<value>,EncryptionMode=SSE_KMS,ServerSideEncryptionKmsKeyId=<value>
+	ServerSideEncryptionKmsKeyId *string `type:"string"`
 
 	// The Amazon Resource Name (ARN) used by the service access IAM role.
 	ServiceAccessRoleArn *string `type:"string"`
@@ -7985,6 +8678,23 @@ func (enum CompressionTypeValue) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+type DataFormatValue string
+
+// Enum values for DataFormatValue
+const (
+	DataFormatValueCsv     DataFormatValue = "csv"
+	DataFormatValueParquet DataFormatValue = "parquet"
+)
+
+func (enum DataFormatValue) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum DataFormatValue) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
 type DmsSslModeValue string
 
 // Enum values for DmsSslModeValue
@@ -8000,6 +8710,41 @@ func (enum DmsSslModeValue) MarshalValue() (string, error) {
 }
 
 func (enum DmsSslModeValue) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
+type EncodingTypeValue string
+
+// Enum values for EncodingTypeValue
+const (
+	EncodingTypeValuePlain           EncodingTypeValue = "plain"
+	EncodingTypeValuePlainDictionary EncodingTypeValue = "plain-dictionary"
+	EncodingTypeValueRleDictionary   EncodingTypeValue = "rle-dictionary"
+)
+
+func (enum EncodingTypeValue) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum EncodingTypeValue) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
+type EncryptionModeValue string
+
+// Enum values for EncryptionModeValue
+const (
+	EncryptionModeValueSseS3  EncryptionModeValue = "sse-s3"
+	EncryptionModeValueSseKms EncryptionModeValue = "sse-kms"
+)
+
+func (enum EncryptionModeValue) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum EncryptionModeValue) MarshalValueBuf(b []byte) ([]byte, error) {
 	b = b[0:0]
 	return append(b, enum...), nil
 }
@@ -8051,6 +8796,23 @@ func (enum NestingLevelValue) MarshalValue() (string, error) {
 }
 
 func (enum NestingLevelValue) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
+type ParquetVersionValue string
+
+// Enum values for ParquetVersionValue
+const (
+	ParquetVersionValueParquet10 ParquetVersionValue = "parquet-1-0"
+	ParquetVersionValueParquet20 ParquetVersionValue = "parquet-2-0"
+)
+
+func (enum ParquetVersionValue) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum ParquetVersionValue) MarshalValueBuf(b []byte) ([]byte, error) {
 	b = b[0:0]
 	return append(b, enum...), nil
 }

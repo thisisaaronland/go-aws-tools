@@ -3,6 +3,8 @@
 package pinpointsmsvoice
 
 import (
+	"context"
+
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/internal/awsutil"
 	"github.com/aws/aws-sdk-go-v2/private/protocol"
@@ -18,7 +20,8 @@ type CreateConfigurationSetRequest struct {
 }
 
 // Send marshals and sends the CreateConfigurationSet API request.
-func (r CreateConfigurationSetRequest) Send() (*CreateConfigurationSetOutput, error) {
+func (r CreateConfigurationSetRequest) Send(ctx context.Context) (*CreateConfigurationSetOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -35,7 +38,7 @@ func (r CreateConfigurationSetRequest) Send() (*CreateConfigurationSetOutput, er
 //
 //    // Example sending a request using the CreateConfigurationSetRequest method.
 //    req := client.CreateConfigurationSetRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -69,7 +72,8 @@ type CreateConfigurationSetEventDestinationRequest struct {
 }
 
 // Send marshals and sends the CreateConfigurationSetEventDestination API request.
-func (r CreateConfigurationSetEventDestinationRequest) Send() (*CreateConfigurationSetEventDestinationOutput, error) {
+func (r CreateConfigurationSetEventDestinationRequest) Send(ctx context.Context) (*CreateConfigurationSetEventDestinationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -85,7 +89,7 @@ func (r CreateConfigurationSetEventDestinationRequest) Send() (*CreateConfigurat
 //
 //    // Example sending a request using the CreateConfigurationSetEventDestinationRequest method.
 //    req := client.CreateConfigurationSetEventDestinationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -119,7 +123,8 @@ type DeleteConfigurationSetRequest struct {
 }
 
 // Send marshals and sends the DeleteConfigurationSet API request.
-func (r DeleteConfigurationSetRequest) Send() (*DeleteConfigurationSetOutput, error) {
+func (r DeleteConfigurationSetRequest) Send(ctx context.Context) (*DeleteConfigurationSetOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -135,7 +140,7 @@ func (r DeleteConfigurationSetRequest) Send() (*DeleteConfigurationSetOutput, er
 //
 //    // Example sending a request using the DeleteConfigurationSetRequest method.
 //    req := client.DeleteConfigurationSetRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -169,7 +174,8 @@ type DeleteConfigurationSetEventDestinationRequest struct {
 }
 
 // Send marshals and sends the DeleteConfigurationSetEventDestination API request.
-func (r DeleteConfigurationSetEventDestinationRequest) Send() (*DeleteConfigurationSetEventDestinationOutput, error) {
+func (r DeleteConfigurationSetEventDestinationRequest) Send(ctx context.Context) (*DeleteConfigurationSetEventDestinationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -185,7 +191,7 @@ func (r DeleteConfigurationSetEventDestinationRequest) Send() (*DeleteConfigurat
 //
 //    // Example sending a request using the DeleteConfigurationSetEventDestinationRequest method.
 //    req := client.DeleteConfigurationSetEventDestinationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -219,7 +225,8 @@ type GetConfigurationSetEventDestinationsRequest struct {
 }
 
 // Send marshals and sends the GetConfigurationSetEventDestinations API request.
-func (r GetConfigurationSetEventDestinationsRequest) Send() (*GetConfigurationSetEventDestinationsOutput, error) {
+func (r GetConfigurationSetEventDestinationsRequest) Send(ctx context.Context) (*GetConfigurationSetEventDestinationsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -237,7 +244,7 @@ func (r GetConfigurationSetEventDestinationsRequest) Send() (*GetConfigurationSe
 //
 //    // Example sending a request using the GetConfigurationSetEventDestinationsRequest method.
 //    req := client.GetConfigurationSetEventDestinationsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -261,6 +268,58 @@ func (c *PinpointSMSVoice) GetConfigurationSetEventDestinationsRequest(input *Ge
 	return GetConfigurationSetEventDestinationsRequest{Request: req, Input: input, Copy: c.GetConfigurationSetEventDestinationsRequest}
 }
 
+const opListConfigurationSets = "ListConfigurationSets"
+
+// ListConfigurationSetsRequest is a API request type for the ListConfigurationSets API operation.
+type ListConfigurationSetsRequest struct {
+	*aws.Request
+	Input *ListConfigurationSetsInput
+	Copy  func(*ListConfigurationSetsInput) ListConfigurationSetsRequest
+}
+
+// Send marshals and sends the ListConfigurationSets API request.
+func (r ListConfigurationSetsRequest) Send(ctx context.Context) (*ListConfigurationSetsOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*ListConfigurationSetsOutput), nil
+}
+
+// ListConfigurationSetsRequest returns a request value for making API operation for
+// Amazon Pinpoint SMS and Voice Service.
+//
+// List all of the configuration sets associated with your Amazon Pinpoint account
+// in the current region.
+//
+//    // Example sending a request using the ListConfigurationSetsRequest method.
+//    req := client.ListConfigurationSetsRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/pinpoint-sms-voice-2018-09-05/ListConfigurationSets
+func (c *PinpointSMSVoice) ListConfigurationSetsRequest(input *ListConfigurationSetsInput) ListConfigurationSetsRequest {
+	op := &aws.Operation{
+		Name:       opListConfigurationSets,
+		HTTPMethod: "GET",
+		HTTPPath:   "/v1/sms-voice/configuration-sets",
+	}
+
+	if input == nil {
+		input = &ListConfigurationSetsInput{}
+	}
+
+	output := &ListConfigurationSetsOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return ListConfigurationSetsRequest{Request: req, Input: input, Copy: c.ListConfigurationSetsRequest}
+}
+
 const opSendVoiceMessage = "SendVoiceMessage"
 
 // SendVoiceMessageRequest is a API request type for the SendVoiceMessage API operation.
@@ -271,7 +330,8 @@ type SendVoiceMessageRequest struct {
 }
 
 // Send marshals and sends the SendVoiceMessage API request.
-func (r SendVoiceMessageRequest) Send() (*SendVoiceMessageOutput, error) {
+func (r SendVoiceMessageRequest) Send(ctx context.Context) (*SendVoiceMessageOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -287,7 +347,7 @@ func (r SendVoiceMessageRequest) Send() (*SendVoiceMessageOutput, error) {
 //
 //    // Example sending a request using the SendVoiceMessageRequest method.
 //    req := client.SendVoiceMessageRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -321,7 +381,8 @@ type UpdateConfigurationSetEventDestinationRequest struct {
 }
 
 // Send marshals and sends the UpdateConfigurationSetEventDestination API request.
-func (r UpdateConfigurationSetEventDestinationRequest) Send() (*UpdateConfigurationSetEventDestinationOutput, error) {
+func (r UpdateConfigurationSetEventDestinationRequest) Send(ctx context.Context) (*UpdateConfigurationSetEventDestinationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -340,7 +401,7 @@ func (r UpdateConfigurationSetEventDestinationRequest) Send() (*UpdateConfigurat
 //
 //    // Example sending a request using the UpdateConfigurationSetEventDestinationRequest method.
 //    req := client.UpdateConfigurationSetEventDestinationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1042,6 +1103,99 @@ func (s KinesisFirehoseDestination) MarshalFields(e protocol.FieldEncoder) error
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "IamRoleArn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/pinpoint-sms-voice-2018-09-05/ListConfigurationSetsRequest
+type ListConfigurationSetsInput struct {
+	_ struct{} `type:"structure"`
+
+	NextToken *string `location:"querystring" locationName:"NextToken" type:"string"`
+
+	PageSize *string `location:"querystring" locationName:"PageSize" type:"string"`
+}
+
+// String returns the string representation
+func (s ListConfigurationSetsInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListConfigurationSetsInput) GoString() string {
+	return s.String()
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ListConfigurationSetsInput) MarshalFields(e protocol.FieldEncoder) error {
+	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
+
+	if s.NextToken != nil {
+		v := *s.NextToken
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.QueryTarget, "NextToken", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.PageSize != nil {
+		v := *s.PageSize
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.QueryTarget, "PageSize", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+// An object that contains information about the configuration sets for your
+// account in the current region.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/pinpoint-sms-voice-2018-09-05/ListConfigurationSetsResponse
+type ListConfigurationSetsOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// An object that contains a list of configuration sets for your account in
+	// the current region.
+	ConfigurationSets []string `type:"list"`
+
+	// A token returned from a previous call to ListConfigurationSets to indicate
+	// the position in the list of configuration sets.
+	NextToken *string `type:"string"`
+}
+
+// String returns the string representation
+func (s ListConfigurationSetsOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListConfigurationSetsOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s ListConfigurationSetsOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ListConfigurationSetsOutput) MarshalFields(e protocol.FieldEncoder) error {
+	if len(s.ConfigurationSets) > 0 {
+		v := s.ConfigurationSets
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "ConfigurationSets", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ls0.End()
+
+	}
+	if s.NextToken != nil {
+		v := *s.NextToken
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "NextToken", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	return nil
 }

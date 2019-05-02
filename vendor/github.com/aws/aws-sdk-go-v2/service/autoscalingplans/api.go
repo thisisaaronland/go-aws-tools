@@ -3,6 +3,7 @@
 package autoscalingplans
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -20,7 +21,8 @@ type CreateScalingPlanRequest struct {
 }
 
 // Send marshals and sends the CreateScalingPlan API request.
-func (r CreateScalingPlanRequest) Send() (*CreateScalingPlanOutput, error) {
+func (r CreateScalingPlanRequest) Send(ctx context.Context) (*CreateScalingPlanOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -36,7 +38,7 @@ func (r CreateScalingPlanRequest) Send() (*CreateScalingPlanOutput, error) {
 //
 //    // Example sending a request using the CreateScalingPlanRequest method.
 //    req := client.CreateScalingPlanRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -70,7 +72,8 @@ type DeleteScalingPlanRequest struct {
 }
 
 // Send marshals and sends the DeleteScalingPlan API request.
-func (r DeleteScalingPlanRequest) Send() (*DeleteScalingPlanOutput, error) {
+func (r DeleteScalingPlanRequest) Send(ctx context.Context) (*DeleteScalingPlanOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -92,7 +95,7 @@ func (r DeleteScalingPlanRequest) Send() (*DeleteScalingPlanOutput, error) {
 //
 //    // Example sending a request using the DeleteScalingPlanRequest method.
 //    req := client.DeleteScalingPlanRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -126,7 +129,8 @@ type DescribeScalingPlanResourcesRequest struct {
 }
 
 // Send marshals and sends the DescribeScalingPlanResources API request.
-func (r DescribeScalingPlanResourcesRequest) Send() (*DescribeScalingPlanResourcesOutput, error) {
+func (r DescribeScalingPlanResourcesRequest) Send(ctx context.Context) (*DescribeScalingPlanResourcesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -142,7 +146,7 @@ func (r DescribeScalingPlanResourcesRequest) Send() (*DescribeScalingPlanResourc
 //
 //    // Example sending a request using the DescribeScalingPlanResourcesRequest method.
 //    req := client.DescribeScalingPlanResourcesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -176,7 +180,8 @@ type DescribeScalingPlansRequest struct {
 }
 
 // Send marshals and sends the DescribeScalingPlans API request.
-func (r DescribeScalingPlansRequest) Send() (*DescribeScalingPlansOutput, error) {
+func (r DescribeScalingPlansRequest) Send(ctx context.Context) (*DescribeScalingPlansOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -192,7 +197,7 @@ func (r DescribeScalingPlansRequest) Send() (*DescribeScalingPlansOutput, error)
 //
 //    // Example sending a request using the DescribeScalingPlansRequest method.
 //    req := client.DescribeScalingPlansRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -226,7 +231,8 @@ type GetScalingPlanResourceForecastDataRequest struct {
 }
 
 // Send marshals and sends the GetScalingPlanResourceForecastData API request.
-func (r GetScalingPlanResourceForecastDataRequest) Send() (*GetScalingPlanResourceForecastDataOutput, error) {
+func (r GetScalingPlanResourceForecastDataRequest) Send(ctx context.Context) (*GetScalingPlanResourceForecastDataOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -246,7 +252,7 @@ func (r GetScalingPlanResourceForecastDataRequest) Send() (*GetScalingPlanResour
 //
 //    // Example sending a request using the GetScalingPlanResourceForecastDataRequest method.
 //    req := client.GetScalingPlanResourceForecastDataRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -280,7 +286,8 @@ type UpdateScalingPlanRequest struct {
 }
 
 // Send marshals and sends the UpdateScalingPlan API request.
-func (r UpdateScalingPlanRequest) Send() (*UpdateScalingPlanOutput, error) {
+func (r UpdateScalingPlanRequest) Send(ctx context.Context) (*UpdateScalingPlanOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -299,7 +306,7 @@ func (r UpdateScalingPlanRequest) Send() (*UpdateScalingPlanOutput, error) {
 //
 //    // Example sending a request using the UpdateScalingPlanRequest method.
 //    req := client.UpdateScalingPlanRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -466,8 +473,7 @@ func (s CreateScalingPlanOutput) SDKResponseMetadata() aws.Response {
 // For predictive scaling to work with a customized load metric specification,
 // AWS Auto Scaling needs access to the Sum and Average statistics that CloudWatch
 // computes from metric data. Statistics are calculations used to aggregate
-// data over specified time periods. For more information, see the Amazon CloudWatch
-// User Guide (http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/WhatIsCloudWatch.html).
+// data over specified time periods.
 //
 // When you choose a load metric, make sure that the required Sum and Average
 // statistics for your metric are available in CloudWatch and that they provide
@@ -479,12 +485,17 @@ func (s CreateScalingPlanOutput) SDKResponseMetadata() aws.Response {
 // group, then the Average statistic for the specified metric must represent
 // the average request count processed by each instance of the group.
 //
-// For information about terminology, see Amazon CloudWatch Concepts (http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html).
+// For information about terminology, available metrics, or how to publish new
+// metrics, see Amazon CloudWatch Concepts (https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html)
+// in the Amazon CloudWatch User Guide.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/autoscaling-plans-2018-01-06/CustomizedLoadMetricSpecification
 type CustomizedLoadMetricSpecification struct {
 	_ struct{} `type:"structure"`
 
 	// The dimensions of the metric.
+	//
+	// Conditional: If you published your metric with dimensions, you must specify
+	// the same dimensions in your customized load metric specification.
 	Dimensions []MetricDimension `type:"list"`
 
 	// The name of the metric.
@@ -547,12 +558,28 @@ func (s *CustomizedLoadMetricSpecification) Validate() error {
 // Represents a CloudWatch metric of your choosing that can be used for dynamic
 // scaling as part of a target tracking scaling policy.
 //
-// For information about terminology, see Amazon CloudWatch Concepts (http://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html).
+// To create your customized scaling metric specification:
+//
+//    * Add values for each required parameter from CloudWatch. You can use
+//    an existing metric, or a new metric that you create. To use your own metric,
+//    you must first publish the metric to CloudWatch. For more information,
+//    see Publish Custom Metrics (https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/publishingMetrics.html)
+//    in the Amazon CloudWatch User Guide.
+//
+//    * Choose a metric that changes proportionally with capacity. The value
+//    of the metric should increase or decrease in inverse proportion to the
+//    number of capacity units. That is, the value of the metric should decrease
+//    when capacity increases.
+//
+// For more information about CloudWatch, see Amazon CloudWatch Concepts (https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/cloudwatch_concepts.html).
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/autoscaling-plans-2018-01-06/CustomizedScalingMetricSpecification
 type CustomizedScalingMetricSpecification struct {
 	_ struct{} `type:"structure"`
 
 	// The dimensions of the metric.
+	//
+	// Conditional: If you published your metric with dimensions, you must specify
+	// the same dimensions in your customized scaling metric specification.
 	Dimensions []MetricDimension `type:"list"`
 
 	// The name of the metric.
@@ -1196,7 +1223,11 @@ func (s *PredefinedScalingMetricSpecification) Validate() error {
 // for the two days ahead and schedules scaling actions that proactively add
 // and remove resource capacity to match the forecast.
 //
-// For more information, see the AWS Auto Scaling User Guide (http://docs.aws.amazon.com/autoscaling/plans/userguide/what-is-aws-auto-scaling.html).
+// We recommend waiting a minimum of 24 hours after creating an Auto Scaling
+// group to configure predictive scaling. At minimum, there must be 24 hours
+// of historical data to generate a forecast.
+//
+// For more information, see Getting Started with AWS Auto Scaling (https://docs.aws.amazon.com/autoscaling/plans/userguide/auto-scaling-getting-started.html).
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/autoscaling-plans-2018-01-06/ScalingInstruction
 type ScalingInstruction struct {
 	_ struct{} `type:"structure"`
@@ -1315,7 +1346,8 @@ type ScalingInstruction struct {
 	//    a DynamoDB global secondary index.
 	//
 	//    * rds:cluster:ReadReplicaCount - The count of Aurora Replicas in an Aurora
-	//    DB cluster. Available for Aurora MySQL-compatible edition.
+	//    DB cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible
+	//    edition.
 	//
 	// ScalableDimension is a required field
 	ScalableDimension ScalableDimension `type:"string" required:"true" enum:"true"`
@@ -1549,7 +1581,8 @@ type ScalingPlanResource struct {
 	//    a DynamoDB global secondary index.
 	//
 	//    * rds:cluster:ReadReplicaCount - The count of Aurora Replicas in an Aurora
-	//    DB cluster. Available for Aurora MySQL-compatible edition.
+	//    DB cluster. Available for Aurora MySQL-compatible edition and Aurora PostgreSQL-compatible
+	//    edition.
 	//
 	// ScalableDimension is a required field
 	ScalableDimension ScalableDimension `type:"string" required:"true" enum:"true"`
@@ -1616,7 +1649,8 @@ type ScalingPolicy struct {
 	// PolicyType is a required field
 	PolicyType PolicyType `type:"string" required:"true" enum:"true"`
 
-	// The target tracking scaling policy.
+	// The target tracking scaling policy. Includes support for predefined or customized
+	// metrics.
 	TargetTrackingConfiguration *TargetTrackingConfiguration `type:"structure"`
 }
 
@@ -1665,13 +1699,14 @@ func (s *TagFilter) Validate() error {
 	return nil
 }
 
-// Describes a target tracking configuration. Used with ScalingInstruction and
-// ScalingPolicy.
+// Describes a target tracking configuration to use with AWS Auto Scaling. Used
+// with ScalingInstruction and ScalingPolicy.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/autoscaling-plans-2018-01-06/TargetTrackingConfiguration
 type TargetTrackingConfiguration struct {
 	_ struct{} `type:"structure"`
 
-	// A customized metric.
+	// A customized metric. You can specify either a predefined metric or a customized
+	// metric.
 	CustomizedScalingMetricSpecification *CustomizedScalingMetricSpecification `type:"structure"`
 
 	// Indicates whether scale in by the target tracking scaling policy is disabled.
@@ -1688,7 +1723,8 @@ type TargetTrackingConfiguration struct {
 	// Auto Scaling group.
 	EstimatedInstanceWarmup *int64 `type:"integer"`
 
-	// A predefined metric.
+	// A predefined metric. You can specify either a predefined metric or a customized
+	// metric.
 	PredefinedScalingMetricSpecification *PredefinedScalingMetricSpecification `type:"structure"`
 
 	// The amount of time, in seconds, after a scale in activity completes before

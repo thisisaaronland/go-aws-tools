@@ -3,6 +3,7 @@
 package robomaker
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -21,7 +22,8 @@ type BatchDescribeSimulationJobRequest struct {
 }
 
 // Send marshals and sends the BatchDescribeSimulationJob API request.
-func (r BatchDescribeSimulationJobRequest) Send() (*BatchDescribeSimulationJobOutput, error) {
+func (r BatchDescribeSimulationJobRequest) Send(ctx context.Context) (*BatchDescribeSimulationJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -37,7 +39,7 @@ func (r BatchDescribeSimulationJobRequest) Send() (*BatchDescribeSimulationJobOu
 //
 //    // Example sending a request using the BatchDescribeSimulationJobRequest method.
 //    req := client.BatchDescribeSimulationJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -71,7 +73,8 @@ type CancelSimulationJobRequest struct {
 }
 
 // Send marshals and sends the CancelSimulationJob API request.
-func (r CancelSimulationJobRequest) Send() (*CancelSimulationJobOutput, error) {
+func (r CancelSimulationJobRequest) Send(ctx context.Context) (*CancelSimulationJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -87,7 +90,7 @@ func (r CancelSimulationJobRequest) Send() (*CancelSimulationJobOutput, error) {
 //
 //    // Example sending a request using the CancelSimulationJobRequest method.
 //    req := client.CancelSimulationJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -121,7 +124,8 @@ type CreateDeploymentJobRequest struct {
 }
 
 // Send marshals and sends the CreateDeploymentJob API request.
-func (r CreateDeploymentJobRequest) Send() (*CreateDeploymentJobOutput, error) {
+func (r CreateDeploymentJobRequest) Send(ctx context.Context) (*CreateDeploymentJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -133,11 +137,18 @@ func (r CreateDeploymentJobRequest) Send() (*CreateDeploymentJobOutput, error) {
 // CreateDeploymentJobRequest returns a request value for making API operation for
 // AWS RoboMaker.
 //
-// Creates a deployment job.
+// Deploys a specific version of a robot application to robots in a fleet.
+//
+// The robot application must have a numbered applicationVersion for consistency
+// reasons. To create a new version, use CreateRobotApplicationVersion or see
+// Creating a Robot Application Version (https://docs.aws.amazon.com/robomaker/latest/dg/create-robot-application-version.html).
+//
+// After 90 days, deployment jobs expire and will be deleted. They will no longer
+// be accessible.
 //
 //    // Example sending a request using the CreateDeploymentJobRequest method.
 //    req := client.CreateDeploymentJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -171,7 +182,8 @@ type CreateFleetRequest struct {
 }
 
 // Send marshals and sends the CreateFleet API request.
-func (r CreateFleetRequest) Send() (*CreateFleetOutput, error) {
+func (r CreateFleetRequest) Send(ctx context.Context) (*CreateFleetOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -187,7 +199,7 @@ func (r CreateFleetRequest) Send() (*CreateFleetOutput, error) {
 //
 //    // Example sending a request using the CreateFleetRequest method.
 //    req := client.CreateFleetRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -221,7 +233,8 @@ type CreateRobotRequest struct {
 }
 
 // Send marshals and sends the CreateRobot API request.
-func (r CreateRobotRequest) Send() (*CreateRobotOutput, error) {
+func (r CreateRobotRequest) Send(ctx context.Context) (*CreateRobotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -237,7 +250,7 @@ func (r CreateRobotRequest) Send() (*CreateRobotOutput, error) {
 //
 //    // Example sending a request using the CreateRobotRequest method.
 //    req := client.CreateRobotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -271,7 +284,8 @@ type CreateRobotApplicationRequest struct {
 }
 
 // Send marshals and sends the CreateRobotApplication API request.
-func (r CreateRobotApplicationRequest) Send() (*CreateRobotApplicationOutput, error) {
+func (r CreateRobotApplicationRequest) Send(ctx context.Context) (*CreateRobotApplicationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -287,7 +301,7 @@ func (r CreateRobotApplicationRequest) Send() (*CreateRobotApplicationOutput, er
 //
 //    // Example sending a request using the CreateRobotApplicationRequest method.
 //    req := client.CreateRobotApplicationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -321,7 +335,8 @@ type CreateRobotApplicationVersionRequest struct {
 }
 
 // Send marshals and sends the CreateRobotApplicationVersion API request.
-func (r CreateRobotApplicationVersionRequest) Send() (*CreateRobotApplicationVersionOutput, error) {
+func (r CreateRobotApplicationVersionRequest) Send(ctx context.Context) (*CreateRobotApplicationVersionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -337,7 +352,7 @@ func (r CreateRobotApplicationVersionRequest) Send() (*CreateRobotApplicationVer
 //
 //    // Example sending a request using the CreateRobotApplicationVersionRequest method.
 //    req := client.CreateRobotApplicationVersionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -371,7 +386,8 @@ type CreateSimulationApplicationRequest struct {
 }
 
 // Send marshals and sends the CreateSimulationApplication API request.
-func (r CreateSimulationApplicationRequest) Send() (*CreateSimulationApplicationOutput, error) {
+func (r CreateSimulationApplicationRequest) Send(ctx context.Context) (*CreateSimulationApplicationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -387,7 +403,7 @@ func (r CreateSimulationApplicationRequest) Send() (*CreateSimulationApplication
 //
 //    // Example sending a request using the CreateSimulationApplicationRequest method.
 //    req := client.CreateSimulationApplicationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -421,7 +437,8 @@ type CreateSimulationApplicationVersionRequest struct {
 }
 
 // Send marshals and sends the CreateSimulationApplicationVersion API request.
-func (r CreateSimulationApplicationVersionRequest) Send() (*CreateSimulationApplicationVersionOutput, error) {
+func (r CreateSimulationApplicationVersionRequest) Send(ctx context.Context) (*CreateSimulationApplicationVersionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -437,7 +454,7 @@ func (r CreateSimulationApplicationVersionRequest) Send() (*CreateSimulationAppl
 //
 //    // Example sending a request using the CreateSimulationApplicationVersionRequest method.
 //    req := client.CreateSimulationApplicationVersionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -471,7 +488,8 @@ type CreateSimulationJobRequest struct {
 }
 
 // Send marshals and sends the CreateSimulationJob API request.
-func (r CreateSimulationJobRequest) Send() (*CreateSimulationJobOutput, error) {
+func (r CreateSimulationJobRequest) Send(ctx context.Context) (*CreateSimulationJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -485,9 +503,12 @@ func (r CreateSimulationJobRequest) Send() (*CreateSimulationJobOutput, error) {
 //
 // Creates a simulation job.
 //
+// After 90 days, simulation jobs expire and will be deleted. They will no longer
+// be accessible.
+//
 //    // Example sending a request using the CreateSimulationJobRequest method.
 //    req := client.CreateSimulationJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -521,7 +542,8 @@ type DeleteFleetRequest struct {
 }
 
 // Send marshals and sends the DeleteFleet API request.
-func (r DeleteFleetRequest) Send() (*DeleteFleetOutput, error) {
+func (r DeleteFleetRequest) Send(ctx context.Context) (*DeleteFleetOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -537,7 +559,7 @@ func (r DeleteFleetRequest) Send() (*DeleteFleetOutput, error) {
 //
 //    // Example sending a request using the DeleteFleetRequest method.
 //    req := client.DeleteFleetRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -571,7 +593,8 @@ type DeleteRobotRequest struct {
 }
 
 // Send marshals and sends the DeleteRobot API request.
-func (r DeleteRobotRequest) Send() (*DeleteRobotOutput, error) {
+func (r DeleteRobotRequest) Send(ctx context.Context) (*DeleteRobotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -587,7 +610,7 @@ func (r DeleteRobotRequest) Send() (*DeleteRobotOutput, error) {
 //
 //    // Example sending a request using the DeleteRobotRequest method.
 //    req := client.DeleteRobotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -621,7 +644,8 @@ type DeleteRobotApplicationRequest struct {
 }
 
 // Send marshals and sends the DeleteRobotApplication API request.
-func (r DeleteRobotApplicationRequest) Send() (*DeleteRobotApplicationOutput, error) {
+func (r DeleteRobotApplicationRequest) Send(ctx context.Context) (*DeleteRobotApplicationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -637,7 +661,7 @@ func (r DeleteRobotApplicationRequest) Send() (*DeleteRobotApplicationOutput, er
 //
 //    // Example sending a request using the DeleteRobotApplicationRequest method.
 //    req := client.DeleteRobotApplicationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -671,7 +695,8 @@ type DeleteSimulationApplicationRequest struct {
 }
 
 // Send marshals and sends the DeleteSimulationApplication API request.
-func (r DeleteSimulationApplicationRequest) Send() (*DeleteSimulationApplicationOutput, error) {
+func (r DeleteSimulationApplicationRequest) Send(ctx context.Context) (*DeleteSimulationApplicationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -687,7 +712,7 @@ func (r DeleteSimulationApplicationRequest) Send() (*DeleteSimulationApplication
 //
 //    // Example sending a request using the DeleteSimulationApplicationRequest method.
 //    req := client.DeleteSimulationApplicationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -721,7 +746,8 @@ type DeregisterRobotRequest struct {
 }
 
 // Send marshals and sends the DeregisterRobot API request.
-func (r DeregisterRobotRequest) Send() (*DeregisterRobotOutput, error) {
+func (r DeregisterRobotRequest) Send(ctx context.Context) (*DeregisterRobotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -737,7 +763,7 @@ func (r DeregisterRobotRequest) Send() (*DeregisterRobotOutput, error) {
 //
 //    // Example sending a request using the DeregisterRobotRequest method.
 //    req := client.DeregisterRobotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -771,7 +797,8 @@ type DescribeDeploymentJobRequest struct {
 }
 
 // Send marshals and sends the DescribeDeploymentJob API request.
-func (r DescribeDeploymentJobRequest) Send() (*DescribeDeploymentJobOutput, error) {
+func (r DescribeDeploymentJobRequest) Send(ctx context.Context) (*DescribeDeploymentJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -788,7 +815,7 @@ func (r DescribeDeploymentJobRequest) Send() (*DescribeDeploymentJobOutput, erro
 //
 //    // Example sending a request using the DescribeDeploymentJobRequest method.
 //    req := client.DescribeDeploymentJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -822,7 +849,8 @@ type DescribeFleetRequest struct {
 }
 
 // Send marshals and sends the DescribeFleet API request.
-func (r DescribeFleetRequest) Send() (*DescribeFleetOutput, error) {
+func (r DescribeFleetRequest) Send(ctx context.Context) (*DescribeFleetOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -838,7 +866,7 @@ func (r DescribeFleetRequest) Send() (*DescribeFleetOutput, error) {
 //
 //    // Example sending a request using the DescribeFleetRequest method.
 //    req := client.DescribeFleetRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -872,7 +900,8 @@ type DescribeRobotRequest struct {
 }
 
 // Send marshals and sends the DescribeRobot API request.
-func (r DescribeRobotRequest) Send() (*DescribeRobotOutput, error) {
+func (r DescribeRobotRequest) Send(ctx context.Context) (*DescribeRobotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -888,7 +917,7 @@ func (r DescribeRobotRequest) Send() (*DescribeRobotOutput, error) {
 //
 //    // Example sending a request using the DescribeRobotRequest method.
 //    req := client.DescribeRobotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -922,7 +951,8 @@ type DescribeRobotApplicationRequest struct {
 }
 
 // Send marshals and sends the DescribeRobotApplication API request.
-func (r DescribeRobotApplicationRequest) Send() (*DescribeRobotApplicationOutput, error) {
+func (r DescribeRobotApplicationRequest) Send(ctx context.Context) (*DescribeRobotApplicationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -938,7 +968,7 @@ func (r DescribeRobotApplicationRequest) Send() (*DescribeRobotApplicationOutput
 //
 //    // Example sending a request using the DescribeRobotApplicationRequest method.
 //    req := client.DescribeRobotApplicationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -972,7 +1002,8 @@ type DescribeSimulationApplicationRequest struct {
 }
 
 // Send marshals and sends the DescribeSimulationApplication API request.
-func (r DescribeSimulationApplicationRequest) Send() (*DescribeSimulationApplicationOutput, error) {
+func (r DescribeSimulationApplicationRequest) Send(ctx context.Context) (*DescribeSimulationApplicationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -988,7 +1019,7 @@ func (r DescribeSimulationApplicationRequest) Send() (*DescribeSimulationApplica
 //
 //    // Example sending a request using the DescribeSimulationApplicationRequest method.
 //    req := client.DescribeSimulationApplicationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1022,7 +1053,8 @@ type DescribeSimulationJobRequest struct {
 }
 
 // Send marshals and sends the DescribeSimulationJob API request.
-func (r DescribeSimulationJobRequest) Send() (*DescribeSimulationJobOutput, error) {
+func (r DescribeSimulationJobRequest) Send(ctx context.Context) (*DescribeSimulationJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1038,7 +1070,7 @@ func (r DescribeSimulationJobRequest) Send() (*DescribeSimulationJobOutput, erro
 //
 //    // Example sending a request using the DescribeSimulationJobRequest method.
 //    req := client.DescribeSimulationJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1072,7 +1104,8 @@ type ListDeploymentJobsRequest struct {
 }
 
 // Send marshals and sends the ListDeploymentJobs API request.
-func (r ListDeploymentJobsRequest) Send() (*ListDeploymentJobsOutput, error) {
+func (r ListDeploymentJobsRequest) Send(ctx context.Context) (*ListDeploymentJobsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1089,7 +1122,7 @@ func (r ListDeploymentJobsRequest) Send() (*ListDeploymentJobsOutput, error) {
 //
 //    // Example sending a request using the ListDeploymentJobsRequest method.
 //    req := client.ListDeploymentJobsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1100,6 +1133,12 @@ func (c *RoboMaker) ListDeploymentJobsRequest(input *ListDeploymentJobsInput) Li
 		Name:       opListDeploymentJobs,
 		HTTPMethod: "POST",
 		HTTPPath:   "/listDeploymentJobs",
+		Paginator: &aws.Paginator{
+			InputTokens:     []string{"nextToken"},
+			OutputTokens:    []string{"nextToken"},
+			LimitToken:      "maxResults",
+			TruncationToken: "",
+		},
 	}
 
 	if input == nil {
@@ -1113,6 +1152,53 @@ func (c *RoboMaker) ListDeploymentJobsRequest(input *ListDeploymentJobsInput) Li
 	return ListDeploymentJobsRequest{Request: req, Input: input, Copy: c.ListDeploymentJobsRequest}
 }
 
+// Paginate pages iterates over the pages of a ListDeploymentJobsRequest operation,
+// calling the Next method for each page. Using the paginators Next
+// method will depict whether or not there are more pages.
+//
+// Note: This operation can generate multiple requests to a service.
+//
+//    // Example iterating over at most 3 pages of a ListDeploymentJobs operation.
+//		req := client.ListDeploymentJobsRequest(input)
+//		p := req.Paginate()
+//		for p.Next() {
+//			page := p.CurrentPage()
+//		}
+//
+//		if err := p.Err(); err != nil {
+//			return err
+//		}
+//
+func (p *ListDeploymentJobsRequest) Paginate(opts ...aws.Option) ListDeploymentJobsPager {
+	return ListDeploymentJobsPager{
+		Pager: aws.Pager{
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
+				var inCpy *ListDeploymentJobsInput
+				if p.Input != nil {
+					tmp := *p.Input
+					inCpy = &tmp
+				}
+
+				req := p.Copy(inCpy)
+				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
+
+				return req.Request, nil
+			},
+		},
+	}
+}
+
+// ListDeploymentJobsPager is used to paginate the request. This can be done by
+// calling Next and CurrentPage.
+type ListDeploymentJobsPager struct {
+	aws.Pager
+}
+
+func (p *ListDeploymentJobsPager) CurrentPage() *ListDeploymentJobsOutput {
+	return p.Pager.CurrentPage().(*ListDeploymentJobsOutput)
+}
+
 const opListFleets = "ListFleets"
 
 // ListFleetsRequest is a API request type for the ListFleets API operation.
@@ -1123,7 +1209,8 @@ type ListFleetsRequest struct {
 }
 
 // Send marshals and sends the ListFleets API request.
-func (r ListFleetsRequest) Send() (*ListFleetsOutput, error) {
+func (r ListFleetsRequest) Send(ctx context.Context) (*ListFleetsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1140,7 +1227,7 @@ func (r ListFleetsRequest) Send() (*ListFleetsOutput, error) {
 //
 //    // Example sending a request using the ListFleetsRequest method.
 //    req := client.ListFleetsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1151,6 +1238,12 @@ func (c *RoboMaker) ListFleetsRequest(input *ListFleetsInput) ListFleetsRequest 
 		Name:       opListFleets,
 		HTTPMethod: "POST",
 		HTTPPath:   "/listFleets",
+		Paginator: &aws.Paginator{
+			InputTokens:     []string{"nextToken"},
+			OutputTokens:    []string{"nextToken"},
+			LimitToken:      "maxResults",
+			TruncationToken: "",
+		},
 	}
 
 	if input == nil {
@@ -1164,6 +1257,53 @@ func (c *RoboMaker) ListFleetsRequest(input *ListFleetsInput) ListFleetsRequest 
 	return ListFleetsRequest{Request: req, Input: input, Copy: c.ListFleetsRequest}
 }
 
+// Paginate pages iterates over the pages of a ListFleetsRequest operation,
+// calling the Next method for each page. Using the paginators Next
+// method will depict whether or not there are more pages.
+//
+// Note: This operation can generate multiple requests to a service.
+//
+//    // Example iterating over at most 3 pages of a ListFleets operation.
+//		req := client.ListFleetsRequest(input)
+//		p := req.Paginate()
+//		for p.Next() {
+//			page := p.CurrentPage()
+//		}
+//
+//		if err := p.Err(); err != nil {
+//			return err
+//		}
+//
+func (p *ListFleetsRequest) Paginate(opts ...aws.Option) ListFleetsPager {
+	return ListFleetsPager{
+		Pager: aws.Pager{
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
+				var inCpy *ListFleetsInput
+				if p.Input != nil {
+					tmp := *p.Input
+					inCpy = &tmp
+				}
+
+				req := p.Copy(inCpy)
+				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
+
+				return req.Request, nil
+			},
+		},
+	}
+}
+
+// ListFleetsPager is used to paginate the request. This can be done by
+// calling Next and CurrentPage.
+type ListFleetsPager struct {
+	aws.Pager
+}
+
+func (p *ListFleetsPager) CurrentPage() *ListFleetsOutput {
+	return p.Pager.CurrentPage().(*ListFleetsOutput)
+}
+
 const opListRobotApplications = "ListRobotApplications"
 
 // ListRobotApplicationsRequest is a API request type for the ListRobotApplications API operation.
@@ -1174,7 +1314,8 @@ type ListRobotApplicationsRequest struct {
 }
 
 // Send marshals and sends the ListRobotApplications API request.
-func (r ListRobotApplicationsRequest) Send() (*ListRobotApplicationsOutput, error) {
+func (r ListRobotApplicationsRequest) Send(ctx context.Context) (*ListRobotApplicationsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1191,7 +1332,7 @@ func (r ListRobotApplicationsRequest) Send() (*ListRobotApplicationsOutput, erro
 //
 //    // Example sending a request using the ListRobotApplicationsRequest method.
 //    req := client.ListRobotApplicationsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1202,6 +1343,12 @@ func (c *RoboMaker) ListRobotApplicationsRequest(input *ListRobotApplicationsInp
 		Name:       opListRobotApplications,
 		HTTPMethod: "POST",
 		HTTPPath:   "/listRobotApplications",
+		Paginator: &aws.Paginator{
+			InputTokens:     []string{"nextToken"},
+			OutputTokens:    []string{"nextToken"},
+			LimitToken:      "maxResults",
+			TruncationToken: "",
+		},
 	}
 
 	if input == nil {
@@ -1215,6 +1362,53 @@ func (c *RoboMaker) ListRobotApplicationsRequest(input *ListRobotApplicationsInp
 	return ListRobotApplicationsRequest{Request: req, Input: input, Copy: c.ListRobotApplicationsRequest}
 }
 
+// Paginate pages iterates over the pages of a ListRobotApplicationsRequest operation,
+// calling the Next method for each page. Using the paginators Next
+// method will depict whether or not there are more pages.
+//
+// Note: This operation can generate multiple requests to a service.
+//
+//    // Example iterating over at most 3 pages of a ListRobotApplications operation.
+//		req := client.ListRobotApplicationsRequest(input)
+//		p := req.Paginate()
+//		for p.Next() {
+//			page := p.CurrentPage()
+//		}
+//
+//		if err := p.Err(); err != nil {
+//			return err
+//		}
+//
+func (p *ListRobotApplicationsRequest) Paginate(opts ...aws.Option) ListRobotApplicationsPager {
+	return ListRobotApplicationsPager{
+		Pager: aws.Pager{
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
+				var inCpy *ListRobotApplicationsInput
+				if p.Input != nil {
+					tmp := *p.Input
+					inCpy = &tmp
+				}
+
+				req := p.Copy(inCpy)
+				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
+
+				return req.Request, nil
+			},
+		},
+	}
+}
+
+// ListRobotApplicationsPager is used to paginate the request. This can be done by
+// calling Next and CurrentPage.
+type ListRobotApplicationsPager struct {
+	aws.Pager
+}
+
+func (p *ListRobotApplicationsPager) CurrentPage() *ListRobotApplicationsOutput {
+	return p.Pager.CurrentPage().(*ListRobotApplicationsOutput)
+}
+
 const opListRobots = "ListRobots"
 
 // ListRobotsRequest is a API request type for the ListRobots API operation.
@@ -1225,7 +1419,8 @@ type ListRobotsRequest struct {
 }
 
 // Send marshals and sends the ListRobots API request.
-func (r ListRobotsRequest) Send() (*ListRobotsOutput, error) {
+func (r ListRobotsRequest) Send(ctx context.Context) (*ListRobotsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1242,7 +1437,7 @@ func (r ListRobotsRequest) Send() (*ListRobotsOutput, error) {
 //
 //    // Example sending a request using the ListRobotsRequest method.
 //    req := client.ListRobotsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1253,6 +1448,12 @@ func (c *RoboMaker) ListRobotsRequest(input *ListRobotsInput) ListRobotsRequest 
 		Name:       opListRobots,
 		HTTPMethod: "POST",
 		HTTPPath:   "/listRobots",
+		Paginator: &aws.Paginator{
+			InputTokens:     []string{"nextToken"},
+			OutputTokens:    []string{"nextToken"},
+			LimitToken:      "maxResults",
+			TruncationToken: "",
+		},
 	}
 
 	if input == nil {
@@ -1266,6 +1467,53 @@ func (c *RoboMaker) ListRobotsRequest(input *ListRobotsInput) ListRobotsRequest 
 	return ListRobotsRequest{Request: req, Input: input, Copy: c.ListRobotsRequest}
 }
 
+// Paginate pages iterates over the pages of a ListRobotsRequest operation,
+// calling the Next method for each page. Using the paginators Next
+// method will depict whether or not there are more pages.
+//
+// Note: This operation can generate multiple requests to a service.
+//
+//    // Example iterating over at most 3 pages of a ListRobots operation.
+//		req := client.ListRobotsRequest(input)
+//		p := req.Paginate()
+//		for p.Next() {
+//			page := p.CurrentPage()
+//		}
+//
+//		if err := p.Err(); err != nil {
+//			return err
+//		}
+//
+func (p *ListRobotsRequest) Paginate(opts ...aws.Option) ListRobotsPager {
+	return ListRobotsPager{
+		Pager: aws.Pager{
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
+				var inCpy *ListRobotsInput
+				if p.Input != nil {
+					tmp := *p.Input
+					inCpy = &tmp
+				}
+
+				req := p.Copy(inCpy)
+				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
+
+				return req.Request, nil
+			},
+		},
+	}
+}
+
+// ListRobotsPager is used to paginate the request. This can be done by
+// calling Next and CurrentPage.
+type ListRobotsPager struct {
+	aws.Pager
+}
+
+func (p *ListRobotsPager) CurrentPage() *ListRobotsOutput {
+	return p.Pager.CurrentPage().(*ListRobotsOutput)
+}
+
 const opListSimulationApplications = "ListSimulationApplications"
 
 // ListSimulationApplicationsRequest is a API request type for the ListSimulationApplications API operation.
@@ -1276,7 +1524,8 @@ type ListSimulationApplicationsRequest struct {
 }
 
 // Send marshals and sends the ListSimulationApplications API request.
-func (r ListSimulationApplicationsRequest) Send() (*ListSimulationApplicationsOutput, error) {
+func (r ListSimulationApplicationsRequest) Send(ctx context.Context) (*ListSimulationApplicationsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1293,7 +1542,7 @@ func (r ListSimulationApplicationsRequest) Send() (*ListSimulationApplicationsOu
 //
 //    // Example sending a request using the ListSimulationApplicationsRequest method.
 //    req := client.ListSimulationApplicationsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1304,6 +1553,12 @@ func (c *RoboMaker) ListSimulationApplicationsRequest(input *ListSimulationAppli
 		Name:       opListSimulationApplications,
 		HTTPMethod: "POST",
 		HTTPPath:   "/listSimulationApplications",
+		Paginator: &aws.Paginator{
+			InputTokens:     []string{"nextToken"},
+			OutputTokens:    []string{"nextToken"},
+			LimitToken:      "maxResults",
+			TruncationToken: "",
+		},
 	}
 
 	if input == nil {
@@ -1317,6 +1572,53 @@ func (c *RoboMaker) ListSimulationApplicationsRequest(input *ListSimulationAppli
 	return ListSimulationApplicationsRequest{Request: req, Input: input, Copy: c.ListSimulationApplicationsRequest}
 }
 
+// Paginate pages iterates over the pages of a ListSimulationApplicationsRequest operation,
+// calling the Next method for each page. Using the paginators Next
+// method will depict whether or not there are more pages.
+//
+// Note: This operation can generate multiple requests to a service.
+//
+//    // Example iterating over at most 3 pages of a ListSimulationApplications operation.
+//		req := client.ListSimulationApplicationsRequest(input)
+//		p := req.Paginate()
+//		for p.Next() {
+//			page := p.CurrentPage()
+//		}
+//
+//		if err := p.Err(); err != nil {
+//			return err
+//		}
+//
+func (p *ListSimulationApplicationsRequest) Paginate(opts ...aws.Option) ListSimulationApplicationsPager {
+	return ListSimulationApplicationsPager{
+		Pager: aws.Pager{
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
+				var inCpy *ListSimulationApplicationsInput
+				if p.Input != nil {
+					tmp := *p.Input
+					inCpy = &tmp
+				}
+
+				req := p.Copy(inCpy)
+				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
+
+				return req.Request, nil
+			},
+		},
+	}
+}
+
+// ListSimulationApplicationsPager is used to paginate the request. This can be done by
+// calling Next and CurrentPage.
+type ListSimulationApplicationsPager struct {
+	aws.Pager
+}
+
+func (p *ListSimulationApplicationsPager) CurrentPage() *ListSimulationApplicationsOutput {
+	return p.Pager.CurrentPage().(*ListSimulationApplicationsOutput)
+}
+
 const opListSimulationJobs = "ListSimulationJobs"
 
 // ListSimulationJobsRequest is a API request type for the ListSimulationJobs API operation.
@@ -1327,7 +1629,8 @@ type ListSimulationJobsRequest struct {
 }
 
 // Send marshals and sends the ListSimulationJobs API request.
-func (r ListSimulationJobsRequest) Send() (*ListSimulationJobsOutput, error) {
+func (r ListSimulationJobsRequest) Send(ctx context.Context) (*ListSimulationJobsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1344,7 +1647,7 @@ func (r ListSimulationJobsRequest) Send() (*ListSimulationJobsOutput, error) {
 //
 //    // Example sending a request using the ListSimulationJobsRequest method.
 //    req := client.ListSimulationJobsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1355,6 +1658,12 @@ func (c *RoboMaker) ListSimulationJobsRequest(input *ListSimulationJobsInput) Li
 		Name:       opListSimulationJobs,
 		HTTPMethod: "POST",
 		HTTPPath:   "/listSimulationJobs",
+		Paginator: &aws.Paginator{
+			InputTokens:     []string{"nextToken"},
+			OutputTokens:    []string{"nextToken"},
+			LimitToken:      "maxResults",
+			TruncationToken: "",
+		},
 	}
 
 	if input == nil {
@@ -1368,6 +1677,104 @@ func (c *RoboMaker) ListSimulationJobsRequest(input *ListSimulationJobsInput) Li
 	return ListSimulationJobsRequest{Request: req, Input: input, Copy: c.ListSimulationJobsRequest}
 }
 
+// Paginate pages iterates over the pages of a ListSimulationJobsRequest operation,
+// calling the Next method for each page. Using the paginators Next
+// method will depict whether or not there are more pages.
+//
+// Note: This operation can generate multiple requests to a service.
+//
+//    // Example iterating over at most 3 pages of a ListSimulationJobs operation.
+//		req := client.ListSimulationJobsRequest(input)
+//		p := req.Paginate()
+//		for p.Next() {
+//			page := p.CurrentPage()
+//		}
+//
+//		if err := p.Err(); err != nil {
+//			return err
+//		}
+//
+func (p *ListSimulationJobsRequest) Paginate(opts ...aws.Option) ListSimulationJobsPager {
+	return ListSimulationJobsPager{
+		Pager: aws.Pager{
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
+				var inCpy *ListSimulationJobsInput
+				if p.Input != nil {
+					tmp := *p.Input
+					inCpy = &tmp
+				}
+
+				req := p.Copy(inCpy)
+				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
+
+				return req.Request, nil
+			},
+		},
+	}
+}
+
+// ListSimulationJobsPager is used to paginate the request. This can be done by
+// calling Next and CurrentPage.
+type ListSimulationJobsPager struct {
+	aws.Pager
+}
+
+func (p *ListSimulationJobsPager) CurrentPage() *ListSimulationJobsOutput {
+	return p.Pager.CurrentPage().(*ListSimulationJobsOutput)
+}
+
+const opListTagsForResource = "ListTagsForResource"
+
+// ListTagsForResourceRequest is a API request type for the ListTagsForResource API operation.
+type ListTagsForResourceRequest struct {
+	*aws.Request
+	Input *ListTagsForResourceInput
+	Copy  func(*ListTagsForResourceInput) ListTagsForResourceRequest
+}
+
+// Send marshals and sends the ListTagsForResource API request.
+func (r ListTagsForResourceRequest) Send(ctx context.Context) (*ListTagsForResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*ListTagsForResourceOutput), nil
+}
+
+// ListTagsForResourceRequest returns a request value for making API operation for
+// AWS RoboMaker.
+//
+// Lists all tags on a AWS RoboMaker resource.
+//
+//    // Example sending a request using the ListTagsForResourceRequest method.
+//    req := client.ListTagsForResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/ListTagsForResource
+func (c *RoboMaker) ListTagsForResourceRequest(input *ListTagsForResourceInput) ListTagsForResourceRequest {
+	op := &aws.Operation{
+		Name:       opListTagsForResource,
+		HTTPMethod: "GET",
+		HTTPPath:   "/tags/{resourceArn}",
+	}
+
+	if input == nil {
+		input = &ListTagsForResourceInput{}
+	}
+
+	output := &ListTagsForResourceOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return ListTagsForResourceRequest{Request: req, Input: input, Copy: c.ListTagsForResourceRequest}
+}
+
 const opRegisterRobot = "RegisterRobot"
 
 // RegisterRobotRequest is a API request type for the RegisterRobot API operation.
@@ -1378,7 +1785,8 @@ type RegisterRobotRequest struct {
 }
 
 // Send marshals and sends the RegisterRobot API request.
-func (r RegisterRobotRequest) Send() (*RegisterRobotOutput, error) {
+func (r RegisterRobotRequest) Send(ctx context.Context) (*RegisterRobotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1394,7 +1802,7 @@ func (r RegisterRobotRequest) Send() (*RegisterRobotOutput, error) {
 //
 //    // Example sending a request using the RegisterRobotRequest method.
 //    req := client.RegisterRobotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1428,7 +1836,8 @@ type RestartSimulationJobRequest struct {
 }
 
 // Send marshals and sends the RestartSimulationJob API request.
-func (r RestartSimulationJobRequest) Send() (*RestartSimulationJobOutput, error) {
+func (r RestartSimulationJobRequest) Send(ctx context.Context) (*RestartSimulationJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1444,7 +1853,7 @@ func (r RestartSimulationJobRequest) Send() (*RestartSimulationJobOutput, error)
 //
 //    // Example sending a request using the RestartSimulationJobRequest method.
 //    req := client.RestartSimulationJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1478,7 +1887,8 @@ type SyncDeploymentJobRequest struct {
 }
 
 // Send marshals and sends the SyncDeploymentJob API request.
-func (r SyncDeploymentJobRequest) Send() (*SyncDeploymentJobOutput, error) {
+func (r SyncDeploymentJobRequest) Send(ctx context.Context) (*SyncDeploymentJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1495,7 +1905,7 @@ func (r SyncDeploymentJobRequest) Send() (*SyncDeploymentJobOutput, error) {
 //
 //    // Example sending a request using the SyncDeploymentJobRequest method.
 //    req := client.SyncDeploymentJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1519,6 +1929,118 @@ func (c *RoboMaker) SyncDeploymentJobRequest(input *SyncDeploymentJobInput) Sync
 	return SyncDeploymentJobRequest{Request: req, Input: input, Copy: c.SyncDeploymentJobRequest}
 }
 
+const opTagResource = "TagResource"
+
+// TagResourceRequest is a API request type for the TagResource API operation.
+type TagResourceRequest struct {
+	*aws.Request
+	Input *TagResourceInput
+	Copy  func(*TagResourceInput) TagResourceRequest
+}
+
+// Send marshals and sends the TagResource API request.
+func (r TagResourceRequest) Send(ctx context.Context) (*TagResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*TagResourceOutput), nil
+}
+
+// TagResourceRequest returns a request value for making API operation for
+// AWS RoboMaker.
+//
+// Adds or edits tags for a AWS RoboMaker resource.
+//
+// Each tag consists of a tag key and a tag value. Tag keys and tag values are
+// both required, but tag values can be empty strings.
+//
+// For information about the rules that apply to tag keys and tag values, see
+// User-Defined Tag Restrictions (https://docs.aws.amazon.com/awsaccountbilling/latest/aboutv2/allocation-tag-restrictions.html)
+// in the AWS Billing and Cost Management User Guide.
+//
+//    // Example sending a request using the TagResourceRequest method.
+//    req := client.TagResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/TagResource
+func (c *RoboMaker) TagResourceRequest(input *TagResourceInput) TagResourceRequest {
+	op := &aws.Operation{
+		Name:       opTagResource,
+		HTTPMethod: "POST",
+		HTTPPath:   "/tags/{resourceArn}",
+	}
+
+	if input == nil {
+		input = &TagResourceInput{}
+	}
+
+	output := &TagResourceOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return TagResourceRequest{Request: req, Input: input, Copy: c.TagResourceRequest}
+}
+
+const opUntagResource = "UntagResource"
+
+// UntagResourceRequest is a API request type for the UntagResource API operation.
+type UntagResourceRequest struct {
+	*aws.Request
+	Input *UntagResourceInput
+	Copy  func(*UntagResourceInput) UntagResourceRequest
+}
+
+// Send marshals and sends the UntagResource API request.
+func (r UntagResourceRequest) Send(ctx context.Context) (*UntagResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*UntagResourceOutput), nil
+}
+
+// UntagResourceRequest returns a request value for making API operation for
+// AWS RoboMaker.
+//
+// Removes the specified tags from the specified AWS RoboMaker resource.
+//
+// To remove a tag, specify the tag key. To change the tag value of an existing
+// tag key, use TagResource (https://docs.aws.amazon.com/robomaker/latest/dg/API_TagResource.html).
+//
+//    // Example sending a request using the UntagResourceRequest method.
+//    req := client.UntagResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/UntagResource
+func (c *RoboMaker) UntagResourceRequest(input *UntagResourceInput) UntagResourceRequest {
+	op := &aws.Operation{
+		Name:       opUntagResource,
+		HTTPMethod: "DELETE",
+		HTTPPath:   "/tags/{resourceArn}",
+	}
+
+	if input == nil {
+		input = &UntagResourceInput{}
+	}
+
+	output := &UntagResourceOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return UntagResourceRequest{Request: req, Input: input, Copy: c.UntagResourceRequest}
+}
+
 const opUpdateRobotApplication = "UpdateRobotApplication"
 
 // UpdateRobotApplicationRequest is a API request type for the UpdateRobotApplication API operation.
@@ -1529,7 +2051,8 @@ type UpdateRobotApplicationRequest struct {
 }
 
 // Send marshals and sends the UpdateRobotApplication API request.
-func (r UpdateRobotApplicationRequest) Send() (*UpdateRobotApplicationOutput, error) {
+func (r UpdateRobotApplicationRequest) Send(ctx context.Context) (*UpdateRobotApplicationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1545,7 +2068,7 @@ func (r UpdateRobotApplicationRequest) Send() (*UpdateRobotApplicationOutput, er
 //
 //    // Example sending a request using the UpdateRobotApplicationRequest method.
 //    req := client.UpdateRobotApplicationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1579,7 +2102,8 @@ type UpdateSimulationApplicationRequest struct {
 }
 
 // Send marshals and sends the UpdateSimulationApplication API request.
-func (r UpdateSimulationApplicationRequest) Send() (*UpdateSimulationApplicationOutput, error) {
+func (r UpdateSimulationApplicationRequest) Send(ctx context.Context) (*UpdateSimulationApplicationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1595,7 +2119,7 @@ func (r UpdateSimulationApplicationRequest) Send() (*UpdateSimulationApplication
 //
 //    // Example sending a request using the UpdateSimulationApplicationRequest method.
 //    req := client.UpdateSimulationApplicationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1831,6 +2355,10 @@ type CreateDeploymentJobInput struct {
 	//
 	// Fleet is a required field
 	Fleet *string `locationName:"fleet" min:"1" type:"string" required:"true"`
+
+	// A map that contains tag keys and tag values that are attached to the deployment
+	// job.
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -1926,6 +2454,18 @@ func (s CreateDeploymentJobInput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "fleet", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	return nil
 }
 
@@ -1947,7 +2487,44 @@ type CreateDeploymentJobOutput struct {
 	// The deployment configuration.
 	DeploymentConfig *DeploymentConfig `locationName:"deploymentConfig" type:"structure"`
 
-	// The failure code of the deployment job if it failed.
+	// The failure code of the simulation job if it failed:
+	//
+	// BadPermissionErrorAWS Greengrass requires a service-level role permission
+	// to access other services. The role must include the AWSGreengrassResourceAccessRolePolicy
+	// (https://console.aws.amazon.com/iam/home?#/policies/arn:aws:iam::aws:policy/service-role/AWSGreengrassResourceAccessRolePolicy$jsonEditor)
+	// managed policy.
+	//
+	// ExtractingBundleFailureThe robot application could not be extracted from
+	// the bundle.
+	//
+	// FailureThresholdBreachedThe percentage of robots that could not be updated
+	// exceeded the percentage set for the deployment.
+	//
+	// GreengrassDeploymentFailedThe robot application could not be deployed to
+	// the robot.
+	//
+	// GreengrassGroupVersionDoesNotExistThe AWS Greengrass group or version associated
+	// with a robot is missing.
+	//
+	// InternalServerErrorAn internal error has occurred. Retry your request, but
+	// if the problem persists, contact us with details.
+	//
+	// MissingRobotApplicationArchitectureThe robot application does not have a
+	// source that matches the architecture of the robot.
+	//
+	// MissingRobotDeploymentResourceOne or more of the resources specified for
+	// the robot application are missing. For example, does the robot application
+	// have the correct launch package and launch file?
+	//
+	// PostLaunchFileFailureThe post-launch script failed.
+	//
+	// PreLaunchFileFailureThe pre-launch script failed.
+	//
+	// ResourceNotFoundOne or more deployment resources are missing. For example,
+	// do robot application source bundles still exist?
+	//
+	// RobotDeploymentNoResponseThere is no response from the robot. It might not
+	// be powered on or connected to the internet.
 	FailureCode DeploymentJobErrorCode `locationName:"failureCode" type:"string" enum:"true"`
 
 	// The failure reason of the deployment job if it failed.
@@ -1958,6 +2535,9 @@ type CreateDeploymentJobOutput struct {
 
 	// The status of the deployment job.
 	Status DeploymentStatus `locationName:"status" type:"string" enum:"true"`
+
+	// The list of all tags added to the deployment job.
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -2031,6 +2611,18 @@ func (s CreateDeploymentJobOutput) MarshalFields(e protocol.FieldEncoder) error 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "status", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	return nil
 }
 
@@ -2042,6 +2634,9 @@ type CreateFleetInput struct {
 	//
 	// Name is a required field
 	Name *string `locationName:"name" min:"1" type:"string" required:"true"`
+
+	// A map that contains tag keys and tag values that are attached to the fleet.
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -2081,6 +2676,18 @@ func (s CreateFleetInput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	return nil
 }
 
@@ -2098,6 +2705,9 @@ type CreateFleetOutput struct {
 
 	// The name of the fleet.
 	Name *string `locationName:"name" min:"1" type:"string"`
+
+	// The list of all tags added to the fleet.
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -2135,6 +2745,18 @@ func (s CreateFleetOutput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	return nil
 }
 
@@ -2156,6 +2778,10 @@ type CreateRobotApplicationInput struct {
 	//
 	// Sources is a required field
 	Sources []SourceConfig `locationName:"sources" type:"list" required:"true"`
+
+	// A map that contains tag keys and tag values that are attached to the robot
+	// application.
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -2228,6 +2854,18 @@ func (s CreateRobotApplicationInput) MarshalFields(e protocol.FieldEncoder) erro
 		ls0.End()
 
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	return nil
 }
 
@@ -2255,6 +2893,9 @@ type CreateRobotApplicationOutput struct {
 
 	// The sources of the robot application.
 	Sources []Source `locationName:"sources" type:"list"`
+
+	// The list of all tags added to the robot application.
+	Tags map[string]string `locationName:"tags" type:"map"`
 
 	// The version of the robot application.
 	Version *string `locationName:"version" min:"1" type:"string"`
@@ -2317,6 +2958,18 @@ func (s CreateRobotApplicationOutput) MarshalFields(e protocol.FieldEncoder) err
 			ls0.ListAddFields(v1)
 		}
 		ls0.End()
+
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
 
 	}
 	if s.Version != nil {
@@ -2506,6 +3159,9 @@ type CreateRobotInput struct {
 	//
 	// Name is a required field
 	Name *string `locationName:"name" min:"1" type:"string" required:"true"`
+
+	// A map that contains tag keys and tag values that are attached to the robot.
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -2567,6 +3223,18 @@ func (s CreateRobotInput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	return nil
 }
 
@@ -2591,6 +3259,9 @@ type CreateRobotOutput struct {
 
 	// The name of the robot.
 	Name *string `locationName:"name" min:"1" type:"string"`
+
+	// The list of all tags added to the robot.
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -2640,6 +3311,18 @@ func (s CreateRobotOutput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "name", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	return nil
 }
 
@@ -2671,6 +3354,10 @@ type CreateSimulationApplicationInput struct {
 	//
 	// Sources is a required field
 	Sources []SourceConfig `locationName:"sources" type:"list" required:"true"`
+
+	// A map that contains tag keys and tag values that are attached to the simulation
+	// application.
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -2763,6 +3450,18 @@ func (s CreateSimulationApplicationInput) MarshalFields(e protocol.FieldEncoder)
 		ls0.End()
 
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	return nil
 }
 
@@ -2796,6 +3495,9 @@ type CreateSimulationApplicationOutput struct {
 
 	// The sources of the simulation application.
 	Sources []Source `locationName:"sources" type:"list"`
+
+	// The list of all tags added to the simulation application.
+	Tags map[string]string `locationName:"tags" type:"map"`
 
 	// The version of the simulation application.
 	Version *string `locationName:"version" min:"1" type:"string"`
@@ -2870,6 +3572,18 @@ func (s CreateSimulationApplicationOutput) MarshalFields(e protocol.FieldEncoder
 			ls0.ListAddFields(v1)
 		}
 		ls0.End()
+
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
 
 	}
 	if s.Version != nil {
@@ -3074,10 +3788,9 @@ type CreateSimulationJobInput struct {
 	// FailStop the simulation job and terminate the instance.
 	FailureBehavior FailureBehavior `locationName:"failureBehavior" type:"string" enum:"true"`
 
-	// The IAM role that allows the simulation instance to call the AWS APIs that
-	// are specified in its associated policies on your behalf. This is how credentials
-	// are passed in to your simulation job. See how to specify AWS security credentials
-	// for your application (https://docs.aws.amazon.com/toolkit-for-visual-studio/latest/user-guide/deployment-ecs-specify-credentials).
+	// The IAM role name that allows the simulation instance to call the AWS APIs
+	// that are specified in its associated policies on your behalf. This is how
+	// credentials are passed in to your simulation job.
 	//
 	// IamRole is a required field
 	IamRole *string `locationName:"iamRole" min:"1" type:"string" required:"true"`
@@ -3097,6 +3810,10 @@ type CreateSimulationJobInput struct {
 
 	// The simulation application to use in the simulation job.
 	SimulationApplications []SimulationApplicationConfig `locationName:"simulationApplications" min:"1" type:"list"`
+
+	// A map that contains tag keys and tag values that are attached to the simulation
+	// job.
+	Tags map[string]string `locationName:"tags" type:"map"`
 
 	// If your simulation job accesses resources in a VPC, you provide this parameter
 	// identifying the list of security group IDs and subnet IDs. These must belong
@@ -3233,6 +3950,18 @@ func (s CreateSimulationJobInput) MarshalFields(e protocol.FieldEncoder) error {
 		ls0.End()
 
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	if s.VpcConfig != nil {
 		v := s.VpcConfig
 
@@ -3258,7 +3987,41 @@ type CreateSimulationJobOutput struct {
 	// the failure behavior for the simulation job.
 	FailureBehavior FailureBehavior `locationName:"failureBehavior" type:"string" enum:"true"`
 
-	// The failure code of the simulation job if it failed.
+	// The failure code of the simulation job if it failed:
+	//
+	// InternalServiceErrorInternal service error.
+	//
+	// RobotApplicationCrashRobot application exited abnormally.
+	//
+	// SimulationApplicationCrash Simulation application exited abnormally.
+	//
+	// BadPermissionsRobotApplicationRobot application bundle could not be downloaded.
+	//
+	// BadPermissionsSimulationApplicationSimulation application bundle could not
+	// be downloaded.
+	//
+	// BadPermissionsS3OutputUnable to publish outputs to customer-provided S3 bucket.
+	//
+	// BadPermissionsCloudwatchLogsUnable to publish logs to customer-provided CloudWatch
+	// Logs resource.
+	//
+	// SubnetIpLimitExceededSubnet IP limit exceeded.
+	//
+	// ENILimitExceededENI limit exceeded.
+	//
+	// BadPermissionsUserCredentialsUnable to use the Role provided.
+	//
+	// InvalidBundleRobotApplicationRobot bundle cannot be extracted (invalid format,
+	// bundling error, or other issue).
+	//
+	// InvalidBundleSimulationApplicationSimulation bundle cannot be extracted (invalid
+	// format, bundling error, or other issue).
+	//
+	// RobotApplicationVersionMismatchedEtagEtag for RobotApplication does not match
+	// value during version creation.
+	//
+	// SimulationApplicationVersionMismatchedEtagEtag for SimulationApplication
+	// does not match value during version creation.
 	FailureCode SimulationJobErrorCode `locationName:"failureCode" type:"string" enum:"true"`
 
 	// The IAM role that allows the simulation job to call the AWS APIs that are
@@ -3269,8 +4032,7 @@ type CreateSimulationJobOutput struct {
 	// updated.
 	LastUpdatedAt *time.Time `locationName:"lastUpdatedAt" type:"timestamp" timestampFormat:"unix"`
 
-	// The maximum simulation job duration in seconds. The value must be 8 days
-	// (691,200 seconds) or less.
+	// The maximum simulation job duration in seconds.
 	MaxJobDurationInSeconds *int64 `locationName:"maxJobDurationInSeconds" type:"long"`
 
 	// Simulation job output files location.
@@ -3287,6 +4049,9 @@ type CreateSimulationJobOutput struct {
 
 	// The status of the simulation job.
 	Status SimulationJobStatus `locationName:"status" type:"string" enum:"true"`
+
+	// The list of all tags added to the simulation job.
+	Tags map[string]string `locationName:"tags" type:"map"`
 
 	// Information about the vpc configuration.
 	VpcConfig *VPCConfigResponse `locationName:"vpcConfig" type:"structure"`
@@ -3392,6 +4157,18 @@ func (s CreateSimulationJobOutput) MarshalFields(e protocol.FieldEncoder) error 
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "status", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	if s.VpcConfig != nil {
 		v := s.VpcConfig
@@ -3739,7 +4516,7 @@ func (s DeleteSimulationApplicationOutput) MarshalFields(e protocol.FieldEncoder
 type DeploymentApplicationConfig struct {
 	_ struct{} `type:"structure"`
 
-	// The application.
+	// The Amazon Resource Name (ARN) of the robot application.
 	//
 	// Application is a required field
 	Application *string `locationName:"application" min:"1" type:"string" required:"true"`
@@ -3749,7 +4526,7 @@ type DeploymentApplicationConfig struct {
 	// ApplicationVersion is a required field
 	ApplicationVersion *string `locationName:"applicationVersion" min:"1" type:"string" required:"true"`
 
-	// The launch configuration, usually roslaunch.
+	// The launch configuration.
 	//
 	// LaunchConfig is a required field
 	LaunchConfig *DeploymentLaunchConfig `locationName:"launchConfig" type:"structure" required:"true"`
@@ -3980,27 +4757,27 @@ func (s DeploymentJob) MarshalFields(e protocol.FieldEncoder) error {
 type DeploymentLaunchConfig struct {
 	_ struct{} `type:"structure"`
 
-	// An array of key/value pairs specifying environment variables for the deployment
-	// application.
+	// An array of key/value pairs specifying environment variables for the robot
+	// application
 	EnvironmentVariables map[string]string `locationName:"environmentVariables" type:"map"`
 
-	// The deployment launch file.
+	// The launch file name.
 	//
 	// LaunchFile is a required field
-	LaunchFile *string `locationName:"launchFile" type:"string" required:"true"`
+	LaunchFile *string `locationName:"launchFile" min:"1" type:"string" required:"true"`
 
 	// The package name.
 	//
 	// PackageName is a required field
-	PackageName *string `locationName:"packageName" type:"string" required:"true"`
+	PackageName *string `locationName:"packageName" min:"1" type:"string" required:"true"`
 
-	// The deployment post-launch file. This file will be executed after the deployment
-	// launch file.
-	PostLaunchFile *string `locationName:"postLaunchFile" type:"string"`
+	// The deployment post-launch file. This file will be executed after the launch
+	// file.
+	PostLaunchFile *string `locationName:"postLaunchFile" min:"1" type:"string"`
 
-	// The deployment pre-launch file. This file will be executed prior to the deployment
-	// launch file.
-	PreLaunchFile *string `locationName:"preLaunchFile" type:"string"`
+	// The deployment pre-launch file. This file will be executed prior to the launch
+	// file.
+	PreLaunchFile *string `locationName:"preLaunchFile" min:"1" type:"string"`
 }
 
 // String returns the string representation
@@ -4020,9 +4797,21 @@ func (s *DeploymentLaunchConfig) Validate() error {
 	if s.LaunchFile == nil {
 		invalidParams.Add(aws.NewErrParamRequired("LaunchFile"))
 	}
+	if s.LaunchFile != nil && len(*s.LaunchFile) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("LaunchFile", 1))
+	}
 
 	if s.PackageName == nil {
 		invalidParams.Add(aws.NewErrParamRequired("PackageName"))
+	}
+	if s.PackageName != nil && len(*s.PackageName) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("PackageName", 1))
+	}
+	if s.PostLaunchFile != nil && len(*s.PostLaunchFile) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("PostLaunchFile", 1))
+	}
+	if s.PreLaunchFile != nil && len(*s.PreLaunchFile) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("PreLaunchFile", 1))
 	}
 
 	if invalidParams.Len() > 0 {
@@ -4267,6 +5056,9 @@ type DescribeDeploymentJobOutput struct {
 
 	// The status of the deployment job.
 	Status DeploymentStatus `locationName:"status" type:"string" enum:"true"`
+
+	// The list of all tags added to the specified deployment job.
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -4352,6 +5144,18 @@ func (s DescribeDeploymentJobOutput) MarshalFields(e protocol.FieldEncoder) erro
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "status", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	return nil
 }
 
@@ -4431,6 +5235,9 @@ type DescribeFleetOutput struct {
 
 	// A list of robots.
 	Robots []Robot `locationName:"robots" type:"list"`
+
+	// The list of all tags added to the specified fleet.
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -4496,6 +5303,18 @@ func (s DescribeFleetOutput) MarshalFields(e protocol.FieldEncoder) error {
 			ls0.ListAddFields(v1)
 		}
 		ls0.End()
+
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
 
 	}
 	return nil
@@ -4588,6 +5407,9 @@ type DescribeRobotApplicationOutput struct {
 	// The sources of the robot application.
 	Sources []Source `locationName:"sources" type:"list"`
 
+	// The list of all tags added to the specified robot application.
+	Tags map[string]string `locationName:"tags" type:"map"`
+
 	// The version of the robot application.
 	Version *string `locationName:"version" min:"1" type:"string"`
 }
@@ -4649,6 +5471,18 @@ func (s DescribeRobotApplicationOutput) MarshalFields(e protocol.FieldEncoder) e
 			ls0.ListAddFields(v1)
 		}
 		ls0.End()
+
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
 
 	}
 	if s.Version != nil {
@@ -4742,6 +5576,9 @@ type DescribeRobotOutput struct {
 
 	// The status of the fleet.
 	Status RobotStatus `locationName:"status" type:"string" enum:"true"`
+
+	// The list of all tags added to the specified robot.
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -4814,6 +5651,18 @@ func (s DescribeRobotOutput) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "status", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	return nil
 }
@@ -4911,6 +5760,9 @@ type DescribeSimulationApplicationOutput struct {
 	// The sources of the simulation application.
 	Sources []Source `locationName:"sources" type:"list"`
 
+	// The list of all tags added to the specified simulation application.
+	Tags map[string]string `locationName:"tags" type:"map"`
+
 	// The version of the simulation application.
 	Version *string `locationName:"version" min:"1" type:"string"`
 }
@@ -4984,6 +5836,18 @@ func (s DescribeSimulationApplicationOutput) MarshalFields(e protocol.FieldEncod
 			ls0.ListAddFields(v1)
 		}
 		ls0.End()
+
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
 
 	}
 	if s.Version != nil {
@@ -5063,41 +5927,44 @@ type DescribeSimulationJobOutput struct {
 
 	// The failure code of the simulation job if it failed:
 	//
-	// InternalServiceErrorInternal service error
+	// InternalServiceErrorInternal service error.
 	//
-	// RobotApplicationCrashRobot application exited abnormally (segfault, etc.)
+	// RobotApplicationCrashRobot application exited abnormally.
 	//
-	// SimulationApplicationCrash Simulation application exited abnormally (segfault,
-	// etc.)
+	// SimulationApplicationCrash Simulation application exited abnormally.
 	//
-	// BadPermissionsRobotApplicationRobot application bundle could not be downloaded
+	// BadPermissionsRobotApplicationRobot application bundle could not be downloaded.
 	//
 	// BadPermissionsSimulationApplicationSimulation application bundle could not
-	// be downloaded
+	// be downloaded.
 	//
-	// BadPermissionsS3OutputUnable to publish outputs to customer-provided S3 bucket
+	// BadPermissionsS3OutputUnable to publish outputs to customer-provided S3 bucket.
 	//
 	// BadPermissionsCloudwatchLogsUnable to publish logs to customer-provided CloudWatch
-	// Logs resource
+	// Logs resource.
 	//
-	// SubnetIpLimitExceededSubnet IP limit exceeded
+	// SubnetIpLimitExceededSubnet IP limit exceeded.
 	//
-	// ENILimitExceededENI limit exceeded
+	// ENILimitExceededENI limit exceeded.
 	//
-	// BadPermissionsUserCredentialsUnable to use the Role provided
+	// BadPermissionsUserCredentialsUnable to use the Role provided.
 	//
 	// InvalidBundleRobotApplicationRobot bundle cannot be extracted (invalid format,
-	// bundling error, etc.)
+	// bundling error, or other issue).
 	//
 	// InvalidBundleSimulationApplicationSimulation bundle cannot be extracted (invalid
-	// format, bundling error, etc.)
+	// format, bundling error, or other issue).
 	//
 	// RobotApplicationVersionMismatchedEtagEtag for RobotApplication does not match
-	// value during version creation
+	// value during version creation.
 	//
 	// SimulationApplicationVersionMismatchedEtagEtag for SimulationApplication
-	// does not match value during version creation
+	// does not match value during version creation.
 	FailureCode SimulationJobErrorCode `locationName:"failureCode" type:"string" enum:"true"`
+
+	// Details about why the simulation job failed. For more information about troubleshooting,
+	// see Troubleshooting (https://docs.aws.amazon.com/robomaker/latest/dg/troubleshooting.html).
+	FailureReason *string `locationName:"failureReason" type:"string"`
 
 	// The IAM role that allows the simulation instance to call the AWS APIs that
 	// are specified in its associated policies on your behalf.
@@ -5128,6 +5995,9 @@ type DescribeSimulationJobOutput struct {
 
 	// The status of the simulation job.
 	Status SimulationJobStatus `locationName:"status" type:"string" enum:"true"`
+
+	// The list of all tags added to the specified simulation job.
+	Tags map[string]string `locationName:"tags" type:"map"`
 
 	// The VPC configuration.
 	VpcConfig *VPCConfigResponse `locationName:"vpcConfig" type:"structure"`
@@ -5173,6 +6043,12 @@ func (s DescribeSimulationJobOutput) MarshalFields(e protocol.FieldEncoder) erro
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "failureCode", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	if s.FailureReason != nil {
+		v := *s.FailureReason
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "failureReason", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.IamRole != nil {
 		v := *s.IamRole
@@ -5239,6 +6115,18 @@ func (s DescribeSimulationJobOutput) MarshalFields(e protocol.FieldEncoder) erro
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "status", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	if s.VpcConfig != nil {
 		v := s.VpcConfig
@@ -5393,15 +6281,15 @@ type LaunchConfig struct {
 	// The environment variables for the application launch.
 	EnvironmentVariables map[string]string `locationName:"environmentVariables" type:"map"`
 
-	// The launch file.
+	// The launch file name.
 	//
 	// LaunchFile is a required field
-	LaunchFile *string `locationName:"launchFile" type:"string" required:"true"`
+	LaunchFile *string `locationName:"launchFile" min:"1" type:"string" required:"true"`
 
 	// The package name.
 	//
 	// PackageName is a required field
-	PackageName *string `locationName:"packageName" type:"string" required:"true"`
+	PackageName *string `locationName:"packageName" min:"1" type:"string" required:"true"`
 }
 
 // String returns the string representation
@@ -5421,9 +6309,15 @@ func (s *LaunchConfig) Validate() error {
 	if s.LaunchFile == nil {
 		invalidParams.Add(aws.NewErrParamRequired("LaunchFile"))
 	}
+	if s.LaunchFile != nil && len(*s.LaunchFile) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("LaunchFile", 1))
+	}
 
 	if s.PackageName == nil {
 		invalidParams.Add(aws.NewErrParamRequired("PackageName"))
+	}
+	if s.PackageName != nil && len(*s.PackageName) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("PackageName", 1))
 	}
 
 	if invalidParams.Len() > 0 {
@@ -5466,6 +6360,11 @@ type ListDeploymentJobsInput struct {
 	_ struct{} `type:"structure"`
 
 	// Optional filters to limit results.
+	//
+	// The filter names status and fleetName are supported. When filtering, you
+	// must use the complete value of the filtered item. You can use up to three
+	// filters, but they must be for the same named item. For example, if you are
+	// looking for items with the status InProgress or the status Pending.
 	Filters []Filter `locationName:"filters" min:"1" type:"list"`
 
 	// The maximum number of deployment job results returned by ListDeploymentJobs
@@ -5610,6 +6509,9 @@ type ListFleetsInput struct {
 	_ struct{} `type:"structure"`
 
 	// Optional filters to limit results.
+	//
+	// The filter name name is supported. When filtering, you must use the complete
+	// value of the filtered item. You can use up to three filters.
 	Filters []Filter `locationName:"filters" min:"1" type:"list"`
 
 	// The maximum number of deployment job results returned by ListFleets in paginated
@@ -5754,15 +6656,19 @@ type ListRobotApplicationsInput struct {
 	_ struct{} `type:"structure"`
 
 	// Optional filters to limit results.
+	//
+	// The filter name name is supported. When filtering, you must use the complete
+	// value of the filtered item. You can use up to three filters.
 	Filters []Filter `locationName:"filters" min:"1" type:"list"`
 
 	// The maximum number of deployment job results returned by ListRobotApplications
 	// in paginated output. When this parameter is used, ListRobotApplications only
 	// returns maxResults results in a single page along with a nextToken response
 	// element. The remaining results of the initial request can be seen by sending
-	// another ListFleets request with the returned nextToken value. This value
-	// can be between 1 and 100. If this parameter is not used, then ListRobotApplications
-	// returns up to 100 results and a nextToken value if applicable.
+	// another ListRobotApplications request with the returned nextToken value.
+	// This value can be between 1 and 100. If this parameter is not used, then
+	// ListRobotApplications returns up to 100 results and a nextToken value if
+	// applicable.
 	MaxResults *int64 `locationName:"maxResults" type:"integer"`
 
 	// The nextToken value returned from a previous paginated ListRobotApplications
@@ -5907,12 +6813,17 @@ type ListRobotsInput struct {
 	_ struct{} `type:"structure"`
 
 	// Optional filters to limit results.
+	//
+	// The filter names status and fleetName are supported. When filtering, you
+	// must use the complete value of the filtered item. You can use up to three
+	// filters, but they must be for the same named item. For example, if you are
+	// looking for items with the status Registered or the status Available.
 	Filters []Filter `locationName:"filters" min:"1" type:"list"`
 
 	// The maximum number of deployment job results returned by ListRobots in paginated
 	// output. When this parameter is used, ListRobots only returns maxResults results
 	// in a single page along with a nextToken response element. The remaining results
-	// of the initial request can be seen by sending another ListFleets request
+	// of the initial request can be seen by sending another ListRobots request
 	// with the returned nextToken value. This value can be between 1 and 100. If
 	// this parameter is not used, then ListRobots returns up to 100 results and
 	// a nextToken value if applicable.
@@ -6050,17 +6961,20 @@ func (s ListRobotsOutput) MarshalFields(e protocol.FieldEncoder) error {
 type ListSimulationApplicationsInput struct {
 	_ struct{} `type:"structure"`
 
-	// Optional list of filters to limit results. The only valid filter name is
-	// name.
+	// Optional list of filters to limit results.
+	//
+	// The filter name name is supported. When filtering, you must use the complete
+	// value of the filtered item. You can use up to three filters.
 	Filters []Filter `locationName:"filters" min:"1" type:"list"`
 
 	// The maximum number of deployment job results returned by ListSimulationApplications
 	// in paginated output. When this parameter is used, ListSimulationApplications
 	// only returns maxResults results in a single page along with a nextToken response
 	// element. The remaining results of the initial request can be seen by sending
-	// another ListFleets request with the returned nextToken value. This value
-	// can be between 1 and 100. If this parameter is not used, then ListSimulationApplications
-	// returns up to 100 results and a nextToken value if applicable.
+	// another ListSimulationApplications request with the returned nextToken value.
+	// This value can be between 1 and 100. If this parameter is not used, then
+	// ListSimulationApplications returns up to 100 results and a nextToken value
+	// if applicable.
 	MaxResults *int64 `locationName:"maxResults" type:"integer"`
 
 	// The nextToken value returned from a previous paginated ListSimulationApplications
@@ -6206,14 +7120,20 @@ type ListSimulationJobsInput struct {
 	_ struct{} `type:"structure"`
 
 	// Optional filters to limit results.
+	//
+	// The filter names status and simulationApplicationName and robotApplicationName
+	// are supported. When filtering, you must use the complete value of the filtered
+	// item. You can use up to three filters, but they must be for the same named
+	// item. For example, if you are looking for items with the status Preparing
+	// or the status Running.
 	Filters []Filter `locationName:"filters" min:"1" type:"list"`
 
 	// The maximum number of deployment job results returned by ListSimulationJobs
 	// in paginated output. When this parameter is used, ListSimulationJobs only
 	// returns maxResults results in a single page along with a nextToken response
 	// element. The remaining results of the initial request can be seen by sending
-	// another ListFleets request with the returned nextToken value. This value
-	// can be between 1 and 100. If this parameter is not used, then ListSimulationJobs
+	// another ListSimulationJobs request with the returned nextToken value. This
+	// value can be between 1 and 100. If this parameter is not used, then ListSimulationJobs
 	// returns up to 100 results and a nextToken value if applicable.
 	MaxResults *int64 `locationName:"maxResults" type:"integer"`
 
@@ -6347,6 +7267,98 @@ func (s ListSimulationJobsOutput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/ListTagsForResourceRequest
+type ListTagsForResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// The AWS RoboMaker Amazon Resource Name (ARN) with tags to be listed.
+	//
+	// ResourceArn is a required field
+	ResourceArn *string `location:"uri" locationName:"resourceArn" min:"1" type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s ListTagsForResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListTagsForResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ListTagsForResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ListTagsForResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+	if s.ResourceArn != nil && len(*s.ResourceArn) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("ResourceArn", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ListTagsForResourceInput) MarshalFields(e protocol.FieldEncoder) error {
+	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
+
+	if s.ResourceArn != nil {
+		v := *s.ResourceArn
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "resourceArn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/ListTagsForResourceResponse
+type ListTagsForResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// The list of all tags added to the specified resource.
+	Tags map[string]string `locationName:"tags" type:"map"`
+}
+
+// String returns the string representation
+func (s ListTagsForResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListTagsForResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s ListTagsForResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ListTagsForResourceOutput) MarshalFields(e protocol.FieldEncoder) error {
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
+	return nil
+}
+
 // The output location.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/OutputLocation
 type OutputLocation struct {
@@ -6408,7 +7420,28 @@ type ProgressDetail struct {
 	_ struct{} `type:"structure"`
 
 	// The current progress status.
-	CurrentProgress *string `locationName:"currentProgress" type:"string"`
+	//
+	// ValidatingValidating the deployment.
+	//
+	// Downloading/ExtractingDownloading and extracting the bundle on the robot.
+	//
+	// Executing pre-launch script(s)Executing pre-launch script(s) if provided.
+	//
+	// LaunchingLaunching the robot application.
+	//
+	// Executing post-launch script(s)Executing post-launch script(s) if provided.
+	//
+	// FinishedDeployment is complete.
+	CurrentProgress RobotDeploymentStep `locationName:"currentProgress" type:"string" enum:"true"`
+
+	// Estimated amount of time in seconds remaining in the step. This currently
+	// only applies to the Downloading/Extracting step of the deployment. It is
+	// empty for other steps.
+	EstimatedTimeRemainingSeconds *int64 `locationName:"estimatedTimeRemainingSeconds" type:"integer"`
+
+	// Precentage of the step that is done. This currently only applies to the Downloading/Extracting
+	// step of the deployment. It is empty for other steps.
+	PercentDone *float64 `locationName:"percentDone" type:"float"`
 
 	// The Amazon Resource Name (ARN) of the deployment job.
 	TargetResource *string `locationName:"targetResource" type:"string"`
@@ -6426,11 +7459,23 @@ func (s ProgressDetail) GoString() string {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s ProgressDetail) MarshalFields(e protocol.FieldEncoder) error {
-	if s.CurrentProgress != nil {
-		v := *s.CurrentProgress
+	if len(s.CurrentProgress) > 0 {
+		v := s.CurrentProgress
 
 		metadata := protocol.Metadata{}
-		e.SetValue(protocol.BodyTarget, "currentProgress", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+		e.SetValue(protocol.BodyTarget, "currentProgress", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	if s.EstimatedTimeRemainingSeconds != nil {
+		v := *s.EstimatedTimeRemainingSeconds
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "estimatedTimeRemainingSeconds", protocol.Int64Value(v), metadata)
+	}
+	if s.PercentDone != nil {
+		v := *s.PercentDone
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "percentDone", protocol.Float64Value(v), metadata)
 	}
 	if s.TargetResource != nil {
 		v := *s.TargetResource
@@ -7194,6 +8239,9 @@ type SimulationJob struct {
 	// The failure code of the simulation job if it failed.
 	FailureCode SimulationJobErrorCode `locationName:"failureCode" type:"string" enum:"true"`
 
+	// The reason why the simulation job failed.
+	FailureReason *string `locationName:"failureReason" type:"string"`
+
 	// The IAM role that allows the simulation instance to call the AWS APIs that
 	// are specified in its associated policies on your behalf. This is how credentials
 	// are passed in to your simulation job. See how to specify AWS security credentials
@@ -7225,6 +8273,10 @@ type SimulationJob struct {
 
 	// Status of the simulation job.
 	Status SimulationJobStatus `locationName:"status" type:"string" enum:"true"`
+
+	// A map that contains tag keys and tag values that are attached to the simulation
+	// job.
+	Tags map[string]string `locationName:"tags" type:"map"`
 
 	// VPC configuration information.
 	VpcConfig *VPCConfigResponse `locationName:"vpcConfig" type:"structure"`
@@ -7265,6 +8317,12 @@ func (s SimulationJob) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "failureCode", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	if s.FailureReason != nil {
+		v := *s.FailureReason
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "failureReason", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.IamRole != nil {
 		v := *s.IamRole
@@ -7331,6 +8389,18 @@ func (s SimulationJob) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "status", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	if s.VpcConfig != nil {
 		v := s.VpcConfig
@@ -7682,7 +8752,41 @@ type SyncDeploymentJobOutput struct {
 	// Information about the deployment configuration.
 	DeploymentConfig *DeploymentConfig `locationName:"deploymentConfig" type:"structure"`
 
-	// The failure code if the job fails.
+	// The failure code if the job fails:
+	//
+	// InternalServiceErrorInternal service error.
+	//
+	// RobotApplicationCrashRobot application exited abnormally.
+	//
+	// SimulationApplicationCrash Simulation application exited abnormally.
+	//
+	// BadPermissionsRobotApplicationRobot application bundle could not be downloaded.
+	//
+	// BadPermissionsSimulationApplicationSimulation application bundle could not
+	// be downloaded.
+	//
+	// BadPermissionsS3OutputUnable to publish outputs to customer-provided S3 bucket.
+	//
+	// BadPermissionsCloudwatchLogsUnable to publish logs to customer-provided CloudWatch
+	// Logs resource.
+	//
+	// SubnetIpLimitExceededSubnet IP limit exceeded.
+	//
+	// ENILimitExceededENI limit exceeded.
+	//
+	// BadPermissionsUserCredentialsUnable to use the Role provided.
+	//
+	// InvalidBundleRobotApplicationRobot bundle cannot be extracted (invalid format,
+	// bundling error, or other issue).
+	//
+	// InvalidBundleSimulationApplicationSimulation bundle cannot be extracted (invalid
+	// format, bundling error, or other issue).
+	//
+	// RobotApplicationVersionMismatchedEtagEtag for RobotApplication does not match
+	// value during version creation.
+	//
+	// SimulationApplicationVersionMismatchedEtagEtag for SimulationApplication
+	// does not match value during version creation.
 	FailureCode DeploymentJobErrorCode `locationName:"failureCode" type:"string" enum:"true"`
 
 	// The failure reason if the job fails.
@@ -7766,6 +8870,204 @@ func (s SyncDeploymentJobOutput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "status", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/TagResourceRequest
+type TagResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// The Amazon Resource Name (ARN) of the AWS RoboMaker resource you are tagging.
+	//
+	// ResourceArn is a required field
+	ResourceArn *string `location:"uri" locationName:"resourceArn" min:"1" type:"string" required:"true"`
+
+	// A map that contains tag keys and tag values that are attached to the resource.
+	//
+	// Tags is a required field
+	Tags map[string]string `locationName:"tags" type:"map" required:"true"`
+}
+
+// String returns the string representation
+func (s TagResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s TagResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *TagResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "TagResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+	if s.ResourceArn != nil && len(*s.ResourceArn) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("ResourceArn", 1))
+	}
+
+	if s.Tags == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Tags"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s TagResourceInput) MarshalFields(e protocol.FieldEncoder) error {
+	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
+
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
+	if s.ResourceArn != nil {
+		v := *s.ResourceArn
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "resourceArn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/TagResourceResponse
+type TagResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+}
+
+// String returns the string representation
+func (s TagResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s TagResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s TagResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s TagResourceOutput) MarshalFields(e protocol.FieldEncoder) error {
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/UntagResourceRequest
+type UntagResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// The Amazon Resource Name (ARN) of the AWS RoboMaker resource you are removing
+	// tags.
+	//
+	// ResourceArn is a required field
+	ResourceArn *string `location:"uri" locationName:"resourceArn" min:"1" type:"string" required:"true"`
+
+	// A map that contains tag keys and tag values that will be unattached from
+	// the resource.
+	//
+	// TagKeys is a required field
+	TagKeys []string `location:"querystring" locationName:"tagKeys" type:"list" required:"true"`
+}
+
+// String returns the string representation
+func (s UntagResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UntagResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *UntagResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "UntagResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+	if s.ResourceArn != nil && len(*s.ResourceArn) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("ResourceArn", 1))
+	}
+
+	if s.TagKeys == nil {
+		invalidParams.Add(aws.NewErrParamRequired("TagKeys"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s UntagResourceInput) MarshalFields(e protocol.FieldEncoder) error {
+	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
+
+	if s.ResourceArn != nil {
+		v := *s.ResourceArn
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "resourceArn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.TagKeys) > 0 {
+		v := s.TagKeys
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.QueryTarget, "tagKeys", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ls0.End()
+
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/robomaker-2018-06-29/UntagResourceResponse
+type UntagResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+}
+
+// String returns the string representation
+func (s UntagResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UntagResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s UntagResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s UntagResourceOutput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
@@ -8398,8 +9700,11 @@ type DeploymentJobErrorCode string
 // Enum values for DeploymentJobErrorCode
 const (
 	DeploymentJobErrorCodeResourceNotFound                    DeploymentJobErrorCode = "ResourceNotFound"
+	DeploymentJobErrorCodeEnvironmentSetupError               DeploymentJobErrorCode = "EnvironmentSetupError"
+	DeploymentJobErrorCodeEtagMismatch                        DeploymentJobErrorCode = "EtagMismatch"
 	DeploymentJobErrorCodeFailureThresholdBreached            DeploymentJobErrorCode = "FailureThresholdBreached"
 	DeploymentJobErrorCodeRobotDeploymentNoResponse           DeploymentJobErrorCode = "RobotDeploymentNoResponse"
+	DeploymentJobErrorCodeRobotAgentConnectionTimeout         DeploymentJobErrorCode = "RobotAgentConnectionTimeout"
 	DeploymentJobErrorCodeGreengrassDeploymentFailed          DeploymentJobErrorCode = "GreengrassDeploymentFailed"
 	DeploymentJobErrorCodeMissingRobotArchitecture            DeploymentJobErrorCode = "MissingRobotArchitecture"
 	DeploymentJobErrorCodeMissingRobotApplicationArchitecture DeploymentJobErrorCode = "MissingRobotApplicationArchitecture"
@@ -8470,6 +9775,27 @@ func (enum RenderingEngineType) MarshalValue() (string, error) {
 }
 
 func (enum RenderingEngineType) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
+type RobotDeploymentStep string
+
+// Enum values for RobotDeploymentStep
+const (
+	RobotDeploymentStepValidating            RobotDeploymentStep = "Validating"
+	RobotDeploymentStepDownloadingExtracting RobotDeploymentStep = "DownloadingExtracting"
+	RobotDeploymentStepExecutingPreLaunch    RobotDeploymentStep = "ExecutingPreLaunch"
+	RobotDeploymentStepLaunching             RobotDeploymentStep = "Launching"
+	RobotDeploymentStepExecutingPostLaunch   RobotDeploymentStep = "ExecutingPostLaunch"
+	RobotDeploymentStepFinished              RobotDeploymentStep = "Finished"
+)
+
+func (enum RobotDeploymentStep) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum RobotDeploymentStep) MarshalValueBuf(b []byte) ([]byte, error) {
 	b = b[0:0]
 	return append(b, enum...), nil
 }
@@ -8546,6 +9872,9 @@ const (
 	SimulationJobErrorCodeInvalidBundleSimulationApplication         SimulationJobErrorCode = "InvalidBundleSimulationApplication"
 	SimulationJobErrorCodeRobotApplicationVersionMismatchedEtag      SimulationJobErrorCode = "RobotApplicationVersionMismatchedEtag"
 	SimulationJobErrorCodeSimulationApplicationVersionMismatchedEtag SimulationJobErrorCode = "SimulationApplicationVersionMismatchedEtag"
+	SimulationJobErrorCodeWrongRegionS3output                        SimulationJobErrorCode = "WrongRegionS3Output"
+	SimulationJobErrorCodeWrongRegionRobotApplication                SimulationJobErrorCode = "WrongRegionRobotApplication"
+	SimulationJobErrorCodeWrongRegionSimulationApplication           SimulationJobErrorCode = "WrongRegionSimulationApplication"
 )
 
 func (enum SimulationJobErrorCode) MarshalValue() (string, error) {

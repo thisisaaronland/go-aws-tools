@@ -3,6 +3,7 @@
 package comprehend
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -20,7 +21,8 @@ type BatchDetectDominantLanguageRequest struct {
 }
 
 // Send marshals and sends the BatchDetectDominantLanguage API request.
-func (r BatchDetectDominantLanguageRequest) Send() (*BatchDetectDominantLanguageOutput, error) {
+func (r BatchDetectDominantLanguageRequest) Send(ctx context.Context) (*BatchDetectDominantLanguageOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -34,11 +36,11 @@ func (r BatchDetectDominantLanguageRequest) Send() (*BatchDetectDominantLanguage
 //
 // Determines the dominant language of the input text for a batch of documents.
 // For a list of languages that Amazon Comprehend can detect, see Amazon Comprehend
-// Supported Languages (http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
+// Supported Languages (https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
 //
 //    // Example sending a request using the BatchDetectDominantLanguageRequest method.
 //    req := client.BatchDetectDominantLanguageRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -72,7 +74,8 @@ type BatchDetectEntitiesRequest struct {
 }
 
 // Send marshals and sends the BatchDetectEntities API request.
-func (r BatchDetectEntitiesRequest) Send() (*BatchDetectEntitiesOutput, error) {
+func (r BatchDetectEntitiesRequest) Send(ctx context.Context) (*BatchDetectEntitiesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -89,7 +92,7 @@ func (r BatchDetectEntitiesRequest) Send() (*BatchDetectEntitiesOutput, error) {
 //
 //    // Example sending a request using the BatchDetectEntitiesRequest method.
 //    req := client.BatchDetectEntitiesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -123,7 +126,8 @@ type BatchDetectKeyPhrasesRequest struct {
 }
 
 // Send marshals and sends the BatchDetectKeyPhrases API request.
-func (r BatchDetectKeyPhrasesRequest) Send() (*BatchDetectKeyPhrasesOutput, error) {
+func (r BatchDetectKeyPhrasesRequest) Send(ctx context.Context) (*BatchDetectKeyPhrasesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -139,7 +143,7 @@ func (r BatchDetectKeyPhrasesRequest) Send() (*BatchDetectKeyPhrasesOutput, erro
 //
 //    // Example sending a request using the BatchDetectKeyPhrasesRequest method.
 //    req := client.BatchDetectKeyPhrasesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -173,7 +177,8 @@ type BatchDetectSentimentRequest struct {
 }
 
 // Send marshals and sends the BatchDetectSentiment API request.
-func (r BatchDetectSentimentRequest) Send() (*BatchDetectSentimentOutput, error) {
+func (r BatchDetectSentimentRequest) Send(ctx context.Context) (*BatchDetectSentimentOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -190,7 +195,7 @@ func (r BatchDetectSentimentRequest) Send() (*BatchDetectSentimentOutput, error)
 //
 //    // Example sending a request using the BatchDetectSentimentRequest method.
 //    req := client.BatchDetectSentimentRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -224,7 +229,8 @@ type BatchDetectSyntaxRequest struct {
 }
 
 // Send marshals and sends the BatchDetectSyntax API request.
-func (r BatchDetectSyntaxRequest) Send() (*BatchDetectSyntaxOutput, error) {
+func (r BatchDetectSyntaxRequest) Send(ctx context.Context) (*BatchDetectSyntaxOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -242,7 +248,7 @@ func (r BatchDetectSyntaxRequest) Send() (*BatchDetectSyntaxOutput, error) {
 //
 //    // Example sending a request using the BatchDetectSyntaxRequest method.
 //    req := client.BatchDetectSyntaxRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -276,7 +282,8 @@ type CreateDocumentClassifierRequest struct {
 }
 
 // Send marshals and sends the CreateDocumentClassifier API request.
-func (r CreateDocumentClassifierRequest) Send() (*CreateDocumentClassifierOutput, error) {
+func (r CreateDocumentClassifierRequest) Send(ctx context.Context) (*CreateDocumentClassifierOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -296,7 +303,7 @@ func (r CreateDocumentClassifierRequest) Send() (*CreateDocumentClassifierOutput
 //
 //    // Example sending a request using the CreateDocumentClassifierRequest method.
 //    req := client.CreateDocumentClassifierRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -330,7 +337,8 @@ type CreateEntityRecognizerRequest struct {
 }
 
 // Send marshals and sends the CreateEntityRecognizer API request.
-func (r CreateEntityRecognizerRequest) Send() (*CreateEntityRecognizerOutput, error) {
+func (r CreateEntityRecognizerRequest) Send(ctx context.Context) (*CreateEntityRecognizerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -347,7 +355,7 @@ func (r CreateEntityRecognizerRequest) Send() (*CreateEntityRecognizerOutput, er
 //
 //    // Example sending a request using the CreateEntityRecognizerRequest method.
 //    req := client.CreateEntityRecognizerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -381,7 +389,8 @@ type DeleteDocumentClassifierRequest struct {
 }
 
 // Send marshals and sends the DeleteDocumentClassifier API request.
-func (r DeleteDocumentClassifierRequest) Send() (*DeleteDocumentClassifierOutput, error) {
+func (r DeleteDocumentClassifierRequest) Send(ctx context.Context) (*DeleteDocumentClassifierOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -405,7 +414,7 @@ func (r DeleteDocumentClassifierRequest) Send() (*DeleteDocumentClassifierOutput
 //
 //    // Example sending a request using the DeleteDocumentClassifierRequest method.
 //    req := client.DeleteDocumentClassifierRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -439,7 +448,8 @@ type DeleteEntityRecognizerRequest struct {
 }
 
 // Send marshals and sends the DeleteEntityRecognizer API request.
-func (r DeleteEntityRecognizerRequest) Send() (*DeleteEntityRecognizerOutput, error) {
+func (r DeleteEntityRecognizerRequest) Send(ctx context.Context) (*DeleteEntityRecognizerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -463,7 +473,7 @@ func (r DeleteEntityRecognizerRequest) Send() (*DeleteEntityRecognizerOutput, er
 //
 //    // Example sending a request using the DeleteEntityRecognizerRequest method.
 //    req := client.DeleteEntityRecognizerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -497,7 +507,8 @@ type DescribeDocumentClassificationJobRequest struct {
 }
 
 // Send marshals and sends the DescribeDocumentClassificationJob API request.
-func (r DescribeDocumentClassificationJobRequest) Send() (*DescribeDocumentClassificationJobOutput, error) {
+func (r DescribeDocumentClassificationJobRequest) Send(ctx context.Context) (*DescribeDocumentClassificationJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -514,7 +525,7 @@ func (r DescribeDocumentClassificationJobRequest) Send() (*DescribeDocumentClass
 //
 //    // Example sending a request using the DescribeDocumentClassificationJobRequest method.
 //    req := client.DescribeDocumentClassificationJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -548,7 +559,8 @@ type DescribeDocumentClassifierRequest struct {
 }
 
 // Send marshals and sends the DescribeDocumentClassifier API request.
-func (r DescribeDocumentClassifierRequest) Send() (*DescribeDocumentClassifierOutput, error) {
+func (r DescribeDocumentClassifierRequest) Send(ctx context.Context) (*DescribeDocumentClassifierOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -564,7 +576,7 @@ func (r DescribeDocumentClassifierRequest) Send() (*DescribeDocumentClassifierOu
 //
 //    // Example sending a request using the DescribeDocumentClassifierRequest method.
 //    req := client.DescribeDocumentClassifierRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -598,7 +610,8 @@ type DescribeDominantLanguageDetectionJobRequest struct {
 }
 
 // Send marshals and sends the DescribeDominantLanguageDetectionJob API request.
-func (r DescribeDominantLanguageDetectionJobRequest) Send() (*DescribeDominantLanguageDetectionJobOutput, error) {
+func (r DescribeDominantLanguageDetectionJobRequest) Send(ctx context.Context) (*DescribeDominantLanguageDetectionJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -615,7 +628,7 @@ func (r DescribeDominantLanguageDetectionJobRequest) Send() (*DescribeDominantLa
 //
 //    // Example sending a request using the DescribeDominantLanguageDetectionJobRequest method.
 //    req := client.DescribeDominantLanguageDetectionJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -649,7 +662,8 @@ type DescribeEntitiesDetectionJobRequest struct {
 }
 
 // Send marshals and sends the DescribeEntitiesDetectionJob API request.
-func (r DescribeEntitiesDetectionJobRequest) Send() (*DescribeEntitiesDetectionJobOutput, error) {
+func (r DescribeEntitiesDetectionJobRequest) Send(ctx context.Context) (*DescribeEntitiesDetectionJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -666,7 +680,7 @@ func (r DescribeEntitiesDetectionJobRequest) Send() (*DescribeEntitiesDetectionJ
 //
 //    // Example sending a request using the DescribeEntitiesDetectionJobRequest method.
 //    req := client.DescribeEntitiesDetectionJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -700,7 +714,8 @@ type DescribeEntityRecognizerRequest struct {
 }
 
 // Send marshals and sends the DescribeEntityRecognizer API request.
-func (r DescribeEntityRecognizerRequest) Send() (*DescribeEntityRecognizerOutput, error) {
+func (r DescribeEntityRecognizerRequest) Send(ctx context.Context) (*DescribeEntityRecognizerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -717,7 +732,7 @@ func (r DescribeEntityRecognizerRequest) Send() (*DescribeEntityRecognizerOutput
 //
 //    // Example sending a request using the DescribeEntityRecognizerRequest method.
 //    req := client.DescribeEntityRecognizerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -751,7 +766,8 @@ type DescribeKeyPhrasesDetectionJobRequest struct {
 }
 
 // Send marshals and sends the DescribeKeyPhrasesDetectionJob API request.
-func (r DescribeKeyPhrasesDetectionJobRequest) Send() (*DescribeKeyPhrasesDetectionJobOutput, error) {
+func (r DescribeKeyPhrasesDetectionJobRequest) Send(ctx context.Context) (*DescribeKeyPhrasesDetectionJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -768,7 +784,7 @@ func (r DescribeKeyPhrasesDetectionJobRequest) Send() (*DescribeKeyPhrasesDetect
 //
 //    // Example sending a request using the DescribeKeyPhrasesDetectionJobRequest method.
 //    req := client.DescribeKeyPhrasesDetectionJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -802,7 +818,8 @@ type DescribeSentimentDetectionJobRequest struct {
 }
 
 // Send marshals and sends the DescribeSentimentDetectionJob API request.
-func (r DescribeSentimentDetectionJobRequest) Send() (*DescribeSentimentDetectionJobOutput, error) {
+func (r DescribeSentimentDetectionJobRequest) Send(ctx context.Context) (*DescribeSentimentDetectionJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -819,7 +836,7 @@ func (r DescribeSentimentDetectionJobRequest) Send() (*DescribeSentimentDetectio
 //
 //    // Example sending a request using the DescribeSentimentDetectionJobRequest method.
 //    req := client.DescribeSentimentDetectionJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -853,7 +870,8 @@ type DescribeTopicsDetectionJobRequest struct {
 }
 
 // Send marshals and sends the DescribeTopicsDetectionJob API request.
-func (r DescribeTopicsDetectionJobRequest) Send() (*DescribeTopicsDetectionJobOutput, error) {
+func (r DescribeTopicsDetectionJobRequest) Send(ctx context.Context) (*DescribeTopicsDetectionJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -870,7 +888,7 @@ func (r DescribeTopicsDetectionJobRequest) Send() (*DescribeTopicsDetectionJobOu
 //
 //    // Example sending a request using the DescribeTopicsDetectionJobRequest method.
 //    req := client.DescribeTopicsDetectionJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -904,7 +922,8 @@ type DetectDominantLanguageRequest struct {
 }
 
 // Send marshals and sends the DetectDominantLanguage API request.
-func (r DetectDominantLanguageRequest) Send() (*DetectDominantLanguageOutput, error) {
+func (r DetectDominantLanguageRequest) Send(ctx context.Context) (*DetectDominantLanguageOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -918,11 +937,11 @@ func (r DetectDominantLanguageRequest) Send() (*DetectDominantLanguageOutput, er
 //
 // Determines the dominant language of the input text. For a list of languages
 // that Amazon Comprehend can detect, see Amazon Comprehend Supported Languages
-// (http://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
+// (https://docs.aws.amazon.com/comprehend/latest/dg/how-languages.html).
 //
 //    // Example sending a request using the DetectDominantLanguageRequest method.
 //    req := client.DetectDominantLanguageRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -956,7 +975,8 @@ type DetectEntitiesRequest struct {
 }
 
 // Send marshals and sends the DetectEntities API request.
-func (r DetectEntitiesRequest) Send() (*DetectEntitiesOutput, error) {
+func (r DetectEntitiesRequest) Send(ctx context.Context) (*DetectEntitiesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -973,7 +993,7 @@ func (r DetectEntitiesRequest) Send() (*DetectEntitiesOutput, error) {
 //
 //    // Example sending a request using the DetectEntitiesRequest method.
 //    req := client.DetectEntitiesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1007,7 +1027,8 @@ type DetectKeyPhrasesRequest struct {
 }
 
 // Send marshals and sends the DetectKeyPhrases API request.
-func (r DetectKeyPhrasesRequest) Send() (*DetectKeyPhrasesOutput, error) {
+func (r DetectKeyPhrasesRequest) Send(ctx context.Context) (*DetectKeyPhrasesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1023,7 +1044,7 @@ func (r DetectKeyPhrasesRequest) Send() (*DetectKeyPhrasesOutput, error) {
 //
 //    // Example sending a request using the DetectKeyPhrasesRequest method.
 //    req := client.DetectKeyPhrasesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1057,7 +1078,8 @@ type DetectSentimentRequest struct {
 }
 
 // Send marshals and sends the DetectSentiment API request.
-func (r DetectSentimentRequest) Send() (*DetectSentimentOutput, error) {
+func (r DetectSentimentRequest) Send(ctx context.Context) (*DetectSentimentOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1074,7 +1096,7 @@ func (r DetectSentimentRequest) Send() (*DetectSentimentOutput, error) {
 //
 //    // Example sending a request using the DetectSentimentRequest method.
 //    req := client.DetectSentimentRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1108,7 +1130,8 @@ type DetectSyntaxRequest struct {
 }
 
 // Send marshals and sends the DetectSyntax API request.
-func (r DetectSyntaxRequest) Send() (*DetectSyntaxOutput, error) {
+func (r DetectSyntaxRequest) Send(ctx context.Context) (*DetectSyntaxOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1125,7 +1148,7 @@ func (r DetectSyntaxRequest) Send() (*DetectSyntaxOutput, error) {
 //
 //    // Example sending a request using the DetectSyntaxRequest method.
 //    req := client.DetectSyntaxRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1159,7 +1182,8 @@ type ListDocumentClassificationJobsRequest struct {
 }
 
 // Send marshals and sends the ListDocumentClassificationJobs API request.
-func (r ListDocumentClassificationJobsRequest) Send() (*ListDocumentClassificationJobsOutput, error) {
+func (r ListDocumentClassificationJobsRequest) Send(ctx context.Context) (*ListDocumentClassificationJobsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1175,7 +1199,7 @@ func (r ListDocumentClassificationJobsRequest) Send() (*ListDocumentClassificati
 //
 //    // Example sending a request using the ListDocumentClassificationJobsRequest method.
 //    req := client.ListDocumentClassificationJobsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1209,7 +1233,8 @@ type ListDocumentClassifiersRequest struct {
 }
 
 // Send marshals and sends the ListDocumentClassifiers API request.
-func (r ListDocumentClassifiersRequest) Send() (*ListDocumentClassifiersOutput, error) {
+func (r ListDocumentClassifiersRequest) Send(ctx context.Context) (*ListDocumentClassifiersOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1225,7 +1250,7 @@ func (r ListDocumentClassifiersRequest) Send() (*ListDocumentClassifiersOutput, 
 //
 //    // Example sending a request using the ListDocumentClassifiersRequest method.
 //    req := client.ListDocumentClassifiersRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1259,7 +1284,8 @@ type ListDominantLanguageDetectionJobsRequest struct {
 }
 
 // Send marshals and sends the ListDominantLanguageDetectionJobs API request.
-func (r ListDominantLanguageDetectionJobsRequest) Send() (*ListDominantLanguageDetectionJobsOutput, error) {
+func (r ListDominantLanguageDetectionJobsRequest) Send(ctx context.Context) (*ListDominantLanguageDetectionJobsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1275,7 +1301,7 @@ func (r ListDominantLanguageDetectionJobsRequest) Send() (*ListDominantLanguageD
 //
 //    // Example sending a request using the ListDominantLanguageDetectionJobsRequest method.
 //    req := client.ListDominantLanguageDetectionJobsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1325,7 +1351,7 @@ func (c *Comprehend) ListDominantLanguageDetectionJobsRequest(input *ListDominan
 func (p *ListDominantLanguageDetectionJobsRequest) Paginate(opts ...aws.Option) ListDominantLanguageDetectionJobsPager {
 	return ListDominantLanguageDetectionJobsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListDominantLanguageDetectionJobsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1334,6 +1360,7 @@ func (p *ListDominantLanguageDetectionJobsRequest) Paginate(opts ...aws.Option) 
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1361,7 +1388,8 @@ type ListEntitiesDetectionJobsRequest struct {
 }
 
 // Send marshals and sends the ListEntitiesDetectionJobs API request.
-func (r ListEntitiesDetectionJobsRequest) Send() (*ListEntitiesDetectionJobsOutput, error) {
+func (r ListEntitiesDetectionJobsRequest) Send(ctx context.Context) (*ListEntitiesDetectionJobsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1377,7 +1405,7 @@ func (r ListEntitiesDetectionJobsRequest) Send() (*ListEntitiesDetectionJobsOutp
 //
 //    // Example sending a request using the ListEntitiesDetectionJobsRequest method.
 //    req := client.ListEntitiesDetectionJobsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1427,7 +1455,7 @@ func (c *Comprehend) ListEntitiesDetectionJobsRequest(input *ListEntitiesDetecti
 func (p *ListEntitiesDetectionJobsRequest) Paginate(opts ...aws.Option) ListEntitiesDetectionJobsPager {
 	return ListEntitiesDetectionJobsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListEntitiesDetectionJobsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1436,6 +1464,7 @@ func (p *ListEntitiesDetectionJobsRequest) Paginate(opts ...aws.Option) ListEnti
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1463,7 +1492,8 @@ type ListEntityRecognizersRequest struct {
 }
 
 // Send marshals and sends the ListEntityRecognizers API request.
-func (r ListEntityRecognizersRequest) Send() (*ListEntityRecognizersOutput, error) {
+func (r ListEntityRecognizersRequest) Send(ctx context.Context) (*ListEntityRecognizersOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1486,7 +1516,7 @@ func (r ListEntityRecognizersRequest) Send() (*ListEntityRecognizersOutput, erro
 //
 //    // Example sending a request using the ListEntityRecognizersRequest method.
 //    req := client.ListEntityRecognizersRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1520,7 +1550,8 @@ type ListKeyPhrasesDetectionJobsRequest struct {
 }
 
 // Send marshals and sends the ListKeyPhrasesDetectionJobs API request.
-func (r ListKeyPhrasesDetectionJobsRequest) Send() (*ListKeyPhrasesDetectionJobsOutput, error) {
+func (r ListKeyPhrasesDetectionJobsRequest) Send(ctx context.Context) (*ListKeyPhrasesDetectionJobsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1536,7 +1567,7 @@ func (r ListKeyPhrasesDetectionJobsRequest) Send() (*ListKeyPhrasesDetectionJobs
 //
 //    // Example sending a request using the ListKeyPhrasesDetectionJobsRequest method.
 //    req := client.ListKeyPhrasesDetectionJobsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1586,7 +1617,7 @@ func (c *Comprehend) ListKeyPhrasesDetectionJobsRequest(input *ListKeyPhrasesDet
 func (p *ListKeyPhrasesDetectionJobsRequest) Paginate(opts ...aws.Option) ListKeyPhrasesDetectionJobsPager {
 	return ListKeyPhrasesDetectionJobsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListKeyPhrasesDetectionJobsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1595,6 +1626,7 @@ func (p *ListKeyPhrasesDetectionJobsRequest) Paginate(opts ...aws.Option) ListKe
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1622,7 +1654,8 @@ type ListSentimentDetectionJobsRequest struct {
 }
 
 // Send marshals and sends the ListSentimentDetectionJobs API request.
-func (r ListSentimentDetectionJobsRequest) Send() (*ListSentimentDetectionJobsOutput, error) {
+func (r ListSentimentDetectionJobsRequest) Send(ctx context.Context) (*ListSentimentDetectionJobsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1638,7 +1671,7 @@ func (r ListSentimentDetectionJobsRequest) Send() (*ListSentimentDetectionJobsOu
 //
 //    // Example sending a request using the ListSentimentDetectionJobsRequest method.
 //    req := client.ListSentimentDetectionJobsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1688,7 +1721,7 @@ func (c *Comprehend) ListSentimentDetectionJobsRequest(input *ListSentimentDetec
 func (p *ListSentimentDetectionJobsRequest) Paginate(opts ...aws.Option) ListSentimentDetectionJobsPager {
 	return ListSentimentDetectionJobsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListSentimentDetectionJobsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1697,6 +1730,7 @@ func (p *ListSentimentDetectionJobsRequest) Paginate(opts ...aws.Option) ListSen
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1714,6 +1748,57 @@ func (p *ListSentimentDetectionJobsPager) CurrentPage() *ListSentimentDetectionJ
 	return p.Pager.CurrentPage().(*ListSentimentDetectionJobsOutput)
 }
 
+const opListTagsForResource = "ListTagsForResource"
+
+// ListTagsForResourceRequest is a API request type for the ListTagsForResource API operation.
+type ListTagsForResourceRequest struct {
+	*aws.Request
+	Input *ListTagsForResourceInput
+	Copy  func(*ListTagsForResourceInput) ListTagsForResourceRequest
+}
+
+// Send marshals and sends the ListTagsForResource API request.
+func (r ListTagsForResourceRequest) Send(ctx context.Context) (*ListTagsForResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*ListTagsForResourceOutput), nil
+}
+
+// ListTagsForResourceRequest returns a request value for making API operation for
+// Amazon Comprehend.
+//
+// Lists all tags associated with a given Amazon Comprehend resource.
+//
+//    // Example sending a request using the ListTagsForResourceRequest method.
+//    req := client.ListTagsForResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/ListTagsForResource
+func (c *Comprehend) ListTagsForResourceRequest(input *ListTagsForResourceInput) ListTagsForResourceRequest {
+	op := &aws.Operation{
+		Name:       opListTagsForResource,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &ListTagsForResourceInput{}
+	}
+
+	output := &ListTagsForResourceOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return ListTagsForResourceRequest{Request: req, Input: input, Copy: c.ListTagsForResourceRequest}
+}
+
 const opListTopicsDetectionJobs = "ListTopicsDetectionJobs"
 
 // ListTopicsDetectionJobsRequest is a API request type for the ListTopicsDetectionJobs API operation.
@@ -1724,7 +1809,8 @@ type ListTopicsDetectionJobsRequest struct {
 }
 
 // Send marshals and sends the ListTopicsDetectionJobs API request.
-func (r ListTopicsDetectionJobsRequest) Send() (*ListTopicsDetectionJobsOutput, error) {
+func (r ListTopicsDetectionJobsRequest) Send(ctx context.Context) (*ListTopicsDetectionJobsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1740,7 +1826,7 @@ func (r ListTopicsDetectionJobsRequest) Send() (*ListTopicsDetectionJobsOutput, 
 //
 //    // Example sending a request using the ListTopicsDetectionJobsRequest method.
 //    req := client.ListTopicsDetectionJobsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1790,7 +1876,7 @@ func (c *Comprehend) ListTopicsDetectionJobsRequest(input *ListTopicsDetectionJo
 func (p *ListTopicsDetectionJobsRequest) Paginate(opts ...aws.Option) ListTopicsDetectionJobsPager {
 	return ListTopicsDetectionJobsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListTopicsDetectionJobsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1799,6 +1885,7 @@ func (p *ListTopicsDetectionJobsRequest) Paginate(opts ...aws.Option) ListTopics
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1826,7 +1913,8 @@ type StartDocumentClassificationJobRequest struct {
 }
 
 // Send marshals and sends the StartDocumentClassificationJob API request.
-func (r StartDocumentClassificationJobRequest) Send() (*StartDocumentClassificationJobOutput, error) {
+func (r StartDocumentClassificationJobRequest) Send(ctx context.Context) (*StartDocumentClassificationJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1843,7 +1931,7 @@ func (r StartDocumentClassificationJobRequest) Send() (*StartDocumentClassificat
 //
 //    // Example sending a request using the StartDocumentClassificationJobRequest method.
 //    req := client.StartDocumentClassificationJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1877,7 +1965,8 @@ type StartDominantLanguageDetectionJobRequest struct {
 }
 
 // Send marshals and sends the StartDominantLanguageDetectionJob API request.
-func (r StartDominantLanguageDetectionJobRequest) Send() (*StartDominantLanguageDetectionJobOutput, error) {
+func (r StartDominantLanguageDetectionJobRequest) Send(ctx context.Context) (*StartDominantLanguageDetectionJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1894,7 +1983,7 @@ func (r StartDominantLanguageDetectionJobRequest) Send() (*StartDominantLanguage
 //
 //    // Example sending a request using the StartDominantLanguageDetectionJobRequest method.
 //    req := client.StartDominantLanguageDetectionJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1928,7 +2017,8 @@ type StartEntitiesDetectionJobRequest struct {
 }
 
 // Send marshals and sends the StartEntitiesDetectionJob API request.
-func (r StartEntitiesDetectionJobRequest) Send() (*StartEntitiesDetectionJobOutput, error) {
+func (r StartEntitiesDetectionJobRequest) Send(ctx context.Context) (*StartEntitiesDetectionJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1950,7 +2040,7 @@ func (r StartEntitiesDetectionJobRequest) Send() (*StartEntitiesDetectionJobOutp
 //
 //    // Example sending a request using the StartEntitiesDetectionJobRequest method.
 //    req := client.StartEntitiesDetectionJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1984,7 +2074,8 @@ type StartKeyPhrasesDetectionJobRequest struct {
 }
 
 // Send marshals and sends the StartKeyPhrasesDetectionJob API request.
-func (r StartKeyPhrasesDetectionJobRequest) Send() (*StartKeyPhrasesDetectionJobOutput, error) {
+func (r StartKeyPhrasesDetectionJobRequest) Send(ctx context.Context) (*StartKeyPhrasesDetectionJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2001,7 +2092,7 @@ func (r StartKeyPhrasesDetectionJobRequest) Send() (*StartKeyPhrasesDetectionJob
 //
 //    // Example sending a request using the StartKeyPhrasesDetectionJobRequest method.
 //    req := client.StartKeyPhrasesDetectionJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2035,7 +2126,8 @@ type StartSentimentDetectionJobRequest struct {
 }
 
 // Send marshals and sends the StartSentimentDetectionJob API request.
-func (r StartSentimentDetectionJobRequest) Send() (*StartSentimentDetectionJobOutput, error) {
+func (r StartSentimentDetectionJobRequest) Send(ctx context.Context) (*StartSentimentDetectionJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2052,7 +2144,7 @@ func (r StartSentimentDetectionJobRequest) Send() (*StartSentimentDetectionJobOu
 //
 //    // Example sending a request using the StartSentimentDetectionJobRequest method.
 //    req := client.StartSentimentDetectionJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2086,7 +2178,8 @@ type StartTopicsDetectionJobRequest struct {
 }
 
 // Send marshals and sends the StartTopicsDetectionJob API request.
-func (r StartTopicsDetectionJobRequest) Send() (*StartTopicsDetectionJobOutput, error) {
+func (r StartTopicsDetectionJobRequest) Send(ctx context.Context) (*StartTopicsDetectionJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2103,7 +2196,7 @@ func (r StartTopicsDetectionJobRequest) Send() (*StartTopicsDetectionJobOutput, 
 //
 //    // Example sending a request using the StartTopicsDetectionJobRequest method.
 //    req := client.StartTopicsDetectionJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2137,7 +2230,8 @@ type StopDominantLanguageDetectionJobRequest struct {
 }
 
 // Send marshals and sends the StopDominantLanguageDetectionJob API request.
-func (r StopDominantLanguageDetectionJobRequest) Send() (*StopDominantLanguageDetectionJobOutput, error) {
+func (r StopDominantLanguageDetectionJobRequest) Send(ctx context.Context) (*StopDominantLanguageDetectionJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2164,7 +2258,7 @@ func (r StopDominantLanguageDetectionJobRequest) Send() (*StopDominantLanguageDe
 //
 //    // Example sending a request using the StopDominantLanguageDetectionJobRequest method.
 //    req := client.StopDominantLanguageDetectionJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2198,7 +2292,8 @@ type StopEntitiesDetectionJobRequest struct {
 }
 
 // Send marshals and sends the StopEntitiesDetectionJob API request.
-func (r StopEntitiesDetectionJobRequest) Send() (*StopEntitiesDetectionJobOutput, error) {
+func (r StopEntitiesDetectionJobRequest) Send(ctx context.Context) (*StopEntitiesDetectionJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2225,7 +2320,7 @@ func (r StopEntitiesDetectionJobRequest) Send() (*StopEntitiesDetectionJobOutput
 //
 //    // Example sending a request using the StopEntitiesDetectionJobRequest method.
 //    req := client.StopEntitiesDetectionJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2259,7 +2354,8 @@ type StopKeyPhrasesDetectionJobRequest struct {
 }
 
 // Send marshals and sends the StopKeyPhrasesDetectionJob API request.
-func (r StopKeyPhrasesDetectionJobRequest) Send() (*StopKeyPhrasesDetectionJobOutput, error) {
+func (r StopKeyPhrasesDetectionJobRequest) Send(ctx context.Context) (*StopKeyPhrasesDetectionJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2286,7 +2382,7 @@ func (r StopKeyPhrasesDetectionJobRequest) Send() (*StopKeyPhrasesDetectionJobOu
 //
 //    // Example sending a request using the StopKeyPhrasesDetectionJobRequest method.
 //    req := client.StopKeyPhrasesDetectionJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2320,7 +2416,8 @@ type StopSentimentDetectionJobRequest struct {
 }
 
 // Send marshals and sends the StopSentimentDetectionJob API request.
-func (r StopSentimentDetectionJobRequest) Send() (*StopSentimentDetectionJobOutput, error) {
+func (r StopSentimentDetectionJobRequest) Send(ctx context.Context) (*StopSentimentDetectionJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2347,7 +2444,7 @@ func (r StopSentimentDetectionJobRequest) Send() (*StopSentimentDetectionJobOutp
 //
 //    // Example sending a request using the StopSentimentDetectionJobRequest method.
 //    req := client.StopSentimentDetectionJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2381,7 +2478,8 @@ type StopTrainingDocumentClassifierRequest struct {
 }
 
 // Send marshals and sends the StopTrainingDocumentClassifier API request.
-func (r StopTrainingDocumentClassifierRequest) Send() (*StopTrainingDocumentClassifierOutput, error) {
+func (r StopTrainingDocumentClassifierRequest) Send(ctx context.Context) (*StopTrainingDocumentClassifierOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2403,7 +2501,7 @@ func (r StopTrainingDocumentClassifierRequest) Send() (*StopTrainingDocumentClas
 //
 //    // Example sending a request using the StopTrainingDocumentClassifierRequest method.
 //    req := client.StopTrainingDocumentClassifierRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2437,7 +2535,8 @@ type StopTrainingEntityRecognizerRequest struct {
 }
 
 // Send marshals and sends the StopTrainingEntityRecognizer API request.
-func (r StopTrainingEntityRecognizerRequest) Send() (*StopTrainingEntityRecognizerOutput, error) {
+func (r StopTrainingEntityRecognizerRequest) Send(ctx context.Context) (*StopTrainingEntityRecognizerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2459,7 +2558,7 @@ func (r StopTrainingEntityRecognizerRequest) Send() (*StopTrainingEntityRecogniz
 //
 //    // Example sending a request using the StopTrainingEntityRecognizerRequest method.
 //    req := client.StopTrainingEntityRecognizerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2481,6 +2580,111 @@ func (c *Comprehend) StopTrainingEntityRecognizerRequest(input *StopTrainingEnti
 	output.responseMetadata = aws.Response{Request: req}
 
 	return StopTrainingEntityRecognizerRequest{Request: req, Input: input, Copy: c.StopTrainingEntityRecognizerRequest}
+}
+
+const opTagResource = "TagResource"
+
+// TagResourceRequest is a API request type for the TagResource API operation.
+type TagResourceRequest struct {
+	*aws.Request
+	Input *TagResourceInput
+	Copy  func(*TagResourceInput) TagResourceRequest
+}
+
+// Send marshals and sends the TagResource API request.
+func (r TagResourceRequest) Send(ctx context.Context) (*TagResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*TagResourceOutput), nil
+}
+
+// TagResourceRequest returns a request value for making API operation for
+// Amazon Comprehend.
+//
+// Associates a specific tag with an Amazon Comprehend resource. A tag is a
+// key-value pair that adds as a metadata to a resource used by Amazon Comprehend.
+// For example, a tag with "Sales" as the key might be added to a resource to
+// indicate its use by the sales department.
+//
+//    // Example sending a request using the TagResourceRequest method.
+//    req := client.TagResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/TagResource
+func (c *Comprehend) TagResourceRequest(input *TagResourceInput) TagResourceRequest {
+	op := &aws.Operation{
+		Name:       opTagResource,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &TagResourceInput{}
+	}
+
+	output := &TagResourceOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return TagResourceRequest{Request: req, Input: input, Copy: c.TagResourceRequest}
+}
+
+const opUntagResource = "UntagResource"
+
+// UntagResourceRequest is a API request type for the UntagResource API operation.
+type UntagResourceRequest struct {
+	*aws.Request
+	Input *UntagResourceInput
+	Copy  func(*UntagResourceInput) UntagResourceRequest
+}
+
+// Send marshals and sends the UntagResource API request.
+func (r UntagResourceRequest) Send(ctx context.Context) (*UntagResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*UntagResourceOutput), nil
+}
+
+// UntagResourceRequest returns a request value for making API operation for
+// Amazon Comprehend.
+//
+// Removes a specific tag associated with an Amazon Comprehend resource.
+//
+//    // Example sending a request using the UntagResourceRequest method.
+//    req := client.UntagResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/UntagResource
+func (c *Comprehend) UntagResourceRequest(input *UntagResourceInput) UntagResourceRequest {
+	op := &aws.Operation{
+		Name:       opUntagResource,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &UntagResourceInput{}
+	}
+
+	output := &UntagResourceOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return UntagResourceRequest{Request: req, Input: input, Copy: c.UntagResourceRequest}
 }
 
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/BatchDetectDominantLanguageRequest
@@ -3133,6 +3337,26 @@ type CreateDocumentClassifierInput struct {
 	//
 	// LanguageCode is a required field
 	LanguageCode LanguageCode `type:"string" required:"true" enum:"true"`
+
+	// Enables the addition of output results configuration parameters for custom
+	// classifier jobs.
+	OutputDataConfig *DocumentClassifierOutputDataConfig `type:"structure"`
+
+	// Tags to be associated with the document classifier being created. A tag is
+	// a key-value pair that adds as a metadata to a resource used by Amazon Comprehend.
+	// For example, a tag with "Sales" as the key might be added to a resource to
+	// indicate its use by the sales department.
+	Tags []Tag `type:"list"`
+
+	// ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses
+	// to encrypt data on the storage volume attached to the ML compute instance(s)
+	// that process the analysis job. The VolumeKmsKeyId can be either of the following
+	// formats:
+	//
+	//    * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+	VolumeKmsKeyId *string `type:"string"`
 }
 
 // String returns the string representation
@@ -3172,6 +3396,13 @@ func (s *CreateDocumentClassifierInput) Validate() error {
 	if s.InputDataConfig != nil {
 		if err := s.InputDataConfig.Validate(); err != nil {
 			invalidParams.AddNested("InputDataConfig", err.(aws.ErrInvalidParams))
+		}
+	}
+	if s.Tags != nil {
+		for i, v := range s.Tags {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Tags", i), err.(aws.ErrInvalidParams))
+			}
 		}
 	}
 
@@ -3239,6 +3470,22 @@ type CreateEntityRecognizerInput struct {
 	//
 	// RecognizerName is a required field
 	RecognizerName *string `type:"string" required:"true"`
+
+	// Tags to be associated with the entity recognizer being created. A tag is
+	// a key-value pair that adds as a metadata to a resource used by Amazon Comprehend.
+	// For example, a tag with "Sales" as the key might be added to a resource to
+	// indicate its use by the sales department.
+	Tags []Tag `type:"list"`
+
+	// ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses
+	// to encrypt data on the storage volume attached to the ML compute instance(s)
+	// that process the analysis job. The VolumeKmsKeyId can be either of the following
+	// formats:
+	//
+	//    * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+	VolumeKmsKeyId *string `type:"string"`
 }
 
 // String returns the string representation
@@ -3278,6 +3525,13 @@ func (s *CreateEntityRecognizerInput) Validate() error {
 	if s.InputDataConfig != nil {
 		if err := s.InputDataConfig.Validate(); err != nil {
 			invalidParams.AddNested("InputDataConfig", err.(aws.ErrInvalidParams))
+		}
+	}
+	if s.Tags != nil {
+		for i, v := range s.Tags {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Tags", i), err.(aws.ErrInvalidParams))
+			}
 		}
 	}
 
@@ -4379,6 +4633,16 @@ type DocumentClassificationJobProperties struct {
 
 	// The time that the document classification job was submitted for processing.
 	SubmitTime *time.Time `type:"timestamp" timestampFormat:"unix"`
+
+	// ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses
+	// to encrypt data on the storage volume attached to the ML compute instance(s)
+	// that process the analysis job. The VolumeKmsKeyId can be either of the following
+	// formats:
+	//
+	//    * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+	VolumeKmsKeyId *string `type:"string"`
 }
 
 // String returns the string representation
@@ -4465,6 +4729,47 @@ func (s *DocumentClassifierInputDataConfig) Validate() error {
 	return nil
 }
 
+// Provides output results configuration parameters for custom classifier jobs.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/DocumentClassifierOutputDataConfig
+type DocumentClassifierOutputDataConfig struct {
+	_ struct{} `type:"structure"`
+
+	// ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses
+	// to encrypt the output results from an analysis job. The KmsKeyId can be one
+	// of the following formats:
+	//
+	//    * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * KMS Key Alias: "alias/ExampleAlias"
+	//
+	//    * ARN of a KMS Key Alias: "arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias"
+	KmsKeyId *string `type:"string"`
+
+	// When you use the OutputDataConfig object while creating a custom classifier,
+	// you specify the Amazon S3 location where you want to write the confusion
+	// matrix. The URI must be in the same region as the API endpoint that you are
+	// calling. The location is used as the prefix for the actual location of this
+	// output file.
+	//
+	// When the custom classifier job is finished, the service creates the output
+	// file in a directory specific to the job. The S3Uri field contains the location
+	// of the output file, called output.tar.gz. It is a compressed archive that
+	// contains the confusion matrix.
+	S3Uri *string `type:"string"`
+}
+
+// String returns the string representation
+func (s DocumentClassifierOutputDataConfig) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DocumentClassifierOutputDataConfig) GoString() string {
+	return s.String()
+}
+
 // Provides information about a document classifier.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/DocumentClassifierProperties
 type DocumentClassifierProperties struct {
@@ -4496,6 +4801,9 @@ type DocumentClassifierProperties struct {
 	// Additional information about the status of the classifier.
 	Message *string `type:"string"`
 
+	// Provides output results configuration parameters for custom classifier jobs.
+	OutputDataConfig *DocumentClassifierOutputDataConfig `type:"structure"`
+
 	// The status of the document classifier. If the status is TRAINED the classifier
 	// is ready to use. If the status is FAILED you can see additional information
 	// about why the classifier wasn't trained in the Message field.
@@ -4512,6 +4820,16 @@ type DocumentClassifierProperties struct {
 	// Indicates the time when the training starts on documentation classifiers.
 	// You are billed for the time interval between this time and the value of TrainingEndTime.
 	TrainingStartTime *time.Time `type:"timestamp" timestampFormat:"unix"`
+
+	// ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses
+	// to encrypt data on the storage volume attached to the ML compute instance(s)
+	// that process the analysis job. The VolumeKmsKeyId can be either of the following
+	// formats:
+	//
+	//    * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+	VolumeKmsKeyId *string `type:"string"`
 }
 
 // String returns the string representation
@@ -4632,6 +4950,16 @@ type DominantLanguageDetectionJobProperties struct {
 
 	// The time that the dominant language detection job was submitted for processing.
 	SubmitTime *time.Time `type:"timestamp" timestampFormat:"unix"`
+
+	// ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses
+	// to encrypt data on the storage volume attached to the ML compute instance(s)
+	// that process the analysis job. The VolumeKmsKeyId can be either of the following
+	// formats:
+	//
+	//    * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+	VolumeKmsKeyId *string `type:"string"`
 }
 
 // String returns the string representation
@@ -4732,6 +5060,16 @@ type EntitiesDetectionJobProperties struct {
 
 	// The time that the entities detection job was submitted for processing.
 	SubmitTime *time.Time `type:"timestamp" timestampFormat:"unix"`
+
+	// ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses
+	// to encrypt data on the storage volume attached to the ML compute instance(s)
+	// that process the analysis job. The VolumeKmsKeyId can be either of the following
+	// formats:
+	//
+	//    * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+	VolumeKmsKeyId *string `type:"string"`
 }
 
 // String returns the string representation
@@ -5117,6 +5455,16 @@ type EntityRecognizerProperties struct {
 
 	// The time that training of the entity recognizer started.
 	TrainingStartTime *time.Time `type:"timestamp" timestampFormat:"unix"`
+
+	// ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses
+	// to encrypt data on the storage volume attached to the ML compute instance(s)
+	// that process the analysis job. The VolumeKmsKeyId can be either of the following
+	// formats:
+	//
+	//    * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+	VolumeKmsKeyId *string `type:"string"`
 }
 
 // String returns the string representation
@@ -5337,6 +5685,16 @@ type KeyPhrasesDetectionJobProperties struct {
 
 	// The time that the key phrases detection job was submitted for processing.
 	SubmitTime *time.Time `type:"timestamp" timestampFormat:"unix"`
+
+	// ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses
+	// to encrypt data on the storage volume attached to the ML compute instance(s)
+	// that process the analysis job. The VolumeKmsKeyId can be either of the following
+	// formats:
+	//
+	//    * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+	VolumeKmsKeyId *string `type:"string"`
 }
 
 // String returns the string representation
@@ -5863,6 +6221,73 @@ func (s ListSentimentDetectionJobsOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/ListTagsForResourceRequest
+type ListTagsForResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// The Amazon Resource Name (ARN) of the given Amazon Comprehend resource you
+	// are querying.
+	//
+	// ResourceArn is a required field
+	ResourceArn *string `type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s ListTagsForResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListTagsForResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ListTagsForResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ListTagsForResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/ListTagsForResourceResponse
+type ListTagsForResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// The Amazon Resource Name (ARN) of the given Amazon Comprehend resource you
+	// are querying.
+	ResourceArn *string `type:"string"`
+
+	// Tags associated with the Amazon Comprehend resource being queried. A tag
+	// is a key-value pair that adds as a metadata to a resource used by Amazon
+	// Comprehend. For example, a tag with "Sales" as the key might be added to
+	// a resource to indicate its use by the sales department.
+	Tags []Tag `type:"list"`
+}
+
+// String returns the string representation
+func (s ListTagsForResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListTagsForResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s ListTagsForResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/ListTopicsDetectionJobsRequest
 type ListTopicsDetectionJobsInput struct {
 	_ struct{} `type:"structure"`
@@ -5942,6 +6367,19 @@ func (s ListTopicsDetectionJobsOutput) SDKResponseMetadata() aws.Response {
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/OutputDataConfig
 type OutputDataConfig struct {
 	_ struct{} `type:"structure"`
+
+	// ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses
+	// to encrypt the output results from an analysis job. The KmsKeyId can be one
+	// of the following formats:
+	//
+	//    * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * KMS Key Alias: "alias/ExampleAlias"
+	//
+	//    * ARN of a KMS Key Alias: "arn:aws:kms:us-west-2:111122223333:alias/ExampleAlias"
+	KmsKeyId *string `type:"string"`
 
 	// When you use the OutputDataConfig object with asynchronous operations, you
 	// specify the Amazon S3 location where you want to write the output data. The
@@ -6093,6 +6531,16 @@ type SentimentDetectionJobProperties struct {
 
 	// The time that the sentiment detection job was submitted for processing.
 	SubmitTime *time.Time `type:"timestamp" timestampFormat:"unix"`
+
+	// ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses
+	// to encrypt data on the storage volume attached to the ML compute instance(s)
+	// that process the analysis job. The VolumeKmsKeyId can be either of the following
+	// formats:
+	//
+	//    * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+	VolumeKmsKeyId *string `type:"string"`
 }
 
 // String returns the string representation
@@ -6170,6 +6618,16 @@ type StartDocumentClassificationJobInput struct {
 	//
 	// OutputDataConfig is a required field
 	OutputDataConfig *OutputDataConfig `type:"structure" required:"true"`
+
+	// ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses
+	// to encrypt data on the storage volume attached to the ML compute instance(s)
+	// that process the analysis job. The VolumeKmsKeyId can be either of the following
+	// formats:
+	//
+	//    * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+	VolumeKmsKeyId *string `type:"string"`
 }
 
 // String returns the string representation
@@ -6297,6 +6755,16 @@ type StartDominantLanguageDetectionJobInput struct {
 	//
 	// OutputDataConfig is a required field
 	OutputDataConfig *OutputDataConfig `type:"structure" required:"true"`
+
+	// ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses
+	// to encrypt data on the storage volume attached to the ML compute instance(s)
+	// that process the analysis job. The VolumeKmsKeyId can be either of the following
+	// formats:
+	//
+	//    * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+	VolumeKmsKeyId *string `type:"string"`
 }
 
 // String returns the string representation
@@ -6429,6 +6897,16 @@ type StartEntitiesDetectionJobInput struct {
 	//
 	// OutputDataConfig is a required field
 	OutputDataConfig *OutputDataConfig `type:"structure" required:"true"`
+
+	// ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses
+	// to encrypt data on the storage volume attached to the ML compute instance(s)
+	// that process the analysis job. The VolumeKmsKeyId can be either of the following
+	// formats:
+	//
+	//    * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+	VolumeKmsKeyId *string `type:"string"`
 }
 
 // String returns the string representation
@@ -6561,6 +7039,16 @@ type StartKeyPhrasesDetectionJobInput struct {
 	//
 	// OutputDataConfig is a required field
 	OutputDataConfig *OutputDataConfig `type:"structure" required:"true"`
+
+	// ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses
+	// to encrypt data on the storage volume attached to the ML compute instance(s)
+	// that process the analysis job. The VolumeKmsKeyId can be either of the following
+	// formats:
+	//
+	//    * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+	VolumeKmsKeyId *string `type:"string"`
 }
 
 // String returns the string representation
@@ -6688,6 +7176,16 @@ type StartSentimentDetectionJobInput struct {
 	//
 	// OutputDataConfig is a required field
 	OutputDataConfig *OutputDataConfig `type:"structure" required:"true"`
+
+	// ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses
+	// to encrypt data on the storage volume attached to the ML compute instance(s)
+	// that process the analysis job. The VolumeKmsKeyId can be either of the following
+	// formats:
+	//
+	//    * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+	VolumeKmsKeyId *string `type:"string"`
 }
 
 // String returns the string representation
@@ -6814,6 +7312,16 @@ type StartTopicsDetectionJobInput struct {
 	//
 	// OutputDataConfig is a required field
 	OutputDataConfig *OutputDataConfig `type:"structure" required:"true"`
+
+	// ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses
+	// to encrypt data on the storage volume attached to the ML compute instance(s)
+	// that process the analysis job. The VolumeKmsKeyId can be either of the following
+	// formats:
+	//
+	//    * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+	VolumeKmsKeyId *string `type:"string"`
 }
 
 // String returns the string representation
@@ -7322,6 +7830,130 @@ func (s SyntaxToken) GoString() string {
 	return s.String()
 }
 
+// A key-value pair that adds as a metadata to a resource used by Amazon Comprehend.
+// For example, a tag with the key-value pair ‘Department’:’Sales’ might be
+// added to a resource to indicate its use by a particular department.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/Tag
+type Tag struct {
+	_ struct{} `type:"structure"`
+
+	// The initial part of a key-value pair that forms a tag associated with a given
+	// resource. For instance, if you want to show which resources are used by which
+	// departments, you might use “Department” as the key portion of the pair, with
+	// multiple possible values such as “sales,” “legal,” and “administration.”
+	//
+	// Key is a required field
+	Key *string `min:"1" type:"string" required:"true"`
+
+	// The second part of a key-value pair that forms a tag associated with a given
+	// resource. For instance, if you want to show which resources are used by which
+	// departments, you might use “Department” as the initial (key) portion of the
+	// pair, with a value of “sales” to indicate the sales department.
+	Value *string `type:"string"`
+}
+
+// String returns the string representation
+func (s Tag) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s Tag) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *Tag) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "Tag"}
+
+	if s.Key == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Key"))
+	}
+	if s.Key != nil && len(*s.Key) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("Key", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/TagResourceRequest
+type TagResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// The Amazon Resource Name (ARN) of the given Amazon Comprehend resource to
+	// which you want to associate the tags.
+	//
+	// ResourceArn is a required field
+	ResourceArn *string `type:"string" required:"true"`
+
+	// Tags being associated with a specific Amazon Comprehend resource. There can
+	// be a maximum of 50 tags (both existing and pending) associated with a specific
+	// resource.
+	//
+	// Tags is a required field
+	Tags []Tag `type:"list" required:"true"`
+}
+
+// String returns the string representation
+func (s TagResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s TagResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *TagResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "TagResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+
+	if s.Tags == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Tags"))
+	}
+	if s.Tags != nil {
+		for i, v := range s.Tags {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Tags", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/TagResourceResponse
+type TagResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+}
+
+// String returns the string representation
+func (s TagResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s TagResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s TagResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
 // Provides information for filtering topic detection jobs. For more information,
 // see .
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/TopicsDetectionJobFilter
@@ -7373,6 +8005,10 @@ func (s *TopicsDetectionJobFilter) Validate() error {
 type TopicsDetectionJobProperties struct {
 	_ struct{} `type:"structure"`
 
+	// The Amazon Resource Name (ARN) of the AWS Identity and Management (IAM) role
+	// that grants Amazon Comprehend read access to your job data.
+	DataAccessRoleArn *string `min:"20" type:"string"`
+
 	// The time that the topic detection job was completed.
 	EndTime *time.Time `type:"timestamp" timestampFormat:"unix"`
 
@@ -7403,6 +8039,16 @@ type TopicsDetectionJobProperties struct {
 
 	// The time that the topic detection job was submitted for processing.
 	SubmitTime *time.Time `type:"timestamp" timestampFormat:"unix"`
+
+	// ID for the AWS Key Management Service (KMS) key that Amazon Comprehend uses
+	// to encrypt data on the storage volume attached to the ML compute instance(s)
+	// that process the analysis job. The VolumeKmsKeyId can be either of the following
+	// formats:
+	//
+	//    * KMS Key ID: "1234abcd-12ab-34cd-56ef-1234567890ab"
+	//
+	//    * Amazon Resource Name (ARN) of a KMS Key: "arn:aws:kms:us-west-2:111122223333:key/1234abcd-12ab-34cd-56ef-1234567890ab"
+	VolumeKmsKeyId *string `type:"string"`
 }
 
 // String returns the string representation
@@ -7413,6 +8059,75 @@ func (s TopicsDetectionJobProperties) String() string {
 // GoString returns the string representation
 func (s TopicsDetectionJobProperties) GoString() string {
 	return s.String()
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/UntagResourceRequest
+type UntagResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// The Amazon Resource Name (ARN) of the given Amazon Comprehend resource from
+	// which you want to remove the tags.
+	//
+	// ResourceArn is a required field
+	ResourceArn *string `type:"string" required:"true"`
+
+	// The initial part of a key-value pair that forms a tag being removed from
+	// a given resource. For example, a tag with "Sales" as the key might be added
+	// to a resource to indicate its use by the sales department. Keys must be unique
+	// and cannot be duplicated for a particular resource.
+	//
+	// TagKeys is a required field
+	TagKeys []string `type:"list" required:"true"`
+}
+
+// String returns the string representation
+func (s UntagResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UntagResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *UntagResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "UntagResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+
+	if s.TagKeys == nil {
+		invalidParams.Add(aws.NewErrParamRequired("TagKeys"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/comprehend-2017-11-27/UntagResourceResponse
+type UntagResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+}
+
+// String returns the string representation
+func (s UntagResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UntagResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s UntagResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
 }
 
 type EntityType string

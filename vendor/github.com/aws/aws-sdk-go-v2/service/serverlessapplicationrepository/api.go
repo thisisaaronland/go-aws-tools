@@ -3,6 +3,7 @@
 package serverlessapplicationrepository
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -21,7 +22,8 @@ type CreateApplicationRequest struct {
 }
 
 // Send marshals and sends the CreateApplication API request.
-func (r CreateApplicationRequest) Send() (*CreateApplicationOutput, error) {
+func (r CreateApplicationRequest) Send(ctx context.Context) (*CreateApplicationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -38,7 +40,7 @@ func (r CreateApplicationRequest) Send() (*CreateApplicationOutput, error) {
 //
 //    // Example sending a request using the CreateApplicationRequest method.
 //    req := client.CreateApplicationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -72,7 +74,8 @@ type CreateApplicationVersionRequest struct {
 }
 
 // Send marshals and sends the CreateApplicationVersion API request.
-func (r CreateApplicationVersionRequest) Send() (*CreateApplicationVersionOutput, error) {
+func (r CreateApplicationVersionRequest) Send(ctx context.Context) (*CreateApplicationVersionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -88,7 +91,7 @@ func (r CreateApplicationVersionRequest) Send() (*CreateApplicationVersionOutput
 //
 //    // Example sending a request using the CreateApplicationVersionRequest method.
 //    req := client.CreateApplicationVersionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -122,7 +125,8 @@ type CreateCloudFormationChangeSetRequest struct {
 }
 
 // Send marshals and sends the CreateCloudFormationChangeSet API request.
-func (r CreateCloudFormationChangeSetRequest) Send() (*CreateCloudFormationChangeSetOutput, error) {
+func (r CreateCloudFormationChangeSetRequest) Send(ctx context.Context) (*CreateCloudFormationChangeSetOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -138,7 +142,7 @@ func (r CreateCloudFormationChangeSetRequest) Send() (*CreateCloudFormationChang
 //
 //    // Example sending a request using the CreateCloudFormationChangeSetRequest method.
 //    req := client.CreateCloudFormationChangeSetRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -172,7 +176,8 @@ type CreateCloudFormationTemplateRequest struct {
 }
 
 // Send marshals and sends the CreateCloudFormationTemplate API request.
-func (r CreateCloudFormationTemplateRequest) Send() (*CreateCloudFormationTemplateOutput, error) {
+func (r CreateCloudFormationTemplateRequest) Send(ctx context.Context) (*CreateCloudFormationTemplateOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -188,7 +193,7 @@ func (r CreateCloudFormationTemplateRequest) Send() (*CreateCloudFormationTempla
 //
 //    // Example sending a request using the CreateCloudFormationTemplateRequest method.
 //    req := client.CreateCloudFormationTemplateRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -222,7 +227,8 @@ type DeleteApplicationRequest struct {
 }
 
 // Send marshals and sends the DeleteApplication API request.
-func (r DeleteApplicationRequest) Send() (*DeleteApplicationOutput, error) {
+func (r DeleteApplicationRequest) Send(ctx context.Context) (*DeleteApplicationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -238,7 +244,7 @@ func (r DeleteApplicationRequest) Send() (*DeleteApplicationOutput, error) {
 //
 //    // Example sending a request using the DeleteApplicationRequest method.
 //    req := client.DeleteApplicationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -274,7 +280,8 @@ type GetApplicationRequest struct {
 }
 
 // Send marshals and sends the GetApplication API request.
-func (r GetApplicationRequest) Send() (*GetApplicationOutput, error) {
+func (r GetApplicationRequest) Send(ctx context.Context) (*GetApplicationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -290,7 +297,7 @@ func (r GetApplicationRequest) Send() (*GetApplicationOutput, error) {
 //
 //    // Example sending a request using the GetApplicationRequest method.
 //    req := client.GetApplicationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -324,7 +331,8 @@ type GetApplicationPolicyRequest struct {
 }
 
 // Send marshals and sends the GetApplicationPolicy API request.
-func (r GetApplicationPolicyRequest) Send() (*GetApplicationPolicyOutput, error) {
+func (r GetApplicationPolicyRequest) Send(ctx context.Context) (*GetApplicationPolicyOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -340,7 +348,7 @@ func (r GetApplicationPolicyRequest) Send() (*GetApplicationPolicyOutput, error)
 //
 //    // Example sending a request using the GetApplicationPolicyRequest method.
 //    req := client.GetApplicationPolicyRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -374,7 +382,8 @@ type GetCloudFormationTemplateRequest struct {
 }
 
 // Send marshals and sends the GetCloudFormationTemplate API request.
-func (r GetCloudFormationTemplateRequest) Send() (*GetCloudFormationTemplateOutput, error) {
+func (r GetCloudFormationTemplateRequest) Send(ctx context.Context) (*GetCloudFormationTemplateOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -390,7 +399,7 @@ func (r GetCloudFormationTemplateRequest) Send() (*GetCloudFormationTemplateOutp
 //
 //    // Example sending a request using the GetCloudFormationTemplateRequest method.
 //    req := client.GetCloudFormationTemplateRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -424,7 +433,8 @@ type ListApplicationDependenciesRequest struct {
 }
 
 // Send marshals and sends the ListApplicationDependencies API request.
-func (r ListApplicationDependenciesRequest) Send() (*ListApplicationDependenciesOutput, error) {
+func (r ListApplicationDependenciesRequest) Send(ctx context.Context) (*ListApplicationDependenciesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -440,7 +450,7 @@ func (r ListApplicationDependenciesRequest) Send() (*ListApplicationDependencies
 //
 //    // Example sending a request using the ListApplicationDependenciesRequest method.
 //    req := client.ListApplicationDependenciesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -490,7 +500,7 @@ func (c *ServerlessApplicationRepository) ListApplicationDependenciesRequest(inp
 func (p *ListApplicationDependenciesRequest) Paginate(opts ...aws.Option) ListApplicationDependenciesPager {
 	return ListApplicationDependenciesPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListApplicationDependenciesInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -499,6 +509,7 @@ func (p *ListApplicationDependenciesRequest) Paginate(opts ...aws.Option) ListAp
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -526,7 +537,8 @@ type ListApplicationVersionsRequest struct {
 }
 
 // Send marshals and sends the ListApplicationVersions API request.
-func (r ListApplicationVersionsRequest) Send() (*ListApplicationVersionsOutput, error) {
+func (r ListApplicationVersionsRequest) Send(ctx context.Context) (*ListApplicationVersionsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -542,7 +554,7 @@ func (r ListApplicationVersionsRequest) Send() (*ListApplicationVersionsOutput, 
 //
 //    // Example sending a request using the ListApplicationVersionsRequest method.
 //    req := client.ListApplicationVersionsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -592,7 +604,7 @@ func (c *ServerlessApplicationRepository) ListApplicationVersionsRequest(input *
 func (p *ListApplicationVersionsRequest) Paginate(opts ...aws.Option) ListApplicationVersionsPager {
 	return ListApplicationVersionsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListApplicationVersionsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -601,6 +613,7 @@ func (p *ListApplicationVersionsRequest) Paginate(opts ...aws.Option) ListApplic
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -628,7 +641,8 @@ type ListApplicationsRequest struct {
 }
 
 // Send marshals and sends the ListApplications API request.
-func (r ListApplicationsRequest) Send() (*ListApplicationsOutput, error) {
+func (r ListApplicationsRequest) Send(ctx context.Context) (*ListApplicationsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -644,7 +658,7 @@ func (r ListApplicationsRequest) Send() (*ListApplicationsOutput, error) {
 //
 //    // Example sending a request using the ListApplicationsRequest method.
 //    req := client.ListApplicationsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -694,7 +708,7 @@ func (c *ServerlessApplicationRepository) ListApplicationsRequest(input *ListApp
 func (p *ListApplicationsRequest) Paginate(opts ...aws.Option) ListApplicationsPager {
 	return ListApplicationsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListApplicationsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -703,6 +717,7 @@ func (p *ListApplicationsRequest) Paginate(opts ...aws.Option) ListApplicationsP
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -730,7 +745,8 @@ type PutApplicationPolicyRequest struct {
 }
 
 // Send marshals and sends the PutApplicationPolicy API request.
-func (r PutApplicationPolicyRequest) Send() (*PutApplicationPolicyOutput, error) {
+func (r PutApplicationPolicyRequest) Send(ctx context.Context) (*PutApplicationPolicyOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -748,7 +764,7 @@ func (r PutApplicationPolicyRequest) Send() (*PutApplicationPolicyOutput, error)
 //
 //    // Example sending a request using the PutApplicationPolicyRequest method.
 //    req := client.PutApplicationPolicyRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -782,7 +798,8 @@ type UpdateApplicationRequest struct {
 }
 
 // Send marshals and sends the UpdateApplication API request.
-func (r UpdateApplicationRequest) Send() (*UpdateApplicationOutput, error) {
+func (r UpdateApplicationRequest) Send(ctx context.Context) (*UpdateApplicationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -798,7 +815,7 @@ func (r UpdateApplicationRequest) Send() (*UpdateApplicationOutput, error) {
 //
 //    // Example sending a request using the UpdateApplicationRequest method.
 //    req := client.UpdateApplicationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -876,7 +893,7 @@ type ApplicationPolicyStatement struct {
 	// Actions is a required field
 	Actions []string `locationName:"actions" type:"list" required:"true"`
 
-	// An AWS account ID, or * to make the application public.
+	// An array of AWS account IDs, or * to make the application public.
 	//
 	// Principals is a required field
 	Principals []string `locationName:"principals" type:"list" required:"true"`
@@ -1097,6 +1114,8 @@ type CreateApplicationInput struct {
 
 	SemanticVersion *string `locationName:"semanticVersion" type:"string"`
 
+	SourceCodeArchiveUrl *string `locationName:"sourceCodeArchiveUrl" type:"string"`
+
 	SourceCodeUrl *string `locationName:"sourceCodeUrl" type:"string"`
 
 	SpdxLicenseId *string `locationName:"spdxLicenseId" type:"string"`
@@ -1207,6 +1226,12 @@ func (s CreateApplicationInput) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "semanticVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.SourceCodeArchiveUrl != nil {
+		v := *s.SourceCodeArchiveUrl
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "sourceCodeArchiveUrl", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.SourceCodeUrl != nil {
 		v := *s.SourceCodeUrl
@@ -1367,6 +1392,8 @@ type CreateApplicationVersionInput struct {
 	// SemanticVersion is a required field
 	SemanticVersion *string `location:"uri" locationName:"semanticVersion" type:"string" required:"true"`
 
+	SourceCodeArchiveUrl *string `locationName:"sourceCodeArchiveUrl" type:"string"`
+
 	SourceCodeUrl *string `locationName:"sourceCodeUrl" type:"string"`
 
 	TemplateBody *string `locationName:"templateBody" type:"string"`
@@ -1406,6 +1433,12 @@ func (s *CreateApplicationVersionInput) Validate() error {
 func (s CreateApplicationVersionInput) MarshalFields(e protocol.FieldEncoder) error {
 	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
 
+	if s.SourceCodeArchiveUrl != nil {
+		v := *s.SourceCodeArchiveUrl
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "sourceCodeArchiveUrl", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
 	if s.SourceCodeUrl != nil {
 		v := *s.SourceCodeUrl
 
@@ -1456,6 +1489,8 @@ type CreateApplicationVersionOutput struct {
 	ResourcesSupported *bool `locationName:"resourcesSupported" type:"boolean"`
 
 	SemanticVersion *string `locationName:"semanticVersion" type:"string"`
+
+	SourceCodeArchiveUrl *string `locationName:"sourceCodeArchiveUrl" type:"string"`
 
 	SourceCodeUrl *string `locationName:"sourceCodeUrl" type:"string"`
 
@@ -1526,6 +1561,12 @@ func (s CreateApplicationVersionOutput) MarshalFields(e protocol.FieldEncoder) e
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "semanticVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.SourceCodeArchiveUrl != nil {
+		v := *s.SourceCodeArchiveUrl
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "sourceCodeArchiveUrl", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
 	if s.SourceCodeUrl != nil {
 		v := *s.SourceCodeUrl
@@ -3566,7 +3607,8 @@ type Version struct {
 	// (IAM) users. For those applications, you must explicitly acknowledge their
 	// capabilities by specifying this parameter.
 	//
-	// The only valid values are CAPABILITY_IAM, CAPABILITY_NAMED_IAM, and CAPABILITY_RESOURCE_POLICY.
+	// The only valid values are CAPABILITY_IAM, CAPABILITY_NAMED_IAM, CAPABILITY_RESOURCE_POLICY,
+	// and CAPABILITY_AUTO_EXPAND.
 	//
 	// The following resources require you to specify CAPABILITY_IAM or CAPABILITY_NAMED_IAM:
 	// AWS::IAM::Group (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-iam-group.html),
@@ -3585,12 +3627,13 @@ type Version struct {
 	// AWS::SQS::QueuePolicy (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sqs-policy.html),
 	// and AWS::SNS::TopicPolicy (https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-properties-sns-policy.html).
 	//
+	// Applications that contain one or more nested applications require you to
+	// specify CAPABILITY_AUTO_EXPAND.
+	//
 	// If your application template contains any of the above resources, we recommend
 	// that you review all permissions associated with the application before deploying.
 	// If you don't specify this parameter for an application that requires capabilities,
 	// the call will fail.
-	//
-	// Valid values: CAPABILITY_IAM | CAPABILITY_NAMED_IAM | CAPABILITY_RESOURCE_POLICY
 	//
 	// RequiredCapabilities is a required field
 	RequiredCapabilities []Capability `locationName:"requiredCapabilities" type:"list" required:"true"`
@@ -3608,7 +3651,14 @@ type Version struct {
 	// SemanticVersion is a required field
 	SemanticVersion *string `locationName:"semanticVersion" type:"string" required:"true"`
 
-	// A link to a public repository for the source code of your application.
+	// A link to the S3 object that contains the ZIP archive of the source code
+	// for this version of your application.
+	//
+	// Maximum size 50 MB
+	SourceCodeArchiveUrl *string `locationName:"sourceCodeArchiveUrl" type:"string"`
+
+	// A link to a public repository for the source code of your application, for
+	// example the URL of a specific GitHub commit.
 	SourceCodeUrl *string `locationName:"sourceCodeUrl" type:"string"`
 
 	// A link to the packaged AWS SAM template of your application.
@@ -3677,6 +3727,12 @@ func (s Version) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "semanticVersion", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
+	if s.SourceCodeArchiveUrl != nil {
+		v := *s.SourceCodeArchiveUrl
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "sourceCodeArchiveUrl", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
 	if s.SourceCodeUrl != nil {
 		v := *s.SourceCodeUrl
 
@@ -3714,7 +3770,8 @@ type VersionSummary struct {
 	// SemanticVersion is a required field
 	SemanticVersion *string `locationName:"semanticVersion" type:"string" required:"true"`
 
-	// A link to a public repository for the source code of your application.
+	// A link to a public repository for the source code of your application, for
+	// example the URL of a specific GitHub commit.
 	SourceCodeUrl *string `locationName:"sourceCodeUrl" type:"string"`
 }
 

@@ -3,6 +3,7 @@
 package workmail
 
 import (
+	"context"
 	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -19,7 +20,8 @@ type AssociateDelegateToResourceRequest struct {
 }
 
 // Send marshals and sends the AssociateDelegateToResource API request.
-func (r AssociateDelegateToResourceRequest) Send() (*AssociateDelegateToResourceOutput, error) {
+func (r AssociateDelegateToResourceRequest) Send(ctx context.Context) (*AssociateDelegateToResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -31,11 +33,11 @@ func (r AssociateDelegateToResourceRequest) Send() (*AssociateDelegateToResource
 // AssociateDelegateToResourceRequest returns a request value for making API operation for
 // Amazon WorkMail.
 //
-// Adds a member to the resource's set of delegates.
+// Adds a member (user or group) to the resource's set of delegates.
 //
 //    // Example sending a request using the AssociateDelegateToResourceRequest method.
 //    req := client.AssociateDelegateToResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -69,7 +71,8 @@ type AssociateMemberToGroupRequest struct {
 }
 
 // Send marshals and sends the AssociateMemberToGroup API request.
-func (r AssociateMemberToGroupRequest) Send() (*AssociateMemberToGroupOutput, error) {
+func (r AssociateMemberToGroupRequest) Send(ctx context.Context) (*AssociateMemberToGroupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -81,11 +84,11 @@ func (r AssociateMemberToGroupRequest) Send() (*AssociateMemberToGroupOutput, er
 // AssociateMemberToGroupRequest returns a request value for making API operation for
 // Amazon WorkMail.
 //
-// Adds a member to the group's set.
+// Adds a member (user or group) to the group's set.
 //
 //    // Example sending a request using the AssociateMemberToGroupRequest method.
 //    req := client.AssociateMemberToGroupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -119,7 +122,8 @@ type CreateAliasRequest struct {
 }
 
 // Send marshals and sends the CreateAlias API request.
-func (r CreateAliasRequest) Send() (*CreateAliasOutput, error) {
+func (r CreateAliasRequest) Send(ctx context.Context) (*CreateAliasOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -131,11 +135,11 @@ func (r CreateAliasRequest) Send() (*CreateAliasOutput, error) {
 // CreateAliasRequest returns a request value for making API operation for
 // Amazon WorkMail.
 //
-// Adds an alias to the set of a given member of Amazon WorkMail.
+// Adds an alias to the set of a given member (user or group) of Amazon WorkMail.
 //
 //    // Example sending a request using the CreateAliasRequest method.
 //    req := client.CreateAliasRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -169,7 +173,8 @@ type CreateGroupRequest struct {
 }
 
 // Send marshals and sends the CreateGroup API request.
-func (r CreateGroupRequest) Send() (*CreateGroupOutput, error) {
+func (r CreateGroupRequest) Send(ctx context.Context) (*CreateGroupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -186,7 +191,7 @@ func (r CreateGroupRequest) Send() (*CreateGroupOutput, error) {
 //
 //    // Example sending a request using the CreateGroupRequest method.
 //    req := client.CreateGroupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -220,7 +225,8 @@ type CreateResourceRequest struct {
 }
 
 // Send marshals and sends the CreateResource API request.
-func (r CreateResourceRequest) Send() (*CreateResourceOutput, error) {
+func (r CreateResourceRequest) Send(ctx context.Context) (*CreateResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -232,12 +238,11 @@ func (r CreateResourceRequest) Send() (*CreateResourceOutput, error) {
 // CreateResourceRequest returns a request value for making API operation for
 // Amazon WorkMail.
 //
-// Creates a new Amazon WorkMail resource. The available types are equipment
-// and room.
+// Creates a new Amazon WorkMail resource.
 //
 //    // Example sending a request using the CreateResourceRequest method.
 //    req := client.CreateResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -271,7 +276,8 @@ type CreateUserRequest struct {
 }
 
 // Send marshals and sends the CreateUser API request.
-func (r CreateUserRequest) Send() (*CreateUserOutput, error) {
+func (r CreateUserRequest) Send(ctx context.Context) (*CreateUserOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -288,7 +294,7 @@ func (r CreateUserRequest) Send() (*CreateUserOutput, error) {
 //
 //    // Example sending a request using the CreateUserRequest method.
 //    req := client.CreateUserRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -322,7 +328,8 @@ type DeleteAliasRequest struct {
 }
 
 // Send marshals and sends the DeleteAlias API request.
-func (r DeleteAliasRequest) Send() (*DeleteAliasOutput, error) {
+func (r DeleteAliasRequest) Send(ctx context.Context) (*DeleteAliasOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -334,11 +341,11 @@ func (r DeleteAliasRequest) Send() (*DeleteAliasOutput, error) {
 // DeleteAliasRequest returns a request value for making API operation for
 // Amazon WorkMail.
 //
-// Remove the alias from a set of aliases for a given user.
+// Remove one or more specified aliases from a set of aliases for a given user.
 //
 //    // Example sending a request using the DeleteAliasRequest method.
 //    req := client.DeleteAliasRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -372,7 +379,8 @@ type DeleteGroupRequest struct {
 }
 
 // Send marshals and sends the DeleteGroup API request.
-func (r DeleteGroupRequest) Send() (*DeleteGroupOutput, error) {
+func (r DeleteGroupRequest) Send(ctx context.Context) (*DeleteGroupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -388,7 +396,7 @@ func (r DeleteGroupRequest) Send() (*DeleteGroupOutput, error) {
 //
 //    // Example sending a request using the DeleteGroupRequest method.
 //    req := client.DeleteGroupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -422,7 +430,8 @@ type DeleteMailboxPermissionsRequest struct {
 }
 
 // Send marshals and sends the DeleteMailboxPermissions API request.
-func (r DeleteMailboxPermissionsRequest) Send() (*DeleteMailboxPermissionsOutput, error) {
+func (r DeleteMailboxPermissionsRequest) Send(ctx context.Context) (*DeleteMailboxPermissionsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -434,11 +443,11 @@ func (r DeleteMailboxPermissionsRequest) Send() (*DeleteMailboxPermissionsOutput
 // DeleteMailboxPermissionsRequest returns a request value for making API operation for
 // Amazon WorkMail.
 //
-// Deletes permissions granted to a user or group.
+// Deletes permissions granted to a member (user or group).
 //
 //    // Example sending a request using the DeleteMailboxPermissionsRequest method.
 //    req := client.DeleteMailboxPermissionsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -472,7 +481,8 @@ type DeleteResourceRequest struct {
 }
 
 // Send marshals and sends the DeleteResource API request.
-func (r DeleteResourceRequest) Send() (*DeleteResourceOutput, error) {
+func (r DeleteResourceRequest) Send(ctx context.Context) (*DeleteResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -488,7 +498,7 @@ func (r DeleteResourceRequest) Send() (*DeleteResourceOutput, error) {
 //
 //    // Example sending a request using the DeleteResourceRequest method.
 //    req := client.DeleteResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -522,7 +532,8 @@ type DeleteUserRequest struct {
 }
 
 // Send marshals and sends the DeleteUser API request.
-func (r DeleteUserRequest) Send() (*DeleteUserOutput, error) {
+func (r DeleteUserRequest) Send(ctx context.Context) (*DeleteUserOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -534,13 +545,16 @@ func (r DeleteUserRequest) Send() (*DeleteUserOutput, error) {
 // DeleteUserRequest returns a request value for making API operation for
 // Amazon WorkMail.
 //
-// Deletes a user from Amazon WorkMail and all subsequent systems. The action
-// can't be undone. The mailbox is kept as-is for a minimum of 30 days, without
-// any means to restore it.
+// Deletes a user from Amazon WorkMail and all subsequent systems. Before you
+// can delete a user, the user state must be DISABLED. Use the DescribeUser
+// action to confirm the user state.
+//
+// Deleting a user is permanent and cannot be undone. WorkMail archives user
+// mailboxes for 30 days before they are permanently removed.
 //
 //    // Example sending a request using the DeleteUserRequest method.
 //    req := client.DeleteUserRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -574,7 +588,8 @@ type DeregisterFromWorkMailRequest struct {
 }
 
 // Send marshals and sends the DeregisterFromWorkMail API request.
-func (r DeregisterFromWorkMailRequest) Send() (*DeregisterFromWorkMailOutput, error) {
+func (r DeregisterFromWorkMailRequest) Send(ctx context.Context) (*DeregisterFromWorkMailOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -587,13 +602,13 @@ func (r DeregisterFromWorkMailRequest) Send() (*DeregisterFromWorkMailOutput, er
 // Amazon WorkMail.
 //
 // Mark a user, group, or resource as no longer used in Amazon WorkMail. This
-// action disassociates the mailbox and schedules it for clean-up. Amazon WorkMail
+// action disassociates the mailbox and schedules it for clean-up. WorkMail
 // keeps mailboxes for 30 days before they are permanently removed. The functionality
 // in the console is Disable.
 //
 //    // Example sending a request using the DeregisterFromWorkMailRequest method.
 //    req := client.DeregisterFromWorkMailRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -627,7 +642,8 @@ type DescribeGroupRequest struct {
 }
 
 // Send marshals and sends the DescribeGroup API request.
-func (r DescribeGroupRequest) Send() (*DescribeGroupOutput, error) {
+func (r DescribeGroupRequest) Send(ctx context.Context) (*DescribeGroupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -643,7 +659,7 @@ func (r DescribeGroupRequest) Send() (*DescribeGroupOutput, error) {
 //
 //    // Example sending a request using the DescribeGroupRequest method.
 //    req := client.DescribeGroupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -677,7 +693,8 @@ type DescribeOrganizationRequest struct {
 }
 
 // Send marshals and sends the DescribeOrganization API request.
-func (r DescribeOrganizationRequest) Send() (*DescribeOrganizationOutput, error) {
+func (r DescribeOrganizationRequest) Send(ctx context.Context) (*DescribeOrganizationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -693,7 +710,7 @@ func (r DescribeOrganizationRequest) Send() (*DescribeOrganizationOutput, error)
 //
 //    // Example sending a request using the DescribeOrganizationRequest method.
 //    req := client.DescribeOrganizationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -727,7 +744,8 @@ type DescribeResourceRequest struct {
 }
 
 // Send marshals and sends the DescribeResource API request.
-func (r DescribeResourceRequest) Send() (*DescribeResourceOutput, error) {
+func (r DescribeResourceRequest) Send(ctx context.Context) (*DescribeResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -743,7 +761,7 @@ func (r DescribeResourceRequest) Send() (*DescribeResourceOutput, error) {
 //
 //    // Example sending a request using the DescribeResourceRequest method.
 //    req := client.DescribeResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -777,7 +795,8 @@ type DescribeUserRequest struct {
 }
 
 // Send marshals and sends the DescribeUser API request.
-func (r DescribeUserRequest) Send() (*DescribeUserOutput, error) {
+func (r DescribeUserRequest) Send(ctx context.Context) (*DescribeUserOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -793,7 +812,7 @@ func (r DescribeUserRequest) Send() (*DescribeUserOutput, error) {
 //
 //    // Example sending a request using the DescribeUserRequest method.
 //    req := client.DescribeUserRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -827,7 +846,8 @@ type DisassociateDelegateFromResourceRequest struct {
 }
 
 // Send marshals and sends the DisassociateDelegateFromResource API request.
-func (r DisassociateDelegateFromResourceRequest) Send() (*DisassociateDelegateFromResourceOutput, error) {
+func (r DisassociateDelegateFromResourceRequest) Send(ctx context.Context) (*DisassociateDelegateFromResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -843,7 +863,7 @@ func (r DisassociateDelegateFromResourceRequest) Send() (*DisassociateDelegateFr
 //
 //    // Example sending a request using the DisassociateDelegateFromResourceRequest method.
 //    req := client.DisassociateDelegateFromResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -877,7 +897,8 @@ type DisassociateMemberFromGroupRequest struct {
 }
 
 // Send marshals and sends the DisassociateMemberFromGroup API request.
-func (r DisassociateMemberFromGroupRequest) Send() (*DisassociateMemberFromGroupOutput, error) {
+func (r DisassociateMemberFromGroupRequest) Send(ctx context.Context) (*DisassociateMemberFromGroupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -893,7 +914,7 @@ func (r DisassociateMemberFromGroupRequest) Send() (*DisassociateMemberFromGroup
 //
 //    // Example sending a request using the DisassociateMemberFromGroupRequest method.
 //    req := client.DisassociateMemberFromGroupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -927,7 +948,8 @@ type ListAliasesRequest struct {
 }
 
 // Send marshals and sends the ListAliases API request.
-func (r ListAliasesRequest) Send() (*ListAliasesOutput, error) {
+func (r ListAliasesRequest) Send(ctx context.Context) (*ListAliasesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -943,7 +965,7 @@ func (r ListAliasesRequest) Send() (*ListAliasesOutput, error) {
 //
 //    // Example sending a request using the ListAliasesRequest method.
 //    req := client.ListAliasesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -993,7 +1015,7 @@ func (c *WorkMail) ListAliasesRequest(input *ListAliasesInput) ListAliasesReques
 func (p *ListAliasesRequest) Paginate(opts ...aws.Option) ListAliasesPager {
 	return ListAliasesPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListAliasesInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1002,6 +1024,7 @@ func (p *ListAliasesRequest) Paginate(opts ...aws.Option) ListAliasesPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1029,7 +1052,8 @@ type ListGroupMembersRequest struct {
 }
 
 // Send marshals and sends the ListGroupMembers API request.
-func (r ListGroupMembersRequest) Send() (*ListGroupMembersOutput, error) {
+func (r ListGroupMembersRequest) Send(ctx context.Context) (*ListGroupMembersOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1041,11 +1065,12 @@ func (r ListGroupMembersRequest) Send() (*ListGroupMembersOutput, error) {
 // ListGroupMembersRequest returns a request value for making API operation for
 // Amazon WorkMail.
 //
-// Returns an overview of the members of a group.
+// Returns an overview of the members of a group. Users and groups can be members
+// of a group.
 //
 //    // Example sending a request using the ListGroupMembersRequest method.
 //    req := client.ListGroupMembersRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1095,7 +1120,7 @@ func (c *WorkMail) ListGroupMembersRequest(input *ListGroupMembersInput) ListGro
 func (p *ListGroupMembersRequest) Paginate(opts ...aws.Option) ListGroupMembersPager {
 	return ListGroupMembersPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListGroupMembersInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1104,6 +1129,7 @@ func (p *ListGroupMembersRequest) Paginate(opts ...aws.Option) ListGroupMembersP
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1131,7 +1157,8 @@ type ListGroupsRequest struct {
 }
 
 // Send marshals and sends the ListGroups API request.
-func (r ListGroupsRequest) Send() (*ListGroupsOutput, error) {
+func (r ListGroupsRequest) Send(ctx context.Context) (*ListGroupsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1147,7 +1174,7 @@ func (r ListGroupsRequest) Send() (*ListGroupsOutput, error) {
 //
 //    // Example sending a request using the ListGroupsRequest method.
 //    req := client.ListGroupsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1197,7 +1224,7 @@ func (c *WorkMail) ListGroupsRequest(input *ListGroupsInput) ListGroupsRequest {
 func (p *ListGroupsRequest) Paginate(opts ...aws.Option) ListGroupsPager {
 	return ListGroupsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListGroupsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1206,6 +1233,7 @@ func (p *ListGroupsRequest) Paginate(opts ...aws.Option) ListGroupsPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1233,7 +1261,8 @@ type ListMailboxPermissionsRequest struct {
 }
 
 // Send marshals and sends the ListMailboxPermissions API request.
-func (r ListMailboxPermissionsRequest) Send() (*ListMailboxPermissionsOutput, error) {
+func (r ListMailboxPermissionsRequest) Send(ctx context.Context) (*ListMailboxPermissionsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1245,11 +1274,12 @@ func (r ListMailboxPermissionsRequest) Send() (*ListMailboxPermissionsOutput, er
 // ListMailboxPermissionsRequest returns a request value for making API operation for
 // Amazon WorkMail.
 //
-// Lists the mailbox permissions associated with a mailbox.
+// Lists the mailbox permissions associated with a user, group, or resource
+// mailbox.
 //
 //    // Example sending a request using the ListMailboxPermissionsRequest method.
 //    req := client.ListMailboxPermissionsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1299,7 +1329,7 @@ func (c *WorkMail) ListMailboxPermissionsRequest(input *ListMailboxPermissionsIn
 func (p *ListMailboxPermissionsRequest) Paginate(opts ...aws.Option) ListMailboxPermissionsPager {
 	return ListMailboxPermissionsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListMailboxPermissionsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1308,6 +1338,7 @@ func (p *ListMailboxPermissionsRequest) Paginate(opts ...aws.Option) ListMailbox
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1335,7 +1366,8 @@ type ListOrganizationsRequest struct {
 }
 
 // Send marshals and sends the ListOrganizations API request.
-func (r ListOrganizationsRequest) Send() (*ListOrganizationsOutput, error) {
+func (r ListOrganizationsRequest) Send(ctx context.Context) (*ListOrganizationsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1351,7 +1383,7 @@ func (r ListOrganizationsRequest) Send() (*ListOrganizationsOutput, error) {
 //
 //    // Example sending a request using the ListOrganizationsRequest method.
 //    req := client.ListOrganizationsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1401,7 +1433,7 @@ func (c *WorkMail) ListOrganizationsRequest(input *ListOrganizationsInput) ListO
 func (p *ListOrganizationsRequest) Paginate(opts ...aws.Option) ListOrganizationsPager {
 	return ListOrganizationsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListOrganizationsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1410,6 +1442,7 @@ func (p *ListOrganizationsRequest) Paginate(opts ...aws.Option) ListOrganization
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1437,7 +1470,8 @@ type ListResourceDelegatesRequest struct {
 }
 
 // Send marshals and sends the ListResourceDelegates API request.
-func (r ListResourceDelegatesRequest) Send() (*ListResourceDelegatesOutput, error) {
+func (r ListResourceDelegatesRequest) Send(ctx context.Context) (*ListResourceDelegatesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1454,7 +1488,7 @@ func (r ListResourceDelegatesRequest) Send() (*ListResourceDelegatesOutput, erro
 //
 //    // Example sending a request using the ListResourceDelegatesRequest method.
 //    req := client.ListResourceDelegatesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1488,7 +1522,8 @@ type ListResourcesRequest struct {
 }
 
 // Send marshals and sends the ListResources API request.
-func (r ListResourcesRequest) Send() (*ListResourcesOutput, error) {
+func (r ListResourcesRequest) Send(ctx context.Context) (*ListResourcesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1504,7 +1539,7 @@ func (r ListResourcesRequest) Send() (*ListResourcesOutput, error) {
 //
 //    // Example sending a request using the ListResourcesRequest method.
 //    req := client.ListResourcesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1554,7 +1589,7 @@ func (c *WorkMail) ListResourcesRequest(input *ListResourcesInput) ListResources
 func (p *ListResourcesRequest) Paginate(opts ...aws.Option) ListResourcesPager {
 	return ListResourcesPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListResourcesInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1563,6 +1598,7 @@ func (p *ListResourcesRequest) Paginate(opts ...aws.Option) ListResourcesPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1590,7 +1626,8 @@ type ListUsersRequest struct {
 }
 
 // Send marshals and sends the ListUsers API request.
-func (r ListUsersRequest) Send() (*ListUsersOutput, error) {
+func (r ListUsersRequest) Send(ctx context.Context) (*ListUsersOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1606,7 +1643,7 @@ func (r ListUsersRequest) Send() (*ListUsersOutput, error) {
 //
 //    // Example sending a request using the ListUsersRequest method.
 //    req := client.ListUsersRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1656,7 +1693,7 @@ func (c *WorkMail) ListUsersRequest(input *ListUsersInput) ListUsersRequest {
 func (p *ListUsersRequest) Paginate(opts ...aws.Option) ListUsersPager {
 	return ListUsersPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListUsersInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1665,6 +1702,7 @@ func (p *ListUsersRequest) Paginate(opts ...aws.Option) ListUsersPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1692,7 +1730,8 @@ type PutMailboxPermissionsRequest struct {
 }
 
 // Send marshals and sends the PutMailboxPermissions API request.
-func (r PutMailboxPermissionsRequest) Send() (*PutMailboxPermissionsOutput, error) {
+func (r PutMailboxPermissionsRequest) Send(ctx context.Context) (*PutMailboxPermissionsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1704,12 +1743,12 @@ func (r PutMailboxPermissionsRequest) Send() (*PutMailboxPermissionsOutput, erro
 // PutMailboxPermissionsRequest returns a request value for making API operation for
 // Amazon WorkMail.
 //
-// Sets permissions for a user or group. This replaces any pre-existing permissions
-// set for the entity.
+// Sets permissions for a user, group, or resource. This replaces any pre-existing
+// permissions.
 //
 //    // Example sending a request using the PutMailboxPermissionsRequest method.
 //    req := client.PutMailboxPermissionsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1743,7 +1782,8 @@ type RegisterToWorkMailRequest struct {
 }
 
 // Send marshals and sends the RegisterToWorkMail API request.
-func (r RegisterToWorkMailRequest) Send() (*RegisterToWorkMailOutput, error) {
+func (r RegisterToWorkMailRequest) Send(ctx context.Context) (*RegisterToWorkMailOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1755,18 +1795,19 @@ func (r RegisterToWorkMailRequest) Send() (*RegisterToWorkMailOutput, error) {
 // RegisterToWorkMailRequest returns a request value for making API operation for
 // Amazon WorkMail.
 //
-// Registers an existing and disabled user, group, or resource/entity for Amazon
-// WorkMail use by associating a mailbox and calendaring capabilities. It performs
-// no change if the entity is enabled and fails if the entity is deleted. This
-// operation results in the accumulation of costs. For more information, see
-// Pricing (http://aws.amazon.com/workmail/pricing). The equivalent console
-// functionality for this operation is Enable. Users can either be created by
-// calling the CreateUser API or they can be synchronized from your directory.
-// For more information, see DeregisterFromWorkMail.
+// Registers an existing and disabled user, group, or resource for Amazon WorkMail
+// use by associating a mailbox and calendaring capabilities. It performs no
+// change if the user, group, or resource is enabled and fails if the user,
+// group, or resource is deleted. This operation results in the accumulation
+// of costs. For more information, see Pricing (https://aws.amazon.com//workmail/pricing).
+// The equivalent console functionality for this operation is Enable.
+//
+// Users can either be created by calling the CreateUser API operation or they
+// can be synchronized from your directory. For more information, see DeregisterFromWorkMail.
 //
 //    // Example sending a request using the RegisterToWorkMailRequest method.
 //    req := client.RegisterToWorkMailRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1800,7 +1841,8 @@ type ResetPasswordRequest struct {
 }
 
 // Send marshals and sends the ResetPassword API request.
-func (r ResetPasswordRequest) Send() (*ResetPasswordOutput, error) {
+func (r ResetPasswordRequest) Send(ctx context.Context) (*ResetPasswordOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1816,7 +1858,7 @@ func (r ResetPasswordRequest) Send() (*ResetPasswordOutput, error) {
 //
 //    // Example sending a request using the ResetPasswordRequest method.
 //    req := client.ResetPasswordRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1850,7 +1892,8 @@ type UpdatePrimaryEmailAddressRequest struct {
 }
 
 // Send marshals and sends the UpdatePrimaryEmailAddress API request.
-func (r UpdatePrimaryEmailAddressRequest) Send() (*UpdatePrimaryEmailAddressOutput, error) {
+func (r UpdatePrimaryEmailAddressRequest) Send(ctx context.Context) (*UpdatePrimaryEmailAddressOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1862,13 +1905,14 @@ func (r UpdatePrimaryEmailAddressRequest) Send() (*UpdatePrimaryEmailAddressOutp
 // UpdatePrimaryEmailAddressRequest returns a request value for making API operation for
 // Amazon WorkMail.
 //
-// Updates the primary email for an entity. The current email is moved into
-// the list of aliases (or swapped between an existing alias and the current
-// primary email) and the email provided in the input is promoted as the primary.
+// Updates the primary email for a user, group, or resource. The current email
+// is moved into the list of aliases (or swapped between an existing alias and
+// the current primary email), and the email provided in the input is promoted
+// as the primary.
 //
 //    // Example sending a request using the UpdatePrimaryEmailAddressRequest method.
 //    req := client.UpdatePrimaryEmailAddressRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1902,7 +1946,8 @@ type UpdateResourceRequest struct {
 }
 
 // Send marshals and sends the UpdateResource API request.
-func (r UpdateResourceRequest) Send() (*UpdateResourceOutput, error) {
+func (r UpdateResourceRequest) Send(ctx context.Context) (*UpdateResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1914,13 +1959,13 @@ func (r UpdateResourceRequest) Send() (*UpdateResourceOutput, error) {
 // UpdateResourceRequest returns a request value for making API operation for
 // Amazon WorkMail.
 //
-// Updates data for the resource. It must be preceded by a describe call in
-// order to have the latest information. The dataset in the request should be
-// the one expected when performing another describe call.
+// Updates data for the resource. To have the latest information, it must be
+// preceded by a DescribeResource call. The dataset in the request should be
+// the one expected when performing another DescribeResource call.
 //
 //    // Example sending a request using the UpdateResourceRequest method.
 //    req := client.UpdateResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1958,7 +2003,7 @@ type AssociateDelegateToResourceInput struct {
 	// OrganizationId is a required field
 	OrganizationId *string `type:"string" required:"true"`
 
-	// The resource for which members are associated.
+	// The resource for which members (users or groups) are associated.
 	//
 	// ResourceId is a required field
 	ResourceId *string `type:"string" required:"true"`
@@ -2025,12 +2070,12 @@ func (s AssociateDelegateToResourceOutput) SDKResponseMetadata() aws.Response {
 type AssociateMemberToGroupInput struct {
 	_ struct{} `type:"structure"`
 
-	// The group for which the member is associated.
+	// The group to which the member (user or group) is associated.
 	//
 	// GroupId is a required field
 	GroupId *string `min:"12" type:"string" required:"true"`
 
-	// The member to associate to the group.
+	// The member (user or group) to associate to the group.
 	//
 	// MemberId is a required field
 	MemberId *string `min:"12" type:"string" required:"true"`
@@ -2132,17 +2177,17 @@ func (s BookingOptions) GoString() string {
 type CreateAliasInput struct {
 	_ struct{} `type:"structure"`
 
-	// The alias to add to the user.
+	// The alias to add to the member set.
 	//
 	// Alias is a required field
 	Alias *string `min:"1" type:"string" required:"true"`
 
-	// The alias is added to this Amazon WorkMail entity.
+	// The member (user or group) to which this alias is added.
 	//
 	// EntityId is a required field
 	EntityId *string `min:"12" type:"string" required:"true"`
 
-	// The organization under which the member exists.
+	// The organization under which the member (user or group) exists.
 	//
 	// OrganizationId is a required field
 	OrganizationId *string `type:"string" required:"true"`
@@ -2260,7 +2305,7 @@ type CreateGroupOutput struct {
 
 	responseMetadata aws.Response
 
-	// The ID of the group.
+	// The identifier of the group.
 	GroupId *string `min:"12" type:"string"`
 }
 
@@ -2283,7 +2328,7 @@ func (s CreateGroupOutput) SDKResponseMetadata() aws.Response {
 type CreateResourceInput struct {
 	_ struct{} `type:"structure"`
 
-	// The name of the created resource.
+	// The name of the new resource.
 	//
 	// Name is a required field
 	Name *string `min:"1" type:"string" required:"true"`
@@ -2294,7 +2339,7 @@ type CreateResourceInput struct {
 	// OrganizationId is a required field
 	OrganizationId *string `type:"string" required:"true"`
 
-	// The type of the created resource.
+	// The type of the new resource. The available types are equipment and room.
 	//
 	// Type is a required field
 	Type ResourceType `type:"string" required:"true" enum:"true"`
@@ -2340,7 +2385,7 @@ type CreateResourceOutput struct {
 
 	responseMetadata aws.Response
 
-	// The identifier of the created resource.
+	// The identifier of the new resource.
 	ResourceId *string `type:"string"`
 }
 
@@ -2363,12 +2408,13 @@ func (s CreateResourceOutput) SDKResponseMetadata() aws.Response {
 type CreateUserInput struct {
 	_ struct{} `type:"structure"`
 
-	// The display name for the user to be created.
+	// The display name for the new user.
 	//
 	// DisplayName is a required field
 	DisplayName *string `type:"string" required:"true"`
 
-	// The name for the user to be created.
+	// The name for the new user. Simple AD or AD Connector user names have a maximum
+	// length of 20. All others have a maximum length of 64.
 	//
 	// Name is a required field
 	Name *string `min:"1" type:"string" required:"true"`
@@ -2378,7 +2424,7 @@ type CreateUserInput struct {
 	// OrganizationId is a required field
 	OrganizationId *string `type:"string" required:"true"`
 
-	// The password for the user to be created.
+	// The password for the new user.
 	//
 	// Password is a required field
 	Password *string `type:"string" required:"true"`
@@ -2429,7 +2475,7 @@ type CreateUserOutput struct {
 
 	responseMetadata aws.Response
 
-	// The information regarding the newly created user.
+	// The identifier for the new user.
 	UserId *string `min:"12" type:"string"`
 }
 
@@ -2454,7 +2500,7 @@ func (s CreateUserOutput) SDKResponseMetadata() aws.Response {
 type Delegate struct {
 	_ struct{} `type:"structure"`
 
-	// The identifier for the user or group is associated as the resource's delegate.
+	// The identifier for the user or group associated as the resource's delegate.
 	//
 	// Id is a required field
 	Id *string `type:"string" required:"true"`
@@ -2486,7 +2532,8 @@ type DeleteAliasInput struct {
 	// Alias is a required field
 	Alias *string `min:"1" type:"string" required:"true"`
 
-	// The identifier for the Amazon WorkMail entity to have the aliases removed.
+	// The identifier for the member (user or group) from which to have the aliases
+	// removed.
 	//
 	// EntityId is a required field
 	EntityId *string `min:"12" type:"string" required:"true"`
@@ -2629,19 +2676,18 @@ func (s DeleteGroupOutput) SDKResponseMetadata() aws.Response {
 type DeleteMailboxPermissionsInput struct {
 	_ struct{} `type:"structure"`
 
-	// The identifier of the entity (user or group) for which to delete mailbox
-	// permissions.
+	// The identifier of the member (user or group)that owns the mailbox.
 	//
 	// EntityId is a required field
 	EntityId *string `min:"12" type:"string" required:"true"`
 
-	// The identifier of the entity (user or group) for which to delete granted
+	// The identifier of the member (user or group) for which to delete granted
 	// permissions.
 	//
 	// GranteeId is a required field
 	GranteeId *string `min:"12" type:"string" required:"true"`
 
-	// The identifier of the organization under which the entity (user or group)
+	// The identifier of the organization under which the member (user or group)
 	// exists.
 	//
 	// OrganizationId is a required field
@@ -2712,7 +2758,7 @@ func (s DeleteMailboxPermissionsOutput) SDKResponseMetadata() aws.Response {
 type DeleteResourceInput struct {
 	_ struct{} `type:"structure"`
 
-	// The identifier associated with the organization for which the resource is
+	// The identifier associated with the organization from which the resource is
 	// deleted.
 	//
 	// OrganizationId is a required field
@@ -2778,7 +2824,7 @@ func (s DeleteResourceOutput) SDKResponseMetadata() aws.Response {
 type DeleteUserInput struct {
 	_ struct{} `type:"structure"`
 
-	// The organization that contains the user.
+	// The organization that contains the user to be deleted.
 	//
 	// OrganizationId is a required field
 	OrganizationId *string `type:"string" required:"true"`
@@ -2846,7 +2892,7 @@ func (s DeleteUserOutput) SDKResponseMetadata() aws.Response {
 type DeregisterFromWorkMailInput struct {
 	_ struct{} `type:"structure"`
 
-	// The identifier for the entity to be updated.
+	// The identifier for the member (user or group) to be updated.
 	//
 	// EntityId is a required field
 	EntityId *string `min:"12" type:"string" required:"true"`
@@ -2963,15 +3009,15 @@ type DescribeGroupOutput struct {
 
 	responseMetadata aws.Response
 
-	// The date and time when a user was deregistered from Amazon WorkMail, in UNIX
-	// epoch time format.
+	// The date and time when a user was deregistered from WorkMail, in UNIX epoch
+	// time format.
 	DisabledDate *time.Time `type:"timestamp" timestampFormat:"unix"`
 
 	// The email of the described group.
 	Email *string `min:"1" type:"string"`
 
-	// The date and time when a user was registered to Amazon WorkMail, in UNIX
-	// epoch time format.
+	// The date and time when a user was registered to WorkMail, in UNIX epoch time
+	// format.
 	EnabledDate *time.Time `type:"timestamp" timestampFormat:"unix"`
 
 	// The identifier of the described group.
@@ -2981,7 +3027,7 @@ type DescribeGroupOutput struct {
 	Name *string `min:"1" type:"string"`
 
 	// The state of the user: enabled (registered to Amazon WorkMail) or disabled
-	// (deregistered or never registered to Amazon WorkMail).
+	// (deregistered or never registered to WorkMail).
 	State EntityState `type:"string" enum:"true"`
 }
 
@@ -3043,7 +3089,7 @@ type DescribeOrganizationOutput struct {
 	// The alias for an organization.
 	Alias *string `min:"1" type:"string"`
 
-	// The date at which the organization became usable in the Amazon WorkMail context,
+	// The date at which the organization became usable in the WorkMail context,
 	// in UNIX epoch time format.
 	CompletedDate *time.Time `type:"timestamp" timestampFormat:"unix"`
 
@@ -3053,10 +3099,10 @@ type DescribeOrganizationOutput struct {
 	// The identifier for the directory associated with an Amazon WorkMail organization.
 	DirectoryId *string `type:"string"`
 
-	// The type of directory associated with the Amazon WorkMail organization.
+	// The type of directory associated with the WorkMail organization.
 	DirectoryType *string `type:"string"`
 
-	// The (optional) error message indicating if unexpected behavior was encountered
+	// (Optional) The error message indicating if unexpected behavior was encountered
 	// with regards to the organization.
 	ErrorMessage *string `type:"string"`
 
@@ -3135,15 +3181,15 @@ type DescribeResourceOutput struct {
 	// The booking options for the described resource.
 	BookingOptions *BookingOptions `type:"structure"`
 
-	// The date and time when a resource was registered from Amazon WorkMail, in
-	// UNIX epoch time format.
+	// The date and time when a resource was disabled from WorkMail, in UNIX epoch
+	// time format.
 	DisabledDate *time.Time `type:"timestamp" timestampFormat:"unix"`
 
 	// The email of the described resource.
 	Email *string `min:"1" type:"string"`
 
-	// The date and time when a resource was registered to Amazon WorkMail, in UNIX
-	// epoch time format.
+	// The date and time when a resource was enabled for WorkMail, in UNIX epoch
+	// time format.
 	EnabledDate *time.Time `type:"timestamp" timestampFormat:"unix"`
 
 	// The name of the described resource.
@@ -3153,7 +3199,7 @@ type DescribeResourceOutput struct {
 	ResourceId *string `type:"string"`
 
 	// The state of the resource: enabled (registered to Amazon WorkMail) or disabled
-	// (deregistered or never registered to Amazon WorkMail).
+	// (deregistered or never registered to WorkMail).
 	State EntityState `type:"string" enum:"true"`
 
 	// The type of the described resource.
@@ -3245,18 +3291,18 @@ type DescribeUserOutput struct {
 	Name *string `min:"1" type:"string"`
 
 	// The state of a user: enabled (registered to Amazon WorkMail) or disabled
-	// (deregistered or never registered to Amazon WorkMail).
+	// (deregistered or never registered to WorkMail).
 	State EntityState `type:"string" enum:"true"`
 
 	// The identifier for the described user.
 	UserId *string `min:"12" type:"string"`
 
-	// In certain cases other entities are modeled as users. If interoperability
+	// In certain cases, other entities are modeled as users. If interoperability
 	// is enabled, resources are imported into Amazon WorkMail as users. Because
-	// different Amazon WorkMail organizations rely on different directory types,
-	// administrators can distinguish between a user that is not registered to Amazon
-	// WorkMail (is disabled and has a user role) and the administrative users of
-	// the directory. The values are USER, RESOURCE, and SYSTEM_USER.
+	// different WorkMail organizations rely on different directory types, administrators
+	// can distinguish between an unregistered user (account is disabled and has
+	// a user role) and the directory administrators. The values are USER, RESOURCE,
+	// and SYSTEM_USER.
 	UserRole UserRole `type:"string" enum:"true"`
 }
 
@@ -3559,7 +3605,7 @@ func (s ListAliasesOutput) SDKResponseMetadata() aws.Response {
 type ListGroupMembersInput struct {
 	_ struct{} `type:"structure"`
 
-	// The identifier for the group to which the members are associated.
+	// The identifier for the group to which the members (users or groups) are associated.
 	//
 	// GroupId is a required field
 	GroupId *string `min:"12" type:"string" required:"true"`
@@ -3723,7 +3769,8 @@ func (s ListGroupsOutput) SDKResponseMetadata() aws.Response {
 type ListMailboxPermissionsInput struct {
 	_ struct{} `type:"structure"`
 
-	// The identifier of the entity (user or group) for which to list mailbox permissions.
+	// The identifier of the user, group, or resource for which to list mailbox
+	// permissions.
 	//
 	// EntityId is a required field
 	EntityId *string `min:"12" type:"string" required:"true"`
@@ -3735,7 +3782,7 @@ type ListMailboxPermissionsInput struct {
 	// not contain any tokens.
 	NextToken *string `min:"1" type:"string"`
 
-	// The identifier of the organization under which the entity (user or group)
+	// The identifier of the organization under which the user, group, or resource
 	// exists.
 	//
 	// OrganizationId is a required field
@@ -3789,7 +3836,7 @@ type ListMailboxPermissionsOutput struct {
 	// when there are no more results to return.
 	NextToken *string `min:"1" type:"string"`
 
-	// One page of the entity's mailbox permissions.
+	// One page of the user, group, or resource mailbox permissions.
 	Permissions []Permission `type:"list"`
 }
 
@@ -4048,7 +4095,8 @@ type ListUsersInput struct {
 	// The maximum number of results to return in a single call.
 	MaxResults *int64 `min:"1" type:"integer"`
 
-	// TBD
+	// The token to use to retrieve the next page of results. The first call does
+	// not contain any tokens.
 	NextToken *string `min:"1" type:"string"`
 
 	// The identifier for the organization under which the users exist.
@@ -4116,7 +4164,7 @@ func (s ListUsersOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
-// The representation of a group member (user or group).
+// The representation of a user or group.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/workmail-2017-10-01/Member
 type Member struct {
 	_ struct{} `type:"structure"`
@@ -4150,7 +4198,7 @@ func (s Member) GoString() string {
 	return s.String()
 }
 
-// The brief overview associated with an organization.
+// The representation of an organization.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/workmail-2017-10-01/OrganizationSummary
 type OrganizationSummary struct {
 	_ struct{} `type:"structure"`
@@ -4180,19 +4228,19 @@ func (s OrganizationSummary) GoString() string {
 	return s.String()
 }
 
-// Permission granted to an entity (user, group) to access a certain aspect
-// of another entity's mailbox.
+// Permission granted to a user, group, or resource to access a certain aspect
+// of another user, group, or resource mailbox.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/workmail-2017-10-01/Permission
 type Permission struct {
 	_ struct{} `type:"structure"`
 
-	// The identifier of the entity (user or group) to which the permissions are
+	// The identifier of the user, group, or resource to which the permissions are
 	// granted.
 	//
 	// GranteeId is a required field
 	GranteeId *string `min:"12" type:"string" required:"true"`
 
-	// The type of entity (user, group) of the entity referred to in GranteeId.
+	// The type of user, group, or resource referred to in GranteeId.
 	//
 	// GranteeType is a required field
 	GranteeType MemberType `type:"string" required:"true" enum:"true"`
@@ -4222,18 +4270,18 @@ func (s Permission) GoString() string {
 type PutMailboxPermissionsInput struct {
 	_ struct{} `type:"structure"`
 
-	// The identifier of the entity (user or group) for which to update mailbox
+	// The identifier of the user, group, or resource for which to update mailbox
 	// permissions.
 	//
 	// EntityId is a required field
 	EntityId *string `min:"12" type:"string" required:"true"`
 
-	// The identifier of the entity (user or group) to which to grant the permissions.
+	// The identifier of the user, group, or resource to which to grant the permissions.
 	//
 	// GranteeId is a required field
 	GranteeId *string `min:"12" type:"string" required:"true"`
 
-	// The identifier of the organization under which the entity (user or group)
+	// The identifier of the organization under which the user, group, or resource
 	// exists.
 	//
 	// OrganizationId is a required field
@@ -4318,17 +4366,17 @@ func (s PutMailboxPermissionsOutput) SDKResponseMetadata() aws.Response {
 type RegisterToWorkMailInput struct {
 	_ struct{} `type:"structure"`
 
-	// The email for the entity to be updated.
+	// The email for the user, group, or resource to be updated.
 	//
 	// Email is a required field
 	Email *string `min:"1" type:"string" required:"true"`
 
-	// The identifier for the entity to be updated.
+	// The identifier for the user, group, or resource to be updated.
 	//
 	// EntityId is a required field
 	EntityId *string `min:"12" type:"string" required:"true"`
 
-	// The identifier for the organization under which the Amazon WorkMail entity
+	// The identifier for the organization under which the user, group, or resource
 	// exists.
 	//
 	// OrganizationId is a required field
@@ -4473,7 +4521,7 @@ func (s ResetPasswordOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
-// The overview for a resource containing relevant data regarding it.
+// The representation of a resource.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/workmail-2017-10-01/Resource
 type Resource struct {
 	_ struct{} `type:"structure"`
@@ -4519,12 +4567,12 @@ type UpdatePrimaryEmailAddressInput struct {
 	// Email is a required field
 	Email *string `min:"1" type:"string" required:"true"`
 
-	// The entity to update (user, group, or resource).
+	// The user, group, or resource to update.
 	//
 	// EntityId is a required field
 	EntityId *string `min:"12" type:"string" required:"true"`
 
-	// The organization that contains the entity to update.
+	// The organization that contains the user, group, or resource to update.
 	//
 	// OrganizationId is a required field
 	OrganizationId *string `type:"string" required:"true"`

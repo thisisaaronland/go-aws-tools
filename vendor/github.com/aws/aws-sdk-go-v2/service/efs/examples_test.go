@@ -3,6 +3,7 @@
 package efs_test
 
 import (
+	"context"
 	"fmt"
 	"strings"
 	"time"
@@ -39,10 +40,16 @@ func ExampleEFS_CreateFileSystemRequest_shared00() {
 	input := &efs.CreateFileSystemInput{
 		CreationToken:   aws.String("tokenstring"),
 		PerformanceMode: efs.PerformanceModeGeneralPurpose,
+		Tags: []efs.Tag{
+			{
+				Key:   aws.String("Name"),
+				Value: aws.String("MyFileSystem"),
+			},
+		},
 	}
 
 	req := svc.CreateFileSystemRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -88,7 +95,7 @@ func ExampleEFS_CreateMountTargetRequest_shared00() {
 	}
 
 	req := svc.CreateMountTargetRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -151,7 +158,7 @@ func ExampleEFS_CreateTagsRequest_shared00() {
 	}
 
 	req := svc.CreateTagsRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -190,7 +197,7 @@ func ExampleEFS_DeleteFileSystemRequest_shared00() {
 	}
 
 	req := svc.DeleteFileSystemRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -231,7 +238,7 @@ func ExampleEFS_DeleteMountTargetRequest_shared00() {
 	}
 
 	req := svc.DeleteMountTargetRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -275,7 +282,7 @@ func ExampleEFS_DeleteTagsRequest_shared00() {
 	}
 
 	req := svc.DeleteTagsRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -312,7 +319,7 @@ func ExampleEFS_DescribeFileSystemsRequest_shared00() {
 	input := &efs.DescribeFileSystemsInput{}
 
 	req := svc.DescribeFileSystemsRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -320,6 +327,47 @@ func ExampleEFS_DescribeFileSystemsRequest_shared00() {
 				fmt.Println(efs.ErrCodeBadRequest, aerr.Error())
 			case efs.ErrCodeInternalServerError:
 				fmt.Println(efs.ErrCodeInternalServerError, aerr.Error())
+			case efs.ErrCodeFileSystemNotFound:
+				fmt.Println(efs.ErrCodeFileSystemNotFound, aerr.Error())
+			default:
+				fmt.Println(aerr.Error())
+			}
+		} else {
+			// Print the error, cast err to awserr.Error to get the Code and
+			// Message from an error.
+			fmt.Println(err.Error())
+		}
+		return
+	}
+
+	fmt.Println(result)
+}
+
+// To describe the lifecycle configuration for a file system
+//
+// This operation describes a file system's LifecycleConfiguration. EFS lifecycle management
+// uses the LifecycleConfiguration object to identify which files to move to the EFS
+// Infrequent Access (IA) storage class.
+func ExampleEFS_DescribeLifecycleConfigurationRequest_shared00() {
+	cfg, err := external.LoadDefaultAWSConfig()
+	if err != nil {
+		panic("failed to load config, " + err.Error())
+	}
+
+	svc := efs.New(cfg)
+	input := &efs.DescribeLifecycleConfigurationInput{
+		FileSystemId: aws.String("fs-01234567"),
+	}
+
+	req := svc.DescribeLifecycleConfigurationRequest(input)
+	result, err := req.Send(context.Background())
+	if err != nil {
+		if aerr, ok := err.(awserr.Error); ok {
+			switch aerr.Code() {
+			case efs.ErrCodeInternalServerError:
+				fmt.Println(efs.ErrCodeInternalServerError, aerr.Error())
+			case efs.ErrCodeBadRequest:
+				fmt.Println(efs.ErrCodeBadRequest, aerr.Error())
 			case efs.ErrCodeFileSystemNotFound:
 				fmt.Println(efs.ErrCodeFileSystemNotFound, aerr.Error())
 			default:
@@ -351,7 +399,7 @@ func ExampleEFS_DescribeMountTargetSecurityGroupsRequest_shared00() {
 	}
 
 	req := svc.DescribeMountTargetSecurityGroupsRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -392,7 +440,7 @@ func ExampleEFS_DescribeMountTargetsRequest_shared00() {
 	}
 
 	req := svc.DescribeMountTargetsRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -433,7 +481,7 @@ func ExampleEFS_DescribeTagsRequest_shared00() {
 	}
 
 	req := svc.DescribeTagsRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -476,7 +524,7 @@ func ExampleEFS_ModifyMountTargetSecurityGroupsRequest_shared00() {
 	}
 
 	req := svc.ModifyMountTargetSecurityGroupsRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -492,6 +540,55 @@ func ExampleEFS_ModifyMountTargetSecurityGroupsRequest_shared00() {
 				fmt.Println(efs.ErrCodeSecurityGroupLimitExceeded, aerr.Error())
 			case efs.ErrCodeSecurityGroupNotFound:
 				fmt.Println(efs.ErrCodeSecurityGroupNotFound, aerr.Error())
+			default:
+				fmt.Println(aerr.Error())
+			}
+		} else {
+			// Print the error, cast err to awserr.Error to get the Code and
+			// Message from an error.
+			fmt.Println(err.Error())
+		}
+		return
+	}
+
+	fmt.Println(result)
+}
+
+// Creates a new lifecycleconfiguration object for a file system
+//
+// This operation enables lifecycle management on a file system by creating a new LifecycleConfiguration
+// object. A LifecycleConfiguration object defines when files in an Amazon EFS file
+// system are automatically transitioned to the lower-cost EFS Infrequent Access (IA)
+// storage class. A LifecycleConfiguration applies to all files in a file system.
+func ExampleEFS_PutLifecycleConfigurationRequest_shared00() {
+	cfg, err := external.LoadDefaultAWSConfig()
+	if err != nil {
+		panic("failed to load config, " + err.Error())
+	}
+
+	svc := efs.New(cfg)
+	input := &efs.PutLifecycleConfigurationInput{
+		FileSystemId: aws.String("fs-01234567"),
+		LifecyclePolicies: []efs.LifecyclePolicy{
+			{
+				TransitionToIA: efs.TransitionToIARulesAfter30Days,
+			},
+		},
+	}
+
+	req := svc.PutLifecycleConfigurationRequest(input)
+	result, err := req.Send(context.Background())
+	if err != nil {
+		if aerr, ok := err.(awserr.Error); ok {
+			switch aerr.Code() {
+			case efs.ErrCodeBadRequest:
+				fmt.Println(efs.ErrCodeBadRequest, aerr.Error())
+			case efs.ErrCodeInternalServerError:
+				fmt.Println(efs.ErrCodeInternalServerError, aerr.Error())
+			case efs.ErrCodeFileSystemNotFound:
+				fmt.Println(efs.ErrCodeFileSystemNotFound, aerr.Error())
+			case efs.ErrCodeIncorrectFileSystemLifeCycleState:
+				fmt.Println(efs.ErrCodeIncorrectFileSystemLifeCycleState, aerr.Error())
 			default:
 				fmt.Println(aerr.Error())
 			}

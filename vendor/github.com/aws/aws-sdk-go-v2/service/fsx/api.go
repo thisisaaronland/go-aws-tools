@@ -3,6 +3,7 @@
 package fsx
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -20,7 +21,8 @@ type CreateBackupRequest struct {
 }
 
 // Send marshals and sends the CreateBackup API request.
-func (r CreateBackupRequest) Send() (*CreateBackupOutput, error) {
+func (r CreateBackupRequest) Send(ctx context.Context) (*CreateBackupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -62,7 +64,7 @@ func (r CreateBackupRequest) Send() (*CreateBackupOutput, error) {
 //
 //    // Example sending a request using the CreateBackupRequest method.
 //    req := client.CreateBackupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -96,7 +98,8 @@ type CreateFileSystemRequest struct {
 }
 
 // Send marshals and sends the CreateFileSystem API request.
-func (r CreateFileSystemRequest) Send() (*CreateFileSystemOutput, error) {
+func (r CreateFileSystemRequest) Send(ctx context.Context) (*CreateFileSystemOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -140,7 +143,7 @@ func (r CreateFileSystemRequest) Send() (*CreateFileSystemOutput, error) {
 //
 //    // Example sending a request using the CreateFileSystemRequest method.
 //    req := client.CreateFileSystemRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -174,7 +177,8 @@ type CreateFileSystemFromBackupRequest struct {
 }
 
 // Send marshals and sends the CreateFileSystemFromBackup API request.
-func (r CreateFileSystemFromBackupRequest) Send() (*CreateFileSystemFromBackupOutput, error) {
+func (r CreateFileSystemFromBackupRequest) Send(ctx context.Context) (*CreateFileSystemFromBackupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -220,7 +224,7 @@ func (r CreateFileSystemFromBackupRequest) Send() (*CreateFileSystemFromBackupOu
 //
 //    // Example sending a request using the CreateFileSystemFromBackupRequest method.
 //    req := client.CreateFileSystemFromBackupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -254,7 +258,8 @@ type DeleteBackupRequest struct {
 }
 
 // Send marshals and sends the DeleteBackup API request.
-func (r DeleteBackupRequest) Send() (*DeleteBackupOutput, error) {
+func (r DeleteBackupRequest) Send(ctx context.Context) (*DeleteBackupOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -277,7 +282,7 @@ func (r DeleteBackupRequest) Send() (*DeleteBackupOutput, error) {
 //
 //    // Example sending a request using the DeleteBackupRequest method.
 //    req := client.DeleteBackupRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -311,7 +316,8 @@ type DeleteFileSystemRequest struct {
 }
 
 // Send marshals and sends the DeleteFileSystem API request.
-func (r DeleteFileSystemRequest) Send() (*DeleteFileSystemOutput, error) {
+func (r DeleteFileSystemRequest) Send(ctx context.Context) (*DeleteFileSystemOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -342,7 +348,7 @@ func (r DeleteFileSystemRequest) Send() (*DeleteFileSystemOutput, error) {
 //
 //    // Example sending a request using the DeleteFileSystemRequest method.
 //    req := client.DeleteFileSystemRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -376,7 +382,8 @@ type DescribeBackupsRequest struct {
 }
 
 // Send marshals and sends the DescribeBackups API request.
-func (r DescribeBackupsRequest) Send() (*DescribeBackupsOutput, error) {
+func (r DescribeBackupsRequest) Send(ctx context.Context) (*DescribeBackupsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -415,7 +422,7 @@ func (r DescribeBackupsRequest) Send() (*DescribeBackupsOutput, error) {
 //
 //    // Example sending a request using the DescribeBackupsRequest method.
 //    req := client.DescribeBackupsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -465,7 +472,7 @@ func (c *FSx) DescribeBackupsRequest(input *DescribeBackupsInput) DescribeBackup
 func (p *DescribeBackupsRequest) Paginate(opts ...aws.Option) DescribeBackupsPager {
 	return DescribeBackupsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *DescribeBackupsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -474,6 +481,7 @@ func (p *DescribeBackupsRequest) Paginate(opts ...aws.Option) DescribeBackupsPag
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -501,7 +509,8 @@ type DescribeFileSystemsRequest struct {
 }
 
 // Send marshals and sends the DescribeFileSystems API request.
-func (r DescribeFileSystemsRequest) Send() (*DescribeFileSystemsOutput, error) {
+func (r DescribeFileSystemsRequest) Send(ctx context.Context) (*DescribeFileSystemsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -540,7 +549,7 @@ func (r DescribeFileSystemsRequest) Send() (*DescribeFileSystemsOutput, error) {
 //
 //    // Example sending a request using the DescribeFileSystemsRequest method.
 //    req := client.DescribeFileSystemsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -590,7 +599,7 @@ func (c *FSx) DescribeFileSystemsRequest(input *DescribeFileSystemsInput) Descri
 func (p *DescribeFileSystemsRequest) Paginate(opts ...aws.Option) DescribeFileSystemsPager {
 	return DescribeFileSystemsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *DescribeFileSystemsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -599,6 +608,7 @@ func (p *DescribeFileSystemsRequest) Paginate(opts ...aws.Option) DescribeFileSy
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -626,7 +636,8 @@ type ListTagsForResourceRequest struct {
 }
 
 // Send marshals and sends the ListTagsForResource API request.
-func (r ListTagsForResourceRequest) Send() (*ListTagsForResourceOutput, error) {
+func (r ListTagsForResourceRequest) Send(ctx context.Context) (*ListTagsForResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -663,7 +674,7 @@ func (r ListTagsForResourceRequest) Send() (*ListTagsForResourceOutput, error) {
 //
 //    // Example sending a request using the ListTagsForResourceRequest method.
 //    req := client.ListTagsForResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -697,7 +708,8 @@ type TagResourceRequest struct {
 }
 
 // Send marshals and sends the TagResource API request.
-func (r TagResourceRequest) Send() (*TagResourceOutput, error) {
+func (r TagResourceRequest) Send(ctx context.Context) (*TagResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -713,7 +725,7 @@ func (r TagResourceRequest) Send() (*TagResourceOutput, error) {
 //
 //    // Example sending a request using the TagResourceRequest method.
 //    req := client.TagResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -747,7 +759,8 @@ type UntagResourceRequest struct {
 }
 
 // Send marshals and sends the UntagResource API request.
-func (r UntagResourceRequest) Send() (*UntagResourceOutput, error) {
+func (r UntagResourceRequest) Send(ctx context.Context) (*UntagResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -763,7 +776,7 @@ func (r UntagResourceRequest) Send() (*UntagResourceOutput, error) {
 //
 //    // Example sending a request using the UntagResourceRequest method.
 //    req := client.UntagResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -797,7 +810,8 @@ type UpdateFileSystemRequest struct {
 }
 
 // Send marshals and sends the UpdateFileSystem API request.
-func (r UpdateFileSystemRequest) Send() (*UpdateFileSystemOutput, error) {
+func (r UpdateFileSystemRequest) Send(ctx context.Context) (*UpdateFileSystemOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -813,7 +827,7 @@ func (r UpdateFileSystemRequest) Send() (*UpdateFileSystemOutput, error) {
 //
 //    // Example sending a request using the UpdateFileSystemRequest method.
 //    req := client.UpdateFileSystemRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1128,7 +1142,7 @@ type CreateFileSystemInput struct {
 
 	// The ID of your AWS Key Management Service (AWS KMS) key. This ID is used
 	// to encrypt the data in your file system at rest. For more information, see
-	// Encrypt (http://docs.aws.amazon.com/kms/latest/APIReference/API_Encrypt.html)
+	// Encrypt (https://docs.aws.amazon.com/kms/latest/APIReference/API_Encrypt.html)
 	// in the AWS Key Management Service API Reference.
 	KmsKeyId *string `min:"1" type:"string"`
 
@@ -1150,7 +1164,7 @@ type CreateFileSystemInput struct {
 	// Storage capacity is provisioned in increments of 3,600 GiB.
 	//
 	// StorageCapacity is a required field
-	StorageCapacity *int64 `min:"300" type:"integer" required:"true"`
+	StorageCapacity *int64 `min:"1" type:"integer" required:"true"`
 
 	// A list of IDs for the subnets that the file system will be accessible from.
 	// File systems support only one subnet. The file server is also launched in
@@ -1193,8 +1207,8 @@ func (s *CreateFileSystemInput) Validate() error {
 	if s.StorageCapacity == nil {
 		invalidParams.Add(aws.NewErrParamRequired("StorageCapacity"))
 	}
-	if s.StorageCapacity != nil && *s.StorageCapacity < 300 {
-		invalidParams.Add(aws.NewErrParamMinValue("StorageCapacity", 300))
+	if s.StorageCapacity != nil && *s.StorageCapacity < 1 {
+		invalidParams.Add(aws.NewErrParamMinValue("StorageCapacity", 1))
 	}
 
 	if s.SubnetIds == nil {
@@ -1233,11 +1247,28 @@ func (s *CreateFileSystemInput) Validate() error {
 type CreateFileSystemLustreConfiguration struct {
 	_ struct{} `type:"structure"`
 
-	// (Optional) The path to the Amazon S3 bucket (and optional prefix) that you're
-	// using as the data repository for your FSx for Lustre file system, for example
-	// s3://import-bucket/optional-prefix. If you specify a prefix after the Amazon
-	// S3 bucket name, only object keys with that prefix are loaded into the file
-	// system.
+	// (Optional) The path in Amazon S3 where the root of your Amazon FSx file system
+	// is exported. The path must use the same Amazon S3 bucket as specified in
+	// ImportPath. You can provide an optional prefix to which new and changed data
+	// is to be exported from your Amazon FSx for Lustre file system. If an ExportPath
+	// value is not provided, Amazon FSx sets a default export path, s3://import-bucket/FSxLustre[creation-timestamp].
+	// The timestamp is in UTC format, for example s3://import-bucket/FSxLustre20181105T222312Z.
+	//
+	// The Amazon S3 export bucket must be the same as the import bucket specified
+	// by ImportPath. If you only specify a bucket name, such as s3://import-bucket,
+	// you get a 1:1 mapping of file system objects to S3 bucket objects. This mapping
+	// means that the input data in S3 is overwritten on export. If you provide
+	// a custom prefix in the export path, such as s3://import-bucket/[custom-optional-prefix],
+	// Amazon FSx exports the contents of your file system to that export prefix
+	// in the Amazon S3 bucket.
+	ExportPath *string `min:"3" type:"string"`
+
+	// (Optional) The path to the Amazon S3 bucket (including the optional prefix)
+	// that you're using as the data repository for your Amazon FSx for Lustre file
+	// system. The root of your FSx for Lustre file system will be mapped to the
+	// root of the Amazon S3 bucket you select. An example is s3://import-bucket/optional-prefix.
+	// If you specify a prefix after the Amazon S3 bucket name, only object keys
+	// with that prefix are loaded into the file system.
 	ImportPath *string `min:"3" type:"string"`
 
 	// (Optional) For files imported from a data repository, this value determines
@@ -1267,6 +1298,9 @@ func (s CreateFileSystemLustreConfiguration) GoString() string {
 // Validate inspects the fields of the type to determine if they are valid.
 func (s *CreateFileSystemLustreConfiguration) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "CreateFileSystemLustreConfiguration"}
+	if s.ExportPath != nil && len(*s.ExportPath) < 3 {
+		invalidParams.Add(aws.NewErrParamMinLen("ExportPath", 3))
+	}
 	if s.ImportPath != nil && len(*s.ImportPath) < 3 {
 		invalidParams.Add(aws.NewErrParamMinLen("ImportPath", 3))
 	}
@@ -1385,12 +1419,8 @@ func (s *CreateFileSystemWindowsConfiguration) Validate() error {
 type DataRepositoryConfiguration struct {
 	_ struct{} `type:"structure"`
 
-	// The Amazon S3 commit path to use for storing new and changed Lustre file
-	// system files as part of the archive operation from the file system to Amazon
-	// S3. The value is s3://import-bucket/FSxLustre[creationtimestamp]. The timestamp
-	// is presented in UTC format, for example s3://import-bucket/FSxLustre20181105T222312Z.
-	// Files are archived to a different prefix in the Amazon S3 bucket, preventing
-	// input data from being overwritten.
+	// The export path to the Amazon S3 bucket (and prefix) that you are using to
+	// store new and changed Lustre file system files in S3.
 	ExportPath *string `min:"3" type:"string"`
 
 	// The import path to the Amazon S3 bucket (and optional prefix) that you're
@@ -1845,7 +1875,7 @@ type FileSystem struct {
 	// The IDs of the elastic network interface from which a specific file system
 	// is accessible. The elastic network interface is automatically created in
 	// the same VPC that the Amazon FSx file system was created in. For more information,
-	// see Elastic Network Interfaces (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html)
+	// see Elastic Network Interfaces (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/using-eni.html)
 	// in the Amazon EC2 User Guide.
 	//
 	// For an Amazon FSx for Windows File Server file system, you can have one network
@@ -1861,7 +1891,7 @@ type FileSystem struct {
 	ResourceARN *string `min:"8" type:"string"`
 
 	// The storage capacity of the file system in gigabytes.
-	StorageCapacity *int64 `min:"300" type:"integer"`
+	StorageCapacity *int64 `min:"1" type:"integer"`
 
 	// The IDs of the subnets to contain the endpoint for the file system. One and
 	// only one is supported. The file system is launched in the Availability Zone
@@ -1869,7 +1899,7 @@ type FileSystem struct {
 	SubnetIds []string `type:"list"`
 
 	// The tags to associate with the file system. For more information, see Tagging
-	// Your Amazon EC2 Resources (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html)
+	// Your Amazon EC2 Resources (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/Using_Tags.html)
 	// in the Amazon EC2 User Guide.
 	Tags []Tag `min:"1" type:"list"`
 

@@ -3,6 +3,7 @@
 package batch
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -20,7 +21,8 @@ type CancelJobRequest struct {
 }
 
 // Send marshals and sends the CancelJob API request.
-func (r CancelJobRequest) Send() (*CancelJobOutput, error) {
+func (r CancelJobRequest) Send(ctx context.Context) (*CancelJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -40,7 +42,7 @@ func (r CancelJobRequest) Send() (*CancelJobOutput, error) {
 //
 //    // Example sending a request using the CancelJobRequest method.
 //    req := client.CancelJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -74,7 +76,8 @@ type CreateComputeEnvironmentRequest struct {
 }
 
 // Send marshals and sends the CreateComputeEnvironment API request.
-func (r CreateComputeEnvironmentRequest) Send() (*CreateComputeEnvironmentOutput, error) {
+func (r CreateComputeEnvironmentRequest) Send(ctx context.Context) (*CreateComputeEnvironmentOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -91,7 +94,7 @@ func (r CreateComputeEnvironmentRequest) Send() (*CreateComputeEnvironmentOutput
 //
 // In a managed compute environment, AWS Batch manages the capacity and instance
 // types of the compute resources within the environment. This is based on the
-// compute resource specification that you define or the launch template (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html)
+// compute resource specification that you define or the launch template (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ec2-launch-templates.html)
 // that you specify when you create the compute environment. You can choose
 // to use Amazon EC2 On-Demand Instances or Spot Instances in your managed compute
 // environment. You can optionally set a maximum price so that Spot Instances
@@ -104,12 +107,12 @@ func (r CreateComputeEnvironmentRequest) Send() (*CreateComputeEnvironmentOutput
 // This provides more compute resource configuration options, such as using
 // a custom AMI, but you must ensure that your AMI meets the Amazon ECS container
 // instance AMI specification. For more information, see Container Instance
-// AMIs (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html)
+// AMIs (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/container_instance_AMIs.html)
 // in the Amazon Elastic Container Service Developer Guide. After you have created
 // your unmanaged compute environment, you can use the DescribeComputeEnvironments
 // operation to find the Amazon ECS cluster that is associated with it. Then,
 // manually launch your container instances into that Amazon ECS cluster. For
-// more information, see Launching an Amazon ECS Container Instance (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)
+// more information, see Launching an Amazon ECS Container Instance (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_container_instance.html)
 // in the Amazon Elastic Container Service Developer Guide.
 //
 // AWS Batch does not upgrade the AMIs in a compute environment after it is
@@ -129,7 +132,7 @@ func (r CreateComputeEnvironmentRequest) Send() (*CreateComputeEnvironmentOutput
 //
 //    // Example sending a request using the CreateComputeEnvironmentRequest method.
 //    req := client.CreateComputeEnvironmentRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -163,7 +166,8 @@ type CreateJobQueueRequest struct {
 }
 
 // Send marshals and sends the CreateJobQueue API request.
-func (r CreateJobQueueRequest) Send() (*CreateJobQueueOutput, error) {
+func (r CreateJobQueueRequest) Send(ctx context.Context) (*CreateJobQueueOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -187,7 +191,7 @@ func (r CreateJobQueueRequest) Send() (*CreateJobQueueOutput, error) {
 //
 //    // Example sending a request using the CreateJobQueueRequest method.
 //    req := client.CreateJobQueueRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -221,7 +225,8 @@ type DeleteComputeEnvironmentRequest struct {
 }
 
 // Send marshals and sends the DeleteComputeEnvironment API request.
-func (r DeleteComputeEnvironmentRequest) Send() (*DeleteComputeEnvironmentOutput, error) {
+func (r DeleteComputeEnvironmentRequest) Send(ctx context.Context) (*DeleteComputeEnvironmentOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -241,7 +246,7 @@ func (r DeleteComputeEnvironmentRequest) Send() (*DeleteComputeEnvironmentOutput
 //
 //    // Example sending a request using the DeleteComputeEnvironmentRequest method.
 //    req := client.DeleteComputeEnvironmentRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -275,7 +280,8 @@ type DeleteJobQueueRequest struct {
 }
 
 // Send marshals and sends the DeleteJobQueue API request.
-func (r DeleteJobQueueRequest) Send() (*DeleteJobQueueOutput, error) {
+func (r DeleteJobQueueRequest) Send(ctx context.Context) (*DeleteJobQueueOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -296,7 +302,7 @@ func (r DeleteJobQueueRequest) Send() (*DeleteJobQueueOutput, error) {
 //
 //    // Example sending a request using the DeleteJobQueueRequest method.
 //    req := client.DeleteJobQueueRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -330,7 +336,8 @@ type DeregisterJobDefinitionRequest struct {
 }
 
 // Send marshals and sends the DeregisterJobDefinition API request.
-func (r DeregisterJobDefinitionRequest) Send() (*DeregisterJobDefinitionOutput, error) {
+func (r DeregisterJobDefinitionRequest) Send(ctx context.Context) (*DeregisterJobDefinitionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -346,7 +353,7 @@ func (r DeregisterJobDefinitionRequest) Send() (*DeregisterJobDefinitionOutput, 
 //
 //    // Example sending a request using the DeregisterJobDefinitionRequest method.
 //    req := client.DeregisterJobDefinitionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -380,7 +387,8 @@ type DescribeComputeEnvironmentsRequest struct {
 }
 
 // Send marshals and sends the DescribeComputeEnvironments API request.
-func (r DescribeComputeEnvironmentsRequest) Send() (*DescribeComputeEnvironmentsOutput, error) {
+func (r DescribeComputeEnvironmentsRequest) Send(ctx context.Context) (*DescribeComputeEnvironmentsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -400,7 +408,7 @@ func (r DescribeComputeEnvironmentsRequest) Send() (*DescribeComputeEnvironments
 //
 //    // Example sending a request using the DescribeComputeEnvironmentsRequest method.
 //    req := client.DescribeComputeEnvironmentsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -434,7 +442,8 @@ type DescribeJobDefinitionsRequest struct {
 }
 
 // Send marshals and sends the DescribeJobDefinitions API request.
-func (r DescribeJobDefinitionsRequest) Send() (*DescribeJobDefinitionsOutput, error) {
+func (r DescribeJobDefinitionsRequest) Send(ctx context.Context) (*DescribeJobDefinitionsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -451,7 +460,7 @@ func (r DescribeJobDefinitionsRequest) Send() (*DescribeJobDefinitionsOutput, er
 //
 //    // Example sending a request using the DescribeJobDefinitionsRequest method.
 //    req := client.DescribeJobDefinitionsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -485,7 +494,8 @@ type DescribeJobQueuesRequest struct {
 }
 
 // Send marshals and sends the DescribeJobQueues API request.
-func (r DescribeJobQueuesRequest) Send() (*DescribeJobQueuesOutput, error) {
+func (r DescribeJobQueuesRequest) Send(ctx context.Context) (*DescribeJobQueuesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -501,7 +511,7 @@ func (r DescribeJobQueuesRequest) Send() (*DescribeJobQueuesOutput, error) {
 //
 //    // Example sending a request using the DescribeJobQueuesRequest method.
 //    req := client.DescribeJobQueuesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -535,7 +545,8 @@ type DescribeJobsRequest struct {
 }
 
 // Send marshals and sends the DescribeJobs API request.
-func (r DescribeJobsRequest) Send() (*DescribeJobsOutput, error) {
+func (r DescribeJobsRequest) Send(ctx context.Context) (*DescribeJobsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -551,7 +562,7 @@ func (r DescribeJobsRequest) Send() (*DescribeJobsOutput, error) {
 //
 //    // Example sending a request using the DescribeJobsRequest method.
 //    req := client.DescribeJobsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -585,7 +596,8 @@ type ListJobsRequest struct {
 }
 
 // Send marshals and sends the ListJobs API request.
-func (r ListJobsRequest) Send() (*ListJobsOutput, error) {
+func (r ListJobsRequest) Send(ctx context.Context) (*ListJobsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -612,7 +624,7 @@ func (r ListJobsRequest) Send() (*ListJobsOutput, error) {
 //
 //    // Example sending a request using the ListJobsRequest method.
 //    req := client.ListJobsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -646,7 +658,8 @@ type RegisterJobDefinitionRequest struct {
 }
 
 // Send marshals and sends the RegisterJobDefinition API request.
-func (r RegisterJobDefinitionRequest) Send() (*RegisterJobDefinitionOutput, error) {
+func (r RegisterJobDefinitionRequest) Send(ctx context.Context) (*RegisterJobDefinitionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -662,7 +675,7 @@ func (r RegisterJobDefinitionRequest) Send() (*RegisterJobDefinitionOutput, erro
 //
 //    // Example sending a request using the RegisterJobDefinitionRequest method.
 //    req := client.RegisterJobDefinitionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -696,7 +709,8 @@ type SubmitJobRequest struct {
 }
 
 // Send marshals and sends the SubmitJob API request.
-func (r SubmitJobRequest) Send() (*SubmitJobOutput, error) {
+func (r SubmitJobRequest) Send(ctx context.Context) (*SubmitJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -713,7 +727,7 @@ func (r SubmitJobRequest) Send() (*SubmitJobOutput, error) {
 //
 //    // Example sending a request using the SubmitJobRequest method.
 //    req := client.SubmitJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -747,7 +761,8 @@ type TerminateJobRequest struct {
 }
 
 // Send marshals and sends the TerminateJob API request.
-func (r TerminateJobRequest) Send() (*TerminateJobOutput, error) {
+func (r TerminateJobRequest) Send(ctx context.Context) (*TerminateJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -765,7 +780,7 @@ func (r TerminateJobRequest) Send() (*TerminateJobOutput, error) {
 //
 //    // Example sending a request using the TerminateJobRequest method.
 //    req := client.TerminateJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -799,7 +814,8 @@ type UpdateComputeEnvironmentRequest struct {
 }
 
 // Send marshals and sends the UpdateComputeEnvironment API request.
-func (r UpdateComputeEnvironmentRequest) Send() (*UpdateComputeEnvironmentOutput, error) {
+func (r UpdateComputeEnvironmentRequest) Send(ctx context.Context) (*UpdateComputeEnvironmentOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -815,7 +831,7 @@ func (r UpdateComputeEnvironmentRequest) Send() (*UpdateComputeEnvironmentOutput
 //
 //    // Example sending a request using the UpdateComputeEnvironmentRequest method.
 //    req := client.UpdateComputeEnvironmentRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -849,7 +865,8 @@ type UpdateJobQueueRequest struct {
 }
 
 // Send marshals and sends the UpdateJobQueue API request.
-func (r UpdateJobQueueRequest) Send() (*UpdateJobQueueOutput, error) {
+func (r UpdateJobQueueRequest) Send(ctx context.Context) (*UpdateJobQueueOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -865,7 +882,7 @@ func (r UpdateJobQueueRequest) Send() (*UpdateJobQueueOutput, error) {
 //
 //    // Example sending a request using the UpdateJobQueueRequest method.
 //    req := client.UpdateJobQueueRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1468,7 +1485,7 @@ type ComputeResource struct {
 	// The Amazon ECS instance profile applied to Amazon EC2 instances in a compute
 	// environment. You can specify the short name or full Amazon Resource Name
 	// (ARN) of an instance profile. For example, ecsInstanceRole or arn:aws:iam::<aws_account_id>:instance-profile/ecsInstanceRole.
-	// For more information, see Amazon ECS Instance Role (http://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html)
+	// For more information, see Amazon ECS Instance Role (https://docs.aws.amazon.com/batch/latest/userguide/instance_IAM_role.html)
 	// in the AWS Batch User Guide.
 	//
 	// InstanceRole is a required field
@@ -1477,8 +1494,8 @@ type ComputeResource struct {
 	// The instances types that may be launched. You can specify instance families
 	// to launch any instance type within those families (for example, c4 or p3),
 	// or you can specify specific sizes within a family (such as c4.8xlarge). You
-	// can also choose optimal to pick instance types (from the latest C, M, and
-	// R instance families) on the fly that match the demand of your job queues.
+	// can also choose optimal to pick instance types (from the C, M, and R instance
+	// families) on the fly that match the demand of your job queues.
 	//
 	// InstanceTypes is a required field
 	InstanceTypes []string `locationName:"instanceTypes" type:"list" required:"true"`
@@ -1487,6 +1504,8 @@ type ComputeResource struct {
 	// resource parameters that you specify in a CreateComputeEnvironment API operation
 	// override the same parameters in the launch template. You must specify either
 	// the launch template ID or launch template name in the request, but not both.
+	// For more information, see Launch Template Support (https://docs.aws.amazon.com/batch/latest/userguide/launch-templates.html)
+	// in the AWS Batch User Guide.
 	LaunchTemplate *LaunchTemplateSpecification `locationName:"launchTemplate" type:"structure"`
 
 	// The maximum number of EC2 vCPUs that an environment can reach.
@@ -1505,7 +1524,7 @@ type ComputeResource struct {
 	// you should consider creating a cluster placement group and associate it with
 	// your compute resources. This keeps your multi-node parallel job on a logical
 	// grouping of instances within a single Availability Zone with high network
-	// flow potential. For more information, see Placement Groups (http://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
+	// flow potential. For more information, see Placement Groups (https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/placement-groups.html)
 	// in the Amazon EC2 User Guide for Linux Instances.
 	PlacementGroup *string `locationName:"placementGroup" type:"string"`
 
@@ -1514,7 +1533,9 @@ type ComputeResource struct {
 	SecurityGroupIds []string `locationName:"securityGroupIds" type:"list"`
 
 	// The Amazon Resource Name (ARN) of the Amazon EC2 Spot Fleet IAM role applied
-	// to a SPOT compute environment.
+	// to a SPOT compute environment. For more information, see Amazon EC2 Spot
+	// Fleet Role (https://docs.aws.amazon.com/batch/latest/userguide/spot_fleet_IAM_role.html)
+	// in the AWS Batch User Guide.
 	SpotIamFleetRole *string `locationName:"spotIamFleetRole" type:"string"`
 
 	// The VPC subnets into which the compute resources are launched.
@@ -1523,10 +1544,12 @@ type ComputeResource struct {
 	Subnets []string `locationName:"subnets" type:"list" required:"true"`
 
 	// Key-value pair tags to be applied to resources that are launched in the compute
-	// environment.
+	// environment. For AWS Batch, these take the form of "String1": "String2",
+	// where String1 is the tag key and String2 is the tag value—for example, {
+	// "Name": "AWS Batch Instance - C4OnDemand" }.
 	Tags map[string]string `locationName:"tags" type:"map"`
 
-	// The type of compute environment.
+	// The type of compute environment: EC2 or SPOT.
 	//
 	// Type is a required field
 	Type CRType `locationName:"type" type:"string" required:"true" enum:"true"`
@@ -1800,6 +1823,10 @@ type ContainerDetail struct {
 	// details about a running or stopped container.
 	Reason *string `locationName:"reason" type:"string"`
 
+	// The type and amount of a resource to assign to a container. Currently, the
+	// only supported resource is GPU.
+	ResourceRequirements []ResourceRequirement `locationName:"resourceRequirements" type:"list"`
+
 	// The Amazon Resource Name (ARN) of the Amazon ECS task that is associated
 	// with the container job. Each container attempt receives a task ARN when they
 	// reach the STARTING status.
@@ -1938,6 +1965,18 @@ func (s ContainerDetail) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "reason", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
+	if len(s.ResourceRequirements) > 0 {
+		v := s.ResourceRequirements
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "resourceRequirements", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
 	if s.TaskArn != nil {
 		v := *s.TaskArn
 
@@ -2008,6 +2047,11 @@ type ContainerOverrides struct {
 	// value set in the job definition.
 	Memory *int64 `locationName:"memory" type:"integer"`
 
+	// The type and amount of a resource to assign to a container. This value overrides
+	// the value set in the job definition. Currently, the only supported resource
+	// is GPU.
+	ResourceRequirements []ResourceRequirement `locationName:"resourceRequirements" type:"list"`
+
 	// The number of vCPUs to reserve for the container. This value overrides the
 	// value set in the job definition.
 	Vcpus *int64 `locationName:"vcpus" type:"integer"`
@@ -2021,6 +2065,23 @@ func (s ContainerOverrides) String() string {
 // GoString returns the string representation
 func (s ContainerOverrides) GoString() string {
 	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ContainerOverrides) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ContainerOverrides"}
+	if s.ResourceRequirements != nil {
+		for i, v := range s.ResourceRequirements {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "ResourceRequirements", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
@@ -2061,6 +2122,18 @@ func (s ContainerOverrides) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "memory", protocol.Int64Value(v), metadata)
 	}
+	if len(s.ResourceRequirements) > 0 {
+		v := s.ResourceRequirements
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "resourceRequirements", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
+	}
 	if s.Vcpus != nil {
 		v := *s.Vcpus
 
@@ -2077,16 +2150,16 @@ type ContainerProperties struct {
 	_ struct{} `type:"structure"`
 
 	// The command that is passed to the container. This parameter maps to Cmd in
-	// the Create a container (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-	// section of the Docker Remote API (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+	// the Create a container (https://docs.docker.com/engine/api/v1.23/#create-a-container)
+	// section of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 	// and the COMMAND parameter to docker run (https://docs.docker.com/engine/reference/run/).
 	// For more information, see https://docs.docker.com/engine/reference/builder/#cmd
 	// (https://docs.docker.com/engine/reference/builder/#cmd).
 	Command []string `locationName:"command" type:"list"`
 
 	// The environment variables to pass to a container. This parameter maps to
-	// Env in the Create a container (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-	// section of the Docker Remote API (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+	// Env in the Create a container (https://docs.docker.com/engine/api/v1.23/#create-a-container)
+	// section of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 	// and the --env option to docker run (https://docs.docker.com/engine/reference/run/).
 	//
 	// We do not recommend using plaintext environment variables for sensitive information,
@@ -2101,13 +2174,12 @@ type ContainerProperties struct {
 	// Other repositories are specified with repository-url/image:tag. Up to 255
 	// letters (uppercase and lowercase), numbers, hyphens, underscores, colons,
 	// periods, forward slashes, and number signs are allowed. This parameter maps
-	// to Image in the Create a container (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-	// section of the Docker Remote API (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+	// to Image in the Create a container (https://docs.docker.com/engine/api/v1.23/#create-a-container)
+	// section of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 	// and the IMAGE parameter of docker run (https://docs.docker.com/engine/reference/run/).
 	//
 	//    * Images in Amazon ECR repositories use the full registry and repository
 	//    URI (for example, 012345678910.dkr.ecr.<region-name>.amazonaws.com/<repository-name>).
-	//
 	//
 	//    * Images in official repositories on Docker Hub use a single name (for
 	//    example, ubuntu or mongo).
@@ -2130,52 +2202,56 @@ type ContainerProperties struct {
 
 	// The hard limit (in MiB) of memory to present to the container. If your container
 	// attempts to exceed the memory specified here, the container is killed. This
-	// parameter maps to Memory in the Create a container (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-	// section of the Docker Remote API (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+	// parameter maps to Memory in the Create a container (https://docs.docker.com/engine/api/v1.23/#create-a-container)
+	// section of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 	// and the --memory option to docker run (https://docs.docker.com/engine/reference/run/).
 	// You must specify at least 4 MiB of memory for a job.
 	//
 	// If you are trying to maximize your resource utilization by providing your
 	// jobs as much memory as possible for a particular instance type, see Memory
-	// Management (http://docs.aws.amazon.com/batch/latest/userguide/memory-management.html)
+	// Management (https://docs.aws.amazon.com/batch/latest/userguide/memory-management.html)
 	// in the AWS Batch User Guide.
 	Memory *int64 `locationName:"memory" type:"integer"`
 
 	// The mount points for data volumes in your container. This parameter maps
-	// to Volumes in the Create a container (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-	// section of the Docker Remote API (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+	// to Volumes in the Create a container (https://docs.docker.com/engine/api/v1.23/#create-a-container)
+	// section of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 	// and the --volume option to docker run (https://docs.docker.com/engine/reference/run/).
 	MountPoints []MountPoint `locationName:"mountPoints" type:"list"`
 
 	// When this parameter is true, the container is given elevated privileges on
 	// the host container instance (similar to the root user). This parameter maps
-	// to Privileged in the Create a container (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-	// section of the Docker Remote API (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+	// to Privileged in the Create a container (https://docs.docker.com/engine/api/v1.23/#create-a-container)
+	// section of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 	// and the --privileged option to docker run (https://docs.docker.com/engine/reference/run/).
 	Privileged *bool `locationName:"privileged" type:"boolean"`
 
 	// When this parameter is true, the container is given read-only access to its
 	// root file system. This parameter maps to ReadonlyRootfs in the Create a container
-	// (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-	// section of the Docker Remote API (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
-	// and the --read-only option to docker run.
+	// (https://docs.docker.com/engine/api/v1.23/#create-a-container) section of
+	// the Docker Remote API (https://docs.docker.com/engine/api/v1.23/) and the
+	// --read-only option to docker run.
 	ReadonlyRootFilesystem *bool `locationName:"readonlyRootFilesystem" type:"boolean"`
 
+	// The type and amount of a resource to assign to a container. Currently, the
+	// only supported resource is GPU.
+	ResourceRequirements []ResourceRequirement `locationName:"resourceRequirements" type:"list"`
+
 	// A list of ulimits to set in the container. This parameter maps to Ulimits
-	// in the Create a container (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-	// section of the Docker Remote API (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+	// in the Create a container (https://docs.docker.com/engine/api/v1.23/#create-a-container)
+	// section of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 	// and the --ulimit option to docker run (https://docs.docker.com/engine/reference/run/).
 	Ulimits []Ulimit `locationName:"ulimits" type:"list"`
 
 	// The user name to use inside the container. This parameter maps to User in
-	// the Create a container (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-	// section of the Docker Remote API (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+	// the Create a container (https://docs.docker.com/engine/api/v1.23/#create-a-container)
+	// section of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 	// and the --user option to docker run (https://docs.docker.com/engine/reference/run/).
 	User *string `locationName:"user" type:"string"`
 
 	// The number of vCPUs reserved for the container. This parameter maps to CpuShares
-	// in the Create a container (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/#create-a-container)
-	// section of the Docker Remote API (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.23/)
+	// in the Create a container (https://docs.docker.com/engine/api/v1.23/#create-a-container)
+	// section of the Docker Remote API (https://docs.docker.com/engine/api/v1.23/)
 	// and the --cpu-shares option to docker run (https://docs.docker.com/engine/reference/run/).
 	// Each vCPU is equivalent to 1,024 CPU shares. You must specify at least one
 	// vCPU.
@@ -2198,6 +2274,13 @@ func (s ContainerProperties) GoString() string {
 // Validate inspects the fields of the type to determine if they are valid.
 func (s *ContainerProperties) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "ContainerProperties"}
+	if s.ResourceRequirements != nil {
+		for i, v := range s.ResourceRequirements {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "ResourceRequirements", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
 	if s.Ulimits != nil {
 		for i, v := range s.Ulimits {
 			if err := v.Validate(); err != nil {
@@ -2285,6 +2368,18 @@ func (s ContainerProperties) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "readonlyRootFilesystem", protocol.BoolValue(v), metadata)
+	}
+	if len(s.ResourceRequirements) > 0 {
+		v := s.ResourceRequirements
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.BodyTarget, "resourceRequirements", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddFields(v1)
+		}
+		ls0.End()
+
 	}
 	if len(s.Ulimits) > 0 {
 		v := s.Ulimits
@@ -2376,7 +2471,9 @@ type CreateComputeEnvironmentInput struct {
 	ComputeEnvironmentName *string `locationName:"computeEnvironmentName" type:"string" required:"true"`
 
 	// Details of the compute resources managed by the compute environment. This
-	// parameter is required for managed compute environments.
+	// parameter is required for managed compute environments. For more information,
+	// see Compute Environments (https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
+	// in the AWS Batch User Guide.
 	ComputeResources *ComputeResource `locationName:"computeResources" type:"structure"`
 
 	// The full Amazon Resource Name (ARN) of the IAM role that allows AWS Batch
@@ -2401,7 +2498,7 @@ type CreateComputeEnvironmentInput struct {
 	State CEState `locationName:"state" type:"string" enum:"true"`
 
 	// The type of the compute environment. For more information, see Compute Environments
-	// (http://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
+	// (https://docs.aws.amazon.com/batch/latest/userguide/compute_environments.html)
 	// in the AWS Batch User Guide.
 	//
 	// Type is a required field
@@ -3037,8 +3134,8 @@ type DescribeJobDefinitionsInput struct {
 	// The name of the job definition to describe.
 	JobDefinitionName *string `locationName:"jobDefinitionName" type:"string"`
 
-	// A space-separated list of up to 100 job definition names or full Amazon Resource
-	// Name (ARN) entries.
+	// A list of up to 100 job definition names or full Amazon Resource Name (ARN)
+	// entries.
 	JobDefinitions []string `locationName:"jobDefinitions" type:"list"`
 
 	// The maximum number of results returned by DescribeJobDefinitions in paginated
@@ -3298,7 +3395,7 @@ func (s DescribeJobQueuesOutput) MarshalFields(e protocol.FieldEncoder) error {
 type DescribeJobsInput struct {
 	_ struct{} `type:"structure"`
 
-	// A space-separated list of up to 100 job IDs.
+	// A list of up to 100 job IDs.
 	//
 	// Jobs is a required field
 	Jobs []string `locationName:"jobs" type:"list" required:"true"`
@@ -3389,22 +3486,21 @@ func (s DescribeJobsOutput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
-// The contents of the host parameter determine whether your data volume persists
-// on the host container instance and where it is stored. If the host parameter
-// is empty, then the Docker daemon assigns a host path for your data volume,
-// but the data is not guaranteed to persist after the containers associated
-// with it stop running.
+// Determine whether your data volume persists on the host container instance
+// and where it is stored. If this parameter is empty, then the Docker daemon
+// assigns a host path for your data volume, but the data is not guaranteed
+// to persist after the containers associated with it stop running.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/Host
 type Host struct {
 	_ struct{} `type:"structure"`
 
 	// The path on the host container instance that is presented to the container.
 	// If this parameter is empty, then the Docker daemon has assigned a host path
-	// for you. If the host parameter contains a sourcePath file location, then
-	// the data volume persists at the specified location on the host container
-	// instance until you delete it manually. If the sourcePath value does not exist
-	// on the host container instance, the Docker daemon creates it. If the location
-	// does exist, the contents of the source path folder are exported.
+	// for you. If this parameter contains a file location, then the data volume
+	// persists at the specified location on the host container instance until you
+	// delete it manually. If the source path location does not exist on the host
+	// container instance, the Docker daemon creates it. If the location does exist,
+	// the contents of the source path folder are exported.
 	SourcePath *string `locationName:"sourcePath" type:"string"`
 }
 
@@ -3453,7 +3549,9 @@ type JobDefinition struct {
 	// Default parameters or parameter substitution placeholders that are set in
 	// the job definition. Parameters are specified as a key-value pair mapping.
 	// Parameters in a SubmitJob request override any corresponding parameter defaults
-	// from the job definition.
+	// from the job definition. For more information about specifying parameters,
+	// see Job Definition Parameters (https://docs.aws.amazon.com/batch/latest/userguide/job_definition_parameters.html)
+	// in the AWS Batch User Guide.
 	Parameters map[string]string `locationName:"parameters" type:"map"`
 
 	// The retry strategy to use for failed jobs that are submitted with this job
@@ -3667,7 +3765,7 @@ type JobDetail struct {
 
 	// The current status for the job.
 	//
-	// If your jobs do not progress to STARTING, see Jobs Stuck in  (http://docs.aws.amazon.com/batch/latest/userguide/troubleshooting.html#job_stuck_in_runnable)RUNNABLE
+	// If your jobs do not progress to STARTING, see Jobs Stuck in  (https://docs.aws.amazon.com/batch/latest/userguide/troubleshooting.html#job_stuck_in_runnable)RUNNABLE
 	// Status in the troubleshooting section of the AWS Batch User Guide.
 	//
 	// Status is a required field
@@ -4326,7 +4424,8 @@ func (s ListJobsOutput) MarshalFields(e protocol.FieldEncoder) error {
 }
 
 // Details on a Docker volume mount point that is used in a job's container
-// properties.
+// properties. This parameter maps to Volumes in the Create a container (https://docs.docker.com/engine/reference/api/docker_remote_api_v1.19/#create-a-container)
+// section of the Docker Remote API and the --volume option to docker run.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/MountPoint
 type MountPoint struct {
 	_ struct{} `type:"structure"`
@@ -4474,6 +4573,20 @@ type NodeOverrides struct {
 
 	// The node property overrides for the job.
 	NodePropertyOverrides []NodePropertyOverride `locationName:"nodePropertyOverrides" type:"list"`
+
+	// The number of nodes to use with a multi-node parallel job. This value overrides
+	// the number of nodes that are specified in the job definition. To use this
+	// override:
+	//
+	//    * There must be at least one node range in your job definition that has
+	//    an open upper boundary (such as : or n:).
+	//
+	//    * The lower boundary of the node range specified in the job definition
+	//    must be fewer than the number of nodes specified in the override.
+	//
+	//    * The main node index specified in the job definition must be fewer than
+	//    the number of nodes specified in the override.
+	NumNodes *int64 `locationName:"numNodes" type:"integer"`
 }
 
 // String returns the string representation
@@ -4517,6 +4630,12 @@ func (s NodeOverrides) MarshalFields(e protocol.FieldEncoder) error {
 		ls0.End()
 
 	}
+	if s.NumNodes != nil {
+		v := *s.NumNodes
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "numNodes", protocol.Int64Value(v), metadata)
+	}
 	return nil
 }
 
@@ -4526,6 +4645,7 @@ type NodeProperties struct {
 	_ struct{} `type:"structure"`
 
 	// Specifies the node index for the main node of a multi-node parallel job.
+	// This node index value must be fewer than the number of nodes.
 	//
 	// MainNode is a required field
 	MainNode *int64 `locationName:"mainNode" type:"integer" required:"true"`
@@ -4698,6 +4818,11 @@ func (s *NodePropertyOverride) Validate() error {
 	if s.TargetNodes == nil {
 		invalidParams.Add(aws.NewErrParamRequired("TargetNodes"))
 	}
+	if s.ContainerOverrides != nil {
+		if err := s.ContainerOverrides.Validate(); err != nil {
+			invalidParams.AddNested("ContainerOverrides", err.(aws.ErrInvalidParams))
+		}
+	}
 
 	if invalidParams.Len() > 0 {
 		return invalidParams
@@ -4806,7 +4931,7 @@ type RegisterJobDefinitionInput struct {
 
 	// An object with various properties specific to multi-node parallel jobs. If
 	// you specify node properties for a job, it becomes a multi-node parallel job.
-	// For more information, see Multi-node Parallel Jobs (http://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html)
+	// For more information, see Multi-node Parallel Jobs (https://docs.aws.amazon.com/batch/latest/userguide/multi-node-parallel-jobs.html)
 	// in the AWS Batch User Guide. If the job definition's type parameter is container,
 	// then you must specify either containerProperties or nodeProperties.
 	NodeProperties *NodeProperties `locationName:"nodeProperties" type:"structure"`
@@ -4827,7 +4952,7 @@ type RegisterJobDefinitionInput struct {
 	// a job is terminated due to a timeout, it is not retried. The minimum value
 	// for the timeout is 60 seconds. Any timeout configuration that is specified
 	// during a SubmitJob operation overrides the timeout configuration defined
-	// here. For more information, see Job Timeouts (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
+	// here. For more information, see Job Timeouts (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
 	// in the Amazon Elastic Container Service Developer Guide.
 	Timeout *JobTimeout `locationName:"timeout" type:"structure"`
 
@@ -4989,6 +5114,70 @@ func (s RegisterJobDefinitionOutput) MarshalFields(e protocol.FieldEncoder) erro
 	return nil
 }
 
+// The type and amount of a resource to assign to a container. Currently, the
+// only supported resource type is GPU.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/ResourceRequirement
+type ResourceRequirement struct {
+	_ struct{} `type:"structure"`
+
+	// The type of resource to assign to a container. Currently, the only supported
+	// resource type is GPU.
+	//
+	// Type is a required field
+	Type ResourceType `locationName:"type" type:"string" required:"true" enum:"true"`
+
+	// The number of physical GPUs to reserve for the container. The number of GPUs
+	// reserved for all containers in a job should not exceed the number of available
+	// GPUs on the compute resource that the job is launched on.
+	//
+	// Value is a required field
+	Value *string `locationName:"value" type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s ResourceRequirement) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ResourceRequirement) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ResourceRequirement) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ResourceRequirement"}
+	if len(s.Type) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("Type"))
+	}
+
+	if s.Value == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Value"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ResourceRequirement) MarshalFields(e protocol.FieldEncoder) error {
+	if len(s.Type) > 0 {
+		v := s.Type
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "type", protocol.QuotedValue{ValueMarshaler: v}, metadata)
+	}
+	if s.Value != nil {
+		v := *s.Value
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "value", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
 // The retry strategy associated with a job.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/batch-2016-08-10/RetryStrategy
 type RetryStrategy struct {
@@ -5028,7 +5217,7 @@ type SubmitJobInput struct {
 	// The array properties for the submitted job, such as the size of the array.
 	// The array size can be between 2 and 10,000. If you specify array properties
 	// for a job, it becomes an array job. For more information, see Array Jobs
-	// (http://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html) in the
+	// (https://docs.aws.amazon.com/batch/latest/userguide/array_jobs.html) in the
 	// AWS Batch User Guide.
 	ArrayProperties *ArrayProperties `locationName:"arrayProperties" type:"structure"`
 
@@ -5090,7 +5279,7 @@ type SubmitJobInput struct {
 	// The minimum value for the timeout is 60 seconds. This configuration overrides
 	// any timeout configuration specified in the job definition. For array jobs,
 	// child jobs have the same timeout configuration as the parent job. For more
-	// information, see Job Timeouts (http://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
+	// information, see Job Timeouts (https://docs.aws.amazon.com/AmazonECS/latest/developerguide/job_timeouts.html)
 	// in the Amazon Elastic Container Service Developer Guide.
 	Timeout *JobTimeout `locationName:"timeout" type:"structure"`
 }
@@ -5119,6 +5308,11 @@ func (s *SubmitJobInput) Validate() error {
 
 	if s.JobQueue == nil {
 		invalidParams.Add(aws.NewErrParamRequired("JobQueue"))
+	}
+	if s.ContainerOverrides != nil {
+		if err := s.ContainerOverrides.Validate(); err != nil {
+			invalidParams.AddNested("ContainerOverrides", err.(aws.ErrInvalidParams))
+		}
 	}
 	if s.NodeOverrides != nil {
 		if err := s.NodeOverrides.Validate(); err != nil {
@@ -5906,6 +6100,22 @@ func (enum JobStatus) MarshalValue() (string, error) {
 }
 
 func (enum JobStatus) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
+type ResourceType string
+
+// Enum values for ResourceType
+const (
+	ResourceTypeGpu ResourceType = "GPU"
+)
+
+func (enum ResourceType) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum ResourceType) MarshalValueBuf(b []byte) ([]byte, error) {
 	b = b[0:0]
 	return append(b, enum...), nil
 }

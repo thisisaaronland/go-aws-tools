@@ -3,6 +3,7 @@
 package lightsail
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -20,7 +21,8 @@ type AllocateStaticIpRequest struct {
 }
 
 // Send marshals and sends the AllocateStaticIp API request.
-func (r AllocateStaticIpRequest) Send() (*AllocateStaticIpOutput, error) {
+func (r AllocateStaticIpRequest) Send(ctx context.Context) (*AllocateStaticIpOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -36,7 +38,7 @@ func (r AllocateStaticIpRequest) Send() (*AllocateStaticIpOutput, error) {
 //
 //    // Example sending a request using the AllocateStaticIpRequest method.
 //    req := client.AllocateStaticIpRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -70,7 +72,8 @@ type AttachDiskRequest struct {
 }
 
 // Send marshals and sends the AttachDisk API request.
-func (r AttachDiskRequest) Send() (*AttachDiskOutput, error) {
+func (r AttachDiskRequest) Send(ctx context.Context) (*AttachDiskOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -91,7 +94,7 @@ func (r AttachDiskRequest) Send() (*AttachDiskOutput, error) {
 //
 //    // Example sending a request using the AttachDiskRequest method.
 //    req := client.AttachDiskRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -125,7 +128,8 @@ type AttachInstancesToLoadBalancerRequest struct {
 }
 
 // Send marshals and sends the AttachInstancesToLoadBalancer API request.
-func (r AttachInstancesToLoadBalancerRequest) Send() (*AttachInstancesToLoadBalancerOutput, error) {
+func (r AttachInstancesToLoadBalancerRequest) Send(ctx context.Context) (*AttachInstancesToLoadBalancerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -148,7 +152,7 @@ func (r AttachInstancesToLoadBalancerRequest) Send() (*AttachInstancesToLoadBala
 //
 //    // Example sending a request using the AttachInstancesToLoadBalancerRequest method.
 //    req := client.AttachInstancesToLoadBalancerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -182,7 +186,8 @@ type AttachLoadBalancerTlsCertificateRequest struct {
 }
 
 // Send marshals and sends the AttachLoadBalancerTlsCertificate API request.
-func (r AttachLoadBalancerTlsCertificateRequest) Send() (*AttachLoadBalancerTlsCertificateOutput, error) {
+func (r AttachLoadBalancerTlsCertificateRequest) Send(ctx context.Context) (*AttachLoadBalancerTlsCertificateOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -209,7 +214,7 @@ func (r AttachLoadBalancerTlsCertificateRequest) Send() (*AttachLoadBalancerTlsC
 //
 //    // Example sending a request using the AttachLoadBalancerTlsCertificateRequest method.
 //    req := client.AttachLoadBalancerTlsCertificateRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -243,7 +248,8 @@ type AttachStaticIpRequest struct {
 }
 
 // Send marshals and sends the AttachStaticIp API request.
-func (r AttachStaticIpRequest) Send() (*AttachStaticIpOutput, error) {
+func (r AttachStaticIpRequest) Send(ctx context.Context) (*AttachStaticIpOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -259,7 +265,7 @@ func (r AttachStaticIpRequest) Send() (*AttachStaticIpOutput, error) {
 //
 //    // Example sending a request using the AttachStaticIpRequest method.
 //    req := client.AttachStaticIpRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -293,7 +299,8 @@ type CloseInstancePublicPortsRequest struct {
 }
 
 // Send marshals and sends the CloseInstancePublicPorts API request.
-func (r CloseInstancePublicPortsRequest) Send() (*CloseInstancePublicPortsOutput, error) {
+func (r CloseInstancePublicPortsRequest) Send(ctx context.Context) (*CloseInstancePublicPortsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -313,7 +320,7 @@ func (r CloseInstancePublicPortsRequest) Send() (*CloseInstancePublicPortsOutput
 //
 //    // Example sending a request using the CloseInstancePublicPortsRequest method.
 //    req := client.CloseInstancePublicPortsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -347,7 +354,8 @@ type CopySnapshotRequest struct {
 }
 
 // Send marshals and sends the CopySnapshot API request.
-func (r CopySnapshotRequest) Send() (*CopySnapshotOutput, error) {
+func (r CopySnapshotRequest) Send(ctx context.Context) (*CopySnapshotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -364,7 +372,7 @@ func (r CopySnapshotRequest) Send() (*CopySnapshotOutput, error) {
 //
 //    // Example sending a request using the CopySnapshotRequest method.
 //    req := client.CopySnapshotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -398,7 +406,8 @@ type CreateCloudFormationStackRequest struct {
 }
 
 // Send marshals and sends the CreateCloudFormationStack API request.
-func (r CreateCloudFormationStackRequest) Send() (*CreateCloudFormationStackOutput, error) {
+func (r CreateCloudFormationStackRequest) Send(ctx context.Context) (*CreateCloudFormationStackOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -422,7 +431,7 @@ func (r CreateCloudFormationStackRequest) Send() (*CreateCloudFormationStackOutp
 //
 //    // Example sending a request using the CreateCloudFormationStackRequest method.
 //    req := client.CreateCloudFormationStackRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -456,7 +465,8 @@ type CreateDiskRequest struct {
 }
 
 // Send marshals and sends the CreateDisk API request.
-func (r CreateDiskRequest) Send() (*CreateDiskOutput, error) {
+func (r CreateDiskRequest) Send(ctx context.Context) (*CreateDiskOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -478,7 +488,7 @@ func (r CreateDiskRequest) Send() (*CreateDiskOutput, error) {
 //
 //    // Example sending a request using the CreateDiskRequest method.
 //    req := client.CreateDiskRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -512,7 +522,8 @@ type CreateDiskFromSnapshotRequest struct {
 }
 
 // Send marshals and sends the CreateDiskFromSnapshot API request.
-func (r CreateDiskFromSnapshotRequest) Send() (*CreateDiskFromSnapshotOutput, error) {
+func (r CreateDiskFromSnapshotRequest) Send(ctx context.Context) (*CreateDiskFromSnapshotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -535,7 +546,7 @@ func (r CreateDiskFromSnapshotRequest) Send() (*CreateDiskFromSnapshotOutput, er
 //
 //    // Example sending a request using the CreateDiskFromSnapshotRequest method.
 //    req := client.CreateDiskFromSnapshotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -569,7 +580,8 @@ type CreateDiskSnapshotRequest struct {
 }
 
 // Send marshals and sends the CreateDiskSnapshot API request.
-func (r CreateDiskSnapshotRequest) Send() (*CreateDiskSnapshotOutput, error) {
+func (r CreateDiskSnapshotRequest) Send(ctx context.Context) (*CreateDiskSnapshotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -596,12 +608,22 @@ func (r CreateDiskSnapshotRequest) Send() (*CreateDiskSnapshotOutput, error) {
 // snapshot. You may remount and use your disk while the snapshot status is
 // pending.
 //
+// You can also use this operation to create a snapshot of an instance's system
+// volume. You might want to do this, for example, to recover data from the
+// system volume of a botched instance or to create a backup of the system volume
+// like you would for a block storage disk. To create a snapshot of a system
+// volume, just define the instance name parameter when issuing the snapshot
+// command, and a snapshot of the defined instance's system volume will be created.
+// After the snapshot is available, you can create a block storage disk from
+// the snapshot and attach it to a running instance to access the data on the
+// disk.
+//
 // The create disk snapshot operation supports tag-based access control via
 // request tags. For more information, see the Lightsail Dev Guide (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 //
 //    // Example sending a request using the CreateDiskSnapshotRequest method.
 //    req := client.CreateDiskSnapshotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -635,7 +657,8 @@ type CreateDomainRequest struct {
 }
 
 // Send marshals and sends the CreateDomain API request.
-func (r CreateDomainRequest) Send() (*CreateDomainOutput, error) {
+func (r CreateDomainRequest) Send(ctx context.Context) (*CreateDomainOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -654,7 +677,7 @@ func (r CreateDomainRequest) Send() (*CreateDomainOutput, error) {
 //
 //    // Example sending a request using the CreateDomainRequest method.
 //    req := client.CreateDomainRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -688,7 +711,8 @@ type CreateDomainEntryRequest struct {
 }
 
 // Send marshals and sends the CreateDomainEntry API request.
-func (r CreateDomainEntryRequest) Send() (*CreateDomainEntryOutput, error) {
+func (r CreateDomainEntryRequest) Send(ctx context.Context) (*CreateDomainEntryOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -700,8 +724,9 @@ func (r CreateDomainEntryRequest) Send() (*CreateDomainEntryOutput, error) {
 // CreateDomainEntryRequest returns a request value for making API operation for
 // Amazon Lightsail.
 //
-// Creates one of the following entry records associated with the domain: A
-// record, CNAME record, TXT record, or MX record.
+// Creates one of the following entry records associated with the domain: Address
+// (A), canonical name (CNAME), mail exchanger (MX), name server (NS), start
+// of authority (SOA), service locator (SRV), or text (TXT).
 //
 // The create domain entry operation supports tag-based access control via resource
 // tags applied to the resource identified by domainName. For more information,
@@ -709,7 +734,7 @@ func (r CreateDomainEntryRequest) Send() (*CreateDomainEntryOutput, error) {
 //
 //    // Example sending a request using the CreateDomainEntryRequest method.
 //    req := client.CreateDomainEntryRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -743,7 +768,8 @@ type CreateInstanceSnapshotRequest struct {
 }
 
 // Send marshals and sends the CreateInstanceSnapshot API request.
-func (r CreateInstanceSnapshotRequest) Send() (*CreateInstanceSnapshotOutput, error) {
+func (r CreateInstanceSnapshotRequest) Send(ctx context.Context) (*CreateInstanceSnapshotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -763,7 +789,7 @@ func (r CreateInstanceSnapshotRequest) Send() (*CreateInstanceSnapshotOutput, er
 //
 //    // Example sending a request using the CreateInstanceSnapshotRequest method.
 //    req := client.CreateInstanceSnapshotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -797,7 +823,8 @@ type CreateInstancesRequest struct {
 }
 
 // Send marshals and sends the CreateInstances API request.
-func (r CreateInstancesRequest) Send() (*CreateInstancesOutput, error) {
+func (r CreateInstancesRequest) Send(ctx context.Context) (*CreateInstancesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -821,7 +848,7 @@ func (r CreateInstancesRequest) Send() (*CreateInstancesOutput, error) {
 //
 //    // Example sending a request using the CreateInstancesRequest method.
 //    req := client.CreateInstancesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -855,7 +882,8 @@ type CreateInstancesFromSnapshotRequest struct {
 }
 
 // Send marshals and sends the CreateInstancesFromSnapshot API request.
-func (r CreateInstancesFromSnapshotRequest) Send() (*CreateInstancesFromSnapshotOutput, error) {
+func (r CreateInstancesFromSnapshotRequest) Send(ctx context.Context) (*CreateInstancesFromSnapshotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -876,7 +904,7 @@ func (r CreateInstancesFromSnapshotRequest) Send() (*CreateInstancesFromSnapshot
 //
 //    // Example sending a request using the CreateInstancesFromSnapshotRequest method.
 //    req := client.CreateInstancesFromSnapshotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -910,7 +938,8 @@ type CreateKeyPairRequest struct {
 }
 
 // Send marshals and sends the CreateKeyPair API request.
-func (r CreateKeyPairRequest) Send() (*CreateKeyPairOutput, error) {
+func (r CreateKeyPairRequest) Send(ctx context.Context) (*CreateKeyPairOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -929,7 +958,7 @@ func (r CreateKeyPairRequest) Send() (*CreateKeyPairOutput, error) {
 //
 //    // Example sending a request using the CreateKeyPairRequest method.
 //    req := client.CreateKeyPairRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -963,7 +992,8 @@ type CreateLoadBalancerRequest struct {
 }
 
 // Send marshals and sends the CreateLoadBalancer API request.
-func (r CreateLoadBalancerRequest) Send() (*CreateLoadBalancerOutput, error) {
+func (r CreateLoadBalancerRequest) Send(ctx context.Context) (*CreateLoadBalancerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -989,7 +1019,7 @@ func (r CreateLoadBalancerRequest) Send() (*CreateLoadBalancerOutput, error) {
 //
 //    // Example sending a request using the CreateLoadBalancerRequest method.
 //    req := client.CreateLoadBalancerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1023,7 +1053,8 @@ type CreateLoadBalancerTlsCertificateRequest struct {
 }
 
 // Send marshals and sends the CreateLoadBalancerTlsCertificate API request.
-func (r CreateLoadBalancerTlsCertificateRequest) Send() (*CreateLoadBalancerTlsCertificateOutput, error) {
+func (r CreateLoadBalancerTlsCertificateRequest) Send(ctx context.Context) (*CreateLoadBalancerTlsCertificateOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1045,7 +1076,7 @@ func (r CreateLoadBalancerTlsCertificateRequest) Send() (*CreateLoadBalancerTlsC
 //
 //    // Example sending a request using the CreateLoadBalancerTlsCertificateRequest method.
 //    req := client.CreateLoadBalancerTlsCertificateRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1079,7 +1110,8 @@ type CreateRelationalDatabaseRequest struct {
 }
 
 // Send marshals and sends the CreateRelationalDatabase API request.
-func (r CreateRelationalDatabaseRequest) Send() (*CreateRelationalDatabaseOutput, error) {
+func (r CreateRelationalDatabaseRequest) Send(ctx context.Context) (*CreateRelationalDatabaseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1098,7 +1130,7 @@ func (r CreateRelationalDatabaseRequest) Send() (*CreateRelationalDatabaseOutput
 //
 //    // Example sending a request using the CreateRelationalDatabaseRequest method.
 //    req := client.CreateRelationalDatabaseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1132,7 +1164,8 @@ type CreateRelationalDatabaseFromSnapshotRequest struct {
 }
 
 // Send marshals and sends the CreateRelationalDatabaseFromSnapshot API request.
-func (r CreateRelationalDatabaseFromSnapshotRequest) Send() (*CreateRelationalDatabaseFromSnapshotOutput, error) {
+func (r CreateRelationalDatabaseFromSnapshotRequest) Send(ctx context.Context) (*CreateRelationalDatabaseFromSnapshotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1157,7 +1190,7 @@ func (r CreateRelationalDatabaseFromSnapshotRequest) Send() (*CreateRelationalDa
 //
 //    // Example sending a request using the CreateRelationalDatabaseFromSnapshotRequest method.
 //    req := client.CreateRelationalDatabaseFromSnapshotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1191,7 +1224,8 @@ type CreateRelationalDatabaseSnapshotRequest struct {
 }
 
 // Send marshals and sends the CreateRelationalDatabaseSnapshot API request.
-func (r CreateRelationalDatabaseSnapshotRequest) Send() (*CreateRelationalDatabaseSnapshotOutput, error) {
+func (r CreateRelationalDatabaseSnapshotRequest) Send(ctx context.Context) (*CreateRelationalDatabaseSnapshotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1213,7 +1247,7 @@ func (r CreateRelationalDatabaseSnapshotRequest) Send() (*CreateRelationalDataba
 //
 //    // Example sending a request using the CreateRelationalDatabaseSnapshotRequest method.
 //    req := client.CreateRelationalDatabaseSnapshotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1247,7 +1281,8 @@ type DeleteDiskRequest struct {
 }
 
 // Send marshals and sends the DeleteDisk API request.
-func (r DeleteDiskRequest) Send() (*DeleteDiskOutput, error) {
+func (r DeleteDiskRequest) Send(ctx context.Context) (*DeleteDiskOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1270,7 +1305,7 @@ func (r DeleteDiskRequest) Send() (*DeleteDiskOutput, error) {
 //
 //    // Example sending a request using the DeleteDiskRequest method.
 //    req := client.DeleteDiskRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1304,7 +1339,8 @@ type DeleteDiskSnapshotRequest struct {
 }
 
 // Send marshals and sends the DeleteDiskSnapshot API request.
-func (r DeleteDiskSnapshotRequest) Send() (*DeleteDiskSnapshotOutput, error) {
+func (r DeleteDiskSnapshotRequest) Send(ctx context.Context) (*DeleteDiskSnapshotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1331,7 +1367,7 @@ func (r DeleteDiskSnapshotRequest) Send() (*DeleteDiskSnapshotOutput, error) {
 //
 //    // Example sending a request using the DeleteDiskSnapshotRequest method.
 //    req := client.DeleteDiskSnapshotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1365,7 +1401,8 @@ type DeleteDomainRequest struct {
 }
 
 // Send marshals and sends the DeleteDomain API request.
-func (r DeleteDomainRequest) Send() (*DeleteDomainOutput, error) {
+func (r DeleteDomainRequest) Send(ctx context.Context) (*DeleteDomainOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1385,7 +1422,7 @@ func (r DeleteDomainRequest) Send() (*DeleteDomainOutput, error) {
 //
 //    // Example sending a request using the DeleteDomainRequest method.
 //    req := client.DeleteDomainRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1419,7 +1456,8 @@ type DeleteDomainEntryRequest struct {
 }
 
 // Send marshals and sends the DeleteDomainEntry API request.
-func (r DeleteDomainEntryRequest) Send() (*DeleteDomainEntryOutput, error) {
+func (r DeleteDomainEntryRequest) Send(ctx context.Context) (*DeleteDomainEntryOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1439,7 +1477,7 @@ func (r DeleteDomainEntryRequest) Send() (*DeleteDomainEntryOutput, error) {
 //
 //    // Example sending a request using the DeleteDomainEntryRequest method.
 //    req := client.DeleteDomainEntryRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1473,7 +1511,8 @@ type DeleteInstanceRequest struct {
 }
 
 // Send marshals and sends the DeleteInstance API request.
-func (r DeleteInstanceRequest) Send() (*DeleteInstanceOutput, error) {
+func (r DeleteInstanceRequest) Send(ctx context.Context) (*DeleteInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1493,7 +1532,7 @@ func (r DeleteInstanceRequest) Send() (*DeleteInstanceOutput, error) {
 //
 //    // Example sending a request using the DeleteInstanceRequest method.
 //    req := client.DeleteInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1527,7 +1566,8 @@ type DeleteInstanceSnapshotRequest struct {
 }
 
 // Send marshals and sends the DeleteInstanceSnapshot API request.
-func (r DeleteInstanceSnapshotRequest) Send() (*DeleteInstanceSnapshotOutput, error) {
+func (r DeleteInstanceSnapshotRequest) Send(ctx context.Context) (*DeleteInstanceSnapshotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1547,7 +1587,7 @@ func (r DeleteInstanceSnapshotRequest) Send() (*DeleteInstanceSnapshotOutput, er
 //
 //    // Example sending a request using the DeleteInstanceSnapshotRequest method.
 //    req := client.DeleteInstanceSnapshotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1581,7 +1621,8 @@ type DeleteKeyPairRequest struct {
 }
 
 // Send marshals and sends the DeleteKeyPair API request.
-func (r DeleteKeyPairRequest) Send() (*DeleteKeyPairOutput, error) {
+func (r DeleteKeyPairRequest) Send(ctx context.Context) (*DeleteKeyPairOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1601,7 +1642,7 @@ func (r DeleteKeyPairRequest) Send() (*DeleteKeyPairOutput, error) {
 //
 //    // Example sending a request using the DeleteKeyPairRequest method.
 //    req := client.DeleteKeyPairRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1625,6 +1666,65 @@ func (c *Lightsail) DeleteKeyPairRequest(input *DeleteKeyPairInput) DeleteKeyPai
 	return DeleteKeyPairRequest{Request: req, Input: input, Copy: c.DeleteKeyPairRequest}
 }
 
+const opDeleteKnownHostKeys = "DeleteKnownHostKeys"
+
+// DeleteKnownHostKeysRequest is a API request type for the DeleteKnownHostKeys API operation.
+type DeleteKnownHostKeysRequest struct {
+	*aws.Request
+	Input *DeleteKnownHostKeysInput
+	Copy  func(*DeleteKnownHostKeysInput) DeleteKnownHostKeysRequest
+}
+
+// Send marshals and sends the DeleteKnownHostKeys API request.
+func (r DeleteKnownHostKeysRequest) Send(ctx context.Context) (*DeleteKnownHostKeysOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*DeleteKnownHostKeysOutput), nil
+}
+
+// DeleteKnownHostKeysRequest returns a request value for making API operation for
+// Amazon Lightsail.
+//
+// Deletes the known host key or certificate used by the Amazon Lightsail browser-based
+// SSH or RDP clients to authenticate an instance. This operation enables the
+// Lightsail browser-based SSH or RDP clients to connect to the instance after
+// a host key mismatch.
+//
+// Perform this operation only if you were expecting the host key or certificate
+// mismatch or if you are familiar with the new host key or certificate on the
+// instance. For more information, see Troubleshooting connection issues when
+// using the Amazon Lightsail browser-based SSH or RDP client (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-troubleshooting-browser-based-ssh-rdp-client-connection).
+//
+//    // Example sending a request using the DeleteKnownHostKeysRequest method.
+//    req := client.DeleteKnownHostKeysRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DeleteKnownHostKeys
+func (c *Lightsail) DeleteKnownHostKeysRequest(input *DeleteKnownHostKeysInput) DeleteKnownHostKeysRequest {
+	op := &aws.Operation{
+		Name:       opDeleteKnownHostKeys,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &DeleteKnownHostKeysInput{}
+	}
+
+	output := &DeleteKnownHostKeysOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return DeleteKnownHostKeysRequest{Request: req, Input: input, Copy: c.DeleteKnownHostKeysRequest}
+}
+
 const opDeleteLoadBalancer = "DeleteLoadBalancer"
 
 // DeleteLoadBalancerRequest is a API request type for the DeleteLoadBalancer API operation.
@@ -1635,7 +1735,8 @@ type DeleteLoadBalancerRequest struct {
 }
 
 // Send marshals and sends the DeleteLoadBalancer API request.
-func (r DeleteLoadBalancerRequest) Send() (*DeleteLoadBalancerOutput, error) {
+func (r DeleteLoadBalancerRequest) Send(ctx context.Context) (*DeleteLoadBalancerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1657,7 +1758,7 @@ func (r DeleteLoadBalancerRequest) Send() (*DeleteLoadBalancerOutput, error) {
 //
 //    // Example sending a request using the DeleteLoadBalancerRequest method.
 //    req := client.DeleteLoadBalancerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1691,7 +1792,8 @@ type DeleteLoadBalancerTlsCertificateRequest struct {
 }
 
 // Send marshals and sends the DeleteLoadBalancerTlsCertificate API request.
-func (r DeleteLoadBalancerTlsCertificateRequest) Send() (*DeleteLoadBalancerTlsCertificateOutput, error) {
+func (r DeleteLoadBalancerTlsCertificateRequest) Send(ctx context.Context) (*DeleteLoadBalancerTlsCertificateOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1711,7 +1813,7 @@ func (r DeleteLoadBalancerTlsCertificateRequest) Send() (*DeleteLoadBalancerTlsC
 //
 //    // Example sending a request using the DeleteLoadBalancerTlsCertificateRequest method.
 //    req := client.DeleteLoadBalancerTlsCertificateRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1745,7 +1847,8 @@ type DeleteRelationalDatabaseRequest struct {
 }
 
 // Send marshals and sends the DeleteRelationalDatabase API request.
-func (r DeleteRelationalDatabaseRequest) Send() (*DeleteRelationalDatabaseOutput, error) {
+func (r DeleteRelationalDatabaseRequest) Send(ctx context.Context) (*DeleteRelationalDatabaseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1765,7 +1868,7 @@ func (r DeleteRelationalDatabaseRequest) Send() (*DeleteRelationalDatabaseOutput
 //
 //    // Example sending a request using the DeleteRelationalDatabaseRequest method.
 //    req := client.DeleteRelationalDatabaseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1799,7 +1902,8 @@ type DeleteRelationalDatabaseSnapshotRequest struct {
 }
 
 // Send marshals and sends the DeleteRelationalDatabaseSnapshot API request.
-func (r DeleteRelationalDatabaseSnapshotRequest) Send() (*DeleteRelationalDatabaseSnapshotOutput, error) {
+func (r DeleteRelationalDatabaseSnapshotRequest) Send(ctx context.Context) (*DeleteRelationalDatabaseSnapshotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1819,7 +1923,7 @@ func (r DeleteRelationalDatabaseSnapshotRequest) Send() (*DeleteRelationalDataba
 //
 //    // Example sending a request using the DeleteRelationalDatabaseSnapshotRequest method.
 //    req := client.DeleteRelationalDatabaseSnapshotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1853,7 +1957,8 @@ type DetachDiskRequest struct {
 }
 
 // Send marshals and sends the DetachDisk API request.
-func (r DetachDiskRequest) Send() (*DetachDiskOutput, error) {
+func (r DetachDiskRequest) Send(ctx context.Context) (*DetachDiskOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1875,7 +1980,7 @@ func (r DetachDiskRequest) Send() (*DetachDiskOutput, error) {
 //
 //    // Example sending a request using the DetachDiskRequest method.
 //    req := client.DetachDiskRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1909,7 +2014,8 @@ type DetachInstancesFromLoadBalancerRequest struct {
 }
 
 // Send marshals and sends the DetachInstancesFromLoadBalancer API request.
-func (r DetachInstancesFromLoadBalancerRequest) Send() (*DetachInstancesFromLoadBalancerOutput, error) {
+func (r DetachInstancesFromLoadBalancerRequest) Send(ctx context.Context) (*DetachInstancesFromLoadBalancerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1932,7 +2038,7 @@ func (r DetachInstancesFromLoadBalancerRequest) Send() (*DetachInstancesFromLoad
 //
 //    // Example sending a request using the DetachInstancesFromLoadBalancerRequest method.
 //    req := client.DetachInstancesFromLoadBalancerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1966,7 +2072,8 @@ type DetachStaticIpRequest struct {
 }
 
 // Send marshals and sends the DetachStaticIp API request.
-func (r DetachStaticIpRequest) Send() (*DetachStaticIpOutput, error) {
+func (r DetachStaticIpRequest) Send(ctx context.Context) (*DetachStaticIpOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1982,7 +2089,7 @@ func (r DetachStaticIpRequest) Send() (*DetachStaticIpOutput, error) {
 //
 //    // Example sending a request using the DetachStaticIpRequest method.
 //    req := client.DetachStaticIpRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2016,7 +2123,8 @@ type DownloadDefaultKeyPairRequest struct {
 }
 
 // Send marshals and sends the DownloadDefaultKeyPair API request.
-func (r DownloadDefaultKeyPairRequest) Send() (*DownloadDefaultKeyPairOutput, error) {
+func (r DownloadDefaultKeyPairRequest) Send(ctx context.Context) (*DownloadDefaultKeyPairOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2032,7 +2140,7 @@ func (r DownloadDefaultKeyPairRequest) Send() (*DownloadDefaultKeyPairOutput, er
 //
 //    // Example sending a request using the DownloadDefaultKeyPairRequest method.
 //    req := client.DownloadDefaultKeyPairRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2066,7 +2174,8 @@ type ExportSnapshotRequest struct {
 }
 
 // Send marshals and sends the ExportSnapshot API request.
-func (r ExportSnapshotRequest) Send() (*ExportSnapshotOutput, error) {
+func (r ExportSnapshotRequest) Send(ctx context.Context) (*ExportSnapshotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2078,7 +2187,7 @@ func (r ExportSnapshotRequest) Send() (*ExportSnapshotOutput, error) {
 // ExportSnapshotRequest returns a request value for making API operation for
 // Amazon Lightsail.
 //
-// Exports a Amazon Lightsail instance or block storage disk snapshot to Amazon
+// Exports an Amazon Lightsail instance or block storage disk snapshot to Amazon
 // Elastic Compute Cloud (Amazon EC2). This operation results in an export snapshot
 // record that can be used with the create cloud formation stack operation to
 // create new Amazon EC2 instances.
@@ -2098,7 +2207,7 @@ func (r ExportSnapshotRequest) Send() (*ExportSnapshotOutput, error) {
 //
 //    // Example sending a request using the ExportSnapshotRequest method.
 //    req := client.ExportSnapshotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2132,7 +2241,8 @@ type GetActiveNamesRequest struct {
 }
 
 // Send marshals and sends the GetActiveNames API request.
-func (r GetActiveNamesRequest) Send() (*GetActiveNamesOutput, error) {
+func (r GetActiveNamesRequest) Send(ctx context.Context) (*GetActiveNamesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2148,7 +2258,7 @@ func (r GetActiveNamesRequest) Send() (*GetActiveNamesOutput, error) {
 //
 //    // Example sending a request using the GetActiveNamesRequest method.
 //    req := client.GetActiveNamesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2182,7 +2292,8 @@ type GetBlueprintsRequest struct {
 }
 
 // Send marshals and sends the GetBlueprints API request.
-func (r GetBlueprintsRequest) Send() (*GetBlueprintsOutput, error) {
+func (r GetBlueprintsRequest) Send(ctx context.Context) (*GetBlueprintsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2201,7 +2312,7 @@ func (r GetBlueprintsRequest) Send() (*GetBlueprintsOutput, error) {
 //
 //    // Example sending a request using the GetBlueprintsRequest method.
 //    req := client.GetBlueprintsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2235,7 +2346,8 @@ type GetBundlesRequest struct {
 }
 
 // Send marshals and sends the GetBundles API request.
-func (r GetBundlesRequest) Send() (*GetBundlesOutput, error) {
+func (r GetBundlesRequest) Send(ctx context.Context) (*GetBundlesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2252,7 +2364,7 @@ func (r GetBundlesRequest) Send() (*GetBundlesOutput, error) {
 //
 //    // Example sending a request using the GetBundlesRequest method.
 //    req := client.GetBundlesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2286,7 +2398,8 @@ type GetCloudFormationStackRecordsRequest struct {
 }
 
 // Send marshals and sends the GetCloudFormationStackRecords API request.
-func (r GetCloudFormationStackRecordsRequest) Send() (*GetCloudFormationStackRecordsOutput, error) {
+func (r GetCloudFormationStackRecordsRequest) Send(ctx context.Context) (*GetCloudFormationStackRecordsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2306,7 +2419,7 @@ func (r GetCloudFormationStackRecordsRequest) Send() (*GetCloudFormationStackRec
 //
 //    // Example sending a request using the GetCloudFormationStackRecordsRequest method.
 //    req := client.GetCloudFormationStackRecordsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2340,7 +2453,8 @@ type GetDiskRequest struct {
 }
 
 // Send marshals and sends the GetDisk API request.
-func (r GetDiskRequest) Send() (*GetDiskOutput, error) {
+func (r GetDiskRequest) Send(ctx context.Context) (*GetDiskOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2356,7 +2470,7 @@ func (r GetDiskRequest) Send() (*GetDiskOutput, error) {
 //
 //    // Example sending a request using the GetDiskRequest method.
 //    req := client.GetDiskRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2390,7 +2504,8 @@ type GetDiskSnapshotRequest struct {
 }
 
 // Send marshals and sends the GetDiskSnapshot API request.
-func (r GetDiskSnapshotRequest) Send() (*GetDiskSnapshotOutput, error) {
+func (r GetDiskSnapshotRequest) Send(ctx context.Context) (*GetDiskSnapshotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2406,7 +2521,7 @@ func (r GetDiskSnapshotRequest) Send() (*GetDiskSnapshotOutput, error) {
 //
 //    // Example sending a request using the GetDiskSnapshotRequest method.
 //    req := client.GetDiskSnapshotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2440,7 +2555,8 @@ type GetDiskSnapshotsRequest struct {
 }
 
 // Send marshals and sends the GetDiskSnapshots API request.
-func (r GetDiskSnapshotsRequest) Send() (*GetDiskSnapshotsOutput, error) {
+func (r GetDiskSnapshotsRequest) Send(ctx context.Context) (*GetDiskSnapshotsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2461,7 +2577,7 @@ func (r GetDiskSnapshotsRequest) Send() (*GetDiskSnapshotsOutput, error) {
 //
 //    // Example sending a request using the GetDiskSnapshotsRequest method.
 //    req := client.GetDiskSnapshotsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2495,7 +2611,8 @@ type GetDisksRequest struct {
 }
 
 // Send marshals and sends the GetDisks API request.
-func (r GetDisksRequest) Send() (*GetDisksOutput, error) {
+func (r GetDisksRequest) Send(ctx context.Context) (*GetDisksOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2516,7 +2633,7 @@ func (r GetDisksRequest) Send() (*GetDisksOutput, error) {
 //
 //    // Example sending a request using the GetDisksRequest method.
 //    req := client.GetDisksRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2550,7 +2667,8 @@ type GetDomainRequest struct {
 }
 
 // Send marshals and sends the GetDomain API request.
-func (r GetDomainRequest) Send() (*GetDomainOutput, error) {
+func (r GetDomainRequest) Send(ctx context.Context) (*GetDomainOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2566,7 +2684,7 @@ func (r GetDomainRequest) Send() (*GetDomainOutput, error) {
 //
 //    // Example sending a request using the GetDomainRequest method.
 //    req := client.GetDomainRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2600,7 +2718,8 @@ type GetDomainsRequest struct {
 }
 
 // Send marshals and sends the GetDomains API request.
-func (r GetDomainsRequest) Send() (*GetDomainsOutput, error) {
+func (r GetDomainsRequest) Send(ctx context.Context) (*GetDomainsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2616,7 +2735,7 @@ func (r GetDomainsRequest) Send() (*GetDomainsOutput, error) {
 //
 //    // Example sending a request using the GetDomainsRequest method.
 //    req := client.GetDomainsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2650,7 +2769,8 @@ type GetExportSnapshotRecordsRequest struct {
 }
 
 // Send marshals and sends the GetExportSnapshotRecords API request.
-func (r GetExportSnapshotRecordsRequest) Send() (*GetExportSnapshotRecordsOutput, error) {
+func (r GetExportSnapshotRecordsRequest) Send(ctx context.Context) (*GetExportSnapshotRecordsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2670,7 +2790,7 @@ func (r GetExportSnapshotRecordsRequest) Send() (*GetExportSnapshotRecordsOutput
 //
 //    // Example sending a request using the GetExportSnapshotRecordsRequest method.
 //    req := client.GetExportSnapshotRecordsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2704,7 +2824,8 @@ type GetInstanceRequest struct {
 }
 
 // Send marshals and sends the GetInstance API request.
-func (r GetInstanceRequest) Send() (*GetInstanceOutput, error) {
+func (r GetInstanceRequest) Send(ctx context.Context) (*GetInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2721,7 +2842,7 @@ func (r GetInstanceRequest) Send() (*GetInstanceOutput, error) {
 //
 //    // Example sending a request using the GetInstanceRequest method.
 //    req := client.GetInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2755,7 +2876,8 @@ type GetInstanceAccessDetailsRequest struct {
 }
 
 // Send marshals and sends the GetInstanceAccessDetails API request.
-func (r GetInstanceAccessDetailsRequest) Send() (*GetInstanceAccessDetailsOutput, error) {
+func (r GetInstanceAccessDetailsRequest) Send(ctx context.Context) (*GetInstanceAccessDetailsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2776,7 +2898,7 @@ func (r GetInstanceAccessDetailsRequest) Send() (*GetInstanceAccessDetailsOutput
 //
 //    // Example sending a request using the GetInstanceAccessDetailsRequest method.
 //    req := client.GetInstanceAccessDetailsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2810,7 +2932,8 @@ type GetInstanceMetricDataRequest struct {
 }
 
 // Send marshals and sends the GetInstanceMetricData API request.
-func (r GetInstanceMetricDataRequest) Send() (*GetInstanceMetricDataOutput, error) {
+func (r GetInstanceMetricDataRequest) Send(ctx context.Context) (*GetInstanceMetricDataOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2827,7 +2950,7 @@ func (r GetInstanceMetricDataRequest) Send() (*GetInstanceMetricDataOutput, erro
 //
 //    // Example sending a request using the GetInstanceMetricDataRequest method.
 //    req := client.GetInstanceMetricDataRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2861,7 +2984,8 @@ type GetInstancePortStatesRequest struct {
 }
 
 // Send marshals and sends the GetInstancePortStates API request.
-func (r GetInstancePortStatesRequest) Send() (*GetInstancePortStatesOutput, error) {
+func (r GetInstancePortStatesRequest) Send(ctx context.Context) (*GetInstancePortStatesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2877,7 +3001,7 @@ func (r GetInstancePortStatesRequest) Send() (*GetInstancePortStatesOutput, erro
 //
 //    // Example sending a request using the GetInstancePortStatesRequest method.
 //    req := client.GetInstancePortStatesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2911,7 +3035,8 @@ type GetInstanceSnapshotRequest struct {
 }
 
 // Send marshals and sends the GetInstanceSnapshot API request.
-func (r GetInstanceSnapshotRequest) Send() (*GetInstanceSnapshotOutput, error) {
+func (r GetInstanceSnapshotRequest) Send(ctx context.Context) (*GetInstanceSnapshotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2927,7 +3052,7 @@ func (r GetInstanceSnapshotRequest) Send() (*GetInstanceSnapshotOutput, error) {
 //
 //    // Example sending a request using the GetInstanceSnapshotRequest method.
 //    req := client.GetInstanceSnapshotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2961,7 +3086,8 @@ type GetInstanceSnapshotsRequest struct {
 }
 
 // Send marshals and sends the GetInstanceSnapshots API request.
-func (r GetInstanceSnapshotsRequest) Send() (*GetInstanceSnapshotsOutput, error) {
+func (r GetInstanceSnapshotsRequest) Send(ctx context.Context) (*GetInstanceSnapshotsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2977,7 +3103,7 @@ func (r GetInstanceSnapshotsRequest) Send() (*GetInstanceSnapshotsOutput, error)
 //
 //    // Example sending a request using the GetInstanceSnapshotsRequest method.
 //    req := client.GetInstanceSnapshotsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3011,7 +3137,8 @@ type GetInstanceStateRequest struct {
 }
 
 // Send marshals and sends the GetInstanceState API request.
-func (r GetInstanceStateRequest) Send() (*GetInstanceStateOutput, error) {
+func (r GetInstanceStateRequest) Send(ctx context.Context) (*GetInstanceStateOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3027,7 +3154,7 @@ func (r GetInstanceStateRequest) Send() (*GetInstanceStateOutput, error) {
 //
 //    // Example sending a request using the GetInstanceStateRequest method.
 //    req := client.GetInstanceStateRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3061,7 +3188,8 @@ type GetInstancesRequest struct {
 }
 
 // Send marshals and sends the GetInstances API request.
-func (r GetInstancesRequest) Send() (*GetInstancesOutput, error) {
+func (r GetInstancesRequest) Send(ctx context.Context) (*GetInstancesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3078,7 +3206,7 @@ func (r GetInstancesRequest) Send() (*GetInstancesOutput, error) {
 //
 //    // Example sending a request using the GetInstancesRequest method.
 //    req := client.GetInstancesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3112,7 +3240,8 @@ type GetKeyPairRequest struct {
 }
 
 // Send marshals and sends the GetKeyPair API request.
-func (r GetKeyPairRequest) Send() (*GetKeyPairOutput, error) {
+func (r GetKeyPairRequest) Send(ctx context.Context) (*GetKeyPairOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3128,7 +3257,7 @@ func (r GetKeyPairRequest) Send() (*GetKeyPairOutput, error) {
 //
 //    // Example sending a request using the GetKeyPairRequest method.
 //    req := client.GetKeyPairRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3162,7 +3291,8 @@ type GetKeyPairsRequest struct {
 }
 
 // Send marshals and sends the GetKeyPairs API request.
-func (r GetKeyPairsRequest) Send() (*GetKeyPairsOutput, error) {
+func (r GetKeyPairsRequest) Send(ctx context.Context) (*GetKeyPairsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3178,7 +3308,7 @@ func (r GetKeyPairsRequest) Send() (*GetKeyPairsOutput, error) {
 //
 //    // Example sending a request using the GetKeyPairsRequest method.
 //    req := client.GetKeyPairsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3212,7 +3342,8 @@ type GetLoadBalancerRequest struct {
 }
 
 // Send marshals and sends the GetLoadBalancer API request.
-func (r GetLoadBalancerRequest) Send() (*GetLoadBalancerOutput, error) {
+func (r GetLoadBalancerRequest) Send(ctx context.Context) (*GetLoadBalancerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3228,7 +3359,7 @@ func (r GetLoadBalancerRequest) Send() (*GetLoadBalancerOutput, error) {
 //
 //    // Example sending a request using the GetLoadBalancerRequest method.
 //    req := client.GetLoadBalancerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3262,7 +3393,8 @@ type GetLoadBalancerMetricDataRequest struct {
 }
 
 // Send marshals and sends the GetLoadBalancerMetricData API request.
-func (r GetLoadBalancerMetricDataRequest) Send() (*GetLoadBalancerMetricDataOutput, error) {
+func (r GetLoadBalancerMetricDataRequest) Send(ctx context.Context) (*GetLoadBalancerMetricDataOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3278,7 +3410,7 @@ func (r GetLoadBalancerMetricDataRequest) Send() (*GetLoadBalancerMetricDataOutp
 //
 //    // Example sending a request using the GetLoadBalancerMetricDataRequest method.
 //    req := client.GetLoadBalancerMetricDataRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3312,7 +3444,8 @@ type GetLoadBalancerTlsCertificatesRequest struct {
 }
 
 // Send marshals and sends the GetLoadBalancerTlsCertificates API request.
-func (r GetLoadBalancerTlsCertificatesRequest) Send() (*GetLoadBalancerTlsCertificatesOutput, error) {
+func (r GetLoadBalancerTlsCertificatesRequest) Send(ctx context.Context) (*GetLoadBalancerTlsCertificatesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3334,7 +3467,7 @@ func (r GetLoadBalancerTlsCertificatesRequest) Send() (*GetLoadBalancerTlsCertif
 //
 //    // Example sending a request using the GetLoadBalancerTlsCertificatesRequest method.
 //    req := client.GetLoadBalancerTlsCertificatesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3368,7 +3501,8 @@ type GetLoadBalancersRequest struct {
 }
 
 // Send marshals and sends the GetLoadBalancers API request.
-func (r GetLoadBalancersRequest) Send() (*GetLoadBalancersOutput, error) {
+func (r GetLoadBalancersRequest) Send(ctx context.Context) (*GetLoadBalancersOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3388,7 +3522,7 @@ func (r GetLoadBalancersRequest) Send() (*GetLoadBalancersOutput, error) {
 //
 //    // Example sending a request using the GetLoadBalancersRequest method.
 //    req := client.GetLoadBalancersRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3422,7 +3556,8 @@ type GetOperationRequest struct {
 }
 
 // Send marshals and sends the GetOperation API request.
-func (r GetOperationRequest) Send() (*GetOperationOutput, error) {
+func (r GetOperationRequest) Send(ctx context.Context) (*GetOperationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3440,7 +3575,7 @@ func (r GetOperationRequest) Send() (*GetOperationOutput, error) {
 //
 //    // Example sending a request using the GetOperationRequest method.
 //    req := client.GetOperationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3474,7 +3609,8 @@ type GetOperationsRequest struct {
 }
 
 // Send marshals and sends the GetOperations API request.
-func (r GetOperationsRequest) Send() (*GetOperationsOutput, error) {
+func (r GetOperationsRequest) Send(ctx context.Context) (*GetOperationsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3494,7 +3630,7 @@ func (r GetOperationsRequest) Send() (*GetOperationsOutput, error) {
 //
 //    // Example sending a request using the GetOperationsRequest method.
 //    req := client.GetOperationsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3528,7 +3664,8 @@ type GetOperationsForResourceRequest struct {
 }
 
 // Send marshals and sends the GetOperationsForResource API request.
-func (r GetOperationsForResourceRequest) Send() (*GetOperationsForResourceOutput, error) {
+func (r GetOperationsForResourceRequest) Send(ctx context.Context) (*GetOperationsForResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3544,7 +3681,7 @@ func (r GetOperationsForResourceRequest) Send() (*GetOperationsForResourceOutput
 //
 //    // Example sending a request using the GetOperationsForResourceRequest method.
 //    req := client.GetOperationsForResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3578,7 +3715,8 @@ type GetRegionsRequest struct {
 }
 
 // Send marshals and sends the GetRegions API request.
-func (r GetRegionsRequest) Send() (*GetRegionsOutput, error) {
+func (r GetRegionsRequest) Send(ctx context.Context) (*GetRegionsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3595,7 +3733,7 @@ func (r GetRegionsRequest) Send() (*GetRegionsOutput, error) {
 //
 //    // Example sending a request using the GetRegionsRequest method.
 //    req := client.GetRegionsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3629,7 +3767,8 @@ type GetRelationalDatabaseRequest struct {
 }
 
 // Send marshals and sends the GetRelationalDatabase API request.
-func (r GetRelationalDatabaseRequest) Send() (*GetRelationalDatabaseOutput, error) {
+func (r GetRelationalDatabaseRequest) Send(ctx context.Context) (*GetRelationalDatabaseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3645,7 +3784,7 @@ func (r GetRelationalDatabaseRequest) Send() (*GetRelationalDatabaseOutput, erro
 //
 //    // Example sending a request using the GetRelationalDatabaseRequest method.
 //    req := client.GetRelationalDatabaseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3679,7 +3818,8 @@ type GetRelationalDatabaseBlueprintsRequest struct {
 }
 
 // Send marshals and sends the GetRelationalDatabaseBlueprints API request.
-func (r GetRelationalDatabaseBlueprintsRequest) Send() (*GetRelationalDatabaseBlueprintsOutput, error) {
+func (r GetRelationalDatabaseBlueprintsRequest) Send(ctx context.Context) (*GetRelationalDatabaseBlueprintsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3699,7 +3839,7 @@ func (r GetRelationalDatabaseBlueprintsRequest) Send() (*GetRelationalDatabaseBl
 //
 //    // Example sending a request using the GetRelationalDatabaseBlueprintsRequest method.
 //    req := client.GetRelationalDatabaseBlueprintsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3733,7 +3873,8 @@ type GetRelationalDatabaseBundlesRequest struct {
 }
 
 // Send marshals and sends the GetRelationalDatabaseBundles API request.
-func (r GetRelationalDatabaseBundlesRequest) Send() (*GetRelationalDatabaseBundlesOutput, error) {
+func (r GetRelationalDatabaseBundlesRequest) Send(ctx context.Context) (*GetRelationalDatabaseBundlesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3753,7 +3894,7 @@ func (r GetRelationalDatabaseBundlesRequest) Send() (*GetRelationalDatabaseBundl
 //
 //    // Example sending a request using the GetRelationalDatabaseBundlesRequest method.
 //    req := client.GetRelationalDatabaseBundlesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3787,7 +3928,8 @@ type GetRelationalDatabaseEventsRequest struct {
 }
 
 // Send marshals and sends the GetRelationalDatabaseEvents API request.
-func (r GetRelationalDatabaseEventsRequest) Send() (*GetRelationalDatabaseEventsOutput, error) {
+func (r GetRelationalDatabaseEventsRequest) Send(ctx context.Context) (*GetRelationalDatabaseEventsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3803,7 +3945,7 @@ func (r GetRelationalDatabaseEventsRequest) Send() (*GetRelationalDatabaseEvents
 //
 //    // Example sending a request using the GetRelationalDatabaseEventsRequest method.
 //    req := client.GetRelationalDatabaseEventsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3837,7 +3979,8 @@ type GetRelationalDatabaseLogEventsRequest struct {
 }
 
 // Send marshals and sends the GetRelationalDatabaseLogEvents API request.
-func (r GetRelationalDatabaseLogEventsRequest) Send() (*GetRelationalDatabaseLogEventsOutput, error) {
+func (r GetRelationalDatabaseLogEventsRequest) Send(ctx context.Context) (*GetRelationalDatabaseLogEventsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3853,7 +3996,7 @@ func (r GetRelationalDatabaseLogEventsRequest) Send() (*GetRelationalDatabaseLog
 //
 //    // Example sending a request using the GetRelationalDatabaseLogEventsRequest method.
 //    req := client.GetRelationalDatabaseLogEventsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3887,7 +4030,8 @@ type GetRelationalDatabaseLogStreamsRequest struct {
 }
 
 // Send marshals and sends the GetRelationalDatabaseLogStreams API request.
-func (r GetRelationalDatabaseLogStreamsRequest) Send() (*GetRelationalDatabaseLogStreamsOutput, error) {
+func (r GetRelationalDatabaseLogStreamsRequest) Send(ctx context.Context) (*GetRelationalDatabaseLogStreamsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3904,7 +4048,7 @@ func (r GetRelationalDatabaseLogStreamsRequest) Send() (*GetRelationalDatabaseLo
 //
 //    // Example sending a request using the GetRelationalDatabaseLogStreamsRequest method.
 //    req := client.GetRelationalDatabaseLogStreamsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3938,7 +4082,8 @@ type GetRelationalDatabaseMasterUserPasswordRequest struct {
 }
 
 // Send marshals and sends the GetRelationalDatabaseMasterUserPassword API request.
-func (r GetRelationalDatabaseMasterUserPasswordRequest) Send() (*GetRelationalDatabaseMasterUserPasswordOutput, error) {
+func (r GetRelationalDatabaseMasterUserPasswordRequest) Send(ctx context.Context) (*GetRelationalDatabaseMasterUserPasswordOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3958,7 +4103,7 @@ func (r GetRelationalDatabaseMasterUserPasswordRequest) Send() (*GetRelationalDa
 //
 //    // Example sending a request using the GetRelationalDatabaseMasterUserPasswordRequest method.
 //    req := client.GetRelationalDatabaseMasterUserPasswordRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3992,7 +4137,8 @@ type GetRelationalDatabaseMetricDataRequest struct {
 }
 
 // Send marshals and sends the GetRelationalDatabaseMetricData API request.
-func (r GetRelationalDatabaseMetricDataRequest) Send() (*GetRelationalDatabaseMetricDataOutput, error) {
+func (r GetRelationalDatabaseMetricDataRequest) Send(ctx context.Context) (*GetRelationalDatabaseMetricDataOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4009,7 +4155,7 @@ func (r GetRelationalDatabaseMetricDataRequest) Send() (*GetRelationalDatabaseMe
 //
 //    // Example sending a request using the GetRelationalDatabaseMetricDataRequest method.
 //    req := client.GetRelationalDatabaseMetricDataRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4043,7 +4189,8 @@ type GetRelationalDatabaseParametersRequest struct {
 }
 
 // Send marshals and sends the GetRelationalDatabaseParameters API request.
-func (r GetRelationalDatabaseParametersRequest) Send() (*GetRelationalDatabaseParametersOutput, error) {
+func (r GetRelationalDatabaseParametersRequest) Send(ctx context.Context) (*GetRelationalDatabaseParametersOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4065,7 +4212,7 @@ func (r GetRelationalDatabaseParametersRequest) Send() (*GetRelationalDatabasePa
 //
 //    // Example sending a request using the GetRelationalDatabaseParametersRequest method.
 //    req := client.GetRelationalDatabaseParametersRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4099,7 +4246,8 @@ type GetRelationalDatabaseSnapshotRequest struct {
 }
 
 // Send marshals and sends the GetRelationalDatabaseSnapshot API request.
-func (r GetRelationalDatabaseSnapshotRequest) Send() (*GetRelationalDatabaseSnapshotOutput, error) {
+func (r GetRelationalDatabaseSnapshotRequest) Send(ctx context.Context) (*GetRelationalDatabaseSnapshotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4115,7 +4263,7 @@ func (r GetRelationalDatabaseSnapshotRequest) Send() (*GetRelationalDatabaseSnap
 //
 //    // Example sending a request using the GetRelationalDatabaseSnapshotRequest method.
 //    req := client.GetRelationalDatabaseSnapshotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4149,7 +4297,8 @@ type GetRelationalDatabaseSnapshotsRequest struct {
 }
 
 // Send marshals and sends the GetRelationalDatabaseSnapshots API request.
-func (r GetRelationalDatabaseSnapshotsRequest) Send() (*GetRelationalDatabaseSnapshotsOutput, error) {
+func (r GetRelationalDatabaseSnapshotsRequest) Send(ctx context.Context) (*GetRelationalDatabaseSnapshotsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4165,7 +4314,7 @@ func (r GetRelationalDatabaseSnapshotsRequest) Send() (*GetRelationalDatabaseSna
 //
 //    // Example sending a request using the GetRelationalDatabaseSnapshotsRequest method.
 //    req := client.GetRelationalDatabaseSnapshotsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4199,7 +4348,8 @@ type GetRelationalDatabasesRequest struct {
 }
 
 // Send marshals and sends the GetRelationalDatabases API request.
-func (r GetRelationalDatabasesRequest) Send() (*GetRelationalDatabasesOutput, error) {
+func (r GetRelationalDatabasesRequest) Send(ctx context.Context) (*GetRelationalDatabasesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4215,7 +4365,7 @@ func (r GetRelationalDatabasesRequest) Send() (*GetRelationalDatabasesOutput, er
 //
 //    // Example sending a request using the GetRelationalDatabasesRequest method.
 //    req := client.GetRelationalDatabasesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4249,7 +4399,8 @@ type GetStaticIpRequest struct {
 }
 
 // Send marshals and sends the GetStaticIp API request.
-func (r GetStaticIpRequest) Send() (*GetStaticIpOutput, error) {
+func (r GetStaticIpRequest) Send(ctx context.Context) (*GetStaticIpOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4265,7 +4416,7 @@ func (r GetStaticIpRequest) Send() (*GetStaticIpOutput, error) {
 //
 //    // Example sending a request using the GetStaticIpRequest method.
 //    req := client.GetStaticIpRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4299,7 +4450,8 @@ type GetStaticIpsRequest struct {
 }
 
 // Send marshals and sends the GetStaticIps API request.
-func (r GetStaticIpsRequest) Send() (*GetStaticIpsOutput, error) {
+func (r GetStaticIpsRequest) Send(ctx context.Context) (*GetStaticIpsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4315,7 +4467,7 @@ func (r GetStaticIpsRequest) Send() (*GetStaticIpsOutput, error) {
 //
 //    // Example sending a request using the GetStaticIpsRequest method.
 //    req := client.GetStaticIpsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4349,7 +4501,8 @@ type ImportKeyPairRequest struct {
 }
 
 // Send marshals and sends the ImportKeyPair API request.
-func (r ImportKeyPairRequest) Send() (*ImportKeyPairOutput, error) {
+func (r ImportKeyPairRequest) Send(ctx context.Context) (*ImportKeyPairOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4365,7 +4518,7 @@ func (r ImportKeyPairRequest) Send() (*ImportKeyPairOutput, error) {
 //
 //    // Example sending a request using the ImportKeyPairRequest method.
 //    req := client.ImportKeyPairRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4399,7 +4552,8 @@ type IsVpcPeeredRequest struct {
 }
 
 // Send marshals and sends the IsVpcPeered API request.
-func (r IsVpcPeeredRequest) Send() (*IsVpcPeeredOutput, error) {
+func (r IsVpcPeeredRequest) Send(ctx context.Context) (*IsVpcPeeredOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4415,7 +4569,7 @@ func (r IsVpcPeeredRequest) Send() (*IsVpcPeeredOutput, error) {
 //
 //    // Example sending a request using the IsVpcPeeredRequest method.
 //    req := client.IsVpcPeeredRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4449,7 +4603,8 @@ type OpenInstancePublicPortsRequest struct {
 }
 
 // Send marshals and sends the OpenInstancePublicPorts API request.
-func (r OpenInstancePublicPortsRequest) Send() (*OpenInstancePublicPortsOutput, error) {
+func (r OpenInstancePublicPortsRequest) Send(ctx context.Context) (*OpenInstancePublicPortsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4469,7 +4624,7 @@ func (r OpenInstancePublicPortsRequest) Send() (*OpenInstancePublicPortsOutput, 
 //
 //    // Example sending a request using the OpenInstancePublicPortsRequest method.
 //    req := client.OpenInstancePublicPortsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4503,7 +4658,8 @@ type PeerVpcRequest struct {
 }
 
 // Send marshals and sends the PeerVpc API request.
-func (r PeerVpcRequest) Send() (*PeerVpcOutput, error) {
+func (r PeerVpcRequest) Send(ctx context.Context) (*PeerVpcOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4519,7 +4675,7 @@ func (r PeerVpcRequest) Send() (*PeerVpcOutput, error) {
 //
 //    // Example sending a request using the PeerVpcRequest method.
 //    req := client.PeerVpcRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4553,7 +4709,8 @@ type PutInstancePublicPortsRequest struct {
 }
 
 // Send marshals and sends the PutInstancePublicPorts API request.
-func (r PutInstancePublicPortsRequest) Send() (*PutInstancePublicPortsOutput, error) {
+func (r PutInstancePublicPortsRequest) Send(ctx context.Context) (*PutInstancePublicPortsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4574,7 +4731,7 @@ func (r PutInstancePublicPortsRequest) Send() (*PutInstancePublicPortsOutput, er
 //
 //    // Example sending a request using the PutInstancePublicPortsRequest method.
 //    req := client.PutInstancePublicPortsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4608,7 +4765,8 @@ type RebootInstanceRequest struct {
 }
 
 // Send marshals and sends the RebootInstance API request.
-func (r RebootInstanceRequest) Send() (*RebootInstanceOutput, error) {
+func (r RebootInstanceRequest) Send(ctx context.Context) (*RebootInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4620,10 +4778,7 @@ func (r RebootInstanceRequest) Send() (*RebootInstanceOutput, error) {
 // RebootInstanceRequest returns a request value for making API operation for
 // Amazon Lightsail.
 //
-// Restarts a specific instance. When your Amazon Lightsail instance is finished
-// rebooting, Lightsail assigns a new public IP address. To use the same IP
-// address after restarting, create a static IP address and attach it to the
-// instance.
+// Restarts a specific instance.
 //
 // The reboot instance operation supports tag-based access control via resource
 // tags applied to the resource identified by instanceName. For more information,
@@ -4631,7 +4786,7 @@ func (r RebootInstanceRequest) Send() (*RebootInstanceOutput, error) {
 //
 //    // Example sending a request using the RebootInstanceRequest method.
 //    req := client.RebootInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4665,7 +4820,8 @@ type RebootRelationalDatabaseRequest struct {
 }
 
 // Send marshals and sends the RebootRelationalDatabase API request.
-func (r RebootRelationalDatabaseRequest) Send() (*RebootRelationalDatabaseOutput, error) {
+func (r RebootRelationalDatabaseRequest) Send(ctx context.Context) (*RebootRelationalDatabaseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4685,7 +4841,7 @@ func (r RebootRelationalDatabaseRequest) Send() (*RebootRelationalDatabaseOutput
 //
 //    // Example sending a request using the RebootRelationalDatabaseRequest method.
 //    req := client.RebootRelationalDatabaseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4719,7 +4875,8 @@ type ReleaseStaticIpRequest struct {
 }
 
 // Send marshals and sends the ReleaseStaticIp API request.
-func (r ReleaseStaticIpRequest) Send() (*ReleaseStaticIpOutput, error) {
+func (r ReleaseStaticIpRequest) Send(ctx context.Context) (*ReleaseStaticIpOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4735,7 +4892,7 @@ func (r ReleaseStaticIpRequest) Send() (*ReleaseStaticIpOutput, error) {
 //
 //    // Example sending a request using the ReleaseStaticIpRequest method.
 //    req := client.ReleaseStaticIpRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4769,7 +4926,8 @@ type StartInstanceRequest struct {
 }
 
 // Send marshals and sends the StartInstance API request.
-func (r StartInstanceRequest) Send() (*StartInstanceOutput, error) {
+func (r StartInstanceRequest) Send(ctx context.Context) (*StartInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4784,13 +4942,18 @@ func (r StartInstanceRequest) Send() (*StartInstanceOutput, error) {
 // Starts a specific Amazon Lightsail instance from a stopped state. To restart
 // an instance, use the reboot instance operation.
 //
+// When you start a stopped instance, Lightsail assigns a new public IP address
+// to the instance. To use the same IP address after stopping and starting an
+// instance, create a static IP address and attach it to the instance. For more
+// information, see the Lightsail Dev Guide (https://lightsail.aws.amazon.com/ls/docs/en/articles/lightsail-create-static-ip).
+//
 // The start instance operation supports tag-based access control via resource
 // tags applied to the resource identified by instanceName. For more information,
 // see the Lightsail Dev Guide (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 //
 //    // Example sending a request using the StartInstanceRequest method.
 //    req := client.StartInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4824,7 +4987,8 @@ type StartRelationalDatabaseRequest struct {
 }
 
 // Send marshals and sends the StartRelationalDatabase API request.
-func (r StartRelationalDatabaseRequest) Send() (*StartRelationalDatabaseOutput, error) {
+func (r StartRelationalDatabaseRequest) Send(ctx context.Context) (*StartRelationalDatabaseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4845,7 +5009,7 @@ func (r StartRelationalDatabaseRequest) Send() (*StartRelationalDatabaseOutput, 
 //
 //    // Example sending a request using the StartRelationalDatabaseRequest method.
 //    req := client.StartRelationalDatabaseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4879,7 +5043,8 @@ type StopInstanceRequest struct {
 }
 
 // Send marshals and sends the StopInstance API request.
-func (r StopInstanceRequest) Send() (*StopInstanceOutput, error) {
+func (r StopInstanceRequest) Send(ctx context.Context) (*StopInstanceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4893,13 +5058,18 @@ func (r StopInstanceRequest) Send() (*StopInstanceOutput, error) {
 //
 // Stops a specific Amazon Lightsail instance that is currently running.
 //
+// When you start a stopped instance, Lightsail assigns a new public IP address
+// to the instance. To use the same IP address after stopping and starting an
+// instance, create a static IP address and attach it to the instance. For more
+// information, see the Lightsail Dev Guide (https://lightsail.aws.amazon.com/ls/docs/en/articles/lightsail-create-static-ip).
+//
 // The stop instance operation supports tag-based access control via resource
 // tags applied to the resource identified by instanceName. For more information,
 // see the Lightsail Dev Guide (https://lightsail.aws.amazon.com/ls/docs/en/articles/amazon-lightsail-controlling-access-using-tags).
 //
 //    // Example sending a request using the StopInstanceRequest method.
 //    req := client.StopInstanceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4933,7 +5103,8 @@ type StopRelationalDatabaseRequest struct {
 }
 
 // Send marshals and sends the StopRelationalDatabase API request.
-func (r StopRelationalDatabaseRequest) Send() (*StopRelationalDatabaseOutput, error) {
+func (r StopRelationalDatabaseRequest) Send(ctx context.Context) (*StopRelationalDatabaseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4953,7 +5124,7 @@ func (r StopRelationalDatabaseRequest) Send() (*StopRelationalDatabaseOutput, er
 //
 //    // Example sending a request using the StopRelationalDatabaseRequest method.
 //    req := client.StopRelationalDatabaseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4987,7 +5158,8 @@ type TagResourceRequest struct {
 }
 
 // Send marshals and sends the TagResource API request.
-func (r TagResourceRequest) Send() (*TagResourceOutput, error) {
+func (r TagResourceRequest) Send(ctx context.Context) (*TagResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -5010,7 +5182,7 @@ func (r TagResourceRequest) Send() (*TagResourceOutput, error) {
 //
 //    // Example sending a request using the TagResourceRequest method.
 //    req := client.TagResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -5044,7 +5216,8 @@ type UnpeerVpcRequest struct {
 }
 
 // Send marshals and sends the UnpeerVpc API request.
-func (r UnpeerVpcRequest) Send() (*UnpeerVpcOutput, error) {
+func (r UnpeerVpcRequest) Send(ctx context.Context) (*UnpeerVpcOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -5060,7 +5233,7 @@ func (r UnpeerVpcRequest) Send() (*UnpeerVpcOutput, error) {
 //
 //    // Example sending a request using the UnpeerVpcRequest method.
 //    req := client.UnpeerVpcRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -5094,7 +5267,8 @@ type UntagResourceRequest struct {
 }
 
 // Send marshals and sends the UntagResource API request.
-func (r UntagResourceRequest) Send() (*UntagResourceOutput, error) {
+func (r UntagResourceRequest) Send(ctx context.Context) (*UntagResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -5115,7 +5289,7 @@ func (r UntagResourceRequest) Send() (*UntagResourceOutput, error) {
 //
 //    // Example sending a request using the UntagResourceRequest method.
 //    req := client.UntagResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -5149,7 +5323,8 @@ type UpdateDomainEntryRequest struct {
 }
 
 // Send marshals and sends the UpdateDomainEntry API request.
-func (r UpdateDomainEntryRequest) Send() (*UpdateDomainEntryOutput, error) {
+func (r UpdateDomainEntryRequest) Send(ctx context.Context) (*UpdateDomainEntryOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -5169,7 +5344,7 @@ func (r UpdateDomainEntryRequest) Send() (*UpdateDomainEntryOutput, error) {
 //
 //    // Example sending a request using the UpdateDomainEntryRequest method.
 //    req := client.UpdateDomainEntryRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -5203,7 +5378,8 @@ type UpdateLoadBalancerAttributeRequest struct {
 }
 
 // Send marshals and sends the UpdateLoadBalancerAttribute API request.
-func (r UpdateLoadBalancerAttributeRequest) Send() (*UpdateLoadBalancerAttributeOutput, error) {
+func (r UpdateLoadBalancerAttributeRequest) Send(ctx context.Context) (*UpdateLoadBalancerAttributeOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -5224,7 +5400,7 @@ func (r UpdateLoadBalancerAttributeRequest) Send() (*UpdateLoadBalancerAttribute
 //
 //    // Example sending a request using the UpdateLoadBalancerAttributeRequest method.
 //    req := client.UpdateLoadBalancerAttributeRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -5258,7 +5434,8 @@ type UpdateRelationalDatabaseRequest struct {
 }
 
 // Send marshals and sends the UpdateRelationalDatabase API request.
-func (r UpdateRelationalDatabaseRequest) Send() (*UpdateRelationalDatabaseOutput, error) {
+func (r UpdateRelationalDatabaseRequest) Send(ctx context.Context) (*UpdateRelationalDatabaseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -5281,7 +5458,7 @@ func (r UpdateRelationalDatabaseRequest) Send() (*UpdateRelationalDatabaseOutput
 //
 //    // Example sending a request using the UpdateRelationalDatabaseRequest method.
 //    req := client.UpdateRelationalDatabaseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -5315,7 +5492,8 @@ type UpdateRelationalDatabaseParametersRequest struct {
 }
 
 // Send marshals and sends the UpdateRelationalDatabaseParameters API request.
-func (r UpdateRelationalDatabaseParametersRequest) Send() (*UpdateRelationalDatabaseParametersOutput, error) {
+func (r UpdateRelationalDatabaseParametersRequest) Send(ctx context.Context) (*UpdateRelationalDatabaseParametersOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -5342,7 +5520,7 @@ func (r UpdateRelationalDatabaseParametersRequest) Send() (*UpdateRelationalData
 //
 //    // Example sending a request using the UpdateRelationalDatabaseParametersRequest method.
 //    req := client.UpdateRelationalDatabaseParametersRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -6333,16 +6511,24 @@ func (s CreateDiskOutput) SDKResponseMetadata() aws.Response {
 type CreateDiskSnapshotInput struct {
 	_ struct{} `type:"structure"`
 
-	// The unique name of the source disk (e.g., my-source-disk).
+	// The unique name of the source disk (e.g., Disk-Virginia-1).
 	//
-	// DiskName is a required field
-	DiskName *string `locationName:"diskName" type:"string" required:"true"`
+	// This parameter cannot be defined together with the instance name parameter.
+	// The disk name and instance name parameters are mutually exclusive.
+	DiskName *string `locationName:"diskName" type:"string"`
 
 	// The name of the destination disk snapshot (e.g., my-disk-snapshot) based
 	// on the source disk.
 	//
 	// DiskSnapshotName is a required field
 	DiskSnapshotName *string `locationName:"diskSnapshotName" type:"string" required:"true"`
+
+	// The unique name of the source instance (e.g., Amazon_Linux-512MB-Virginia-1).
+	// When this is defined, a snapshot of the instance's system volume is created.
+	//
+	// This parameter cannot be defined together with the disk name parameter. The
+	// instance name and disk name parameters are mutually exclusive.
+	InstanceName *string `locationName:"instanceName" type:"string"`
 
 	// The tag keys and optional values to add to the resource during create.
 	//
@@ -6363,10 +6549,6 @@ func (s CreateDiskSnapshotInput) GoString() string {
 // Validate inspects the fields of the type to determine if they are valid.
 func (s *CreateDiskSnapshotInput) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "CreateDiskSnapshotInput"}
-
-	if s.DiskName == nil {
-		invalidParams.Add(aws.NewErrParamRequired("DiskName"))
-	}
 
 	if s.DiskSnapshotName == nil {
 		invalidParams.Add(aws.NewErrParamRequired("DiskSnapshotName"))
@@ -7942,6 +8124,65 @@ func (s DeleteKeyPairOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DeleteKnownHostKeysRequest
+type DeleteKnownHostKeysInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the instance for which you want to reset the host key or certificate.
+	//
+	// InstanceName is a required field
+	InstanceName *string `locationName:"instanceName" type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s DeleteKnownHostKeysInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DeleteKnownHostKeysInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteKnownHostKeysInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteKnownHostKeysInput"}
+
+	if s.InstanceName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("InstanceName"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DeleteKnownHostKeysResult
+type DeleteKnownHostKeysOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// A list of objects describing the API operation.
+	Operations []Operation `locationName:"operations" type:"list"`
+}
+
+// String returns the string representation
+func (s DeleteKnownHostKeysOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DeleteKnownHostKeysOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s DeleteKnownHostKeysOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/DeleteLoadBalancerRequest
 type DeleteLoadBalancerInput struct {
 	_ struct{} `type:"structure"`
@@ -8566,12 +8807,20 @@ type DiskSnapshot struct {
 	// The date when the disk snapshot was created.
 	CreatedAt *time.Time `locationName:"createdAt" type:"timestamp" timestampFormat:"unix"`
 
-	// The Amazon Resource Name (ARN) of the source disk from which you are creating
-	// the disk snapshot.
+	// The Amazon Resource Name (ARN) of the source disk from which the disk snapshot
+	// was created.
 	FromDiskArn *string `locationName:"fromDiskArn" type:"string"`
 
-	// The unique name of the source disk from which you are creating the disk snapshot.
+	// The unique name of the source disk from which the disk snapshot was created.
 	FromDiskName *string `locationName:"fromDiskName" type:"string"`
+
+	// The Amazon Resource Name (ARN) of the source instance from which the disk
+	// (system volume) snapshot was created.
+	FromInstanceArn *string `locationName:"fromInstanceArn" type:"string"`
+
+	// The unique name of the source instance from which the disk (system volume)
+	// snapshot was created.
+	FromInstanceName *string `locationName:"fromInstanceName" type:"string"`
 
 	// The AWS Region and Availability Zone where the disk snapshot was created.
 	Location *ResourceLocation `locationName:"location" type:"structure"`
@@ -8703,7 +8952,25 @@ type DomainEntry struct {
 	// balancer.
 	Target *string `locationName:"target" type:"string"`
 
-	// The type of domain entry (e.g., SOA or NS).
+	// The type of domain entry, such as address (A), canonical name (CNAME), mail
+	// exchanger (MX), name server (NS), start of authority (SOA), service locator
+	// (SRV), or text (TXT).
+	//
+	// The following domain entry types can be used:
+	//
+	//    * A
+	//
+	//    * CNAME
+	//
+	//    * MX
+	//
+	//    * NS
+	//
+	//    * SOA
+	//
+	//    * SRV
+	//
+	//    * TXT
 	Type *string `locationName:"type" type:"string"`
 }
 
@@ -11736,6 +12003,66 @@ func (s GetStaticIpsOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
+// Describes the public SSH host keys or the RDP certificate.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/HostKeyAttributes
+type HostKeyAttributes struct {
+	_ struct{} `type:"structure"`
+
+	// The SSH host key algorithm or the RDP certificate format.
+	//
+	// For SSH host keys, the algorithm may be ssh-rsa, ecdsa-sha2-nistp256, ssh-ed25519,
+	// etc. For RDP certificates, the algorithm is always x509-cert.
+	Algorithm *string `locationName:"algorithm" type:"string"`
+
+	// The SHA-1 fingerprint of the returned SSH host key or RDP certificate.
+	//
+	//    * Example of an SHA-1 SSH fingerprint:
+	//
+	// SHA1:1CHH6FaAaXjtFOsR/t83vf91SR0
+	//
+	//    * Example of an SHA-1 RDP fingerprint:
+	//
+	// af:34:51:fe:09:f0:e0:da:b8:4e:56:ca:60:c2:10:ff:38:06:db:45
+	FingerprintSHA1 *string `locationName:"fingerprintSHA1" type:"string"`
+
+	// The SHA-256 fingerprint of the returned SSH host key or RDP certificate.
+	//
+	//    * Example of an SHA-256 SSH fingerprint:
+	//
+	// SHA256:KTsMnRBh1IhD17HpdfsbzeGA4jOijm5tyXsMjKVbB8o
+	//
+	//    * Example of an SHA-256 RDP fingerprint:
+	//
+	// 03:9b:36:9f:4b:de:4e:61:70:fc:7c:c9:78:e7:d2:1a:1c:25:a8:0c:91:f6:7c:e4:d6:a0:85:c8:b4:53:99:68
+	FingerprintSHA256 *string `locationName:"fingerprintSHA256" type:"string"`
+
+	// The returned RDP certificate is not valid after this point in time.
+	//
+	// This value is listed only for RDP certificates.
+	NotValidAfter *time.Time `locationName:"notValidAfter" type:"timestamp" timestampFormat:"unix"`
+
+	// The returned RDP certificate is valid after this point in time.
+	//
+	// This value is listed only for RDP certificates.
+	NotValidBefore *time.Time `locationName:"notValidBefore" type:"timestamp" timestampFormat:"unix"`
+
+	// The public SSH host key or the RDP certificate.
+	PublicKey *string `locationName:"publicKey" type:"string"`
+
+	// The time that the SSH host key or RDP certificate was recorded by Lightsail.
+	WitnessedAt *time.Time `locationName:"witnessedAt" type:"timestamp" timestampFormat:"unix"`
+}
+
+// String returns the string representation
+func (s HostKeyAttributes) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s HostKeyAttributes) GoString() string {
+	return s.String()
+}
+
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/lightsail-2016-11-28/ImportKeyPairRequest
 type ImportKeyPairInput struct {
 	_ struct{} `type:"structure"`
@@ -11895,6 +12222,9 @@ type InstanceAccessDetails struct {
 	// For SSH access, the date on which the temporary keys expire.
 	ExpiresAt *time.Time `locationName:"expiresAt" type:"timestamp" timestampFormat:"unix"`
 
+	// Describes the public SSH host keys or the RDP certificate.
+	HostKeys []HostKeyAttributes `locationName:"hostKeys" type:"list"`
+
 	// The name of this Amazon Lightsail instance.
 	InstanceName *string `locationName:"instanceName" type:"string"`
 
@@ -11967,6 +12297,8 @@ type InstanceEntry struct {
 	//    * INSTANCE — Use the firewall settings from the source Lightsail instance.
 	//
 	//    * NONE — Default to Amazon EC2.
+	//
+	//    * CLOSED — All ports closed.
 	//
 	// PortInfoSource is a required field
 	PortInfoSource PortInfoSourceType `locationName:"portInfoSource" type:"string" required:"true" enum:"true"`
@@ -15139,6 +15471,7 @@ type OperationType string
 
 // Enum values for OperationType
 const (
+	OperationTypeDeleteKnownHostKeys                  OperationType = "DeleteKnownHostKeys"
 	OperationTypeDeleteInstance                       OperationType = "DeleteInstance"
 	OperationTypeCreateInstance                       OperationType = "CreateInstance"
 	OperationTypeStopInstance                         OperationType = "StopInstance"
@@ -15218,6 +15551,7 @@ const (
 	PortInfoSourceTypeDefault  PortInfoSourceType = "DEFAULT"
 	PortInfoSourceTypeInstance PortInfoSourceType = "INSTANCE"
 	PortInfoSourceTypeNone     PortInfoSourceType = "NONE"
+	PortInfoSourceTypeClosed   PortInfoSourceType = "CLOSED"
 )
 
 func (enum PortInfoSourceType) MarshalValue() (string, error) {

@@ -3,6 +3,7 @@
 package iot1clickprojects
 
 import (
+	"context"
 	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -20,7 +21,8 @@ type AssociateDeviceWithPlacementRequest struct {
 }
 
 // Send marshals and sends the AssociateDeviceWithPlacement API request.
-func (r AssociateDeviceWithPlacementRequest) Send() (*AssociateDeviceWithPlacementOutput, error) {
+func (r AssociateDeviceWithPlacementRequest) Send(ctx context.Context) (*AssociateDeviceWithPlacementOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -36,7 +38,7 @@ func (r AssociateDeviceWithPlacementRequest) Send() (*AssociateDeviceWithPlaceme
 //
 //    // Example sending a request using the AssociateDeviceWithPlacementRequest method.
 //    req := client.AssociateDeviceWithPlacementRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -70,7 +72,8 @@ type CreatePlacementRequest struct {
 }
 
 // Send marshals and sends the CreatePlacement API request.
-func (r CreatePlacementRequest) Send() (*CreatePlacementOutput, error) {
+func (r CreatePlacementRequest) Send(ctx context.Context) (*CreatePlacementOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -86,7 +89,7 @@ func (r CreatePlacementRequest) Send() (*CreatePlacementOutput, error) {
 //
 //    // Example sending a request using the CreatePlacementRequest method.
 //    req := client.CreatePlacementRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -120,7 +123,8 @@ type CreateProjectRequest struct {
 }
 
 // Send marshals and sends the CreateProject API request.
-func (r CreateProjectRequest) Send() (*CreateProjectOutput, error) {
+func (r CreateProjectRequest) Send(ctx context.Context) (*CreateProjectOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -137,7 +141,7 @@ func (r CreateProjectRequest) Send() (*CreateProjectOutput, error) {
 //
 //    // Example sending a request using the CreateProjectRequest method.
 //    req := client.CreateProjectRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -171,7 +175,8 @@ type DeletePlacementRequest struct {
 }
 
 // Send marshals and sends the DeletePlacement API request.
-func (r DeletePlacementRequest) Send() (*DeletePlacementOutput, error) {
+func (r DeletePlacementRequest) Send(ctx context.Context) (*DeletePlacementOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -190,7 +195,7 @@ func (r DeletePlacementRequest) Send() (*DeletePlacementOutput, error) {
 //
 //    // Example sending a request using the DeletePlacementRequest method.
 //    req := client.DeletePlacementRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -224,7 +229,8 @@ type DeleteProjectRequest struct {
 }
 
 // Send marshals and sends the DeleteProject API request.
-func (r DeleteProjectRequest) Send() (*DeleteProjectOutput, error) {
+func (r DeleteProjectRequest) Send(ctx context.Context) (*DeleteProjectOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -243,7 +249,7 @@ func (r DeleteProjectRequest) Send() (*DeleteProjectOutput, error) {
 //
 //    // Example sending a request using the DeleteProjectRequest method.
 //    req := client.DeleteProjectRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -277,7 +283,8 @@ type DescribePlacementRequest struct {
 }
 
 // Send marshals and sends the DescribePlacement API request.
-func (r DescribePlacementRequest) Send() (*DescribePlacementOutput, error) {
+func (r DescribePlacementRequest) Send(ctx context.Context) (*DescribePlacementOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -293,7 +300,7 @@ func (r DescribePlacementRequest) Send() (*DescribePlacementOutput, error) {
 //
 //    // Example sending a request using the DescribePlacementRequest method.
 //    req := client.DescribePlacementRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -327,7 +334,8 @@ type DescribeProjectRequest struct {
 }
 
 // Send marshals and sends the DescribeProject API request.
-func (r DescribeProjectRequest) Send() (*DescribeProjectOutput, error) {
+func (r DescribeProjectRequest) Send(ctx context.Context) (*DescribeProjectOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -343,7 +351,7 @@ func (r DescribeProjectRequest) Send() (*DescribeProjectOutput, error) {
 //
 //    // Example sending a request using the DescribeProjectRequest method.
 //    req := client.DescribeProjectRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -377,7 +385,8 @@ type DisassociateDeviceFromPlacementRequest struct {
 }
 
 // Send marshals and sends the DisassociateDeviceFromPlacement API request.
-func (r DisassociateDeviceFromPlacementRequest) Send() (*DisassociateDeviceFromPlacementOutput, error) {
+func (r DisassociateDeviceFromPlacementRequest) Send(ctx context.Context) (*DisassociateDeviceFromPlacementOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -393,7 +402,7 @@ func (r DisassociateDeviceFromPlacementRequest) Send() (*DisassociateDeviceFromP
 //
 //    // Example sending a request using the DisassociateDeviceFromPlacementRequest method.
 //    req := client.DisassociateDeviceFromPlacementRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -427,7 +436,8 @@ type GetDevicesInPlacementRequest struct {
 }
 
 // Send marshals and sends the GetDevicesInPlacement API request.
-func (r GetDevicesInPlacementRequest) Send() (*GetDevicesInPlacementOutput, error) {
+func (r GetDevicesInPlacementRequest) Send(ctx context.Context) (*GetDevicesInPlacementOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -443,7 +453,7 @@ func (r GetDevicesInPlacementRequest) Send() (*GetDevicesInPlacementOutput, erro
 //
 //    // Example sending a request using the GetDevicesInPlacementRequest method.
 //    req := client.GetDevicesInPlacementRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -477,7 +487,8 @@ type ListPlacementsRequest struct {
 }
 
 // Send marshals and sends the ListPlacements API request.
-func (r ListPlacementsRequest) Send() (*ListPlacementsOutput, error) {
+func (r ListPlacementsRequest) Send(ctx context.Context) (*ListPlacementsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -493,7 +504,7 @@ func (r ListPlacementsRequest) Send() (*ListPlacementsOutput, error) {
 //
 //    // Example sending a request using the ListPlacementsRequest method.
 //    req := client.ListPlacementsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -527,7 +538,8 @@ type ListProjectsRequest struct {
 }
 
 // Send marshals and sends the ListProjects API request.
-func (r ListProjectsRequest) Send() (*ListProjectsOutput, error) {
+func (r ListProjectsRequest) Send(ctx context.Context) (*ListProjectsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -544,7 +556,7 @@ func (r ListProjectsRequest) Send() (*ListProjectsOutput, error) {
 //
 //    // Example sending a request using the ListProjectsRequest method.
 //    req := client.ListProjectsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -568,6 +580,162 @@ func (c *IoT1ClickProjects) ListProjectsRequest(input *ListProjectsInput) ListPr
 	return ListProjectsRequest{Request: req, Input: input, Copy: c.ListProjectsRequest}
 }
 
+const opListTagsForResource = "ListTagsForResource"
+
+// ListTagsForResourceRequest is a API request type for the ListTagsForResource API operation.
+type ListTagsForResourceRequest struct {
+	*aws.Request
+	Input *ListTagsForResourceInput
+	Copy  func(*ListTagsForResourceInput) ListTagsForResourceRequest
+}
+
+// Send marshals and sends the ListTagsForResource API request.
+func (r ListTagsForResourceRequest) Send(ctx context.Context) (*ListTagsForResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*ListTagsForResourceOutput), nil
+}
+
+// ListTagsForResourceRequest returns a request value for making API operation for
+// AWS IoT 1-Click Projects Service.
+//
+// Lists the tags (metadata key/value pairs) which you have assigned to the
+// resource.
+//
+//    // Example sending a request using the ListTagsForResourceRequest method.
+//    req := client.ListTagsForResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/iot1click-projects-2018-05-14/ListTagsForResource
+func (c *IoT1ClickProjects) ListTagsForResourceRequest(input *ListTagsForResourceInput) ListTagsForResourceRequest {
+	op := &aws.Operation{
+		Name:       opListTagsForResource,
+		HTTPMethod: "GET",
+		HTTPPath:   "/tags/{resourceArn}",
+	}
+
+	if input == nil {
+		input = &ListTagsForResourceInput{}
+	}
+
+	output := &ListTagsForResourceOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return ListTagsForResourceRequest{Request: req, Input: input, Copy: c.ListTagsForResourceRequest}
+}
+
+const opTagResource = "TagResource"
+
+// TagResourceRequest is a API request type for the TagResource API operation.
+type TagResourceRequest struct {
+	*aws.Request
+	Input *TagResourceInput
+	Copy  func(*TagResourceInput) TagResourceRequest
+}
+
+// Send marshals and sends the TagResource API request.
+func (r TagResourceRequest) Send(ctx context.Context) (*TagResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*TagResourceOutput), nil
+}
+
+// TagResourceRequest returns a request value for making API operation for
+// AWS IoT 1-Click Projects Service.
+//
+// Creates or modifies tags for a resource. Tags are key/value pairs (metadata)
+// that can be used to manage a resource. For more information, see AWS Tagging
+// Strategies (https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+//
+//    // Example sending a request using the TagResourceRequest method.
+//    req := client.TagResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/iot1click-projects-2018-05-14/TagResource
+func (c *IoT1ClickProjects) TagResourceRequest(input *TagResourceInput) TagResourceRequest {
+	op := &aws.Operation{
+		Name:       opTagResource,
+		HTTPMethod: "POST",
+		HTTPPath:   "/tags/{resourceArn}",
+	}
+
+	if input == nil {
+		input = &TagResourceInput{}
+	}
+
+	output := &TagResourceOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return TagResourceRequest{Request: req, Input: input, Copy: c.TagResourceRequest}
+}
+
+const opUntagResource = "UntagResource"
+
+// UntagResourceRequest is a API request type for the UntagResource API operation.
+type UntagResourceRequest struct {
+	*aws.Request
+	Input *UntagResourceInput
+	Copy  func(*UntagResourceInput) UntagResourceRequest
+}
+
+// Send marshals and sends the UntagResource API request.
+func (r UntagResourceRequest) Send(ctx context.Context) (*UntagResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*UntagResourceOutput), nil
+}
+
+// UntagResourceRequest returns a request value for making API operation for
+// AWS IoT 1-Click Projects Service.
+//
+// Removes one or more tags (metadata key/value pairs) from a resource.
+//
+//    // Example sending a request using the UntagResourceRequest method.
+//    req := client.UntagResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/iot1click-projects-2018-05-14/UntagResource
+func (c *IoT1ClickProjects) UntagResourceRequest(input *UntagResourceInput) UntagResourceRequest {
+	op := &aws.Operation{
+		Name:       opUntagResource,
+		HTTPMethod: "DELETE",
+		HTTPPath:   "/tags/{resourceArn}",
+	}
+
+	if input == nil {
+		input = &UntagResourceInput{}
+	}
+
+	output := &UntagResourceOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return UntagResourceRequest{Request: req, Input: input, Copy: c.UntagResourceRequest}
+}
+
 const opUpdatePlacement = "UpdatePlacement"
 
 // UpdatePlacementRequest is a API request type for the UpdatePlacement API operation.
@@ -578,7 +746,8 @@ type UpdatePlacementRequest struct {
 }
 
 // Send marshals and sends the UpdatePlacement API request.
-func (r UpdatePlacementRequest) Send() (*UpdatePlacementOutput, error) {
+func (r UpdatePlacementRequest) Send(ctx context.Context) (*UpdatePlacementOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -595,7 +764,7 @@ func (r UpdatePlacementRequest) Send() (*UpdatePlacementOutput, error) {
 //
 //    // Example sending a request using the UpdatePlacementRequest method.
 //    req := client.UpdatePlacementRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -629,7 +798,8 @@ type UpdateProjectRequest struct {
 }
 
 // Send marshals and sends the UpdateProject API request.
-func (r UpdateProjectRequest) Send() (*UpdateProjectOutput, error) {
+func (r UpdateProjectRequest) Send(ctx context.Context) (*UpdateProjectOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -648,7 +818,7 @@ func (r UpdateProjectRequest) Send() (*UpdateProjectOutput, error) {
 //
 //    // Example sending a request using the UpdateProjectRequest method.
 //    req := client.UpdateProjectRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -934,6 +1104,11 @@ type CreateProjectInput struct {
 	//
 	// ProjectName is a required field
 	ProjectName *string `locationName:"projectName" min:"1" type:"string" required:"true"`
+
+	// Optional tags (metadata key/value pairs) to be associated with the project.
+	// For example, { {"key1": "value1", "key2": "value2"} }. For more information,
+	// see AWS Tagging Strategies (https://aws.amazon.com/answers/account-management/aws-tagging-strategies/).
+	Tags map[string]string `locationName:"tags" min:"1" type:"map"`
 }
 
 // String returns the string representation
@@ -955,6 +1130,9 @@ func (s *CreateProjectInput) Validate() error {
 	}
 	if s.ProjectName != nil && len(*s.ProjectName) < 1 {
 		invalidParams.Add(aws.NewErrParamMinLen("ProjectName", 1))
+	}
+	if s.Tags != nil && len(s.Tags) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("Tags", 1))
 	}
 
 	if invalidParams.Len() > 0 {
@@ -984,6 +1162,18 @@ func (s CreateProjectInput) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "projectName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	return nil
 }
@@ -1892,6 +2082,95 @@ func (s ListProjectsOutput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/iot1click-projects-2018-05-14/ListTagsForResourceRequest
+type ListTagsForResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// The ARN of the resource whose tags you want to list.
+	//
+	// ResourceArn is a required field
+	ResourceArn *string `location:"uri" locationName:"resourceArn" type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s ListTagsForResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListTagsForResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ListTagsForResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ListTagsForResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ListTagsForResourceInput) MarshalFields(e protocol.FieldEncoder) error {
+	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
+
+	if s.ResourceArn != nil {
+		v := *s.ResourceArn
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "resourceArn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/iot1click-projects-2018-05-14/ListTagsForResourceResponse
+type ListTagsForResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// The tags (metadata key/value pairs) which you have assigned to the resource.
+	Tags map[string]string `locationName:"tags" min:"1" type:"map"`
+}
+
+// String returns the string representation
+func (s ListTagsForResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListTagsForResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s ListTagsForResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ListTagsForResourceOutput) MarshalFields(e protocol.FieldEncoder) error {
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
+	return nil
+}
+
 // An object describing a project's placement.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/iot1click-projects-2018-05-14/PlacementDescription
 type PlacementDescription struct {
@@ -2102,6 +2381,9 @@ func (s PlacementTemplate) MarshalFields(e protocol.FieldEncoder) error {
 type ProjectDescription struct {
 	_ struct{} `type:"structure"`
 
+	// The ARN of the project.
+	Arn *string `locationName:"arn" type:"string"`
+
 	// The date when the project was originally created, in UNIX epoch time format.
 	//
 	// CreatedDate is a required field
@@ -2117,6 +2399,9 @@ type ProjectDescription struct {
 	//
 	// ProjectName is a required field
 	ProjectName *string `locationName:"projectName" min:"1" type:"string" required:"true"`
+
+	// The tags (metadata key/value pairs) associated with the project.
+	Tags map[string]string `locationName:"tags" min:"1" type:"map"`
 
 	// The date when the project was last updated, in UNIX epoch time format. If
 	// the project was not updated, then createdDate and updatedDate are the same.
@@ -2137,6 +2422,12 @@ func (s ProjectDescription) GoString() string {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s ProjectDescription) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Arn != nil {
+		v := *s.Arn
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "arn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
 	if s.CreatedDate != nil {
 		v := *s.CreatedDate
 
@@ -2161,6 +2452,18 @@ func (s ProjectDescription) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "projectName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	if s.UpdatedDate != nil {
 		v := *s.UpdatedDate
 
@@ -2176,6 +2479,9 @@ func (s ProjectDescription) MarshalFields(e protocol.FieldEncoder) error {
 type ProjectSummary struct {
 	_ struct{} `type:"structure"`
 
+	// The ARN of the project.
+	Arn *string `locationName:"arn" type:"string"`
+
 	// The date when the project was originally created, in UNIX epoch time format.
 	//
 	// CreatedDate is a required field
@@ -2185,6 +2491,9 @@ type ProjectSummary struct {
 	//
 	// ProjectName is a required field
 	ProjectName *string `locationName:"projectName" min:"1" type:"string" required:"true"`
+
+	// The tags (metadata key/value pairs) associated with the project.
+	Tags map[string]string `locationName:"tags" min:"1" type:"map"`
 
 	// The date when the project was last updated, in UNIX epoch time format. If
 	// the project was not updated, then createdDate and updatedDate are the same.
@@ -2205,6 +2514,12 @@ func (s ProjectSummary) GoString() string {
 
 // MarshalFields encodes the AWS API shape using the passed in protocol encoder.
 func (s ProjectSummary) MarshalFields(e protocol.FieldEncoder) error {
+	if s.Arn != nil {
+		v := *s.Arn
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "arn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
 	if s.CreatedDate != nil {
 		v := *s.CreatedDate
 
@@ -2217,12 +2532,222 @@ func (s ProjectSummary) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "projectName", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	if s.UpdatedDate != nil {
 		v := *s.UpdatedDate
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "updatedDate", protocol.TimeValue{V: v, Format: protocol.UnixTimeFormat}, metadata)
 	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/iot1click-projects-2018-05-14/TagResourceRequest
+type TagResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// The ARN of the resouce for which tag(s) should be added or modified.
+	//
+	// ResourceArn is a required field
+	ResourceArn *string `location:"uri" locationName:"resourceArn" type:"string" required:"true"`
+
+	// The new or modifying tag(s) for the resource. See AWS IoT 1-Click Service
+	// Limits (https://docs.aws.amazon.com/iot-1-click/latest/developerguide/1click-appendix.html#1click-limits)
+	// for the maximum number of tags allowed per resource.
+	//
+	// Tags is a required field
+	Tags map[string]string `locationName:"tags" min:"1" type:"map" required:"true"`
+}
+
+// String returns the string representation
+func (s TagResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s TagResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *TagResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "TagResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+
+	if s.Tags == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Tags"))
+	}
+	if s.Tags != nil && len(s.Tags) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("Tags", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s TagResourceInput) MarshalFields(e protocol.FieldEncoder) error {
+	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
+
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
+	if s.ResourceArn != nil {
+		v := *s.ResourceArn
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "resourceArn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/iot1click-projects-2018-05-14/TagResourceResponse
+type TagResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+}
+
+// String returns the string representation
+func (s TagResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s TagResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s TagResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s TagResourceOutput) MarshalFields(e protocol.FieldEncoder) error {
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/iot1click-projects-2018-05-14/UntagResourceRequest
+type UntagResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// The ARN of the resource whose tag you want to remove.
+	//
+	// ResourceArn is a required field
+	ResourceArn *string `location:"uri" locationName:"resourceArn" type:"string" required:"true"`
+
+	// The keys of those tags which you want to remove.
+	//
+	// TagKeys is a required field
+	TagKeys []string `location:"querystring" locationName:"tagKeys" min:"1" type:"list" required:"true"`
+}
+
+// String returns the string representation
+func (s UntagResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UntagResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *UntagResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "UntagResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+
+	if s.TagKeys == nil {
+		invalidParams.Add(aws.NewErrParamRequired("TagKeys"))
+	}
+	if s.TagKeys != nil && len(s.TagKeys) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("TagKeys", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s UntagResourceInput) MarshalFields(e protocol.FieldEncoder) error {
+	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
+
+	if s.ResourceArn != nil {
+		v := *s.ResourceArn
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "resourceArn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.TagKeys) > 0 {
+		v := s.TagKeys
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.QueryTarget, "tagKeys", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ls0.End()
+
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/iot1click-projects-2018-05-14/UntagResourceResponse
+type UntagResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+}
+
+// String returns the string representation
+func (s UntagResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UntagResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s UntagResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s UntagResourceOutput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 

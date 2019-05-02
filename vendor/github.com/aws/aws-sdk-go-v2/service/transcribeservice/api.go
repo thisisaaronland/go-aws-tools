@@ -3,6 +3,7 @@
 package transcribeservice
 
 import (
+	"context"
 	"time"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
@@ -21,7 +22,8 @@ type CreateVocabularyRequest struct {
 }
 
 // Send marshals and sends the CreateVocabulary API request.
-func (r CreateVocabularyRequest) Send() (*CreateVocabularyOutput, error) {
+func (r CreateVocabularyRequest) Send(ctx context.Context) (*CreateVocabularyOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -38,7 +40,7 @@ func (r CreateVocabularyRequest) Send() (*CreateVocabularyOutput, error) {
 //
 //    // Example sending a request using the CreateVocabularyRequest method.
 //    req := client.CreateVocabularyRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -72,7 +74,8 @@ type DeleteTranscriptionJobRequest struct {
 }
 
 // Send marshals and sends the DeleteTranscriptionJob API request.
-func (r DeleteTranscriptionJobRequest) Send() (*DeleteTranscriptionJobOutput, error) {
+func (r DeleteTranscriptionJobRequest) Send(ctx context.Context) (*DeleteTranscriptionJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -89,7 +92,7 @@ func (r DeleteTranscriptionJobRequest) Send() (*DeleteTranscriptionJobOutput, er
 //
 //    // Example sending a request using the DeleteTranscriptionJobRequest method.
 //    req := client.DeleteTranscriptionJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -125,7 +128,8 @@ type DeleteVocabularyRequest struct {
 }
 
 // Send marshals and sends the DeleteVocabulary API request.
-func (r DeleteVocabularyRequest) Send() (*DeleteVocabularyOutput, error) {
+func (r DeleteVocabularyRequest) Send(ctx context.Context) (*DeleteVocabularyOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -141,7 +145,7 @@ func (r DeleteVocabularyRequest) Send() (*DeleteVocabularyOutput, error) {
 //
 //    // Example sending a request using the DeleteVocabularyRequest method.
 //    req := client.DeleteVocabularyRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -177,7 +181,8 @@ type GetTranscriptionJobRequest struct {
 }
 
 // Send marshals and sends the GetTranscriptionJob API request.
-func (r GetTranscriptionJobRequest) Send() (*GetTranscriptionJobOutput, error) {
+func (r GetTranscriptionJobRequest) Send(ctx context.Context) (*GetTranscriptionJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -196,7 +201,7 @@ func (r GetTranscriptionJobRequest) Send() (*GetTranscriptionJobOutput, error) {
 //
 //    // Example sending a request using the GetTranscriptionJobRequest method.
 //    req := client.GetTranscriptionJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -230,7 +235,8 @@ type GetVocabularyRequest struct {
 }
 
 // Send marshals and sends the GetVocabulary API request.
-func (r GetVocabularyRequest) Send() (*GetVocabularyOutput, error) {
+func (r GetVocabularyRequest) Send(ctx context.Context) (*GetVocabularyOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -246,7 +252,7 @@ func (r GetVocabularyRequest) Send() (*GetVocabularyOutput, error) {
 //
 //    // Example sending a request using the GetVocabularyRequest method.
 //    req := client.GetVocabularyRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -280,7 +286,8 @@ type ListTranscriptionJobsRequest struct {
 }
 
 // Send marshals and sends the ListTranscriptionJobs API request.
-func (r ListTranscriptionJobsRequest) Send() (*ListTranscriptionJobsOutput, error) {
+func (r ListTranscriptionJobsRequest) Send(ctx context.Context) (*ListTranscriptionJobsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -296,7 +303,7 @@ func (r ListTranscriptionJobsRequest) Send() (*ListTranscriptionJobsOutput, erro
 //
 //    // Example sending a request using the ListTranscriptionJobsRequest method.
 //    req := client.ListTranscriptionJobsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -346,7 +353,7 @@ func (c *TranscribeService) ListTranscriptionJobsRequest(input *ListTranscriptio
 func (p *ListTranscriptionJobsRequest) Paginate(opts ...aws.Option) ListTranscriptionJobsPager {
 	return ListTranscriptionJobsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListTranscriptionJobsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -355,6 +362,7 @@ func (p *ListTranscriptionJobsRequest) Paginate(opts ...aws.Option) ListTranscri
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -382,7 +390,8 @@ type ListVocabulariesRequest struct {
 }
 
 // Send marshals and sends the ListVocabularies API request.
-func (r ListVocabulariesRequest) Send() (*ListVocabulariesOutput, error) {
+func (r ListVocabulariesRequest) Send(ctx context.Context) (*ListVocabulariesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -399,7 +408,7 @@ func (r ListVocabulariesRequest) Send() (*ListVocabulariesOutput, error) {
 //
 //    // Example sending a request using the ListVocabulariesRequest method.
 //    req := client.ListVocabulariesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -449,7 +458,7 @@ func (c *TranscribeService) ListVocabulariesRequest(input *ListVocabulariesInput
 func (p *ListVocabulariesRequest) Paginate(opts ...aws.Option) ListVocabulariesPager {
 	return ListVocabulariesPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListVocabulariesInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -458,6 +467,7 @@ func (p *ListVocabulariesRequest) Paginate(opts ...aws.Option) ListVocabulariesP
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -485,7 +495,8 @@ type StartTranscriptionJobRequest struct {
 }
 
 // Send marshals and sends the StartTranscriptionJob API request.
-func (r StartTranscriptionJobRequest) Send() (*StartTranscriptionJobOutput, error) {
+func (r StartTranscriptionJobRequest) Send(ctx context.Context) (*StartTranscriptionJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -501,7 +512,7 @@ func (r StartTranscriptionJobRequest) Send() (*StartTranscriptionJobOutput, erro
 //
 //    // Example sending a request using the StartTranscriptionJobRequest method.
 //    req := client.StartTranscriptionJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -535,7 +546,8 @@ type UpdateVocabularyRequest struct {
 }
 
 // Send marshals and sends the UpdateVocabulary API request.
-func (r UpdateVocabularyRequest) Send() (*UpdateVocabularyOutput, error) {
+func (r UpdateVocabularyRequest) Send(ctx context.Context) (*UpdateVocabularyOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -553,7 +565,7 @@ func (r UpdateVocabularyRequest) Send() (*UpdateVocabularyOutput, error) {
 //
 //    // Example sending a request using the UpdateVocabularyRequest method.
 //    req := client.UpdateVocabularyRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -587,9 +599,23 @@ type CreateVocabularyInput struct {
 	LanguageCode LanguageCode `type:"string" required:"true" enum:"true"`
 
 	// An array of strings that contains the vocabulary entries.
+	Phrases []string `type:"list"`
+
+	// The S3 location of the text file that contains the definition of the custom
+	// vocabulary. The URI must be in the same region as the API endpoint that you
+	// are calling. The general form is
 	//
-	// Phrases is a required field
-	Phrases []string `type:"list" required:"true"`
+	// https://s3-<aws-region>.amazonaws.com/<bucket-name>/<keyprefix>/<objectkey>
+	//
+	// For example:
+	//
+	// https://s3-us-east-1.amazonaws.com/examplebucket/vocab.txt
+	//
+	// For more information about S3 object names, see Object Keys (http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)
+	// in the Amazon S3 Developer Guide.
+	//
+	// For more information about custom vocabularies, see Custom Vocabularies (http://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary).
+	VocabularyFileUri *string `min:"1" type:"string"`
 
 	// The name of the vocabulary. The name must be unique within an AWS account.
 	// The name is case-sensitive.
@@ -614,9 +640,8 @@ func (s *CreateVocabularyInput) Validate() error {
 	if len(s.LanguageCode) == 0 {
 		invalidParams.Add(aws.NewErrParamRequired("LanguageCode"))
 	}
-
-	if s.Phrases == nil {
-		invalidParams.Add(aws.NewErrParamRequired("Phrases"))
+	if s.VocabularyFileUri != nil && len(*s.VocabularyFileUri) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("VocabularyFileUri", 1))
 	}
 
 	if s.VocabularyName == nil {
@@ -1236,6 +1261,10 @@ type StartTranscriptionJobInput struct {
 	// the bucket. For more information, see Permissions Required for IAM User Roles
 	// (https://docs.aws.amazon.com/transcribe/latest/dg/access-control-managing-permissions.html#auth-role-iam-user).
 	//
+	// Amazon Transcribe uses the default Amazon S3 key for server-side encryption
+	// of transcripts that are placed in your S3 bucket. You can't specify your
+	// own encryption key.
+	//
 	// If you don't set the OutputBucketName, Amazon Transcribe generates a pre-signed
 	// URL, a shareable URL that provides secure access to your transcription, and
 	// returns it in the TranscriptFileUri field. Use this URL to download the transcription.
@@ -1364,6 +1393,36 @@ type TranscriptionJob struct {
 
 	// If the TranscriptionJobStatus field is FAILED, this field contains information
 	// about why the job failed.
+	//
+	// The FailureReason field can contain one of the following values:
+	//
+	//    * Unsupported media format - The media format specified in the MediaFormat
+	//    field of the request isn't valid. See the description of the MediaFormat
+	//    field for a list of valid values.
+	//
+	//    * The media format provided does not match the detected media format -
+	//    The media format of the audio file doesn't match the format specified
+	//    in the MediaFormat field in the request. Check the media format of your
+	//    media file and make sure that the two values match.
+	//
+	//    * Invalid sample rate for audio file - The sample rate specified in the
+	//    MediaSampleRateHertz of the request isn't valid. The sample rate must
+	//    be between 8000 and 48000 Hertz.
+	//
+	//    * The sample rate provided does not match the detected sample rate - The
+	//    sample rate in the audio file doesn't match the sample rate specified
+	//    in the MediaSampleRateHertz field in the request. Check the sample rate
+	//    of your media file and make sure that the two values match.
+	//
+	//    * Invalid file size: file size too large - The size of your audio file
+	//    is larger than Amazon Transcribe can process. For more information, see
+	//    Limits (https://docs.aws.amazon.com/transcribe/latest/dg/limits-guidelines.html#limits)
+	//    in the Amazon Transcribe Developer Guide.
+	//
+	//    * Invalid number of channels: number of channels too large - Your audio
+	//    contains more channels than Amazon Transcribe is configured to process.
+	//    To request additional channels, see Amazon Transcribe Limits (https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits-amazon-transcribe)
+	//    in the Amazon Web Services General Reference.
 	FailureReason *string `type:"string"`
 
 	// The language code for the input speech.
@@ -1460,9 +1519,23 @@ type UpdateVocabularyInput struct {
 	LanguageCode LanguageCode `type:"string" required:"true" enum:"true"`
 
 	// An array of strings containing the vocabulary entries.
+	Phrases []string `type:"list"`
+
+	// The S3 location of the text file that contains the definition of the custom
+	// vocabulary. The URI must be in the same region as the API endpoint that you
+	// are calling. The general form is
 	//
-	// Phrases is a required field
-	Phrases []string `type:"list" required:"true"`
+	// https://s3-<aws-region>.amazonaws.com/<bucket-name>/<keyprefix>/<objectkey>
+	//
+	// For example:
+	//
+	// https://s3-us-east-1.amazonaws.com/examplebucket/vocab.txt
+	//
+	// For more information about S3 object names, see Object Keys (http://docs.aws.amazon.com/AmazonS3/latest/dev/UsingMetadata.html#object-keys)
+	// in the Amazon S3 Developer Guide.
+	//
+	// For more information about custom vocabularies, see Custom Vocabularies (http://docs.aws.amazon.com/transcribe/latest/dg/how-it-works.html#how-vocabulary).
+	VocabularyFileUri *string `min:"1" type:"string"`
 
 	// The name of the vocabulary to update. The name is case-sensitive.
 	//
@@ -1486,9 +1559,8 @@ func (s *UpdateVocabularyInput) Validate() error {
 	if len(s.LanguageCode) == 0 {
 		invalidParams.Add(aws.NewErrParamRequired("LanguageCode"))
 	}
-
-	if s.Phrases == nil {
-		invalidParams.Add(aws.NewErrParamRequired("Phrases"))
+	if s.VocabularyFileUri != nil && len(*s.VocabularyFileUri) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("VocabularyFileUri", 1))
 	}
 
 	if s.VocabularyName == nil {
@@ -1581,6 +1653,8 @@ const (
 	LanguageCodePtBr LanguageCode = "pt-BR"
 	LanguageCodeFrFr LanguageCode = "fr-FR"
 	LanguageCodeItIt LanguageCode = "it-IT"
+	LanguageCodeKoKr LanguageCode = "ko-KR"
+	LanguageCodeEsEs LanguageCode = "es-ES"
 )
 
 func (enum LanguageCode) MarshalValue() (string, error) {

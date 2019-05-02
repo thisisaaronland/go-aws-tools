@@ -3,11 +3,13 @@
 package mediaconnect
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/internal/awsutil"
 	"github.com/aws/aws-sdk-go-v2/private/protocol"
+	"github.com/aws/aws-sdk-go-v2/private/protocol/restjson"
 )
 
 const opAddFlowOutputs = "AddFlowOutputs"
@@ -20,7 +22,8 @@ type AddFlowOutputsRequest struct {
 }
 
 // Send marshals and sends the AddFlowOutputs API request.
-func (r AddFlowOutputsRequest) Send() (*AddFlowOutputsOutput, error) {
+func (r AddFlowOutputsRequest) Send(ctx context.Context) (*AddFlowOutputsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -36,7 +39,7 @@ func (r AddFlowOutputsRequest) Send() (*AddFlowOutputsOutput, error) {
 //
 //    // Example sending a request using the AddFlowOutputsRequest method.
 //    req := client.AddFlowOutputsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -70,7 +73,8 @@ type CreateFlowRequest struct {
 }
 
 // Send marshals and sends the CreateFlow API request.
-func (r CreateFlowRequest) Send() (*CreateFlowOutput, error) {
+func (r CreateFlowRequest) Send(ctx context.Context) (*CreateFlowOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -87,7 +91,7 @@ func (r CreateFlowRequest) Send() (*CreateFlowOutput, error) {
 //
 //    // Example sending a request using the CreateFlowRequest method.
 //    req := client.CreateFlowRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -121,7 +125,8 @@ type DeleteFlowRequest struct {
 }
 
 // Send marshals and sends the DeleteFlow API request.
-func (r DeleteFlowRequest) Send() (*DeleteFlowOutput, error) {
+func (r DeleteFlowRequest) Send(ctx context.Context) (*DeleteFlowOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -137,7 +142,7 @@ func (r DeleteFlowRequest) Send() (*DeleteFlowOutput, error) {
 //
 //    // Example sending a request using the DeleteFlowRequest method.
 //    req := client.DeleteFlowRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -171,7 +176,8 @@ type DescribeFlowRequest struct {
 }
 
 // Send marshals and sends the DescribeFlow API request.
-func (r DescribeFlowRequest) Send() (*DescribeFlowOutput, error) {
+func (r DescribeFlowRequest) Send(ctx context.Context) (*DescribeFlowOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -189,7 +195,7 @@ func (r DescribeFlowRequest) Send() (*DescribeFlowOutput, error) {
 //
 //    // Example sending a request using the DescribeFlowRequest method.
 //    req := client.DescribeFlowRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -223,7 +229,8 @@ type GrantFlowEntitlementsRequest struct {
 }
 
 // Send marshals and sends the GrantFlowEntitlements API request.
-func (r GrantFlowEntitlementsRequest) Send() (*GrantFlowEntitlementsOutput, error) {
+func (r GrantFlowEntitlementsRequest) Send(ctx context.Context) (*GrantFlowEntitlementsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -239,7 +246,7 @@ func (r GrantFlowEntitlementsRequest) Send() (*GrantFlowEntitlementsOutput, erro
 //
 //    // Example sending a request using the GrantFlowEntitlementsRequest method.
 //    req := client.GrantFlowEntitlementsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -273,7 +280,8 @@ type ListEntitlementsRequest struct {
 }
 
 // Send marshals and sends the ListEntitlements API request.
-func (r ListEntitlementsRequest) Send() (*ListEntitlementsOutput, error) {
+func (r ListEntitlementsRequest) Send(ctx context.Context) (*ListEntitlementsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -290,7 +298,7 @@ func (r ListEntitlementsRequest) Send() (*ListEntitlementsOutput, error) {
 //
 //    // Example sending a request using the ListEntitlementsRequest method.
 //    req := client.ListEntitlementsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -301,6 +309,12 @@ func (c *MediaConnect) ListEntitlementsRequest(input *ListEntitlementsInput) Lis
 		Name:       opListEntitlements,
 		HTTPMethod: "GET",
 		HTTPPath:   "/v1/entitlements",
+		Paginator: &aws.Paginator{
+			InputTokens:     []string{"NextToken"},
+			OutputTokens:    []string{"NextToken"},
+			LimitToken:      "MaxResults",
+			TruncationToken: "",
+		},
 	}
 
 	if input == nil {
@@ -314,6 +328,53 @@ func (c *MediaConnect) ListEntitlementsRequest(input *ListEntitlementsInput) Lis
 	return ListEntitlementsRequest{Request: req, Input: input, Copy: c.ListEntitlementsRequest}
 }
 
+// Paginate pages iterates over the pages of a ListEntitlementsRequest operation,
+// calling the Next method for each page. Using the paginators Next
+// method will depict whether or not there are more pages.
+//
+// Note: This operation can generate multiple requests to a service.
+//
+//    // Example iterating over at most 3 pages of a ListEntitlements operation.
+//		req := client.ListEntitlementsRequest(input)
+//		p := req.Paginate()
+//		for p.Next() {
+//			page := p.CurrentPage()
+//		}
+//
+//		if err := p.Err(); err != nil {
+//			return err
+//		}
+//
+func (p *ListEntitlementsRequest) Paginate(opts ...aws.Option) ListEntitlementsPager {
+	return ListEntitlementsPager{
+		Pager: aws.Pager{
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
+				var inCpy *ListEntitlementsInput
+				if p.Input != nil {
+					tmp := *p.Input
+					inCpy = &tmp
+				}
+
+				req := p.Copy(inCpy)
+				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
+
+				return req.Request, nil
+			},
+		},
+	}
+}
+
+// ListEntitlementsPager is used to paginate the request. This can be done by
+// calling Next and CurrentPage.
+type ListEntitlementsPager struct {
+	aws.Pager
+}
+
+func (p *ListEntitlementsPager) CurrentPage() *ListEntitlementsOutput {
+	return p.Pager.CurrentPage().(*ListEntitlementsOutput)
+}
+
 const opListFlows = "ListFlows"
 
 // ListFlowsRequest is a API request type for the ListFlows API operation.
@@ -324,7 +385,8 @@ type ListFlowsRequest struct {
 }
 
 // Send marshals and sends the ListFlows API request.
-func (r ListFlowsRequest) Send() (*ListFlowsOutput, error) {
+func (r ListFlowsRequest) Send(ctx context.Context) (*ListFlowsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -341,7 +403,7 @@ func (r ListFlowsRequest) Send() (*ListFlowsOutput, error) {
 //
 //    // Example sending a request using the ListFlowsRequest method.
 //    req := client.ListFlowsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -391,7 +453,7 @@ func (c *MediaConnect) ListFlowsRequest(input *ListFlowsInput) ListFlowsRequest 
 func (p *ListFlowsRequest) Paginate(opts ...aws.Option) ListFlowsPager {
 	return ListFlowsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListFlowsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -400,6 +462,7 @@ func (p *ListFlowsRequest) Paginate(opts ...aws.Option) ListFlowsPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -417,6 +480,57 @@ func (p *ListFlowsPager) CurrentPage() *ListFlowsOutput {
 	return p.Pager.CurrentPage().(*ListFlowsOutput)
 }
 
+const opListTagsForResource = "ListTagsForResource"
+
+// ListTagsForResourceRequest is a API request type for the ListTagsForResource API operation.
+type ListTagsForResourceRequest struct {
+	*aws.Request
+	Input *ListTagsForResourceInput
+	Copy  func(*ListTagsForResourceInput) ListTagsForResourceRequest
+}
+
+// Send marshals and sends the ListTagsForResource API request.
+func (r ListTagsForResourceRequest) Send(ctx context.Context) (*ListTagsForResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*ListTagsForResourceOutput), nil
+}
+
+// ListTagsForResourceRequest returns a request value for making API operation for
+// AWS MediaConnect.
+//
+// List all tags on an AWS Elemental MediaConnect resource
+//
+//    // Example sending a request using the ListTagsForResourceRequest method.
+//    req := client.ListTagsForResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/ListTagsForResource
+func (c *MediaConnect) ListTagsForResourceRequest(input *ListTagsForResourceInput) ListTagsForResourceRequest {
+	op := &aws.Operation{
+		Name:       opListTagsForResource,
+		HTTPMethod: "GET",
+		HTTPPath:   "/tags/{resourceArn}",
+	}
+
+	if input == nil {
+		input = &ListTagsForResourceInput{}
+	}
+
+	output := &ListTagsForResourceOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return ListTagsForResourceRequest{Request: req, Input: input, Copy: c.ListTagsForResourceRequest}
+}
+
 const opRemoveFlowOutput = "RemoveFlowOutput"
 
 // RemoveFlowOutputRequest is a API request type for the RemoveFlowOutput API operation.
@@ -427,7 +541,8 @@ type RemoveFlowOutputRequest struct {
 }
 
 // Send marshals and sends the RemoveFlowOutput API request.
-func (r RemoveFlowOutputRequest) Send() (*RemoveFlowOutputOutput, error) {
+func (r RemoveFlowOutputRequest) Send(ctx context.Context) (*RemoveFlowOutputOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -447,7 +562,7 @@ func (r RemoveFlowOutputRequest) Send() (*RemoveFlowOutputOutput, error) {
 //
 //    // Example sending a request using the RemoveFlowOutputRequest method.
 //    req := client.RemoveFlowOutputRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -481,7 +596,8 @@ type RevokeFlowEntitlementRequest struct {
 }
 
 // Send marshals and sends the RevokeFlowEntitlement API request.
-func (r RevokeFlowEntitlementRequest) Send() (*RevokeFlowEntitlementOutput, error) {
+func (r RevokeFlowEntitlementRequest) Send(ctx context.Context) (*RevokeFlowEntitlementOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -498,7 +614,7 @@ func (r RevokeFlowEntitlementRequest) Send() (*RevokeFlowEntitlementOutput, erro
 //
 //    // Example sending a request using the RevokeFlowEntitlementRequest method.
 //    req := client.RevokeFlowEntitlementRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -532,7 +648,8 @@ type StartFlowRequest struct {
 }
 
 // Send marshals and sends the StartFlow API request.
-func (r StartFlowRequest) Send() (*StartFlowOutput, error) {
+func (r StartFlowRequest) Send(ctx context.Context) (*StartFlowOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -548,7 +665,7 @@ func (r StartFlowRequest) Send() (*StartFlowOutput, error) {
 //
 //    // Example sending a request using the StartFlowRequest method.
 //    req := client.StartFlowRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -582,7 +699,8 @@ type StopFlowRequest struct {
 }
 
 // Send marshals and sends the StopFlow API request.
-func (r StopFlowRequest) Send() (*StopFlowOutput, error) {
+func (r StopFlowRequest) Send(ctx context.Context) (*StopFlowOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -598,7 +716,7 @@ func (r StopFlowRequest) Send() (*StopFlowOutput, error) {
 //
 //    // Example sending a request using the StopFlowRequest method.
 //    req := client.StopFlowRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -622,6 +740,115 @@ func (c *MediaConnect) StopFlowRequest(input *StopFlowInput) StopFlowRequest {
 	return StopFlowRequest{Request: req, Input: input, Copy: c.StopFlowRequest}
 }
 
+const opTagResource = "TagResource"
+
+// TagResourceRequest is a API request type for the TagResource API operation.
+type TagResourceRequest struct {
+	*aws.Request
+	Input *TagResourceInput
+	Copy  func(*TagResourceInput) TagResourceRequest
+}
+
+// Send marshals and sends the TagResource API request.
+func (r TagResourceRequest) Send(ctx context.Context) (*TagResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*TagResourceOutput), nil
+}
+
+// TagResourceRequest returns a request value for making API operation for
+// AWS MediaConnect.
+//
+// Associates the specified tags to a resource with the specified resourceArn.
+// If existing tags on a resource are not specified in the request parameters,
+// they are not changed. When a resource is deleted, the tags associated with
+// that resource are deleted as well.
+//
+//    // Example sending a request using the TagResourceRequest method.
+//    req := client.TagResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/TagResource
+func (c *MediaConnect) TagResourceRequest(input *TagResourceInput) TagResourceRequest {
+	op := &aws.Operation{
+		Name:       opTagResource,
+		HTTPMethod: "POST",
+		HTTPPath:   "/tags/{resourceArn}",
+	}
+
+	if input == nil {
+		input = &TagResourceInput{}
+	}
+
+	output := &TagResourceOutput{}
+	req := c.newRequest(op, input, output)
+	req.Handlers.Unmarshal.Remove(restjson.UnmarshalHandler)
+	req.Handlers.Unmarshal.PushBackNamed(protocol.UnmarshalDiscardBodyHandler)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return TagResourceRequest{Request: req, Input: input, Copy: c.TagResourceRequest}
+}
+
+const opUntagResource = "UntagResource"
+
+// UntagResourceRequest is a API request type for the UntagResource API operation.
+type UntagResourceRequest struct {
+	*aws.Request
+	Input *UntagResourceInput
+	Copy  func(*UntagResourceInput) UntagResourceRequest
+}
+
+// Send marshals and sends the UntagResource API request.
+func (r UntagResourceRequest) Send(ctx context.Context) (*UntagResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*UntagResourceOutput), nil
+}
+
+// UntagResourceRequest returns a request value for making API operation for
+// AWS MediaConnect.
+//
+// Deletes specified tags from a resource.
+//
+//    // Example sending a request using the UntagResourceRequest method.
+//    req := client.UntagResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/UntagResource
+func (c *MediaConnect) UntagResourceRequest(input *UntagResourceInput) UntagResourceRequest {
+	op := &aws.Operation{
+		Name:       opUntagResource,
+		HTTPMethod: "DELETE",
+		HTTPPath:   "/tags/{resourceArn}",
+	}
+
+	if input == nil {
+		input = &UntagResourceInput{}
+	}
+
+	output := &UntagResourceOutput{}
+	req := c.newRequest(op, input, output)
+	req.Handlers.Unmarshal.Remove(restjson.UnmarshalHandler)
+	req.Handlers.Unmarshal.PushBackNamed(protocol.UnmarshalDiscardBodyHandler)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return UntagResourceRequest{Request: req, Input: input, Copy: c.UntagResourceRequest}
+}
+
 const opUpdateFlowEntitlement = "UpdateFlowEntitlement"
 
 // UpdateFlowEntitlementRequest is a API request type for the UpdateFlowEntitlement API operation.
@@ -632,7 +859,8 @@ type UpdateFlowEntitlementRequest struct {
 }
 
 // Send marshals and sends the UpdateFlowEntitlement API request.
-func (r UpdateFlowEntitlementRequest) Send() (*UpdateFlowEntitlementOutput, error) {
+func (r UpdateFlowEntitlementRequest) Send(ctx context.Context) (*UpdateFlowEntitlementOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -650,7 +878,7 @@ func (r UpdateFlowEntitlementRequest) Send() (*UpdateFlowEntitlementOutput, erro
 //
 //    // Example sending a request using the UpdateFlowEntitlementRequest method.
 //    req := client.UpdateFlowEntitlementRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -684,7 +912,8 @@ type UpdateFlowOutputRequest struct {
 }
 
 // Send marshals and sends the UpdateFlowOutput API request.
-func (r UpdateFlowOutputRequest) Send() (*UpdateFlowOutputOutput, error) {
+func (r UpdateFlowOutputRequest) Send(ctx context.Context) (*UpdateFlowOutputOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -700,7 +929,7 @@ func (r UpdateFlowOutputRequest) Send() (*UpdateFlowOutputOutput, error) {
 //
 //    // Example sending a request using the UpdateFlowOutputRequest method.
 //    req := client.UpdateFlowOutputRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -734,7 +963,8 @@ type UpdateFlowSourceRequest struct {
 }
 
 // Send marshals and sends the UpdateFlowSource API request.
-func (r UpdateFlowSourceRequest) Send() (*UpdateFlowSourceOutput, error) {
+func (r UpdateFlowSourceRequest) Send(ctx context.Context) (*UpdateFlowSourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -750,7 +980,7 @@ func (r UpdateFlowSourceRequest) Send() (*UpdateFlowSourceOutput, error) {
 //
 //    // Example sending a request using the UpdateFlowSourceRequest method.
 //    req := client.UpdateFlowSourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2113,6 +2343,95 @@ func (s ListFlowsOutput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/ListTagsForResourceRequest
+type ListTagsForResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// ResourceArn is a required field
+	ResourceArn *string `location:"uri" locationName:"resourceArn" type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s ListTagsForResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListTagsForResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ListTagsForResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ListTagsForResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ListTagsForResourceInput) MarshalFields(e protocol.FieldEncoder) error {
+	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
+
+	if s.ResourceArn != nil {
+		v := *s.ResourceArn
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "resourceArn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+// The tags for the resource.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/ListTagsForResourceResponse
+type ListTagsForResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// A map from tag keys to values. Tag keys can have a maximum character length
+	// of 128 characters, and tag values can have a maximum length of 256 characters.
+	Tags map[string]string `locationName:"tags" type:"map"`
+}
+
+// String returns the string representation
+func (s ListTagsForResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListTagsForResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s ListTagsForResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ListTagsForResourceOutput) MarshalFields(e protocol.FieldEncoder) error {
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
+	return nil
+}
+
 // An entitlement that has been granted to you from other AWS accounts.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/ListedEntitlement
 type ListedEntitlement struct {
@@ -3030,6 +3349,102 @@ func (s StopFlowOutput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// The tags to add to the resource. Tag keys can have a maximum character length
+// of 128 characters, and tag values can have a maximum length of 256 characters.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/TagResourceRequest
+type TagResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// ResourceArn is a required field
+	ResourceArn *string `location:"uri" locationName:"resourceArn" type:"string" required:"true"`
+
+	// A map from tag keys to values. Tag keys can have a maximum character length
+	// of 128 characters, and tag values can have a maximum length of 256 characters.
+	//
+	// Tags is a required field
+	Tags map[string]string `locationName:"tags" type:"map" required:"true"`
+}
+
+// String returns the string representation
+func (s TagResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s TagResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *TagResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "TagResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+
+	if s.Tags == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Tags"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s TagResourceInput) MarshalFields(e protocol.FieldEncoder) error {
+	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
+
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
+	if s.ResourceArn != nil {
+		v := *s.ResourceArn
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "resourceArn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/TagResourceOutput
+type TagResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+}
+
+// String returns the string representation
+func (s TagResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s TagResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s TagResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s TagResourceOutput) MarshalFields(e protocol.FieldEncoder) error {
+	return nil
+}
+
 // Attributes related to the transport stream that are used in a source or output.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/Transport
 type Transport struct {
@@ -3096,6 +3511,97 @@ func (s Transport) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "streamId", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/UntagResourceRequest
+type UntagResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// ResourceArn is a required field
+	ResourceArn *string `location:"uri" locationName:"resourceArn" type:"string" required:"true"`
+
+	// TagKeys is a required field
+	TagKeys []string `location:"querystring" locationName:"tagKeys" type:"list" required:"true"`
+}
+
+// String returns the string representation
+func (s UntagResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UntagResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *UntagResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "UntagResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+
+	if s.TagKeys == nil {
+		invalidParams.Add(aws.NewErrParamRequired("TagKeys"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s UntagResourceInput) MarshalFields(e protocol.FieldEncoder) error {
+	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
+
+	if s.ResourceArn != nil {
+		v := *s.ResourceArn
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "resourceArn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.TagKeys) > 0 {
+		v := s.TagKeys
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.QueryTarget, "tagKeys", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ls0.End()
+
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/mediaconnect-2018-11-14/UntagResourceOutput
+type UntagResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+}
+
+// String returns the string representation
+func (s UntagResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UntagResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s UntagResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s UntagResourceOutput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 

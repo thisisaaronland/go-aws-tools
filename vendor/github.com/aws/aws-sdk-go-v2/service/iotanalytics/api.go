@@ -3,6 +3,7 @@
 package iotanalytics
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -22,7 +23,8 @@ type BatchPutMessageRequest struct {
 }
 
 // Send marshals and sends the BatchPutMessage API request.
-func (r BatchPutMessageRequest) Send() (*BatchPutMessageOutput, error) {
+func (r BatchPutMessageRequest) Send(ctx context.Context) (*BatchPutMessageOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -38,7 +40,7 @@ func (r BatchPutMessageRequest) Send() (*BatchPutMessageOutput, error) {
 //
 //    // Example sending a request using the BatchPutMessageRequest method.
 //    req := client.BatchPutMessageRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -72,7 +74,8 @@ type CancelPipelineReprocessingRequest struct {
 }
 
 // Send marshals and sends the CancelPipelineReprocessing API request.
-func (r CancelPipelineReprocessingRequest) Send() (*CancelPipelineReprocessingOutput, error) {
+func (r CancelPipelineReprocessingRequest) Send(ctx context.Context) (*CancelPipelineReprocessingOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -88,7 +91,7 @@ func (r CancelPipelineReprocessingRequest) Send() (*CancelPipelineReprocessingOu
 //
 //    // Example sending a request using the CancelPipelineReprocessingRequest method.
 //    req := client.CancelPipelineReprocessingRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -122,7 +125,8 @@ type CreateChannelRequest struct {
 }
 
 // Send marshals and sends the CreateChannel API request.
-func (r CreateChannelRequest) Send() (*CreateChannelOutput, error) {
+func (r CreateChannelRequest) Send(ctx context.Context) (*CreateChannelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -139,7 +143,7 @@ func (r CreateChannelRequest) Send() (*CreateChannelOutput, error) {
 //
 //    // Example sending a request using the CreateChannelRequest method.
 //    req := client.CreateChannelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -173,7 +177,8 @@ type CreateDatasetRequest struct {
 }
 
 // Send marshals and sends the CreateDataset API request.
-func (r CreateDatasetRequest) Send() (*CreateDatasetOutput, error) {
+func (r CreateDatasetRequest) Send(ctx context.Context) (*CreateDatasetOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -193,7 +198,7 @@ func (r CreateDatasetRequest) Send() (*CreateDatasetOutput, error) {
 //
 //    // Example sending a request using the CreateDatasetRequest method.
 //    req := client.CreateDatasetRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -227,7 +232,8 @@ type CreateDatasetContentRequest struct {
 }
 
 // Send marshals and sends the CreateDatasetContent API request.
-func (r CreateDatasetContentRequest) Send() (*CreateDatasetContentOutput, error) {
+func (r CreateDatasetContentRequest) Send(ctx context.Context) (*CreateDatasetContentOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -239,11 +245,12 @@ func (r CreateDatasetContentRequest) Send() (*CreateDatasetContentOutput, error)
 // CreateDatasetContentRequest returns a request value for making API operation for
 // AWS IoT Analytics.
 //
-// Creates the content of a data set by applying a SQL action.
+// Creates the content of a data set by applying a "queryAction" (a SQL query)
+// or a "containerAction" (executing a containerized application).
 //
 //    // Example sending a request using the CreateDatasetContentRequest method.
 //    req := client.CreateDatasetContentRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -277,7 +284,8 @@ type CreateDatastoreRequest struct {
 }
 
 // Send marshals and sends the CreateDatastore API request.
-func (r CreateDatastoreRequest) Send() (*CreateDatastoreOutput, error) {
+func (r CreateDatastoreRequest) Send(ctx context.Context) (*CreateDatastoreOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -293,7 +301,7 @@ func (r CreateDatastoreRequest) Send() (*CreateDatastoreOutput, error) {
 //
 //    // Example sending a request using the CreateDatastoreRequest method.
 //    req := client.CreateDatastoreRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -327,7 +335,8 @@ type CreatePipelineRequest struct {
 }
 
 // Send marshals and sends the CreatePipeline API request.
-func (r CreatePipelineRequest) Send() (*CreatePipelineOutput, error) {
+func (r CreatePipelineRequest) Send(ctx context.Context) (*CreatePipelineOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -341,10 +350,12 @@ func (r CreatePipelineRequest) Send() (*CreatePipelineOutput, error) {
 //
 // Creates a pipeline. A pipeline consumes messages from one or more channels
 // and allows you to process the messages before storing them in a data store.
+// You must specify both a channel and a datastore activity and, optionally,
+// as many as 23 additional activities in the pipelineActivities array.
 //
 //    // Example sending a request using the CreatePipelineRequest method.
 //    req := client.CreatePipelineRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -378,7 +389,8 @@ type DeleteChannelRequest struct {
 }
 
 // Send marshals and sends the DeleteChannel API request.
-func (r DeleteChannelRequest) Send() (*DeleteChannelOutput, error) {
+func (r DeleteChannelRequest) Send(ctx context.Context) (*DeleteChannelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -394,7 +406,7 @@ func (r DeleteChannelRequest) Send() (*DeleteChannelOutput, error) {
 //
 //    // Example sending a request using the DeleteChannelRequest method.
 //    req := client.DeleteChannelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -430,7 +442,8 @@ type DeleteDatasetRequest struct {
 }
 
 // Send marshals and sends the DeleteDataset API request.
-func (r DeleteDatasetRequest) Send() (*DeleteDatasetOutput, error) {
+func (r DeleteDatasetRequest) Send(ctx context.Context) (*DeleteDatasetOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -449,7 +462,7 @@ func (r DeleteDatasetRequest) Send() (*DeleteDatasetOutput, error) {
 //
 //    // Example sending a request using the DeleteDatasetRequest method.
 //    req := client.DeleteDatasetRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -485,7 +498,8 @@ type DeleteDatasetContentRequest struct {
 }
 
 // Send marshals and sends the DeleteDatasetContent API request.
-func (r DeleteDatasetContentRequest) Send() (*DeleteDatasetContentOutput, error) {
+func (r DeleteDatasetContentRequest) Send(ctx context.Context) (*DeleteDatasetContentOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -501,7 +515,7 @@ func (r DeleteDatasetContentRequest) Send() (*DeleteDatasetContentOutput, error)
 //
 //    // Example sending a request using the DeleteDatasetContentRequest method.
 //    req := client.DeleteDatasetContentRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -537,7 +551,8 @@ type DeleteDatastoreRequest struct {
 }
 
 // Send marshals and sends the DeleteDatastore API request.
-func (r DeleteDatastoreRequest) Send() (*DeleteDatastoreOutput, error) {
+func (r DeleteDatastoreRequest) Send(ctx context.Context) (*DeleteDatastoreOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -553,7 +568,7 @@ func (r DeleteDatastoreRequest) Send() (*DeleteDatastoreOutput, error) {
 //
 //    // Example sending a request using the DeleteDatastoreRequest method.
 //    req := client.DeleteDatastoreRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -589,7 +604,8 @@ type DeletePipelineRequest struct {
 }
 
 // Send marshals and sends the DeletePipeline API request.
-func (r DeletePipelineRequest) Send() (*DeletePipelineOutput, error) {
+func (r DeletePipelineRequest) Send(ctx context.Context) (*DeletePipelineOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -605,7 +621,7 @@ func (r DeletePipelineRequest) Send() (*DeletePipelineOutput, error) {
 //
 //    // Example sending a request using the DeletePipelineRequest method.
 //    req := client.DeletePipelineRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -641,7 +657,8 @@ type DescribeChannelRequest struct {
 }
 
 // Send marshals and sends the DescribeChannel API request.
-func (r DescribeChannelRequest) Send() (*DescribeChannelOutput, error) {
+func (r DescribeChannelRequest) Send(ctx context.Context) (*DescribeChannelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -657,7 +674,7 @@ func (r DescribeChannelRequest) Send() (*DescribeChannelOutput, error) {
 //
 //    // Example sending a request using the DescribeChannelRequest method.
 //    req := client.DescribeChannelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -691,7 +708,8 @@ type DescribeDatasetRequest struct {
 }
 
 // Send marshals and sends the DescribeDataset API request.
-func (r DescribeDatasetRequest) Send() (*DescribeDatasetOutput, error) {
+func (r DescribeDatasetRequest) Send(ctx context.Context) (*DescribeDatasetOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -707,7 +725,7 @@ func (r DescribeDatasetRequest) Send() (*DescribeDatasetOutput, error) {
 //
 //    // Example sending a request using the DescribeDatasetRequest method.
 //    req := client.DescribeDatasetRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -741,7 +759,8 @@ type DescribeDatastoreRequest struct {
 }
 
 // Send marshals and sends the DescribeDatastore API request.
-func (r DescribeDatastoreRequest) Send() (*DescribeDatastoreOutput, error) {
+func (r DescribeDatastoreRequest) Send(ctx context.Context) (*DescribeDatastoreOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -757,7 +776,7 @@ func (r DescribeDatastoreRequest) Send() (*DescribeDatastoreOutput, error) {
 //
 //    // Example sending a request using the DescribeDatastoreRequest method.
 //    req := client.DescribeDatastoreRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -791,7 +810,8 @@ type DescribeLoggingOptionsRequest struct {
 }
 
 // Send marshals and sends the DescribeLoggingOptions API request.
-func (r DescribeLoggingOptionsRequest) Send() (*DescribeLoggingOptionsOutput, error) {
+func (r DescribeLoggingOptionsRequest) Send(ctx context.Context) (*DescribeLoggingOptionsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -807,7 +827,7 @@ func (r DescribeLoggingOptionsRequest) Send() (*DescribeLoggingOptionsOutput, er
 //
 //    // Example sending a request using the DescribeLoggingOptionsRequest method.
 //    req := client.DescribeLoggingOptionsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -841,7 +861,8 @@ type DescribePipelineRequest struct {
 }
 
 // Send marshals and sends the DescribePipeline API request.
-func (r DescribePipelineRequest) Send() (*DescribePipelineOutput, error) {
+func (r DescribePipelineRequest) Send(ctx context.Context) (*DescribePipelineOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -857,7 +878,7 @@ func (r DescribePipelineRequest) Send() (*DescribePipelineOutput, error) {
 //
 //    // Example sending a request using the DescribePipelineRequest method.
 //    req := client.DescribePipelineRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -891,7 +912,8 @@ type GetDatasetContentRequest struct {
 }
 
 // Send marshals and sends the GetDatasetContent API request.
-func (r GetDatasetContentRequest) Send() (*GetDatasetContentOutput, error) {
+func (r GetDatasetContentRequest) Send(ctx context.Context) (*GetDatasetContentOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -907,7 +929,7 @@ func (r GetDatasetContentRequest) Send() (*GetDatasetContentOutput, error) {
 //
 //    // Example sending a request using the GetDatasetContentRequest method.
 //    req := client.GetDatasetContentRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -941,7 +963,8 @@ type ListChannelsRequest struct {
 }
 
 // Send marshals and sends the ListChannels API request.
-func (r ListChannelsRequest) Send() (*ListChannelsOutput, error) {
+func (r ListChannelsRequest) Send(ctx context.Context) (*ListChannelsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -957,7 +980,7 @@ func (r ListChannelsRequest) Send() (*ListChannelsOutput, error) {
 //
 //    // Example sending a request using the ListChannelsRequest method.
 //    req := client.ListChannelsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1007,7 +1030,7 @@ func (c *IoTAnalytics) ListChannelsRequest(input *ListChannelsInput) ListChannel
 func (p *ListChannelsRequest) Paginate(opts ...aws.Option) ListChannelsPager {
 	return ListChannelsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListChannelsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1016,6 +1039,7 @@ func (p *ListChannelsRequest) Paginate(opts ...aws.Option) ListChannelsPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1043,7 +1067,8 @@ type ListDatasetContentsRequest struct {
 }
 
 // Send marshals and sends the ListDatasetContents API request.
-func (r ListDatasetContentsRequest) Send() (*ListDatasetContentsOutput, error) {
+func (r ListDatasetContentsRequest) Send(ctx context.Context) (*ListDatasetContentsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1059,7 +1084,7 @@ func (r ListDatasetContentsRequest) Send() (*ListDatasetContentsOutput, error) {
 //
 //    // Example sending a request using the ListDatasetContentsRequest method.
 //    req := client.ListDatasetContentsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1109,7 +1134,7 @@ func (c *IoTAnalytics) ListDatasetContentsRequest(input *ListDatasetContentsInpu
 func (p *ListDatasetContentsRequest) Paginate(opts ...aws.Option) ListDatasetContentsPager {
 	return ListDatasetContentsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListDatasetContentsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1118,6 +1143,7 @@ func (p *ListDatasetContentsRequest) Paginate(opts ...aws.Option) ListDatasetCon
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1145,7 +1171,8 @@ type ListDatasetsRequest struct {
 }
 
 // Send marshals and sends the ListDatasets API request.
-func (r ListDatasetsRequest) Send() (*ListDatasetsOutput, error) {
+func (r ListDatasetsRequest) Send(ctx context.Context) (*ListDatasetsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1161,7 +1188,7 @@ func (r ListDatasetsRequest) Send() (*ListDatasetsOutput, error) {
 //
 //    // Example sending a request using the ListDatasetsRequest method.
 //    req := client.ListDatasetsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1211,7 +1238,7 @@ func (c *IoTAnalytics) ListDatasetsRequest(input *ListDatasetsInput) ListDataset
 func (p *ListDatasetsRequest) Paginate(opts ...aws.Option) ListDatasetsPager {
 	return ListDatasetsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListDatasetsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1220,6 +1247,7 @@ func (p *ListDatasetsRequest) Paginate(opts ...aws.Option) ListDatasetsPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1247,7 +1275,8 @@ type ListDatastoresRequest struct {
 }
 
 // Send marshals and sends the ListDatastores API request.
-func (r ListDatastoresRequest) Send() (*ListDatastoresOutput, error) {
+func (r ListDatastoresRequest) Send(ctx context.Context) (*ListDatastoresOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1263,7 +1292,7 @@ func (r ListDatastoresRequest) Send() (*ListDatastoresOutput, error) {
 //
 //    // Example sending a request using the ListDatastoresRequest method.
 //    req := client.ListDatastoresRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1313,7 +1342,7 @@ func (c *IoTAnalytics) ListDatastoresRequest(input *ListDatastoresInput) ListDat
 func (p *ListDatastoresRequest) Paginate(opts ...aws.Option) ListDatastoresPager {
 	return ListDatastoresPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListDatastoresInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1322,6 +1351,7 @@ func (p *ListDatastoresRequest) Paginate(opts ...aws.Option) ListDatastoresPager
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1349,7 +1379,8 @@ type ListPipelinesRequest struct {
 }
 
 // Send marshals and sends the ListPipelines API request.
-func (r ListPipelinesRequest) Send() (*ListPipelinesOutput, error) {
+func (r ListPipelinesRequest) Send(ctx context.Context) (*ListPipelinesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1365,7 +1396,7 @@ func (r ListPipelinesRequest) Send() (*ListPipelinesOutput, error) {
 //
 //    // Example sending a request using the ListPipelinesRequest method.
 //    req := client.ListPipelinesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1415,7 +1446,7 @@ func (c *IoTAnalytics) ListPipelinesRequest(input *ListPipelinesInput) ListPipel
 func (p *ListPipelinesRequest) Paginate(opts ...aws.Option) ListPipelinesPager {
 	return ListPipelinesPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListPipelinesInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1424,6 +1455,7 @@ func (p *ListPipelinesRequest) Paginate(opts ...aws.Option) ListPipelinesPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1451,7 +1483,8 @@ type ListTagsForResourceRequest struct {
 }
 
 // Send marshals and sends the ListTagsForResource API request.
-func (r ListTagsForResourceRequest) Send() (*ListTagsForResourceOutput, error) {
+func (r ListTagsForResourceRequest) Send(ctx context.Context) (*ListTagsForResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1467,7 +1500,7 @@ func (r ListTagsForResourceRequest) Send() (*ListTagsForResourceOutput, error) {
 //
 //    // Example sending a request using the ListTagsForResourceRequest method.
 //    req := client.ListTagsForResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1501,7 +1534,8 @@ type PutLoggingOptionsRequest struct {
 }
 
 // Send marshals and sends the PutLoggingOptions API request.
-func (r PutLoggingOptionsRequest) Send() (*PutLoggingOptionsOutput, error) {
+func (r PutLoggingOptionsRequest) Send(ctx context.Context) (*PutLoggingOptionsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1523,7 +1557,7 @@ func (r PutLoggingOptionsRequest) Send() (*PutLoggingOptionsOutput, error) {
 //
 //    // Example sending a request using the PutLoggingOptionsRequest method.
 //    req := client.PutLoggingOptionsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1559,7 +1593,8 @@ type RunPipelineActivityRequest struct {
 }
 
 // Send marshals and sends the RunPipelineActivity API request.
-func (r RunPipelineActivityRequest) Send() (*RunPipelineActivityOutput, error) {
+func (r RunPipelineActivityRequest) Send(ctx context.Context) (*RunPipelineActivityOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1575,7 +1610,7 @@ func (r RunPipelineActivityRequest) Send() (*RunPipelineActivityOutput, error) {
 //
 //    // Example sending a request using the RunPipelineActivityRequest method.
 //    req := client.RunPipelineActivityRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1609,7 +1644,8 @@ type SampleChannelDataRequest struct {
 }
 
 // Send marshals and sends the SampleChannelData API request.
-func (r SampleChannelDataRequest) Send() (*SampleChannelDataOutput, error) {
+func (r SampleChannelDataRequest) Send(ctx context.Context) (*SampleChannelDataOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1626,7 +1662,7 @@ func (r SampleChannelDataRequest) Send() (*SampleChannelDataOutput, error) {
 //
 //    // Example sending a request using the SampleChannelDataRequest method.
 //    req := client.SampleChannelDataRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1660,7 +1696,8 @@ type StartPipelineReprocessingRequest struct {
 }
 
 // Send marshals and sends the StartPipelineReprocessing API request.
-func (r StartPipelineReprocessingRequest) Send() (*StartPipelineReprocessingOutput, error) {
+func (r StartPipelineReprocessingRequest) Send(ctx context.Context) (*StartPipelineReprocessingOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1676,7 +1713,7 @@ func (r StartPipelineReprocessingRequest) Send() (*StartPipelineReprocessingOutp
 //
 //    // Example sending a request using the StartPipelineReprocessingRequest method.
 //    req := client.StartPipelineReprocessingRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1710,7 +1747,8 @@ type TagResourceRequest struct {
 }
 
 // Send marshals and sends the TagResource API request.
-func (r TagResourceRequest) Send() (*TagResourceOutput, error) {
+func (r TagResourceRequest) Send(ctx context.Context) (*TagResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1727,7 +1765,7 @@ func (r TagResourceRequest) Send() (*TagResourceOutput, error) {
 //
 //    // Example sending a request using the TagResourceRequest method.
 //    req := client.TagResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1761,7 +1799,8 @@ type UntagResourceRequest struct {
 }
 
 // Send marshals and sends the UntagResource API request.
-func (r UntagResourceRequest) Send() (*UntagResourceOutput, error) {
+func (r UntagResourceRequest) Send(ctx context.Context) (*UntagResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1777,7 +1816,7 @@ func (r UntagResourceRequest) Send() (*UntagResourceOutput, error) {
 //
 //    // Example sending a request using the UntagResourceRequest method.
 //    req := client.UntagResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1811,7 +1850,8 @@ type UpdateChannelRequest struct {
 }
 
 // Send marshals and sends the UpdateChannel API request.
-func (r UpdateChannelRequest) Send() (*UpdateChannelOutput, error) {
+func (r UpdateChannelRequest) Send(ctx context.Context) (*UpdateChannelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1827,7 +1867,7 @@ func (r UpdateChannelRequest) Send() (*UpdateChannelOutput, error) {
 //
 //    // Example sending a request using the UpdateChannelRequest method.
 //    req := client.UpdateChannelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1863,7 +1903,8 @@ type UpdateDatasetRequest struct {
 }
 
 // Send marshals and sends the UpdateDataset API request.
-func (r UpdateDatasetRequest) Send() (*UpdateDatasetOutput, error) {
+func (r UpdateDatasetRequest) Send(ctx context.Context) (*UpdateDatasetOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1879,7 +1920,7 @@ func (r UpdateDatasetRequest) Send() (*UpdateDatasetOutput, error) {
 //
 //    // Example sending a request using the UpdateDatasetRequest method.
 //    req := client.UpdateDatasetRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1915,7 +1956,8 @@ type UpdateDatastoreRequest struct {
 }
 
 // Send marshals and sends the UpdateDatastore API request.
-func (r UpdateDatastoreRequest) Send() (*UpdateDatastoreOutput, error) {
+func (r UpdateDatastoreRequest) Send(ctx context.Context) (*UpdateDatastoreOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1931,7 +1973,7 @@ func (r UpdateDatastoreRequest) Send() (*UpdateDatastoreOutput, error) {
 //
 //    // Example sending a request using the UpdateDatastoreRequest method.
 //    req := client.UpdateDatastoreRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1967,7 +2009,8 @@ type UpdatePipelineRequest struct {
 }
 
 // Send marshals and sends the UpdatePipeline API request.
-func (r UpdatePipelineRequest) Send() (*UpdatePipelineOutput, error) {
+func (r UpdatePipelineRequest) Send(ctx context.Context) (*UpdatePipelineOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1979,11 +2022,13 @@ func (r UpdatePipelineRequest) Send() (*UpdatePipelineOutput, error) {
 // UpdatePipelineRequest returns a request value for making API operation for
 // AWS IoT Analytics.
 //
-// Updates the settings of a pipeline.
+// Updates the settings of a pipeline. You must specify both a channel and a
+// datastore activity and, optionally, as many as 23 additional activities in
+// the pipelineActivities array.
 //
 //    // Example sending a request using the UpdatePipelineRequest method.
 //    req := client.UpdatePipelineRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2159,6 +2204,27 @@ type BatchPutMessageInput struct {
 
 	// The list of messages to be sent. Each message has format: '{ "messageId":
 	// "string", "payload": "string"}'.
+	//
+	// Note that the field names of message payloads (data) that you send to AWS
+	// IoT Analytics:
+	//
+	//    * Must contain only alphanumeric characters and undescores (_); no other
+	//    special characters are allowed.
+	//
+	//    * Must begin with an alphabetic character or single underscore (_).
+	//
+	//    * Cannot contain hyphens (-).
+	//
+	//    * In regular expression terms: "^[A-Za-z_]([A-Za-z0-9]*|[A-Za-z0-9][A-Za-z0-9_]*)$".
+	//
+	//
+	//    * Cannot be greater than 255 characters.
+	//
+	//    * Are case-insensitive. (Fields named "foo" and "FOO" in the same payload
+	//    are considered duplicates.)
+	//
+	// For example, {"temp_01": 29} or {"_temp_01": 29} are valid, but {"temp-01":
+	// 29}, {"01_temp": 29} or {"__temp_01": 29} are invalid in message payloads.
 	//
 	// Messages is a required field
 	Messages []Message `locationName:"messages" type:"list" required:"true"`
@@ -2951,6 +3017,8 @@ type CreateDatasetInput struct {
 	// Actions is a required field
 	Actions []DatasetAction `locationName:"actions" min:"1" type:"list" required:"true"`
 
+	// When data set contents are created they are delivered to destinations specified
+	// here.
 	ContentDeliveryRules []DatasetContentDeliveryRule `locationName:"contentDeliveryRules" type:"list"`
 
 	// The name of the data set.
@@ -2958,10 +3026,11 @@ type CreateDatasetInput struct {
 	// DatasetName is a required field
 	DatasetName *string `locationName:"datasetName" min:"1" type:"string" required:"true"`
 
-	// [Optional] How long, in days, message data is kept for the data set. If not
-	// given or set to null, the latest version of the dataset content plus the
-	// latest succeeded version (if they are different) are retained for at most
-	// 90 days.
+	// [Optional] How long, in days, versions of data set contents are kept for
+	// the data set. If not specified or set to null, versions of data set contents
+	// are retained for at most 90 days. The number of versions of data set contents
+	// retained is determined by the versioningConfiguration parameter. (For more
+	// information, see https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions)
 	RetentionPeriod *RetentionPeriod `locationName:"retentionPeriod" type:"structure"`
 
 	// Metadata which can be used to manage the data set.
@@ -2971,6 +3040,12 @@ type CreateDatasetInput struct {
 	// a specified time interval or when another data set's contents are created.
 	// The list of triggers can be empty or contain up to five DataSetTrigger objects.
 	Triggers []DatasetTrigger `locationName:"triggers" type:"list"`
+
+	// [Optional] How many versions of data set contents are kept. If not specified
+	// or set to null, only the latest version plus the latest succeeded version
+	// (if they are different) are kept for the time period specified by the "retentionPeriod"
+	// parameter. (For more information, see https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions)
+	VersioningConfiguration *VersioningConfiguration `locationName:"versioningConfiguration" type:"structure"`
 }
 
 // String returns the string representation
@@ -3034,6 +3109,11 @@ func (s *CreateDatasetInput) Validate() error {
 			if err := v.Validate(); err != nil {
 				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Triggers", i), err.(aws.ErrInvalidParams))
 			}
+		}
+	}
+	if s.VersioningConfiguration != nil {
+		if err := s.VersioningConfiguration.Validate(); err != nil {
+			invalidParams.AddNested("VersioningConfiguration", err.(aws.ErrInvalidParams))
 		}
 	}
 
@@ -3106,6 +3186,12 @@ func (s CreateDatasetInput) MarshalFields(e protocol.FieldEncoder) error {
 		ls0.End()
 
 	}
+	if s.VersioningConfiguration != nil {
+		v := s.VersioningConfiguration
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "versioningConfiguration", v, metadata)
+	}
 	return nil
 }
 
@@ -3121,7 +3207,7 @@ type CreateDatasetOutput struct {
 	// The name of the data set.
 	DatasetName *string `locationName:"datasetName" min:"1" type:"string"`
 
-	// How long, in days, message data is kept for the data set.
+	// How long, in days, data set contents are kept for the data set.
 	RetentionPeriod *RetentionPeriod `locationName:"retentionPeriod" type:"structure"`
 }
 
@@ -3309,13 +3395,18 @@ func (s CreateDatastoreOutput) MarshalFields(e protocol.FieldEncoder) error {
 type CreatePipelineInput struct {
 	_ struct{} `type:"structure"`
 
-	// A list of pipeline activities.
-	//
-	// The list can be 1-25 PipelineActivity objects. Activities perform transformations
-	// on your messages, such as removing, renaming, or adding message attributes;
+	// A list of "PipelineActivity" objects. Activities perform transformations
+	// on your messages, such as removing, renaming or adding message attributes;
 	// filtering messages based on attribute values; invoking your Lambda functions
 	// on messages for advanced processing; or performing mathematical transformations
 	// to normalize device data.
+	//
+	// The list can be 2-25 PipelineActivity objects and must contain both a channel
+	// and a datastore activity. Each entry in the list must contain only one activity,
+	// for example:
+	//
+	// pipelineActivities = [ { "channel": { ... } }, { "lambda": { ... } }, ...
+	// ]
 	//
 	// PipelineActivities is a required field
 	PipelineActivities []PipelineActivity `locationName:"pipelineActivities" min:"1" type:"list" required:"true"`
@@ -3472,6 +3563,8 @@ type Dataset struct {
 	// The ARN of the data set.
 	Arn *string `locationName:"arn" type:"string"`
 
+	// When data set contents are created they are delivered to destinations specified
+	// here.
 	ContentDeliveryRules []DatasetContentDeliveryRule `locationName:"contentDeliveryRules" type:"list"`
 
 	// When the data set was created.
@@ -3492,6 +3585,12 @@ type Dataset struct {
 	// The "DatasetTrigger" objects that specify when the data set is automatically
 	// updated.
 	Triggers []DatasetTrigger `locationName:"triggers" type:"list"`
+
+	// [Optional] How many versions of data set contents are kept. If not specified
+	// or set to null, only the latest version plus the latest succeeded version
+	// (if they are different) are kept for the time period specified by the "retentionPeriod"
+	// parameter. (For more information, see https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions)
+	VersioningConfiguration *VersioningConfiguration `locationName:"versioningConfiguration" type:"structure"`
 }
 
 // String returns the string representation
@@ -3578,10 +3677,17 @@ func (s Dataset) MarshalFields(e protocol.FieldEncoder) error {
 		ls0.End()
 
 	}
+	if s.VersioningConfiguration != nil {
+		v := s.VersioningConfiguration
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "versioningConfiguration", v, metadata)
+	}
 	return nil
 }
 
-// A "DatasetAction" object specifying the query that creates the data set content.
+// A "DatasetAction" object that specifies how data set contents are automatically
+// created.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/iotanalytics-2017-11-27/DatasetAction
 type DatasetAction struct {
 	_ struct{} `type:"structure"`
@@ -3595,8 +3701,8 @@ type DatasetAction struct {
 	// container along with any needed support libraries.
 	ContainerAction *ContainerDatasetAction `locationName:"containerAction" type:"structure"`
 
-	// An "SqlQueryDatasetAction" object that contains the SQL query to modify the
-	// message.
+	// An "SqlQueryDatasetAction" object that uses an SQL query to automatically
+	// create data set contents.
 	QueryAction *SqlQueryDatasetAction `locationName:"queryAction" type:"structure"`
 }
 
@@ -3694,10 +3800,12 @@ func (s DatasetActionSummary) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// The destination to which data set contents are delivered.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/iotanalytics-2017-11-27/DatasetContentDeliveryDestination
 type DatasetContentDeliveryDestination struct {
 	_ struct{} `type:"structure"`
 
+	// Configuration information for delivery of data set contents to AWS IoT Events.
 	IotEventsDestinationConfiguration *IotEventsDestinationConfiguration `locationName:"iotEventsDestinationConfiguration" type:"structure"`
 }
 
@@ -3737,13 +3845,18 @@ func (s DatasetContentDeliveryDestination) MarshalFields(e protocol.FieldEncoder
 	return nil
 }
 
+// When data set contents are created they are delivered to destination specified
+// here.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/iotanalytics-2017-11-27/DatasetContentDeliveryRule
 type DatasetContentDeliveryRule struct {
 	_ struct{} `type:"structure"`
 
+	// The destination to which data set contents are delivered.
+	//
 	// Destination is a required field
 	Destination *DatasetContentDeliveryDestination `locationName:"destination" type:"structure" required:"true"`
 
+	// The name of the data set content delivery rules entry.
 	EntryName *string `locationName:"entryName" type:"string"`
 }
 
@@ -3890,14 +4003,13 @@ func (s DatasetContentSummary) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
-// The data set whose latest contents will be used as input to the notebook
-// or application.
+// The data set whose latest contents are used as input to the notebook or application.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/iotanalytics-2017-11-27/DatasetContentVersionValue
 type DatasetContentVersionValue struct {
 	_ struct{} `type:"structure"`
 
-	// The name of the data set whose latest contents will be used as input to the
-	// notebook or application.
+	// The name of the data set whose latest contents are used as input to the notebook
+	// or application.
 	//
 	// DatasetName is a required field
 	DatasetName *string `locationName:"datasetName" min:"1" type:"string" required:"true"`
@@ -4074,8 +4186,8 @@ func (s DatasetSummary) MarshalFields(e protocol.FieldEncoder) error {
 type DatasetTrigger struct {
 	_ struct{} `type:"structure"`
 
-	// The data set whose content creation will trigger the creation of this data
-	// set's contents.
+	// The data set whose content creation triggers the creation of this data set's
+	// contents.
 	Dataset *TriggeringDataset `locationName:"dataset" type:"structure"`
 
 	// The "Schedule" when the trigger is initiated.
@@ -4753,19 +4865,21 @@ func (s DeletePipelineOutput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
-// When you create data set contents using message data from a specified time
-// frame, some message data may still be "in flight" when processing begins,
-// and so will not arrive in time to be processed. Use this field to make allowances
-// for the "in flight" time of your message data, so that data not processed
-// from the previous time frame will be included with the next time frame. Without
-// this, missed message data would be excluded from processing during the next
-// time frame as well, because its timestamp places it within the previous time
-// frame.
+// Used to limit data to that which has arrived since the last execution of
+// the action.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/iotanalytics-2017-11-27/DeltaTime
 type DeltaTime struct {
 	_ struct{} `type:"structure"`
 
 	// The number of seconds of estimated "in flight" lag time of message data.
+	// When you create data set contents using message data from a specified time
+	// frame, some message data may still be "in flight" when processing begins,
+	// and so will not arrive in time to be processed. Use this field to make allowances
+	// for the "in flight" time of your message data, so that data not processed
+	// from a previous time frame will be included with the next time frame. Without
+	// this, missed message data would be excluded from processing during the next
+	// time frame as well, because its timestamp places it within the previous time
+	// frame.
 	//
 	// OffsetSeconds is a required field
 	OffsetSeconds *int64 `locationName:"offsetSeconds" type:"integer" required:"true"`
@@ -5734,13 +5848,19 @@ func (s GetDatasetContentOutput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Configuration information for delivery of data set contents to AWS IoT Events.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/iotanalytics-2017-11-27/IotEventsDestinationConfiguration
 type IotEventsDestinationConfiguration struct {
 	_ struct{} `type:"structure"`
 
+	// The name of the AWS IoT Events input to which data set contents are delivered.
+	//
 	// InputName is a required field
 	InputName *string `locationName:"inputName" min:"1" type:"string" required:"true"`
 
+	// The ARN of the role which grants AWS IoT Analytics permission to deliver
+	// data set contents to an AWS IoT Events input.
+	//
 	// RoleArn is a required field
 	RoleArn *string `locationName:"roleArn" min:"20" type:"string" required:"true"`
 }
@@ -6016,6 +6136,16 @@ type ListDatasetContentsInput struct {
 
 	// The token for the next set of results.
 	NextToken *string `location:"querystring" locationName:"nextToken" type:"string"`
+
+	// A filter to limit results to those data set contents whose creation is scheduled
+	// before the given time. See the field triggers.schedule in the CreateDataset
+	// request. (timestamp)
+	ScheduledBefore *time.Time `location:"querystring" locationName:"scheduledBefore" type:"timestamp" timestampFormat:"unix"`
+
+	// A filter to limit results to those data set contents whose creation is scheduled
+	// on or after the given time. See the field triggers.schedule in the CreateDataset
+	// request. (timestamp)
+	ScheduledOnOrAfter *time.Time `location:"querystring" locationName:"scheduledOnOrAfter" type:"timestamp" timestampFormat:"unix"`
 }
 
 // String returns the string representation
@@ -6068,6 +6198,18 @@ func (s ListDatasetContentsInput) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.QueryTarget, "nextToken", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if s.ScheduledBefore != nil {
+		v := *s.ScheduledBefore
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.QueryTarget, "scheduledBefore", protocol.TimeValue{V: v, Format: protocol.RFC822TimeFromat}, metadata)
+	}
+	if s.ScheduledOnOrAfter != nil {
+		v := *s.ScheduledOnOrAfter
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.QueryTarget, "scheduledOnOrAfter", protocol.TimeValue{V: v, Format: protocol.RFC822TimeFromat}, metadata)
 	}
 	return nil
 }
@@ -6617,7 +6759,7 @@ func (s LoggingOptions) MarshalFields(e protocol.FieldEncoder) error {
 type MathActivity struct {
 	_ struct{} `type:"structure"`
 
-	// The name of the attribute that will contain the result of the math operation.
+	// The name of the attribute that contains the result of the math operation.
 	//
 	// Attribute is a required field
 	Attribute *string `locationName:"attribute" min:"1" type:"string" required:"true"`
@@ -6779,8 +6921,7 @@ func (s Message) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
-// The URI of the location where data set contents are stored, usually the URI
-// of a file in an S3 bucket.
+// The value of the variable as a structure that specifies an output file URI.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/iotanalytics-2017-11-27/OutputFileUriValue
 type OutputFileUriValue struct {
 	_ struct{} `type:"structure"`
@@ -7235,14 +7376,7 @@ type QueryFilter struct {
 	_ struct{} `type:"structure"`
 
 	// Used to limit data to that which has arrived since the last execution of
-	// the action. When you create data set contents using message data from a specified
-	// time frame, some message data may still be "in flight" when processing begins,
-	// and so will not arrive in time to be processed. Use this field to make allowances
-	// for the "in flight" time of you message data, so that data not processed
-	// from a previous time frame will be included with the next time frame. Without
-	// this, missed message data would be excluded from processing during the next
-	// time frame as well, because its timestamp places it within the previous time
-	// frame.
+	// the action.
 	DeltaTime *DeltaTime `locationName:"deltaTime" type:"structure"`
 }
 
@@ -7795,7 +7929,7 @@ type Schedule struct {
 
 	// The expression that defines when to trigger an update. For more information,
 	// see  Schedule Expressions for Rules (https://docs.aws.amazon.com/AmazonCloudWatch/latest/events/ScheduledEvents.html)
-	// in the Amazon CloudWatch documentation.
+	// in the Amazon CloudWatch Events User Guide.
 	Expression *string `locationName:"expression" type:"string"`
 }
 
@@ -8148,7 +8282,7 @@ func (s Tag) MarshalFields(e protocol.FieldEncoder) error {
 type TagResourceInput struct {
 	_ struct{} `type:"structure"`
 
-	// The ARN of the resource whose tags will be modified.
+	// The ARN of the resource whose tags you want to modify.
 	//
 	// ResourceArn is a required field
 	ResourceArn *string `location:"querystring" locationName:"resourceArn" min:"20" type:"string" required:"true"`
@@ -8251,14 +8385,14 @@ func (s TagResourceOutput) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
-// Information about the data set whose content generation will trigger the
-// new data set content generation.
+// Information about the data set whose content generation triggers the new
+// data set content generation.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/iotanalytics-2017-11-27/TriggeringDataset
 type TriggeringDataset struct {
 	_ struct{} `type:"structure"`
 
-	// The name of the data set whose content generation will trigger the new data
-	// set content generation.
+	// The name of the data set whose content generation triggers the new data set
+	// content generation.
 	//
 	// Name is a required field
 	Name *string `locationName:"name" min:"1" type:"string" required:"true"`
@@ -8306,12 +8440,12 @@ func (s TriggeringDataset) MarshalFields(e protocol.FieldEncoder) error {
 type UntagResourceInput struct {
 	_ struct{} `type:"structure"`
 
-	// The ARN of the resource whose tags will be removed.
+	// The ARN of the resource whose tags you want to remove.
 	//
 	// ResourceArn is a required field
 	ResourceArn *string `location:"querystring" locationName:"resourceArn" min:"20" type:"string" required:"true"`
 
-	// The keys of those tags which will be removed.
+	// The keys of those tags which you want to remove.
 	//
 	// TagKeys is a required field
 	TagKeys []string `location:"querystring" locationName:"tagKeys" min:"1" type:"list" required:"true"`
@@ -8501,6 +8635,8 @@ type UpdateDatasetInput struct {
 	// Actions is a required field
 	Actions []DatasetAction `locationName:"actions" min:"1" type:"list" required:"true"`
 
+	// When data set contents are created they are delivered to destinations specified
+	// here.
 	ContentDeliveryRules []DatasetContentDeliveryRule `locationName:"contentDeliveryRules" type:"list"`
 
 	// The name of the data set to update.
@@ -8508,12 +8644,18 @@ type UpdateDatasetInput struct {
 	// DatasetName is a required field
 	DatasetName *string `location:"uri" locationName:"datasetName" min:"1" type:"string" required:"true"`
 
-	// How long, in days, message data is kept for the data set.
+	// How long, in days, data set contents are kept for the data set.
 	RetentionPeriod *RetentionPeriod `locationName:"retentionPeriod" type:"structure"`
 
 	// A list of "DatasetTrigger" objects. The list can be empty or can contain
 	// up to five DataSetTrigger objects.
 	Triggers []DatasetTrigger `locationName:"triggers" type:"list"`
+
+	// [Optional] How many versions of data set contents are kept. If not specified
+	// or set to null, only the latest version plus the latest succeeded version
+	// (if they are different) are kept for the time period specified by the "retentionPeriod"
+	// parameter. (For more information, see https://docs.aws.amazon.com/iotanalytics/latest/userguide/getting-started.html#aws-iot-analytics-dataset-versions)
+	VersioningConfiguration *VersioningConfiguration `locationName:"versioningConfiguration" type:"structure"`
 }
 
 // String returns the string representation
@@ -8569,6 +8711,11 @@ func (s *UpdateDatasetInput) Validate() error {
 			}
 		}
 	}
+	if s.VersioningConfiguration != nil {
+		if err := s.VersioningConfiguration.Validate(); err != nil {
+			invalidParams.AddNested("VersioningConfiguration", err.(aws.ErrInvalidParams))
+		}
+	}
 
 	if invalidParams.Len() > 0 {
 		return invalidParams
@@ -8620,6 +8767,12 @@ func (s UpdateDatasetInput) MarshalFields(e protocol.FieldEncoder) error {
 		}
 		ls0.End()
 
+	}
+	if s.VersioningConfiguration != nil {
+		v := s.VersioningConfiguration
+
+		metadata := protocol.Metadata{}
+		e.SetFields(protocol.BodyTarget, "versioningConfiguration", v, metadata)
 	}
 	if s.DatasetName != nil {
 		v := *s.DatasetName
@@ -8751,13 +8904,18 @@ func (s UpdateDatastoreOutput) MarshalFields(e protocol.FieldEncoder) error {
 type UpdatePipelineInput struct {
 	_ struct{} `type:"structure"`
 
-	// A list of "PipelineActivity" objects.
-	//
-	// The list can be 1-25 PipelineActivity objects. Activities perform transformations
+	// A list of "PipelineActivity" objects. Activities perform transformations
 	// on your messages, such as removing, renaming or adding message attributes;
 	// filtering messages based on attribute values; invoking your Lambda functions
 	// on messages for advanced processing; or performing mathematical transformations
 	// to normalize device data.
+	//
+	// The list can be 2-25 PipelineActivity objects and must contain both a channel
+	// and a datastore activity. Each entry in the list must contain only one activity,
+	// for example:
+	//
+	// pipelineActivities = [ { "channel": { ... } }, { "lambda": { ... } }, ...
+	// ]
 	//
 	// PipelineActivities is a required field
 	PipelineActivities []PipelineActivity `locationName:"pipelineActivities" min:"1" type:"list" required:"true"`
@@ -8954,6 +9112,58 @@ func (s Variable) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "stringValue", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/iotanalytics-2017-11-27/VersioningConfiguration
+type VersioningConfiguration struct {
+	_ struct{} `type:"structure"`
+
+	// How many versions of data set contents will be kept. The "unlimited" parameter
+	// must be false.
+	MaxVersions *int64 `locationName:"maxVersions" min:"1" type:"integer"`
+
+	// If true, unlimited versions of data set contents will be kept.
+	Unlimited *bool `locationName:"unlimited" type:"boolean"`
+}
+
+// String returns the string representation
+func (s VersioningConfiguration) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s VersioningConfiguration) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *VersioningConfiguration) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "VersioningConfiguration"}
+	if s.MaxVersions != nil && *s.MaxVersions < 1 {
+		invalidParams.Add(aws.NewErrParamMinValue("MaxVersions", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s VersioningConfiguration) MarshalFields(e protocol.FieldEncoder) error {
+	if s.MaxVersions != nil {
+		v := *s.MaxVersions
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "maxVersions", protocol.Int64Value(v), metadata)
+	}
+	if s.Unlimited != nil {
+		v := *s.Unlimited
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "unlimited", protocol.BoolValue(v), metadata)
 	}
 	return nil
 }

@@ -3,6 +3,7 @@
 package glue
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -20,7 +21,8 @@ type BatchCreatePartitionRequest struct {
 }
 
 // Send marshals and sends the BatchCreatePartition API request.
-func (r BatchCreatePartitionRequest) Send() (*BatchCreatePartitionOutput, error) {
+func (r BatchCreatePartitionRequest) Send(ctx context.Context) (*BatchCreatePartitionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -36,7 +38,7 @@ func (r BatchCreatePartitionRequest) Send() (*BatchCreatePartitionOutput, error)
 //
 //    // Example sending a request using the BatchCreatePartitionRequest method.
 //    req := client.BatchCreatePartitionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -70,7 +72,8 @@ type BatchDeleteConnectionRequest struct {
 }
 
 // Send marshals and sends the BatchDeleteConnection API request.
-func (r BatchDeleteConnectionRequest) Send() (*BatchDeleteConnectionOutput, error) {
+func (r BatchDeleteConnectionRequest) Send(ctx context.Context) (*BatchDeleteConnectionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -86,7 +89,7 @@ func (r BatchDeleteConnectionRequest) Send() (*BatchDeleteConnectionOutput, erro
 //
 //    // Example sending a request using the BatchDeleteConnectionRequest method.
 //    req := client.BatchDeleteConnectionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -120,7 +123,8 @@ type BatchDeletePartitionRequest struct {
 }
 
 // Send marshals and sends the BatchDeletePartition API request.
-func (r BatchDeletePartitionRequest) Send() (*BatchDeletePartitionOutput, error) {
+func (r BatchDeletePartitionRequest) Send(ctx context.Context) (*BatchDeletePartitionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -136,7 +140,7 @@ func (r BatchDeletePartitionRequest) Send() (*BatchDeletePartitionOutput, error)
 //
 //    // Example sending a request using the BatchDeletePartitionRequest method.
 //    req := client.BatchDeletePartitionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -170,7 +174,8 @@ type BatchDeleteTableRequest struct {
 }
 
 // Send marshals and sends the BatchDeleteTable API request.
-func (r BatchDeleteTableRequest) Send() (*BatchDeleteTableOutput, error) {
+func (r BatchDeleteTableRequest) Send(ctx context.Context) (*BatchDeleteTableOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -195,7 +200,7 @@ func (r BatchDeleteTableRequest) Send() (*BatchDeleteTableOutput, error) {
 //
 //    // Example sending a request using the BatchDeleteTableRequest method.
 //    req := client.BatchDeleteTableRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -229,7 +234,8 @@ type BatchDeleteTableVersionRequest struct {
 }
 
 // Send marshals and sends the BatchDeleteTableVersion API request.
-func (r BatchDeleteTableVersionRequest) Send() (*BatchDeleteTableVersionOutput, error) {
+func (r BatchDeleteTableVersionRequest) Send(ctx context.Context) (*BatchDeleteTableVersionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -245,7 +251,7 @@ func (r BatchDeleteTableVersionRequest) Send() (*BatchDeleteTableVersionOutput, 
 //
 //    // Example sending a request using the BatchDeleteTableVersionRequest method.
 //    req := client.BatchDeleteTableVersionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -269,6 +275,168 @@ func (c *Glue) BatchDeleteTableVersionRequest(input *BatchDeleteTableVersionInpu
 	return BatchDeleteTableVersionRequest{Request: req, Input: input, Copy: c.BatchDeleteTableVersionRequest}
 }
 
+const opBatchGetCrawlers = "BatchGetCrawlers"
+
+// BatchGetCrawlersRequest is a API request type for the BatchGetCrawlers API operation.
+type BatchGetCrawlersRequest struct {
+	*aws.Request
+	Input *BatchGetCrawlersInput
+	Copy  func(*BatchGetCrawlersInput) BatchGetCrawlersRequest
+}
+
+// Send marshals and sends the BatchGetCrawlers API request.
+func (r BatchGetCrawlersRequest) Send(ctx context.Context) (*BatchGetCrawlersOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*BatchGetCrawlersOutput), nil
+}
+
+// BatchGetCrawlersRequest returns a request value for making API operation for
+// AWS Glue.
+//
+// Returns a list of resource metadata for a given list of crawler names. After
+// calling the ListCrawlers operation, you can call this operation to access
+// the data to which you have been granted permissions. This operation supports
+// all IAM permissions, including permission conditions that uses tags.
+//
+//    // Example sending a request using the BatchGetCrawlersRequest method.
+//    req := client.BatchGetCrawlersRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchGetCrawlers
+func (c *Glue) BatchGetCrawlersRequest(input *BatchGetCrawlersInput) BatchGetCrawlersRequest {
+	op := &aws.Operation{
+		Name:       opBatchGetCrawlers,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &BatchGetCrawlersInput{}
+	}
+
+	output := &BatchGetCrawlersOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return BatchGetCrawlersRequest{Request: req, Input: input, Copy: c.BatchGetCrawlersRequest}
+}
+
+const opBatchGetDevEndpoints = "BatchGetDevEndpoints"
+
+// BatchGetDevEndpointsRequest is a API request type for the BatchGetDevEndpoints API operation.
+type BatchGetDevEndpointsRequest struct {
+	*aws.Request
+	Input *BatchGetDevEndpointsInput
+	Copy  func(*BatchGetDevEndpointsInput) BatchGetDevEndpointsRequest
+}
+
+// Send marshals and sends the BatchGetDevEndpoints API request.
+func (r BatchGetDevEndpointsRequest) Send(ctx context.Context) (*BatchGetDevEndpointsOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*BatchGetDevEndpointsOutput), nil
+}
+
+// BatchGetDevEndpointsRequest returns a request value for making API operation for
+// AWS Glue.
+//
+// Returns a list of resource metadata for a given list of DevEndpoint names.
+// After calling the ListDevEndpoints operation, you can call this operation
+// to access the data to which you have been granted permissions. This operation
+// supports all IAM permissions, including permission conditions that uses tags.
+//
+//    // Example sending a request using the BatchGetDevEndpointsRequest method.
+//    req := client.BatchGetDevEndpointsRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchGetDevEndpoints
+func (c *Glue) BatchGetDevEndpointsRequest(input *BatchGetDevEndpointsInput) BatchGetDevEndpointsRequest {
+	op := &aws.Operation{
+		Name:       opBatchGetDevEndpoints,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &BatchGetDevEndpointsInput{}
+	}
+
+	output := &BatchGetDevEndpointsOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return BatchGetDevEndpointsRequest{Request: req, Input: input, Copy: c.BatchGetDevEndpointsRequest}
+}
+
+const opBatchGetJobs = "BatchGetJobs"
+
+// BatchGetJobsRequest is a API request type for the BatchGetJobs API operation.
+type BatchGetJobsRequest struct {
+	*aws.Request
+	Input *BatchGetJobsInput
+	Copy  func(*BatchGetJobsInput) BatchGetJobsRequest
+}
+
+// Send marshals and sends the BatchGetJobs API request.
+func (r BatchGetJobsRequest) Send(ctx context.Context) (*BatchGetJobsOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*BatchGetJobsOutput), nil
+}
+
+// BatchGetJobsRequest returns a request value for making API operation for
+// AWS Glue.
+//
+// Returns a list of resource metadata for a given list of job names. After
+// calling the ListJobs operation, you can call this operation to access the
+// data to which you have been granted permissions. This operation supports
+// all IAM permissions, including permission conditions that uses tags.
+//
+//    // Example sending a request using the BatchGetJobsRequest method.
+//    req := client.BatchGetJobsRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchGetJobs
+func (c *Glue) BatchGetJobsRequest(input *BatchGetJobsInput) BatchGetJobsRequest {
+	op := &aws.Operation{
+		Name:       opBatchGetJobs,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &BatchGetJobsInput{}
+	}
+
+	output := &BatchGetJobsOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return BatchGetJobsRequest{Request: req, Input: input, Copy: c.BatchGetJobsRequest}
+}
+
 const opBatchGetPartition = "BatchGetPartition"
 
 // BatchGetPartitionRequest is a API request type for the BatchGetPartition API operation.
@@ -279,7 +447,8 @@ type BatchGetPartitionRequest struct {
 }
 
 // Send marshals and sends the BatchGetPartition API request.
-func (r BatchGetPartitionRequest) Send() (*BatchGetPartitionOutput, error) {
+func (r BatchGetPartitionRequest) Send(ctx context.Context) (*BatchGetPartitionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -295,7 +464,7 @@ func (r BatchGetPartitionRequest) Send() (*BatchGetPartitionOutput, error) {
 //
 //    // Example sending a request using the BatchGetPartitionRequest method.
 //    req := client.BatchGetPartitionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -319,6 +488,60 @@ func (c *Glue) BatchGetPartitionRequest(input *BatchGetPartitionInput) BatchGetP
 	return BatchGetPartitionRequest{Request: req, Input: input, Copy: c.BatchGetPartitionRequest}
 }
 
+const opBatchGetTriggers = "BatchGetTriggers"
+
+// BatchGetTriggersRequest is a API request type for the BatchGetTriggers API operation.
+type BatchGetTriggersRequest struct {
+	*aws.Request
+	Input *BatchGetTriggersInput
+	Copy  func(*BatchGetTriggersInput) BatchGetTriggersRequest
+}
+
+// Send marshals and sends the BatchGetTriggers API request.
+func (r BatchGetTriggersRequest) Send(ctx context.Context) (*BatchGetTriggersOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*BatchGetTriggersOutput), nil
+}
+
+// BatchGetTriggersRequest returns a request value for making API operation for
+// AWS Glue.
+//
+// Returns a list of resource metadata for a given list of trigger names. After
+// calling the ListTriggers operation, you can call this operation to access
+// the data to which you have been granted permissions. This operation supports
+// all IAM permissions, including permission conditions that uses tags.
+//
+//    // Example sending a request using the BatchGetTriggersRequest method.
+//    req := client.BatchGetTriggersRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchGetTriggers
+func (c *Glue) BatchGetTriggersRequest(input *BatchGetTriggersInput) BatchGetTriggersRequest {
+	op := &aws.Operation{
+		Name:       opBatchGetTriggers,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &BatchGetTriggersInput{}
+	}
+
+	output := &BatchGetTriggersOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return BatchGetTriggersRequest{Request: req, Input: input, Copy: c.BatchGetTriggersRequest}
+}
+
 const opBatchStopJobRun = "BatchStopJobRun"
 
 // BatchStopJobRunRequest is a API request type for the BatchStopJobRun API operation.
@@ -329,7 +552,8 @@ type BatchStopJobRunRequest struct {
 }
 
 // Send marshals and sends the BatchStopJobRun API request.
-func (r BatchStopJobRunRequest) Send() (*BatchStopJobRunOutput, error) {
+func (r BatchStopJobRunRequest) Send(ctx context.Context) (*BatchStopJobRunOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -345,7 +569,7 @@ func (r BatchStopJobRunRequest) Send() (*BatchStopJobRunOutput, error) {
 //
 //    // Example sending a request using the BatchStopJobRunRequest method.
 //    req := client.BatchStopJobRunRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -379,7 +603,8 @@ type CreateClassifierRequest struct {
 }
 
 // Send marshals and sends the CreateClassifier API request.
-func (r CreateClassifierRequest) Send() (*CreateClassifierOutput, error) {
+func (r CreateClassifierRequest) Send(ctx context.Context) (*CreateClassifierOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -392,12 +617,12 @@ func (r CreateClassifierRequest) Send() (*CreateClassifierOutput, error) {
 // AWS Glue.
 //
 // Creates a classifier in the user's account. This may be a GrokClassifier,
-// an XMLClassifier, or abbrev JsonClassifier, depending on which field of the
-// request is present.
+// an XMLClassifier, a JsonClassifier, or a CsvClassifier, depending on which
+// field of the request is present.
 //
 //    // Example sending a request using the CreateClassifierRequest method.
 //    req := client.CreateClassifierRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -431,7 +656,8 @@ type CreateConnectionRequest struct {
 }
 
 // Send marshals and sends the CreateConnection API request.
-func (r CreateConnectionRequest) Send() (*CreateConnectionOutput, error) {
+func (r CreateConnectionRequest) Send(ctx context.Context) (*CreateConnectionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -447,7 +673,7 @@ func (r CreateConnectionRequest) Send() (*CreateConnectionOutput, error) {
 //
 //    // Example sending a request using the CreateConnectionRequest method.
 //    req := client.CreateConnectionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -481,7 +707,8 @@ type CreateCrawlerRequest struct {
 }
 
 // Send marshals and sends the CreateCrawler API request.
-func (r CreateCrawlerRequest) Send() (*CreateCrawlerOutput, error) {
+func (r CreateCrawlerRequest) Send(ctx context.Context) (*CreateCrawlerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -499,7 +726,7 @@ func (r CreateCrawlerRequest) Send() (*CreateCrawlerOutput, error) {
 //
 //    // Example sending a request using the CreateCrawlerRequest method.
 //    req := client.CreateCrawlerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -533,7 +760,8 @@ type CreateDatabaseRequest struct {
 }
 
 // Send marshals and sends the CreateDatabase API request.
-func (r CreateDatabaseRequest) Send() (*CreateDatabaseOutput, error) {
+func (r CreateDatabaseRequest) Send(ctx context.Context) (*CreateDatabaseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -549,7 +777,7 @@ func (r CreateDatabaseRequest) Send() (*CreateDatabaseOutput, error) {
 //
 //    // Example sending a request using the CreateDatabaseRequest method.
 //    req := client.CreateDatabaseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -583,7 +811,8 @@ type CreateDevEndpointRequest struct {
 }
 
 // Send marshals and sends the CreateDevEndpoint API request.
-func (r CreateDevEndpointRequest) Send() (*CreateDevEndpointOutput, error) {
+func (r CreateDevEndpointRequest) Send(ctx context.Context) (*CreateDevEndpointOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -599,7 +828,7 @@ func (r CreateDevEndpointRequest) Send() (*CreateDevEndpointOutput, error) {
 //
 //    // Example sending a request using the CreateDevEndpointRequest method.
 //    req := client.CreateDevEndpointRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -633,7 +862,8 @@ type CreateJobRequest struct {
 }
 
 // Send marshals and sends the CreateJob API request.
-func (r CreateJobRequest) Send() (*CreateJobOutput, error) {
+func (r CreateJobRequest) Send(ctx context.Context) (*CreateJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -649,7 +879,7 @@ func (r CreateJobRequest) Send() (*CreateJobOutput, error) {
 //
 //    // Example sending a request using the CreateJobRequest method.
 //    req := client.CreateJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -683,7 +913,8 @@ type CreatePartitionRequest struct {
 }
 
 // Send marshals and sends the CreatePartition API request.
-func (r CreatePartitionRequest) Send() (*CreatePartitionOutput, error) {
+func (r CreatePartitionRequest) Send(ctx context.Context) (*CreatePartitionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -699,7 +930,7 @@ func (r CreatePartitionRequest) Send() (*CreatePartitionOutput, error) {
 //
 //    // Example sending a request using the CreatePartitionRequest method.
 //    req := client.CreatePartitionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -733,7 +964,8 @@ type CreateScriptRequest struct {
 }
 
 // Send marshals and sends the CreateScript API request.
-func (r CreateScriptRequest) Send() (*CreateScriptOutput, error) {
+func (r CreateScriptRequest) Send(ctx context.Context) (*CreateScriptOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -749,7 +981,7 @@ func (r CreateScriptRequest) Send() (*CreateScriptOutput, error) {
 //
 //    // Example sending a request using the CreateScriptRequest method.
 //    req := client.CreateScriptRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -783,7 +1015,8 @@ type CreateSecurityConfigurationRequest struct {
 }
 
 // Send marshals and sends the CreateSecurityConfiguration API request.
-func (r CreateSecurityConfigurationRequest) Send() (*CreateSecurityConfigurationOutput, error) {
+func (r CreateSecurityConfigurationRequest) Send(ctx context.Context) (*CreateSecurityConfigurationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -799,7 +1032,7 @@ func (r CreateSecurityConfigurationRequest) Send() (*CreateSecurityConfiguration
 //
 //    // Example sending a request using the CreateSecurityConfigurationRequest method.
 //    req := client.CreateSecurityConfigurationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -833,7 +1066,8 @@ type CreateTableRequest struct {
 }
 
 // Send marshals and sends the CreateTable API request.
-func (r CreateTableRequest) Send() (*CreateTableOutput, error) {
+func (r CreateTableRequest) Send(ctx context.Context) (*CreateTableOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -849,7 +1083,7 @@ func (r CreateTableRequest) Send() (*CreateTableOutput, error) {
 //
 //    // Example sending a request using the CreateTableRequest method.
 //    req := client.CreateTableRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -883,7 +1117,8 @@ type CreateTriggerRequest struct {
 }
 
 // Send marshals and sends the CreateTrigger API request.
-func (r CreateTriggerRequest) Send() (*CreateTriggerOutput, error) {
+func (r CreateTriggerRequest) Send(ctx context.Context) (*CreateTriggerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -899,7 +1134,7 @@ func (r CreateTriggerRequest) Send() (*CreateTriggerOutput, error) {
 //
 //    // Example sending a request using the CreateTriggerRequest method.
 //    req := client.CreateTriggerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -933,7 +1168,8 @@ type CreateUserDefinedFunctionRequest struct {
 }
 
 // Send marshals and sends the CreateUserDefinedFunction API request.
-func (r CreateUserDefinedFunctionRequest) Send() (*CreateUserDefinedFunctionOutput, error) {
+func (r CreateUserDefinedFunctionRequest) Send(ctx context.Context) (*CreateUserDefinedFunctionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -949,7 +1185,7 @@ func (r CreateUserDefinedFunctionRequest) Send() (*CreateUserDefinedFunctionOutp
 //
 //    // Example sending a request using the CreateUserDefinedFunctionRequest method.
 //    req := client.CreateUserDefinedFunctionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -983,7 +1219,8 @@ type DeleteClassifierRequest struct {
 }
 
 // Send marshals and sends the DeleteClassifier API request.
-func (r DeleteClassifierRequest) Send() (*DeleteClassifierOutput, error) {
+func (r DeleteClassifierRequest) Send(ctx context.Context) (*DeleteClassifierOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -999,7 +1236,7 @@ func (r DeleteClassifierRequest) Send() (*DeleteClassifierOutput, error) {
 //
 //    // Example sending a request using the DeleteClassifierRequest method.
 //    req := client.DeleteClassifierRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1033,7 +1270,8 @@ type DeleteConnectionRequest struct {
 }
 
 // Send marshals and sends the DeleteConnection API request.
-func (r DeleteConnectionRequest) Send() (*DeleteConnectionOutput, error) {
+func (r DeleteConnectionRequest) Send(ctx context.Context) (*DeleteConnectionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1049,7 +1287,7 @@ func (r DeleteConnectionRequest) Send() (*DeleteConnectionOutput, error) {
 //
 //    // Example sending a request using the DeleteConnectionRequest method.
 //    req := client.DeleteConnectionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1083,7 +1321,8 @@ type DeleteCrawlerRequest struct {
 }
 
 // Send marshals and sends the DeleteCrawler API request.
-func (r DeleteCrawlerRequest) Send() (*DeleteCrawlerOutput, error) {
+func (r DeleteCrawlerRequest) Send(ctx context.Context) (*DeleteCrawlerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1100,7 +1339,7 @@ func (r DeleteCrawlerRequest) Send() (*DeleteCrawlerOutput, error) {
 //
 //    // Example sending a request using the DeleteCrawlerRequest method.
 //    req := client.DeleteCrawlerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1134,7 +1373,8 @@ type DeleteDatabaseRequest struct {
 }
 
 // Send marshals and sends the DeleteDatabase API request.
-func (r DeleteDatabaseRequest) Send() (*DeleteDatabaseOutput, error) {
+func (r DeleteDatabaseRequest) Send(ctx context.Context) (*DeleteDatabaseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1161,7 +1401,7 @@ func (r DeleteDatabaseRequest) Send() (*DeleteDatabaseOutput, error) {
 //
 //    // Example sending a request using the DeleteDatabaseRequest method.
 //    req := client.DeleteDatabaseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1195,7 +1435,8 @@ type DeleteDevEndpointRequest struct {
 }
 
 // Send marshals and sends the DeleteDevEndpoint API request.
-func (r DeleteDevEndpointRequest) Send() (*DeleteDevEndpointOutput, error) {
+func (r DeleteDevEndpointRequest) Send(ctx context.Context) (*DeleteDevEndpointOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1211,7 +1452,7 @@ func (r DeleteDevEndpointRequest) Send() (*DeleteDevEndpointOutput, error) {
 //
 //    // Example sending a request using the DeleteDevEndpointRequest method.
 //    req := client.DeleteDevEndpointRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1245,7 +1486,8 @@ type DeleteJobRequest struct {
 }
 
 // Send marshals and sends the DeleteJob API request.
-func (r DeleteJobRequest) Send() (*DeleteJobOutput, error) {
+func (r DeleteJobRequest) Send(ctx context.Context) (*DeleteJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1262,7 +1504,7 @@ func (r DeleteJobRequest) Send() (*DeleteJobOutput, error) {
 //
 //    // Example sending a request using the DeleteJobRequest method.
 //    req := client.DeleteJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1296,7 +1538,8 @@ type DeletePartitionRequest struct {
 }
 
 // Send marshals and sends the DeletePartition API request.
-func (r DeletePartitionRequest) Send() (*DeletePartitionOutput, error) {
+func (r DeletePartitionRequest) Send(ctx context.Context) (*DeletePartitionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1312,7 +1555,7 @@ func (r DeletePartitionRequest) Send() (*DeletePartitionOutput, error) {
 //
 //    // Example sending a request using the DeletePartitionRequest method.
 //    req := client.DeletePartitionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1346,7 +1589,8 @@ type DeleteResourcePolicyRequest struct {
 }
 
 // Send marshals and sends the DeleteResourcePolicy API request.
-func (r DeleteResourcePolicyRequest) Send() (*DeleteResourcePolicyOutput, error) {
+func (r DeleteResourcePolicyRequest) Send(ctx context.Context) (*DeleteResourcePolicyOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1362,7 +1606,7 @@ func (r DeleteResourcePolicyRequest) Send() (*DeleteResourcePolicyOutput, error)
 //
 //    // Example sending a request using the DeleteResourcePolicyRequest method.
 //    req := client.DeleteResourcePolicyRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1396,7 +1640,8 @@ type DeleteSecurityConfigurationRequest struct {
 }
 
 // Send marshals and sends the DeleteSecurityConfiguration API request.
-func (r DeleteSecurityConfigurationRequest) Send() (*DeleteSecurityConfigurationOutput, error) {
+func (r DeleteSecurityConfigurationRequest) Send(ctx context.Context) (*DeleteSecurityConfigurationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1412,7 +1657,7 @@ func (r DeleteSecurityConfigurationRequest) Send() (*DeleteSecurityConfiguration
 //
 //    // Example sending a request using the DeleteSecurityConfigurationRequest method.
 //    req := client.DeleteSecurityConfigurationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1446,7 +1691,8 @@ type DeleteTableRequest struct {
 }
 
 // Send marshals and sends the DeleteTable API request.
-func (r DeleteTableRequest) Send() (*DeleteTableOutput, error) {
+func (r DeleteTableRequest) Send(ctx context.Context) (*DeleteTableOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1471,7 +1717,7 @@ func (r DeleteTableRequest) Send() (*DeleteTableOutput, error) {
 //
 //    // Example sending a request using the DeleteTableRequest method.
 //    req := client.DeleteTableRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1505,7 +1751,8 @@ type DeleteTableVersionRequest struct {
 }
 
 // Send marshals and sends the DeleteTableVersion API request.
-func (r DeleteTableVersionRequest) Send() (*DeleteTableVersionOutput, error) {
+func (r DeleteTableVersionRequest) Send(ctx context.Context) (*DeleteTableVersionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1521,7 +1768,7 @@ func (r DeleteTableVersionRequest) Send() (*DeleteTableVersionOutput, error) {
 //
 //    // Example sending a request using the DeleteTableVersionRequest method.
 //    req := client.DeleteTableVersionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1555,7 +1802,8 @@ type DeleteTriggerRequest struct {
 }
 
 // Send marshals and sends the DeleteTrigger API request.
-func (r DeleteTriggerRequest) Send() (*DeleteTriggerOutput, error) {
+func (r DeleteTriggerRequest) Send(ctx context.Context) (*DeleteTriggerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1572,7 +1820,7 @@ func (r DeleteTriggerRequest) Send() (*DeleteTriggerOutput, error) {
 //
 //    // Example sending a request using the DeleteTriggerRequest method.
 //    req := client.DeleteTriggerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1606,7 +1854,8 @@ type DeleteUserDefinedFunctionRequest struct {
 }
 
 // Send marshals and sends the DeleteUserDefinedFunction API request.
-func (r DeleteUserDefinedFunctionRequest) Send() (*DeleteUserDefinedFunctionOutput, error) {
+func (r DeleteUserDefinedFunctionRequest) Send(ctx context.Context) (*DeleteUserDefinedFunctionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1622,7 +1871,7 @@ func (r DeleteUserDefinedFunctionRequest) Send() (*DeleteUserDefinedFunctionOutp
 //
 //    // Example sending a request using the DeleteUserDefinedFunctionRequest method.
 //    req := client.DeleteUserDefinedFunctionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1656,7 +1905,8 @@ type GetCatalogImportStatusRequest struct {
 }
 
 // Send marshals and sends the GetCatalogImportStatus API request.
-func (r GetCatalogImportStatusRequest) Send() (*GetCatalogImportStatusOutput, error) {
+func (r GetCatalogImportStatusRequest) Send(ctx context.Context) (*GetCatalogImportStatusOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1672,7 +1922,7 @@ func (r GetCatalogImportStatusRequest) Send() (*GetCatalogImportStatusOutput, er
 //
 //    // Example sending a request using the GetCatalogImportStatusRequest method.
 //    req := client.GetCatalogImportStatusRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1706,7 +1956,8 @@ type GetClassifierRequest struct {
 }
 
 // Send marshals and sends the GetClassifier API request.
-func (r GetClassifierRequest) Send() (*GetClassifierOutput, error) {
+func (r GetClassifierRequest) Send(ctx context.Context) (*GetClassifierOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1722,7 +1973,7 @@ func (r GetClassifierRequest) Send() (*GetClassifierOutput, error) {
 //
 //    // Example sending a request using the GetClassifierRequest method.
 //    req := client.GetClassifierRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1756,7 +2007,8 @@ type GetClassifiersRequest struct {
 }
 
 // Send marshals and sends the GetClassifiers API request.
-func (r GetClassifiersRequest) Send() (*GetClassifiersOutput, error) {
+func (r GetClassifiersRequest) Send(ctx context.Context) (*GetClassifiersOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1772,7 +2024,7 @@ func (r GetClassifiersRequest) Send() (*GetClassifiersOutput, error) {
 //
 //    // Example sending a request using the GetClassifiersRequest method.
 //    req := client.GetClassifiersRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1822,7 +2074,7 @@ func (c *Glue) GetClassifiersRequest(input *GetClassifiersInput) GetClassifiersR
 func (p *GetClassifiersRequest) Paginate(opts ...aws.Option) GetClassifiersPager {
 	return GetClassifiersPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *GetClassifiersInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1831,6 +2083,7 @@ func (p *GetClassifiersRequest) Paginate(opts ...aws.Option) GetClassifiersPager
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -1858,7 +2111,8 @@ type GetConnectionRequest struct {
 }
 
 // Send marshals and sends the GetConnection API request.
-func (r GetConnectionRequest) Send() (*GetConnectionOutput, error) {
+func (r GetConnectionRequest) Send(ctx context.Context) (*GetConnectionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1874,7 +2128,7 @@ func (r GetConnectionRequest) Send() (*GetConnectionOutput, error) {
 //
 //    // Example sending a request using the GetConnectionRequest method.
 //    req := client.GetConnectionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1908,7 +2162,8 @@ type GetConnectionsRequest struct {
 }
 
 // Send marshals and sends the GetConnections API request.
-func (r GetConnectionsRequest) Send() (*GetConnectionsOutput, error) {
+func (r GetConnectionsRequest) Send(ctx context.Context) (*GetConnectionsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1924,7 +2179,7 @@ func (r GetConnectionsRequest) Send() (*GetConnectionsOutput, error) {
 //
 //    // Example sending a request using the GetConnectionsRequest method.
 //    req := client.GetConnectionsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1974,7 +2229,7 @@ func (c *Glue) GetConnectionsRequest(input *GetConnectionsInput) GetConnectionsR
 func (p *GetConnectionsRequest) Paginate(opts ...aws.Option) GetConnectionsPager {
 	return GetConnectionsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *GetConnectionsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -1983,6 +2238,7 @@ func (p *GetConnectionsRequest) Paginate(opts ...aws.Option) GetConnectionsPager
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2010,7 +2266,8 @@ type GetCrawlerRequest struct {
 }
 
 // Send marshals and sends the GetCrawler API request.
-func (r GetCrawlerRequest) Send() (*GetCrawlerOutput, error) {
+func (r GetCrawlerRequest) Send(ctx context.Context) (*GetCrawlerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2026,7 +2283,7 @@ func (r GetCrawlerRequest) Send() (*GetCrawlerOutput, error) {
 //
 //    // Example sending a request using the GetCrawlerRequest method.
 //    req := client.GetCrawlerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2060,7 +2317,8 @@ type GetCrawlerMetricsRequest struct {
 }
 
 // Send marshals and sends the GetCrawlerMetrics API request.
-func (r GetCrawlerMetricsRequest) Send() (*GetCrawlerMetricsOutput, error) {
+func (r GetCrawlerMetricsRequest) Send(ctx context.Context) (*GetCrawlerMetricsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2076,7 +2334,7 @@ func (r GetCrawlerMetricsRequest) Send() (*GetCrawlerMetricsOutput, error) {
 //
 //    // Example sending a request using the GetCrawlerMetricsRequest method.
 //    req := client.GetCrawlerMetricsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2126,7 +2384,7 @@ func (c *Glue) GetCrawlerMetricsRequest(input *GetCrawlerMetricsInput) GetCrawle
 func (p *GetCrawlerMetricsRequest) Paginate(opts ...aws.Option) GetCrawlerMetricsPager {
 	return GetCrawlerMetricsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *GetCrawlerMetricsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -2135,6 +2393,7 @@ func (p *GetCrawlerMetricsRequest) Paginate(opts ...aws.Option) GetCrawlerMetric
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2162,7 +2421,8 @@ type GetCrawlersRequest struct {
 }
 
 // Send marshals and sends the GetCrawlers API request.
-func (r GetCrawlersRequest) Send() (*GetCrawlersOutput, error) {
+func (r GetCrawlersRequest) Send(ctx context.Context) (*GetCrawlersOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2178,7 +2438,7 @@ func (r GetCrawlersRequest) Send() (*GetCrawlersOutput, error) {
 //
 //    // Example sending a request using the GetCrawlersRequest method.
 //    req := client.GetCrawlersRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2228,7 +2488,7 @@ func (c *Glue) GetCrawlersRequest(input *GetCrawlersInput) GetCrawlersRequest {
 func (p *GetCrawlersRequest) Paginate(opts ...aws.Option) GetCrawlersPager {
 	return GetCrawlersPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *GetCrawlersInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -2237,6 +2497,7 @@ func (p *GetCrawlersRequest) Paginate(opts ...aws.Option) GetCrawlersPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2264,7 +2525,8 @@ type GetDataCatalogEncryptionSettingsRequest struct {
 }
 
 // Send marshals and sends the GetDataCatalogEncryptionSettings API request.
-func (r GetDataCatalogEncryptionSettingsRequest) Send() (*GetDataCatalogEncryptionSettingsOutput, error) {
+func (r GetDataCatalogEncryptionSettingsRequest) Send(ctx context.Context) (*GetDataCatalogEncryptionSettingsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2280,7 +2542,7 @@ func (r GetDataCatalogEncryptionSettingsRequest) Send() (*GetDataCatalogEncrypti
 //
 //    // Example sending a request using the GetDataCatalogEncryptionSettingsRequest method.
 //    req := client.GetDataCatalogEncryptionSettingsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2314,7 +2576,8 @@ type GetDatabaseRequest struct {
 }
 
 // Send marshals and sends the GetDatabase API request.
-func (r GetDatabaseRequest) Send() (*GetDatabaseOutput, error) {
+func (r GetDatabaseRequest) Send(ctx context.Context) (*GetDatabaseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2330,7 +2593,7 @@ func (r GetDatabaseRequest) Send() (*GetDatabaseOutput, error) {
 //
 //    // Example sending a request using the GetDatabaseRequest method.
 //    req := client.GetDatabaseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2364,7 +2627,8 @@ type GetDatabasesRequest struct {
 }
 
 // Send marshals and sends the GetDatabases API request.
-func (r GetDatabasesRequest) Send() (*GetDatabasesOutput, error) {
+func (r GetDatabasesRequest) Send(ctx context.Context) (*GetDatabasesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2380,7 +2644,7 @@ func (r GetDatabasesRequest) Send() (*GetDatabasesOutput, error) {
 //
 //    // Example sending a request using the GetDatabasesRequest method.
 //    req := client.GetDatabasesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2430,7 +2694,7 @@ func (c *Glue) GetDatabasesRequest(input *GetDatabasesInput) GetDatabasesRequest
 func (p *GetDatabasesRequest) Paginate(opts ...aws.Option) GetDatabasesPager {
 	return GetDatabasesPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *GetDatabasesInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -2439,6 +2703,7 @@ func (p *GetDatabasesRequest) Paginate(opts ...aws.Option) GetDatabasesPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2466,7 +2731,8 @@ type GetDataflowGraphRequest struct {
 }
 
 // Send marshals and sends the GetDataflowGraph API request.
-func (r GetDataflowGraphRequest) Send() (*GetDataflowGraphOutput, error) {
+func (r GetDataflowGraphRequest) Send(ctx context.Context) (*GetDataflowGraphOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2482,7 +2748,7 @@ func (r GetDataflowGraphRequest) Send() (*GetDataflowGraphOutput, error) {
 //
 //    // Example sending a request using the GetDataflowGraphRequest method.
 //    req := client.GetDataflowGraphRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2516,7 +2782,8 @@ type GetDevEndpointRequest struct {
 }
 
 // Send marshals and sends the GetDevEndpoint API request.
-func (r GetDevEndpointRequest) Send() (*GetDevEndpointOutput, error) {
+func (r GetDevEndpointRequest) Send(ctx context.Context) (*GetDevEndpointOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2537,7 +2804,7 @@ func (r GetDevEndpointRequest) Send() (*GetDevEndpointOutput, error) {
 //
 //    // Example sending a request using the GetDevEndpointRequest method.
 //    req := client.GetDevEndpointRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2571,7 +2838,8 @@ type GetDevEndpointsRequest struct {
 }
 
 // Send marshals and sends the GetDevEndpoints API request.
-func (r GetDevEndpointsRequest) Send() (*GetDevEndpointsOutput, error) {
+func (r GetDevEndpointsRequest) Send(ctx context.Context) (*GetDevEndpointsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2592,7 +2860,7 @@ func (r GetDevEndpointsRequest) Send() (*GetDevEndpointsOutput, error) {
 //
 //    // Example sending a request using the GetDevEndpointsRequest method.
 //    req := client.GetDevEndpointsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2642,7 +2910,7 @@ func (c *Glue) GetDevEndpointsRequest(input *GetDevEndpointsInput) GetDevEndpoin
 func (p *GetDevEndpointsRequest) Paginate(opts ...aws.Option) GetDevEndpointsPager {
 	return GetDevEndpointsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *GetDevEndpointsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -2651,6 +2919,7 @@ func (p *GetDevEndpointsRequest) Paginate(opts ...aws.Option) GetDevEndpointsPag
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2678,7 +2947,8 @@ type GetJobRequest struct {
 }
 
 // Send marshals and sends the GetJob API request.
-func (r GetJobRequest) Send() (*GetJobOutput, error) {
+func (r GetJobRequest) Send(ctx context.Context) (*GetJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2694,7 +2964,7 @@ func (r GetJobRequest) Send() (*GetJobOutput, error) {
 //
 //    // Example sending a request using the GetJobRequest method.
 //    req := client.GetJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2728,7 +2998,8 @@ type GetJobRunRequest struct {
 }
 
 // Send marshals and sends the GetJobRun API request.
-func (r GetJobRunRequest) Send() (*GetJobRunOutput, error) {
+func (r GetJobRunRequest) Send(ctx context.Context) (*GetJobRunOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2744,7 +3015,7 @@ func (r GetJobRunRequest) Send() (*GetJobRunOutput, error) {
 //
 //    // Example sending a request using the GetJobRunRequest method.
 //    req := client.GetJobRunRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2778,7 +3049,8 @@ type GetJobRunsRequest struct {
 }
 
 // Send marshals and sends the GetJobRuns API request.
-func (r GetJobRunsRequest) Send() (*GetJobRunsOutput, error) {
+func (r GetJobRunsRequest) Send(ctx context.Context) (*GetJobRunsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2794,7 +3066,7 @@ func (r GetJobRunsRequest) Send() (*GetJobRunsOutput, error) {
 //
 //    // Example sending a request using the GetJobRunsRequest method.
 //    req := client.GetJobRunsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2844,7 +3116,7 @@ func (c *Glue) GetJobRunsRequest(input *GetJobRunsInput) GetJobRunsRequest {
 func (p *GetJobRunsRequest) Paginate(opts ...aws.Option) GetJobRunsPager {
 	return GetJobRunsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *GetJobRunsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -2853,6 +3125,7 @@ func (p *GetJobRunsRequest) Paginate(opts ...aws.Option) GetJobRunsPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2880,7 +3153,8 @@ type GetJobsRequest struct {
 }
 
 // Send marshals and sends the GetJobs API request.
-func (r GetJobsRequest) Send() (*GetJobsOutput, error) {
+func (r GetJobsRequest) Send(ctx context.Context) (*GetJobsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2896,7 +3170,7 @@ func (r GetJobsRequest) Send() (*GetJobsOutput, error) {
 //
 //    // Example sending a request using the GetJobsRequest method.
 //    req := client.GetJobsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2946,7 +3220,7 @@ func (c *Glue) GetJobsRequest(input *GetJobsInput) GetJobsRequest {
 func (p *GetJobsRequest) Paginate(opts ...aws.Option) GetJobsPager {
 	return GetJobsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *GetJobsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -2955,6 +3229,7 @@ func (p *GetJobsRequest) Paginate(opts ...aws.Option) GetJobsPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2982,7 +3257,8 @@ type GetMappingRequest struct {
 }
 
 // Send marshals and sends the GetMapping API request.
-func (r GetMappingRequest) Send() (*GetMappingOutput, error) {
+func (r GetMappingRequest) Send(ctx context.Context) (*GetMappingOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2998,7 +3274,7 @@ func (r GetMappingRequest) Send() (*GetMappingOutput, error) {
 //
 //    // Example sending a request using the GetMappingRequest method.
 //    req := client.GetMappingRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3032,7 +3308,8 @@ type GetPartitionRequest struct {
 }
 
 // Send marshals and sends the GetPartition API request.
-func (r GetPartitionRequest) Send() (*GetPartitionOutput, error) {
+func (r GetPartitionRequest) Send(ctx context.Context) (*GetPartitionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3048,7 +3325,7 @@ func (r GetPartitionRequest) Send() (*GetPartitionOutput, error) {
 //
 //    // Example sending a request using the GetPartitionRequest method.
 //    req := client.GetPartitionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3082,7 +3359,8 @@ type GetPartitionsRequest struct {
 }
 
 // Send marshals and sends the GetPartitions API request.
-func (r GetPartitionsRequest) Send() (*GetPartitionsOutput, error) {
+func (r GetPartitionsRequest) Send(ctx context.Context) (*GetPartitionsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3098,7 +3376,7 @@ func (r GetPartitionsRequest) Send() (*GetPartitionsOutput, error) {
 //
 //    // Example sending a request using the GetPartitionsRequest method.
 //    req := client.GetPartitionsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3148,7 +3426,7 @@ func (c *Glue) GetPartitionsRequest(input *GetPartitionsInput) GetPartitionsRequ
 func (p *GetPartitionsRequest) Paginate(opts ...aws.Option) GetPartitionsPager {
 	return GetPartitionsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *GetPartitionsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -3157,6 +3435,7 @@ func (p *GetPartitionsRequest) Paginate(opts ...aws.Option) GetPartitionsPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -3184,7 +3463,8 @@ type GetPlanRequest struct {
 }
 
 // Send marshals and sends the GetPlan API request.
-func (r GetPlanRequest) Send() (*GetPlanOutput, error) {
+func (r GetPlanRequest) Send(ctx context.Context) (*GetPlanOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3200,7 +3480,7 @@ func (r GetPlanRequest) Send() (*GetPlanOutput, error) {
 //
 //    // Example sending a request using the GetPlanRequest method.
 //    req := client.GetPlanRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3234,7 +3514,8 @@ type GetResourcePolicyRequest struct {
 }
 
 // Send marshals and sends the GetResourcePolicy API request.
-func (r GetResourcePolicyRequest) Send() (*GetResourcePolicyOutput, error) {
+func (r GetResourcePolicyRequest) Send(ctx context.Context) (*GetResourcePolicyOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3250,7 +3531,7 @@ func (r GetResourcePolicyRequest) Send() (*GetResourcePolicyOutput, error) {
 //
 //    // Example sending a request using the GetResourcePolicyRequest method.
 //    req := client.GetResourcePolicyRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3284,7 +3565,8 @@ type GetSecurityConfigurationRequest struct {
 }
 
 // Send marshals and sends the GetSecurityConfiguration API request.
-func (r GetSecurityConfigurationRequest) Send() (*GetSecurityConfigurationOutput, error) {
+func (r GetSecurityConfigurationRequest) Send(ctx context.Context) (*GetSecurityConfigurationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3300,7 +3582,7 @@ func (r GetSecurityConfigurationRequest) Send() (*GetSecurityConfigurationOutput
 //
 //    // Example sending a request using the GetSecurityConfigurationRequest method.
 //    req := client.GetSecurityConfigurationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3334,7 +3616,8 @@ type GetSecurityConfigurationsRequest struct {
 }
 
 // Send marshals and sends the GetSecurityConfigurations API request.
-func (r GetSecurityConfigurationsRequest) Send() (*GetSecurityConfigurationsOutput, error) {
+func (r GetSecurityConfigurationsRequest) Send(ctx context.Context) (*GetSecurityConfigurationsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3350,7 +3633,7 @@ func (r GetSecurityConfigurationsRequest) Send() (*GetSecurityConfigurationsOutp
 //
 //    // Example sending a request using the GetSecurityConfigurationsRequest method.
 //    req := client.GetSecurityConfigurationsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3361,6 +3644,12 @@ func (c *Glue) GetSecurityConfigurationsRequest(input *GetSecurityConfigurations
 		Name:       opGetSecurityConfigurations,
 		HTTPMethod: "POST",
 		HTTPPath:   "/",
+		Paginator: &aws.Paginator{
+			InputTokens:     []string{"NextToken"},
+			OutputTokens:    []string{"NextToken"},
+			LimitToken:      "MaxResults",
+			TruncationToken: "",
+		},
 	}
 
 	if input == nil {
@@ -3374,6 +3663,53 @@ func (c *Glue) GetSecurityConfigurationsRequest(input *GetSecurityConfigurations
 	return GetSecurityConfigurationsRequest{Request: req, Input: input, Copy: c.GetSecurityConfigurationsRequest}
 }
 
+// Paginate pages iterates over the pages of a GetSecurityConfigurationsRequest operation,
+// calling the Next method for each page. Using the paginators Next
+// method will depict whether or not there are more pages.
+//
+// Note: This operation can generate multiple requests to a service.
+//
+//    // Example iterating over at most 3 pages of a GetSecurityConfigurations operation.
+//		req := client.GetSecurityConfigurationsRequest(input)
+//		p := req.Paginate()
+//		for p.Next() {
+//			page := p.CurrentPage()
+//		}
+//
+//		if err := p.Err(); err != nil {
+//			return err
+//		}
+//
+func (p *GetSecurityConfigurationsRequest) Paginate(opts ...aws.Option) GetSecurityConfigurationsPager {
+	return GetSecurityConfigurationsPager{
+		Pager: aws.Pager{
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
+				var inCpy *GetSecurityConfigurationsInput
+				if p.Input != nil {
+					tmp := *p.Input
+					inCpy = &tmp
+				}
+
+				req := p.Copy(inCpy)
+				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
+
+				return req.Request, nil
+			},
+		},
+	}
+}
+
+// GetSecurityConfigurationsPager is used to paginate the request. This can be done by
+// calling Next and CurrentPage.
+type GetSecurityConfigurationsPager struct {
+	aws.Pager
+}
+
+func (p *GetSecurityConfigurationsPager) CurrentPage() *GetSecurityConfigurationsOutput {
+	return p.Pager.CurrentPage().(*GetSecurityConfigurationsOutput)
+}
+
 const opGetTable = "GetTable"
 
 // GetTableRequest is a API request type for the GetTable API operation.
@@ -3384,7 +3720,8 @@ type GetTableRequest struct {
 }
 
 // Send marshals and sends the GetTable API request.
-func (r GetTableRequest) Send() (*GetTableOutput, error) {
+func (r GetTableRequest) Send(ctx context.Context) (*GetTableOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3400,7 +3737,7 @@ func (r GetTableRequest) Send() (*GetTableOutput, error) {
 //
 //    // Example sending a request using the GetTableRequest method.
 //    req := client.GetTableRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3434,7 +3771,8 @@ type GetTableVersionRequest struct {
 }
 
 // Send marshals and sends the GetTableVersion API request.
-func (r GetTableVersionRequest) Send() (*GetTableVersionOutput, error) {
+func (r GetTableVersionRequest) Send(ctx context.Context) (*GetTableVersionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3450,7 +3788,7 @@ func (r GetTableVersionRequest) Send() (*GetTableVersionOutput, error) {
 //
 //    // Example sending a request using the GetTableVersionRequest method.
 //    req := client.GetTableVersionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3484,7 +3822,8 @@ type GetTableVersionsRequest struct {
 }
 
 // Send marshals and sends the GetTableVersions API request.
-func (r GetTableVersionsRequest) Send() (*GetTableVersionsOutput, error) {
+func (r GetTableVersionsRequest) Send(ctx context.Context) (*GetTableVersionsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3501,7 +3840,7 @@ func (r GetTableVersionsRequest) Send() (*GetTableVersionsOutput, error) {
 //
 //    // Example sending a request using the GetTableVersionsRequest method.
 //    req := client.GetTableVersionsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3551,7 +3890,7 @@ func (c *Glue) GetTableVersionsRequest(input *GetTableVersionsInput) GetTableVer
 func (p *GetTableVersionsRequest) Paginate(opts ...aws.Option) GetTableVersionsPager {
 	return GetTableVersionsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *GetTableVersionsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -3560,6 +3899,7 @@ func (p *GetTableVersionsRequest) Paginate(opts ...aws.Option) GetTableVersionsP
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -3587,7 +3927,8 @@ type GetTablesRequest struct {
 }
 
 // Send marshals and sends the GetTables API request.
-func (r GetTablesRequest) Send() (*GetTablesOutput, error) {
+func (r GetTablesRequest) Send(ctx context.Context) (*GetTablesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3603,7 +3944,7 @@ func (r GetTablesRequest) Send() (*GetTablesOutput, error) {
 //
 //    // Example sending a request using the GetTablesRequest method.
 //    req := client.GetTablesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3653,7 +3994,7 @@ func (c *Glue) GetTablesRequest(input *GetTablesInput) GetTablesRequest {
 func (p *GetTablesRequest) Paginate(opts ...aws.Option) GetTablesPager {
 	return GetTablesPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *GetTablesInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -3662,6 +4003,7 @@ func (p *GetTablesRequest) Paginate(opts ...aws.Option) GetTablesPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -3679,6 +4021,57 @@ func (p *GetTablesPager) CurrentPage() *GetTablesOutput {
 	return p.Pager.CurrentPage().(*GetTablesOutput)
 }
 
+const opGetTags = "GetTags"
+
+// GetTagsRequest is a API request type for the GetTags API operation.
+type GetTagsRequest struct {
+	*aws.Request
+	Input *GetTagsInput
+	Copy  func(*GetTagsInput) GetTagsRequest
+}
+
+// Send marshals and sends the GetTags API request.
+func (r GetTagsRequest) Send(ctx context.Context) (*GetTagsOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*GetTagsOutput), nil
+}
+
+// GetTagsRequest returns a request value for making API operation for
+// AWS Glue.
+//
+// Retrieves a list of tags associated with a resource.
+//
+//    // Example sending a request using the GetTagsRequest method.
+//    req := client.GetTagsRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetTags
+func (c *Glue) GetTagsRequest(input *GetTagsInput) GetTagsRequest {
+	op := &aws.Operation{
+		Name:       opGetTags,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &GetTagsInput{}
+	}
+
+	output := &GetTagsOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return GetTagsRequest{Request: req, Input: input, Copy: c.GetTagsRequest}
+}
+
 const opGetTrigger = "GetTrigger"
 
 // GetTriggerRequest is a API request type for the GetTrigger API operation.
@@ -3689,7 +4082,8 @@ type GetTriggerRequest struct {
 }
 
 // Send marshals and sends the GetTrigger API request.
-func (r GetTriggerRequest) Send() (*GetTriggerOutput, error) {
+func (r GetTriggerRequest) Send(ctx context.Context) (*GetTriggerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3705,7 +4099,7 @@ func (r GetTriggerRequest) Send() (*GetTriggerOutput, error) {
 //
 //    // Example sending a request using the GetTriggerRequest method.
 //    req := client.GetTriggerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3739,7 +4133,8 @@ type GetTriggersRequest struct {
 }
 
 // Send marshals and sends the GetTriggers API request.
-func (r GetTriggersRequest) Send() (*GetTriggersOutput, error) {
+func (r GetTriggersRequest) Send(ctx context.Context) (*GetTriggersOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3755,7 +4150,7 @@ func (r GetTriggersRequest) Send() (*GetTriggersOutput, error) {
 //
 //    // Example sending a request using the GetTriggersRequest method.
 //    req := client.GetTriggersRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3805,7 +4200,7 @@ func (c *Glue) GetTriggersRequest(input *GetTriggersInput) GetTriggersRequest {
 func (p *GetTriggersRequest) Paginate(opts ...aws.Option) GetTriggersPager {
 	return GetTriggersPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *GetTriggersInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -3814,6 +4209,7 @@ func (p *GetTriggersRequest) Paginate(opts ...aws.Option) GetTriggersPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -3841,7 +4237,8 @@ type GetUserDefinedFunctionRequest struct {
 }
 
 // Send marshals and sends the GetUserDefinedFunction API request.
-func (r GetUserDefinedFunctionRequest) Send() (*GetUserDefinedFunctionOutput, error) {
+func (r GetUserDefinedFunctionRequest) Send(ctx context.Context) (*GetUserDefinedFunctionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3857,7 +4254,7 @@ func (r GetUserDefinedFunctionRequest) Send() (*GetUserDefinedFunctionOutput, er
 //
 //    // Example sending a request using the GetUserDefinedFunctionRequest method.
 //    req := client.GetUserDefinedFunctionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3891,7 +4288,8 @@ type GetUserDefinedFunctionsRequest struct {
 }
 
 // Send marshals and sends the GetUserDefinedFunctions API request.
-func (r GetUserDefinedFunctionsRequest) Send() (*GetUserDefinedFunctionsOutput, error) {
+func (r GetUserDefinedFunctionsRequest) Send(ctx context.Context) (*GetUserDefinedFunctionsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -3907,7 +4305,7 @@ func (r GetUserDefinedFunctionsRequest) Send() (*GetUserDefinedFunctionsOutput, 
 //
 //    // Example sending a request using the GetUserDefinedFunctionsRequest method.
 //    req := client.GetUserDefinedFunctionsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -3957,7 +4355,7 @@ func (c *Glue) GetUserDefinedFunctionsRequest(input *GetUserDefinedFunctionsInpu
 func (p *GetUserDefinedFunctionsRequest) Paginate(opts ...aws.Option) GetUserDefinedFunctionsPager {
 	return GetUserDefinedFunctionsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *GetUserDefinedFunctionsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -3966,6 +4364,7 @@ func (p *GetUserDefinedFunctionsRequest) Paginate(opts ...aws.Option) GetUserDef
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -3993,7 +4392,8 @@ type ImportCatalogToGlueRequest struct {
 }
 
 // Send marshals and sends the ImportCatalogToGlue API request.
-func (r ImportCatalogToGlueRequest) Send() (*ImportCatalogToGlueOutput, error) {
+func (r ImportCatalogToGlueRequest) Send(ctx context.Context) (*ImportCatalogToGlueOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4009,7 +4409,7 @@ func (r ImportCatalogToGlueRequest) Send() (*ImportCatalogToGlueOutput, error) {
 //
 //    // Example sending a request using the ImportCatalogToGlueRequest method.
 //    req := client.ImportCatalogToGlueRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4033,6 +4433,446 @@ func (c *Glue) ImportCatalogToGlueRequest(input *ImportCatalogToGlueInput) Impor
 	return ImportCatalogToGlueRequest{Request: req, Input: input, Copy: c.ImportCatalogToGlueRequest}
 }
 
+const opListCrawlers = "ListCrawlers"
+
+// ListCrawlersRequest is a API request type for the ListCrawlers API operation.
+type ListCrawlersRequest struct {
+	*aws.Request
+	Input *ListCrawlersInput
+	Copy  func(*ListCrawlersInput) ListCrawlersRequest
+}
+
+// Send marshals and sends the ListCrawlers API request.
+func (r ListCrawlersRequest) Send(ctx context.Context) (*ListCrawlersOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*ListCrawlersOutput), nil
+}
+
+// ListCrawlersRequest returns a request value for making API operation for
+// AWS Glue.
+//
+// Retrieves the names of all crawler resources in this AWS account, or the
+// resources with the specified tag. This operation allows you to see which
+// resources are available in your account, and their names.
+//
+// This operation takes the optional Tags field which you can use as a filter
+// on the response so that tagged resources can be retrieved as a group. If
+// you choose to use tags filtering, only resources with the tag will be retrieved.
+//
+//    // Example sending a request using the ListCrawlersRequest method.
+//    req := client.ListCrawlersRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ListCrawlers
+func (c *Glue) ListCrawlersRequest(input *ListCrawlersInput) ListCrawlersRequest {
+	op := &aws.Operation{
+		Name:       opListCrawlers,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+		Paginator: &aws.Paginator{
+			InputTokens:     []string{"NextToken"},
+			OutputTokens:    []string{"NextToken"},
+			LimitToken:      "MaxResults",
+			TruncationToken: "",
+		},
+	}
+
+	if input == nil {
+		input = &ListCrawlersInput{}
+	}
+
+	output := &ListCrawlersOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return ListCrawlersRequest{Request: req, Input: input, Copy: c.ListCrawlersRequest}
+}
+
+// Paginate pages iterates over the pages of a ListCrawlersRequest operation,
+// calling the Next method for each page. Using the paginators Next
+// method will depict whether or not there are more pages.
+//
+// Note: This operation can generate multiple requests to a service.
+//
+//    // Example iterating over at most 3 pages of a ListCrawlers operation.
+//		req := client.ListCrawlersRequest(input)
+//		p := req.Paginate()
+//		for p.Next() {
+//			page := p.CurrentPage()
+//		}
+//
+//		if err := p.Err(); err != nil {
+//			return err
+//		}
+//
+func (p *ListCrawlersRequest) Paginate(opts ...aws.Option) ListCrawlersPager {
+	return ListCrawlersPager{
+		Pager: aws.Pager{
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
+				var inCpy *ListCrawlersInput
+				if p.Input != nil {
+					tmp := *p.Input
+					inCpy = &tmp
+				}
+
+				req := p.Copy(inCpy)
+				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
+
+				return req.Request, nil
+			},
+		},
+	}
+}
+
+// ListCrawlersPager is used to paginate the request. This can be done by
+// calling Next and CurrentPage.
+type ListCrawlersPager struct {
+	aws.Pager
+}
+
+func (p *ListCrawlersPager) CurrentPage() *ListCrawlersOutput {
+	return p.Pager.CurrentPage().(*ListCrawlersOutput)
+}
+
+const opListDevEndpoints = "ListDevEndpoints"
+
+// ListDevEndpointsRequest is a API request type for the ListDevEndpoints API operation.
+type ListDevEndpointsRequest struct {
+	*aws.Request
+	Input *ListDevEndpointsInput
+	Copy  func(*ListDevEndpointsInput) ListDevEndpointsRequest
+}
+
+// Send marshals and sends the ListDevEndpoints API request.
+func (r ListDevEndpointsRequest) Send(ctx context.Context) (*ListDevEndpointsOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*ListDevEndpointsOutput), nil
+}
+
+// ListDevEndpointsRequest returns a request value for making API operation for
+// AWS Glue.
+//
+// Retrieves the names of all DevEndpoint resources in this AWS account, or
+// the resources with the specified tag. This operation allows you to see which
+// resources are available in your account, and their names.
+//
+// This operation takes the optional Tags field which you can use as a filter
+// on the response so that tagged resources can be retrieved as a group. If
+// you choose to use tags filtering, only resources with the tag will be retrieved.
+//
+//    // Example sending a request using the ListDevEndpointsRequest method.
+//    req := client.ListDevEndpointsRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ListDevEndpoints
+func (c *Glue) ListDevEndpointsRequest(input *ListDevEndpointsInput) ListDevEndpointsRequest {
+	op := &aws.Operation{
+		Name:       opListDevEndpoints,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+		Paginator: &aws.Paginator{
+			InputTokens:     []string{"NextToken"},
+			OutputTokens:    []string{"NextToken"},
+			LimitToken:      "MaxResults",
+			TruncationToken: "",
+		},
+	}
+
+	if input == nil {
+		input = &ListDevEndpointsInput{}
+	}
+
+	output := &ListDevEndpointsOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return ListDevEndpointsRequest{Request: req, Input: input, Copy: c.ListDevEndpointsRequest}
+}
+
+// Paginate pages iterates over the pages of a ListDevEndpointsRequest operation,
+// calling the Next method for each page. Using the paginators Next
+// method will depict whether or not there are more pages.
+//
+// Note: This operation can generate multiple requests to a service.
+//
+//    // Example iterating over at most 3 pages of a ListDevEndpoints operation.
+//		req := client.ListDevEndpointsRequest(input)
+//		p := req.Paginate()
+//		for p.Next() {
+//			page := p.CurrentPage()
+//		}
+//
+//		if err := p.Err(); err != nil {
+//			return err
+//		}
+//
+func (p *ListDevEndpointsRequest) Paginate(opts ...aws.Option) ListDevEndpointsPager {
+	return ListDevEndpointsPager{
+		Pager: aws.Pager{
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
+				var inCpy *ListDevEndpointsInput
+				if p.Input != nil {
+					tmp := *p.Input
+					inCpy = &tmp
+				}
+
+				req := p.Copy(inCpy)
+				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
+
+				return req.Request, nil
+			},
+		},
+	}
+}
+
+// ListDevEndpointsPager is used to paginate the request. This can be done by
+// calling Next and CurrentPage.
+type ListDevEndpointsPager struct {
+	aws.Pager
+}
+
+func (p *ListDevEndpointsPager) CurrentPage() *ListDevEndpointsOutput {
+	return p.Pager.CurrentPage().(*ListDevEndpointsOutput)
+}
+
+const opListJobs = "ListJobs"
+
+// ListJobsRequest is a API request type for the ListJobs API operation.
+type ListJobsRequest struct {
+	*aws.Request
+	Input *ListJobsInput
+	Copy  func(*ListJobsInput) ListJobsRequest
+}
+
+// Send marshals and sends the ListJobs API request.
+func (r ListJobsRequest) Send(ctx context.Context) (*ListJobsOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*ListJobsOutput), nil
+}
+
+// ListJobsRequest returns a request value for making API operation for
+// AWS Glue.
+//
+// Retrieves the names of all job resources in this AWS account, or the resources
+// with the specified tag. This operation allows you to see which resources
+// are available in your account, and their names.
+//
+// This operation takes the optional Tags field which you can use as a filter
+// on the response so that tagged resources can be retrieved as a group. If
+// you choose to use tags filtering, only resources with the tag will be retrieved.
+//
+//    // Example sending a request using the ListJobsRequest method.
+//    req := client.ListJobsRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ListJobs
+func (c *Glue) ListJobsRequest(input *ListJobsInput) ListJobsRequest {
+	op := &aws.Operation{
+		Name:       opListJobs,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+		Paginator: &aws.Paginator{
+			InputTokens:     []string{"NextToken"},
+			OutputTokens:    []string{"NextToken"},
+			LimitToken:      "MaxResults",
+			TruncationToken: "",
+		},
+	}
+
+	if input == nil {
+		input = &ListJobsInput{}
+	}
+
+	output := &ListJobsOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return ListJobsRequest{Request: req, Input: input, Copy: c.ListJobsRequest}
+}
+
+// Paginate pages iterates over the pages of a ListJobsRequest operation,
+// calling the Next method for each page. Using the paginators Next
+// method will depict whether or not there are more pages.
+//
+// Note: This operation can generate multiple requests to a service.
+//
+//    // Example iterating over at most 3 pages of a ListJobs operation.
+//		req := client.ListJobsRequest(input)
+//		p := req.Paginate()
+//		for p.Next() {
+//			page := p.CurrentPage()
+//		}
+//
+//		if err := p.Err(); err != nil {
+//			return err
+//		}
+//
+func (p *ListJobsRequest) Paginate(opts ...aws.Option) ListJobsPager {
+	return ListJobsPager{
+		Pager: aws.Pager{
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
+				var inCpy *ListJobsInput
+				if p.Input != nil {
+					tmp := *p.Input
+					inCpy = &tmp
+				}
+
+				req := p.Copy(inCpy)
+				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
+
+				return req.Request, nil
+			},
+		},
+	}
+}
+
+// ListJobsPager is used to paginate the request. This can be done by
+// calling Next and CurrentPage.
+type ListJobsPager struct {
+	aws.Pager
+}
+
+func (p *ListJobsPager) CurrentPage() *ListJobsOutput {
+	return p.Pager.CurrentPage().(*ListJobsOutput)
+}
+
+const opListTriggers = "ListTriggers"
+
+// ListTriggersRequest is a API request type for the ListTriggers API operation.
+type ListTriggersRequest struct {
+	*aws.Request
+	Input *ListTriggersInput
+	Copy  func(*ListTriggersInput) ListTriggersRequest
+}
+
+// Send marshals and sends the ListTriggers API request.
+func (r ListTriggersRequest) Send(ctx context.Context) (*ListTriggersOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*ListTriggersOutput), nil
+}
+
+// ListTriggersRequest returns a request value for making API operation for
+// AWS Glue.
+//
+// Retrieves the names of all trigger resources in this AWS account, or the
+// resources with the specified tag. This operation allows you to see which
+// resources are available in your account, and their names.
+//
+// This operation takes the optional Tags field which you can use as a filter
+// on the response so that tagged resources can be retrieved as a group. If
+// you choose to use tags filtering, only resources with the tag will be retrieved.
+//
+//    // Example sending a request using the ListTriggersRequest method.
+//    req := client.ListTriggersRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ListTriggers
+func (c *Glue) ListTriggersRequest(input *ListTriggersInput) ListTriggersRequest {
+	op := &aws.Operation{
+		Name:       opListTriggers,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+		Paginator: &aws.Paginator{
+			InputTokens:     []string{"NextToken"},
+			OutputTokens:    []string{"NextToken"},
+			LimitToken:      "MaxResults",
+			TruncationToken: "",
+		},
+	}
+
+	if input == nil {
+		input = &ListTriggersInput{}
+	}
+
+	output := &ListTriggersOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return ListTriggersRequest{Request: req, Input: input, Copy: c.ListTriggersRequest}
+}
+
+// Paginate pages iterates over the pages of a ListTriggersRequest operation,
+// calling the Next method for each page. Using the paginators Next
+// method will depict whether or not there are more pages.
+//
+// Note: This operation can generate multiple requests to a service.
+//
+//    // Example iterating over at most 3 pages of a ListTriggers operation.
+//		req := client.ListTriggersRequest(input)
+//		p := req.Paginate()
+//		for p.Next() {
+//			page := p.CurrentPage()
+//		}
+//
+//		if err := p.Err(); err != nil {
+//			return err
+//		}
+//
+func (p *ListTriggersRequest) Paginate(opts ...aws.Option) ListTriggersPager {
+	return ListTriggersPager{
+		Pager: aws.Pager{
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
+				var inCpy *ListTriggersInput
+				if p.Input != nil {
+					tmp := *p.Input
+					inCpy = &tmp
+				}
+
+				req := p.Copy(inCpy)
+				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
+
+				return req.Request, nil
+			},
+		},
+	}
+}
+
+// ListTriggersPager is used to paginate the request. This can be done by
+// calling Next and CurrentPage.
+type ListTriggersPager struct {
+	aws.Pager
+}
+
+func (p *ListTriggersPager) CurrentPage() *ListTriggersOutput {
+	return p.Pager.CurrentPage().(*ListTriggersOutput)
+}
+
 const opPutDataCatalogEncryptionSettings = "PutDataCatalogEncryptionSettings"
 
 // PutDataCatalogEncryptionSettingsRequest is a API request type for the PutDataCatalogEncryptionSettings API operation.
@@ -4043,7 +4883,8 @@ type PutDataCatalogEncryptionSettingsRequest struct {
 }
 
 // Send marshals and sends the PutDataCatalogEncryptionSettings API request.
-func (r PutDataCatalogEncryptionSettingsRequest) Send() (*PutDataCatalogEncryptionSettingsOutput, error) {
+func (r PutDataCatalogEncryptionSettingsRequest) Send(ctx context.Context) (*PutDataCatalogEncryptionSettingsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4055,13 +4896,13 @@ func (r PutDataCatalogEncryptionSettingsRequest) Send() (*PutDataCatalogEncrypti
 // PutDataCatalogEncryptionSettingsRequest returns a request value for making API operation for
 // AWS Glue.
 //
-// Sets the security configuration for a specified catalog. Once the configuration
+// Sets the security configuration for a specified catalog. After the configuration
 // has been set, the specified encryption is applied to every catalog write
 // thereafter.
 //
 //    // Example sending a request using the PutDataCatalogEncryptionSettingsRequest method.
 //    req := client.PutDataCatalogEncryptionSettingsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4095,7 +4936,8 @@ type PutResourcePolicyRequest struct {
 }
 
 // Send marshals and sends the PutResourcePolicy API request.
-func (r PutResourcePolicyRequest) Send() (*PutResourcePolicyOutput, error) {
+func (r PutResourcePolicyRequest) Send(ctx context.Context) (*PutResourcePolicyOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4111,7 +4953,7 @@ func (r PutResourcePolicyRequest) Send() (*PutResourcePolicyOutput, error) {
 //
 //    // Example sending a request using the PutResourcePolicyRequest method.
 //    req := client.PutResourcePolicyRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4145,7 +4987,8 @@ type ResetJobBookmarkRequest struct {
 }
 
 // Send marshals and sends the ResetJobBookmark API request.
-func (r ResetJobBookmarkRequest) Send() (*ResetJobBookmarkOutput, error) {
+func (r ResetJobBookmarkRequest) Send(ctx context.Context) (*ResetJobBookmarkOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4161,7 +5004,7 @@ func (r ResetJobBookmarkRequest) Send() (*ResetJobBookmarkOutput, error) {
 //
 //    // Example sending a request using the ResetJobBookmarkRequest method.
 //    req := client.ResetJobBookmarkRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4195,7 +5038,8 @@ type StartCrawlerRequest struct {
 }
 
 // Send marshals and sends the StartCrawler API request.
-func (r StartCrawlerRequest) Send() (*StartCrawlerOutput, error) {
+func (r StartCrawlerRequest) Send(ctx context.Context) (*StartCrawlerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4212,7 +5056,7 @@ func (r StartCrawlerRequest) Send() (*StartCrawlerOutput, error) {
 //
 //    // Example sending a request using the StartCrawlerRequest method.
 //    req := client.StartCrawlerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4246,7 +5090,8 @@ type StartCrawlerScheduleRequest struct {
 }
 
 // Send marshals and sends the StartCrawlerSchedule API request.
-func (r StartCrawlerScheduleRequest) Send() (*StartCrawlerScheduleOutput, error) {
+func (r StartCrawlerScheduleRequest) Send(ctx context.Context) (*StartCrawlerScheduleOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4263,7 +5108,7 @@ func (r StartCrawlerScheduleRequest) Send() (*StartCrawlerScheduleOutput, error)
 //
 //    // Example sending a request using the StartCrawlerScheduleRequest method.
 //    req := client.StartCrawlerScheduleRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4297,7 +5142,8 @@ type StartJobRunRequest struct {
 }
 
 // Send marshals and sends the StartJobRun API request.
-func (r StartJobRunRequest) Send() (*StartJobRunOutput, error) {
+func (r StartJobRunRequest) Send(ctx context.Context) (*StartJobRunOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4313,7 +5159,7 @@ func (r StartJobRunRequest) Send() (*StartJobRunOutput, error) {
 //
 //    // Example sending a request using the StartJobRunRequest method.
 //    req := client.StartJobRunRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4347,7 +5193,8 @@ type StartTriggerRequest struct {
 }
 
 // Send marshals and sends the StartTrigger API request.
-func (r StartTriggerRequest) Send() (*StartTriggerOutput, error) {
+func (r StartTriggerRequest) Send(ctx context.Context) (*StartTriggerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4364,7 +5211,7 @@ func (r StartTriggerRequest) Send() (*StartTriggerOutput, error) {
 //
 //    // Example sending a request using the StartTriggerRequest method.
 //    req := client.StartTriggerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4398,7 +5245,8 @@ type StopCrawlerRequest struct {
 }
 
 // Send marshals and sends the StopCrawler API request.
-func (r StopCrawlerRequest) Send() (*StopCrawlerOutput, error) {
+func (r StopCrawlerRequest) Send(ctx context.Context) (*StopCrawlerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4414,7 +5262,7 @@ func (r StopCrawlerRequest) Send() (*StopCrawlerOutput, error) {
 //
 //    // Example sending a request using the StopCrawlerRequest method.
 //    req := client.StopCrawlerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4448,7 +5296,8 @@ type StopCrawlerScheduleRequest struct {
 }
 
 // Send marshals and sends the StopCrawlerSchedule API request.
-func (r StopCrawlerScheduleRequest) Send() (*StopCrawlerScheduleOutput, error) {
+func (r StopCrawlerScheduleRequest) Send(ctx context.Context) (*StopCrawlerScheduleOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4465,7 +5314,7 @@ func (r StopCrawlerScheduleRequest) Send() (*StopCrawlerScheduleOutput, error) {
 //
 //    // Example sending a request using the StopCrawlerScheduleRequest method.
 //    req := client.StopCrawlerScheduleRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4499,7 +5348,8 @@ type StopTriggerRequest struct {
 }
 
 // Send marshals and sends the StopTrigger API request.
-func (r StopTriggerRequest) Send() (*StopTriggerOutput, error) {
+func (r StopTriggerRequest) Send(ctx context.Context) (*StopTriggerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4515,7 +5365,7 @@ func (r StopTriggerRequest) Send() (*StopTriggerOutput, error) {
 //
 //    // Example sending a request using the StopTriggerRequest method.
 //    req := client.StopTriggerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4539,6 +5389,110 @@ func (c *Glue) StopTriggerRequest(input *StopTriggerInput) StopTriggerRequest {
 	return StopTriggerRequest{Request: req, Input: input, Copy: c.StopTriggerRequest}
 }
 
+const opTagResource = "TagResource"
+
+// TagResourceRequest is a API request type for the TagResource API operation.
+type TagResourceRequest struct {
+	*aws.Request
+	Input *TagResourceInput
+	Copy  func(*TagResourceInput) TagResourceRequest
+}
+
+// Send marshals and sends the TagResource API request.
+func (r TagResourceRequest) Send(ctx context.Context) (*TagResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*TagResourceOutput), nil
+}
+
+// TagResourceRequest returns a request value for making API operation for
+// AWS Glue.
+//
+// Adds tags to a resource. A tag is a label you can assign to an AWS resource.
+// In AWS Glue, you can tag only certain resources. For information about what
+// resources you can tag, see AWS Tags in AWS Glue (http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html).
+//
+//    // Example sending a request using the TagResourceRequest method.
+//    req := client.TagResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/TagResource
+func (c *Glue) TagResourceRequest(input *TagResourceInput) TagResourceRequest {
+	op := &aws.Operation{
+		Name:       opTagResource,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &TagResourceInput{}
+	}
+
+	output := &TagResourceOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return TagResourceRequest{Request: req, Input: input, Copy: c.TagResourceRequest}
+}
+
+const opUntagResource = "UntagResource"
+
+// UntagResourceRequest is a API request type for the UntagResource API operation.
+type UntagResourceRequest struct {
+	*aws.Request
+	Input *UntagResourceInput
+	Copy  func(*UntagResourceInput) UntagResourceRequest
+}
+
+// Send marshals and sends the UntagResource API request.
+func (r UntagResourceRequest) Send(ctx context.Context) (*UntagResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*UntagResourceOutput), nil
+}
+
+// UntagResourceRequest returns a request value for making API operation for
+// AWS Glue.
+//
+// Removes tags from a resource.
+//
+//    // Example sending a request using the UntagResourceRequest method.
+//    req := client.UntagResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UntagResource
+func (c *Glue) UntagResourceRequest(input *UntagResourceInput) UntagResourceRequest {
+	op := &aws.Operation{
+		Name:       opUntagResource,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &UntagResourceInput{}
+	}
+
+	output := &UntagResourceOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return UntagResourceRequest{Request: req, Input: input, Copy: c.UntagResourceRequest}
+}
+
 const opUpdateClassifier = "UpdateClassifier"
 
 // UpdateClassifierRequest is a API request type for the UpdateClassifier API operation.
@@ -4549,7 +5503,8 @@ type UpdateClassifierRequest struct {
 }
 
 // Send marshals and sends the UpdateClassifier API request.
-func (r UpdateClassifierRequest) Send() (*UpdateClassifierOutput, error) {
+func (r UpdateClassifierRequest) Send(ctx context.Context) (*UpdateClassifierOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4561,12 +5516,12 @@ func (r UpdateClassifierRequest) Send() (*UpdateClassifierOutput, error) {
 // UpdateClassifierRequest returns a request value for making API operation for
 // AWS Glue.
 //
-// Modifies an existing classifier (a GrokClassifier, XMLClassifier, or JsonClassifier,
-// depending on which field is present).
+// Modifies an existing classifier (a GrokClassifier, an XMLClassifier, a JsonClassifier,
+// or a CsvClassifier, depending on which field is present).
 //
 //    // Example sending a request using the UpdateClassifierRequest method.
 //    req := client.UpdateClassifierRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4600,7 +5555,8 @@ type UpdateConnectionRequest struct {
 }
 
 // Send marshals and sends the UpdateConnection API request.
-func (r UpdateConnectionRequest) Send() (*UpdateConnectionOutput, error) {
+func (r UpdateConnectionRequest) Send(ctx context.Context) (*UpdateConnectionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4616,7 +5572,7 @@ func (r UpdateConnectionRequest) Send() (*UpdateConnectionOutput, error) {
 //
 //    // Example sending a request using the UpdateConnectionRequest method.
 //    req := client.UpdateConnectionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4650,7 +5606,8 @@ type UpdateCrawlerRequest struct {
 }
 
 // Send marshals and sends the UpdateCrawler API request.
-func (r UpdateCrawlerRequest) Send() (*UpdateCrawlerOutput, error) {
+func (r UpdateCrawlerRequest) Send(ctx context.Context) (*UpdateCrawlerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4667,7 +5624,7 @@ func (r UpdateCrawlerRequest) Send() (*UpdateCrawlerOutput, error) {
 //
 //    // Example sending a request using the UpdateCrawlerRequest method.
 //    req := client.UpdateCrawlerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4701,7 +5658,8 @@ type UpdateCrawlerScheduleRequest struct {
 }
 
 // Send marshals and sends the UpdateCrawlerSchedule API request.
-func (r UpdateCrawlerScheduleRequest) Send() (*UpdateCrawlerScheduleOutput, error) {
+func (r UpdateCrawlerScheduleRequest) Send(ctx context.Context) (*UpdateCrawlerScheduleOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4717,7 +5675,7 @@ func (r UpdateCrawlerScheduleRequest) Send() (*UpdateCrawlerScheduleOutput, erro
 //
 //    // Example sending a request using the UpdateCrawlerScheduleRequest method.
 //    req := client.UpdateCrawlerScheduleRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4751,7 +5709,8 @@ type UpdateDatabaseRequest struct {
 }
 
 // Send marshals and sends the UpdateDatabase API request.
-func (r UpdateDatabaseRequest) Send() (*UpdateDatabaseOutput, error) {
+func (r UpdateDatabaseRequest) Send(ctx context.Context) (*UpdateDatabaseOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4767,7 +5726,7 @@ func (r UpdateDatabaseRequest) Send() (*UpdateDatabaseOutput, error) {
 //
 //    // Example sending a request using the UpdateDatabaseRequest method.
 //    req := client.UpdateDatabaseRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4801,7 +5760,8 @@ type UpdateDevEndpointRequest struct {
 }
 
 // Send marshals and sends the UpdateDevEndpoint API request.
-func (r UpdateDevEndpointRequest) Send() (*UpdateDevEndpointOutput, error) {
+func (r UpdateDevEndpointRequest) Send(ctx context.Context) (*UpdateDevEndpointOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4817,7 +5777,7 @@ func (r UpdateDevEndpointRequest) Send() (*UpdateDevEndpointOutput, error) {
 //
 //    // Example sending a request using the UpdateDevEndpointRequest method.
 //    req := client.UpdateDevEndpointRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4851,7 +5811,8 @@ type UpdateJobRequest struct {
 }
 
 // Send marshals and sends the UpdateJob API request.
-func (r UpdateJobRequest) Send() (*UpdateJobOutput, error) {
+func (r UpdateJobRequest) Send(ctx context.Context) (*UpdateJobOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4867,7 +5828,7 @@ func (r UpdateJobRequest) Send() (*UpdateJobOutput, error) {
 //
 //    // Example sending a request using the UpdateJobRequest method.
 //    req := client.UpdateJobRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4901,7 +5862,8 @@ type UpdatePartitionRequest struct {
 }
 
 // Send marshals and sends the UpdatePartition API request.
-func (r UpdatePartitionRequest) Send() (*UpdatePartitionOutput, error) {
+func (r UpdatePartitionRequest) Send(ctx context.Context) (*UpdatePartitionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4917,7 +5879,7 @@ func (r UpdatePartitionRequest) Send() (*UpdatePartitionOutput, error) {
 //
 //    // Example sending a request using the UpdatePartitionRequest method.
 //    req := client.UpdatePartitionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -4951,7 +5913,8 @@ type UpdateTableRequest struct {
 }
 
 // Send marshals and sends the UpdateTable API request.
-func (r UpdateTableRequest) Send() (*UpdateTableOutput, error) {
+func (r UpdateTableRequest) Send(ctx context.Context) (*UpdateTableOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -4967,7 +5930,7 @@ func (r UpdateTableRequest) Send() (*UpdateTableOutput, error) {
 //
 //    // Example sending a request using the UpdateTableRequest method.
 //    req := client.UpdateTableRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -5001,7 +5964,8 @@ type UpdateTriggerRequest struct {
 }
 
 // Send marshals and sends the UpdateTrigger API request.
-func (r UpdateTriggerRequest) Send() (*UpdateTriggerOutput, error) {
+func (r UpdateTriggerRequest) Send(ctx context.Context) (*UpdateTriggerOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -5017,7 +5981,7 @@ func (r UpdateTriggerRequest) Send() (*UpdateTriggerOutput, error) {
 //
 //    // Example sending a request using the UpdateTriggerRequest method.
 //    req := client.UpdateTriggerRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -5051,7 +6015,8 @@ type UpdateUserDefinedFunctionRequest struct {
 }
 
 // Send marshals and sends the UpdateUserDefinedFunction API request.
-func (r UpdateUserDefinedFunctionRequest) Send() (*UpdateUserDefinedFunctionOutput, error) {
+func (r UpdateUserDefinedFunctionRequest) Send(ctx context.Context) (*UpdateUserDefinedFunctionOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -5067,7 +6032,7 @@ func (r UpdateUserDefinedFunctionRequest) Send() (*UpdateUserDefinedFunctionOutp
 //
 //    // Example sending a request using the UpdateUserDefinedFunctionRequest method.
 //    req := client.UpdateUserDefinedFunctionRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -5096,7 +6061,8 @@ func (c *Glue) UpdateUserDefinedFunctionRequest(input *UpdateUserDefinedFunction
 type Action struct {
 	_ struct{} `type:"structure"`
 
-	// Arguments to be passed to the job run.
+	// The job arguments used when this trigger fires. For this job run, they replace
+	// the default arguments set in the job definition itself.
 	//
 	// You can specify arguments here that your own job-execution script consumes,
 	// as well as arguments that AWS Glue itself consumes.
@@ -5261,7 +6227,7 @@ func (s BatchCreatePartitionOutput) SDKResponseMetadata() aws.Response {
 type BatchDeleteConnectionInput struct {
 	_ struct{} `type:"structure"`
 
-	// The ID of the Data Catalog in which the connections reside. If none is supplied,
+	// The ID of the Data Catalog in which the connections reside. If none is provided,
 	// the AWS account ID is used by default.
 	CatalogId *string `min:"1" type:"string"`
 
@@ -5595,6 +6561,197 @@ func (s BatchDeleteTableVersionOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchGetCrawlersRequest
+type BatchGetCrawlersInput struct {
+	_ struct{} `type:"structure"`
+
+	// A list of crawler names, which may be the names returned from the ListCrawlers
+	// operation.
+	//
+	// CrawlerNames is a required field
+	CrawlerNames []string `type:"list" required:"true"`
+}
+
+// String returns the string representation
+func (s BatchGetCrawlersInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s BatchGetCrawlersInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *BatchGetCrawlersInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "BatchGetCrawlersInput"}
+
+	if s.CrawlerNames == nil {
+		invalidParams.Add(aws.NewErrParamRequired("CrawlerNames"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchGetCrawlersResponse
+type BatchGetCrawlersOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// A list of crawler definitions.
+	Crawlers []Crawler `type:"list"`
+
+	// A list of names of crawlers not found.
+	CrawlersNotFound []string `type:"list"`
+}
+
+// String returns the string representation
+func (s BatchGetCrawlersOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s BatchGetCrawlersOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s BatchGetCrawlersOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchGetDevEndpointsRequest
+type BatchGetDevEndpointsInput struct {
+	_ struct{} `type:"structure"`
+
+	// The list of DevEndpoint names, which may be the names returned from the ListDevEndpoint
+	// operation.
+	//
+	// DevEndpointNames is a required field
+	DevEndpointNames []string `min:"1" type:"list" required:"true"`
+}
+
+// String returns the string representation
+func (s BatchGetDevEndpointsInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s BatchGetDevEndpointsInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *BatchGetDevEndpointsInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "BatchGetDevEndpointsInput"}
+
+	if s.DevEndpointNames == nil {
+		invalidParams.Add(aws.NewErrParamRequired("DevEndpointNames"))
+	}
+	if s.DevEndpointNames != nil && len(s.DevEndpointNames) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("DevEndpointNames", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchGetDevEndpointsResponse
+type BatchGetDevEndpointsOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// A list of DevEndpoint definitions.
+	DevEndpoints []DevEndpoint `type:"list"`
+
+	// A list of DevEndpoints not found.
+	DevEndpointsNotFound []string `min:"1" type:"list"`
+}
+
+// String returns the string representation
+func (s BatchGetDevEndpointsOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s BatchGetDevEndpointsOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s BatchGetDevEndpointsOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchGetJobsRequest
+type BatchGetJobsInput struct {
+	_ struct{} `type:"structure"`
+
+	// A list of job names, which may be the names returned from the ListJobs operation.
+	//
+	// JobNames is a required field
+	JobNames []string `type:"list" required:"true"`
+}
+
+// String returns the string representation
+func (s BatchGetJobsInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s BatchGetJobsInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *BatchGetJobsInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "BatchGetJobsInput"}
+
+	if s.JobNames == nil {
+		invalidParams.Add(aws.NewErrParamRequired("JobNames"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchGetJobsResponse
+type BatchGetJobsOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// A list of job definitions.
+	Jobs []Job `type:"list"`
+
+	// A list of names of jobs not found.
+	JobsNotFound []string `type:"list"`
+}
+
+// String returns the string representation
+func (s BatchGetJobsOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s BatchGetJobsOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s BatchGetJobsOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchGetPartitionRequest
 type BatchGetPartitionInput struct {
 	_ struct{} `type:"structure"`
@@ -5693,6 +6850,69 @@ func (s BatchGetPartitionOutput) GoString() string {
 
 // SDKResponseMetdata return sthe response metadata for the API.
 func (s BatchGetPartitionOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchGetTriggersRequest
+type BatchGetTriggersInput struct {
+	_ struct{} `type:"structure"`
+
+	// A list of trigger names, which may be the names returned from the ListTriggers
+	// operation.
+	//
+	// TriggerNames is a required field
+	TriggerNames []string `type:"list" required:"true"`
+}
+
+// String returns the string representation
+func (s BatchGetTriggersInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s BatchGetTriggersInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *BatchGetTriggersInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "BatchGetTriggersInput"}
+
+	if s.TriggerNames == nil {
+		invalidParams.Add(aws.NewErrParamRequired("TriggerNames"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/BatchGetTriggersResponse
+type BatchGetTriggersOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// A list of trigger definitions.
+	Triggers []Trigger `type:"list"`
+
+	// A list of names of triggers not found.
+	TriggersNotFound []string `type:"list"`
+}
+
+// String returns the string representation
+func (s BatchGetTriggersOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s BatchGetTriggersOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s BatchGetTriggersOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
@@ -5903,11 +7123,14 @@ func (s CatalogImportStatus) GoString() string {
 // You can use the standard classifiers that AWS Glue supplies, or you can write
 // your own classifiers to best categorize your data sources and specify the
 // appropriate schemas to use for them. A classifier can be a grok classifier,
-// an XML classifier, or a JSON classifier, as specified in one of the fields
-// in the Classifier object.
+// an XML classifier, a JSON classifier, or a custom CSV classifier as specified
+// in one of the fields in the Classifier object.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/Classifier
 type Classifier struct {
 	_ struct{} `type:"structure"`
+
+	// A CSVClassifier object.
+	CsvClassifier *CsvClassifier `type:"structure"`
 
 	// A GrokClassifier object.
 	GrokClassifier *GrokClassifier `type:"structure"`
@@ -6221,10 +7444,10 @@ type Connection struct {
 	//
 	//    * ENCRYPTED_PASSWORD - When you enable connection password protection
 	//    by setting ConnectionPasswordEncryption in the Data Catalog encryption
-	//    settings, this field stores the key you designate to encrypt the password.
+	//    settings, this field stores the encrypted password.
 	//
-	//    * JDBC_DRIVER_JAR_URI - The S3 path of the a jar file that contains the
-	//    JDBC driver to use.
+	//    * JDBC_DRIVER_JAR_URI - The Amazon S3 path of the JAR file that contains
+	//    the JDBC driver to use.
 	//
 	//    * JDBC_DRIVER_CLASS_NAME - The class name of the JDBC driver to use.
 	//
@@ -6239,24 +7462,24 @@ type Connection struct {
 	//    * JDBC_CONNECTION_URL - The URL for the JDBC connection.
 	//
 	//    * JDBC_ENFORCE_SSL - A Boolean string (true, false) specifying whether
-	//    SSL with hostname matching will be enforced for the JDBC connection on
-	//    the client. The default is false.
+	//    Secure Sockets Layer (SSL) with hostname matching will be enforced for
+	//    the JDBC connection on the client. The default is false.
 	ConnectionProperties map[string]string `type:"map"`
 
 	// The type of the connection. Currently, only JDBC is supported; SFTP is not
 	// supported.
 	ConnectionType ConnectionType `type:"string" enum:"true"`
 
-	// The time this connection definition was created.
+	// The time that this connection definition was created.
 	CreationTime *time.Time `type:"timestamp" timestampFormat:"unix"`
 
-	// Description of the connection.
+	// The description of the connection.
 	Description *string `type:"string"`
 
-	// The user, group or role that last updated this connection definition.
+	// The user, group, or role that last updated this connection definition.
 	LastUpdatedBy *string `min:"1" type:"string"`
 
-	// The last time this connection definition was updated.
+	// The last time that this connection definition was updated.
 	LastUpdatedTime *time.Time `type:"timestamp" timestampFormat:"unix"`
 
 	// A list of criteria that can be used in selecting this connection.
@@ -6265,8 +7488,8 @@ type Connection struct {
 	// The name of the connection definition.
 	Name *string `min:"1" type:"string"`
 
-	// A map of physical connection requirements, such as VPC and SecurityGroup,
-	// needed for making this connection successfully.
+	// A map of physical connection requirements, such as virtual private cloud
+	// (VPC) and SecurityGroup, that are needed to make this connection successfully.
 	PhysicalConnectionRequirements *PhysicalConnectionRequirements `type:"structure"`
 }
 
@@ -6280,7 +7503,7 @@ func (s Connection) GoString() string {
 	return s.String()
 }
 
-// A structure used to specify a connection to create or update.
+// A structure that is used to specify a connection to create or update.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ConnectionInput
 type ConnectionInput struct {
 	_ struct{} `type:"structure"`
@@ -6296,7 +7519,7 @@ type ConnectionInput struct {
 	// ConnectionType is a required field
 	ConnectionType ConnectionType `type:"string" required:"true" enum:"true"`
 
-	// Description of the connection.
+	// The description of the connection.
 	Description *string `type:"string"`
 
 	// A list of criteria that can be used in selecting this connection.
@@ -6307,8 +7530,8 @@ type ConnectionInput struct {
 	// Name is a required field
 	Name *string `min:"1" type:"string" required:"true"`
 
-	// A map of physical connection requirements, such as VPC and SecurityGroup,
-	// needed for making this connection successfully.
+	// A map of physical connection requirements, such as virtual private cloud
+	// (VPC) and SecurityGroup, that are needed to successfully make this connection.
 	PhysicalConnectionRequirements *PhysicalConnectionRequirements `type:"structure"`
 }
 
@@ -6357,25 +7580,25 @@ func (s *ConnectionInput) Validate() error {
 // only password encryption.
 //
 // When a CreationConnection request arrives containing a password, the Data
-// Catalog first encrypts the password using your KMS key, and then encrypts
+// Catalog first encrypts the password using your AWS KMS key. It then encrypts
 // the whole connection object again if catalog encryption is also enabled.
 //
-// This encryption requires that you set KMS key permissions to enable or restrict
-// access on the password key according to your security requirements. For example,
-// you may want only admin users to have decrypt permission on the password
-// key.
+// This encryption requires that you set AWS KMS key permissions to enable or
+// restrict access on the password key according to your security requirements.
+// For example, you might want only admin users to have decrypt permission on
+// the password key.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ConnectionPasswordEncryption
 type ConnectionPasswordEncryption struct {
 	_ struct{} `type:"structure"`
 
-	// A KMS key used to protect access to the JDBC source.
+	// An AWS KMS key that is used to encrypt the connection password.
 	//
-	// All users in your account should be granted the kms:encrypt permission to
-	// encrypt passwords before storing them in the Data Catalog (through the AWS
-	// Glue CreateConnection operation).
+	// If connection password protection is enabled, the caller of CreateConnection
+	// and UpdateConnection needs at least kms:Encrypt permission on the specified
+	// AWS KMS key, to encrypt passwords before storing them in the Data Catalog.
 	//
-	// The decrypt permission should be granted only to KMS key admins and IAM roles
-	// designated for AWS Glue crawlers.
+	// You can set the decrypt permission to enable or restrict access on the password
+	// key according to your security requirements.
 	AwsKmsKeyId *string `min:"1" type:"string"`
 
 	// When the ReturnConnectionPasswordEncrypted flag is set to "true", passwords
@@ -6576,6 +7799,9 @@ func (s CrawlerTargets) GoString() string {
 type CreateClassifierInput struct {
 	_ struct{} `type:"structure"`
 
+	// A CsvClassifier object specifying the classifier to create.
+	CsvClassifier *CreateCsvClassifierRequest `type:"structure"`
+
 	// A GrokClassifier object specifying the classifier to create.
 	GrokClassifier *CreateGrokClassifierRequest `type:"structure"`
 
@@ -6599,6 +7825,11 @@ func (s CreateClassifierInput) GoString() string {
 // Validate inspects the fields of the type to determine if they are valid.
 func (s *CreateClassifierInput) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "CreateClassifierInput"}
+	if s.CsvClassifier != nil {
+		if err := s.CsvClassifier.Validate(); err != nil {
+			invalidParams.AddNested("CsvClassifier", err.(aws.ErrInvalidParams))
+		}
+	}
 	if s.GrokClassifier != nil {
 		if err := s.GrokClassifier.Validate(); err != nil {
 			invalidParams.AddNested("GrokClassifier", err.(aws.ErrInvalidParams))
@@ -6648,7 +7879,7 @@ type CreateConnectionInput struct {
 	_ struct{} `type:"structure"`
 
 	// The ID of the Data Catalog in which to create the connection. If none is
-	// supplied, the AWS account ID is used by default.
+	// provided, the AWS account ID is used by default.
 	CatalogId *string `min:"1" type:"string"`
 
 	// A ConnectionInput object defining the connection to create.
@@ -6759,6 +7990,12 @@ type CreateCrawlerInput struct {
 	// The table prefix used for catalog tables that are created.
 	TablePrefix *string `type:"string"`
 
+	// The tags to use with this crawler request. You may use tags to limit access
+	// to the crawler. For more information about tags in AWS Glue, see AWS Tags
+	// in AWS Glue (http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html)
+	// in the developer guide.
+	Tags map[string]string `type:"map"`
+
 	// A list of collection of targets to crawl.
 	//
 	// Targets is a required field
@@ -6824,6 +8061,70 @@ func (s CreateCrawlerOutput) GoString() string {
 // SDKResponseMetdata return sthe response metadata for the API.
 func (s CreateCrawlerOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
+}
+
+// Specifies a custom CSV classifier for CreateClassifier to create.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateCsvClassifierRequest
+type CreateCsvClassifierRequest struct {
+	_ struct{} `type:"structure"`
+
+	// Enables the processing of files that contain only one column.
+	AllowSingleColumn *bool `type:"boolean"`
+
+	// Indicates whether the CSV file contains a header.
+	ContainsHeader CsvHeaderOption `type:"string" enum:"true"`
+
+	// A custom symbol to denote what separates each column entry in the row.
+	Delimiter *string `min:"1" type:"string"`
+
+	// Specifies not to trim values before identifying the type of column values.
+	// The default value is true.
+	DisableValueTrimming *bool `type:"boolean"`
+
+	// A list of strings representing column names.
+	Header []string `type:"list"`
+
+	// The name of the classifier.
+	//
+	// Name is a required field
+	Name *string `min:"1" type:"string" required:"true"`
+
+	// A custom symbol to denote what combines content into a single column value.
+	// Must be different from the column delimiter.
+	QuoteSymbol *string `min:"1" type:"string"`
+}
+
+// String returns the string representation
+func (s CreateCsvClassifierRequest) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s CreateCsvClassifierRequest) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *CreateCsvClassifierRequest) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "CreateCsvClassifierRequest"}
+	if s.Delimiter != nil && len(*s.Delimiter) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("Delimiter", 1))
+	}
+
+	if s.Name == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Name"))
+	}
+	if s.Name != nil && len(*s.Name) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("Name", 1))
+	}
+	if s.QuoteSymbol != nil && len(*s.QuoteSymbol) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("QuoteSymbol", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
 }
 
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CreateDatabaseRequest
@@ -6898,6 +8199,9 @@ func (s CreateDatabaseOutput) SDKResponseMetadata() aws.Response {
 type CreateDevEndpointInput struct {
 	_ struct{} `type:"structure"`
 
+	// A map of arguments used to configure the DevEndpoint.
+	Arguments map[string]string `type:"map"`
+
 	// The name to be assigned to the new DevEndpoint.
 	//
 	// EndpointName is a required field
@@ -6947,6 +8251,12 @@ type CreateDevEndpointInput struct {
 
 	// The subnet ID for the new DevEndpoint to use.
 	SubnetId *string `type:"string"`
+
+	// The tags to use with this DevEndpoint. You may use tags to limit access to
+	// the DevEndpoint. For more information about tags in AWS Glue, see AWS Tags
+	// in AWS Glue (http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html)
+	// in the developer guide.
+	Tags map[string]string `type:"map"`
 }
 
 // String returns the string representation
@@ -6985,6 +8295,9 @@ type CreateDevEndpointOutput struct {
 	_ struct{} `type:"structure"`
 
 	responseMetadata aws.Response
+
+	// The map of arguments used to configure this DevEndpoint.
+	Arguments map[string]string `type:"map"`
 
 	// The AWS availability zone where this DevEndpoint is located.
 	AvailabilityZone *string `type:"string"`
@@ -7116,12 +8429,14 @@ func (s *CreateGrokClassifierRequest) Validate() error {
 type CreateJobInput struct {
 	_ struct{} `type:"structure"`
 
+	// This parameter is deprecated. Use MaxCapacity instead.
+	//
 	// The number of AWS Glue data processing units (DPUs) to allocate to this Job.
 	// From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a relative
 	// measure of processing power that consists of 4 vCPUs of compute capacity
 	// and 16 GB of memory. For more information, see the AWS Glue pricing page
 	// (https://aws.amazon.com/glue/pricing/).
-	AllocatedCapacity *int64 `type:"integer"`
+	AllocatedCapacity *int64 `deprecated:"true" type:"integer"`
 
 	// The JobCommand that executes this job.
 	//
@@ -7155,6 +8470,24 @@ type CreateJobInput struct {
 	// This field is reserved for future use.
 	LogUri *string `type:"string"`
 
+	// The number of AWS Glue data processing units (DPUs) that can be allocated
+	// when this job runs. A DPU is a relative measure of processing power that
+	// consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information,
+	// see the AWS Glue pricing page (https://aws.amazon.com/glue/pricing/).
+	//
+	// Do not set Max Capacity if using WorkerType and NumberOfWorkers.
+	//
+	// The value that can be allocated for MaxCapacity depends on whether you are
+	// running a python shell job, or an Apache Spark ETL job:
+	//
+	//    * When you specify a python shell job (JobCommand.Name="pythonshell"),
+	//    you can allocate either 0.0625 or 1 DPU. The default is 0.0625 DPU.
+	//
+	//    * When you specify an Apache Spark ETL job (JobCommand.Name="glueetl"),
+	//    you can allocate from 2 to 100 DPUs. The default is 10 DPUs. This job
+	//    type cannot have a fractional DPU allocation.
+	MaxCapacity *float64 `type:"double"`
+
 	// The maximum number of times to retry this job if it fails.
 	MaxRetries *int64 `type:"integer"`
 
@@ -7166,6 +8499,13 @@ type CreateJobInput struct {
 	// Specifies configuration properties of a job notification.
 	NotificationProperty *NotificationProperty `type:"structure"`
 
+	// The number of workers of a defined workerType that are allocated when a job
+	// runs.
+	//
+	// The maximum number of workers you can define are 299 for G.1X, and 149 for
+	// G.2X.
+	NumberOfWorkers *int64 `type:"integer"`
+
 	// The name or ARN of the IAM role associated with this job.
 	//
 	// Role is a required field
@@ -7174,10 +8514,28 @@ type CreateJobInput struct {
 	// The name of the SecurityConfiguration structure to be used with this job.
 	SecurityConfiguration *string `min:"1" type:"string"`
 
+	// The tags to use with this job. You may use tags to limit access to the job.
+	// For more information about tags in AWS Glue, see AWS Tags in AWS Glue (http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html)
+	// in the developer guide.
+	Tags map[string]string `type:"map"`
+
 	// The job timeout in minutes. This is the maximum time that a job run can consume
 	// resources before it is terminated and enters TIMEOUT status. The default
 	// is 2,880 minutes (48 hours).
 	Timeout *int64 `min:"1" type:"integer"`
+
+	// The type of predefined worker that is allocated when a job runs. Accepts
+	// a value of Standard, G.1X, or G.2X.
+	//
+	//    * For the Standard worker type, each worker provides 4 vCPU, 16 GB of
+	//    memory and a 50GB disk, and 2 executors per worker.
+	//
+	//    * For the G.1X worker type, each worker provides 4 vCPU, 16 GB of memory
+	//    and a 64GB disk, and 1 executor per worker.
+	//
+	//    * For the G.2X worker type, each worker provides 8 vCPU, 32 GB of memory
+	//    and a 128GB disk, and 1 executor per worker.
+	WorkerType WorkerType `type:"string" enum:"true"`
 }
 
 // String returns the string representation
@@ -7657,6 +9015,12 @@ type CreateTriggerInput struct {
 	// not supported for ON_DEMAND triggers.
 	StartOnCreation *bool `type:"boolean"`
 
+	// The tags to use with this trigger. You may use tags to limit access to the
+	// trigger. For more information about tags in AWS Glue, see AWS Tags in AWS
+	// Glue (http://docs.aws.amazon.com/glue/latest/dg/monitor-tags.html) in the
+	// developer guide.
+	Tags map[string]string `type:"map"`
+
 	// The type of the new trigger.
 	//
 	// Type is a required field
@@ -7868,18 +9232,68 @@ func (s *CreateXMLClassifierRequest) Validate() error {
 	return nil
 }
 
+// A classifier for custom CSV content.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/CsvClassifier
+type CsvClassifier struct {
+	_ struct{} `type:"structure"`
+
+	// Enables the processing of files that contain only one column.
+	AllowSingleColumn *bool `type:"boolean"`
+
+	// Indicates whether the CSV file contains a header.
+	ContainsHeader CsvHeaderOption `type:"string" enum:"true"`
+
+	// The time this classifier was registered.
+	CreationTime *time.Time `type:"timestamp" timestampFormat:"unix"`
+
+	// A custom symbol to denote what separates each column entry in the row.
+	Delimiter *string `min:"1" type:"string"`
+
+	// Specifies not to trim values before identifying the type of column values.
+	// The default value is true.
+	DisableValueTrimming *bool `type:"boolean"`
+
+	// A list of strings representing column names.
+	Header []string `type:"list"`
+
+	// The time this classifier was last updated.
+	LastUpdated *time.Time `type:"timestamp" timestampFormat:"unix"`
+
+	// The name of the classifier.
+	//
+	// Name is a required field
+	Name *string `min:"1" type:"string" required:"true"`
+
+	// A custom symbol to denote what combines content into a single column value.
+	// Must be different from the column delimiter.
+	QuoteSymbol *string `min:"1" type:"string"`
+
+	// The version of this classifier.
+	Version *int64 `type:"long"`
+}
+
+// String returns the string representation
+func (s CsvClassifier) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s CsvClassifier) GoString() string {
+	return s.String()
+}
+
 // Contains configuration information for maintaining Data Catalog security.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/DataCatalogEncryptionSettings
 type DataCatalogEncryptionSettings struct {
 	_ struct{} `type:"structure"`
 
-	// When password protection is enabled, the Data Catalog uses a customer-provided
+	// When connection password protection is enabled, the Data Catalog uses a customer-provided
 	// key to encrypt the password as part of CreateConnection or UpdateConnection
 	// and store it in the ENCRYPTED_PASSWORD field in the connection properties.
 	// You can enable catalog encryption or only password encryption.
 	ConnectionPasswordEncryption *ConnectionPasswordEncryption `type:"structure"`
 
-	// Specifies encryption-at-rest configuration for the Data Catalog.
+	// Specifies the encryption-at-rest configuration for the Data Catalog.
 	EncryptionAtRest *EncryptionAtRest `type:"structure"`
 }
 
@@ -8062,7 +9476,7 @@ func (s DeleteClassifierOutput) SDKResponseMetadata() aws.Response {
 type DeleteConnectionInput struct {
 	_ struct{} `type:"structure"`
 
-	// The ID of the Data Catalog in which the connection resides. If none is supplied,
+	// The ID of the Data Catalog in which the connection resides. If none is provided,
 	// the AWS account ID is used by default.
 	CatalogId *string `min:"1" type:"string"`
 
@@ -8884,6 +10298,12 @@ func (s DeleteUserDefinedFunctionOutput) SDKResponseMetadata() aws.Response {
 type DevEndpoint struct {
 	_ struct{} `type:"structure"`
 
+	// A map of arguments used to configure the DevEndpoint.
+	//
+	// Note that currently, we only support "--enable-glue-datacatalog": "" as a
+	// valid argument.
+	Arguments map[string]string `type:"map"`
+
 	// The AWS availability zone where this DevEndpoint is located.
 	AvailabilityZone *string `type:"string"`
 
@@ -9031,7 +10451,7 @@ func (s DynamoDBTarget) GoString() string {
 	return s.String()
 }
 
-// Specifies encryption-at-rest configuration for the Data Catalog.
+// Specifies the encryption-at-rest configuration for the Data Catalog.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/EncryptionAtRest
 type EncryptionAtRest struct {
 	_ struct{} `type:"structure"`
@@ -9324,16 +10744,15 @@ func (s GetClassifiersOutput) SDKResponseMetadata() aws.Response {
 type GetConnectionInput struct {
 	_ struct{} `type:"structure"`
 
-	// The ID of the Data Catalog in which the connection resides. If none is supplied,
+	// The ID of the Data Catalog in which the connection resides. If none is provided,
 	// the AWS account ID is used by default.
 	CatalogId *string `min:"1" type:"string"`
 
-	// Allow you to retrieve the connection metadata without displaying the password.
-	// For instance, the AWS Glue console uses this flag to retrieve connections,
-	// since the console does not display passwords. Set this parameter where the
-	// caller may not have permission to use the KMS key to decrypt the password,
-	// but does have permission to access the rest of the connection metadata (that
-	// is, the other connection properties).
+	// Allows you to retrieve the connection metadata without returning the password.
+	// For instance, the AWS Glue console uses this flag to retrieve the connection,
+	// and does not display the password. Set this parameter when the caller might
+	// not have permission to use the AWS KMS key to decrypt the password, but does
+	// have permission to access the rest of the connection properties.
 	HidePassword *bool `type:"boolean"`
 
 	// The name of the connection definition to retrieve.
@@ -9397,7 +10816,8 @@ func (s GetConnectionOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
-// Filters the connection definitions returned by the GetConnections API.
+// Filters the connection definitions that are returned by the GetConnections
+// API operation.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetConnectionsFilter
 type GetConnectionsFilter struct {
 	_ struct{} `type:"structure"`
@@ -9425,19 +10845,18 @@ func (s GetConnectionsFilter) GoString() string {
 type GetConnectionsInput struct {
 	_ struct{} `type:"structure"`
 
-	// The ID of the Data Catalog in which the connections reside. If none is supplied,
+	// The ID of the Data Catalog in which the connections reside. If none is provided,
 	// the AWS account ID is used by default.
 	CatalogId *string `min:"1" type:"string"`
 
 	// A filter that controls which connections will be returned.
 	Filter *GetConnectionsFilter `type:"structure"`
 
-	// Allow you to retrieve the connection metadata without displaying the password.
-	// For instance, the AWS Glue console uses this flag to retrieve connections,
-	// since the console does not display passwords. Set this parameter where the
-	// caller may not have permission to use the KMS key to decrypt the password,
-	// but does have permission to access the rest of the connection metadata (that
-	// is, the other connection properties).
+	// Allows you to retrieve the connection metadata without returning the password.
+	// For instance, the AWS Glue console uses this flag to retrieve the connection,
+	// and does not display the password. Set this parameter when the caller might
+	// not have permission to use the AWS KMS key to decrypt the password, but does
+	// have permission to access the rest of the connection properties.
 	HidePassword *bool `type:"boolean"`
 
 	// The maximum number of connections to return in one response.
@@ -9698,7 +11117,7 @@ type GetDataCatalogEncryptionSettingsInput struct {
 	_ struct{} `type:"structure"`
 
 	// The ID of the Data Catalog for which to retrieve the security configuration.
-	// If none is supplied, the AWS account ID is used by default.
+	// If none is provided, the AWS account ID is used by default.
 	CatalogId *string `min:"1" type:"string"`
 }
 
@@ -11306,6 +12725,68 @@ func (s GetTablesOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetTagsRequest
+type GetTagsInput struct {
+	_ struct{} `type:"structure"`
+
+	// The Amazon ARN of the resource for which to retrieve tags.
+	//
+	// ResourceArn is a required field
+	ResourceArn *string `min:"1" type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s GetTagsInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s GetTagsInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *GetTagsInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "GetTagsInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+	if s.ResourceArn != nil && len(*s.ResourceArn) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("ResourceArn", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetTagsResponse
+type GetTagsOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// The requested tags.
+	Tags map[string]string `type:"map"`
+}
+
+// String returns the string representation
+func (s GetTagsOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s GetTagsOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s GetTagsOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/GetTriggerRequest
 type GetTriggerInput struct {
 	_ struct{} `type:"structure"`
@@ -11745,12 +13226,14 @@ func (s JdbcTarget) GoString() string {
 type Job struct {
 	_ struct{} `type:"structure"`
 
+	// This field is deprecated, use MaxCapacity instead.
+	//
 	// The number of AWS Glue data processing units (DPUs) allocated to runs of
 	// this job. From 2 to 100 DPUs can be allocated; the default is 10. A DPU is
 	// a relative measure of processing power that consists of 4 vCPUs of compute
 	// capacity and 16 GB of memory. For more information, see the AWS Glue pricing
 	// page (https://aws.amazon.com/glue/pricing/).
-	AllocatedCapacity *int64 `type:"integer"`
+	AllocatedCapacity *int64 `deprecated:"true" type:"integer"`
 
 	// The JobCommand that executes this job.
 	Command *JobCommand `type:"structure"`
@@ -11788,6 +13271,24 @@ type Job struct {
 	// This field is reserved for future use.
 	LogUri *string `type:"string"`
 
+	// The number of AWS Glue data processing units (DPUs) that can be allocated
+	// when this job runs. A DPU is a relative measure of processing power that
+	// consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information,
+	// see the AWS Glue pricing page (https://aws.amazon.com/glue/pricing/).
+	//
+	// Do not set Max Capacity if using WorkerType and NumberOfWorkers.
+	//
+	// The value that can be allocated for MaxCapacity depends on whether you are
+	// running a python shell job, or an Apache Spark ETL job:
+	//
+	//    * When you specify a python shell job (JobCommand.Name="pythonshell"),
+	//    you can allocate either 0.0625 or 1 DPU. The default is 0.0625 DPU.
+	//
+	//    * When you specify an Apache Spark ETL job (JobCommand.Name="glueetl"),
+	//    you can allocate from 2 to 100 DPUs. The default is 10 DPUs. This job
+	//    type cannot have a fractional DPU allocation.
+	MaxCapacity *float64 `type:"double"`
+
 	// The maximum number of times to retry this job after a JobRun fails.
 	MaxRetries *int64 `type:"integer"`
 
@@ -11796,6 +13297,13 @@ type Job struct {
 
 	// Specifies configuration properties of a job notification.
 	NotificationProperty *NotificationProperty `type:"structure"`
+
+	// The number of workers of a defined workerType that are allocated when a job
+	// runs.
+	//
+	// The maximum number of workers you can define are 299 for G.1X, and 149 for
+	// G.2X.
+	NumberOfWorkers *int64 `type:"integer"`
 
 	// The name or ARN of the IAM role associated with this job.
 	Role *string `type:"string"`
@@ -11807,6 +13315,19 @@ type Job struct {
 	// resources before it is terminated and enters TIMEOUT status. The default
 	// is 2,880 minutes (48 hours).
 	Timeout *int64 `min:"1" type:"integer"`
+
+	// The type of predefined worker that is allocated when a job runs. Accepts
+	// a value of Standard, G.1X, or G.2X.
+	//
+	//    * For the Standard worker type, each worker provides 4 vCPU, 16 GB of
+	//    memory and a 50GB disk, and 2 executors per worker.
+	//
+	//    * For the G.1X worker type, each worker provides 4 vCPU, 16 GB of memory
+	//    and a 64GB disk, and 1 executor per worker.
+	//
+	//    * For the G.2X worker type, each worker provides 8 vCPU, 32 GB of memory
+	//    and a 128GB disk, and 1 executor per worker.
+	WorkerType WorkerType `type:"string" enum:"true"`
 }
 
 // String returns the string representation
@@ -11877,7 +13398,8 @@ func (s JobBookmarksEncryption) GoString() string {
 type JobCommand struct {
 	_ struct{} `type:"structure"`
 
-	// The name of the job command: this must be glueetl.
+	// The name of the job command: this must be glueetl, for an Apache Spark ETL
+	// job, or pythonshell, for a Python shell job.
 	Name *string `type:"string"`
 
 	// Specifies the S3 path to a script that executes a job (required).
@@ -11899,15 +13421,17 @@ func (s JobCommand) GoString() string {
 type JobRun struct {
 	_ struct{} `type:"structure"`
 
+	// This field is deprecated, use MaxCapacity instead.
+	//
 	// The number of AWS Glue data processing units (DPUs) allocated to this JobRun.
 	// From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a relative
 	// measure of processing power that consists of 4 vCPUs of compute capacity
 	// and 16 GB of memory. For more information, see the AWS Glue pricing page
 	// (https://aws.amazon.com/glue/pricing/).
-	AllocatedCapacity *int64 `type:"integer"`
+	AllocatedCapacity *int64 `deprecated:"true" type:"integer"`
 
-	// The job arguments associated with this run. These override equivalent default
-	// arguments set for the job.
+	// The job arguments associated with this run. For this job run, they replace
+	// the default arguments set in the job definition itself.
 	//
 	// You can specify arguments here that your own job-execution script consumes,
 	// as well as arguments that AWS Glue itself consumes.
@@ -11952,8 +13476,33 @@ type JobRun struct {
 	// then that security configuration will be used to encrypt the log group.
 	LogGroupName *string `type:"string"`
 
+	// The number of AWS Glue data processing units (DPUs) that can be allocated
+	// when this job runs. A DPU is a relative measure of processing power that
+	// consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information,
+	// see the AWS Glue pricing page (https://aws.amazon.com/glue/pricing/).
+	//
+	// Do not set Max Capacity if using WorkerType and NumberOfWorkers.
+	//
+	// The value that can be allocated for MaxCapacity depends on whether you are
+	// running a python shell job, or an Apache Spark ETL job:
+	//
+	//    * When you specify a python shell job (JobCommand.Name="pythonshell"),
+	//    you can allocate either 0.0625 or 1 DPU. The default is 0.0625 DPU.
+	//
+	//    * When you specify an Apache Spark ETL job (JobCommand.Name="glueetl"),
+	//    you can allocate from 2 to 100 DPUs. The default is 10 DPUs. This job
+	//    type cannot have a fractional DPU allocation.
+	MaxCapacity *float64 `type:"double"`
+
 	// Specifies configuration properties of a job run notification.
 	NotificationProperty *NotificationProperty `type:"structure"`
+
+	// The number of workers of a defined workerType that are allocated when a job
+	// runs.
+	//
+	// The maximum number of workers you can define are 299 for G.1X, and 149 for
+	// G.2X.
+	NumberOfWorkers *int64 `type:"integer"`
 
 	// A list of predecessors to this job run.
 	PredecessorRuns []Predecessor `type:"list"`
@@ -11977,6 +13526,19 @@ type JobRun struct {
 
 	// The name of the trigger that started this job run.
 	TriggerName *string `min:"1" type:"string"`
+
+	// The type of predefined worker that is allocated when a job runs. Accepts
+	// a value of Standard, G.1X, or G.2X.
+	//
+	//    * For the Standard worker type, each worker provides 4 vCPU, 16 GB of
+	//    memory and a 50GB disk, and 2 executors per worker.
+	//
+	//    * For the G.1X worker type, each worker provides 4 vCPU, 16 GB of memory
+	//    and a 64GB disk, and 1 executor per worker.
+	//
+	//    * For the G.2X worker type, each worker provides 8 vCPU, 32 GB of memory
+	//    and a 128GB disk, and 1 executor per worker.
+	WorkerType WorkerType `type:"string" enum:"true"`
 }
 
 // String returns the string representation
@@ -11995,12 +13557,14 @@ func (s JobRun) GoString() string {
 type JobUpdate struct {
 	_ struct{} `type:"structure"`
 
+	// This field is deprecated. Use MaxCapacity instead.
+	//
 	// The number of AWS Glue data processing units (DPUs) to allocate to this Job.
 	// From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a relative
 	// measure of processing power that consists of 4 vCPUs of compute capacity
 	// and 16 GB of memory. For more information, see the AWS Glue pricing page
 	// (https://aws.amazon.com/glue/pricing/).
-	AllocatedCapacity *int64 `type:"integer"`
+	AllocatedCapacity *int64 `deprecated:"true" type:"integer"`
 
 	// The JobCommand that executes this job (required).
 	Command *JobCommand `type:"structure"`
@@ -12032,11 +13596,36 @@ type JobUpdate struct {
 	// This field is reserved for future use.
 	LogUri *string `type:"string"`
 
+	// The number of AWS Glue data processing units (DPUs) that can be allocated
+	// when this job runs. A DPU is a relative measure of processing power that
+	// consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information,
+	// see the AWS Glue pricing page (https://aws.amazon.com/glue/pricing/).
+	//
+	// Do not set Max Capacity if using WorkerType and NumberOfWorkers.
+	//
+	// The value that can be allocated for MaxCapacity depends on whether you are
+	// running a python shell job, or an Apache Spark ETL job:
+	//
+	//    * When you specify a python shell job (JobCommand.Name="pythonshell"),
+	//    you can allocate either 0.0625 or 1 DPU. The default is 0.0625 DPU.
+	//
+	//    * When you specify an Apache Spark ETL job (JobCommand.Name="glueetl"),
+	//    you can allocate from 2 to 100 DPUs. The default is 10 DPUs. This job
+	//    type cannot have a fractional DPU allocation.
+	MaxCapacity *float64 `type:"double"`
+
 	// The maximum number of times to retry this job if it fails.
 	MaxRetries *int64 `type:"integer"`
 
 	// Specifies configuration properties of a job notification.
 	NotificationProperty *NotificationProperty `type:"structure"`
+
+	// The number of workers of a defined workerType that are allocated when a job
+	// runs.
+	//
+	// The maximum number of workers you can define are 299 for G.1X, and 149 for
+	// G.2X.
+	NumberOfWorkers *int64 `type:"integer"`
 
 	// The name or ARN of the IAM role associated with this job (required).
 	Role *string `type:"string"`
@@ -12048,6 +13637,19 @@ type JobUpdate struct {
 	// resources before it is terminated and enters TIMEOUT status. The default
 	// is 2,880 minutes (48 hours).
 	Timeout *int64 `min:"1" type:"integer"`
+
+	// The type of predefined worker that is allocated when a job runs. Accepts
+	// a value of Standard, G.1X, or G.2X.
+	//
+	//    * For the Standard worker type, each worker provides 4 vCPU, 16 GB of
+	//    memory and a 50GB disk, and 2 executors per worker.
+	//
+	//    * For the G.1X worker type, each worker provides 4 vCPU, 16 GB of memory
+	//    and a 64GB disk, and 1 executor per worker.
+	//
+	//    * For the G.2X worker type, each worker provides 8 vCPU, 32 GB of memory
+	//    and a 128GB disk, and 1 executor per worker.
+	WorkerType WorkerType `type:"string" enum:"true"`
 }
 
 // String returns the string representation
@@ -12150,6 +13752,281 @@ func (s LastCrawlInfo) String() string {
 // GoString returns the string representation
 func (s LastCrawlInfo) GoString() string {
 	return s.String()
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ListCrawlersRequest
+type ListCrawlersInput struct {
+	_ struct{} `type:"structure"`
+
+	// The maximum size of a list to return.
+	MaxResults *int64 `min:"1" type:"integer"`
+
+	// A continuation token, if this is a continuation request.
+	NextToken *string `type:"string"`
+
+	// Specifies to return only these tagged resources.
+	Tags map[string]string `type:"map"`
+}
+
+// String returns the string representation
+func (s ListCrawlersInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListCrawlersInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ListCrawlersInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ListCrawlersInput"}
+	if s.MaxResults != nil && *s.MaxResults < 1 {
+		invalidParams.Add(aws.NewErrParamMinValue("MaxResults", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ListCrawlersResponse
+type ListCrawlersOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// The names of all crawlers in the account, or the crawlers with the specified
+	// tags.
+	CrawlerNames []string `type:"list"`
+
+	// A continuation token, if the returned list does not contain the last metric
+	// available.
+	NextToken *string `type:"string"`
+}
+
+// String returns the string representation
+func (s ListCrawlersOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListCrawlersOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s ListCrawlersOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ListDevEndpointsRequest
+type ListDevEndpointsInput struct {
+	_ struct{} `type:"structure"`
+
+	// The maximum size of a list to return.
+	MaxResults *int64 `min:"1" type:"integer"`
+
+	// A continuation token, if this is a continuation request.
+	NextToken *string `type:"string"`
+
+	// Specifies to return only these tagged resources.
+	Tags map[string]string `type:"map"`
+}
+
+// String returns the string representation
+func (s ListDevEndpointsInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListDevEndpointsInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ListDevEndpointsInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ListDevEndpointsInput"}
+	if s.MaxResults != nil && *s.MaxResults < 1 {
+		invalidParams.Add(aws.NewErrParamMinValue("MaxResults", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ListDevEndpointsResponse
+type ListDevEndpointsOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// The names of all DevEndpoints in the account, or the DevEndpoints with the
+	// specified tags.
+	DevEndpointNames []string `type:"list"`
+
+	// A continuation token, if the returned list does not contain the last metric
+	// available.
+	NextToken *string `type:"string"`
+}
+
+// String returns the string representation
+func (s ListDevEndpointsOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListDevEndpointsOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s ListDevEndpointsOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ListJobsRequest
+type ListJobsInput struct {
+	_ struct{} `type:"structure"`
+
+	// The maximum size of a list to return.
+	MaxResults *int64 `min:"1" type:"integer"`
+
+	// A continuation token, if this is a continuation request.
+	NextToken *string `type:"string"`
+
+	// Specifies to return only these tagged resources.
+	Tags map[string]string `type:"map"`
+}
+
+// String returns the string representation
+func (s ListJobsInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListJobsInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ListJobsInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ListJobsInput"}
+	if s.MaxResults != nil && *s.MaxResults < 1 {
+		invalidParams.Add(aws.NewErrParamMinValue("MaxResults", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ListJobsResponse
+type ListJobsOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// The names of all jobs in the account, or the jobs with the specified tags.
+	JobNames []string `type:"list"`
+
+	// A continuation token, if the returned list does not contain the last metric
+	// available.
+	NextToken *string `type:"string"`
+}
+
+// String returns the string representation
+func (s ListJobsOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListJobsOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s ListJobsOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ListTriggersRequest
+type ListTriggersInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the job for which to retrieve triggers. The trigger that can
+	// start this job will be returned, and if there is no such trigger, all triggers
+	// will be returned.
+	DependentJobName *string `min:"1" type:"string"`
+
+	// The maximum size of a list to return.
+	MaxResults *int64 `min:"1" type:"integer"`
+
+	// A continuation token, if this is a continuation request.
+	NextToken *string `type:"string"`
+
+	// Specifies to return only these tagged resources.
+	Tags map[string]string `type:"map"`
+}
+
+// String returns the string representation
+func (s ListTriggersInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListTriggersInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ListTriggersInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ListTriggersInput"}
+	if s.DependentJobName != nil && len(*s.DependentJobName) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("DependentJobName", 1))
+	}
+	if s.MaxResults != nil && *s.MaxResults < 1 {
+		invalidParams.Add(aws.NewErrParamMinValue("MaxResults", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/ListTriggersResponse
+type ListTriggersOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// A continuation token, if the returned list does not contain the last metric
+	// available.
+	NextToken *string `type:"string"`
+
+	// The names of all triggers in the account, or the triggers with the specified
+	// tags.
+	TriggerNames []string `type:"list"`
+}
+
+// String returns the string representation
+func (s ListTriggersOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListTriggersOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s ListTriggersOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
 }
 
 // The location of resources.
@@ -12402,7 +14279,8 @@ type PartitionInput struct {
 	// Provides information about the physical location where the partition is stored.
 	StorageDescriptor *StorageDescriptor `type:"structure"`
 
-	// The values of the partition.
+	// The values of the partition. Although this parameter is not required by the
+	// SDK, you must specify this parameter for a valid input.
 	Values []string `type:"list"`
 }
 
@@ -12471,9 +14349,9 @@ func (s *PartitionValueList) Validate() error {
 type PhysicalConnectionRequirements struct {
 	_ struct{} `type:"structure"`
 
-	// The connection's availability zone. This field is redundant, since the specified
-	// subnet implies the availability zone to be used. The field must be populated
-	// now, but will be deprecated in the future.
+	// The connection's Availability Zone. This field is redundant because the specified
+	// subnet implies the Availability Zone to be used. Currently the field must
+	// be populated, but it will be deprecated in the future.
 	AvailabilityZone *string `min:"1" type:"string"`
 
 	// The security group ID list used by the connection.
@@ -12577,7 +14455,7 @@ type PutDataCatalogEncryptionSettingsInput struct {
 	_ struct{} `type:"structure"`
 
 	// The ID of the Data Catalog for which to set the security configuration. If
-	// none is supplied, the AWS account ID is used by default.
+	// none is provided, the AWS account ID is used by default.
 	CatalogId *string `min:"1" type:"string"`
 
 	// The security configuration to set.
@@ -12649,7 +14527,7 @@ type PutResourcePolicyInput struct {
 	// the call will not depend on the existence of a policy.
 	PolicyExistsCondition ExistCondition `type:"string" enum:"true"`
 
-	// This is the hash value returned when the previous policy was set using PutResourcePolicy.
+	// The hash value returned when the previous policy was set using PutResourcePolicy.
 	// Its purpose is to prevent concurrent modifications of a policy. Do not use
 	// this parameter if no previous policy has been set.
 	PolicyHashCondition *string `min:"1" type:"string"`
@@ -13167,15 +15045,17 @@ func (s StartCrawlerScheduleOutput) SDKResponseMetadata() aws.Response {
 type StartJobRunInput struct {
 	_ struct{} `type:"structure"`
 
+	// This field is deprecated, use MaxCapacity instead.
+	//
 	// The number of AWS Glue data processing units (DPUs) to allocate to this JobRun.
 	// From 2 to 100 DPUs can be allocated; the default is 10. A DPU is a relative
 	// measure of processing power that consists of 4 vCPUs of compute capacity
 	// and 16 GB of memory. For more information, see the AWS Glue pricing page
 	// (https://aws.amazon.com/glue/pricing/).
-	AllocatedCapacity *int64 `type:"integer"`
+	AllocatedCapacity *int64 `deprecated:"true" type:"integer"`
 
-	// The job arguments specifically for this run. They override the equivalent
-	// default arguments set for in the job definition itself.
+	// The job arguments specifically for this run. For this job run, they replace
+	// the default arguments set in the job definition itself.
 	//
 	// You can specify arguments here that your own job-execution script consumes,
 	// as well as arguments that AWS Glue itself consumes.
@@ -13197,8 +15077,33 @@ type StartJobRunInput struct {
 	// The ID of a previous JobRun to retry.
 	JobRunId *string `min:"1" type:"string"`
 
+	// The number of AWS Glue data processing units (DPUs) that can be allocated
+	// when this job runs. A DPU is a relative measure of processing power that
+	// consists of 4 vCPUs of compute capacity and 16 GB of memory. For more information,
+	// see the AWS Glue pricing page (https://aws.amazon.com/glue/pricing/).
+	//
+	// Do not set Max Capacity if using WorkerType and NumberOfWorkers.
+	//
+	// The value that can be allocated for MaxCapacity depends on whether you are
+	// running a python shell job, or an Apache Spark ETL job:
+	//
+	//    * When you specify a python shell job (JobCommand.Name="pythonshell"),
+	//    you can allocate either 0.0625 or 1 DPU. The default is 0.0625 DPU.
+	//
+	//    * When you specify an Apache Spark ETL job (JobCommand.Name="glueetl"),
+	//    you can allocate from 2 to 100 DPUs. The default is 10 DPUs. This job
+	//    type cannot have a fractional DPU allocation.
+	MaxCapacity *float64 `type:"double"`
+
 	// Specifies configuration properties of a job run notification.
 	NotificationProperty *NotificationProperty `type:"structure"`
+
+	// The number of workers of a defined workerType that are allocated when a job
+	// runs.
+	//
+	// The maximum number of workers you can define are 299 for G.1X, and 149 for
+	// G.2X.
+	NumberOfWorkers *int64 `type:"integer"`
 
 	// The name of the SecurityConfiguration structure to be used with this job
 	// run.
@@ -13209,6 +15114,19 @@ type StartJobRunInput struct {
 	// default is 2,880 minutes (48 hours). This overrides the timeout value set
 	// in the parent job.
 	Timeout *int64 `min:"1" type:"integer"`
+
+	// The type of predefined worker that is allocated when a job runs. Accepts
+	// a value of Standard, G.1X, or G.2X.
+	//
+	//    * For the Standard worker type, each worker provides 4 vCPU, 16 GB of
+	//    memory and a 50GB disk, and 2 executors per worker.
+	//
+	//    * For the G.1X worker type, each worker provides 4 vCPU, 16 GB of memory
+	//    and a 64GB disk, and 1 executor per worker.
+	//
+	//    * For the G.2X worker type, each worker provides 8 vCPU, 32 GB of memory
+	//    and a 128GB disk, and 1 executor per worker.
+	WorkerType WorkerType `type:"string" enum:"true"`
 }
 
 // String returns the string representation
@@ -13846,6 +15764,75 @@ func (s TableVersionError) GoString() string {
 	return s.String()
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/TagResourceRequest
+type TagResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// The ARN of the AWS Glue resource to which to add the tags. For more information
+	// about AWS Glue resource ARNs, see the AWS Glue ARN string pattern (http://docs.aws.amazon.com/glue/latest/dg/aws-glue-api-common.html#aws-glue-api-regex-aws-glue-arn-id).
+	//
+	// ResourceArn is a required field
+	ResourceArn *string `min:"1" type:"string" required:"true"`
+
+	// Tags to add to this resource.
+	//
+	// TagsToAdd is a required field
+	TagsToAdd map[string]string `type:"map" required:"true"`
+}
+
+// String returns the string representation
+func (s TagResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s TagResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *TagResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "TagResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+	if s.ResourceArn != nil && len(*s.ResourceArn) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("ResourceArn", 1))
+	}
+
+	if s.TagsToAdd == nil {
+		invalidParams.Add(aws.NewErrParamRequired("TagsToAdd"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/TagResourceResponse
+type TagResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+}
+
+// String returns the string representation
+func (s TagResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s TagResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s TagResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
 // Information about a specific trigger.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/Trigger
 type Trigger struct {
@@ -13949,9 +15936,80 @@ func (s *TriggerUpdate) Validate() error {
 	return nil
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UntagResourceRequest
+type UntagResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// The ARN of the resource from which to remove the tags.
+	//
+	// ResourceArn is a required field
+	ResourceArn *string `min:"1" type:"string" required:"true"`
+
+	// Tags to remove from this resource.
+	//
+	// TagsToRemove is a required field
+	TagsToRemove []string `type:"list" required:"true"`
+}
+
+// String returns the string representation
+func (s UntagResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UntagResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *UntagResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "UntagResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+	if s.ResourceArn != nil && len(*s.ResourceArn) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("ResourceArn", 1))
+	}
+
+	if s.TagsToRemove == nil {
+		invalidParams.Add(aws.NewErrParamRequired("TagsToRemove"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UntagResourceResponse
+type UntagResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+}
+
+// String returns the string representation
+func (s UntagResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UntagResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s UntagResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateClassifierRequest
 type UpdateClassifierInput struct {
 	_ struct{} `type:"structure"`
+
+	// A CsvClassifier object with updated fields.
+	CsvClassifier *UpdateCsvClassifierRequest `type:"structure"`
 
 	// A GrokClassifier object with updated fields.
 	GrokClassifier *UpdateGrokClassifierRequest `type:"structure"`
@@ -13976,6 +16034,11 @@ func (s UpdateClassifierInput) GoString() string {
 // Validate inspects the fields of the type to determine if they are valid.
 func (s *UpdateClassifierInput) Validate() error {
 	invalidParams := aws.ErrInvalidParams{Context: "UpdateClassifierInput"}
+	if s.CsvClassifier != nil {
+		if err := s.CsvClassifier.Validate(); err != nil {
+			invalidParams.AddNested("CsvClassifier", err.(aws.ErrInvalidParams))
+		}
+	}
 	if s.GrokClassifier != nil {
 		if err := s.GrokClassifier.Validate(); err != nil {
 			invalidParams.AddNested("GrokClassifier", err.(aws.ErrInvalidParams))
@@ -14024,7 +16087,7 @@ func (s UpdateClassifierOutput) SDKResponseMetadata() aws.Response {
 type UpdateConnectionInput struct {
 	_ struct{} `type:"structure"`
 
-	// The ID of the Data Catalog in which the connection resides. If none is supplied,
+	// The ID of the Data Catalog in which the connection resides. If none is provided,
 	// the AWS account ID is used by default.
 	CatalogId *string `min:"1" type:"string"`
 
@@ -14262,6 +16325,70 @@ func (s UpdateCrawlerScheduleOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
+// Specifies a custom CSV classifier to be updated.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateCsvClassifierRequest
+type UpdateCsvClassifierRequest struct {
+	_ struct{} `type:"structure"`
+
+	// Enables the processing of files that contain only one column.
+	AllowSingleColumn *bool `type:"boolean"`
+
+	// Indicates whether the CSV file contains a header.
+	ContainsHeader CsvHeaderOption `type:"string" enum:"true"`
+
+	// A custom symbol to denote what separates each column entry in the row.
+	Delimiter *string `min:"1" type:"string"`
+
+	// Specifies not to trim values before identifying the type of column values.
+	// The default value is true.
+	DisableValueTrimming *bool `type:"boolean"`
+
+	// A list of strings representing column names.
+	Header []string `type:"list"`
+
+	// The name of the classifier.
+	//
+	// Name is a required field
+	Name *string `min:"1" type:"string" required:"true"`
+
+	// A custom symbol to denote what combines content into a single column value.
+	// Must be different from the column delimiter.
+	QuoteSymbol *string `min:"1" type:"string"`
+}
+
+// String returns the string representation
+func (s UpdateCsvClassifierRequest) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UpdateCsvClassifierRequest) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *UpdateCsvClassifierRequest) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "UpdateCsvClassifierRequest"}
+	if s.Delimiter != nil && len(*s.Delimiter) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("Delimiter", 1))
+	}
+
+	if s.Name == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Name"))
+	}
+	if s.Name != nil && len(*s.Name) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("Name", 1))
+	}
+	if s.QuoteSymbol != nil && len(*s.QuoteSymbol) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("QuoteSymbol", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/glue-2017-03-31/UpdateDatabaseRequest
 type UpdateDatabaseInput struct {
 	_ struct{} `type:"structure"`
@@ -14348,11 +16475,18 @@ func (s UpdateDatabaseOutput) SDKResponseMetadata() aws.Response {
 type UpdateDevEndpointInput struct {
 	_ struct{} `type:"structure"`
 
+	// The map of arguments to add the map of arguments used to configure the DevEndpoint.
+	AddArguments map[string]string `type:"map"`
+
 	// The list of public keys for the DevEndpoint to use.
 	AddPublicKeys []string `type:"list"`
 
 	// Custom Python or Java libraries to be loaded in the DevEndpoint.
 	CustomLibraries *DevEndpointCustomLibraries `type:"structure"`
+
+	// The list of argument keys to be deleted from the map of arguments used to
+	// configure the DevEndpoint.
+	DeleteArguments []string `type:"list"`
 
 	// The list of public keys to be deleted from the DevEndpoint.
 	DeletePublicKeys []string `type:"list"`
@@ -15219,6 +17353,24 @@ func (enum CrawlerState) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+type CsvHeaderOption string
+
+// Enum values for CsvHeaderOption
+const (
+	CsvHeaderOptionUnknown CsvHeaderOption = "UNKNOWN"
+	CsvHeaderOptionPresent CsvHeaderOption = "PRESENT"
+	CsvHeaderOptionAbsent  CsvHeaderOption = "ABSENT"
+)
+
+func (enum CsvHeaderOption) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum CsvHeaderOption) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
 type DeleteBehavior string
 
 // Enum values for DeleteBehavior
@@ -15488,6 +17640,24 @@ func (enum UpdateBehavior) MarshalValue() (string, error) {
 }
 
 func (enum UpdateBehavior) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
+type WorkerType string
+
+// Enum values for WorkerType
+const (
+	WorkerTypeStandard WorkerType = "Standard"
+	WorkerTypeG1x      WorkerType = "G.1X"
+	WorkerTypeG2x      WorkerType = "G.2X"
+)
+
+func (enum WorkerType) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum WorkerType) MarshalValueBuf(b []byte) ([]byte, error) {
 	b = b[0:0]
 	return append(b, enum...), nil
 }

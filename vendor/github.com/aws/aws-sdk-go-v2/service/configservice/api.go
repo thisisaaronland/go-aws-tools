@@ -3,6 +3,7 @@
 package configservice
 
 import (
+	"context"
 	"fmt"
 	"time"
 
@@ -22,7 +23,8 @@ type BatchGetAggregateResourceConfigRequest struct {
 }
 
 // Send marshals and sends the BatchGetAggregateResourceConfig API request.
-func (r BatchGetAggregateResourceConfigRequest) Send() (*BatchGetAggregateResourceConfigOutput, error) {
+func (r BatchGetAggregateResourceConfigRequest) Send(ctx context.Context) (*BatchGetAggregateResourceConfigOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -46,7 +48,7 @@ func (r BatchGetAggregateResourceConfigRequest) Send() (*BatchGetAggregateResour
 //
 //    // Example sending a request using the BatchGetAggregateResourceConfigRequest method.
 //    req := client.BatchGetAggregateResourceConfigRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -80,7 +82,8 @@ type BatchGetResourceConfigRequest struct {
 }
 
 // Send marshals and sends the BatchGetResourceConfig API request.
-func (r BatchGetResourceConfigRequest) Send() (*BatchGetResourceConfigOutput, error) {
+func (r BatchGetResourceConfigRequest) Send(ctx context.Context) (*BatchGetResourceConfigOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -104,7 +107,7 @@ func (r BatchGetResourceConfigRequest) Send() (*BatchGetResourceConfigOutput, er
 //
 //    // Example sending a request using the BatchGetResourceConfigRequest method.
 //    req := client.BatchGetResourceConfigRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -138,7 +141,8 @@ type DeleteAggregationAuthorizationRequest struct {
 }
 
 // Send marshals and sends the DeleteAggregationAuthorization API request.
-func (r DeleteAggregationAuthorizationRequest) Send() (*DeleteAggregationAuthorizationOutput, error) {
+func (r DeleteAggregationAuthorizationRequest) Send(ctx context.Context) (*DeleteAggregationAuthorizationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -155,7 +159,7 @@ func (r DeleteAggregationAuthorizationRequest) Send() (*DeleteAggregationAuthori
 //
 //    // Example sending a request using the DeleteAggregationAuthorizationRequest method.
 //    req := client.DeleteAggregationAuthorizationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -191,7 +195,8 @@ type DeleteConfigRuleRequest struct {
 }
 
 // Send marshals and sends the DeleteConfigRule API request.
-func (r DeleteConfigRuleRequest) Send() (*DeleteConfigRuleOutput, error) {
+func (r DeleteConfigRuleRequest) Send(ctx context.Context) (*DeleteConfigRuleOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -213,7 +218,7 @@ func (r DeleteConfigRuleRequest) Send() (*DeleteConfigRuleOutput, error) {
 //
 //    // Example sending a request using the DeleteConfigRuleRequest method.
 //    req := client.DeleteConfigRuleRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -249,7 +254,8 @@ type DeleteConfigurationAggregatorRequest struct {
 }
 
 // Send marshals and sends the DeleteConfigurationAggregator API request.
-func (r DeleteConfigurationAggregatorRequest) Send() (*DeleteConfigurationAggregatorOutput, error) {
+func (r DeleteConfigurationAggregatorRequest) Send(ctx context.Context) (*DeleteConfigurationAggregatorOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -266,7 +272,7 @@ func (r DeleteConfigurationAggregatorRequest) Send() (*DeleteConfigurationAggreg
 //
 //    // Example sending a request using the DeleteConfigurationAggregatorRequest method.
 //    req := client.DeleteConfigurationAggregatorRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -302,7 +308,8 @@ type DeleteConfigurationRecorderRequest struct {
 }
 
 // Send marshals and sends the DeleteConfigurationRecorder API request.
-func (r DeleteConfigurationRecorderRequest) Send() (*DeleteConfigurationRecorderOutput, error) {
+func (r DeleteConfigurationRecorderRequest) Send(ctx context.Context) (*DeleteConfigurationRecorderOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -327,7 +334,7 @@ func (r DeleteConfigurationRecorderRequest) Send() (*DeleteConfigurationRecorder
 //
 //    // Example sending a request using the DeleteConfigurationRecorderRequest method.
 //    req := client.DeleteConfigurationRecorderRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -363,7 +370,8 @@ type DeleteDeliveryChannelRequest struct {
 }
 
 // Send marshals and sends the DeleteDeliveryChannel API request.
-func (r DeleteDeliveryChannelRequest) Send() (*DeleteDeliveryChannelOutput, error) {
+func (r DeleteDeliveryChannelRequest) Send(ctx context.Context) (*DeleteDeliveryChannelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -382,7 +390,7 @@ func (r DeleteDeliveryChannelRequest) Send() (*DeleteDeliveryChannelOutput, erro
 //
 //    // Example sending a request using the DeleteDeliveryChannelRequest method.
 //    req := client.DeleteDeliveryChannelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -418,7 +426,8 @@ type DeleteEvaluationResultsRequest struct {
 }
 
 // Send marshals and sends the DeleteEvaluationResults API request.
-func (r DeleteEvaluationResultsRequest) Send() (*DeleteEvaluationResultsOutput, error) {
+func (r DeleteEvaluationResultsRequest) Send(ctx context.Context) (*DeleteEvaluationResultsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -437,7 +446,7 @@ func (r DeleteEvaluationResultsRequest) Send() (*DeleteEvaluationResultsOutput, 
 //
 //    // Example sending a request using the DeleteEvaluationResultsRequest method.
 //    req := client.DeleteEvaluationResultsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -471,7 +480,8 @@ type DeletePendingAggregationRequestRequest struct {
 }
 
 // Send marshals and sends the DeletePendingAggregationRequest API request.
-func (r DeletePendingAggregationRequestRequest) Send() (*DeletePendingAggregationRequestOutput, error) {
+func (r DeletePendingAggregationRequestRequest) Send(ctx context.Context) (*DeletePendingAggregationRequestOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -488,7 +498,7 @@ func (r DeletePendingAggregationRequestRequest) Send() (*DeletePendingAggregatio
 //
 //    // Example sending a request using the DeletePendingAggregationRequestRequest method.
 //    req := client.DeletePendingAggregationRequestRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -514,6 +524,57 @@ func (c *ConfigService) DeletePendingAggregationRequestRequest(input *DeletePend
 	return DeletePendingAggregationRequestRequest{Request: req, Input: input, Copy: c.DeletePendingAggregationRequestRequest}
 }
 
+const opDeleteRemediationConfiguration = "DeleteRemediationConfiguration"
+
+// DeleteRemediationConfigurationRequest is a API request type for the DeleteRemediationConfiguration API operation.
+type DeleteRemediationConfigurationRequest struct {
+	*aws.Request
+	Input *DeleteRemediationConfigurationInput
+	Copy  func(*DeleteRemediationConfigurationInput) DeleteRemediationConfigurationRequest
+}
+
+// Send marshals and sends the DeleteRemediationConfiguration API request.
+func (r DeleteRemediationConfigurationRequest) Send(ctx context.Context) (*DeleteRemediationConfigurationOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*DeleteRemediationConfigurationOutput), nil
+}
+
+// DeleteRemediationConfigurationRequest returns a request value for making API operation for
+// AWS Config.
+//
+// Deletes the remediation configuration.
+//
+//    // Example sending a request using the DeleteRemediationConfigurationRequest method.
+//    req := client.DeleteRemediationConfigurationRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeleteRemediationConfiguration
+func (c *ConfigService) DeleteRemediationConfigurationRequest(input *DeleteRemediationConfigurationInput) DeleteRemediationConfigurationRequest {
+	op := &aws.Operation{
+		Name:       opDeleteRemediationConfiguration,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &DeleteRemediationConfigurationInput{}
+	}
+
+	output := &DeleteRemediationConfigurationOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return DeleteRemediationConfigurationRequest{Request: req, Input: input, Copy: c.DeleteRemediationConfigurationRequest}
+}
+
 const opDeleteRetentionConfiguration = "DeleteRetentionConfiguration"
 
 // DeleteRetentionConfigurationRequest is a API request type for the DeleteRetentionConfiguration API operation.
@@ -524,7 +585,8 @@ type DeleteRetentionConfigurationRequest struct {
 }
 
 // Send marshals and sends the DeleteRetentionConfiguration API request.
-func (r DeleteRetentionConfigurationRequest) Send() (*DeleteRetentionConfigurationOutput, error) {
+func (r DeleteRetentionConfigurationRequest) Send(ctx context.Context) (*DeleteRetentionConfigurationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -540,7 +602,7 @@ func (r DeleteRetentionConfigurationRequest) Send() (*DeleteRetentionConfigurati
 //
 //    // Example sending a request using the DeleteRetentionConfigurationRequest method.
 //    req := client.DeleteRetentionConfigurationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -576,7 +638,8 @@ type DeliverConfigSnapshotRequest struct {
 }
 
 // Send marshals and sends the DeliverConfigSnapshot API request.
-func (r DeliverConfigSnapshotRequest) Send() (*DeliverConfigSnapshotOutput, error) {
+func (r DeliverConfigSnapshotRequest) Send(ctx context.Context) (*DeliverConfigSnapshotOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -602,7 +665,7 @@ func (r DeliverConfigSnapshotRequest) Send() (*DeliverConfigSnapshotOutput, erro
 //
 //    // Example sending a request using the DeliverConfigSnapshotRequest method.
 //    req := client.DeliverConfigSnapshotRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -636,7 +699,8 @@ type DescribeAggregateComplianceByConfigRulesRequest struct {
 }
 
 // Send marshals and sends the DescribeAggregateComplianceByConfigRules API request.
-func (r DescribeAggregateComplianceByConfigRulesRequest) Send() (*DescribeAggregateComplianceByConfigRulesOutput, error) {
+func (r DescribeAggregateComplianceByConfigRulesRequest) Send(ctx context.Context) (*DescribeAggregateComplianceByConfigRulesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -656,7 +720,7 @@ func (r DescribeAggregateComplianceByConfigRulesRequest) Send() (*DescribeAggreg
 //
 //    // Example sending a request using the DescribeAggregateComplianceByConfigRulesRequest method.
 //    req := client.DescribeAggregateComplianceByConfigRulesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -690,7 +754,8 @@ type DescribeAggregationAuthorizationsRequest struct {
 }
 
 // Send marshals and sends the DescribeAggregationAuthorizations API request.
-func (r DescribeAggregationAuthorizationsRequest) Send() (*DescribeAggregationAuthorizationsOutput, error) {
+func (r DescribeAggregationAuthorizationsRequest) Send(ctx context.Context) (*DescribeAggregationAuthorizationsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -707,7 +772,7 @@ func (r DescribeAggregationAuthorizationsRequest) Send() (*DescribeAggregationAu
 //
 //    // Example sending a request using the DescribeAggregationAuthorizationsRequest method.
 //    req := client.DescribeAggregationAuthorizationsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -741,7 +806,8 @@ type DescribeComplianceByConfigRuleRequest struct {
 }
 
 // Send marshals and sends the DescribeComplianceByConfigRule API request.
-func (r DescribeComplianceByConfigRuleRequest) Send() (*DescribeComplianceByConfigRuleOutput, error) {
+func (r DescribeComplianceByConfigRuleRequest) Send(ctx context.Context) (*DescribeComplianceByConfigRuleOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -779,7 +845,7 @@ func (r DescribeComplianceByConfigRuleRequest) Send() (*DescribeComplianceByConf
 //
 //    // Example sending a request using the DescribeComplianceByConfigRuleRequest method.
 //    req := client.DescribeComplianceByConfigRuleRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -813,7 +879,8 @@ type DescribeComplianceByResourceRequest struct {
 }
 
 // Send marshals and sends the DescribeComplianceByResource API request.
-func (r DescribeComplianceByResourceRequest) Send() (*DescribeComplianceByResourceOutput, error) {
+func (r DescribeComplianceByResourceRequest) Send(ctx context.Context) (*DescribeComplianceByResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -853,7 +920,7 @@ func (r DescribeComplianceByResourceRequest) Send() (*DescribeComplianceByResour
 //
 //    // Example sending a request using the DescribeComplianceByResourceRequest method.
 //    req := client.DescribeComplianceByResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -887,7 +954,8 @@ type DescribeConfigRuleEvaluationStatusRequest struct {
 }
 
 // Send marshals and sends the DescribeConfigRuleEvaluationStatus API request.
-func (r DescribeConfigRuleEvaluationStatusRequest) Send() (*DescribeConfigRuleEvaluationStatusOutput, error) {
+func (r DescribeConfigRuleEvaluationStatusRequest) Send(ctx context.Context) (*DescribeConfigRuleEvaluationStatusOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -906,7 +974,7 @@ func (r DescribeConfigRuleEvaluationStatusRequest) Send() (*DescribeConfigRuleEv
 //
 //    // Example sending a request using the DescribeConfigRuleEvaluationStatusRequest method.
 //    req := client.DescribeConfigRuleEvaluationStatusRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -940,7 +1008,8 @@ type DescribeConfigRulesRequest struct {
 }
 
 // Send marshals and sends the DescribeConfigRules API request.
-func (r DescribeConfigRulesRequest) Send() (*DescribeConfigRulesOutput, error) {
+func (r DescribeConfigRulesRequest) Send(ctx context.Context) (*DescribeConfigRulesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -956,7 +1025,7 @@ func (r DescribeConfigRulesRequest) Send() (*DescribeConfigRulesOutput, error) {
 //
 //    // Example sending a request using the DescribeConfigRulesRequest method.
 //    req := client.DescribeConfigRulesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -990,7 +1059,8 @@ type DescribeConfigurationAggregatorSourcesStatusRequest struct {
 }
 
 // Send marshals and sends the DescribeConfigurationAggregatorSourcesStatus API request.
-func (r DescribeConfigurationAggregatorSourcesStatusRequest) Send() (*DescribeConfigurationAggregatorSourcesStatusOutput, error) {
+func (r DescribeConfigurationAggregatorSourcesStatusRequest) Send(ctx context.Context) (*DescribeConfigurationAggregatorSourcesStatusOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1003,13 +1073,13 @@ func (r DescribeConfigurationAggregatorSourcesStatusRequest) Send() (*DescribeCo
 // AWS Config.
 //
 // Returns status information for sources within an aggregator. The status includes
-// information about the last time AWS Config aggregated data from source accounts
-// or AWS Config failed to aggregate data from source accounts with the related
-// error code or message.
+// information about the last time AWS Config verified authorization between
+// the source account and an aggregator account. In case of a failure, the status
+// contains the related error code or message.
 //
 //    // Example sending a request using the DescribeConfigurationAggregatorSourcesStatusRequest method.
 //    req := client.DescribeConfigurationAggregatorSourcesStatusRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1043,7 +1113,8 @@ type DescribeConfigurationAggregatorsRequest struct {
 }
 
 // Send marshals and sends the DescribeConfigurationAggregators API request.
-func (r DescribeConfigurationAggregatorsRequest) Send() (*DescribeConfigurationAggregatorsOutput, error) {
+func (r DescribeConfigurationAggregatorsRequest) Send(ctx context.Context) (*DescribeConfigurationAggregatorsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1061,7 +1132,7 @@ func (r DescribeConfigurationAggregatorsRequest) Send() (*DescribeConfigurationA
 //
 //    // Example sending a request using the DescribeConfigurationAggregatorsRequest method.
 //    req := client.DescribeConfigurationAggregatorsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1095,7 +1166,8 @@ type DescribeConfigurationRecorderStatusRequest struct {
 }
 
 // Send marshals and sends the DescribeConfigurationRecorderStatus API request.
-func (r DescribeConfigurationRecorderStatusRequest) Send() (*DescribeConfigurationRecorderStatusOutput, error) {
+func (r DescribeConfigurationRecorderStatusRequest) Send(ctx context.Context) (*DescribeConfigurationRecorderStatusOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1116,7 +1188,7 @@ func (r DescribeConfigurationRecorderStatusRequest) Send() (*DescribeConfigurati
 //
 //    // Example sending a request using the DescribeConfigurationRecorderStatusRequest method.
 //    req := client.DescribeConfigurationRecorderStatusRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1150,7 +1222,8 @@ type DescribeConfigurationRecordersRequest struct {
 }
 
 // Send marshals and sends the DescribeConfigurationRecorders API request.
-func (r DescribeConfigurationRecordersRequest) Send() (*DescribeConfigurationRecordersOutput, error) {
+func (r DescribeConfigurationRecordersRequest) Send(ctx context.Context) (*DescribeConfigurationRecordersOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1171,7 +1244,7 @@ func (r DescribeConfigurationRecordersRequest) Send() (*DescribeConfigurationRec
 //
 //    // Example sending a request using the DescribeConfigurationRecordersRequest method.
 //    req := client.DescribeConfigurationRecordersRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1205,7 +1278,8 @@ type DescribeDeliveryChannelStatusRequest struct {
 }
 
 // Send marshals and sends the DescribeDeliveryChannelStatus API request.
-func (r DescribeDeliveryChannelStatusRequest) Send() (*DescribeDeliveryChannelStatusOutput, error) {
+func (r DescribeDeliveryChannelStatusRequest) Send(ctx context.Context) (*DescribeDeliveryChannelStatusOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1225,7 +1299,7 @@ func (r DescribeDeliveryChannelStatusRequest) Send() (*DescribeDeliveryChannelSt
 //
 //    // Example sending a request using the DescribeDeliveryChannelStatusRequest method.
 //    req := client.DescribeDeliveryChannelStatusRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1259,7 +1333,8 @@ type DescribeDeliveryChannelsRequest struct {
 }
 
 // Send marshals and sends the DescribeDeliveryChannels API request.
-func (r DescribeDeliveryChannelsRequest) Send() (*DescribeDeliveryChannelsOutput, error) {
+func (r DescribeDeliveryChannelsRequest) Send(ctx context.Context) (*DescribeDeliveryChannelsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1279,7 +1354,7 @@ func (r DescribeDeliveryChannelsRequest) Send() (*DescribeDeliveryChannelsOutput
 //
 //    // Example sending a request using the DescribeDeliveryChannelsRequest method.
 //    req := client.DescribeDeliveryChannelsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1313,7 +1388,8 @@ type DescribePendingAggregationRequestsRequest struct {
 }
 
 // Send marshals and sends the DescribePendingAggregationRequests API request.
-func (r DescribePendingAggregationRequestsRequest) Send() (*DescribePendingAggregationRequestsOutput, error) {
+func (r DescribePendingAggregationRequestsRequest) Send(ctx context.Context) (*DescribePendingAggregationRequestsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1329,7 +1405,7 @@ func (r DescribePendingAggregationRequestsRequest) Send() (*DescribePendingAggre
 //
 //    // Example sending a request using the DescribePendingAggregationRequestsRequest method.
 //    req := client.DescribePendingAggregationRequestsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1353,6 +1429,164 @@ func (c *ConfigService) DescribePendingAggregationRequestsRequest(input *Describ
 	return DescribePendingAggregationRequestsRequest{Request: req, Input: input, Copy: c.DescribePendingAggregationRequestsRequest}
 }
 
+const opDescribeRemediationConfigurations = "DescribeRemediationConfigurations"
+
+// DescribeRemediationConfigurationsRequest is a API request type for the DescribeRemediationConfigurations API operation.
+type DescribeRemediationConfigurationsRequest struct {
+	*aws.Request
+	Input *DescribeRemediationConfigurationsInput
+	Copy  func(*DescribeRemediationConfigurationsInput) DescribeRemediationConfigurationsRequest
+}
+
+// Send marshals and sends the DescribeRemediationConfigurations API request.
+func (r DescribeRemediationConfigurationsRequest) Send(ctx context.Context) (*DescribeRemediationConfigurationsOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*DescribeRemediationConfigurationsOutput), nil
+}
+
+// DescribeRemediationConfigurationsRequest returns a request value for making API operation for
+// AWS Config.
+//
+// Returns the details of one or more remediation configurations.
+//
+//    // Example sending a request using the DescribeRemediationConfigurationsRequest method.
+//    req := client.DescribeRemediationConfigurationsRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeRemediationConfigurations
+func (c *ConfigService) DescribeRemediationConfigurationsRequest(input *DescribeRemediationConfigurationsInput) DescribeRemediationConfigurationsRequest {
+	op := &aws.Operation{
+		Name:       opDescribeRemediationConfigurations,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &DescribeRemediationConfigurationsInput{}
+	}
+
+	output := &DescribeRemediationConfigurationsOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return DescribeRemediationConfigurationsRequest{Request: req, Input: input, Copy: c.DescribeRemediationConfigurationsRequest}
+}
+
+const opDescribeRemediationExecutionStatus = "DescribeRemediationExecutionStatus"
+
+// DescribeRemediationExecutionStatusRequest is a API request type for the DescribeRemediationExecutionStatus API operation.
+type DescribeRemediationExecutionStatusRequest struct {
+	*aws.Request
+	Input *DescribeRemediationExecutionStatusInput
+	Copy  func(*DescribeRemediationExecutionStatusInput) DescribeRemediationExecutionStatusRequest
+}
+
+// Send marshals and sends the DescribeRemediationExecutionStatus API request.
+func (r DescribeRemediationExecutionStatusRequest) Send(ctx context.Context) (*DescribeRemediationExecutionStatusOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*DescribeRemediationExecutionStatusOutput), nil
+}
+
+// DescribeRemediationExecutionStatusRequest returns a request value for making API operation for
+// AWS Config.
+//
+// Provides a detailed view of a Remediation Execution for a set of resources
+// including state, timestamps for when steps for the remediation execution
+// occur, and any error messages for steps that have failed. When you specify
+// the limit and the next token, you receive a paginated response.
+//
+//    // Example sending a request using the DescribeRemediationExecutionStatusRequest method.
+//    req := client.DescribeRemediationExecutionStatusRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeRemediationExecutionStatus
+func (c *ConfigService) DescribeRemediationExecutionStatusRequest(input *DescribeRemediationExecutionStatusInput) DescribeRemediationExecutionStatusRequest {
+	op := &aws.Operation{
+		Name:       opDescribeRemediationExecutionStatus,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+		Paginator: &aws.Paginator{
+			InputTokens:     []string{"NextToken"},
+			OutputTokens:    []string{"NextToken"},
+			LimitToken:      "Limit",
+			TruncationToken: "",
+		},
+	}
+
+	if input == nil {
+		input = &DescribeRemediationExecutionStatusInput{}
+	}
+
+	output := &DescribeRemediationExecutionStatusOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return DescribeRemediationExecutionStatusRequest{Request: req, Input: input, Copy: c.DescribeRemediationExecutionStatusRequest}
+}
+
+// Paginate pages iterates over the pages of a DescribeRemediationExecutionStatusRequest operation,
+// calling the Next method for each page. Using the paginators Next
+// method will depict whether or not there are more pages.
+//
+// Note: This operation can generate multiple requests to a service.
+//
+//    // Example iterating over at most 3 pages of a DescribeRemediationExecutionStatus operation.
+//		req := client.DescribeRemediationExecutionStatusRequest(input)
+//		p := req.Paginate()
+//		for p.Next() {
+//			page := p.CurrentPage()
+//		}
+//
+//		if err := p.Err(); err != nil {
+//			return err
+//		}
+//
+func (p *DescribeRemediationExecutionStatusRequest) Paginate(opts ...aws.Option) DescribeRemediationExecutionStatusPager {
+	return DescribeRemediationExecutionStatusPager{
+		Pager: aws.Pager{
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
+				var inCpy *DescribeRemediationExecutionStatusInput
+				if p.Input != nil {
+					tmp := *p.Input
+					inCpy = &tmp
+				}
+
+				req := p.Copy(inCpy)
+				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
+
+				return req.Request, nil
+			},
+		},
+	}
+}
+
+// DescribeRemediationExecutionStatusPager is used to paginate the request. This can be done by
+// calling Next and CurrentPage.
+type DescribeRemediationExecutionStatusPager struct {
+	aws.Pager
+}
+
+func (p *DescribeRemediationExecutionStatusPager) CurrentPage() *DescribeRemediationExecutionStatusOutput {
+	return p.Pager.CurrentPage().(*DescribeRemediationExecutionStatusOutput)
+}
+
 const opDescribeRetentionConfigurations = "DescribeRetentionConfigurations"
 
 // DescribeRetentionConfigurationsRequest is a API request type for the DescribeRetentionConfigurations API operation.
@@ -1363,7 +1597,8 @@ type DescribeRetentionConfigurationsRequest struct {
 }
 
 // Send marshals and sends the DescribeRetentionConfigurations API request.
-func (r DescribeRetentionConfigurationsRequest) Send() (*DescribeRetentionConfigurationsOutput, error) {
+func (r DescribeRetentionConfigurationsRequest) Send(ctx context.Context) (*DescribeRetentionConfigurationsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1384,7 +1619,7 @@ func (r DescribeRetentionConfigurationsRequest) Send() (*DescribeRetentionConfig
 //
 //    // Example sending a request using the DescribeRetentionConfigurationsRequest method.
 //    req := client.DescribeRetentionConfigurationsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1418,7 +1653,8 @@ type GetAggregateComplianceDetailsByConfigRuleRequest struct {
 }
 
 // Send marshals and sends the GetAggregateComplianceDetailsByConfigRule API request.
-func (r GetAggregateComplianceDetailsByConfigRuleRequest) Send() (*GetAggregateComplianceDetailsByConfigRuleOutput, error) {
+func (r GetAggregateComplianceDetailsByConfigRuleRequest) Send(ctx context.Context) (*GetAggregateComplianceDetailsByConfigRuleOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1440,7 +1676,7 @@ func (r GetAggregateComplianceDetailsByConfigRuleRequest) Send() (*GetAggregateC
 //
 //    // Example sending a request using the GetAggregateComplianceDetailsByConfigRuleRequest method.
 //    req := client.GetAggregateComplianceDetailsByConfigRuleRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1474,7 +1710,8 @@ type GetAggregateConfigRuleComplianceSummaryRequest struct {
 }
 
 // Send marshals and sends the GetAggregateConfigRuleComplianceSummary API request.
-func (r GetAggregateConfigRuleComplianceSummaryRequest) Send() (*GetAggregateConfigRuleComplianceSummaryOutput, error) {
+func (r GetAggregateConfigRuleComplianceSummaryRequest) Send(ctx context.Context) (*GetAggregateConfigRuleComplianceSummaryOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1494,7 +1731,7 @@ func (r GetAggregateConfigRuleComplianceSummaryRequest) Send() (*GetAggregateCon
 //
 //    // Example sending a request using the GetAggregateConfigRuleComplianceSummaryRequest method.
 //    req := client.GetAggregateConfigRuleComplianceSummaryRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1528,7 +1765,8 @@ type GetAggregateDiscoveredResourceCountsRequest struct {
 }
 
 // Send marshals and sends the GetAggregateDiscoveredResourceCounts API request.
-func (r GetAggregateDiscoveredResourceCountsRequest) Send() (*GetAggregateDiscoveredResourceCountsOutput, error) {
+func (r GetAggregateDiscoveredResourceCountsRequest) Send(ctx context.Context) (*GetAggregateDiscoveredResourceCountsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1552,7 +1790,7 @@ func (r GetAggregateDiscoveredResourceCountsRequest) Send() (*GetAggregateDiscov
 //
 //    // Example sending a request using the GetAggregateDiscoveredResourceCountsRequest method.
 //    req := client.GetAggregateDiscoveredResourceCountsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1586,7 +1824,8 @@ type GetAggregateResourceConfigRequest struct {
 }
 
 // Send marshals and sends the GetAggregateResourceConfig API request.
-func (r GetAggregateResourceConfigRequest) Send() (*GetAggregateResourceConfigOutput, error) {
+func (r GetAggregateResourceConfigRequest) Send(ctx context.Context) (*GetAggregateResourceConfigOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1603,7 +1842,7 @@ func (r GetAggregateResourceConfigRequest) Send() (*GetAggregateResourceConfigOu
 //
 //    // Example sending a request using the GetAggregateResourceConfigRequest method.
 //    req := client.GetAggregateResourceConfigRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1637,7 +1876,8 @@ type GetComplianceDetailsByConfigRuleRequest struct {
 }
 
 // Send marshals and sends the GetComplianceDetailsByConfigRule API request.
-func (r GetComplianceDetailsByConfigRuleRequest) Send() (*GetComplianceDetailsByConfigRuleOutput, error) {
+func (r GetComplianceDetailsByConfigRuleRequest) Send(ctx context.Context) (*GetComplianceDetailsByConfigRuleOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1655,7 +1895,7 @@ func (r GetComplianceDetailsByConfigRuleRequest) Send() (*GetComplianceDetailsBy
 //
 //    // Example sending a request using the GetComplianceDetailsByConfigRuleRequest method.
 //    req := client.GetComplianceDetailsByConfigRuleRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1689,7 +1929,8 @@ type GetComplianceDetailsByResourceRequest struct {
 }
 
 // Send marshals and sends the GetComplianceDetailsByResource API request.
-func (r GetComplianceDetailsByResourceRequest) Send() (*GetComplianceDetailsByResourceOutput, error) {
+func (r GetComplianceDetailsByResourceRequest) Send(ctx context.Context) (*GetComplianceDetailsByResourceOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1707,7 +1948,7 @@ func (r GetComplianceDetailsByResourceRequest) Send() (*GetComplianceDetailsByRe
 //
 //    // Example sending a request using the GetComplianceDetailsByResourceRequest method.
 //    req := client.GetComplianceDetailsByResourceRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1741,7 +1982,8 @@ type GetComplianceSummaryByConfigRuleRequest struct {
 }
 
 // Send marshals and sends the GetComplianceSummaryByConfigRule API request.
-func (r GetComplianceSummaryByConfigRuleRequest) Send() (*GetComplianceSummaryByConfigRuleOutput, error) {
+func (r GetComplianceSummaryByConfigRuleRequest) Send(ctx context.Context) (*GetComplianceSummaryByConfigRuleOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1758,7 +2000,7 @@ func (r GetComplianceSummaryByConfigRuleRequest) Send() (*GetComplianceSummaryBy
 //
 //    // Example sending a request using the GetComplianceSummaryByConfigRuleRequest method.
 //    req := client.GetComplianceSummaryByConfigRuleRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1792,7 +2034,8 @@ type GetComplianceSummaryByResourceTypeRequest struct {
 }
 
 // Send marshals and sends the GetComplianceSummaryByResourceType API request.
-func (r GetComplianceSummaryByResourceTypeRequest) Send() (*GetComplianceSummaryByResourceTypeOutput, error) {
+func (r GetComplianceSummaryByResourceTypeRequest) Send(ctx context.Context) (*GetComplianceSummaryByResourceTypeOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1810,7 +2053,7 @@ func (r GetComplianceSummaryByResourceTypeRequest) Send() (*GetComplianceSummary
 //
 //    // Example sending a request using the GetComplianceSummaryByResourceTypeRequest method.
 //    req := client.GetComplianceSummaryByResourceTypeRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1844,7 +2087,8 @@ type GetDiscoveredResourceCountsRequest struct {
 }
 
 // Send marshals and sends the GetDiscoveredResourceCounts API request.
-func (r GetDiscoveredResourceCountsRequest) Send() (*GetDiscoveredResourceCountsOutput, error) {
+func (r GetDiscoveredResourceCountsRequest) Send(ctx context.Context) (*GetDiscoveredResourceCountsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1893,7 +2137,7 @@ func (r GetDiscoveredResourceCountsRequest) Send() (*GetDiscoveredResourceCounts
 //
 //    // Example sending a request using the GetDiscoveredResourceCountsRequest method.
 //    req := client.GetDiscoveredResourceCountsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -1927,7 +2171,8 @@ type GetResourceConfigHistoryRequest struct {
 }
 
 // Send marshals and sends the GetResourceConfigHistory API request.
-func (r GetResourceConfigHistoryRequest) Send() (*GetResourceConfigHistoryOutput, error) {
+func (r GetResourceConfigHistoryRequest) Send(ctx context.Context) (*GetResourceConfigHistoryOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -1956,7 +2201,7 @@ func (r GetResourceConfigHistoryRequest) Send() (*GetResourceConfigHistoryOutput
 //
 //    // Example sending a request using the GetResourceConfigHistoryRequest method.
 //    req := client.GetResourceConfigHistoryRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2006,7 +2251,7 @@ func (c *ConfigService) GetResourceConfigHistoryRequest(input *GetResourceConfig
 func (p *GetResourceConfigHistoryRequest) Paginate(opts ...aws.Option) GetResourceConfigHistoryPager {
 	return GetResourceConfigHistoryPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *GetResourceConfigHistoryInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -2015,6 +2260,7 @@ func (p *GetResourceConfigHistoryRequest) Paginate(opts ...aws.Option) GetResour
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -2042,7 +2288,8 @@ type ListAggregateDiscoveredResourcesRequest struct {
 }
 
 // Send marshals and sends the ListAggregateDiscoveredResources API request.
-func (r ListAggregateDiscoveredResourcesRequest) Send() (*ListAggregateDiscoveredResourcesOutput, error) {
+func (r ListAggregateDiscoveredResourcesRequest) Send(ctx context.Context) (*ListAggregateDiscoveredResourcesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2067,7 +2314,7 @@ func (r ListAggregateDiscoveredResourcesRequest) Send() (*ListAggregateDiscovere
 //
 //    // Example sending a request using the ListAggregateDiscoveredResourcesRequest method.
 //    req := client.ListAggregateDiscoveredResourcesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2101,7 +2348,8 @@ type ListDiscoveredResourcesRequest struct {
 }
 
 // Send marshals and sends the ListDiscoveredResources API request.
-func (r ListDiscoveredResourcesRequest) Send() (*ListDiscoveredResourcesOutput, error) {
+func (r ListDiscoveredResourcesRequest) Send(ctx context.Context) (*ListDiscoveredResourcesOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2130,7 +2378,7 @@ func (r ListDiscoveredResourcesRequest) Send() (*ListDiscoveredResourcesOutput, 
 //
 //    // Example sending a request using the ListDiscoveredResourcesRequest method.
 //    req := client.ListDiscoveredResourcesRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2154,6 +2402,57 @@ func (c *ConfigService) ListDiscoveredResourcesRequest(input *ListDiscoveredReso
 	return ListDiscoveredResourcesRequest{Request: req, Input: input, Copy: c.ListDiscoveredResourcesRequest}
 }
 
+const opListTagsForResource = "ListTagsForResource"
+
+// ListTagsForResourceRequest is a API request type for the ListTagsForResource API operation.
+type ListTagsForResourceRequest struct {
+	*aws.Request
+	Input *ListTagsForResourceInput
+	Copy  func(*ListTagsForResourceInput) ListTagsForResourceRequest
+}
+
+// Send marshals and sends the ListTagsForResource API request.
+func (r ListTagsForResourceRequest) Send(ctx context.Context) (*ListTagsForResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*ListTagsForResourceOutput), nil
+}
+
+// ListTagsForResourceRequest returns a request value for making API operation for
+// AWS Config.
+//
+// List the tags for AWS Config resource.
+//
+//    // Example sending a request using the ListTagsForResourceRequest method.
+//    req := client.ListTagsForResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/ListTagsForResource
+func (c *ConfigService) ListTagsForResourceRequest(input *ListTagsForResourceInput) ListTagsForResourceRequest {
+	op := &aws.Operation{
+		Name:       opListTagsForResource,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &ListTagsForResourceInput{}
+	}
+
+	output := &ListTagsForResourceOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return ListTagsForResourceRequest{Request: req, Input: input, Copy: c.ListTagsForResourceRequest}
+}
+
 const opPutAggregationAuthorization = "PutAggregationAuthorization"
 
 // PutAggregationAuthorizationRequest is a API request type for the PutAggregationAuthorization API operation.
@@ -2164,7 +2463,8 @@ type PutAggregationAuthorizationRequest struct {
 }
 
 // Send marshals and sends the PutAggregationAuthorization API request.
-func (r PutAggregationAuthorizationRequest) Send() (*PutAggregationAuthorizationOutput, error) {
+func (r PutAggregationAuthorizationRequest) Send(ctx context.Context) (*PutAggregationAuthorizationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2181,7 +2481,7 @@ func (r PutAggregationAuthorizationRequest) Send() (*PutAggregationAuthorization
 //
 //    // Example sending a request using the PutAggregationAuthorizationRequest method.
 //    req := client.PutAggregationAuthorizationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2215,7 +2515,8 @@ type PutConfigRuleRequest struct {
 }
 
 // Send marshals and sends the PutConfigRule API request.
-func (r PutConfigRuleRequest) Send() (*PutConfigRuleOutput, error) {
+func (r PutConfigRuleRequest) Send(ctx context.Context) (*PutConfigRuleOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2244,7 +2545,7 @@ func (r PutConfigRuleRequest) Send() (*PutConfigRuleOutput, error) {
 //
 // If you are adding an AWS managed Config rule, specify the rule's identifier
 // for the SourceIdentifier key. To reference AWS managed Config rule identifiers,
-// see About AWS Managed Config Rules (http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html).
+// see About AWS Managed Config Rules (https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html).
 //
 // For any new rule that you add, specify the ConfigRuleName in the ConfigRule
 // object. Do not specify the ConfigRuleArn or the ConfigRuleId. These values
@@ -2254,19 +2555,19 @@ func (r PutConfigRuleRequest) Send() (*PutConfigRuleOutput, error) {
 // rule by ConfigRuleName, ConfigRuleId, or ConfigRuleArn in the ConfigRule
 // data type that you use in this request.
 //
-// The maximum number of rules that AWS Config supports is 50.
+// The maximum number of rules that AWS Config supports is 150.
 //
 // For information about requesting a rule limit increase, see AWS Config Limits
 // (http://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html#limits_config)
 // in the AWS General Reference Guide.
 //
 // For more information about developing and using AWS Config rules, see Evaluating
-// AWS Resource Configurations with AWS Config (http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)
+// AWS Resource Configurations with AWS Config (https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)
 // in the AWS Config Developer Guide.
 //
 //    // Example sending a request using the PutConfigRuleRequest method.
 //    req := client.PutConfigRuleRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2302,7 +2603,8 @@ type PutConfigurationAggregatorRequest struct {
 }
 
 // Send marshals and sends the PutConfigurationAggregator API request.
-func (r PutConfigurationAggregatorRequest) Send() (*PutConfigurationAggregatorOutput, error) {
+func (r PutConfigurationAggregatorRequest) Send(ctx context.Context) (*PutConfigurationAggregatorOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2327,7 +2629,7 @@ func (r PutConfigurationAggregatorRequest) Send() (*PutConfigurationAggregatorOu
 //
 //    // Example sending a request using the PutConfigurationAggregatorRequest method.
 //    req := client.PutConfigurationAggregatorRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2361,7 +2663,8 @@ type PutConfigurationRecorderRequest struct {
 }
 
 // Send marshals and sends the PutConfigurationRecorder API request.
-func (r PutConfigurationRecorderRequest) Send() (*PutConfigurationRecorderOutput, error) {
+func (r PutConfigurationRecorderRequest) Send(ctx context.Context) (*PutConfigurationRecorderOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2387,7 +2690,7 @@ func (r PutConfigurationRecorderRequest) Send() (*PutConfigurationRecorderOutput
 //
 //    // Example sending a request using the PutConfigurationRecorderRequest method.
 //    req := client.PutConfigurationRecorderRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2423,7 +2726,8 @@ type PutDeliveryChannelRequest struct {
 }
 
 // Send marshals and sends the PutDeliveryChannel API request.
-func (r PutDeliveryChannelRequest) Send() (*PutDeliveryChannelOutput, error) {
+func (r PutDeliveryChannelRequest) Send(ctx context.Context) (*PutDeliveryChannelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2452,7 +2756,7 @@ func (r PutDeliveryChannelRequest) Send() (*PutDeliveryChannelOutput, error) {
 //
 //    // Example sending a request using the PutDeliveryChannelRequest method.
 //    req := client.PutDeliveryChannelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2488,7 +2792,8 @@ type PutEvaluationsRequest struct {
 }
 
 // Send marshals and sends the PutEvaluations API request.
-func (r PutEvaluationsRequest) Send() (*PutEvaluationsOutput, error) {
+func (r PutEvaluationsRequest) Send(ctx context.Context) (*PutEvaluationsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2506,7 +2811,7 @@ func (r PutEvaluationsRequest) Send() (*PutEvaluationsOutput, error) {
 //
 //    // Example sending a request using the PutEvaluationsRequest method.
 //    req := client.PutEvaluationsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2530,6 +2835,61 @@ func (c *ConfigService) PutEvaluationsRequest(input *PutEvaluationsInput) PutEva
 	return PutEvaluationsRequest{Request: req, Input: input, Copy: c.PutEvaluationsRequest}
 }
 
+const opPutRemediationConfigurations = "PutRemediationConfigurations"
+
+// PutRemediationConfigurationsRequest is a API request type for the PutRemediationConfigurations API operation.
+type PutRemediationConfigurationsRequest struct {
+	*aws.Request
+	Input *PutRemediationConfigurationsInput
+	Copy  func(*PutRemediationConfigurationsInput) PutRemediationConfigurationsRequest
+}
+
+// Send marshals and sends the PutRemediationConfigurations API request.
+func (r PutRemediationConfigurationsRequest) Send(ctx context.Context) (*PutRemediationConfigurationsOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*PutRemediationConfigurationsOutput), nil
+}
+
+// PutRemediationConfigurationsRequest returns a request value for making API operation for
+// AWS Config.
+//
+// Adds or updates the remediation configuration with a specific AWS Config
+// rule with the selected target or action. The API creates the RemediationConfiguration
+// object for the AWS Config rule. The AWS Config rule must already exist for
+// you to add a remediation configuration. The target (SSM document) must exist
+// and have permissions to use the target.
+//
+//    // Example sending a request using the PutRemediationConfigurationsRequest method.
+//    req := client.PutRemediationConfigurationsRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/PutRemediationConfigurations
+func (c *ConfigService) PutRemediationConfigurationsRequest(input *PutRemediationConfigurationsInput) PutRemediationConfigurationsRequest {
+	op := &aws.Operation{
+		Name:       opPutRemediationConfigurations,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &PutRemediationConfigurationsInput{}
+	}
+
+	output := &PutRemediationConfigurationsOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return PutRemediationConfigurationsRequest{Request: req, Input: input, Copy: c.PutRemediationConfigurationsRequest}
+}
+
 const opPutRetentionConfiguration = "PutRetentionConfiguration"
 
 // PutRetentionConfigurationRequest is a API request type for the PutRetentionConfiguration API operation.
@@ -2540,7 +2900,8 @@ type PutRetentionConfigurationRequest struct {
 }
 
 // Send marshals and sends the PutRetentionConfiguration API request.
-func (r PutRetentionConfigurationRequest) Send() (*PutRetentionConfigurationOutput, error) {
+func (r PutRetentionConfigurationRequest) Send(ctx context.Context) (*PutRetentionConfigurationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2563,7 +2924,7 @@ func (r PutRetentionConfigurationRequest) Send() (*PutRetentionConfigurationOutp
 //
 //    // Example sending a request using the PutRetentionConfigurationRequest method.
 //    req := client.PutRetentionConfigurationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2587,6 +2948,61 @@ func (c *ConfigService) PutRetentionConfigurationRequest(input *PutRetentionConf
 	return PutRetentionConfigurationRequest{Request: req, Input: input, Copy: c.PutRetentionConfigurationRequest}
 }
 
+const opSelectResourceConfig = "SelectResourceConfig"
+
+// SelectResourceConfigRequest is a API request type for the SelectResourceConfig API operation.
+type SelectResourceConfigRequest struct {
+	*aws.Request
+	Input *SelectResourceConfigInput
+	Copy  func(*SelectResourceConfigInput) SelectResourceConfigRequest
+}
+
+// Send marshals and sends the SelectResourceConfig API request.
+func (r SelectResourceConfigRequest) Send(ctx context.Context) (*SelectResourceConfigOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*SelectResourceConfigOutput), nil
+}
+
+// SelectResourceConfigRequest returns a request value for making API operation for
+// AWS Config.
+//
+// Accepts a structured query language (SQL) SELECT command, performs the corresponding
+// search, and returns resource configurations matching the properties.
+//
+// For more information about query components, see the Query Components (https://docs.aws.amazon.com/config/latest/developerguide/query-components.html)
+// section in the AWS Config Developer Guide.
+//
+//    // Example sending a request using the SelectResourceConfigRequest method.
+//    req := client.SelectResourceConfigRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/SelectResourceConfig
+func (c *ConfigService) SelectResourceConfigRequest(input *SelectResourceConfigInput) SelectResourceConfigRequest {
+	op := &aws.Operation{
+		Name:       opSelectResourceConfig,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &SelectResourceConfigInput{}
+	}
+
+	output := &SelectResourceConfigOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return SelectResourceConfigRequest{Request: req, Input: input, Copy: c.SelectResourceConfigRequest}
+}
+
 const opStartConfigRulesEvaluation = "StartConfigRulesEvaluation"
 
 // StartConfigRulesEvaluationRequest is a API request type for the StartConfigRulesEvaluation API operation.
@@ -2597,7 +3013,8 @@ type StartConfigRulesEvaluationRequest struct {
 }
 
 // Send marshals and sends the StartConfigRulesEvaluation API request.
-func (r StartConfigRulesEvaluationRequest) Send() (*StartConfigRulesEvaluationOutput, error) {
+func (r StartConfigRulesEvaluationRequest) Send(ctx context.Context) (*StartConfigRulesEvaluationOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2642,7 +3059,7 @@ func (r StartConfigRulesEvaluationRequest) Send() (*StartConfigRulesEvaluationOu
 //
 //    // Example sending a request using the StartConfigRulesEvaluationRequest method.
 //    req := client.StartConfigRulesEvaluationRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2676,7 +3093,8 @@ type StartConfigurationRecorderRequest struct {
 }
 
 // Send marshals and sends the StartConfigurationRecorder API request.
-func (r StartConfigurationRecorderRequest) Send() (*StartConfigurationRecorderOutput, error) {
+func (r StartConfigurationRecorderRequest) Send(ctx context.Context) (*StartConfigurationRecorderOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2696,7 +3114,7 @@ func (r StartConfigurationRecorderRequest) Send() (*StartConfigurationRecorderOu
 //
 //    // Example sending a request using the StartConfigurationRecorderRequest method.
 //    req := client.StartConfigurationRecorderRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2722,6 +3140,63 @@ func (c *ConfigService) StartConfigurationRecorderRequest(input *StartConfigurat
 	return StartConfigurationRecorderRequest{Request: req, Input: input, Copy: c.StartConfigurationRecorderRequest}
 }
 
+const opStartRemediationExecution = "StartRemediationExecution"
+
+// StartRemediationExecutionRequest is a API request type for the StartRemediationExecution API operation.
+type StartRemediationExecutionRequest struct {
+	*aws.Request
+	Input *StartRemediationExecutionInput
+	Copy  func(*StartRemediationExecutionInput) StartRemediationExecutionRequest
+}
+
+// Send marshals and sends the StartRemediationExecution API request.
+func (r StartRemediationExecutionRequest) Send(ctx context.Context) (*StartRemediationExecutionOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*StartRemediationExecutionOutput), nil
+}
+
+// StartRemediationExecutionRequest returns a request value for making API operation for
+// AWS Config.
+//
+// Runs an on-demand remediation for the specified AWS Config rules against
+// the last known remediation configuration. It runs an execution against the
+// current state of your resources. Remediation execution is asynchronous.
+//
+// You can specify up to 100 resource keys per request. An existing StartRemediationExecution
+// call for the specified resource keys must complete before you can call the
+// API again.
+//
+//    // Example sending a request using the StartRemediationExecutionRequest method.
+//    req := client.StartRemediationExecutionRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/StartRemediationExecution
+func (c *ConfigService) StartRemediationExecutionRequest(input *StartRemediationExecutionInput) StartRemediationExecutionRequest {
+	op := &aws.Operation{
+		Name:       opStartRemediationExecution,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &StartRemediationExecutionInput{}
+	}
+
+	output := &StartRemediationExecutionOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return StartRemediationExecutionRequest{Request: req, Input: input, Copy: c.StartRemediationExecutionRequest}
+}
+
 const opStopConfigurationRecorder = "StopConfigurationRecorder"
 
 // StopConfigurationRecorderRequest is a API request type for the StopConfigurationRecorder API operation.
@@ -2732,7 +3207,8 @@ type StopConfigurationRecorderRequest struct {
 }
 
 // Send marshals and sends the StopConfigurationRecorder API request.
-func (r StopConfigurationRecorderRequest) Send() (*StopConfigurationRecorderOutput, error) {
+func (r StopConfigurationRecorderRequest) Send(ctx context.Context) (*StopConfigurationRecorderOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -2749,7 +3225,7 @@ func (r StopConfigurationRecorderRequest) Send() (*StopConfigurationRecorderOutp
 //
 //    // Example sending a request using the StopConfigurationRecorderRequest method.
 //    req := client.StopConfigurationRecorderRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -2773,6 +3249,115 @@ func (c *ConfigService) StopConfigurationRecorderRequest(input *StopConfiguratio
 	output.responseMetadata = aws.Response{Request: req}
 
 	return StopConfigurationRecorderRequest{Request: req, Input: input, Copy: c.StopConfigurationRecorderRequest}
+}
+
+const opTagResource = "TagResource"
+
+// TagResourceRequest is a API request type for the TagResource API operation.
+type TagResourceRequest struct {
+	*aws.Request
+	Input *TagResourceInput
+	Copy  func(*TagResourceInput) TagResourceRequest
+}
+
+// Send marshals and sends the TagResource API request.
+func (r TagResourceRequest) Send(ctx context.Context) (*TagResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*TagResourceOutput), nil
+}
+
+// TagResourceRequest returns a request value for making API operation for
+// AWS Config.
+//
+// Associates the specified tags to a resource with the specified resourceArn.
+// If existing tags on a resource are not specified in the request parameters,
+// they are not changed. When a resource is deleted, the tags associated with
+// that resource are deleted as well.
+//
+//    // Example sending a request using the TagResourceRequest method.
+//    req := client.TagResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/TagResource
+func (c *ConfigService) TagResourceRequest(input *TagResourceInput) TagResourceRequest {
+	op := &aws.Operation{
+		Name:       opTagResource,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &TagResourceInput{}
+	}
+
+	output := &TagResourceOutput{}
+	req := c.newRequest(op, input, output)
+	req.Handlers.Unmarshal.Remove(jsonrpc.UnmarshalHandler)
+	req.Handlers.Unmarshal.PushBackNamed(protocol.UnmarshalDiscardBodyHandler)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return TagResourceRequest{Request: req, Input: input, Copy: c.TagResourceRequest}
+}
+
+const opUntagResource = "UntagResource"
+
+// UntagResourceRequest is a API request type for the UntagResource API operation.
+type UntagResourceRequest struct {
+	*aws.Request
+	Input *UntagResourceInput
+	Copy  func(*UntagResourceInput) UntagResourceRequest
+}
+
+// Send marshals and sends the UntagResource API request.
+func (r UntagResourceRequest) Send(ctx context.Context) (*UntagResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*UntagResourceOutput), nil
+}
+
+// UntagResourceRequest returns a request value for making API operation for
+// AWS Config.
+//
+// Deletes specified tags from a resource.
+//
+//    // Example sending a request using the UntagResourceRequest method.
+//    req := client.UntagResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/UntagResource
+func (c *ConfigService) UntagResourceRequest(input *UntagResourceInput) UntagResourceRequest {
+	op := &aws.Operation{
+		Name:       opUntagResource,
+		HTTPMethod: "POST",
+		HTTPPath:   "/",
+	}
+
+	if input == nil {
+		input = &UntagResourceInput{}
+	}
+
+	output := &UntagResourceOutput{}
+	req := c.newRequest(op, input, output)
+	req.Handlers.Unmarshal.Remove(jsonrpc.UnmarshalHandler)
+	req.Handlers.Unmarshal.PushBackNamed(protocol.UnmarshalDiscardBodyHandler)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return UntagResourceRequest{Request: req, Input: input, Copy: c.UntagResourceRequest}
 }
 
 // A collection of accounts and regions.
@@ -3504,7 +4089,7 @@ func (s ConfigExportDeliveryInfo) GoString() string {
 // snapshot. For more information, see ConfigSnapshotDeliveryProperties.
 //
 // For more information about developing and using AWS Config rules, see Evaluating
-// AWS Resource Configurations with AWS Config (http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)
+// AWS Resource Configurations with AWS Config (https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config.html)
 // in the AWS Config Developer Guide.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/ConfigRule
 type ConfigRule struct {
@@ -3840,7 +4425,7 @@ type ConfigStreamDeliveryInfo struct {
 
 	// Status of the last attempted delivery.
 	//
-	// Note Providing an SNS topic on a DeliveryChannel (http://docs.aws.amazon.com/config/latest/APIReference/API_DeliveryChannel.html)
+	// Note Providing an SNS topic on a DeliveryChannel (https://docs.aws.amazon.com/config/latest/APIReference/API_DeliveryChannel.html)
 	// for AWS Config is optional. If the SNS delivery is turned off, the last status
 	// will be Not_Applicable.
 	LastStatus DeliveryStatus `locationName:"lastStatus" type:"string" enum:"true"`
@@ -3902,7 +4487,7 @@ type ConfigurationItem struct {
 	// The 12-digit AWS account ID associated with the resource.
 	AccountId *string `locationName:"accountId" type:"string"`
 
-	// The Amazon Resource Name (ARN) of the resource.
+	// accoun
 	Arn *string `locationName:"arn" type:"string"`
 
 	// The Availability Zone associated with the resource.
@@ -3934,7 +4519,7 @@ type ConfigurationItem struct {
 	//
 	// A populated field indicates that the current configuration was initiated
 	// by the events recorded in the CloudTrail log. For more information about
-	// CloudTrail, see What Is AWS CloudTrail (http://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
+	// CloudTrail, see What Is AWS CloudTrail (https://docs.aws.amazon.com/awscloudtrail/latest/userguide/what_is_cloud_trail_top_level.html).
 	//
 	// An empty field indicates that the current configuration was not initiated
 	// by any event.
@@ -4498,6 +5083,69 @@ func (s DeletePendingAggregationRequestOutput) SDKResponseMetadata() aws.Respons
 	return s.responseMetadata
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeleteRemediationConfigurationRequest
+type DeleteRemediationConfigurationInput struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the AWS Config rule for which you want to delete remediation
+	// configuration.
+	//
+	// ConfigRuleName is a required field
+	ConfigRuleName *string `min:"1" type:"string" required:"true"`
+
+	// The type of a resource.
+	ResourceType *string `type:"string"`
+}
+
+// String returns the string representation
+func (s DeleteRemediationConfigurationInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DeleteRemediationConfigurationInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DeleteRemediationConfigurationInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DeleteRemediationConfigurationInput"}
+
+	if s.ConfigRuleName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ConfigRuleName"))
+	}
+	if s.ConfigRuleName != nil && len(*s.ConfigRuleName) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("ConfigRuleName", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeleteRemediationConfigurationResponse
+type DeleteRemediationConfigurationOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+}
+
+// String returns the string representation
+func (s DeleteRemediationConfigurationOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DeleteRemediationConfigurationOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s DeleteRemediationConfigurationOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DeleteRetentionConfigurationRequest
 type DeleteRetentionConfigurationInput struct {
 	_ struct{} `type:"structure"`
@@ -4643,7 +5291,7 @@ type DeliveryChannel struct {
 	//
 	// If you specify a bucket that belongs to another AWS account, that bucket
 	// must have policies that grant access permissions to AWS Config. For more
-	// information, see Permissions for the Amazon S3 Bucket (http://docs.aws.amazon.com/config/latest/developerguide/s3-bucket-policy.html)
+	// information, see Permissions for the Amazon S3 Bucket (https://docs.aws.amazon.com/config/latest/developerguide/s3-bucket-policy.html)
 	// in the AWS Config Developer Guide.
 	S3BucketName *string `locationName:"s3BucketName" type:"string"`
 
@@ -4655,7 +5303,7 @@ type DeliveryChannel struct {
 	//
 	// If you choose a topic from another account, the topic must have policies
 	// that grant access permissions to AWS Config. For more information, see Permissions
-	// for the Amazon SNS Topic (http://docs.aws.amazon.com/config/latest/developerguide/sns-topic-policy.html)
+	// for the Amazon SNS Topic (https://docs.aws.amazon.com/config/latest/developerguide/sns-topic-policy.html)
 	// in the AWS Config Developer Guide.
 	SnsTopicARN *string `locationName:"snsTopicARN" type:"string"`
 }
@@ -4857,7 +5505,7 @@ type DescribeComplianceByConfigRuleInput struct {
 
 	// Filters the results by compliance.
 	//
-	// The allowed values are COMPLIANT, NON_COMPLIANT, and INSUFFICIENT_DATA.
+	// The allowed values are COMPLIANT and NON_COMPLIANT.
 	ComplianceTypes []ComplianceType `type:"list"`
 
 	// Specify one or more AWS Config rule names to filter the results by rule.
@@ -4913,7 +5561,7 @@ type DescribeComplianceByResourceInput struct {
 
 	// Filters the results by compliance.
 	//
-	// The allowed values are COMPLIANT and NON_COMPLIANT.
+	// The allowed values are COMPLIANT, NON_COMPLIANT, and INSUFFICIENT_DATA.
 	ComplianceTypes []ComplianceType `type:"list"`
 
 	// The maximum number of evaluation results returned on each page. The default
@@ -5482,6 +6130,157 @@ func (s DescribePendingAggregationRequestsOutput) SDKResponseMetadata() aws.Resp
 	return s.responseMetadata
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeRemediationConfigurationsRequest
+type DescribeRemediationConfigurationsInput struct {
+	_ struct{} `type:"structure"`
+
+	// A list of AWS Config rule names of remediation configurations for which you
+	// want details.
+	//
+	// ConfigRuleNames is a required field
+	ConfigRuleNames []string `type:"list" required:"true"`
+}
+
+// String returns the string representation
+func (s DescribeRemediationConfigurationsInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DescribeRemediationConfigurationsInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DescribeRemediationConfigurationsInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DescribeRemediationConfigurationsInput"}
+
+	if s.ConfigRuleNames == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ConfigRuleNames"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeRemediationConfigurationsResponse
+type DescribeRemediationConfigurationsOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// Returns a remediation configuration object.
+	RemediationConfigurations []RemediationConfiguration `type:"list"`
+}
+
+// String returns the string representation
+func (s DescribeRemediationConfigurationsOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DescribeRemediationConfigurationsOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s DescribeRemediationConfigurationsOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeRemediationExecutionStatusRequest
+type DescribeRemediationExecutionStatusInput struct {
+	_ struct{} `type:"structure"`
+
+	// A list of AWS Config rule names.
+	//
+	// ConfigRuleName is a required field
+	ConfigRuleName *string `min:"1" type:"string" required:"true"`
+
+	// The maximum number of RemediationExecutionStatuses returned on each page.
+	// The default is maximum. If you specify 0, AWS Config uses the default.
+	Limit *int64 `type:"integer"`
+
+	// The nextToken string returned on a previous page that you use to get the
+	// next page of results in a paginated response.
+	NextToken *string `min:"1" type:"string"`
+
+	// A list of resource keys to be processed with the current request. Each element
+	// in the list consists of the resource type and resource ID.
+	ResourceKeys []ResourceKey `min:"1" type:"list"`
+}
+
+// String returns the string representation
+func (s DescribeRemediationExecutionStatusInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DescribeRemediationExecutionStatusInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *DescribeRemediationExecutionStatusInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "DescribeRemediationExecutionStatusInput"}
+
+	if s.ConfigRuleName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ConfigRuleName"))
+	}
+	if s.ConfigRuleName != nil && len(*s.ConfigRuleName) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("ConfigRuleName", 1))
+	}
+	if s.NextToken != nil && len(*s.NextToken) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("NextToken", 1))
+	}
+	if s.ResourceKeys != nil && len(s.ResourceKeys) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("ResourceKeys", 1))
+	}
+	if s.ResourceKeys != nil {
+		for i, v := range s.ResourceKeys {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "ResourceKeys", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeRemediationExecutionStatusResponse
+type DescribeRemediationExecutionStatusOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// The nextToken string returned on a previous page that you use to get the
+	// next page of results in a paginated response.
+	NextToken *string `min:"1" type:"string"`
+
+	// Returns a list of remediation execution statuses objects.
+	RemediationExecutionStatuses []RemediationExecutionStatus `type:"list"`
+}
+
+// String returns the string representation
+func (s DescribeRemediationExecutionStatusOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s DescribeRemediationExecutionStatusOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s DescribeRemediationExecutionStatusOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/DescribeRetentionConfigurationsRequest
 type DescribeRetentionConfigurationsInput struct {
 	_ struct{} `type:"structure"`
@@ -5718,6 +6517,47 @@ func (s EvaluationResultQualifier) String() string {
 
 // GoString returns the string representation
 func (s EvaluationResultQualifier) GoString() string {
+	return s.String()
+}
+
+// List of each of the failed remediations with specific reasons.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/FailedRemediationBatch
+type FailedRemediationBatch struct {
+	_ struct{} `type:"structure"`
+
+	// Returns remediation configurations of the failed items.
+	FailedItems []RemediationConfiguration `type:"list"`
+
+	// Returns a failure message. For example, the resource is already compliant.
+	FailureMessage *string `type:"string"`
+}
+
+// String returns the string representation
+func (s FailedRemediationBatch) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s FailedRemediationBatch) GoString() string {
+	return s.String()
+}
+
+// Details about the fields such as name of the field.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/FieldInfo
+type FieldInfo struct {
+	_ struct{} `type:"structure"`
+
+	// Name of the field.
+	Name *string `type:"string"`
+}
+
+// String returns the string representation
+func (s FieldInfo) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s FieldInfo) GoString() string {
 	return s.String()
 }
 
@@ -6739,6 +7579,83 @@ func (s ListDiscoveredResourcesOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/ListTagsForResourceRequest
+type ListTagsForResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// The maximum number of tags returned on each page. The limit maximum is 50.
+	// You cannot specify a number greater than 50. If you specify 0, AWS Config
+	// uses the default.
+	Limit *int64 `type:"integer"`
+
+	// The nextToken string returned on a previous page that you use to get the
+	// next page of results in a paginated response.
+	NextToken *string `type:"string"`
+
+	// The Amazon Resource Name (ARN) that identifies the resource for which to
+	// list the tags. Currently, the supported resources are ConfigRule, ConfigurationAggregator
+	// and AggregatorAuthorization.
+	//
+	// ResourceArn is a required field
+	ResourceArn *string `min:"1" type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s ListTagsForResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListTagsForResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ListTagsForResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ListTagsForResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+	if s.ResourceArn != nil && len(*s.ResourceArn) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("ResourceArn", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/ListTagsForResourceResponse
+type ListTagsForResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// The nextToken string returned on a previous page that you use to get the
+	// next page of results in a paginated response.
+	NextToken *string `type:"string"`
+
+	// The tags for the resource.
+	Tags []Tag `min:"1" type:"list"`
+}
+
+// String returns the string representation
+func (s ListTagsForResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListTagsForResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s ListTagsForResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
 // This object contains regions to setup the aggregator and an IAM role to retrieve
 // organization details.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/OrganizationAggregationSource
@@ -7227,6 +8144,72 @@ func (s PutEvaluationsOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/PutRemediationConfigurationsRequest
+type PutRemediationConfigurationsInput struct {
+	_ struct{} `type:"structure"`
+
+	// A list of remediation configuration objects.
+	//
+	// RemediationConfigurations is a required field
+	RemediationConfigurations []RemediationConfiguration `type:"list" required:"true"`
+}
+
+// String returns the string representation
+func (s PutRemediationConfigurationsInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s PutRemediationConfigurationsInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *PutRemediationConfigurationsInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "PutRemediationConfigurationsInput"}
+
+	if s.RemediationConfigurations == nil {
+		invalidParams.Add(aws.NewErrParamRequired("RemediationConfigurations"))
+	}
+	if s.RemediationConfigurations != nil {
+		for i, v := range s.RemediationConfigurations {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "RemediationConfigurations", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/PutRemediationConfigurationsResponse
+type PutRemediationConfigurationsOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// Returns a list of failed remediation batch objects.
+	FailedBatches []FailedRemediationBatch `type:"list"`
+}
+
+// String returns the string representation
+func (s PutRemediationConfigurationsOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s PutRemediationConfigurationsOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s PutRemediationConfigurationsOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/PutRetentionConfigurationRequest
 type PutRetentionConfigurationInput struct {
 	_ struct{} `type:"structure"`
@@ -7291,6 +8274,25 @@ func (s PutRetentionConfigurationOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
+// Details about the query.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/QueryInfo
+type QueryInfo struct {
+	_ struct{} `type:"structure"`
+
+	// Returns a FieldInfo object.
+	SelectFields []FieldInfo `type:"list"`
+}
+
+// String returns the string representation
+func (s QueryInfo) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s QueryInfo) GoString() string {
+	return s.String()
+}
+
 // Specifies the types of AWS resource for which AWS Config records configuration
 // changes.
 //
@@ -7318,9 +8320,9 @@ func (s PutRetentionConfigurationOutput) SDKResponseMetadata() aws.Response {
 // If you don't want AWS Config to record all resources, you can specify which
 // types of resources it will record with the resourceTypes parameter.
 //
-// For a list of supported resource types, see Supported Resource Types (http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
+// For a list of supported resource types, see Supported Resource Types (https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
 //
-// For more information, see Selecting Which Resources AWS Config Records (http://docs.aws.amazon.com/config/latest/developerguide/select-resources.html).
+// For more information, see Selecting Which Resources AWS Config Records (https://docs.aws.amazon.com/config/latest/developerguide/select-resources.html).
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/RecordingGroup
 type RecordingGroup struct {
 	_ struct{} `type:"structure"`
@@ -7360,7 +8362,7 @@ type RecordingGroup struct {
 	// add that type to your recording group.
 	//
 	// For a list of valid resourceTypes values, see the resourceType Value column
-	// in Supported AWS Resource Types (http://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
+	// in Supported AWS Resource Types (https://docs.aws.amazon.com/config/latest/developerguide/resource-config-reference.html#supported-resources).
 	ResourceTypes []ResourceType `locationName:"resourceTypes" type:"list"`
 }
 
@@ -7399,6 +8401,162 @@ func (s Relationship) String() string {
 
 // GoString returns the string representation
 func (s Relationship) GoString() string {
+	return s.String()
+}
+
+// An object that represents the details about the remediation configuration
+// that includes the remediation action, parameters, and data to execute the
+// action.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/RemediationConfiguration
+type RemediationConfiguration struct {
+	_ struct{} `type:"structure"`
+
+	// The name of the AWS Config rule.
+	//
+	// ConfigRuleName is a required field
+	ConfigRuleName *string `min:"1" type:"string" required:"true"`
+
+	// An object of the RemediationParameterValue.
+	Parameters map[string]RemediationParameterValue `type:"map"`
+
+	// The type of a resource.
+	ResourceType *string `type:"string"`
+
+	// Target ID is the name of the public document.
+	//
+	// TargetId is a required field
+	TargetId *string `min:"1" type:"string" required:"true"`
+
+	// The type of the target. Target executes remediation. For example, SSM document.
+	//
+	// TargetType is a required field
+	TargetType RemediationTargetType `type:"string" required:"true" enum:"true"`
+
+	// Version of the target. For example, version of the SSM document.
+	TargetVersion *string `type:"string"`
+}
+
+// String returns the string representation
+func (s RemediationConfiguration) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s RemediationConfiguration) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *RemediationConfiguration) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "RemediationConfiguration"}
+
+	if s.ConfigRuleName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ConfigRuleName"))
+	}
+	if s.ConfigRuleName != nil && len(*s.ConfigRuleName) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("ConfigRuleName", 1))
+	}
+
+	if s.TargetId == nil {
+		invalidParams.Add(aws.NewErrParamRequired("TargetId"))
+	}
+	if s.TargetId != nil && len(*s.TargetId) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("TargetId", 1))
+	}
+	if len(s.TargetType) == 0 {
+		invalidParams.Add(aws.NewErrParamRequired("TargetType"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Provides details of the current status of the invoked remediation action
+// for that resource.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/RemediationExecutionStatus
+type RemediationExecutionStatus struct {
+	_ struct{} `type:"structure"`
+
+	// Start time when the remediation was executed.
+	InvocationTime *time.Time `type:"timestamp" timestampFormat:"unix"`
+
+	// The time when the remediation execution was last updated.
+	LastUpdatedTime *time.Time `type:"timestamp" timestampFormat:"unix"`
+
+	// The details that identify a resource within AWS Config, including the resource
+	// type and resource ID.
+	ResourceKey *ResourceKey `type:"structure"`
+
+	// ENUM of the values.
+	State RemediationExecutionState `type:"string" enum:"true"`
+
+	// Details of every step.
+	StepDetails []RemediationExecutionStep `type:"list"`
+}
+
+// String returns the string representation
+func (s RemediationExecutionStatus) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s RemediationExecutionStatus) GoString() string {
+	return s.String()
+}
+
+// Name of the step from the SSM document.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/RemediationExecutionStep
+type RemediationExecutionStep struct {
+	_ struct{} `type:"structure"`
+
+	// An error message if the step was interrupted during execution.
+	ErrorMessage *string `type:"string"`
+
+	// The details of the step.
+	Name *string `type:"string"`
+
+	// The time when the step started.
+	StartTime *time.Time `type:"timestamp" timestampFormat:"unix"`
+
+	// The valid status of the step.
+	State RemediationExecutionStepState `type:"string" enum:"true"`
+
+	// The time when the step stopped.
+	StopTime *time.Time `type:"timestamp" timestampFormat:"unix"`
+}
+
+// String returns the string representation
+func (s RemediationExecutionStep) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s RemediationExecutionStep) GoString() string {
+	return s.String()
+}
+
+// The value is either a dynamic (resource) value or a static value. You must
+// select either a dynamic value or a static value.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/RemediationParameterValue
+type RemediationParameterValue struct {
+	_ struct{} `type:"structure"`
+
+	// The value is dynamic and changes at run-time.
+	ResourceValue *ResourceValue `type:"structure"`
+
+	// The value is static and does not change at run-time.
+	StaticValue *StaticValue `type:"structure"`
+}
+
+// String returns the string representation
+func (s RemediationParameterValue) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s RemediationParameterValue) GoString() string {
 	return s.String()
 }
 
@@ -7583,6 +8741,25 @@ func (s *ResourceKey) Validate() error {
 	return nil
 }
 
+// The dynamic value of the resource.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/ResourceValue
+type ResourceValue struct {
+	_ struct{} `type:"structure"`
+
+	// The value is a resource ID.
+	Value ResourceValueType `type:"string" enum:"true"`
+}
+
+// String returns the string representation
+func (s ResourceValue) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ResourceValue) GoString() string {
+	return s.String()
+}
+
 // An object with the name of the retention configuration and the retention
 // period in days. The object stores the configuration for data retention in
 // AWS Config.
@@ -7672,6 +8849,82 @@ func (s *Scope) Validate() error {
 	return nil
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/SelectResourceConfigRequest
+type SelectResourceConfigInput struct {
+	_ struct{} `type:"structure"`
+
+	// The SQL query SELECT command.
+	//
+	// Expression is a required field
+	Expression *string `min:"1" type:"string" required:"true"`
+
+	// The maximum number of query results returned on each page.
+	Limit *int64 `type:"integer"`
+
+	// The nextToken string returned in a previous request that you use to request
+	// the next page of results in a paginated response.
+	NextToken *string `type:"string"`
+}
+
+// String returns the string representation
+func (s SelectResourceConfigInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s SelectResourceConfigInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *SelectResourceConfigInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "SelectResourceConfigInput"}
+
+	if s.Expression == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Expression"))
+	}
+	if s.Expression != nil && len(*s.Expression) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("Expression", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/SelectResourceConfigResponse
+type SelectResourceConfigOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// The nextToken string returned in a previous request that you use to request
+	// the next page of results in a paginated response.
+	NextToken *string `type:"string"`
+
+	// Returns the QueryInfo object.
+	QueryInfo *QueryInfo `type:"structure"`
+
+	// Returns the results for the SQL query.
+	Results []string `type:"list"`
+}
+
+// String returns the string representation
+func (s SelectResourceConfigOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s SelectResourceConfigOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s SelectResourceConfigOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
 // Provides the AWS Config rule owner (AWS or customer), the rule identifier,
 // and the events that trigger the evaluation of your AWS resources.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/Source
@@ -7689,7 +8942,7 @@ type Source struct {
 
 	// For AWS Config managed rules, a predefined identifier from a list. For example,
 	// IAM_PASSWORD_POLICY is a managed rule. To reference a managed rule, see Using
-	// AWS Managed Config Rules (http://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html).
+	// AWS Managed Config Rules (https://docs.aws.amazon.com/config/latest/developerguide/evaluate-config_use-managed-rules.html).
 	//
 	// For custom rules, the identifier is the Amazon Resource Name (ARN) of the
 	// rule's AWS Lambda function, such as arn:aws:lambda:us-east-2:123456789012:function:custom_rule_name.
@@ -7903,6 +9156,112 @@ func (s StartConfigurationRecorderOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/StartRemediationExecutionRequest
+type StartRemediationExecutionInput struct {
+	_ struct{} `type:"structure"`
+
+	// The list of names of AWS Config rules that you want to run remediation execution
+	// for.
+	//
+	// ConfigRuleName is a required field
+	ConfigRuleName *string `min:"1" type:"string" required:"true"`
+
+	// A list of resource keys to be processed with the current request. Each element
+	// in the list consists of the resource type and resource ID.
+	//
+	// ResourceKeys is a required field
+	ResourceKeys []ResourceKey `min:"1" type:"list" required:"true"`
+}
+
+// String returns the string representation
+func (s StartRemediationExecutionInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s StartRemediationExecutionInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *StartRemediationExecutionInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "StartRemediationExecutionInput"}
+
+	if s.ConfigRuleName == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ConfigRuleName"))
+	}
+	if s.ConfigRuleName != nil && len(*s.ConfigRuleName) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("ConfigRuleName", 1))
+	}
+
+	if s.ResourceKeys == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceKeys"))
+	}
+	if s.ResourceKeys != nil && len(s.ResourceKeys) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("ResourceKeys", 1))
+	}
+	if s.ResourceKeys != nil {
+		for i, v := range s.ResourceKeys {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "ResourceKeys", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/StartRemediationExecutionResponse
+type StartRemediationExecutionOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	// For resources that have failed to start execution, the API returns a resource
+	// key object.
+	FailedItems []ResourceKey `min:"1" type:"list"`
+
+	// Returns a failure message. For example, the resource is already compliant.
+	FailureMessage *string `type:"string"`
+}
+
+// String returns the string representation
+func (s StartRemediationExecutionOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s StartRemediationExecutionOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s StartRemediationExecutionOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// The static value of the resource.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/StaticValue
+type StaticValue struct {
+	_ struct{} `type:"structure"`
+
+	// A list of values. For example, the ARN of the assumed role.
+	Values []string `type:"list"`
+}
+
+// String returns the string representation
+func (s StaticValue) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s StaticValue) GoString() string {
+	return s.String()
+}
+
 // The input for the StopConfigurationRecorder action.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/StopConfigurationRecorderRequest
 type StopConfigurationRecorderInput struct {
@@ -7961,6 +9320,199 @@ func (s StopConfigurationRecorderOutput) GoString() string {
 
 // SDKResponseMetdata return sthe response metadata for the API.
 func (s StopConfigurationRecorderOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// The tags for the resource. The metadata that you apply to a resource to help
+// you categorize and organize them. Each tag consists of a key and an optional
+// value, both of which you define. Tag keys can have a maximum character length
+// of 128 characters, and tag values can have a maximum length of 256 characters.
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/Tag
+type Tag struct {
+	_ struct{} `type:"structure"`
+
+	// One part of a key-value pair that make up a tag. A key is a general label
+	// that acts like a category for more specific tag values.
+	Key *string `min:"1" type:"string"`
+
+	// The optional part of a key-value pair that make up a tag. A value acts as
+	// a descriptor within a tag category (key).
+	Value *string `type:"string"`
+}
+
+// String returns the string representation
+func (s Tag) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s Tag) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *Tag) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "Tag"}
+	if s.Key != nil && len(*s.Key) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("Key", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/TagResourceRequest
+type TagResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// The Amazon Resource Name (ARN) that identifies the resource for which to
+	// list the tags. Currently, the supported resources are ConfigRule, ConfigurationAggregator
+	// and AggregatorAuthorization.
+	//
+	// ResourceArn is a required field
+	ResourceArn *string `min:"1" type:"string" required:"true"`
+
+	// An array of tag object.
+	//
+	// Tags is a required field
+	Tags []Tag `min:"1" type:"list" required:"true"`
+}
+
+// String returns the string representation
+func (s TagResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s TagResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *TagResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "TagResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+	if s.ResourceArn != nil && len(*s.ResourceArn) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("ResourceArn", 1))
+	}
+
+	if s.Tags == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Tags"))
+	}
+	if s.Tags != nil && len(s.Tags) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("Tags", 1))
+	}
+	if s.Tags != nil {
+		for i, v := range s.Tags {
+			if err := v.Validate(); err != nil {
+				invalidParams.AddNested(fmt.Sprintf("%s[%v]", "Tags", i), err.(aws.ErrInvalidParams))
+			}
+		}
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/TagResourceOutput
+type TagResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+}
+
+// String returns the string representation
+func (s TagResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s TagResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s TagResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/UntagResourceRequest
+type UntagResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// The Amazon Resource Name (ARN) that identifies the resource for which to
+	// list the tags. Currently, the supported resources are ConfigRule, ConfigurationAggregator
+	// and AggregatorAuthorization.
+	//
+	// ResourceArn is a required field
+	ResourceArn *string `min:"1" type:"string" required:"true"`
+
+	// The keys of the tags to be removed.
+	//
+	// TagKeys is a required field
+	TagKeys []string `min:"1" type:"list" required:"true"`
+}
+
+// String returns the string representation
+func (s UntagResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UntagResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *UntagResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "UntagResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+	if s.ResourceArn != nil && len(*s.ResourceArn) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("ResourceArn", 1))
+	}
+
+	if s.TagKeys == nil {
+		invalidParams.Add(aws.NewErrParamRequired("TagKeys"))
+	}
+	if s.TagKeys != nil && len(s.TagKeys) < 1 {
+		invalidParams.Add(aws.NewErrParamMinLen("TagKeys", 1))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/config-2014-11-12/UntagResourceOutput
+type UntagResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+}
+
+// String returns the string representation
+func (s UntagResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UntagResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s UntagResourceOutput) SDKResponseMetadata() aws.Response {
 	return s.responseMetadata
 }
 
@@ -8199,6 +9751,59 @@ func (enum RecorderStatus) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+type RemediationExecutionState string
+
+// Enum values for RemediationExecutionState
+const (
+	RemediationExecutionStateQueued     RemediationExecutionState = "QUEUED"
+	RemediationExecutionStateInProgress RemediationExecutionState = "IN_PROGRESS"
+	RemediationExecutionStateSucceeded  RemediationExecutionState = "SUCCEEDED"
+	RemediationExecutionStateFailed     RemediationExecutionState = "FAILED"
+)
+
+func (enum RemediationExecutionState) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum RemediationExecutionState) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
+type RemediationExecutionStepState string
+
+// Enum values for RemediationExecutionStepState
+const (
+	RemediationExecutionStepStateSucceeded RemediationExecutionStepState = "SUCCEEDED"
+	RemediationExecutionStepStatePending   RemediationExecutionStepState = "PENDING"
+	RemediationExecutionStepStateFailed    RemediationExecutionStepState = "FAILED"
+)
+
+func (enum RemediationExecutionStepState) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum RemediationExecutionStepState) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
+type RemediationTargetType string
+
+// Enum values for RemediationTargetType
+const (
+	RemediationTargetTypeSsmDocument RemediationTargetType = "SSM_DOCUMENT"
+)
+
+func (enum RemediationTargetType) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum RemediationTargetType) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
 type ResourceCountGroupKey string
 
 // Enum values for ResourceCountGroupKey
@@ -8292,6 +9897,22 @@ func (enum ResourceType) MarshalValue() (string, error) {
 }
 
 func (enum ResourceType) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
+type ResourceValueType string
+
+// Enum values for ResourceValueType
+const (
+	ResourceValueTypeResourceId ResourceValueType = "RESOURCE_ID"
+)
+
+func (enum ResourceValueType) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum ResourceValueType) MarshalValueBuf(b []byte) ([]byte, error) {
 	b = b[0:0]
 	return append(b, enum...), nil
 }

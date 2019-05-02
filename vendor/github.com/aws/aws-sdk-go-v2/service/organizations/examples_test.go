@@ -3,6 +3,7 @@
 package organizations_test
 
 import (
+	"context"
 	"fmt"
 	"strings"
 	"time"
@@ -42,7 +43,7 @@ func ExampleOrganizations_AcceptHandshakeRequest_shared00() {
 	}
 
 	req := svc.AcceptHandshakeRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -99,7 +100,7 @@ func ExampleOrganizations_AttachPolicyRequest_shared00() {
 	}
 
 	req := svc.AttachPolicyRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -156,7 +157,7 @@ func ExampleOrganizations_AttachPolicyRequest_shared01() {
 	}
 
 	req := svc.AttachPolicyRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -214,7 +215,7 @@ func ExampleOrganizations_CancelHandshakeRequest_shared00() {
 	}
 
 	req := svc.CancelHandshakeRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -270,7 +271,7 @@ func ExampleOrganizations_CreateAccountRequest_shared00() {
 	}
 
 	req := svc.CreateAccountRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -290,6 +291,8 @@ func ExampleOrganizations_CreateAccountRequest_shared00() {
 				fmt.Println(organizations.ErrCodeServiceException, aerr.Error())
 			case organizations.ErrCodeTooManyRequestsException:
 				fmt.Println(organizations.ErrCodeTooManyRequestsException, aerr.Error())
+			case organizations.ErrCodeUnsupportedAPIEndpointException:
+				fmt.Println(organizations.ErrCodeUnsupportedAPIEndpointException, aerr.Error())
 			default:
 				fmt.Println(aerr.Error())
 			}
@@ -321,7 +324,7 @@ func ExampleOrganizations_CreateOrganizationRequest_shared00() {
 	input := &organizations.CreateOrganizationInput{}
 
 	req := svc.CreateOrganizationRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -373,7 +376,7 @@ func ExampleOrganizations_CreateOrganizationRequest_shared01() {
 	}
 
 	req := svc.CreateOrganizationRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -425,7 +428,7 @@ func ExampleOrganizations_CreateOrganizationalUnitRequest_shared00() {
 	}
 
 	req := svc.CreateOrganizationalUnitRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -484,7 +487,7 @@ func ExampleOrganizations_CreatePolicyRequest_shared00() {
 	}
 
 	req := svc.CreatePolicyRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -539,7 +542,7 @@ func ExampleOrganizations_DeclineHandshakeRequest_shared00() {
 	}
 
 	req := svc.DeclineHandshakeRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -590,7 +593,7 @@ func ExampleOrganizations_DeleteOrganizationalUnitRequest_shared00() {
 	}
 
 	req := svc.DeleteOrganizationalUnitRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -641,7 +644,7 @@ func ExampleOrganizations_DeletePolicyRequest_shared00() {
 	}
 
 	req := svc.DeletePolicyRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -691,7 +694,7 @@ func ExampleOrganizations_DescribeAccountRequest_shared00() {
 	}
 
 	req := svc.DescribeAccountRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -739,7 +742,7 @@ func ExampleOrganizations_DescribeCreateAccountStatusRequest_shared00() {
 	}
 
 	req := svc.DescribeCreateAccountStatusRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -755,6 +758,8 @@ func ExampleOrganizations_DescribeCreateAccountStatusRequest_shared00() {
 				fmt.Println(organizations.ErrCodeServiceException, aerr.Error())
 			case organizations.ErrCodeTooManyRequestsException:
 				fmt.Println(organizations.ErrCodeTooManyRequestsException, aerr.Error())
+			case organizations.ErrCodeUnsupportedAPIEndpointException:
+				fmt.Println(organizations.ErrCodeUnsupportedAPIEndpointException, aerr.Error())
 			default:
 				fmt.Println(aerr.Error())
 			}
@@ -786,7 +791,7 @@ func ExampleOrganizations_DescribeHandshakeRequest_shared00() {
 	}
 
 	req := svc.DescribeHandshakeRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -829,7 +834,7 @@ func ExampleOrganizations_DescribeOrganizationRequest_shared00() {
 	input := &organizations.DescribeOrganizationInput{}
 
 	req := svc.DescribeOrganizationRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -872,7 +877,7 @@ func ExampleOrganizations_DescribeOrganizationalUnitRequest_shared00() {
 	}
 
 	req := svc.DescribeOrganizationalUnitRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -917,7 +922,7 @@ func ExampleOrganizations_DescribePolicyRequest_shared00() {
 	}
 
 	req := svc.DescribePolicyRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -963,7 +968,7 @@ func ExampleOrganizations_DetachPolicyRequest_shared00() {
 	}
 
 	req := svc.DetachPolicyRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1019,7 +1024,7 @@ func ExampleOrganizations_DisablePolicyTypeRequest_shared00() {
 	}
 
 	req := svc.DisablePolicyTypeRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1074,7 +1079,7 @@ func ExampleOrganizations_EnableAllFeaturesRequest_shared00() {
 	input := &organizations.EnableAllFeaturesInput{}
 
 	req := svc.EnableAllFeaturesRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1124,7 +1129,7 @@ func ExampleOrganizations_EnablePolicyTypeRequest_shared00() {
 	}
 
 	req := svc.EnablePolicyTypeRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1182,7 +1187,7 @@ func ExampleOrganizations_InviteAccountToOrganizationRequest_shared00() {
 	}
 
 	req := svc.InviteAccountToOrganizationRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1233,7 +1238,7 @@ func ExampleOrganizations_LeaveOrganizationRequest_shared00() {
 	input := &organizations.LeaveOrganizationInput{}
 
 	req := svc.LeaveOrganizationRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1282,7 +1287,7 @@ func ExampleOrganizations_ListAccountsRequest_shared00() {
 	input := &organizations.ListAccountsInput{}
 
 	req := svc.ListAccountsRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1325,7 +1330,7 @@ func ExampleOrganizations_ListAccountsForParentRequest_shared00() {
 	}
 
 	req := svc.ListAccountsForParentRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1372,7 +1377,7 @@ func ExampleOrganizations_ListChildrenRequest_shared00() {
 	}
 
 	req := svc.ListChildrenRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1420,7 +1425,7 @@ func ExampleOrganizations_ListCreateAccountStatusRequest_shared00() {
 	}
 
 	req := svc.ListCreateAccountStatusRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1434,6 +1439,8 @@ func ExampleOrganizations_ListCreateAccountStatusRequest_shared00() {
 				fmt.Println(organizations.ErrCodeServiceException, aerr.Error())
 			case organizations.ErrCodeTooManyRequestsException:
 				fmt.Println(organizations.ErrCodeTooManyRequestsException, aerr.Error())
+			case organizations.ErrCodeUnsupportedAPIEndpointException:
+				fmt.Println(organizations.ErrCodeUnsupportedAPIEndpointException, aerr.Error())
 			default:
 				fmt.Println(aerr.Error())
 			}
@@ -1466,7 +1473,7 @@ func ExampleOrganizations_ListCreateAccountStatusRequest_shared01() {
 	}
 
 	req := svc.ListCreateAccountStatusRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1480,6 +1487,8 @@ func ExampleOrganizations_ListCreateAccountStatusRequest_shared01() {
 				fmt.Println(organizations.ErrCodeServiceException, aerr.Error())
 			case organizations.ErrCodeTooManyRequestsException:
 				fmt.Println(organizations.ErrCodeTooManyRequestsException, aerr.Error())
+			case organizations.ErrCodeUnsupportedAPIEndpointException:
+				fmt.Println(organizations.ErrCodeUnsupportedAPIEndpointException, aerr.Error())
 			default:
 				fmt.Println(aerr.Error())
 			}
@@ -1508,7 +1517,7 @@ func ExampleOrganizations_ListHandshakesForAccountRequest_shared00() {
 	input := &organizations.ListHandshakesForAccountInput{}
 
 	req := svc.ListHandshakesForAccountRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1550,7 +1559,7 @@ func ExampleOrganizations_ListHandshakesForOrganizationRequest_shared00() {
 	input := &organizations.ListHandshakesForOrganizationInput{}
 
 	req := svc.ListHandshakesForOrganizationRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1595,7 +1604,7 @@ func ExampleOrganizations_ListOrganizationalUnitsForParentRequest_shared00() {
 	}
 
 	req := svc.ListOrganizationalUnitsForParentRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1640,7 +1649,7 @@ func ExampleOrganizations_ListParentsRequest_shared00() {
 	}
 
 	req := svc.ListParentsRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1685,7 +1694,7 @@ func ExampleOrganizations_ListPoliciesRequest_shared00() {
 	}
 
 	req := svc.ListPoliciesRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1732,7 +1741,7 @@ func ExampleOrganizations_ListPoliciesForTargetRequest_shared00() {
 	}
 
 	req := svc.ListPoliciesForTargetRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1775,7 +1784,7 @@ func ExampleOrganizations_ListRootsRequest_shared00() {
 	input := &organizations.ListRootsInput{}
 
 	req := svc.ListRootsRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1819,7 +1828,7 @@ func ExampleOrganizations_ListTargetsForPolicyRequest_shared00() {
 	}
 
 	req := svc.ListTargetsForPolicyRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1866,7 +1875,7 @@ func ExampleOrganizations_MoveAccountRequest_shared00() {
 	}
 
 	req := svc.MoveAccountRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1919,7 +1928,7 @@ func ExampleOrganizations_RemoveAccountFromOrganizationRequest_shared00() {
 	}
 
 	req := svc.RemoveAccountFromOrganizationRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -1971,7 +1980,7 @@ func ExampleOrganizations_UpdateOrganizationalUnitRequest_shared00() {
 	}
 
 	req := svc.UpdateOrganizationalUnitRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -2023,7 +2032,7 @@ func ExampleOrganizations_UpdatePolicyRequest_shared00() {
 	}
 
 	req := svc.UpdatePolicyRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {
@@ -2079,7 +2088,7 @@ func ExampleOrganizations_UpdatePolicyRequest_shared01() {
 	}
 
 	req := svc.UpdatePolicyRequest(input)
-	result, err := req.Send()
+	result, err := req.Send(context.Background())
 	if err != nil {
 		if aerr, ok := err.(awserr.Error); ok {
 			switch aerr.Code() {

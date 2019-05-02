@@ -9,6 +9,8 @@
 package acmiface
 
 import (
+	"context"
+
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/acm"
 )
@@ -81,14 +83,15 @@ type ACMAPI interface {
 
 	RemoveTagsFromCertificateRequest(*acm.RemoveTagsFromCertificateInput) acm.RemoveTagsFromCertificateRequest
 
+	RenewCertificateRequest(*acm.RenewCertificateInput) acm.RenewCertificateRequest
+
 	RequestCertificateRequest(*acm.RequestCertificateInput) acm.RequestCertificateRequest
 
 	ResendValidationEmailRequest(*acm.ResendValidationEmailInput) acm.ResendValidationEmailRequest
 
 	UpdateCertificateOptionsRequest(*acm.UpdateCertificateOptionsInput) acm.UpdateCertificateOptionsRequest
 
-	WaitUntilCertificateValidated(*acm.DescribeCertificateInput) error
-	WaitUntilCertificateValidatedWithContext(aws.Context, *acm.DescribeCertificateInput, ...aws.WaiterOption) error
+	WaitUntilCertificateValidated(context.Context, *acm.DescribeCertificateInput, ...aws.WaiterOption) error
 }
 
 var _ ACMAPI = (*acm.ACM)(nil)

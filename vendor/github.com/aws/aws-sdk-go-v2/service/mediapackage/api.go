@@ -3,11 +3,13 @@
 package mediapackage
 
 import (
+	"context"
 	"fmt"
 
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/internal/awsutil"
 	"github.com/aws/aws-sdk-go-v2/private/protocol"
+	"github.com/aws/aws-sdk-go-v2/private/protocol/restjson"
 )
 
 const opCreateChannel = "CreateChannel"
@@ -20,7 +22,8 @@ type CreateChannelRequest struct {
 }
 
 // Send marshals and sends the CreateChannel API request.
-func (r CreateChannelRequest) Send() (*CreateChannelOutput, error) {
+func (r CreateChannelRequest) Send(ctx context.Context) (*CreateChannelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -36,7 +39,7 @@ func (r CreateChannelRequest) Send() (*CreateChannelOutput, error) {
 //
 //    // Example sending a request using the CreateChannelRequest method.
 //    req := client.CreateChannelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -70,7 +73,8 @@ type CreateOriginEndpointRequest struct {
 }
 
 // Send marshals and sends the CreateOriginEndpoint API request.
-func (r CreateOriginEndpointRequest) Send() (*CreateOriginEndpointOutput, error) {
+func (r CreateOriginEndpointRequest) Send(ctx context.Context) (*CreateOriginEndpointOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -86,7 +90,7 @@ func (r CreateOriginEndpointRequest) Send() (*CreateOriginEndpointOutput, error)
 //
 //    // Example sending a request using the CreateOriginEndpointRequest method.
 //    req := client.CreateOriginEndpointRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -120,7 +124,8 @@ type DeleteChannelRequest struct {
 }
 
 // Send marshals and sends the DeleteChannel API request.
-func (r DeleteChannelRequest) Send() (*DeleteChannelOutput, error) {
+func (r DeleteChannelRequest) Send(ctx context.Context) (*DeleteChannelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -136,7 +141,7 @@ func (r DeleteChannelRequest) Send() (*DeleteChannelOutput, error) {
 //
 //    // Example sending a request using the DeleteChannelRequest method.
 //    req := client.DeleteChannelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -170,7 +175,8 @@ type DeleteOriginEndpointRequest struct {
 }
 
 // Send marshals and sends the DeleteOriginEndpoint API request.
-func (r DeleteOriginEndpointRequest) Send() (*DeleteOriginEndpointOutput, error) {
+func (r DeleteOriginEndpointRequest) Send(ctx context.Context) (*DeleteOriginEndpointOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -186,7 +192,7 @@ func (r DeleteOriginEndpointRequest) Send() (*DeleteOriginEndpointOutput, error)
 //
 //    // Example sending a request using the DeleteOriginEndpointRequest method.
 //    req := client.DeleteOriginEndpointRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -220,7 +226,8 @@ type DescribeChannelRequest struct {
 }
 
 // Send marshals and sends the DescribeChannel API request.
-func (r DescribeChannelRequest) Send() (*DescribeChannelOutput, error) {
+func (r DescribeChannelRequest) Send(ctx context.Context) (*DescribeChannelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -236,7 +243,7 @@ func (r DescribeChannelRequest) Send() (*DescribeChannelOutput, error) {
 //
 //    // Example sending a request using the DescribeChannelRequest method.
 //    req := client.DescribeChannelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -270,7 +277,8 @@ type DescribeOriginEndpointRequest struct {
 }
 
 // Send marshals and sends the DescribeOriginEndpoint API request.
-func (r DescribeOriginEndpointRequest) Send() (*DescribeOriginEndpointOutput, error) {
+func (r DescribeOriginEndpointRequest) Send(ctx context.Context) (*DescribeOriginEndpointOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -286,7 +294,7 @@ func (r DescribeOriginEndpointRequest) Send() (*DescribeOriginEndpointOutput, er
 //
 //    // Example sending a request using the DescribeOriginEndpointRequest method.
 //    req := client.DescribeOriginEndpointRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -320,7 +328,8 @@ type ListChannelsRequest struct {
 }
 
 // Send marshals and sends the ListChannels API request.
-func (r ListChannelsRequest) Send() (*ListChannelsOutput, error) {
+func (r ListChannelsRequest) Send(ctx context.Context) (*ListChannelsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -336,7 +345,7 @@ func (r ListChannelsRequest) Send() (*ListChannelsOutput, error) {
 //
 //    // Example sending a request using the ListChannelsRequest method.
 //    req := client.ListChannelsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -386,7 +395,7 @@ func (c *MediaPackage) ListChannelsRequest(input *ListChannelsInput) ListChannel
 func (p *ListChannelsRequest) Paginate(opts ...aws.Option) ListChannelsPager {
 	return ListChannelsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListChannelsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -395,6 +404,7 @@ func (p *ListChannelsRequest) Paginate(opts ...aws.Option) ListChannelsPager {
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -422,7 +432,8 @@ type ListOriginEndpointsRequest struct {
 }
 
 // Send marshals and sends the ListOriginEndpoints API request.
-func (r ListOriginEndpointsRequest) Send() (*ListOriginEndpointsOutput, error) {
+func (r ListOriginEndpointsRequest) Send(ctx context.Context) (*ListOriginEndpointsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -438,7 +449,7 @@ func (r ListOriginEndpointsRequest) Send() (*ListOriginEndpointsOutput, error) {
 //
 //    // Example sending a request using the ListOriginEndpointsRequest method.
 //    req := client.ListOriginEndpointsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -488,7 +499,7 @@ func (c *MediaPackage) ListOriginEndpointsRequest(input *ListOriginEndpointsInpu
 func (p *ListOriginEndpointsRequest) Paginate(opts ...aws.Option) ListOriginEndpointsPager {
 	return ListOriginEndpointsPager{
 		Pager: aws.Pager{
-			NewRequest: func() (*aws.Request, error) {
+			NewRequest: func(ctx context.Context) (*aws.Request, error) {
 				var inCpy *ListOriginEndpointsInput
 				if p.Input != nil {
 					tmp := *p.Input
@@ -497,6 +508,7 @@ func (p *ListOriginEndpointsRequest) Paginate(opts ...aws.Option) ListOriginEndp
 
 				req := p.Copy(inCpy)
 				req.ApplyOptions(opts...)
+				req.SetContext(ctx)
 
 				return req.Request, nil
 			},
@@ -514,6 +526,55 @@ func (p *ListOriginEndpointsPager) CurrentPage() *ListOriginEndpointsOutput {
 	return p.Pager.CurrentPage().(*ListOriginEndpointsOutput)
 }
 
+const opListTagsForResource = "ListTagsForResource"
+
+// ListTagsForResourceRequest is a API request type for the ListTagsForResource API operation.
+type ListTagsForResourceRequest struct {
+	*aws.Request
+	Input *ListTagsForResourceInput
+	Copy  func(*ListTagsForResourceInput) ListTagsForResourceRequest
+}
+
+// Send marshals and sends the ListTagsForResource API request.
+func (r ListTagsForResourceRequest) Send(ctx context.Context) (*ListTagsForResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*ListTagsForResourceOutput), nil
+}
+
+// ListTagsForResourceRequest returns a request value for making API operation for
+// AWS Elemental MediaPackage.
+//
+//    // Example sending a request using the ListTagsForResourceRequest method.
+//    req := client.ListTagsForResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/mediapackage-2017-10-12/ListTagsForResource
+func (c *MediaPackage) ListTagsForResourceRequest(input *ListTagsForResourceInput) ListTagsForResourceRequest {
+	op := &aws.Operation{
+		Name:       opListTagsForResource,
+		HTTPMethod: "GET",
+		HTTPPath:   "/tags/{resource-arn}",
+	}
+
+	if input == nil {
+		input = &ListTagsForResourceInput{}
+	}
+
+	output := &ListTagsForResourceOutput{}
+	req := c.newRequest(op, input, output)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return ListTagsForResourceRequest{Request: req, Input: input, Copy: c.ListTagsForResourceRequest}
+}
+
 const opRotateChannelCredentials = "RotateChannelCredentials"
 
 // RotateChannelCredentialsRequest is a API request type for the RotateChannelCredentials API operation.
@@ -524,7 +585,8 @@ type RotateChannelCredentialsRequest struct {
 }
 
 // Send marshals and sends the RotateChannelCredentials API request.
-func (r RotateChannelCredentialsRequest) Send() (*RotateChannelCredentialsOutput, error) {
+func (r RotateChannelCredentialsRequest) Send(ctx context.Context) (*RotateChannelCredentialsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -541,7 +603,7 @@ func (r RotateChannelCredentialsRequest) Send() (*RotateChannelCredentialsOutput
 //
 //    // Example sending a request using the RotateChannelCredentialsRequest method.
 //    req := client.RotateChannelCredentialsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -578,7 +640,8 @@ type RotateIngestEndpointCredentialsRequest struct {
 }
 
 // Send marshals and sends the RotateIngestEndpointCredentials API request.
-func (r RotateIngestEndpointCredentialsRequest) Send() (*RotateIngestEndpointCredentialsOutput, error) {
+func (r RotateIngestEndpointCredentialsRequest) Send(ctx context.Context) (*RotateIngestEndpointCredentialsOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -595,7 +658,7 @@ func (r RotateIngestEndpointCredentialsRequest) Send() (*RotateIngestEndpointCre
 //
 //    // Example sending a request using the RotateIngestEndpointCredentialsRequest method.
 //    req := client.RotateIngestEndpointCredentialsRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -619,6 +682,108 @@ func (c *MediaPackage) RotateIngestEndpointCredentialsRequest(input *RotateInges
 	return RotateIngestEndpointCredentialsRequest{Request: req, Input: input, Copy: c.RotateIngestEndpointCredentialsRequest}
 }
 
+const opTagResource = "TagResource"
+
+// TagResourceRequest is a API request type for the TagResource API operation.
+type TagResourceRequest struct {
+	*aws.Request
+	Input *TagResourceInput
+	Copy  func(*TagResourceInput) TagResourceRequest
+}
+
+// Send marshals and sends the TagResource API request.
+func (r TagResourceRequest) Send(ctx context.Context) (*TagResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*TagResourceOutput), nil
+}
+
+// TagResourceRequest returns a request value for making API operation for
+// AWS Elemental MediaPackage.
+//
+//    // Example sending a request using the TagResourceRequest method.
+//    req := client.TagResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/mediapackage-2017-10-12/TagResource
+func (c *MediaPackage) TagResourceRequest(input *TagResourceInput) TagResourceRequest {
+	op := &aws.Operation{
+		Name:       opTagResource,
+		HTTPMethod: "POST",
+		HTTPPath:   "/tags/{resource-arn}",
+	}
+
+	if input == nil {
+		input = &TagResourceInput{}
+	}
+
+	output := &TagResourceOutput{}
+	req := c.newRequest(op, input, output)
+	req.Handlers.Unmarshal.Remove(restjson.UnmarshalHandler)
+	req.Handlers.Unmarshal.PushBackNamed(protocol.UnmarshalDiscardBodyHandler)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return TagResourceRequest{Request: req, Input: input, Copy: c.TagResourceRequest}
+}
+
+const opUntagResource = "UntagResource"
+
+// UntagResourceRequest is a API request type for the UntagResource API operation.
+type UntagResourceRequest struct {
+	*aws.Request
+	Input *UntagResourceInput
+	Copy  func(*UntagResourceInput) UntagResourceRequest
+}
+
+// Send marshals and sends the UntagResource API request.
+func (r UntagResourceRequest) Send(ctx context.Context) (*UntagResourceOutput, error) {
+	r.Request.SetContext(ctx)
+	err := r.Request.Send()
+	if err != nil {
+		return nil, err
+	}
+
+	return r.Request.Data.(*UntagResourceOutput), nil
+}
+
+// UntagResourceRequest returns a request value for making API operation for
+// AWS Elemental MediaPackage.
+//
+//    // Example sending a request using the UntagResourceRequest method.
+//    req := client.UntagResourceRequest(params)
+//    resp, err := req.Send(context.TODO())
+//    if err == nil {
+//        fmt.Println(resp)
+//    }
+//
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/mediapackage-2017-10-12/UntagResource
+func (c *MediaPackage) UntagResourceRequest(input *UntagResourceInput) UntagResourceRequest {
+	op := &aws.Operation{
+		Name:       opUntagResource,
+		HTTPMethod: "DELETE",
+		HTTPPath:   "/tags/{resource-arn}",
+	}
+
+	if input == nil {
+		input = &UntagResourceInput{}
+	}
+
+	output := &UntagResourceOutput{}
+	req := c.newRequest(op, input, output)
+	req.Handlers.Unmarshal.Remove(restjson.UnmarshalHandler)
+	req.Handlers.Unmarshal.PushBackNamed(protocol.UnmarshalDiscardBodyHandler)
+	output.responseMetadata = aws.Response{Request: req}
+
+	return UntagResourceRequest{Request: req, Input: input, Copy: c.UntagResourceRequest}
+}
+
 const opUpdateChannel = "UpdateChannel"
 
 // UpdateChannelRequest is a API request type for the UpdateChannel API operation.
@@ -629,7 +794,8 @@ type UpdateChannelRequest struct {
 }
 
 // Send marshals and sends the UpdateChannel API request.
-func (r UpdateChannelRequest) Send() (*UpdateChannelOutput, error) {
+func (r UpdateChannelRequest) Send(ctx context.Context) (*UpdateChannelOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -645,7 +811,7 @@ func (r UpdateChannelRequest) Send() (*UpdateChannelOutput, error) {
 //
 //    // Example sending a request using the UpdateChannelRequest method.
 //    req := client.UpdateChannelRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -679,7 +845,8 @@ type UpdateOriginEndpointRequest struct {
 }
 
 // Send marshals and sends the UpdateOriginEndpoint API request.
-func (r UpdateOriginEndpointRequest) Send() (*UpdateOriginEndpointOutput, error) {
+func (r UpdateOriginEndpointRequest) Send(ctx context.Context) (*UpdateOriginEndpointOutput, error) {
+	r.Request.SetContext(ctx)
 	err := r.Request.Send()
 	if err != nil {
 		return nil, err
@@ -695,7 +862,7 @@ func (r UpdateOriginEndpointRequest) Send() (*UpdateOriginEndpointOutput, error)
 //
 //    // Example sending a request using the UpdateOriginEndpointRequest method.
 //    req := client.UpdateOriginEndpointRequest(params)
-//    resp, err := req.Send()
+//    resp, err := req.Send(context.TODO())
 //    if err == nil {
 //        fmt.Println(resp)
 //    }
@@ -735,6 +902,9 @@ type Channel struct {
 
 	// The ID of the Channel.
 	Id *string `locationName:"id" type:"string"`
+
+	// A collection of tags associated with a resource
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -772,6 +942,18 @@ func (s Channel) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "id", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	return nil
 }
@@ -1015,6 +1197,9 @@ type CreateChannelInput struct {
 
 	// Id is a required field
 	Id *string `locationName:"id" type:"string" required:"true"`
+
+	// A collection of tags associated with a resource
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -1057,6 +1242,18 @@ func (s CreateChannelInput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "id", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	return nil
 }
 
@@ -1074,6 +1271,9 @@ type CreateChannelOutput struct {
 	HlsIngest *HlsIngest `locationName:"hlsIngest" type:"structure"`
 
 	Id *string `locationName:"id" type:"string"`
+
+	// A collection of tags associated with a resource
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -1117,6 +1317,18 @@ func (s CreateChannelOutput) MarshalFields(e protocol.FieldEncoder) error {
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "id", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	return nil
 }
 
@@ -1147,6 +1359,9 @@ type CreateOriginEndpointInput struct {
 	MssPackage *MssPackage `locationName:"mssPackage" type:"structure"`
 
 	StartoverWindowSeconds *int64 `locationName:"startoverWindowSeconds" type:"integer"`
+
+	// A collection of tags associated with a resource
+	Tags map[string]string `locationName:"tags" type:"map"`
 
 	TimeDelaySeconds *int64 `locationName:"timeDelaySeconds" type:"integer"`
 
@@ -1259,6 +1474,18 @@ func (s CreateOriginEndpointInput) MarshalFields(e protocol.FieldEncoder) error 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "startoverWindowSeconds", protocol.Int64Value(v), metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	if s.TimeDelaySeconds != nil {
 		v := *s.TimeDelaySeconds
 
@@ -1309,6 +1536,9 @@ type CreateOriginEndpointOutput struct {
 	MssPackage *MssPackage `locationName:"mssPackage" type:"structure"`
 
 	StartoverWindowSeconds *int64 `locationName:"startoverWindowSeconds" type:"integer"`
+
+	// A collection of tags associated with a resource
+	Tags map[string]string `locationName:"tags" type:"map"`
 
 	TimeDelaySeconds *int64 `locationName:"timeDelaySeconds" type:"integer"`
 
@@ -1393,6 +1623,18 @@ func (s CreateOriginEndpointOutput) MarshalFields(e protocol.FieldEncoder) error
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "startoverWindowSeconds", protocol.Int64Value(v), metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	if s.TimeDelaySeconds != nil {
 		v := *s.TimeDelaySeconds
@@ -1490,6 +1732,12 @@ type DashPackage struct {
 	// A Dynamic Adaptive Streaming over HTTP (DASH) encryption configuration.
 	Encryption *DashEncryption `locationName:"encryption" type:"structure"`
 
+	// Determines the position of some tags in the Media Presentation Description
+	// (MPD). When set to FULL, elements like SegmentTemplate and ContentProtection
+	// are included in each Representation. When set to COMPACT, duplicate elements
+	// are combined and presented at the AdaptationSet level.
+	ManifestLayout ManifestLayout `locationName:"manifestLayout" type:"string" enum:"true"`
+
 	// Time window (in seconds) contained in each manifest.
 	ManifestWindowSeconds *int64 `locationName:"manifestWindowSeconds" type:"integer"`
 
@@ -1515,6 +1763,12 @@ type DashPackage struct {
 	// Duration (in seconds) of each segment. Actual segments will berounded to
 	// the nearest multiple of the source segment duration.
 	SegmentDurationSeconds *int64 `locationName:"segmentDurationSeconds" type:"integer"`
+
+	// Determines the type of SegmentTimeline included in the Media Presentation
+	// Description (MPD). When set to NUMBER_WITH_TIMELINE, a full timeline is presented
+	// in each SegmentTemplate, with $Number$ media URLs. When set to TIME_WITH_TIMELINE,
+	// a full timeline is presented in each SegmentTemplate, with $Time$ media URLs.
+	SegmentTemplateFormat SegmentTemplateFormat `locationName:"segmentTemplateFormat" type:"string" enum:"true"`
 
 	// A StreamSelection configuration.
 	StreamSelection *StreamSelection `locationName:"streamSelection" type:"structure"`
@@ -1555,6 +1809,12 @@ func (s DashPackage) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetFields(protocol.BodyTarget, "encryption", v, metadata)
+	}
+	if len(s.ManifestLayout) > 0 {
+		v := s.ManifestLayout
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "manifestLayout", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
 	if s.ManifestWindowSeconds != nil {
 		v := *s.ManifestWindowSeconds
@@ -1597,6 +1857,12 @@ func (s DashPackage) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "segmentDurationSeconds", protocol.Int64Value(v), metadata)
+	}
+	if len(s.SegmentTemplateFormat) > 0 {
+		v := s.SegmentTemplateFormat
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.BodyTarget, "segmentTemplateFormat", protocol.QuotedValue{ValueMarshaler: v}, metadata)
 	}
 	if s.StreamSelection != nil {
 		v := s.StreamSelection
@@ -1816,6 +2082,9 @@ type DescribeChannelOutput struct {
 	HlsIngest *HlsIngest `locationName:"hlsIngest" type:"structure"`
 
 	Id *string `locationName:"id" type:"string"`
+
+	// A collection of tags associated with a resource
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -1858,6 +2127,18 @@ func (s DescribeChannelOutput) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "id", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	return nil
 }
@@ -1936,6 +2217,9 @@ type DescribeOriginEndpointOutput struct {
 	MssPackage *MssPackage `locationName:"mssPackage" type:"structure"`
 
 	StartoverWindowSeconds *int64 `locationName:"startoverWindowSeconds" type:"integer"`
+
+	// A collection of tags associated with a resource
+	Tags map[string]string `locationName:"tags" type:"map"`
 
 	TimeDelaySeconds *int64 `locationName:"timeDelaySeconds" type:"integer"`
 
@@ -2020,6 +2304,18 @@ func (s DescribeOriginEndpointOutput) MarshalFields(e protocol.FieldEncoder) err
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "startoverWindowSeconds", protocol.Int64Value(v), metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	if s.TimeDelaySeconds != nil {
 		v := *s.TimeDelaySeconds
@@ -2794,6 +3090,92 @@ func (s ListOriginEndpointsOutput) MarshalFields(e protocol.FieldEncoder) error 
 	return nil
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/mediapackage-2017-10-12/ListTagsForResourceRequest
+type ListTagsForResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// ResourceArn is a required field
+	ResourceArn *string `location:"uri" locationName:"resource-arn" type:"string" required:"true"`
+}
+
+// String returns the string representation
+func (s ListTagsForResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListTagsForResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *ListTagsForResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "ListTagsForResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ListTagsForResourceInput) MarshalFields(e protocol.FieldEncoder) error {
+	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
+
+	if s.ResourceArn != nil {
+		v := *s.ResourceArn
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "resource-arn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/mediapackage-2017-10-12/ListTagsForResourceResponse
+type ListTagsForResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+
+	Tags map[string]string `locationName:"tags" type:"map"`
+}
+
+// String returns the string representation
+func (s ListTagsForResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s ListTagsForResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s ListTagsForResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s ListTagsForResourceOutput) MarshalFields(e protocol.FieldEncoder) error {
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
+	return nil
+}
+
 // A Microsoft Smooth Streaming (MSS) encryption configuration.
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/mediapackage-2017-10-12/MssEncryption
 type MssEncryption struct {
@@ -2954,6 +3336,9 @@ type OriginEndpoint struct {
 	// not specified, startover playback will be disabled for the OriginEndpoint.
 	StartoverWindowSeconds *int64 `locationName:"startoverWindowSeconds" type:"integer"`
 
+	// A collection of tags associated with a resource
+	Tags map[string]string `locationName:"tags" type:"map"`
+
 	// Amount of delay (seconds) to enforce on the playback of live content.If not
 	// specified, there will be no time delay in effect for the OriginEndpoint.
 	TimeDelaySeconds *int64 `locationName:"timeDelaySeconds" type:"integer"`
@@ -3036,6 +3421,18 @@ func (s OriginEndpoint) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "startoverWindowSeconds", protocol.Int64Value(v), metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	if s.TimeDelaySeconds != nil {
 		v := *s.TimeDelaySeconds
@@ -3123,6 +3520,9 @@ type RotateChannelCredentialsOutput struct {
 	HlsIngest *HlsIngest `locationName:"hlsIngest" type:"structure"`
 
 	Id *string `locationName:"id" type:"string"`
+
+	// A collection of tags associated with a resource
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -3165,6 +3565,18 @@ func (s RotateChannelCredentialsOutput) MarshalFields(e protocol.FieldEncoder) e
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "id", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	return nil
 }
@@ -3241,6 +3653,9 @@ type RotateIngestEndpointCredentialsOutput struct {
 	HlsIngest *HlsIngest `locationName:"hlsIngest" type:"structure"`
 
 	Id *string `locationName:"id" type:"string"`
+
+	// A collection of tags associated with a resource
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -3283,6 +3698,18 @@ func (s RotateIngestEndpointCredentialsOutput) MarshalFields(e protocol.FieldEnc
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "id", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	return nil
 }
@@ -3445,6 +3872,188 @@ func (s StreamSelection) MarshalFields(e protocol.FieldEncoder) error {
 	return nil
 }
 
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/mediapackage-2017-10-12/TagResourceRequest
+type TagResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// ResourceArn is a required field
+	ResourceArn *string `location:"uri" locationName:"resource-arn" type:"string" required:"true"`
+
+	// Tags is a required field
+	Tags map[string]string `locationName:"tags" type:"map" required:"true"`
+}
+
+// String returns the string representation
+func (s TagResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s TagResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *TagResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "TagResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+
+	if s.Tags == nil {
+		invalidParams.Add(aws.NewErrParamRequired("Tags"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s TagResourceInput) MarshalFields(e protocol.FieldEncoder) error {
+	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
+
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
+	if s.ResourceArn != nil {
+		v := *s.ResourceArn
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "resource-arn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/mediapackage-2017-10-12/TagResourceOutput
+type TagResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+}
+
+// String returns the string representation
+func (s TagResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s TagResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s TagResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s TagResourceOutput) MarshalFields(e protocol.FieldEncoder) error {
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/mediapackage-2017-10-12/UntagResourceRequest
+type UntagResourceInput struct {
+	_ struct{} `type:"structure"`
+
+	// ResourceArn is a required field
+	ResourceArn *string `location:"uri" locationName:"resource-arn" type:"string" required:"true"`
+
+	// TagKeys is a required field
+	TagKeys []string `location:"querystring" locationName:"tagKeys" type:"list" required:"true"`
+}
+
+// String returns the string representation
+func (s UntagResourceInput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UntagResourceInput) GoString() string {
+	return s.String()
+}
+
+// Validate inspects the fields of the type to determine if they are valid.
+func (s *UntagResourceInput) Validate() error {
+	invalidParams := aws.ErrInvalidParams{Context: "UntagResourceInput"}
+
+	if s.ResourceArn == nil {
+		invalidParams.Add(aws.NewErrParamRequired("ResourceArn"))
+	}
+
+	if s.TagKeys == nil {
+		invalidParams.Add(aws.NewErrParamRequired("TagKeys"))
+	}
+
+	if invalidParams.Len() > 0 {
+		return invalidParams
+	}
+	return nil
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s UntagResourceInput) MarshalFields(e protocol.FieldEncoder) error {
+	e.SetValue(protocol.HeaderTarget, "Content-Type", protocol.StringValue("application/x-amz-json-1.1"), protocol.Metadata{})
+
+	if s.ResourceArn != nil {
+		v := *s.ResourceArn
+
+		metadata := protocol.Metadata{}
+		e.SetValue(protocol.PathTarget, "resource-arn", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.TagKeys) > 0 {
+		v := s.TagKeys
+
+		metadata := protocol.Metadata{}
+		ls0 := e.List(protocol.QueryTarget, "tagKeys", metadata)
+		ls0.Start()
+		for _, v1 := range v {
+			ls0.ListAddValue(protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ls0.End()
+
+	}
+	return nil
+}
+
+// Please also see https://docs.aws.amazon.com/goto/WebAPI/mediapackage-2017-10-12/UntagResourceOutput
+type UntagResourceOutput struct {
+	_ struct{} `type:"structure"`
+
+	responseMetadata aws.Response
+}
+
+// String returns the string representation
+func (s UntagResourceOutput) String() string {
+	return awsutil.Prettify(s)
+}
+
+// GoString returns the string representation
+func (s UntagResourceOutput) GoString() string {
+	return s.String()
+}
+
+// SDKResponseMetdata return sthe response metadata for the API.
+func (s UntagResourceOutput) SDKResponseMetadata() aws.Response {
+	return s.responseMetadata
+}
+
+// MarshalFields encodes the AWS API shape using the passed in protocol encoder.
+func (s UntagResourceOutput) MarshalFields(e protocol.FieldEncoder) error {
+	return nil
+}
+
 // Please also see https://docs.aws.amazon.com/goto/WebAPI/mediapackage-2017-10-12/UpdateChannelRequest
 type UpdateChannelInput struct {
 	_ struct{} `type:"structure"`
@@ -3512,6 +4121,9 @@ type UpdateChannelOutput struct {
 	HlsIngest *HlsIngest `locationName:"hlsIngest" type:"structure"`
 
 	Id *string `locationName:"id" type:"string"`
+
+	// A collection of tags associated with a resource
+	Tags map[string]string `locationName:"tags" type:"map"`
 }
 
 // String returns the string representation
@@ -3554,6 +4166,18 @@ func (s UpdateChannelOutput) MarshalFields(e protocol.FieldEncoder) error {
 
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "id", protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v)}, metadata)
+	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
 	}
 	return nil
 }
@@ -3735,6 +4359,9 @@ type UpdateOriginEndpointOutput struct {
 
 	StartoverWindowSeconds *int64 `locationName:"startoverWindowSeconds" type:"integer"`
 
+	// A collection of tags associated with a resource
+	Tags map[string]string `locationName:"tags" type:"map"`
+
 	TimeDelaySeconds *int64 `locationName:"timeDelaySeconds" type:"integer"`
 
 	Url *string `locationName:"url" type:"string"`
@@ -3819,6 +4446,18 @@ func (s UpdateOriginEndpointOutput) MarshalFields(e protocol.FieldEncoder) error
 		metadata := protocol.Metadata{}
 		e.SetValue(protocol.BodyTarget, "startoverWindowSeconds", protocol.Int64Value(v), metadata)
 	}
+	if len(s.Tags) > 0 {
+		v := s.Tags
+
+		metadata := protocol.Metadata{}
+		ms0 := e.Map(protocol.BodyTarget, "tags", metadata)
+		ms0.Start()
+		for k1, v1 := range v {
+			ms0.MapSetValue(k1, protocol.QuotedValue{ValueMarshaler: protocol.StringValue(v1)})
+		}
+		ms0.End()
+
+	}
 	if s.TimeDelaySeconds != nil {
 		v := *s.TimeDelaySeconds
 
@@ -3881,6 +4520,23 @@ func (enum EncryptionMethod) MarshalValueBuf(b []byte) ([]byte, error) {
 	return append(b, enum...), nil
 }
 
+type ManifestLayout string
+
+// Enum values for ManifestLayout
+const (
+	ManifestLayoutFull    ManifestLayout = "FULL"
+	ManifestLayoutCompact ManifestLayout = "COMPACT"
+)
+
+func (enum ManifestLayout) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum ManifestLayout) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
 type PlaylistType string
 
 // Enum values for PlaylistType
@@ -3912,6 +4568,23 @@ func (enum Profile) MarshalValue() (string, error) {
 }
 
 func (enum Profile) MarshalValueBuf(b []byte) ([]byte, error) {
+	b = b[0:0]
+	return append(b, enum...), nil
+}
+
+type SegmentTemplateFormat string
+
+// Enum values for SegmentTemplateFormat
+const (
+	SegmentTemplateFormatNumberWithTimeline SegmentTemplateFormat = "NUMBER_WITH_TIMELINE"
+	SegmentTemplateFormatTimeWithTimeline   SegmentTemplateFormat = "TIME_WITH_TIMELINE"
+)
+
+func (enum SegmentTemplateFormat) MarshalValue() (string, error) {
+	return string(enum), nil
+}
+
+func (enum SegmentTemplateFormat) MarshalValueBuf(b []byte) ([]byte, error) {
 	b = b[0:0]
 	return append(b, enum...), nil
 }

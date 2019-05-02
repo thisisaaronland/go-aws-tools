@@ -4,13 +4,14 @@ package main
 
 for example, when used with https://github.com/Yubico/yubikey-manager/tree/master/ykman
 
-session: 
+session:
 	$(eval CODE := $(shell ykman oath code sfomuseum:aws | awk '{ print $$2 }'))
 	bin/$(OS)/aws-mfa-session -profile $(USER) -code $(CODE) -duration PT8H
 
 */
 
 import (
+	"context"
 	"flag"
 	_ "fmt"
 	"github.com/aaronland/go-aws-tools/auth"
@@ -53,7 +54,7 @@ func main() {
 	}
 
 	*code = strings.TrimSpace(*code)
-	
+
 	if *code == "" {
 
 		*code = utils.Readline("Enter your MFA token code:")
@@ -63,7 +64,10 @@ func main() {
 		}
 	}
 
-	creds, err := auth.GetCredentialsWithMFA(aws_cfg, *code, ttl)
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	creds, err := auth.GetCredentialsWithMFA(ctx, aws_cfg, *code, ttl)
 
 	if err != nil {
 		log.Fatal(err)

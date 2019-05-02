@@ -1,6 +1,7 @@
 package main
 
 import (
+	"context"
 	"crypto/sha1"
 	"encoding/hex"
 	"flag"
@@ -74,7 +75,10 @@ func main() {
 
 	req := cf.CreateInvalidationRequest(&params)
 
-	rsp, err := req.Send()
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
+
+	rsp, err := req.Send(ctx)
 
 	if err != nil {
 		log.Fatal(err)

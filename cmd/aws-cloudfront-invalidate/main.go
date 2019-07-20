@@ -50,7 +50,6 @@ func main() {
 
 	cf := cloudfront.New(aws_cfg)
 
-	
 	caller := fmt.Sprintf("%d#%s", *dist, paths.String())
 
 	hash := sha1.Sum([]byte(caller))

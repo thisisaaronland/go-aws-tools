@@ -30,23 +30,25 @@ install-all-the-dependencies dances which isn't always an option. Computers, ami
 ```
 $> ./bin/aws-mfa-session -h
 Usage of ./bin/aws-mfa-session:
-  -duration int
-    	    The time (in seconds) that your session should last (default 3600)
+  -duration string
+    	A valid ISO8601 duration string indicating how long the session should last (months are currently not supported) (default "PT1H")
   -profile string
-    	   A valid AWS credentials profile (default "default")
+    	A valid AWS credentials profile (default "default")
   -session-profile string
-    		   The name of the AWS credentials profile to update with session credentials (default "session")
+    	The name of the AWS credentials profile to update with session credentials (default "session")
 ```
 
 For example:
 
 ```
-$> ./bin/aws-mfa-session -profile {PROFILE}
+$> ./bin/aws-mfa-session -profile {PROFILE} -duration PT8H
 Enter your MFA token code: 123456
-2018/06/21 12:00:49 Updated session credentials for 'session' profile (expires 2018-06-21 20:04:15 +0000 UTC)
+2018/07/26 09:47:09 Updated session credentials for 'session' profile, expires Jul 26 17:47:09 (2018-07-27 00:51:52 +0000 UTC)
 ```
 
 ### aws-cloudfront-invalidate
+
+_This appears to be buggy still. Honestly, you should just use the awscli client for now..._
 
 ```
 $> ./bin/aws-cloudfront-invalidate -h

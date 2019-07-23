@@ -7,7 +7,7 @@ package auth
 // https://docs.aws.amazon.com/cli/latest/reference/sts/get-session-token.html
 
 import (
-       "context"
+	"context"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
@@ -16,10 +16,10 @@ import (
 
 func GetCredentialsWithMFA(cfg aws.Config, token string, duration int64) (*sts.Credentials, error) {
 
-     ctx, cancel := context.WithCancel(context.Background())
-     defer cancel()
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
 
-     return GetCredentialsWithMFAWithContext(ctx, cfg, token, duration)
+	return GetCredentialsWithMFAWithContext(ctx, cfg, token, duration)
 }
 
 func GetCredentialsWithMFAWithContext(ctx context.Context, cfg aws.Config, token string, duration int64) (*sts.Credentials, error) {

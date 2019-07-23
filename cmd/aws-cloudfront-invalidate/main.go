@@ -1,7 +1,7 @@
 package main
 
 import (
-       "context"
+	"context"
 	"crypto/sha1"
 	"encoding/hex"
 	"flag"

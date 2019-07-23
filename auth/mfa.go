@@ -7,6 +7,7 @@ package auth
 // https://docs.aws.amazon.com/cli/latest/reference/sts/get-session-token.html
 
 import (
+       "context"
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
@@ -15,9 +16,17 @@ import (
 
 func GetCredentialsWithMFA(cfg aws.Config, token string, duration int64) (*sts.Credentials, error) {
 
+     ctx, cancel := context.WithCancel(context.Background())
+     defer cancel()
+
+     return GetCredentialsWithMFAWithContext(ctx, cfg, token, duration)
+}
+
+func GetCredentialsWithMFAWithContext(ctx context.Context, cfg aws.Config, token string, duration int64) (*sts.Credentials, error) {
+
 	stsc := sts.New(cfg)
 
-	username, err := username(stsc)
+	username, err := username(ctx, stsc)
 
 	if err != nil {
 		return nil, err
@@ -25,20 +34,20 @@ func GetCredentialsWithMFA(cfg aws.Config, token string, duration int64) (*sts.C
 
 	iamc := iam.New(cfg)
 
-	mfaDevice, err := mfaDevice(iamc, username)
+	mfaDevice, err := mfaDevice(ctx, iamc, username)
 
 	if err != nil {
 		return nil, err
 	}
 
-	return sessionCredentials(stsc, mfaDevice, token, duration)
+	return sessionCredentials(ctx, stsc, mfaDevice, token, duration)
 }
 
-func username(stsc *sts.STS) (string, error) {
+func username(ctx context.Context, stsc *sts.Client) (string, error) {
 
 	req := stsc.GetCallerIdentityRequest(nil)
 
-	callerIdResp, err := req.Send()
+	callerIdResp, err := req.Send(ctx)
 
 	if err != nil {
 		return "", err
@@ -49,13 +58,13 @@ func username(stsc *sts.STS) (string, error) {
 	return strings.Split(*arn, ":user/")[1], nil
 }
 
-func mfaDevice(iamc *iam.IAM, userArn string) (string, error) {
+func mfaDevice(ctx context.Context, iamc *iam.Client, userArn string) (string, error) {
 
 	req := iamc.ListMFADevicesRequest(
 		&iam.ListMFADevicesInput{UserName: &userArn},
 	)
 
-	mfaDevice, err := req.Send()
+	mfaDevice, err := req.Send(ctx)
 
 	if err != nil {
 		return "", err
@@ -64,7 +73,7 @@ func mfaDevice(iamc *iam.IAM, userArn string) (string, error) {
 	return *mfaDevice.MFADevices[0].SerialNumber, nil
 }
 
-func sessionCredentials(stsc *sts.STS, mfaDevice string, tokenCode string, duration int64) (*sts.Credentials, error) {
+func sessionCredentials(ctx context.Context, stsc *sts.Client, mfaDevice string, tokenCode string, duration int64) (*sts.Credentials, error) {
 
 	req := stsc.GetSessionTokenRequest(&sts.GetSessionTokenInput{
 		SerialNumber:    &mfaDevice,
@@ -72,7 +81,7 @@ func sessionCredentials(stsc *sts.STS, mfaDevice string, tokenCode string, durat
 		TokenCode:       &tokenCode,
 	})
 
-	token, err := req.Send()
+	token, err := req.Send(ctx)
 
 	if err != nil {
 		return nil, err

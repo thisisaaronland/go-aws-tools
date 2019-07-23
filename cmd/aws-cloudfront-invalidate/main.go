@@ -1,6 +1,7 @@
 package main
 
 import (
+       "context"
 	"crypto/sha1"
 	"encoding/hex"
 	"flag"
@@ -35,6 +36,9 @@ func main() {
 	if *dist == "" {
 		log.Fatal("Invalid distribution ID")
 	}
+
+	ctx, cancel := context.WithCancel(context.Background())
+	defer cancel()
 
 	cfg, err := config.NewConfig()
 
@@ -74,7 +78,7 @@ func main() {
 
 	req := cf.CreateInvalidationRequest(&params)
 
-	rsp, err := req.Send()
+	rsp, err := req.Send(ctx)
 
 	if err != nil {
 		log.Fatal(err)

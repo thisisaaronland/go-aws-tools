@@ -11,10 +11,11 @@ import (
 	"github.com/aws/aws-sdk-go-v2/aws"
 	"github.com/aws/aws-sdk-go-v2/service/iam"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
+	"github.com/aws/aws-sdk-go-v2/service/sts/types"	
 	"strings"
 )
 
-func GetCredentialsWithMFA(ctx context.Context, cfg aws.Config, token string, duration int64) (*sts.Credentials, error) {
+func GetCredentialsWithMFA(ctx context.Context, cfg aws.Config, token string, duration int64) (*types.Credentials, error) {
 
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
@@ -22,7 +23,7 @@ func GetCredentialsWithMFA(ctx context.Context, cfg aws.Config, token string, du
 	return GetCredentialsWithMFAWithContext(ctx, cfg, token, duration)
 }
 
-func GetCredentialsWithMFAWithContext(ctx context.Context, cfg aws.Config, token string, duration int64) (*sts.Credentials, error) {
+func GetCredentialsWithMFAWithContext(ctx context.Context, cfg aws.Config, token string, duration int64) (*types.Credentials, error) {
 
 	stsc := sts.New(cfg)
 
@@ -73,7 +74,7 @@ func mfaDevice(ctx context.Context, iamc *iam.Client, userArn string) (string, e
 	return *mfaDevice.MFADevices[0].SerialNumber, nil
 }
 
-func sessionCredentials(ctx context.Context, stsc *sts.Client, mfaDevice string, tokenCode string, duration int64) (*sts.Credentials, error) {
+func sessionCredentials(ctx context.Context, stsc *sts.Client, mfaDevice string, tokenCode string, duration int64) (*types.Credentials, error) {
 
 	req := stsc.GetSessionTokenRequest(&sts.GetSessionTokenInput{
 		SerialNumber:    &mfaDevice,

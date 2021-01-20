@@ -78,12 +78,9 @@ func main() {
 
 	req := cf.CreateInvalidationRequest(&params)
 
-<<<<<<< HEAD:cmd/aws-cloudfront-invalidate.go
 	ctx, cancel := context.WithCancel(context.Background())
 	defer cancel()
 
-=======
->>>>>>> ec1058eb968f997dd6ceb6fa3d92c9d881b0be90:cmd/aws-cloudfront-invalidate/main.go
 	rsp, err := req.Send(ctx)
 
 	if err != nil {

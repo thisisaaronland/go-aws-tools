@@ -3,7 +3,7 @@ package config
 import (
 	"errors"
 	"github.com/aws/aws-sdk-go-v2/aws"
-	"github.com/aws/aws-sdk-go-v2/aws/external"
+	"github.com/aws/aws-sdk-go-v2/config"
 	"github.com/aws/aws-sdk-go-v2/service/sts"
 	"github.com/go-ini/ini"
 	"os"
@@ -18,7 +18,7 @@ func NewConfig() (*Config, error) {
 	var ini_config *ini.File
 	var ini_path string
 
-	for _, path := range external.DefaultSharedConfigFiles {
+	for _, path := range config.DefaultSharedConfigFiles {
 
 		_, err := os.Stat(path)
 
@@ -50,8 +50,8 @@ func NewConfig() (*Config, error) {
 
 func (c *Config) AWSConfigWithProfile(profile string) (aws.Config, error) {
 
-	cfg := external.WithSharedConfigProfile(profile)
-	return external.LoadDefaultAWSConfig(cfg)
+	cfg := config.WithSharedConfigProfile(profile)
+	return config.LoadDefaultAWSConfig(cfg)
 }
 
 func (c *Config) SetSessionCredentialsWithProfile(profile string, creds *sts.Credentials) error {
